@@ -1,4 +1,4 @@
-#Nomad OpenAPI Specification Generator
+# Nomad OpenAPI Specification Generator
 
 This package generates an OpenAPI specification for the Nomad HTTP API using
 [kin-openapi](https://github.com/getkin/kin-openapi) and a homegrown configuration
@@ -12,14 +12,10 @@ generator that they choose. This project uses the [OpenAPI Generator Project](ht
 to generate a test client that is used to validate the specification this package
 creates.
 
-Longer term efforts of generating configuration from AST parsing is underway, but
-this manual incarnation is both expedient and pragmatic in terms of supporting
-the community more immediately.
-
 ## Usage
 
 Run `go build` from this directory, then run `./generator path-to-output-file`
-to generate an OpenAPI specification. See the `openapi` command in the `GNUMakefile`
+to generate an OpenAPI specification. See the `openapi` command in the `Makefile`
 at the root of this repository for an example. To generate a new OpenAPI specification,
 you make also run `make openapi` from the root directory of the repository, and
 a new specification will be generated at the canonical location.
@@ -31,7 +27,7 @@ provides a fully functioning model for OpenAPI Specifications. It is able to
 load an in-memory model for existing specifications files. While it does provide 
 functionality to generate schema for `go` structs using reflection, it does not contain
 a mechanism to generate a full specification from extant source. In other words,
-it does not fully support the `code first` paradigm. This project provides a solution
+it does not fully support the _code first_ paradigm. This project provides a solution
 for documenting an existing API that was written without consideration for generating
 an OpenAPI specification.
 
@@ -139,23 +135,14 @@ Once the `kin-openapi` graph has been built by the `SpecBuilder`, clients can
 call `ToBytes` or `ToYAML` on the resulting `Spec` and they should have a valid
 OpenAPI specification.
 
-### `generator.go`
-
-This file is forward looking at this time. The ultimate goal is to have the specification
-and associated test client generated at CI time using `go:generator`, thus ensuring
-the specification is always in sync with at least the `nomad/api` structs.
-
 ## Generating a specification and test client
 
-To manually generate a schema, the easiest way is to run `TestGenSchema` in the
-`generator_test.go` file. If you want to specify an output location, set the `outputPath`
-field on the generator instance in the test to your desired location. For example,
-there is a currently commented line in the test that can be used to generate the
-specification in the location that the `make openapi` command will use to update
-the generated test client.
+To manually generate a schema, the simplest ways are to either run `TestGenSchema`
+in the `main_test.go` file, or run `make spec` from the root of the repository.
+You must specify an output location when running the binary.
 
 To update the generated test client with your changes, run `make openapi` from
-the root of the Nomad project.
+the root of the repository.
 
 ## Contributing
 
@@ -175,9 +162,8 @@ following checklist.
 - Please state which section of the API you plan to work on, so that we do not
   duplicate effort across contributors, and in case someone is already working
   on that area.
-- If you plan to work on more than one area, please create separate Issues and
+- If you plan to work on more than one area, please create separate issues and
   submit separate PRs for each area.
-- Please add @DerekStrickland as a reviewer for your PR
 
 ### Conventions
 
@@ -322,10 +308,7 @@ in the `nomad/api` package, and, ideally, we should try to return that.
 Once you have added your new configuration, you should be able to generate an
 updated spec, as detailed above, and then update the test client, also detailed
 above. Once the client has been updated with your changes, you can add tests for
-the client to the existing unit tests for each endpoint operation. See `TestHTTP_JobsList`
-in the `nomad/command/agent/job_endpoint_test.go` file for an example. Please review
+the client to the existing unit tests for each endpoint operation. See `Test_JobsGet`
+in the `v1/client/jobs_test.go` file for an example. Please review
 the assertions the existing tests make validate the response, and then repeat them
 against the response you get from the test client.
-
-Currently, there is a small set of helper functions in `/nomad/testutils/openapi`
-that can be used to reduce boilerplate. Feel free to use and add to them.
