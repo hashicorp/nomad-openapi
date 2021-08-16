@@ -7,7 +7,7 @@ From an OpenAPI specification, clients and servers can be _generated_ in a numbe
 of programming languages.
 
 The latest version of the OpenAPI specification for the Version 1 Nomad HTTP API
-can be found in this repository at [v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/v1/openapi.yaml).
+can be found in this repository at [v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/v1/openapi.yaml).
 This file _is itself a generated file_ and _should not be edited directly_. You can
 use this file to generate a client for the Nomad HTTP API in the language of your
 choice.
@@ -30,16 +30,15 @@ Sadly, this approach leaves brownfield projects with an existing API that either
 predates the OpenAPI specification, or for whatever reason was built with a _code first_
 approach, to their own devices in terms of generating a specification from existing
 code. The code found in the `generator` directory is one such device. It is highly,
-experimental, and subject to change. The [README](https://github.com/hashicorp/nomad-openapi/generator/README.md)
+experimental, and subject to change. The [README](https://github.com/hashicorp/nomad-openapi/blob/main/generator/README.md)
 file in that directory contains a detailed technical overview as well as instructions
 on how to contribute.
 
 ## Client package is not an officially supported package
 
-The client found in the [v1/client](https://github.com/hashicorp/nomad-openapi/v1/client)
-directory is _not an officially supported_ package. It exists here to be consumed
-by unit tests as a means of validating the specification produced by the `generator`
-package.
+The client found in the `v1/client` directory is _not an officially supported_
+package. It exists here to be consumed by unit tests as a means of validating the
+specification produced by the `generator` package.
 
 
 
