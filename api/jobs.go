@@ -11,33 +11,44 @@ import (
 // Jobs encapsulates and extends the generated JobsApiService with convenience methods.
 type Jobs struct {
 	client *Client
-	openapi.JobsApiService
 }
 
 func (c *Client) Jobs() *Jobs {
 	return &Jobs{client: c}
 }
 
-// PlanOptions is used to pass through job planning parameters
-type PlanOptions struct {
+func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
+	request := j.client.oapiClient.JobsApi.JobsGet(j.client.Ctx)
+	request = j.client.setQueryOptions(request).(openapi.ApiJobsGetRequest)
+
+	response, apiResponse, err := j.client.oapiClient.JobsApi.JobsGetExecute(request)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(apiResponse)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return response, meta, nil
+}
+
+// planOpts is used to pass through job planning parameters
+type planOpts struct {
 	Diff           bool
 	PolicyOverride bool
 }
 
-func (j *Jobs) Plan(job *openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
-	opts := PlanOptions{Diff: diff}
+func (j *Jobs) Plan(job openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
+	opts := planOpts{Diff: diff}
 	return j.PlanOpts(job, &opts)
 }
 
 // PlanOpts returns a JobPlanResponse and the current Index or Error.
-func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOptions) (*openapi.JobPlanResponse, *WriteMeta, error) {
-	if job == nil {
-		return nil, nil, fmt.Errorf("must pass non-nil job")
-	}
-
-	writeMeta := &WriteMeta{}
+func (j *Jobs) PlanOpts(job openapi.Job, opts *planOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
 	requestBody := *openapi.NewJobPlanRequest()
-	requestBody.SetJob(*job)
+	requestBody.SetJob(job)
 	if opts != nil {
 		requestBody.SetDiff(opts.Diff)
 		requestBody.SetPolicyOverride(opts.PolicyOverride)
@@ -47,16 +58,16 @@ func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOptions) (*openapi.JobPlanRe
 	request = request.JobPlanRequest(requestBody)
 
 	result, response, err := request.Execute()
-	err = parseWriteMeta(response, writeMeta)
+	meta, err := parseWriteMeta(response)
 	if err != nil {
-		return nil, writeMeta, err
+		return nil, nil, err
 	}
 
-	return &result, writeMeta, err
+	return &result, meta, err
 }
 
-// RegisterOptions is used to pass through job registration parameters
-type RegisterOptions struct {
+// registerOpts is used to pass through job registration parameters
+type registerOpts struct {
 	EnforceIndex   bool
 	ModifyIndex    uint64
 	PolicyOverride bool
@@ -65,11 +76,11 @@ type RegisterOptions struct {
 
 // EnforceRegister is used to register a job enforcing its job modify index.
 func (j *Jobs) EnforceRegister(job *openapi.Job, modifyIndex uint64) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	registerOpts := RegisterOptions{EnforceIndex: true, ModifyIndex: modifyIndex}
+	registerOpts := registerOpts{EnforceIndex: true, ModifyIndex: modifyIndex}
 	return j.Register(job, &registerOpts)
 }
 
-func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOptions) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Register(job *openapi.Job, registerOpts *registerOpts) (*openapi.JobRegisterResponse, *WriteMeta, error) {
 	if job == nil {
 		return nil, nil, fmt.Errorf("must pass non-nil job")
 	}
@@ -95,14 +106,12 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOptions) (*opena
 		return nil, nil, err
 	}
 
-	writeMeta := &WriteMeta{}
-
-	err = parseWriteMeta(response, writeMeta)
+	meta, err := parseWriteMeta(response)
 	if err != nil {
-		return nil, writeMeta, err
+		return nil, nil, err
 	}
 
-	return &result, writeMeta, nil
+	return &result, meta, nil
 }
 
 func (j *Jobs) IsMultiRegion(job *openapi.Job) bool {
@@ -146,17 +155,19 @@ func (j *Jobs) Next(p *openapi.PeriodicConfig, fromTime time.Time) (time.Time, e
 	return time.Time{}, nil
 }
 
-// cronParseNext is a helper that parses the next time for the given expression
-// but captures any panic that may occur in the underlying library.
-// ---  THIS FUNCTION IS REPLICATED IN nomad/structs/structs.go
-// and should be kept in sync.
-func cronParseNext(e *cronexpr.Expression, fromTime time.Time, spec string) (t time.Time, err error) {
-	defer func() {
-		if recover() != nil {
-			t = time.Time{}
-			err = fmt.Errorf("failed parsing cron expression: %q", spec)
-		}
-	}()
+func (j *Jobs) Post(job openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	request := *openapi.NewJobRegisterRequest()
+	request.SetJob(job)
 
-	return e.Next(fromTime), nil
+	result, response, err := j.client.oapiClient.JobsApi.JobsPost(j.client.Ctx).JobRegisterRequest(request).Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
 }

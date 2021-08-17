@@ -1,75 +1,72 @@
 package api
 
 import (
-	"strconv"
 	"testing"
 
-	"github.com/hashicorp/nomad-openapi/api/test"
 	openapi "github.com/hashicorp/nomad-openapi/v1/client"
+	"github.com/hashicorp/nomad/command/agent"
 	"github.com/stretchr/testify/require"
 )
 
 func Test_JobsGet(t *testing.T) {
 	t.Parallel()
-	test.httpTest(t, nil, func(s *test.TestAgent) {
-
-		client, ctx := openapi.NewClientAndContext(s.Config.BindAddr, strconv.Itoa(s.Config.Ports.HTTP))
-		jobsRequest := client.JobsApi.JobsGet(ctx)
-		jobs, apiResponse, err := client.JobsApi.JobsGetExecute(jobsRequest)
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+		resp, writeMeta, err := client.Jobs().Post(getJob())
 
 		require.NoError(t, err)
-		require.Len(t, jobs, 3)
+		require.NotNil(t, resp)
+		require.NotNil(t, writeMeta)
 
-		test.ValidateMetaHeaders(t, apiResponse)
+		client, err = NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		jobs, queryMeta, err := client.Jobs().Get()
+		require.NoError(t, err)
+		require.NotNil(t, jobs)
+		require.Len(t, jobs, 1)
+		require.NotNil(t, queryMeta)
 	})
 }
 
 func TestPostJob(t *testing.T) {
 	t.Parallel()
-	test.httpTest(t, nil, func(s *test.TestAgent) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := getJob()
 
-		client, err := NewWriteClient(&WriteOptions{})
+		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		request := *openapi.NewJobRegisterRequest()
-		request.SetJob(job)
-
-		resp, r, err := client.oapiClient.JobsApi.JobsPost(client.Ctx).JobRegisterRequest(request).Execute()
+		resp, meta, err := client.Jobs().Post(job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
-		require.NotNil(t, r)
-
-		require.Equal(t, 200, r.StatusCode)
+		require.NotNil(t, meta)
 	})
 }
 
 func TestPlanJob(t *testing.T) {
 	t.Parallel()
-	test.httpTest(t, nil, func(s *test.TestAgent) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := getJob()
-		client, err := NewWriteClient(&WriteOptions{})
+		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
 		request := *openapi.NewJobRegisterRequest()
 		request.SetJob(job)
 
-		resp, r, err := client.oapiClient.JobsApi.JobsPost(client.Ctx).JobRegisterRequest(request).Execute()
+		resp, meta, err := client.Jobs().Post(job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
-		require.NotNil(t, r)
+		require.NotNil(t, meta)
 
-		require.Equal(t, 200, r.StatusCode)
-
-		planRequest := *openapi.NewJobPlanRequest()
-		planRequest.SetJob(getJobWithDiff())
-
-		planResp, _, err := client.Jobs().Plan(planRequest.Job, true)
+		response, meta, err := client.Jobs().Plan(getJobWithDiff(), true)
 
 		require.NoError(t, err)
-		require.NotNil(t, planResp)
+		require.NotNil(t, response)
+		require.NotNil(t, meta)
 	})
 }
 

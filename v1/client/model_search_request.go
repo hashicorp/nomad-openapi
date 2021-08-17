@@ -17,17 +17,17 @@ import (
 
 // SearchRequest struct for SearchRequest
 type SearchRequest struct {
-	AllowStale *bool `json:"AllowStale,omitempty"`
-	AuthToken *string `json:"AuthToken,omitempty"`
-	Context *string `json:"Context,omitempty"`
-	Namespace *string `json:"Namespace,omitempty"`
-	NextToken *string `json:"NextToken,omitempty"`
-	Params *map[string]string `json:"Params,omitempty"`
-	PerPage *int32 `json:"PerPage,omitempty"`
-	Prefix *string `json:"Prefix,omitempty"`
-	Region *string `json:"Region,omitempty"`
-	WaitIndex *int32 `json:"WaitIndex,omitempty"`
-	WaitTime *int64 `json:"WaitTime,omitempty"`
+	AllowStale *bool              `json:"AllowStale,omitempty"`
+	AuthToken  *string            `json:"XNomadToken,omitempty"`
+	Context    *string            `json:"Context,omitempty"`
+	Namespace  *string            `json:"Namespace,omitempty"`
+	NextToken  *string            `json:"NextToken,omitempty"`
+	Params     *map[string]string `json:"Params,omitempty"`
+	PerPage    *int32             `json:"PerPage,omitempty"`
+	Prefix     *string            `json:"Prefix,omitempty"`
+	Region     *string            `json:"Region,omitempty"`
+	WaitIndex  *int32             `json:"Index,omitempty"`
+	WaitTime   *int64             `json:"Wait,omitempty"`
 }
 
 // NewSearchRequest instantiates a new SearchRequest object
@@ -405,7 +405,7 @@ func (o SearchRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["AllowStale"] = o.AllowStale
 	}
 	if o.AuthToken != nil {
-		toSerialize["AuthToken"] = o.AuthToken
+		toSerialize["XNomadToken"] = o.AuthToken
 	}
 	if o.Context != nil {
 		toSerialize["Context"] = o.Context
@@ -429,10 +429,10 @@ func (o SearchRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["Region"] = o.Region
 	}
 	if o.WaitIndex != nil {
-		toSerialize["WaitIndex"] = o.WaitIndex
+		toSerialize["Index"] = o.WaitIndex
 	}
 	if o.WaitTime != nil {
-		toSerialize["WaitTime"] = o.WaitTime
+		toSerialize["Wait"] = o.WaitTime
 	}
 	return json.Marshal(toSerialize)
 }
@@ -472,5 +472,3 @@ func (v *NullableSearchRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -7,9 +7,11 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"reflect"
 	"strconv"
 	"time"
 
+	"github.com/hashicorp/cronexpr"
 	oac "github.com/hashicorp/nomad-openapi/v1/client"
 )
 
@@ -40,14 +42,14 @@ func newClient() (*Client, error) {
 	return client, nil
 }
 
-func NewQueryClient(opts *QueryOptions) (*Client, error) {
+func NewQueryClient(opts *QueryOpts) (*Client, error) {
 	client, err := newClient()
 	if err != nil {
 		return nil, err
 	}
 
 	client.config = &Config{
-		QueryOptions: opts,
+		QueryOpts: opts,
 	}
 	client.SetRegion(opts.Region)
 	client.SetNamespace(opts.Namespace)
@@ -55,14 +57,14 @@ func NewQueryClient(opts *QueryOptions) (*Client, error) {
 	return client, nil
 }
 
-func NewWriteClient(opts *WriteOptions) (*Client, error) {
+func NewWriteClient(opts *WriteOpts) (*Client, error) {
 	client, err := newClient()
 	if err != nil {
 		return nil, err
 	}
 
 	client.config = &Config{
-		WriteOptions: opts,
+		WriteOpts: opts,
 	}
 	client.SetRegion(opts.Region)
 	client.SetNamespace(opts.Namespace)
@@ -87,61 +89,79 @@ func (c *Client) SetNamespace(namespace string) {
 
 // setQueryOptions is used to annotate the request with
 // additional query options
-func (c *Client) setQueryOptions(regionFn func(string), namespaceFn func(string), authTokenFn func(string),
-	staleFn func(string), waitIndexFn func(uint64), waitTimeFn func(int32), prefixFn func(string)) {
+func (c *Client) setQueryOptions(iface interface{}) interface{} {
 	cfg := c.config
-	opts := c.config.QueryOptions
+	opts := c.config.QueryOpts
+	typeOf := reflect.TypeOf(iface)
+	valueOf := reflect.ValueOf(iface)
 
-	if cfg.Region != "" && regionFn != nil {
-		regionFn(cfg.Region)
+	_, ok := typeOf.MethodByName("Region")
+	if ok && cfg.Region != "" {
+		iface = valueOf.MethodByName("Region").Call([]reflect.Value{reflect.ValueOf(cfg.Region)})[0].Interface()
 	}
-	if cfg.Namespace != "" && namespaceFn != nil {
-		namespaceFn(cfg.Namespace)
+	_, ok = typeOf.MethodByName("Namespace")
+	if ok && cfg.Namespace != "" {
+		iface = valueOf.MethodByName("Namespace").Call([]reflect.Value{reflect.ValueOf(cfg.Namespace)})[0].Interface()
 	}
-	if opts.AuthToken != "" && authTokenFn != nil {
-		authTokenFn(opts.AuthToken)
+	_, ok = typeOf.MethodByName("XNomadToken")
+	if ok && opts.AuthToken != "" {
+		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
 	}
-	if opts.AllowStale {
-		staleFn("")
+	_, ok = typeOf.MethodByName("Stale")
+	if ok && opts.AllowStale {
+		iface = valueOf.MethodByName("Stale").Call([]reflect.Value{reflect.ValueOf("")})[0].Interface()
 	}
-	if opts.WaitIndex != 0 {
-		waitIndexFn(opts.WaitIndex)
+	_, ok = typeOf.MethodByName("Index")
+	if ok && opts.WaitIndex != 0 {
+		idx := int32(opts.WaitIndex)
+		iface = valueOf.MethodByName("Index").Call([]reflect.Value{reflect.ValueOf(idx)})[0].Interface()
 	}
-	if opts.WaitTime != 0 {
+	_, ok = typeOf.MethodByName("Wait")
+	if ok && opts.WaitTime != 0 {
 		w, err := strconv.ParseInt(durToMsec(opts.WaitTime), 10, 32)
 		if err == nil {
-			waitTimeFn(int32(w))
+			iface = valueOf.MethodByName("Wait").Call([]reflect.Value{reflect.ValueOf(int32(w))})[0].Interface()
 		}
 	}
-	if opts.Prefix != "" {
-		prefixFn(opts.Prefix)
+	_, ok = typeOf.MethodByName("Prefix")
+	if ok && opts.Prefix != "" {
+		iface = valueOf.MethodByName("Prefix").Call([]reflect.Value{reflect.ValueOf(opts.Prefix)})[0].Interface()
+	}
+	_, ok = typeOf.MethodByName("PerPage")
+	if ok && opts.PerPage != 0 {
+		iface = valueOf.MethodByName("PerPage").Call([]reflect.Value{reflect.ValueOf(opts.PerPage)})[0].Interface()
+	}
+	_, ok = typeOf.MethodByName("NextToken")
+	if ok && opts.NextToken != "" {
+		iface = valueOf.MethodByName("NextToken").Call([]reflect.Value{reflect.ValueOf(opts.NextToken)})[0].Interface()
 	}
 	// TODO: Handle extra params
 	//if c.config.Params != nil {
 	//}
+
+	return iface
 }
 
 // setWriteOptions is used to annotate an openapi request with
 // additional write options
 func (c *Client) setWriteOptions(regionFn func(string), namespaceFn func(string), authTokenFn func(string), idempotencyTokenFn func(string)) {
 	cfg := c.config
-
 	if cfg.Region != "" && regionFn != nil {
 		regionFn(cfg.Region)
 	}
 	if cfg.Namespace != "" && namespaceFn != nil {
 		namespaceFn(cfg.Namespace)
 	}
-	if cfg.WriteOptions.AuthToken != "" && authTokenFn != nil {
-		authTokenFn(cfg.WriteOptions.AuthToken)
+	if cfg.WriteOpts.AuthToken != "" && authTokenFn != nil {
+		authTokenFn(cfg.WriteOpts.AuthToken)
 	}
-	if cfg.WriteOptions.IdempotencyToken != "" && idempotencyTokenFn != nil {
-		idempotencyTokenFn(cfg.WriteOptions.IdempotencyToken)
+	if cfg.WriteOpts.IdempotencyToken != "" && idempotencyTokenFn != nil {
+		idempotencyTokenFn(cfg.WriteOpts.IdempotencyToken)
 	}
 }
 
-// QueryOptions are used to parametrize a query
-type QueryOptions struct {
+// QueryOpts are used to parametrize a query
+type QueryOpts struct {
 	// Providing a datacenter overwrites the region provided
 	// by the Config
 	Region string
@@ -183,8 +203,8 @@ type QueryOptions struct {
 	ctx context.Context
 }
 
-// WriteOptions are used to parametrize a write operation
-type WriteOptions struct {
+// WriteOpts are used to parametrize a write operation
+type WriteOpts struct {
 	// Providing a datacenter overwrites the region provided
 	// by the Config
 	Region string
@@ -205,7 +225,7 @@ type WriteOptions struct {
 
 // QueryMeta is used to return metadata about a query
 type QueryMeta struct {
-	// LastIndex can be used as a WaitIndex to perform
+	// LastIndex can be used as a Index to perform
 	// a blocking query
 	LastIndex uint64
 
@@ -220,36 +240,49 @@ type QueryMeta struct {
 	RequestTime time.Duration
 }
 
-func parseQueryMeta(resp *http.Response, q *QueryMeta) error {
+func parseQueryMeta(resp *http.Response) (*QueryMeta, error) {
+	q := &QueryMeta{}
 	header := resp.Header
 
 	// Parse the X-Nomad-Index
-	index, err := strconv.ParseUint(header.Get("X-Nomad-Index"), 10, 64)
+	indexHeader := header.Get("X-Nomad-Index")
+	if indexHeader == "" {
+		return nil, fmt.Errorf("X-Nomad-Index header not found")
+	}
+	index, err := strconv.ParseUint(indexHeader, 10, 64)
 	if err != nil {
-		return fmt.Errorf("failed to parse X-Nomad-Index: %v", err)
+		return nil, fmt.Errorf("failed to parse X-Nomad-Index: %v", err)
 	}
 	q.LastIndex = index
 
 	// Parse the X-Nomad-LastContact
-	last, err := strconv.ParseUint(header.Get("X-Nomad-LastContact"), 10, 64)
+	lastHeader := header.Get("X-Nomad-Lastcontact")
+	if lastHeader == "" {
+		return nil, fmt.Errorf("X-Nomad-Lastcontact header not found")
+	}
+	last, err := strconv.ParseUint(lastHeader, 10, 64)
 	if err != nil {
-		return fmt.Errorf("failed to parse X-Nomad-LastContact: %v", err)
+		return nil, fmt.Errorf("failed to parse X-Nomad-Lastcontact: %v", err)
 	}
 	q.LastContact = time.Duration(last) * time.Millisecond
 
+	leaderHeader := header.Get("X-Nomad-Knownleader")
+	if leaderHeader == "" {
+		return nil, fmt.Errorf("X-Nomad-Knownleader header not found")
+	}
 	// Parse the X-Nomad-KnownLeader
-	switch header.Get("X-Nomad-KnownLeader") {
+	switch leaderHeader {
 	case "true":
 		q.KnownLeader = true
 	default:
 		q.KnownLeader = false
 	}
-	return nil
+	return q, nil
 }
 
 // WriteMeta is used to return metadata about a write operation
 type WriteMeta struct {
-	// LastIndex can be used as a WaitIndex to perform
+	// LastIndex can be used as a Index to perform
 	// a blocking query
 	LastIndex uint64
 
@@ -258,16 +291,19 @@ type WriteMeta struct {
 }
 
 // parseWriteMeta is used to help parse write meta-data
-func parseWriteMeta(resp *http.Response, q *WriteMeta) error {
-	header := resp.Header
+func parseWriteMeta(resp *http.Response) (*WriteMeta, error) {
+	header := resp.Header.Get("X-Nomad-Index")
+	if header == "" {
+		return nil, errors.New("X-Nomad-Index header not found")
+	}
 
 	// Parse the X-Nomad-Index
-	index, err := strconv.ParseUint(header.Get("X-Nomad-Index"), 10, 64)
+	index, err := strconv.ParseUint(header, 10, 64)
 	if err != nil {
-		return fmt.Errorf("failed to parse X-Nomad-Index: %v", err)
+		return nil, fmt.Errorf("failed to parse X-Nomad-Index: %v", err)
 	}
-	q.LastIndex = index
-	return nil
+
+	return &WriteMeta{LastIndex: index}, nil
 }
 
 // durToMsec converts a duration to a millisecond specified string
@@ -290,9 +326,9 @@ type Config struct {
 	// Namespace to use. If not provided the default namespace is used.
 	Namespace string
 
-	QueryOptions *QueryOptions
+	QueryOpts *QueryOpts
 
-	WriteOptions *WriteOptions
+	WriteOpts *WriteOpts
 }
 
 const (
@@ -322,3 +358,18 @@ const (
 	// enforcing the job modify index during registers.
 	RegisterEnforceIndexErrPrefix = "Enforcing job modify index"
 )
+
+// cronParseNext is a helper that parses the next time for the given expression
+// but captures any panic that may occur in the underlying library.
+// ---  THIS FUNCTION IS REPLICATED IN nomad/structs/structs.go
+// and should be kept in sync.
+func cronParseNext(e *cronexpr.Expression, fromTime time.Time, spec string) (t time.Time, err error) {
+	defer func() {
+		if recover() != nil {
+			t = time.Time{}
+			err = fmt.Errorf("failed parsing cron expression: %q", spec)
+		}
+	}()
+
+	return e.Next(fromTime), nil
+}
