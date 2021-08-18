@@ -28,7 +28,7 @@ var (
 // EnterpriseApiService EnterpriseApi service
 type EnterpriseApiService service
 
-type ApiQuotaPostRequest struct {
+type ApiCreateQuotaSpecRequest struct {
 	ctx _context.Context
 	ApiService *EnterpriseApiService
 	quotaSpec *QuotaSpec
@@ -38,38 +38,38 @@ type ApiQuotaPostRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiQuotaPostRequest) QuotaSpec(quotaSpec QuotaSpec) ApiQuotaPostRequest {
+func (r ApiCreateQuotaSpecRequest) QuotaSpec(quotaSpec QuotaSpec) ApiCreateQuotaSpecRequest {
 	r.quotaSpec = &quotaSpec
 	return r
 }
-func (r ApiQuotaPostRequest) Region(region string) ApiQuotaPostRequest {
+func (r ApiCreateQuotaSpecRequest) Region(region string) ApiCreateQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-func (r ApiQuotaPostRequest) Namespace(namespace string) ApiQuotaPostRequest {
+func (r ApiCreateQuotaSpecRequest) Namespace(namespace string) ApiCreateQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiQuotaPostRequest) XNomadToken(xNomadToken string) ApiQuotaPostRequest {
+func (r ApiCreateQuotaSpecRequest) XNomadToken(xNomadToken string) ApiCreateQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiQuotaPostRequest) IdempotencyToken(idempotencyToken string) ApiQuotaPostRequest {
+func (r ApiCreateQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiCreateQuotaSpecRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiQuotaPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.QuotaPostExecute(r)
+func (r ApiCreateQuotaSpecRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.CreateQuotaSpecExecute(r)
 }
 
 /*
- * QuotaPost Method for QuotaPost
+ * CreateQuotaSpec Method for CreateQuotaSpec
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiQuotaPostRequest
+ * @return ApiCreateQuotaSpecRequest
  */
-func (a *EnterpriseApiService) QuotaPost(ctx _context.Context) ApiQuotaPostRequest {
-	return ApiQuotaPostRequest{
+func (a *EnterpriseApiService) CreateQuotaSpec(ctx _context.Context) ApiCreateQuotaSpecRequest {
+	return ApiCreateQuotaSpecRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -78,7 +78,7 @@ func (a *EnterpriseApiService) QuotaPost(ctx _context.Context) ApiQuotaPostReque
 /*
  * Execute executes the request
  */
-func (a *EnterpriseApiService) QuotaPostExecute(r ApiQuotaPostRequest) (*_nethttp.Response, error) {
+func (a *EnterpriseApiService) CreateQuotaSpecExecute(r ApiCreateQuotaSpecRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -87,7 +87,7 @@ func (a *EnterpriseApiService) QuotaPostExecute(r ApiQuotaPostRequest) (*_nethtt
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.QuotaPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.CreateQuotaSpec")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -174,7 +174,7 @@ func (a *EnterpriseApiService) QuotaPostExecute(r ApiQuotaPostRequest) (*_nethtt
 	return localVarHTTPResponse, nil
 }
 
-type ApiQuotaSpecNameDeleteRequest struct {
+type ApiDeleteQuotaSpecRequest struct {
 	ctx _context.Context
 	ApiService *EnterpriseApiService
 	specName string
@@ -184,35 +184,35 @@ type ApiQuotaSpecNameDeleteRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiQuotaSpecNameDeleteRequest) Region(region string) ApiQuotaSpecNameDeleteRequest {
+func (r ApiDeleteQuotaSpecRequest) Region(region string) ApiDeleteQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-func (r ApiQuotaSpecNameDeleteRequest) Namespace(namespace string) ApiQuotaSpecNameDeleteRequest {
+func (r ApiDeleteQuotaSpecRequest) Namespace(namespace string) ApiDeleteQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiQuotaSpecNameDeleteRequest) XNomadToken(xNomadToken string) ApiQuotaSpecNameDeleteRequest {
+func (r ApiDeleteQuotaSpecRequest) XNomadToken(xNomadToken string) ApiDeleteQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiQuotaSpecNameDeleteRequest) IdempotencyToken(idempotencyToken string) ApiQuotaSpecNameDeleteRequest {
+func (r ApiDeleteQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiDeleteQuotaSpecRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiQuotaSpecNameDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.QuotaSpecNameDeleteExecute(r)
+func (r ApiDeleteQuotaSpecRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteQuotaSpecExecute(r)
 }
 
 /*
- * QuotaSpecNameDelete Method for QuotaSpecNameDelete
+ * DeleteQuotaSpec Method for DeleteQuotaSpec
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param specName The quota spec identifier.
- * @return ApiQuotaSpecNameDeleteRequest
+ * @return ApiDeleteQuotaSpecRequest
  */
-func (a *EnterpriseApiService) QuotaSpecNameDelete(ctx _context.Context, specName string) ApiQuotaSpecNameDeleteRequest {
-	return ApiQuotaSpecNameDeleteRequest{
+func (a *EnterpriseApiService) DeleteQuotaSpec(ctx _context.Context, specName string) ApiDeleteQuotaSpecRequest {
+	return ApiDeleteQuotaSpecRequest{
 		ApiService: a,
 		ctx: ctx,
 		specName: specName,
@@ -222,7 +222,7 @@ func (a *EnterpriseApiService) QuotaSpecNameDelete(ctx _context.Context, specNam
 /*
  * Execute executes the request
  */
-func (a *EnterpriseApiService) QuotaSpecNameDeleteExecute(r ApiQuotaSpecNameDeleteRequest) (*_nethttp.Response, error) {
+func (a *EnterpriseApiService) DeleteQuotaSpecExecute(r ApiDeleteQuotaSpecRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -231,7 +231,7 @@ func (a *EnterpriseApiService) QuotaSpecNameDeleteExecute(r ApiQuotaSpecNameDele
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.QuotaSpecNameDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.DeleteQuotaSpec")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -314,7 +314,7 @@ func (a *EnterpriseApiService) QuotaSpecNameDeleteExecute(r ApiQuotaSpecNameDele
 	return localVarHTTPResponse, nil
 }
 
-type ApiQuotaSpecNameGetRequest struct {
+type ApiGetQuotaSpecRequest struct {
 	ctx _context.Context
 	ApiService *EnterpriseApiService
 	specName string
@@ -329,55 +329,55 @@ type ApiQuotaSpecNameGetRequest struct {
 	nextToken *string
 }
 
-func (r ApiQuotaSpecNameGetRequest) Region(region string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Region(region string) ApiGetQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) Namespace(namespace string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Namespace(namespace string) ApiGetQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) Index(index int32) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Index(index int32) ApiGetQuotaSpecRequest {
 	r.index = &index
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) Wait(wait int32) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Wait(wait int32) ApiGetQuotaSpecRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) Stale(stale string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Stale(stale string) ApiGetQuotaSpecRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) Prefix(prefix string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) Prefix(prefix string) ApiGetQuotaSpecRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) XNomadToken(xNomadToken string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) XNomadToken(xNomadToken string) ApiGetQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) PerPage(perPage int32) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) PerPage(perPage int32) ApiGetQuotaSpecRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiQuotaSpecNameGetRequest) NextToken(nextToken string) ApiQuotaSpecNameGetRequest {
+func (r ApiGetQuotaSpecRequest) NextToken(nextToken string) ApiGetQuotaSpecRequest {
 	r.nextToken = &nextToken
 	return r
 }
 
-func (r ApiQuotaSpecNameGetRequest) Execute() (QuotaSpec, *_nethttp.Response, error) {
-	return r.ApiService.QuotaSpecNameGetExecute(r)
+func (r ApiGetQuotaSpecRequest) Execute() (QuotaSpec, *_nethttp.Response, error) {
+	return r.ApiService.GetQuotaSpecExecute(r)
 }
 
 /*
- * QuotaSpecNameGet Method for QuotaSpecNameGet
+ * GetQuotaSpec Method for GetQuotaSpec
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param specName The quota spec identifier.
- * @return ApiQuotaSpecNameGetRequest
+ * @return ApiGetQuotaSpecRequest
  */
-func (a *EnterpriseApiService) QuotaSpecNameGet(ctx _context.Context, specName string) ApiQuotaSpecNameGetRequest {
-	return ApiQuotaSpecNameGetRequest{
+func (a *EnterpriseApiService) GetQuotaSpec(ctx _context.Context, specName string) ApiGetQuotaSpecRequest {
+	return ApiGetQuotaSpecRequest{
 		ApiService: a,
 		ctx: ctx,
 		specName: specName,
@@ -388,7 +388,7 @@ func (a *EnterpriseApiService) QuotaSpecNameGet(ctx _context.Context, specName s
  * Execute executes the request
  * @return QuotaSpec
  */
-func (a *EnterpriseApiService) QuotaSpecNameGetExecute(r ApiQuotaSpecNameGetRequest) (QuotaSpec, *_nethttp.Response, error) {
+func (a *EnterpriseApiService) GetQuotaSpecExecute(r ApiGetQuotaSpecRequest) (QuotaSpec, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -398,7 +398,7 @@ func (a *EnterpriseApiService) QuotaSpecNameGetExecute(r ApiQuotaSpecNameGetRequ
 		localVarReturnValue  QuotaSpec
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.QuotaSpecNameGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.GetQuotaSpec")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -505,157 +505,7 @@ func (a *EnterpriseApiService) QuotaSpecNameGetExecute(r ApiQuotaSpecNameGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiQuotaSpecNamePostRequest struct {
-	ctx _context.Context
-	ApiService *EnterpriseApiService
-	specName string
-	quotaSpec *QuotaSpec
-	region *string
-	namespace *string
-	xNomadToken *string
-	idempotencyToken *string
-}
-
-func (r ApiQuotaSpecNamePostRequest) QuotaSpec(quotaSpec QuotaSpec) ApiQuotaSpecNamePostRequest {
-	r.quotaSpec = &quotaSpec
-	return r
-}
-func (r ApiQuotaSpecNamePostRequest) Region(region string) ApiQuotaSpecNamePostRequest {
-	r.region = &region
-	return r
-}
-func (r ApiQuotaSpecNamePostRequest) Namespace(namespace string) ApiQuotaSpecNamePostRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiQuotaSpecNamePostRequest) XNomadToken(xNomadToken string) ApiQuotaSpecNamePostRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiQuotaSpecNamePostRequest) IdempotencyToken(idempotencyToken string) ApiQuotaSpecNamePostRequest {
-	r.idempotencyToken = &idempotencyToken
-	return r
-}
-
-func (r ApiQuotaSpecNamePostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.QuotaSpecNamePostExecute(r)
-}
-
-/*
- * QuotaSpecNamePost Method for QuotaSpecNamePost
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param specName The quota spec identifier.
- * @return ApiQuotaSpecNamePostRequest
- */
-func (a *EnterpriseApiService) QuotaSpecNamePost(ctx _context.Context, specName string) ApiQuotaSpecNamePostRequest {
-	return ApiQuotaSpecNamePostRequest{
-		ApiService: a,
-		ctx: ctx,
-		specName: specName,
-	}
-}
-
-/*
- * Execute executes the request
- */
-func (a *EnterpriseApiService) QuotaSpecNamePostExecute(r ApiQuotaSpecNamePostRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.QuotaSpecNamePost")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/quota/{specName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"specName"+"}", _neturl.PathEscape(parameterToString(r.specName, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.quotaSpec == nil {
-		return nil, reportError("quotaSpec is required and must be specified")
-	}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.idempotencyToken != nil {
-		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	// body params
-	localVarPostBody = r.quotaSpec
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiQuotasGetRequest struct {
+type ApiGetQuotasRequest struct {
 	ctx _context.Context
 	ApiService *EnterpriseApiService
 	region *string
@@ -669,54 +519,54 @@ type ApiQuotasGetRequest struct {
 	nextToken *string
 }
 
-func (r ApiQuotasGetRequest) Region(region string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Region(region string) ApiGetQuotasRequest {
 	r.region = &region
 	return r
 }
-func (r ApiQuotasGetRequest) Namespace(namespace string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Namespace(namespace string) ApiGetQuotasRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiQuotasGetRequest) Index(index int32) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Index(index int32) ApiGetQuotasRequest {
 	r.index = &index
 	return r
 }
-func (r ApiQuotasGetRequest) Wait(wait int32) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Wait(wait int32) ApiGetQuotasRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiQuotasGetRequest) Stale(stale string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Stale(stale string) ApiGetQuotasRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiQuotasGetRequest) Prefix(prefix string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) Prefix(prefix string) ApiGetQuotasRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiQuotasGetRequest) XNomadToken(xNomadToken string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) XNomadToken(xNomadToken string) ApiGetQuotasRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiQuotasGetRequest) PerPage(perPage int32) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) PerPage(perPage int32) ApiGetQuotasRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiQuotasGetRequest) NextToken(nextToken string) ApiQuotasGetRequest {
+func (r ApiGetQuotasRequest) NextToken(nextToken string) ApiGetQuotasRequest {
 	r.nextToken = &nextToken
 	return r
 }
 
-func (r ApiQuotasGetRequest) Execute() ([]interface{}, *_nethttp.Response, error) {
-	return r.ApiService.QuotasGetExecute(r)
+func (r ApiGetQuotasRequest) Execute() ([]interface{}, *_nethttp.Response, error) {
+	return r.ApiService.GetQuotasExecute(r)
 }
 
 /*
- * QuotasGet Method for QuotasGet
+ * GetQuotas Method for GetQuotas
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiQuotasGetRequest
+ * @return ApiGetQuotasRequest
  */
-func (a *EnterpriseApiService) QuotasGet(ctx _context.Context) ApiQuotasGetRequest {
-	return ApiQuotasGetRequest{
+func (a *EnterpriseApiService) GetQuotas(ctx _context.Context) ApiGetQuotasRequest {
+	return ApiGetQuotasRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -726,7 +576,7 @@ func (a *EnterpriseApiService) QuotasGet(ctx _context.Context) ApiQuotasGetReque
  * Execute executes the request
  * @return []interface{}
  */
-func (a *EnterpriseApiService) QuotasGetExecute(r ApiQuotasGetRequest) ([]interface{}, *_nethttp.Response, error) {
+func (a *EnterpriseApiService) GetQuotasExecute(r ApiGetQuotasRequest) ([]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -736,7 +586,7 @@ func (a *EnterpriseApiService) QuotasGetExecute(r ApiQuotasGetRequest) ([]interf
 		localVarReturnValue  []interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.QuotasGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.GetQuotas")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -840,4 +690,154 @@ func (a *EnterpriseApiService) QuotasGetExecute(r ApiQuotasGetRequest) ([]interf
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostQuotaSpecRequest struct {
+	ctx _context.Context
+	ApiService *EnterpriseApiService
+	specName string
+	quotaSpec *QuotaSpec
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostQuotaSpecRequest) QuotaSpec(quotaSpec QuotaSpec) ApiPostQuotaSpecRequest {
+	r.quotaSpec = &quotaSpec
+	return r
+}
+func (r ApiPostQuotaSpecRequest) Region(region string) ApiPostQuotaSpecRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostQuotaSpecRequest) Namespace(namespace string) ApiPostQuotaSpecRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostQuotaSpecRequest) XNomadToken(xNomadToken string) ApiPostQuotaSpecRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiPostQuotaSpecRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostQuotaSpecRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PostQuotaSpecExecute(r)
+}
+
+/*
+ * PostQuotaSpec Method for PostQuotaSpec
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param specName The quota spec identifier.
+ * @return ApiPostQuotaSpecRequest
+ */
+func (a *EnterpriseApiService) PostQuotaSpec(ctx _context.Context, specName string) ApiPostQuotaSpecRequest {
+	return ApiPostQuotaSpecRequest{
+		ApiService: a,
+		ctx: ctx,
+		specName: specName,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *EnterpriseApiService) PostQuotaSpecExecute(r ApiPostQuotaSpecRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.PostQuotaSpec")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/quota/{specName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"specName"+"}", _neturl.PathEscape(parameterToString(r.specName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.quotaSpec == nil {
+		return nil, reportError("quotaSpec is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.quotaSpec
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

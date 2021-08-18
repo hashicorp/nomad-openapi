@@ -12,8 +12,8 @@ import (
 )
 
 var queryOpts = &QueryOpts{
-	Region:     "foo",
-	Namespace:  "bar",
+	Region:     "global",
+	Namespace:  "default",
 	AllowStale: true,
 	WaitIndex:  1000,
 	WaitTime:   100 * time.Second,
@@ -21,8 +21,8 @@ var queryOpts = &QueryOpts{
 }
 
 var writeOpts = &WriteOpts{
-	Region:           "foo",
-	Namespace:        "bar",
+	Region:           "global",
+	Namespace:        "default",
 	AuthToken:        "foobar",
 	IdempotencyToken: "",
 }

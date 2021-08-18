@@ -18,11 +18,11 @@ func (c *Client) Jobs() *Jobs {
 }
 
 func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
-	request := j.client.oapiClient.JobsApi.JobsGet(j.client.Ctx)
+	request := j.client.oapiClient.JobsApi.GetJobs(j.client.Ctx)
 	// TODO: Find a way to make this automatic
-	request = j.client.setQueryOptions(request).(openapi.ApiJobsGetRequest)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobsRequest)
 
-	response, apiResponse, err := j.client.oapiClient.JobsApi.JobsGetExecute(request)
+	response, apiResponse, err := j.client.oapiClient.JobsApi.GetJobsExecute(request)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -55,10 +55,10 @@ func (j *Jobs) PlanOpts(job openapi.Job, opts *planOpts) (*openapi.JobPlanRespon
 		requestBody.SetPolicyOverride(opts.PolicyOverride)
 	}
 
-	request := j.client.oapiClient.JobsApi.JobJobNamePlanPost(j.client.Ctx, *job.ID)
+	request := j.client.oapiClient.JobsApi.PostJobPlan(j.client.Ctx, *job.ID)
 	request = request.JobPlanRequest(requestBody)
 	// TODO: Figure out why this name is so wonky
-	request = j.client.setWriteOptions(request).(openapi.ApiJobJobNamePlanPostRequest)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobPlanRequest)
 
 	result, response, err := request.Execute()
 	meta, err := parseWriteMeta(response)
@@ -88,8 +88,8 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *registerOpts) (*openapi.
 		return nil, nil, fmt.Errorf("must pass non-nil job")
 	}
 
-	// Format the request
-	request := openapi.ApiJobsPostRequest{}
+	// Format the request j.client.Ctx
+	request := j.client.oapiClient.JobsApi.PostJob(j.client.Ctx)
 	registerRequest := openapi.NewJobRegisterRequest()
 
 	registerRequest.SetJob(*job)
@@ -115,7 +115,7 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *registerOpts) (*openapi.
 		registerRequest.SetPreserveCounts(registerOpts.PreserveCounts)
 	}
 
-	result, response, err := j.client.oapiClient.JobsApi.JobsPostExecute(request.JobRegisterRequest(*registerRequest))
+	result, response, err := j.client.oapiClient.JobsApi.PostJobExecute(request.JobRegisterRequest(*registerRequest))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -170,18 +170,5 @@ func (j *Jobs) Next(p *openapi.PeriodicConfig, fromTime time.Time) (time.Time, e
 }
 
 func (j *Jobs) Post(job openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	request := *openapi.NewJobRegisterRequest()
-	request.SetJob(job)
-
-	result, response, err := j.client.oapiClient.JobsApi.JobsPost(j.client.Ctx).JobRegisterRequest(request).Execute()
-	if err != nil {
-		return nil, nil, err
-	}
-
-	meta, err := parseWriteMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	return j.Register(&job, nil)
 }

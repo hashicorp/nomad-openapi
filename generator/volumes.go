@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/hashicorp/nomad/api"
 	"net/http"
+
+	"github.com/hashicorp/nomad/api"
 )
 
 func (v *v1api) getVolumesPaths() []*apiPath {
@@ -90,7 +91,7 @@ func (v *v1api) getVolumesPaths() []*apiPath {
 			Template: "/volume/csi/{volumeId}/{action}",
 			Operations: []*operation{
 				// TODO: See if there is a way to override mismatch between the naming convention and the struct name.
-				newOperation(http.MethodPost, "csiVolumeCreate", tags, "PostVolume",
+				newOperation(http.MethodPost, "csiVolumeCreate", tags, "CreateVolume",
 					newRequestBody(objectSchema, api.CSIVolumeCreateRequest{}),
 					append(writeOptions, &volumeIDParam, &volumeActionParam),
 					newResponseConfig(200, objectSchema, api.CSIVolumeCreateResponse{}, queryMeta,

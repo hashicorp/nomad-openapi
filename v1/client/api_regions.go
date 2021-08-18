@@ -27,23 +27,23 @@ var (
 // RegionsApiService RegionsApi service
 type RegionsApiService service
 
-type ApiRegionsGetRequest struct {
+type ApiGetRegionsRequest struct {
 	ctx _context.Context
 	ApiService *RegionsApiService
 }
 
 
-func (r ApiRegionsGetRequest) Execute() ([]string, *_nethttp.Response, error) {
-	return r.ApiService.RegionsGetExecute(r)
+func (r ApiGetRegionsRequest) Execute() ([]string, *_nethttp.Response, error) {
+	return r.ApiService.GetRegionsExecute(r)
 }
 
 /*
- * RegionsGet Method for RegionsGet
+ * GetRegions Method for GetRegions
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiRegionsGetRequest
+ * @return ApiGetRegionsRequest
  */
-func (a *RegionsApiService) RegionsGet(ctx _context.Context) ApiRegionsGetRequest {
-	return ApiRegionsGetRequest{
+func (a *RegionsApiService) GetRegions(ctx _context.Context) ApiGetRegionsRequest {
+	return ApiGetRegionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -53,7 +53,7 @@ func (a *RegionsApiService) RegionsGet(ctx _context.Context) ApiRegionsGetReques
  * Execute executes the request
  * @return []string
  */
-func (a *RegionsApiService) RegionsGetExecute(r ApiRegionsGetRequest) ([]string, *_nethttp.Response, error) {
+func (a *RegionsApiService) GetRegionsExecute(r ApiGetRegionsRequest) ([]string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *RegionsApiService) RegionsGetExecute(r ApiRegionsGetRequest) ([]string,
 		localVarReturnValue  []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionsApiService.RegionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionsApiService.GetRegions")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

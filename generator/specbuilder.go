@@ -168,7 +168,7 @@ func (b *specBuilder) buildGraphFromModel() error {
 				Tags:        pathOp.Tags,
 				Summary:     pathOp.Summary,
 				Description: pathOp.Description,
-				OperationID: pathOp.Description,
+				OperationID: pathOp.OperationId,
 				Parameters:  b.getOrCreateParameters(pathOp.Parameters),
 				RequestBody: requestBodyRef,
 				Responses:   responses,

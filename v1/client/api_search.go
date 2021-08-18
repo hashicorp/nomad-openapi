@@ -27,7 +27,7 @@ var (
 // SearchApiService SearchApi service
 type SearchApiService service
 
-type ApiSearchFuzzyPostRequest struct {
+type ApiGetFuzzySearchRequest struct {
 	ctx _context.Context
 	ApiService *SearchApiService
 	fuzzySearchRequest *FuzzySearchRequest
@@ -42,58 +42,58 @@ type ApiSearchFuzzyPostRequest struct {
 	nextToken *string
 }
 
-func (r ApiSearchFuzzyPostRequest) FuzzySearchRequest(fuzzySearchRequest FuzzySearchRequest) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) FuzzySearchRequest(fuzzySearchRequest FuzzySearchRequest) ApiGetFuzzySearchRequest {
 	r.fuzzySearchRequest = &fuzzySearchRequest
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Region(region string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Region(region string) ApiGetFuzzySearchRequest {
 	r.region = &region
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Namespace(namespace string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Namespace(namespace string) ApiGetFuzzySearchRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Index(index int32) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Index(index int32) ApiGetFuzzySearchRequest {
 	r.index = &index
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Wait(wait int32) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Wait(wait int32) ApiGetFuzzySearchRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Stale(stale string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Stale(stale string) ApiGetFuzzySearchRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) Prefix(prefix string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) Prefix(prefix string) ApiGetFuzzySearchRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) XNomadToken(xNomadToken string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) XNomadToken(xNomadToken string) ApiGetFuzzySearchRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) PerPage(perPage int32) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) PerPage(perPage int32) ApiGetFuzzySearchRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiSearchFuzzyPostRequest) NextToken(nextToken string) ApiSearchFuzzyPostRequest {
+func (r ApiGetFuzzySearchRequest) NextToken(nextToken string) ApiGetFuzzySearchRequest {
 	r.nextToken = &nextToken
 	return r
 }
 
-func (r ApiSearchFuzzyPostRequest) Execute() (FuzzySearchResponse, *_nethttp.Response, error) {
-	return r.ApiService.SearchFuzzyPostExecute(r)
+func (r ApiGetFuzzySearchRequest) Execute() (FuzzySearchResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetFuzzySearchExecute(r)
 }
 
 /*
- * SearchFuzzyPost Method for SearchFuzzyPost
+ * GetFuzzySearch Method for GetFuzzySearch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSearchFuzzyPostRequest
+ * @return ApiGetFuzzySearchRequest
  */
-func (a *SearchApiService) SearchFuzzyPost(ctx _context.Context) ApiSearchFuzzyPostRequest {
-	return ApiSearchFuzzyPostRequest{
+func (a *SearchApiService) GetFuzzySearch(ctx _context.Context) ApiGetFuzzySearchRequest {
+	return ApiGetFuzzySearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -103,7 +103,7 @@ func (a *SearchApiService) SearchFuzzyPost(ctx _context.Context) ApiSearchFuzzyP
  * Execute executes the request
  * @return FuzzySearchResponse
  */
-func (a *SearchApiService) SearchFuzzyPostExecute(r ApiSearchFuzzyPostRequest) (FuzzySearchResponse, *_nethttp.Response, error) {
+func (a *SearchApiService) GetFuzzySearchExecute(r ApiGetFuzzySearchRequest) (FuzzySearchResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -113,7 +113,7 @@ func (a *SearchApiService) SearchFuzzyPostExecute(r ApiSearchFuzzyPostRequest) (
 		localVarReturnValue  FuzzySearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchFuzzyPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.GetFuzzySearch")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -224,7 +224,7 @@ func (a *SearchApiService) SearchFuzzyPostExecute(r ApiSearchFuzzyPostRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSearchPostRequest struct {
+type ApiGetSearchRequest struct {
 	ctx _context.Context
 	ApiService *SearchApiService
 	searchRequest *SearchRequest
@@ -239,58 +239,58 @@ type ApiSearchPostRequest struct {
 	nextToken *string
 }
 
-func (r ApiSearchPostRequest) SearchRequest(searchRequest SearchRequest) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) SearchRequest(searchRequest SearchRequest) ApiGetSearchRequest {
 	r.searchRequest = &searchRequest
 	return r
 }
-func (r ApiSearchPostRequest) Region(region string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Region(region string) ApiGetSearchRequest {
 	r.region = &region
 	return r
 }
-func (r ApiSearchPostRequest) Namespace(namespace string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Namespace(namespace string) ApiGetSearchRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiSearchPostRequest) Index(index int32) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Index(index int32) ApiGetSearchRequest {
 	r.index = &index
 	return r
 }
-func (r ApiSearchPostRequest) Wait(wait int32) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Wait(wait int32) ApiGetSearchRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiSearchPostRequest) Stale(stale string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Stale(stale string) ApiGetSearchRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiSearchPostRequest) Prefix(prefix string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) Prefix(prefix string) ApiGetSearchRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiSearchPostRequest) XNomadToken(xNomadToken string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) XNomadToken(xNomadToken string) ApiGetSearchRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiSearchPostRequest) PerPage(perPage int32) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) PerPage(perPage int32) ApiGetSearchRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiSearchPostRequest) NextToken(nextToken string) ApiSearchPostRequest {
+func (r ApiGetSearchRequest) NextToken(nextToken string) ApiGetSearchRequest {
 	r.nextToken = &nextToken
 	return r
 }
 
-func (r ApiSearchPostRequest) Execute() (SearchResponse, *_nethttp.Response, error) {
-	return r.ApiService.SearchPostExecute(r)
+func (r ApiGetSearchRequest) Execute() (SearchResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetSearchExecute(r)
 }
 
 /*
- * SearchPost Method for SearchPost
+ * GetSearch Method for GetSearch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSearchPostRequest
+ * @return ApiGetSearchRequest
  */
-func (a *SearchApiService) SearchPost(ctx _context.Context) ApiSearchPostRequest {
-	return ApiSearchPostRequest{
+func (a *SearchApiService) GetSearch(ctx _context.Context) ApiGetSearchRequest {
+	return ApiGetSearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -300,7 +300,7 @@ func (a *SearchApiService) SearchPost(ctx _context.Context) ApiSearchPostRequest
  * Execute executes the request
  * @return SearchResponse
  */
-func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) (SearchResponse, *_nethttp.Response, error) {
+func (a *SearchApiService) GetSearchExecute(r ApiGetSearchRequest) (SearchResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -310,7 +310,7 @@ func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) (SearchResp
 		localVarReturnValue  SearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.GetSearch")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
