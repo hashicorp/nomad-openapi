@@ -13,7 +13,8 @@ func TestJobsGet(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
-		resp, writeMeta, err := client.Jobs().Post(getJob())
+		job := getJob()
+		resp, writeMeta, err := client.Jobs().Post(&job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +39,7 @@ func TestPostJob(t *testing.T) {
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		resp, meta, err := client.Jobs().Post(job)
+		resp, meta, err := client.Jobs().Post(&job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
@@ -56,13 +57,14 @@ func TestPlanJob(t *testing.T) {
 		request := *openapi.NewJobRegisterRequest()
 		request.SetJob(job)
 
-		resp, meta, err := client.Jobs().Post(job)
+		resp, meta, err := client.Jobs().Post(&job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.NotNil(t, meta)
 
-		response, meta, err := client.Jobs().Plan(getJobWithDiff(), true)
+		diffJob := getJobWithDiff()
+		response, meta, err := client.Jobs().Plan(&diffJob, true)
 
 		require.NoError(t, err)
 		require.NotNil(t, response)

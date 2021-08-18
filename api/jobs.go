@@ -41,15 +41,15 @@ type PlanOpts struct {
 	PolicyOverride bool
 }
 
-func (j *Jobs) Plan(job openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
+func (j *Jobs) Plan(job *openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
 	opts := PlanOpts{Diff: diff}
 	return j.PlanOpts(job, &opts)
 }
 
 // PlanOpts returns a JobPlanResponse and the current Index or Error.
-func (j *Jobs) PlanOpts(job openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
+func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
 	requestBody := *openapi.NewJobPlanRequest()
-	requestBody.SetJob(job)
+	requestBody.SetJob(*job)
 	if opts != nil {
 		requestBody.SetDiff(opts.Diff)
 		requestBody.SetPolicyOverride(opts.PolicyOverride)
@@ -169,6 +169,6 @@ func (j *Jobs) Next(p *openapi.PeriodicConfig, fromTime time.Time) (time.Time, e
 	return time.Time{}, nil
 }
 
-func (j *Jobs) Post(job openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	return j.Register(&job, nil)
+func (j *Jobs) Post(job *openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	return j.Register(job, nil)
 }
