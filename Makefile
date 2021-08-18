@@ -1,6 +1,8 @@
+.PHONY: spec
 spec:
 	(cd generator && CGO_ENABLED=0 GOOS=$(shell go env GOOS) go build -o bin/generator && ./bin/generator ../v1/openapi.yaml)
 
+.PHONY: test
 test:
 	go test ./... -v -count=1
 

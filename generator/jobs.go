@@ -31,7 +31,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 				newOperation(http.MethodPost, "jobPlan", tags, "PostJobPlan",
 					newRequestBody(objectSchema, api.JobPlanRequest{}),
 					append(queryOptions, &jobNameParam),
-					newResponseConfig(200, objectSchema, api.JobPlanResponse{}, queryMeta, "PostJobPlanResponse"),
+					newResponseConfig(200, objectSchema, api.JobPlanResponse{}, writeMeta, "PostJobPlanResponse"),
 				),
 			},
 		},
