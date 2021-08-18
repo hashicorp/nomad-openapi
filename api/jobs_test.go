@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_JobsGet(t *testing.T) {
+func TestJobsGet(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		client, err := NewTestWriteClient(s, writeOpts)

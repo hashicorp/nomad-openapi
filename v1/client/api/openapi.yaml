@@ -140,19 +140,6 @@ paths:
               schema:
                 type: integer
               style: simple
-            X-Nomad-KnownLeader:
-              description: Boolean indicating if there is a known cluster leader.
-              explode: false
-              schema:
-                type: boolean
-              style: simple
-            X-Nomad-LastContact:
-              description: The time in milliseconds that a server was last contacted
-                by the leader node.
-              explode: false
-              schema:
-                type: integer
-              style: simple
         "400":
           description: Bad request
         "403":
@@ -3215,19 +3202,6 @@ components:
         X-Nomad-Index:
           description: A unique identifier representing the current state of the requested
             resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          explode: false
-          schema:
-            type: boolean
-          style: simple
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by
-            the leader node.
           explode: false
           schema:
             type: integer

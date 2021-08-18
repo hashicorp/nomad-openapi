@@ -17,16 +17,16 @@ import (
 
 // NamespaceListRequest struct for NamespaceListRequest
 type NamespaceListRequest struct {
-	AllowStale    *bool   `json:"AllowStale,omitempty"`
-	AuthToken     *string `json:"XNomadToken,omitempty"`
-	Forwarded     *bool   `json:"Forwarded,omitempty"`
-	MaxQueryTime  *int64  `json:"MaxQueryTime,omitempty"`
-	MinQueryIndex *int32  `json:"MinQueryIndex,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty"`
-	PerPage       *int32  `json:"PerPage,omitempty"`
-	Prefix        *string `json:"Prefix,omitempty"`
-	Region        *string `json:"Region,omitempty"`
+	AllowStale *bool `json:"AllowStale,omitempty"`
+	AuthToken *string `json:"AuthToken,omitempty"`
+	Forwarded *bool `json:"Forwarded,omitempty"`
+	MaxQueryTime *int64 `json:"MaxQueryTime,omitempty"`
+	MinQueryIndex *int32 `json:"MinQueryIndex,omitempty"`
+	Namespace *string `json:"Namespace,omitempty"`
+	NextToken *string `json:"NextToken,omitempty"`
+	PerPage *int32 `json:"PerPage,omitempty"`
+	Prefix *string `json:"Prefix,omitempty"`
+	Region *string `json:"Region,omitempty"`
 }
 
 // NewNamespaceListRequest instantiates a new NamespaceListRequest object
@@ -372,7 +372,7 @@ func (o NamespaceListRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["AllowStale"] = o.AllowStale
 	}
 	if o.AuthToken != nil {
-		toSerialize["XNomadToken"] = o.AuthToken
+		toSerialize["AuthToken"] = o.AuthToken
 	}
 	if o.Forwarded != nil {
 		toSerialize["Forwarded"] = o.Forwarded
@@ -436,3 +436,5 @@ func (v *NullableNamespaceListRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

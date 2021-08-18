@@ -144,20 +144,30 @@ func (c *Client) setQueryOptions(iface interface{}) interface{} {
 
 // setWriteOptions is used to annotate an openapi request with
 // additional write options
-func (c *Client) setWriteOptions(regionFn func(string), namespaceFn func(string), authTokenFn func(string), idempotencyTokenFn func(string)) {
+func (c *Client) setWriteOptions(iface interface{}) interface{} {
 	cfg := c.config
-	if cfg.Region != "" && regionFn != nil {
-		regionFn(cfg.Region)
+	opts := c.config.WriteOpts
+	typeOf := reflect.TypeOf(iface)
+	valueOf := reflect.ValueOf(iface)
+
+	_, ok := typeOf.MethodByName("Region")
+	if ok && cfg.Region != "" {
+		iface = valueOf.MethodByName("Region").Call([]reflect.Value{reflect.ValueOf(cfg.Region)})[0].Interface()
 	}
-	if cfg.Namespace != "" && namespaceFn != nil {
-		namespaceFn(cfg.Namespace)
+	_, ok = typeOf.MethodByName("Namespace")
+	if ok && cfg.Namespace != "" {
+		iface = valueOf.MethodByName("Namespace").Call([]reflect.Value{reflect.ValueOf(cfg.Namespace)})[0].Interface()
 	}
-	if cfg.WriteOpts.AuthToken != "" && authTokenFn != nil {
-		authTokenFn(cfg.WriteOpts.AuthToken)
+	_, ok = typeOf.MethodByName("XNomadToken")
+	if ok && opts.AuthToken != "" {
+		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
 	}
-	if cfg.WriteOpts.IdempotencyToken != "" && idempotencyTokenFn != nil {
-		idempotencyTokenFn(cfg.WriteOpts.IdempotencyToken)
+	_, ok = typeOf.MethodByName("IdempotencyToken")
+	if ok && opts.AuthToken != "" {
+		iface = valueOf.MethodByName("IdempotencyToken").Call([]reflect.Value{reflect.ValueOf(opts.IdempotencyToken)})[0].Interface()
 	}
+
+	return iface
 }
 
 // QueryOpts are used to parametrize a query

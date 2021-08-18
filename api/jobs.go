@@ -19,6 +19,7 @@ func (c *Client) Jobs() *Jobs {
 
 func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
 	request := j.client.oapiClient.JobsApi.JobsGet(j.client.Ctx)
+	// TODO: Find a way to make this automatic
 	request = j.client.setQueryOptions(request).(openapi.ApiJobsGetRequest)
 
 	response, apiResponse, err := j.client.oapiClient.JobsApi.JobsGetExecute(request)
@@ -56,6 +57,8 @@ func (j *Jobs) PlanOpts(job openapi.Job, opts *planOpts) (*openapi.JobPlanRespon
 
 	request := j.client.oapiClient.JobsApi.JobJobNamePlanPost(j.client.Ctx, *job.ID)
 	request = request.JobPlanRequest(requestBody)
+	// TODO: Figure out why this name is so wonky
+	request = j.client.setWriteOptions(request).(openapi.ApiJobJobNamePlanPostRequest)
 
 	result, response, err := request.Execute()
 	meta, err := parseWriteMeta(response)
@@ -86,11 +89,22 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *registerOpts) (*openapi.
 	}
 
 	// Format the request
-	request := j.client.oapiClient.JobsApi.JobsPost(j.client.Ctx)
+	request := openapi.ApiJobsPostRequest{}
 	registerRequest := openapi.NewJobRegisterRequest()
-	// TODO: find a way to force this - too easy to overlook
-	j.client.setWriteOptions(registerRequest.SetRegion, registerRequest.SetNamespace, registerRequest.SetSecretID, nil)
+
 	registerRequest.SetJob(*job)
+
+	if j.client.config.Region != "" {
+		registerRequest.SetRegion(j.client.config.Region)
+	}
+
+	if j.client.config.Namespace != "" {
+		registerRequest.SetNamespace(j.client.config.Namespace)
+	}
+
+	if j.client.config.WriteOpts.AuthToken != "" {
+		registerRequest.SetSecretID(j.client.config.WriteOpts.AuthToken)
+	}
 
 	if registerOpts != nil {
 		if registerOpts.EnforceIndex {

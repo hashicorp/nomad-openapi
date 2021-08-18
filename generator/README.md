@@ -308,7 +308,12 @@ in the `nomad/api` package, and, ideally, we should try to return that.
 Once you have added your new configuration, you should be able to generate an
 updated spec, as detailed above, and then update the test client, also detailed
 above. Once the client has been updated with your changes, you can add tests for
-the client to the existing unit tests for each endpoint operation. See `Test_JobsGet`
-in the `v1/client/jobs_test.go` file for an example. Please review
-the assertions the existing tests make validate the response, and then repeat them
-against the response you get from the test client.
+the client to the existing unit tests for each endpoint operation. See `TestJobsGet`
+in the `api/jobs_test.go` file for an example. Please review the assertions the
+existing tests make in the main Nomad repository to validate responses, and then
+repeat them against the response you get from the test client.
+
+While the maintainers of this repository are building an API facade over the
+generated client, and using that for testing, you do not have to. It is perfectly
+accepted to document a new endpoint, and then write a test that operates directly
+against the generated client.
