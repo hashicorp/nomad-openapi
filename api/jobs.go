@@ -35,19 +35,19 @@ func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
 	return response, meta, nil
 }
 
-// planOpts is used to pass through job planning parameters
-type planOpts struct {
+// PlanOpts is used to pass through job planning parameters
+type PlanOpts struct {
 	Diff           bool
 	PolicyOverride bool
 }
 
 func (j *Jobs) Plan(job openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
-	opts := planOpts{Diff: diff}
+	opts := PlanOpts{Diff: diff}
 	return j.PlanOpts(job, &opts)
 }
 
 // PlanOpts returns a JobPlanResponse and the current Index or Error.
-func (j *Jobs) PlanOpts(job openapi.Job, opts *planOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
+func (j *Jobs) PlanOpts(job openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
 	requestBody := *openapi.NewJobPlanRequest()
 	requestBody.SetJob(job)
 	if opts != nil {
@@ -69,8 +69,8 @@ func (j *Jobs) PlanOpts(job openapi.Job, opts *planOpts) (*openapi.JobPlanRespon
 	return &result, meta, err
 }
 
-// registerOpts is used to pass through job registration parameters
-type registerOpts struct {
+// RegisterOpts is used to pass through job registration parameters
+type RegisterOpts struct {
 	EnforceIndex   bool
 	ModifyIndex    uint64
 	PolicyOverride bool
@@ -79,11 +79,11 @@ type registerOpts struct {
 
 // EnforceRegister is used to register a job enforcing its job modify index.
 func (j *Jobs) EnforceRegister(job *openapi.Job, modifyIndex uint64) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	registerOpts := registerOpts{EnforceIndex: true, ModifyIndex: modifyIndex}
+	registerOpts := RegisterOpts{EnforceIndex: true, ModifyIndex: modifyIndex}
 	return j.Register(job, &registerOpts)
 }
 
-func (j *Jobs) Register(job *openapi.Job, registerOpts *registerOpts) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.JobRegisterResponse, *WriteMeta, error) {
 	if job == nil {
 		return nil, nil, fmt.Errorf("must pass non-nil job")
 	}
