@@ -78,34 +78,34 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EnterpriseApi* | [**QuotaPost**](docs/EnterpriseApi.md#quotapost) | **Post** /quota | 
-*EnterpriseApi* | [**QuotaSpecNameDelete**](docs/EnterpriseApi.md#quotaspecnamedelete) | **Delete** /quota/{specName} | 
-*EnterpriseApi* | [**QuotaSpecNameGet**](docs/EnterpriseApi.md#quotaspecnameget) | **Get** /quota/{specName} | 
-*EnterpriseApi* | [**QuotaSpecNamePost**](docs/EnterpriseApi.md#quotaspecnamepost) | **Post** /quota/{specName} | 
-*EnterpriseApi* | [**QuotasGet**](docs/EnterpriseApi.md#quotasget) | **Get** /quotas | 
-*JobsApi* | [**JobJobNamePlanPost**](docs/JobsApi.md#jobjobnameplanpost) | **Post** /job/{jobName}/plan | 
-*JobsApi* | [**JobsGet**](docs/JobsApi.md#jobsget) | **Get** /jobs | 
-*JobsApi* | [**JobsPost**](docs/JobsApi.md#jobspost) | **Post** /jobs | 
-*MetricsApi* | [**MetricsGet**](docs/MetricsApi.md#metricsget) | **Get** /metrics | 
-*NamespacesApi* | [**NamespaceNamespaceNameDelete**](docs/NamespacesApi.md#namespacenamespacenamedelete) | **Delete** /namespace/{namespaceName} | 
-*NamespacesApi* | [**NamespaceNamespaceNameGet**](docs/NamespacesApi.md#namespacenamespacenameget) | **Get** /namespace/{namespaceName} | 
-*NamespacesApi* | [**NamespaceNamespaceNamePost**](docs/NamespacesApi.md#namespacenamespacenamepost) | **Post** /namespace/{namespaceName} | 
-*NamespacesApi* | [**NamespacePost**](docs/NamespacesApi.md#namespacepost) | **Post** /namespace | 
-*NamespacesApi* | [**NamespacesGet**](docs/NamespacesApi.md#namespacesget) | **Get** /namespaces | 
-*RegionsApi* | [**RegionsGet**](docs/RegionsApi.md#regionsget) | **Get** /regions | 
-*SearchApi* | [**SearchFuzzyPost**](docs/SearchApi.md#searchfuzzypost) | **Post** /search/fuzzy | 
-*SearchApi* | [**SearchPost**](docs/SearchApi.md#searchpost) | **Post** /search | 
-*VolumesApi* | [**VolumeCsiVolumeIdActionDelete**](docs/VolumesApi.md#volumecsivolumeidactiondelete) | **Delete** /volume/csi/{volumeId}/{action} | 
-*VolumesApi* | [**VolumeCsiVolumeIdActionPost**](docs/VolumesApi.md#volumecsivolumeidactionpost) | **Post** /volume/csi/{volumeId}/{action} | 
-*VolumesApi* | [**VolumeCsiVolumeIdDelete**](docs/VolumesApi.md#volumecsivolumeiddelete) | **Delete** /volume/csi/{volumeId} | 
-*VolumesApi* | [**VolumeCsiVolumeIdGet**](docs/VolumesApi.md#volumecsivolumeidget) | **Get** /volume/csi/{volumeId} | 
-*VolumesApi* | [**VolumeCsiVolumeIdPost**](docs/VolumesApi.md#volumecsivolumeidpost) | **Post** /volume/csi/{volumeId} | 
-*VolumesApi* | [**VolumesExternalGet**](docs/VolumesApi.md#volumesexternalget) | **Get** /volumes/external | 
-*VolumesApi* | [**VolumesGet**](docs/VolumesApi.md#volumesget) | **Get** /volumes | 
-*VolumesApi* | [**VolumesPost**](docs/VolumesApi.md#volumespost) | **Post** /volumes | 
-*VolumesApi* | [**VolumesSnapshotDelete**](docs/VolumesApi.md#volumessnapshotdelete) | **Delete** /volumes/snapshot | 
-*VolumesApi* | [**VolumesSnapshotGet**](docs/VolumesApi.md#volumessnapshotget) | **Get** /volumes/snapshot | 
-*VolumesApi* | [**VolumesSnapshotPost**](docs/VolumesApi.md#volumessnapshotpost) | **Post** /volumes/snapshot | 
+*EnterpriseApi* | [**CreateQuotaSpec**](docs/EnterpriseApi.md#createquotaspec) | **Post** /quota | 
+*EnterpriseApi* | [**DeleteQuotaSpec**](docs/EnterpriseApi.md#deletequotaspec) | **Delete** /quota/{specName} | 
+*EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
+*EnterpriseApi* | [**GetQuotas**](docs/EnterpriseApi.md#getquotas) | **Get** /quotas | 
+*EnterpriseApi* | [**PostQuotaSpec**](docs/EnterpriseApi.md#postquotaspec) | **Post** /quota/{specName} | 
+*JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **Get** /jobs | 
+*JobsApi* | [**PostJob**](docs/JobsApi.md#postjob) | **Post** /jobs | 
+*JobsApi* | [**PostJobPlan**](docs/JobsApi.md#postjobplan) | **Post** /job/{jobName}/plan | 
+*MetricsApi* | [**GetMetricsSummary**](docs/MetricsApi.md#getmetricssummary) | **Get** /metrics | 
+*NamespacesApi* | [**CreateNamespace**](docs/NamespacesApi.md#createnamespace) | **Post** /namespace | 
+*NamespacesApi* | [**DeleteNamespace**](docs/NamespacesApi.md#deletenamespace) | **Delete** /namespace/{namespaceName} | 
+*NamespacesApi* | [**GetNamespace**](docs/NamespacesApi.md#getnamespace) | **Get** /namespace/{namespaceName} | 
+*NamespacesApi* | [**GetNamespaces**](docs/NamespacesApi.md#getnamespaces) | **Get** /namespaces | 
+*NamespacesApi* | [**PostNamespace**](docs/NamespacesApi.md#postnamespace) | **Post** /namespace/{namespaceName} | 
+*RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
+*SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
+*SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
+*VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /volume/csi/{volumeId}/{action} | 
+*VolumesApi* | [**DeleteSnapshot**](docs/VolumesApi.md#deletesnapshot) | **Delete** /volumes/snapshot | 
+*VolumesApi* | [**DeleteVolumeRegistration**](docs/VolumesApi.md#deletevolumeregistration) | **Delete** /volume/csi/{volumeId} | 
+*VolumesApi* | [**DetachOrDeleteVolume**](docs/VolumesApi.md#detachordeletevolume) | **Delete** /volume/csi/{volumeId}/{action} | 
+*VolumesApi* | [**GetExternalVolumes**](docs/VolumesApi.md#getexternalvolumes) | **Get** /volumes/external | 
+*VolumesApi* | [**GetSnapshots**](docs/VolumesApi.md#getsnapshots) | **Get** /volumes/snapshot | 
+*VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /volume/csi/{volumeId} | 
+*VolumesApi* | [**GetVolumes**](docs/VolumesApi.md#getvolumes) | **Get** /volumes | 
+*VolumesApi* | [**PostSnapshot**](docs/VolumesApi.md#postsnapshot) | **Post** /volumes/snapshot | 
+*VolumesApi* | [**PostVolume**](docs/VolumesApi.md#postvolume) | **Post** /volumes | 
+*VolumesApi* | [**PostVolumeRegistration**](docs/VolumesApi.md#postvolumeregistration) | **Post** /volume/csi/{volumeId} | 
 
 
 ## Documentation For Models

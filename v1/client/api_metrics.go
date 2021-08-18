@@ -27,28 +27,28 @@ var (
 // MetricsApiService MetricsApi service
 type MetricsApiService service
 
-type ApiMetricsGetRequest struct {
+type ApiGetMetricsSummaryRequest struct {
 	ctx _context.Context
 	ApiService *MetricsApiService
 	format *string
 }
 
-func (r ApiMetricsGetRequest) Format(format string) ApiMetricsGetRequest {
+func (r ApiGetMetricsSummaryRequest) Format(format string) ApiGetMetricsSummaryRequest {
 	r.format = &format
 	return r
 }
 
-func (r ApiMetricsGetRequest) Execute() (MetricsSummary, *_nethttp.Response, error) {
-	return r.ApiService.MetricsGetExecute(r)
+func (r ApiGetMetricsSummaryRequest) Execute() (MetricsSummary, *_nethttp.Response, error) {
+	return r.ApiService.GetMetricsSummaryExecute(r)
 }
 
 /*
- * MetricsGet Method for MetricsGet
+ * GetMetricsSummary Method for GetMetricsSummary
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiMetricsGetRequest
+ * @return ApiGetMetricsSummaryRequest
  */
-func (a *MetricsApiService) MetricsGet(ctx _context.Context) ApiMetricsGetRequest {
-	return ApiMetricsGetRequest{
+func (a *MetricsApiService) GetMetricsSummary(ctx _context.Context) ApiGetMetricsSummaryRequest {
+	return ApiGetMetricsSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -58,7 +58,7 @@ func (a *MetricsApiService) MetricsGet(ctx _context.Context) ApiMetricsGetReques
  * Execute executes the request
  * @return MetricsSummary
  */
-func (a *MetricsApiService) MetricsGetExecute(r ApiMetricsGetRequest) (MetricsSummary, *_nethttp.Response, error) {
+func (a *MetricsApiService) GetMetricsSummaryExecute(r ApiGetMetricsSummaryRequest) (MetricsSummary, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -68,7 +68,7 @@ func (a *MetricsApiService) MetricsGetExecute(r ApiMetricsGetRequest) (MetricsSu
 		localVarReturnValue  MetricsSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetricsApiService.MetricsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetricsApiService.GetMetricsSummary")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

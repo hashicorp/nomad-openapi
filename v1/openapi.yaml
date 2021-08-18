@@ -2980,6 +2980,7 @@ openapi: 3.0.3
 paths:
   /job/{jobName}/plan:
     post:
+      operationId: PostJobPlan
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3014,6 +3015,7 @@ paths:
       - Jobs
   /jobs:
     get:
+      operationId: GetJobs
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3040,6 +3042,7 @@ paths:
       tags:
       - Jobs
     post:
+      operationId: PostJob
       requestBody:
         content:
           application/json:
@@ -3061,6 +3064,7 @@ paths:
       - Jobs
   /metrics:
     get:
+      operationId: GetMetricsSummary
       parameters:
       - $ref: '#/components/parameters/MetricsFormatParam'
       responses:
@@ -3078,6 +3082,7 @@ paths:
       - Metrics
   /namespace:
     post:
+      operationId: CreateNamespace
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3100,6 +3105,7 @@ paths:
       - Namespaces
   /namespace/{namespaceName}:
     delete:
+      operationId: DeleteNamespace
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3122,6 +3128,7 @@ paths:
       tags:
       - Namespaces
     get:
+      operationId: GetNamespace
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3149,6 +3156,7 @@ paths:
       tags:
       - Namespaces
     post:
+      operationId: PostNamespace
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3178,6 +3186,7 @@ paths:
       - Namespaces
   /namespaces:
     get:
+      operationId: GetNamespaces
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3211,6 +3220,7 @@ paths:
       - Namespaces
   /quota:
     post:
+      operationId: CreateQuotaSpec
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3239,6 +3249,7 @@ paths:
       - Enterprise
   /quota/{specName}:
     delete:
+      operationId: DeleteQuotaSpec
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3261,6 +3272,7 @@ paths:
       tags:
       - Enterprise
     get:
+      operationId: GetQuotaSpec
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3288,6 +3300,7 @@ paths:
       tags:
       - Enterprise
     post:
+      operationId: PostQuotaSpec
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3317,6 +3330,7 @@ paths:
       - Enterprise
   /quotas:
     get:
+      operationId: GetQuotas
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3344,6 +3358,7 @@ paths:
       - Enterprise
   /regions:
     get:
+      operationId: GetRegions
       responses:
         "200":
           $ref: '#/components/responses/GetRegionsResponse'
@@ -3359,6 +3374,7 @@ paths:
       - Regions
   /search:
     post:
+      operationId: GetSearch
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3392,6 +3408,7 @@ paths:
       - Search
   /search/fuzzy:
     post:
+      operationId: GetFuzzySearch
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3425,6 +3442,7 @@ paths:
       - Search
   /volume/csi/{volumeId}:
     delete:
+      operationId: DeleteVolumeRegistration
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3448,6 +3466,7 @@ paths:
       tags:
       - Volumes
     get:
+      operationId: GetVolume
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3475,6 +3494,7 @@ paths:
       tags:
       - Volumes
     post:
+      operationId: PostVolumeRegistration
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3504,6 +3524,7 @@ paths:
       - Volumes
   /volume/csi/{volumeId}/{action}:
     delete:
+      operationId: DetachOrDeleteVolume
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3528,6 +3549,7 @@ paths:
       tags:
       - Volumes
     post:
+      operationId: CreateVolume
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3558,6 +3580,7 @@ paths:
       - Volumes
   /volumes:
     get:
+      operationId: GetVolumes
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3587,6 +3610,7 @@ paths:
       tags:
       - Volumes
     post:
+      operationId: PostVolume
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3615,6 +3639,7 @@ paths:
       - Volumes
   /volumes/external:
     get:
+      operationId: GetExternalVolumes
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3643,6 +3668,7 @@ paths:
       - Volumes
   /volumes/snapshot:
     delete:
+      operationId: DeleteSnapshot
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3666,6 +3692,7 @@ paths:
       tags:
       - Volumes
     get:
+      operationId: GetSnapshots
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -3693,6 +3720,7 @@ paths:
       tags:
       - Volumes
     post:
+      operationId: PostSnapshot
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'

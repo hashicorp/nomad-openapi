@@ -28,159 +28,7 @@ var (
 // VolumesApiService VolumesApi service
 type VolumesApiService service
 
-type ApiVolumeCsiVolumeIdActionDeleteRequest struct {
-	ctx _context.Context
-	ApiService *VolumesApiService
-	volumeId string
-	action string
-	region *string
-	namespace *string
-	xNomadToken *string
-	idempotencyToken *string
-	node *string
-}
-
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) Region(region string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	r.region = &region
-	return r
-}
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) Namespace(namespace string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) XNomadToken(xNomadToken string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) IdempotencyToken(idempotencyToken string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	r.idempotencyToken = &idempotencyToken
-	return r
-}
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) Node(node string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	r.node = &node
-	return r
-}
-
-func (r ApiVolumeCsiVolumeIdActionDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumeCsiVolumeIdActionDeleteExecute(r)
-}
-
-/*
- * VolumeCsiVolumeIdActionDelete Method for VolumeCsiVolumeIdActionDelete
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param volumeId Volume unique identifier.
- * @param action The action to perform on the Volume (create, detach, delete).
- * @return ApiVolumeCsiVolumeIdActionDeleteRequest
- */
-func (a *VolumesApiService) VolumeCsiVolumeIdActionDelete(ctx _context.Context, volumeId string, action string) ApiVolumeCsiVolumeIdActionDeleteRequest {
-	return ApiVolumeCsiVolumeIdActionDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		volumeId: volumeId,
-		action: action,
-	}
-}
-
-/*
- * Execute executes the request
- */
-func (a *VolumesApiService) VolumeCsiVolumeIdActionDeleteExecute(r ApiVolumeCsiVolumeIdActionDeleteRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumeCsiVolumeIdActionDelete")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/volume/csi/{volumeId}/{action}"
-	localVarPath = strings.Replace(localVarPath, "{"+"volumeId"+"}", _neturl.PathEscape(parameterToString(r.volumeId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"action"+"}", _neturl.PathEscape(parameterToString(r.action, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.idempotencyToken != nil {
-		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
-	}
-	if r.node != nil {
-		localVarQueryParams.Add("node", parameterToString(*r.node, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiVolumeCsiVolumeIdActionPostRequest struct {
+type ApiCreateVolumeRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	volumeId string
@@ -192,40 +40,40 @@ type ApiVolumeCsiVolumeIdActionPostRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiVolumeCsiVolumeIdActionPostRequest) CSIVolumeCreateRequest(cSIVolumeCreateRequest CSIVolumeCreateRequest) ApiVolumeCsiVolumeIdActionPostRequest {
+func (r ApiCreateVolumeRequest) CSIVolumeCreateRequest(cSIVolumeCreateRequest CSIVolumeCreateRequest) ApiCreateVolumeRequest {
 	r.cSIVolumeCreateRequest = &cSIVolumeCreateRequest
 	return r
 }
-func (r ApiVolumeCsiVolumeIdActionPostRequest) Region(region string) ApiVolumeCsiVolumeIdActionPostRequest {
+func (r ApiCreateVolumeRequest) Region(region string) ApiCreateVolumeRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumeCsiVolumeIdActionPostRequest) Namespace(namespace string) ApiVolumeCsiVolumeIdActionPostRequest {
+func (r ApiCreateVolumeRequest) Namespace(namespace string) ApiCreateVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumeCsiVolumeIdActionPostRequest) XNomadToken(xNomadToken string) ApiVolumeCsiVolumeIdActionPostRequest {
+func (r ApiCreateVolumeRequest) XNomadToken(xNomadToken string) ApiCreateVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumeCsiVolumeIdActionPostRequest) IdempotencyToken(idempotencyToken string) ApiVolumeCsiVolumeIdActionPostRequest {
+func (r ApiCreateVolumeRequest) IdempotencyToken(idempotencyToken string) ApiCreateVolumeRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiVolumeCsiVolumeIdActionPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumeCsiVolumeIdActionPostExecute(r)
+func (r ApiCreateVolumeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.CreateVolumeExecute(r)
 }
 
 /*
- * VolumeCsiVolumeIdActionPost Method for VolumeCsiVolumeIdActionPost
+ * CreateVolume Method for CreateVolume
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volumeId Volume unique identifier.
  * @param action The action to perform on the Volume (create, detach, delete).
- * @return ApiVolumeCsiVolumeIdActionPostRequest
+ * @return ApiCreateVolumeRequest
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdActionPost(ctx _context.Context, volumeId string, action string) ApiVolumeCsiVolumeIdActionPostRequest {
-	return ApiVolumeCsiVolumeIdActionPostRequest{
+func (a *VolumesApiService) CreateVolume(ctx _context.Context, volumeId string, action string) ApiCreateVolumeRequest {
+	return ApiCreateVolumeRequest{
 		ApiService: a,
 		ctx: ctx,
 		volumeId: volumeId,
@@ -236,7 +84,7 @@ func (a *VolumesApiService) VolumeCsiVolumeIdActionPost(ctx _context.Context, vo
 /*
  * Execute executes the request
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdActionPostExecute(r ApiVolumeCsiVolumeIdActionPostRequest) (*_nethttp.Response, error) {
+func (a *VolumesApiService) CreateVolumeExecute(r ApiCreateVolumeRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -245,7 +93,7 @@ func (a *VolumesApiService) VolumeCsiVolumeIdActionPostExecute(r ApiVolumeCsiVol
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumeCsiVolumeIdActionPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.CreateVolume")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -334,7 +182,159 @@ func (a *VolumesApiService) VolumeCsiVolumeIdActionPostExecute(r ApiVolumeCsiVol
 	return localVarHTTPResponse, nil
 }
 
-type ApiVolumeCsiVolumeIdDeleteRequest struct {
+type ApiDeleteSnapshotRequest struct {
+	ctx _context.Context
+	ApiService *VolumesApiService
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+	pluginId *string
+	snapshotId *string
+}
+
+func (r ApiDeleteSnapshotRequest) Region(region string) ApiDeleteSnapshotRequest {
+	r.region = &region
+	return r
+}
+func (r ApiDeleteSnapshotRequest) Namespace(namespace string) ApiDeleteSnapshotRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiDeleteSnapshotRequest) XNomadToken(xNomadToken string) ApiDeleteSnapshotRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiDeleteSnapshotRequest) IdempotencyToken(idempotencyToken string) ApiDeleteSnapshotRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+func (r ApiDeleteSnapshotRequest) PluginId(pluginId string) ApiDeleteSnapshotRequest {
+	r.pluginId = &pluginId
+	return r
+}
+func (r ApiDeleteSnapshotRequest) SnapshotId(snapshotId string) ApiDeleteSnapshotRequest {
+	r.snapshotId = &snapshotId
+	return r
+}
+
+func (r ApiDeleteSnapshotRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteSnapshotExecute(r)
+}
+
+/*
+ * DeleteSnapshot Method for DeleteSnapshot
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiDeleteSnapshotRequest
+ */
+func (a *VolumesApiService) DeleteSnapshot(ctx _context.Context) ApiDeleteSnapshotRequest {
+	return ApiDeleteSnapshotRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *VolumesApiService) DeleteSnapshotExecute(r ApiDeleteSnapshotRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.DeleteSnapshot")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/volumes/snapshot"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	if r.pluginId != nil {
+		localVarQueryParams.Add("plugin_id", parameterToString(*r.pluginId, ""))
+	}
+	if r.snapshotId != nil {
+		localVarQueryParams.Add("snapshot_id", parameterToString(*r.snapshotId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteVolumeRegistrationRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	volumeId string
@@ -345,39 +345,39 @@ type ApiVolumeCsiVolumeIdDeleteRequest struct {
 	force *string
 }
 
-func (r ApiVolumeCsiVolumeIdDeleteRequest) Region(region string) ApiVolumeCsiVolumeIdDeleteRequest {
+func (r ApiDeleteVolumeRegistrationRequest) Region(region string) ApiDeleteVolumeRegistrationRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumeCsiVolumeIdDeleteRequest) Namespace(namespace string) ApiVolumeCsiVolumeIdDeleteRequest {
+func (r ApiDeleteVolumeRegistrationRequest) Namespace(namespace string) ApiDeleteVolumeRegistrationRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumeCsiVolumeIdDeleteRequest) XNomadToken(xNomadToken string) ApiVolumeCsiVolumeIdDeleteRequest {
+func (r ApiDeleteVolumeRegistrationRequest) XNomadToken(xNomadToken string) ApiDeleteVolumeRegistrationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumeCsiVolumeIdDeleteRequest) IdempotencyToken(idempotencyToken string) ApiVolumeCsiVolumeIdDeleteRequest {
+func (r ApiDeleteVolumeRegistrationRequest) IdempotencyToken(idempotencyToken string) ApiDeleteVolumeRegistrationRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
-func (r ApiVolumeCsiVolumeIdDeleteRequest) Force(force string) ApiVolumeCsiVolumeIdDeleteRequest {
+func (r ApiDeleteVolumeRegistrationRequest) Force(force string) ApiDeleteVolumeRegistrationRequest {
 	r.force = &force
 	return r
 }
 
-func (r ApiVolumeCsiVolumeIdDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumeCsiVolumeIdDeleteExecute(r)
+func (r ApiDeleteVolumeRegistrationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteVolumeRegistrationExecute(r)
 }
 
 /*
- * VolumeCsiVolumeIdDelete Method for VolumeCsiVolumeIdDelete
+ * DeleteVolumeRegistration Method for DeleteVolumeRegistration
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volumeId Volume unique identifier.
- * @return ApiVolumeCsiVolumeIdDeleteRequest
+ * @return ApiDeleteVolumeRegistrationRequest
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdDelete(ctx _context.Context, volumeId string) ApiVolumeCsiVolumeIdDeleteRequest {
-	return ApiVolumeCsiVolumeIdDeleteRequest{
+func (a *VolumesApiService) DeleteVolumeRegistration(ctx _context.Context, volumeId string) ApiDeleteVolumeRegistrationRequest {
+	return ApiDeleteVolumeRegistrationRequest{
 		ApiService: a,
 		ctx: ctx,
 		volumeId: volumeId,
@@ -387,7 +387,7 @@ func (a *VolumesApiService) VolumeCsiVolumeIdDelete(ctx _context.Context, volume
 /*
  * Execute executes the request
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdDeleteExecute(r ApiVolumeCsiVolumeIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *VolumesApiService) DeleteVolumeRegistrationExecute(r ApiDeleteVolumeRegistrationRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -396,7 +396,7 @@ func (a *VolumesApiService) VolumeCsiVolumeIdDeleteExecute(r ApiVolumeCsiVolumeI
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumeCsiVolumeIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.DeleteVolumeRegistration")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -482,273 +482,83 @@ func (a *VolumesApiService) VolumeCsiVolumeIdDeleteExecute(r ApiVolumeCsiVolumeI
 	return localVarHTTPResponse, nil
 }
 
-type ApiVolumeCsiVolumeIdGetRequest struct {
+type ApiDetachOrDeleteVolumeRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	volumeId string
-	region *string
-	namespace *string
-	index *int32
-	wait *int32
-	stale *string
-	prefix *string
-	xNomadToken *string
-	perPage *int32
-	nextToken *string
-}
-
-func (r ApiVolumeCsiVolumeIdGetRequest) Region(region string) ApiVolumeCsiVolumeIdGetRequest {
-	r.region = &region
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) Namespace(namespace string) ApiVolumeCsiVolumeIdGetRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) Index(index int32) ApiVolumeCsiVolumeIdGetRequest {
-	r.index = &index
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) Wait(wait int32) ApiVolumeCsiVolumeIdGetRequest {
-	r.wait = &wait
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) Stale(stale string) ApiVolumeCsiVolumeIdGetRequest {
-	r.stale = &stale
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) Prefix(prefix string) ApiVolumeCsiVolumeIdGetRequest {
-	r.prefix = &prefix
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) XNomadToken(xNomadToken string) ApiVolumeCsiVolumeIdGetRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) PerPage(perPage int32) ApiVolumeCsiVolumeIdGetRequest {
-	r.perPage = &perPage
-	return r
-}
-func (r ApiVolumeCsiVolumeIdGetRequest) NextToken(nextToken string) ApiVolumeCsiVolumeIdGetRequest {
-	r.nextToken = &nextToken
-	return r
-}
-
-func (r ApiVolumeCsiVolumeIdGetRequest) Execute() (CSIVolume, *_nethttp.Response, error) {
-	return r.ApiService.VolumeCsiVolumeIdGetExecute(r)
-}
-
-/*
- * VolumeCsiVolumeIdGet Method for VolumeCsiVolumeIdGet
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param volumeId Volume unique identifier.
- * @return ApiVolumeCsiVolumeIdGetRequest
- */
-func (a *VolumesApiService) VolumeCsiVolumeIdGet(ctx _context.Context, volumeId string) ApiVolumeCsiVolumeIdGetRequest {
-	return ApiVolumeCsiVolumeIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		volumeId: volumeId,
-	}
-}
-
-/*
- * Execute executes the request
- * @return CSIVolume
- */
-func (a *VolumesApiService) VolumeCsiVolumeIdGetExecute(r ApiVolumeCsiVolumeIdGetRequest) (CSIVolume, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CSIVolume
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumeCsiVolumeIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/volume/csi/{volumeId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"volumeId"+"}", _neturl.PathEscape(parameterToString(r.volumeId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.wait != nil {
-		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
-	}
-	if r.stale != nil {
-		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
-	}
-	if r.prefix != nil {
-		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
-	}
-	if r.perPage != nil {
-		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
-	}
-	if r.nextToken != nil {
-		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiVolumeCsiVolumeIdPostRequest struct {
-	ctx _context.Context
-	ApiService *VolumesApiService
-	volumeId string
-	cSIVolumeRegisterRequest *CSIVolumeRegisterRequest
+	action string
 	region *string
 	namespace *string
 	xNomadToken *string
 	idempotencyToken *string
+	node *string
 }
 
-func (r ApiVolumeCsiVolumeIdPostRequest) CSIVolumeRegisterRequest(cSIVolumeRegisterRequest CSIVolumeRegisterRequest) ApiVolumeCsiVolumeIdPostRequest {
-	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
-	return r
-}
-func (r ApiVolumeCsiVolumeIdPostRequest) Region(region string) ApiVolumeCsiVolumeIdPostRequest {
+func (r ApiDetachOrDeleteVolumeRequest) Region(region string) ApiDetachOrDeleteVolumeRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumeCsiVolumeIdPostRequest) Namespace(namespace string) ApiVolumeCsiVolumeIdPostRequest {
+func (r ApiDetachOrDeleteVolumeRequest) Namespace(namespace string) ApiDetachOrDeleteVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumeCsiVolumeIdPostRequest) XNomadToken(xNomadToken string) ApiVolumeCsiVolumeIdPostRequest {
+func (r ApiDetachOrDeleteVolumeRequest) XNomadToken(xNomadToken string) ApiDetachOrDeleteVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumeCsiVolumeIdPostRequest) IdempotencyToken(idempotencyToken string) ApiVolumeCsiVolumeIdPostRequest {
+func (r ApiDetachOrDeleteVolumeRequest) IdempotencyToken(idempotencyToken string) ApiDetachOrDeleteVolumeRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
+func (r ApiDetachOrDeleteVolumeRequest) Node(node string) ApiDetachOrDeleteVolumeRequest {
+	r.node = &node
+	return r
+}
 
-func (r ApiVolumeCsiVolumeIdPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumeCsiVolumeIdPostExecute(r)
+func (r ApiDetachOrDeleteVolumeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DetachOrDeleteVolumeExecute(r)
 }
 
 /*
- * VolumeCsiVolumeIdPost Method for VolumeCsiVolumeIdPost
+ * DetachOrDeleteVolume Method for DetachOrDeleteVolume
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volumeId Volume unique identifier.
- * @return ApiVolumeCsiVolumeIdPostRequest
+ * @param action The action to perform on the Volume (create, detach, delete).
+ * @return ApiDetachOrDeleteVolumeRequest
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdPost(ctx _context.Context, volumeId string) ApiVolumeCsiVolumeIdPostRequest {
-	return ApiVolumeCsiVolumeIdPostRequest{
+func (a *VolumesApiService) DetachOrDeleteVolume(ctx _context.Context, volumeId string, action string) ApiDetachOrDeleteVolumeRequest {
+	return ApiDetachOrDeleteVolumeRequest{
 		ApiService: a,
 		ctx: ctx,
 		volumeId: volumeId,
+		action: action,
 	}
 }
 
 /*
  * Execute executes the request
  */
-func (a *VolumesApiService) VolumeCsiVolumeIdPostExecute(r ApiVolumeCsiVolumeIdPostRequest) (*_nethttp.Response, error) {
+func (a *VolumesApiService) DetachOrDeleteVolumeExecute(r ApiDetachOrDeleteVolumeRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumeCsiVolumeIdPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.DetachOrDeleteVolume")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/volume/csi/{volumeId}"
+	localVarPath := localBasePath + "/volume/csi/{volumeId}/{action}"
 	localVarPath = strings.Replace(localVarPath, "{"+"volumeId"+"}", _neturl.PathEscape(parameterToString(r.volumeId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"action"+"}", _neturl.PathEscape(parameterToString(r.action, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.cSIVolumeRegisterRequest == nil {
-		return nil, reportError("cSIVolumeRegisterRequest is required and must be specified")
-	}
 
 	if r.region != nil {
 		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
@@ -759,8 +569,11 @@ func (a *VolumesApiService) VolumeCsiVolumeIdPostExecute(r ApiVolumeCsiVolumeIdP
 	if r.idempotencyToken != nil {
 		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
 	}
+	if r.node != nil {
+		localVarQueryParams.Add("node", parameterToString(*r.node, ""))
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -779,8 +592,6 @@ func (a *VolumesApiService) VolumeCsiVolumeIdPostExecute(r ApiVolumeCsiVolumeIdP
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
 	}
-	// body params
-	localVarPostBody = r.cSIVolumeRegisterRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -823,7 +634,7 @@ func (a *VolumesApiService) VolumeCsiVolumeIdPostExecute(r ApiVolumeCsiVolumeIdP
 	return localVarHTTPResponse, nil
 }
 
-type ApiVolumesExternalGetRequest struct {
+type ApiGetExternalVolumesRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	region *string
@@ -838,58 +649,58 @@ type ApiVolumesExternalGetRequest struct {
 	pluginId *string
 }
 
-func (r ApiVolumesExternalGetRequest) Region(region string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Region(region string) ApiGetExternalVolumesRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumesExternalGetRequest) Namespace(namespace string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Namespace(namespace string) ApiGetExternalVolumesRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumesExternalGetRequest) Index(index int32) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Index(index int32) ApiGetExternalVolumesRequest {
 	r.index = &index
 	return r
 }
-func (r ApiVolumesExternalGetRequest) Wait(wait int32) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Wait(wait int32) ApiGetExternalVolumesRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiVolumesExternalGetRequest) Stale(stale string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Stale(stale string) ApiGetExternalVolumesRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiVolumesExternalGetRequest) Prefix(prefix string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) Prefix(prefix string) ApiGetExternalVolumesRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiVolumesExternalGetRequest) XNomadToken(xNomadToken string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) XNomadToken(xNomadToken string) ApiGetExternalVolumesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumesExternalGetRequest) PerPage(perPage int32) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) PerPage(perPage int32) ApiGetExternalVolumesRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiVolumesExternalGetRequest) NextToken(nextToken string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) NextToken(nextToken string) ApiGetExternalVolumesRequest {
 	r.nextToken = &nextToken
 	return r
 }
-func (r ApiVolumesExternalGetRequest) PluginId(pluginId string) ApiVolumesExternalGetRequest {
+func (r ApiGetExternalVolumesRequest) PluginId(pluginId string) ApiGetExternalVolumesRequest {
 	r.pluginId = &pluginId
 	return r
 }
 
-func (r ApiVolumesExternalGetRequest) Execute() (CSIVolumeListExternalResponse, *_nethttp.Response, error) {
-	return r.ApiService.VolumesExternalGetExecute(r)
+func (r ApiGetExternalVolumesRequest) Execute() (CSIVolumeListExternalResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetExternalVolumesExecute(r)
 }
 
 /*
- * VolumesExternalGet Method for VolumesExternalGet
+ * GetExternalVolumes Method for GetExternalVolumes
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesExternalGetRequest
+ * @return ApiGetExternalVolumesRequest
  */
-func (a *VolumesApiService) VolumesExternalGet(ctx _context.Context) ApiVolumesExternalGetRequest {
-	return ApiVolumesExternalGetRequest{
+func (a *VolumesApiService) GetExternalVolumes(ctx _context.Context) ApiGetExternalVolumesRequest {
+	return ApiGetExternalVolumesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -899,7 +710,7 @@ func (a *VolumesApiService) VolumesExternalGet(ctx _context.Context) ApiVolumesE
  * Execute executes the request
  * @return CSIVolumeListExternalResponse
  */
-func (a *VolumesApiService) VolumesExternalGetExecute(r ApiVolumesExternalGetRequest) (CSIVolumeListExternalResponse, *_nethttp.Response, error) {
+func (a *VolumesApiService) GetExternalVolumesExecute(r ApiGetExternalVolumesRequest) (CSIVolumeListExternalResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -909,7 +720,7 @@ func (a *VolumesApiService) VolumesExternalGetExecute(r ApiVolumesExternalGetReq
 		localVarReturnValue  CSIVolumeListExternalResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesExternalGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.GetExternalVolumes")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1018,7 +829,393 @@ func (a *VolumesApiService) VolumesExternalGetExecute(r ApiVolumesExternalGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVolumesGetRequest struct {
+type ApiGetSnapshotsRequest struct {
+	ctx _context.Context
+	ApiService *VolumesApiService
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+	pluginId *string
+}
+
+func (r ApiGetSnapshotsRequest) Region(region string) ApiGetSnapshotsRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetSnapshotsRequest) Namespace(namespace string) ApiGetSnapshotsRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetSnapshotsRequest) Index(index int32) ApiGetSnapshotsRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetSnapshotsRequest) Wait(wait int32) ApiGetSnapshotsRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetSnapshotsRequest) Stale(stale string) ApiGetSnapshotsRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetSnapshotsRequest) Prefix(prefix string) ApiGetSnapshotsRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetSnapshotsRequest) XNomadToken(xNomadToken string) ApiGetSnapshotsRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetSnapshotsRequest) PerPage(perPage int32) ApiGetSnapshotsRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetSnapshotsRequest) NextToken(nextToken string) ApiGetSnapshotsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+func (r ApiGetSnapshotsRequest) PluginId(pluginId string) ApiGetSnapshotsRequest {
+	r.pluginId = &pluginId
+	return r
+}
+
+func (r ApiGetSnapshotsRequest) Execute() (CSISnapshotListResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetSnapshotsExecute(r)
+}
+
+/*
+ * GetSnapshots Method for GetSnapshots
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGetSnapshotsRequest
+ */
+func (a *VolumesApiService) GetSnapshots(ctx _context.Context) ApiGetSnapshotsRequest {
+	return ApiGetSnapshotsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return CSISnapshotListResponse
+ */
+func (a *VolumesApiService) GetSnapshotsExecute(r ApiGetSnapshotsRequest) (CSISnapshotListResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CSISnapshotListResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.GetSnapshots")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/volumes/snapshot"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	if r.pluginId != nil {
+		localVarQueryParams.Add("plugin_id", parameterToString(*r.pluginId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetVolumeRequest struct {
+	ctx _context.Context
+	ApiService *VolumesApiService
+	volumeId string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetVolumeRequest) Region(region string) ApiGetVolumeRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetVolumeRequest) Namespace(namespace string) ApiGetVolumeRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetVolumeRequest) Index(index int32) ApiGetVolumeRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetVolumeRequest) Wait(wait int32) ApiGetVolumeRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetVolumeRequest) Stale(stale string) ApiGetVolumeRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetVolumeRequest) Prefix(prefix string) ApiGetVolumeRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetVolumeRequest) XNomadToken(xNomadToken string) ApiGetVolumeRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetVolumeRequest) PerPage(perPage int32) ApiGetVolumeRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetVolumeRequest) NextToken(nextToken string) ApiGetVolumeRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetVolumeRequest) Execute() (CSIVolume, *_nethttp.Response, error) {
+	return r.ApiService.GetVolumeExecute(r)
+}
+
+/*
+ * GetVolume Method for GetVolume
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param volumeId Volume unique identifier.
+ * @return ApiGetVolumeRequest
+ */
+func (a *VolumesApiService) GetVolume(ctx _context.Context, volumeId string) ApiGetVolumeRequest {
+	return ApiGetVolumeRequest{
+		ApiService: a,
+		ctx: ctx,
+		volumeId: volumeId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return CSIVolume
+ */
+func (a *VolumesApiService) GetVolumeExecute(r ApiGetVolumeRequest) (CSIVolume, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CSIVolume
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.GetVolume")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/volume/csi/{volumeId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"volumeId"+"}", _neturl.PathEscape(parameterToString(r.volumeId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetVolumesRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	region *string
@@ -1035,66 +1232,66 @@ type ApiVolumesGetRequest struct {
 	type_ *string
 }
 
-func (r ApiVolumesGetRequest) Region(region string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Region(region string) ApiGetVolumesRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumesGetRequest) Namespace(namespace string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Namespace(namespace string) ApiGetVolumesRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumesGetRequest) Index(index int32) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Index(index int32) ApiGetVolumesRequest {
 	r.index = &index
 	return r
 }
-func (r ApiVolumesGetRequest) Wait(wait int32) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Wait(wait int32) ApiGetVolumesRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiVolumesGetRequest) Stale(stale string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Stale(stale string) ApiGetVolumesRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiVolumesGetRequest) Prefix(prefix string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Prefix(prefix string) ApiGetVolumesRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiVolumesGetRequest) XNomadToken(xNomadToken string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) XNomadToken(xNomadToken string) ApiGetVolumesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumesGetRequest) PerPage(perPage int32) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) PerPage(perPage int32) ApiGetVolumesRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiVolumesGetRequest) NextToken(nextToken string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) NextToken(nextToken string) ApiGetVolumesRequest {
 	r.nextToken = &nextToken
 	return r
 }
-func (r ApiVolumesGetRequest) NodeId(nodeId string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) NodeId(nodeId string) ApiGetVolumesRequest {
 	r.nodeId = &nodeId
 	return r
 }
-func (r ApiVolumesGetRequest) PluginId(pluginId string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) PluginId(pluginId string) ApiGetVolumesRequest {
 	r.pluginId = &pluginId
 	return r
 }
-func (r ApiVolumesGetRequest) Type_(type_ string) ApiVolumesGetRequest {
+func (r ApiGetVolumesRequest) Type_(type_ string) ApiGetVolumesRequest {
 	r.type_ = &type_
 	return r
 }
 
-func (r ApiVolumesGetRequest) Execute() ([]CSIVolumeListStub, *_nethttp.Response, error) {
-	return r.ApiService.VolumesGetExecute(r)
+func (r ApiGetVolumesRequest) Execute() ([]CSIVolumeListStub, *_nethttp.Response, error) {
+	return r.ApiService.GetVolumesExecute(r)
 }
 
 /*
- * VolumesGet Method for VolumesGet
+ * GetVolumes Method for GetVolumes
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesGetRequest
+ * @return ApiGetVolumesRequest
  */
-func (a *VolumesApiService) VolumesGet(ctx _context.Context) ApiVolumesGetRequest {
-	return ApiVolumesGetRequest{
+func (a *VolumesApiService) GetVolumes(ctx _context.Context) ApiGetVolumesRequest {
+	return ApiGetVolumesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1104,7 +1301,7 @@ func (a *VolumesApiService) VolumesGet(ctx _context.Context) ApiVolumesGetReques
  * Execute executes the request
  * @return []CSIVolumeListStub
  */
-func (a *VolumesApiService) VolumesGetExecute(r ApiVolumesGetRequest) ([]CSIVolumeListStub, *_nethttp.Response, error) {
+func (a *VolumesApiService) GetVolumesExecute(r ApiGetVolumesRequest) ([]CSIVolumeListStub, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1114,7 +1311,7 @@ func (a *VolumesApiService) VolumesGetExecute(r ApiVolumesGetRequest) ([]CSIVolu
 		localVarReturnValue  []CSIVolumeListStub
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.GetVolumes")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1229,500 +1426,7 @@ func (a *VolumesApiService) VolumesGetExecute(r ApiVolumesGetRequest) ([]CSIVolu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVolumesPostRequest struct {
-	ctx _context.Context
-	ApiService *VolumesApiService
-	cSIVolumeRegisterRequest *CSIVolumeRegisterRequest
-	region *string
-	namespace *string
-	xNomadToken *string
-	idempotencyToken *string
-}
-
-func (r ApiVolumesPostRequest) CSIVolumeRegisterRequest(cSIVolumeRegisterRequest CSIVolumeRegisterRequest) ApiVolumesPostRequest {
-	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
-	return r
-}
-func (r ApiVolumesPostRequest) Region(region string) ApiVolumesPostRequest {
-	r.region = &region
-	return r
-}
-func (r ApiVolumesPostRequest) Namespace(namespace string) ApiVolumesPostRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiVolumesPostRequest) XNomadToken(xNomadToken string) ApiVolumesPostRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiVolumesPostRequest) IdempotencyToken(idempotencyToken string) ApiVolumesPostRequest {
-	r.idempotencyToken = &idempotencyToken
-	return r
-}
-
-func (r ApiVolumesPostRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumesPostExecute(r)
-}
-
-/*
- * VolumesPost Method for VolumesPost
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesPostRequest
- */
-func (a *VolumesApiService) VolumesPost(ctx _context.Context) ApiVolumesPostRequest {
-	return ApiVolumesPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-/*
- * Execute executes the request
- */
-func (a *VolumesApiService) VolumesPostExecute(r ApiVolumesPostRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesPost")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/volumes"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.cSIVolumeRegisterRequest == nil {
-		return nil, reportError("cSIVolumeRegisterRequest is required and must be specified")
-	}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.idempotencyToken != nil {
-		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	// body params
-	localVarPostBody = r.cSIVolumeRegisterRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiVolumesSnapshotDeleteRequest struct {
-	ctx _context.Context
-	ApiService *VolumesApiService
-	region *string
-	namespace *string
-	xNomadToken *string
-	idempotencyToken *string
-	pluginId *string
-	snapshotId *string
-}
-
-func (r ApiVolumesSnapshotDeleteRequest) Region(region string) ApiVolumesSnapshotDeleteRequest {
-	r.region = &region
-	return r
-}
-func (r ApiVolumesSnapshotDeleteRequest) Namespace(namespace string) ApiVolumesSnapshotDeleteRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiVolumesSnapshotDeleteRequest) XNomadToken(xNomadToken string) ApiVolumesSnapshotDeleteRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiVolumesSnapshotDeleteRequest) IdempotencyToken(idempotencyToken string) ApiVolumesSnapshotDeleteRequest {
-	r.idempotencyToken = &idempotencyToken
-	return r
-}
-func (r ApiVolumesSnapshotDeleteRequest) PluginId(pluginId string) ApiVolumesSnapshotDeleteRequest {
-	r.pluginId = &pluginId
-	return r
-}
-func (r ApiVolumesSnapshotDeleteRequest) SnapshotId(snapshotId string) ApiVolumesSnapshotDeleteRequest {
-	r.snapshotId = &snapshotId
-	return r
-}
-
-func (r ApiVolumesSnapshotDeleteRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.VolumesSnapshotDeleteExecute(r)
-}
-
-/*
- * VolumesSnapshotDelete Method for VolumesSnapshotDelete
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesSnapshotDeleteRequest
- */
-func (a *VolumesApiService) VolumesSnapshotDelete(ctx _context.Context) ApiVolumesSnapshotDeleteRequest {
-	return ApiVolumesSnapshotDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-/*
- * Execute executes the request
- */
-func (a *VolumesApiService) VolumesSnapshotDeleteExecute(r ApiVolumesSnapshotDeleteRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesSnapshotDelete")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/volumes/snapshot"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.idempotencyToken != nil {
-		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
-	}
-	if r.pluginId != nil {
-		localVarQueryParams.Add("plugin_id", parameterToString(*r.pluginId, ""))
-	}
-	if r.snapshotId != nil {
-		localVarQueryParams.Add("snapshot_id", parameterToString(*r.snapshotId, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiVolumesSnapshotGetRequest struct {
-	ctx _context.Context
-	ApiService *VolumesApiService
-	region *string
-	namespace *string
-	index *int32
-	wait *int32
-	stale *string
-	prefix *string
-	xNomadToken *string
-	perPage *int32
-	nextToken *string
-	pluginId *string
-}
-
-func (r ApiVolumesSnapshotGetRequest) Region(region string) ApiVolumesSnapshotGetRequest {
-	r.region = &region
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) Namespace(namespace string) ApiVolumesSnapshotGetRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) Index(index int32) ApiVolumesSnapshotGetRequest {
-	r.index = &index
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) Wait(wait int32) ApiVolumesSnapshotGetRequest {
-	r.wait = &wait
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) Stale(stale string) ApiVolumesSnapshotGetRequest {
-	r.stale = &stale
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) Prefix(prefix string) ApiVolumesSnapshotGetRequest {
-	r.prefix = &prefix
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) XNomadToken(xNomadToken string) ApiVolumesSnapshotGetRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) PerPage(perPage int32) ApiVolumesSnapshotGetRequest {
-	r.perPage = &perPage
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) NextToken(nextToken string) ApiVolumesSnapshotGetRequest {
-	r.nextToken = &nextToken
-	return r
-}
-func (r ApiVolumesSnapshotGetRequest) PluginId(pluginId string) ApiVolumesSnapshotGetRequest {
-	r.pluginId = &pluginId
-	return r
-}
-
-func (r ApiVolumesSnapshotGetRequest) Execute() (CSISnapshotListResponse, *_nethttp.Response, error) {
-	return r.ApiService.VolumesSnapshotGetExecute(r)
-}
-
-/*
- * VolumesSnapshotGet Method for VolumesSnapshotGet
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesSnapshotGetRequest
- */
-func (a *VolumesApiService) VolumesSnapshotGet(ctx _context.Context) ApiVolumesSnapshotGetRequest {
-	return ApiVolumesSnapshotGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return CSISnapshotListResponse
- */
-func (a *VolumesApiService) VolumesSnapshotGetExecute(r ApiVolumesSnapshotGetRequest) (CSISnapshotListResponse, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CSISnapshotListResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesSnapshotGet")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/volumes/snapshot"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.wait != nil {
-		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
-	}
-	if r.stale != nil {
-		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
-	}
-	if r.prefix != nil {
-		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
-	}
-	if r.perPage != nil {
-		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
-	}
-	if r.nextToken != nil {
-		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
-	}
-	if r.pluginId != nil {
-		localVarQueryParams.Add("plugin_id", parameterToString(*r.pluginId, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiVolumesSnapshotPostRequest struct {
+type ApiPostSnapshotRequest struct {
 	ctx _context.Context
 	ApiService *VolumesApiService
 	cSISnapshotCreateRequest *CSISnapshotCreateRequest
@@ -1732,38 +1436,38 @@ type ApiVolumesSnapshotPostRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiVolumesSnapshotPostRequest) CSISnapshotCreateRequest(cSISnapshotCreateRequest CSISnapshotCreateRequest) ApiVolumesSnapshotPostRequest {
+func (r ApiPostSnapshotRequest) CSISnapshotCreateRequest(cSISnapshotCreateRequest CSISnapshotCreateRequest) ApiPostSnapshotRequest {
 	r.cSISnapshotCreateRequest = &cSISnapshotCreateRequest
 	return r
 }
-func (r ApiVolumesSnapshotPostRequest) Region(region string) ApiVolumesSnapshotPostRequest {
+func (r ApiPostSnapshotRequest) Region(region string) ApiPostSnapshotRequest {
 	r.region = &region
 	return r
 }
-func (r ApiVolumesSnapshotPostRequest) Namespace(namespace string) ApiVolumesSnapshotPostRequest {
+func (r ApiPostSnapshotRequest) Namespace(namespace string) ApiPostSnapshotRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiVolumesSnapshotPostRequest) XNomadToken(xNomadToken string) ApiVolumesSnapshotPostRequest {
+func (r ApiPostSnapshotRequest) XNomadToken(xNomadToken string) ApiPostSnapshotRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiVolumesSnapshotPostRequest) IdempotencyToken(idempotencyToken string) ApiVolumesSnapshotPostRequest {
+func (r ApiPostSnapshotRequest) IdempotencyToken(idempotencyToken string) ApiPostSnapshotRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiVolumesSnapshotPostRequest) Execute() (CSISnapshotCreateResponse, *_nethttp.Response, error) {
-	return r.ApiService.VolumesSnapshotPostExecute(r)
+func (r ApiPostSnapshotRequest) Execute() (CSISnapshotCreateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostSnapshotExecute(r)
 }
 
 /*
- * VolumesSnapshotPost Method for VolumesSnapshotPost
+ * PostSnapshot Method for PostSnapshot
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiVolumesSnapshotPostRequest
+ * @return ApiPostSnapshotRequest
  */
-func (a *VolumesApiService) VolumesSnapshotPost(ctx _context.Context) ApiVolumesSnapshotPostRequest {
-	return ApiVolumesSnapshotPostRequest{
+func (a *VolumesApiService) PostSnapshot(ctx _context.Context) ApiPostSnapshotRequest {
+	return ApiPostSnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1773,7 +1477,7 @@ func (a *VolumesApiService) VolumesSnapshotPost(ctx _context.Context) ApiVolumes
  * Execute executes the request
  * @return CSISnapshotCreateResponse
  */
-func (a *VolumesApiService) VolumesSnapshotPostExecute(r ApiVolumesSnapshotPostRequest) (CSISnapshotCreateResponse, *_nethttp.Response, error) {
+func (a *VolumesApiService) PostSnapshotExecute(r ApiPostSnapshotRequest) (CSISnapshotCreateResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -1783,7 +1487,7 @@ func (a *VolumesApiService) VolumesSnapshotPostExecute(r ApiVolumesSnapshotPostR
 		localVarReturnValue  CSISnapshotCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.VolumesSnapshotPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.PostSnapshot")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1877,4 +1581,300 @@ func (a *VolumesApiService) VolumesSnapshotPostExecute(r ApiVolumesSnapshotPostR
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostVolumeRequest struct {
+	ctx _context.Context
+	ApiService *VolumesApiService
+	cSIVolumeRegisterRequest *CSIVolumeRegisterRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostVolumeRequest) CSIVolumeRegisterRequest(cSIVolumeRegisterRequest CSIVolumeRegisterRequest) ApiPostVolumeRequest {
+	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
+	return r
+}
+func (r ApiPostVolumeRequest) Region(region string) ApiPostVolumeRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostVolumeRequest) Namespace(namespace string) ApiPostVolumeRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostVolumeRequest) XNomadToken(xNomadToken string) ApiPostVolumeRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostVolumeRequest) IdempotencyToken(idempotencyToken string) ApiPostVolumeRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostVolumeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PostVolumeExecute(r)
+}
+
+/*
+ * PostVolume Method for PostVolume
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiPostVolumeRequest
+ */
+func (a *VolumesApiService) PostVolume(ctx _context.Context) ApiPostVolumeRequest {
+	return ApiPostVolumeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *VolumesApiService) PostVolumeExecute(r ApiPostVolumeRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.PostVolume")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/volumes"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.cSIVolumeRegisterRequest == nil {
+		return nil, reportError("cSIVolumeRegisterRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.cSIVolumeRegisterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPostVolumeRegistrationRequest struct {
+	ctx _context.Context
+	ApiService *VolumesApiService
+	volumeId string
+	cSIVolumeRegisterRequest *CSIVolumeRegisterRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostVolumeRegistrationRequest) CSIVolumeRegisterRequest(cSIVolumeRegisterRequest CSIVolumeRegisterRequest) ApiPostVolumeRegistrationRequest {
+	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
+	return r
+}
+func (r ApiPostVolumeRegistrationRequest) Region(region string) ApiPostVolumeRegistrationRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostVolumeRegistrationRequest) Namespace(namespace string) ApiPostVolumeRegistrationRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostVolumeRegistrationRequest) XNomadToken(xNomadToken string) ApiPostVolumeRegistrationRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostVolumeRegistrationRequest) IdempotencyToken(idempotencyToken string) ApiPostVolumeRegistrationRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostVolumeRegistrationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PostVolumeRegistrationExecute(r)
+}
+
+/*
+ * PostVolumeRegistration Method for PostVolumeRegistration
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param volumeId Volume unique identifier.
+ * @return ApiPostVolumeRegistrationRequest
+ */
+func (a *VolumesApiService) PostVolumeRegistration(ctx _context.Context, volumeId string) ApiPostVolumeRegistrationRequest {
+	return ApiPostVolumeRegistrationRequest{
+		ApiService: a,
+		ctx: ctx,
+		volumeId: volumeId,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *VolumesApiService) PostVolumeRegistrationExecute(r ApiPostVolumeRegistrationRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumesApiService.PostVolumeRegistration")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/volume/csi/{volumeId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"volumeId"+"}", _neturl.PathEscape(parameterToString(r.volumeId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.cSIVolumeRegisterRequest == nil {
+		return nil, reportError("cSIVolumeRegisterRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.cSIVolumeRegisterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
