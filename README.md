@@ -30,7 +30,7 @@ $ mkdir -p /tmp/nomad-openapi && docker run \
 	openapitools/openapi-generator-cli:v5.2.0 generate -i /local/v1/openapi.yaml -g ruby -o /output/
 ```
 
-Generating in a client in a different language should be as straightforward as
+Generating a client in a different language should be as straightforward as
 changing the `-g` argument in the command above to your language of choice. Check
 the [OpenAPI Generators](https://openapi-generator.tech/docs/generators) page
 for a full list of supported languages. 
