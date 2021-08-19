@@ -60,6 +60,7 @@ model_desired_updates.go
 model_dispatch_payload_config.go
 model_dns_config.go
 model_ephemeral_disk.go
+model_eval_options.go
 model_evaluation.go
 model_field_diff.go
 model_fuzzy_match.go
@@ -68,13 +69,16 @@ model_fuzzy_search_response.go
 model_gauge_value.go
 model_job.go
 model_job_children_summary.go
+model_job_deregister_response.go
 model_job_diff.go
+model_job_evaluate_request.go
 model_job_list_stub.go
 model_job_plan_request.go
 model_job_plan_response.go
 model_job_register_request.go
 model_job_register_response.go
 model_job_summary.go
+model_jobs_parse_request.go
 model_log_config.go
 model_metrics_summary.go
 model_migrate_strategy.go
@@ -88,6 +92,7 @@ model_node_score_meta.go
 model_object_diff.go
 model_parameterized_job_config.go
 model_periodic_config.go
+model_periodic_force_response.go
 model_plan_annotations.go
 model_point_value.go
 model_port.go

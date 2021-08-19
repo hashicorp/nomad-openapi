@@ -72,6 +72,30 @@ func TestPlanJob(t *testing.T) {
 	})
 }
 
+func TestJobDelete(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := getJob()
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		request := *openapi.NewJobRegisterRequest()
+		request.SetJob(job)
+
+		resp, meta, err := client.Jobs().Post(&job)
+
+		require.NoError(t, err)
+		require.NotNil(t, resp)
+		require.NotNil(t, meta)
+
+		response, meta, err := client.Jobs().Delete(*job.ID, true, true)
+
+		require.NoError(t, err)
+		require.NotNil(t, response)
+		require.NotNil(t, meta)
+	})
+}
+
 var (
 	id               = "cache"
 	dbLabel          = "db"
@@ -137,3 +161,33 @@ func getJob() openapi.Job {
 		},
 	}
 }
+
+var jobHCL = `job "my-job" {
+	datacenters = ["dc1"]
+	type = "service"
+	constraint {
+		attribute = "${attr.kernel.name}"
+		value = "linux"
+	}
+
+	group "web" {
+		count = 10
+		restart {
+			attempts = 3
+			interval = "10m"
+			delay = "1m"
+			mode = "delay"
+		}
+		task "web" {
+			driver = "exec"
+			config {
+				command = "/bin/date"
+			}
+			resources {
+				cpu = 500
+				memory = 256
+			}
+		}
+	}
+}
+`

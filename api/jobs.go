@@ -1,6 +1,7 @@
 package api
 
 import (
+	"errors"
 	"fmt"
 	"time"
 
@@ -17,12 +18,17 @@ func (c *Client) Jobs() *Jobs {
 	return &Jobs{client: c}
 }
 
+func (j *Jobs) JobsApi() *openapi.JobsApiService {
+	return j.client.oapiClient.JobsApi
+}
+
 func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
-	request := j.client.oapiClient.JobsApi.GetJobs(j.client.Ctx)
+	jobsApi := j.JobsApi()
+	request := jobsApi.GetJobs(j.client.Ctx)
 	// TODO: Find a way to make this automatic
 	request = j.client.setQueryOptions(request).(openapi.ApiGetJobsRequest)
 
-	response, apiResponse, err := j.client.oapiClient.JobsApi.GetJobsExecute(request)
+	response, apiResponse, err := jobsApi.GetJobsExecute(request)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -48,6 +54,7 @@ func (j *Jobs) Plan(job *openapi.Job, diff bool) (*openapi.JobPlanResponse, *Wri
 
 // PlanOpts returns a JobPlanResponse and the current Index or Error.
 func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
+	jobsApi := j.JobsApi()
 	requestBody := *openapi.NewJobPlanRequest()
 	requestBody.SetJob(*job)
 	if opts != nil {
@@ -55,7 +62,7 @@ func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOpts) (*openapi.JobPlanRespo
 		requestBody.SetPolicyOverride(opts.PolicyOverride)
 	}
 
-	request := j.client.oapiClient.JobsApi.PostJobPlan(j.client.Ctx, *job.ID)
+	request := jobsApi.PostJobPlan(j.client.Ctx, *job.ID)
 	request = request.JobPlanRequest(requestBody)
 	// TODO: Figure out why this name is so wonky
 	request = j.client.setWriteOptions(request).(openapi.ApiPostJobPlanRequest)
@@ -88,8 +95,9 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.
 		return nil, nil, fmt.Errorf("must pass non-nil job")
 	}
 
+	jobsApi := j.JobsApi()
 	// Format the request j.client.Ctx
-	request := j.client.oapiClient.JobsApi.PostJob(j.client.Ctx)
+	request := jobsApi.PostJob(j.client.Ctx)
 	registerRequest := openapi.NewJobRegisterRequest()
 
 	registerRequest.SetJob(*job)
@@ -171,4 +179,25 @@ func (j *Jobs) Next(p *openapi.PeriodicConfig, fromTime time.Time) (time.Time, e
 
 func (j *Jobs) Post(job *openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
 	return j.Register(job, nil)
+}
+
+func (j *Jobs) Delete(jobName string, purge, global bool) (*openapi.JobDeregisterResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, errors.New("jobName must be specified")
+	}
+	jobsApi := j.JobsApi()
+	request := jobsApi.DeleteJob(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiDeleteJobRequest).Purge(purge).Global(global)
+
+	result, response, err := jobsApi.DeleteJobExecute(request)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
 }
