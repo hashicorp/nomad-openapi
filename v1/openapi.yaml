@@ -13,6 +13,12 @@ components:
       name: index
       schema:
         type: integer
+    JobGlobalParam:
+      description: Boolean flag indicating whether the operation should apply to all instances of the job globally.
+      in: query
+      name: global
+      schema:
+        type: boolean
     JobNameParam:
       description: The job identifier.
       in: path
@@ -20,6 +26,12 @@ components:
       required: true
       schema:
         type: string
+    JobPurgeParam:
+      description: Boolean flag indicating whether to purge allocations of the job after deleting.
+      in: query
+      name: purge
+      schema:
+        type: boolean
     MetricsFormatParam:
       description: The format the user requested for the metrics summary (e.g. prometheus)
       in: query
@@ -163,6 +175,12 @@ components:
           schema:
             $ref: '#/components/schemas/FuzzySearchRequest'
       required: true
+    JobEvaluateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobEvaluateRequest'
+      required: true
     JobPlanRequest:
       content:
         application/json:
@@ -174,6 +192,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/JobRegisterRequest'
+      required: true
+    JobsParseRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobsParseRequest'
       required: true
     Namespace:
       content:
@@ -210,6 +234,17 @@ components:
           schema:
             type: integer
     CreateQuotaSpecResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    DeleteJobResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobDeregisterResponse'
       description: ""
       headers:
         X-Nomad-Index:
@@ -254,6 +289,48 @@ components:
             type: integer
     ForbiddenResponse:
       description: Forbidden
+    GetAllocationsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AllocationListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetEvaluationsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/Evaluation'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     GetExternalVolumesResponse:
       content:
         application/json:
@@ -488,6 +565,23 @@ components:
       description: Internal server error
     MethodNotAllowedResponse:
       description: Method not allowed
+    PostJobEvaluateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobRegisterResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostJobParseResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Job'
+      description: ""
     PostJobPlanResponse:
       content:
         application/json:
@@ -519,6 +613,17 @@ components:
           schema:
             type: integer
     PostNamespaceResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostPeriodicForceResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PeriodicForceResponse'
       description: ""
       headers:
         X-Nomad-Index:
@@ -1438,6 +1543,11 @@ components:
         Sticky:
           type: boolean
       type: object
+    EvalOptions:
+      properties:
+        ForceReschedule:
+          type: boolean
+      type: object
     Evaluation:
       properties:
         AnnotatePlan:
@@ -1720,6 +1830,31 @@ components:
           format: int64
           type: integer
       type: object
+    JobDeregisterResponse:
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalID:
+          type: string
+        JobModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        KnownLeader:
+          type: boolean
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+      type: object
     JobDiff:
       properties:
         Fields:
@@ -1737,6 +1872,19 @@ components:
             $ref: '#/components/schemas/TaskGroupDiff'
           type: array
         Type:
+          type: string
+      type: object
+    JobEvaluateRequest:
+      properties:
+        EvalOptions:
+          $ref: '#/components/schemas/EvalOptions'
+        JobID:
+          type: string
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
           type: string
       type: object
     JobListStub:
@@ -1892,6 +2040,15 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/TaskGroupSummary'
           type: object
+      type: object
+    JobsParseRequest:
+      properties:
+        Canonicalize:
+          type: boolean
+        JobHCL:
+          type: string
+        hclv1:
+          type: boolean
       type: object
     LogConfig:
       properties:
@@ -2085,6 +2242,19 @@ components:
           type: string
         TimeZone:
           type: string
+      type: object
+    PeriodicForceResponse:
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalID:
+          type: string
+        Index:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
       type: object
     PlanAnnotations:
       properties:
@@ -2978,9 +3148,35 @@ info:
   version: 1.1.3
 openapi: 3.0.3
 paths:
-  /job/{jobName}/plan:
-    post:
-      operationId: PostJobPlan
+  /job/{jobName}:
+    delete:
+      operationId: DeleteJob
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/JobNameParam'
+      - $ref: '#/components/parameters/JobPurgeParam'
+      - $ref: '#/components/parameters/JobGlobalParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/DeleteJobResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Jobs
+  /job/{jobName}/allocations:
+    get:
+      operationId: GetAllocations
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -2991,6 +3187,113 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/JobNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAllocationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Jobs
+  /job/{jobName}/evaluate:
+    post:
+      operationId: PostJobEvaluate
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/JobNameParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobEvaluateRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostJobEvaluateResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Jobs
+  /job/{jobName}/evaluations:
+    get:
+      operationId: GetEvaluations
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/JobNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetEvaluationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Jobs
+  /job/{jobName}/periodic/force:
+    post:
+      operationId: PostPeriodicForce
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/JobNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostPeriodicForceResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Jobs
+  /job/{jobName}/plan:
+    post:
+      operationId: PostJobPlan
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/JobNameParam'
       requestBody:
         content:
@@ -3052,6 +3355,28 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/PostJobResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      tags:
+      - Jobs
+  /jobs/parse:
+    post:
+      operationId: PostJobParse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobsParseRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostJobParseResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

@@ -83,9 +83,15 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
 *EnterpriseApi* | [**GetQuotas**](docs/EnterpriseApi.md#getquotas) | **Get** /quotas | 
 *EnterpriseApi* | [**PostQuotaSpec**](docs/EnterpriseApi.md#postquotaspec) | **Post** /quota/{specName} | 
+*JobsApi* | [**DeleteJob**](docs/JobsApi.md#deletejob) | **Delete** /job/{jobName} | 
+*JobsApi* | [**GetAllocations**](docs/JobsApi.md#getallocations) | **Get** /job/{jobName}/allocations | 
+*JobsApi* | [**GetEvaluations**](docs/JobsApi.md#getevaluations) | **Get** /job/{jobName}/evaluations | 
 *JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **Get** /jobs | 
 *JobsApi* | [**PostJob**](docs/JobsApi.md#postjob) | **Post** /jobs | 
+*JobsApi* | [**PostJobEvaluate**](docs/JobsApi.md#postjobevaluate) | **Post** /job/{jobName}/evaluate | 
+*JobsApi* | [**PostJobParse**](docs/JobsApi.md#postjobparse) | **Post** /jobs/parse | 
 *JobsApi* | [**PostJobPlan**](docs/JobsApi.md#postjobplan) | **Post** /job/{jobName}/plan | 
+*JobsApi* | [**PostPeriodicForce**](docs/JobsApi.md#postperiodicforce) | **Post** /job/{jobName}/periodic/force | 
 *MetricsApi* | [**GetMetricsSummary**](docs/MetricsApi.md#getmetricssummary) | **Get** /metrics | 
 *NamespacesApi* | [**CreateNamespace**](docs/NamespacesApi.md#createnamespace) | **Post** /namespace | 
 *NamespacesApi* | [**DeleteNamespace**](docs/NamespacesApi.md#deletenamespace) | **Delete** /namespace/{namespaceName} | 
@@ -158,6 +164,7 @@ Class | Method | HTTP request | Description
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
  - [EphemeralDisk](docs/EphemeralDisk.md)
+ - [EvalOptions](docs/EvalOptions.md)
  - [Evaluation](docs/Evaluation.md)
  - [FieldDiff](docs/FieldDiff.md)
  - [FuzzyMatch](docs/FuzzyMatch.md)
@@ -166,13 +173,16 @@ Class | Method | HTTP request | Description
  - [GaugeValue](docs/GaugeValue.md)
  - [Job](docs/Job.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
+ - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)
+ - [JobEvaluateRequest](docs/JobEvaluateRequest.md)
  - [JobListStub](docs/JobListStub.md)
  - [JobPlanRequest](docs/JobPlanRequest.md)
  - [JobPlanResponse](docs/JobPlanResponse.md)
  - [JobRegisterRequest](docs/JobRegisterRequest.md)
  - [JobRegisterResponse](docs/JobRegisterResponse.md)
  - [JobSummary](docs/JobSummary.md)
+ - [JobsParseRequest](docs/JobsParseRequest.md)
  - [LogConfig](docs/LogConfig.md)
  - [MetricsSummary](docs/MetricsSummary.md)
  - [MigrateStrategy](docs/MigrateStrategy.md)
@@ -186,6 +196,7 @@ Class | Method | HTTP request | Description
  - [ObjectDiff](docs/ObjectDiff.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
+ - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
  - [PlanAnnotations](docs/PlanAnnotations.md)
  - [PointValue](docs/PointValue.md)
  - [Port](docs/Port.md)

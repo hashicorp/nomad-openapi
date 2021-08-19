@@ -54,6 +54,22 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	jobGlobalParam = parameter{
+		Id:          "JobGlobalParam",
+		SchemaType:  boolSchema,
+		Description: "Boolean flag indicating whether the operation should apply to all instances of the job globally.",
+		Name:        "global",
+		In:          inQuery,
+		Required:    false,
+	}
+	jobPurgeParam = parameter{
+		Id:          "JobPurgeParam",
+		SchemaType:  boolSchema,
+		Description: "Boolean flag indicating whether to purge allocations of the job after deleting.",
+		Name:        "purge",
+		In:          inQuery,
+		Required:    false,
+	}
 	namespaceNameParam = parameter{
 		Id:          "NamespaceNameParam",
 		SchemaType:  stringSchema,
@@ -328,7 +344,16 @@ func newResponseConfig(statusCode int, schemaType schemaType, model interface{},
 	return cfg
 }
 
+func appendParams(baseParams []*parameter, params ...*parameter) []*parameter {
+	parameters := make([]*parameter, 0)
+	parameters = append(parameters, baseParams...)
+	parameters = append(parameters, params...)
+	return parameters
+}
+
 func getResponses(configs ...*responseConfig) []*responseConfig {
-	responses := append(standardResponses, configs...)
+	responses := make([]*responseConfig, 0)
+	responses = append(responses, standardResponses...)
+	responses = append(responses, configs...)
 	return responses
 }
