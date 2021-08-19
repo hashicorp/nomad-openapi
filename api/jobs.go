@@ -22,7 +22,7 @@ func (j *Jobs) JobsApi() *openapi.JobsApiService {
 	return j.client.oapiClient.JobsApi
 }
 
-func (j *Jobs) Get() ([]openapi.JobListStub, *QueryMeta, error) {
+func (j *Jobs) GetJobs() ([]openapi.JobListStub, *QueryMeta, error) {
 	jobsApi := j.JobsApi()
 	request := jobsApi.GetJobs(j.client.Ctx)
 	// TODO: Find a way to make this automatic

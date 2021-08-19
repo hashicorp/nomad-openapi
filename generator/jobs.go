@@ -29,6 +29,11 @@ func (v *v1api) getJobPaths() []*apiPath {
 		{
 			Template: "/job/{jobName}",
 			Operations: []*operation{
+				newOperation(http.MethodGet, "jobQuery", tags, "GetJob",
+					nil,
+					appendParams(queryOptions, &jobNameParam),
+					newResponseConfig(200, arraySchema, api.Job{}, queryMeta, "GetJobResponse"),
+				),
 				newOperation(http.MethodDelete, "jobDelete", tags, "DeleteJob",
 					nil,
 					appendParams(writeOptions, &jobNameParam, &jobPurgeParam, &jobGlobalParam),
