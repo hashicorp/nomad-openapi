@@ -13,3 +13,7 @@ openapi: spec
 		--rm \
 		--volume "$(shell pwd):/local" \
 		openapitools/openapi-generator-cli:v5.2.0 batch /local/v1/config.yaml
+
+.PHONY: update-client
+update-client:
+	(cd ./api && go get github.com/hashicorp/nomad-openapi/v1/client)
