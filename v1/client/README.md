@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**DeleteJob**](docs/JobsApi.md#deletejob) | **Delete** /job/{jobName} | 
 *JobsApi* | [**GetAllocations**](docs/JobsApi.md#getallocations) | **Get** /job/{jobName}/allocations | 
 *JobsApi* | [**GetEvaluations**](docs/JobsApi.md#getevaluations) | **Get** /job/{jobName}/evaluations | 
+*JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /job/{jobName} | 
 *JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **Get** /jobs | 
 *JobsApi* | [**PostJob**](docs/JobsApi.md#postjob) | **Post** /jobs | 
 *JobsApi* | [**PostJobEvaluate**](docs/JobsApi.md#postjobevaluate) | **Post** /job/{jobName}/evaluate | 
