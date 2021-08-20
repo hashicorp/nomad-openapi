@@ -142,8 +142,7 @@ func (c *Client) setQueryOptions(iface interface{}) interface{} {
 	return iface
 }
 
-// setWriteOptions is used to annotate an openapi request with
-// additional write options
+// setWriteOptions is used to annotate an openapi request with additional write options.
 func (c *Client) setWriteOptions(iface interface{}) interface{} {
 	cfg := c.config
 	opts := c.config.WriteOpts
@@ -154,14 +153,17 @@ func (c *Client) setWriteOptions(iface interface{}) interface{} {
 	if ok && cfg.Region != "" {
 		iface = valueOf.MethodByName("Region").Call([]reflect.Value{reflect.ValueOf(cfg.Region)})[0].Interface()
 	}
+
 	_, ok = typeOf.MethodByName("Namespace")
 	if ok && cfg.Namespace != "" {
 		iface = valueOf.MethodByName("Namespace").Call([]reflect.Value{reflect.ValueOf(cfg.Namespace)})[0].Interface()
 	}
+
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
 	}
+
 	_, ok = typeOf.MethodByName("IdempotencyToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("IdempotencyToken").Call([]reflect.Value{reflect.ValueOf(opts.IdempotencyToken)})[0].Interface()

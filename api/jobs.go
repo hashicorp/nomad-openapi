@@ -22,108 +22,16 @@ func (j *Jobs) JobsApi() *openapi.JobsApiService {
 	return j.client.oapiClient.JobsApi
 }
 
-func (j *Jobs) GetJobs() ([]openapi.JobListStub, *QueryMeta, error) {
-	jobsApi := j.JobsApi()
-	request := jobsApi.GetJobs(j.client.Ctx)
-	// TODO: Find a way to make this automatic
-	request = j.client.setQueryOptions(request).(openapi.ApiGetJobsRequest)
-
-	response, apiResponse, err := jobsApi.GetJobsExecute(request)
-	if err != nil {
-		return nil, nil, err
+func (j *Jobs) Delete(jobName string, purge, global bool) (*openapi.JobDeregisterResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
 	}
 
-	meta, err := parseQueryMeta(apiResponse)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return response, meta, nil
-}
-
-// PlanOpts is used to pass through job planning parameters
-type PlanOpts struct {
-	Diff           bool
-	PolicyOverride bool
-}
-
-func (j *Jobs) Plan(job *openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
-	opts := PlanOpts{Diff: diff}
-	return j.PlanOpts(job, &opts)
-}
-
-// PlanOpts returns a JobPlanResponse and the current Index or Error.
-func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
-	jobsApi := j.JobsApi()
-	requestBody := *openapi.NewJobPlanRequest()
-	requestBody.SetJob(*job)
-	if opts != nil {
-		requestBody.SetDiff(opts.Diff)
-		requestBody.SetPolicyOverride(opts.PolicyOverride)
-	}
-
-	request := jobsApi.PostJobPlan(j.client.Ctx, *job.ID)
-	request = request.JobPlanRequest(requestBody)
-	// TODO: Figure out why this name is so wonky
-	request = j.client.setWriteOptions(request).(openapi.ApiPostJobPlanRequest)
+	request := j.JobsApi().DeleteJob(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiDeleteJobRequest)
+	request = request.Purge(purge).Global(global)
 
 	result, response, err := request.Execute()
-	meta, err := parseWriteMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, err
-}
-
-// RegisterOpts is used to pass through job registration parameters
-type RegisterOpts struct {
-	EnforceIndex   bool
-	ModifyIndex    uint64
-	PolicyOverride bool
-	PreserveCounts bool
-}
-
-// EnforceRegister is used to register a job enforcing its job modify index.
-func (j *Jobs) EnforceRegister(job *openapi.Job, modifyIndex uint64) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	registerOpts := RegisterOpts{EnforceIndex: true, ModifyIndex: modifyIndex}
-	return j.Register(job, &registerOpts)
-}
-
-func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	if job == nil {
-		return nil, nil, fmt.Errorf("must pass non-nil job")
-	}
-
-	jobsApi := j.JobsApi()
-	// Format the request j.client.Ctx
-	request := jobsApi.PostJob(j.client.Ctx)
-	registerRequest := openapi.NewJobRegisterRequest()
-
-	registerRequest.SetJob(*job)
-
-	if j.client.config.Region != "" {
-		registerRequest.SetRegion(j.client.config.Region)
-	}
-
-	if j.client.config.Namespace != "" {
-		registerRequest.SetNamespace(j.client.config.Namespace)
-	}
-
-	if j.client.config.WriteOpts.AuthToken != "" {
-		registerRequest.SetSecretID(j.client.config.WriteOpts.AuthToken)
-	}
-
-	if registerOpts != nil {
-		if registerOpts.EnforceIndex {
-			registerRequest.SetEnforceIndex(true)
-			registerRequest.SetJobModifyIndex(int32(registerOpts.ModifyIndex))
-		}
-		registerRequest.SetPolicyOverride(registerOpts.PolicyOverride)
-		registerRequest.SetPreserveCounts(registerOpts.PreserveCounts)
-	}
-
-	result, response, err := j.client.oapiClient.JobsApi.PostJobExecute(request.JobRegisterRequest(*registerRequest))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -136,12 +44,215 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.
 	return &result, meta, nil
 }
 
-func (j *Jobs) IsMultiRegion(job *openapi.Job) bool {
-	return job.Multiregion != nil && *job.Multiregion.Regions != nil && len(*job.Multiregion.Regions) > 0
+func (j *Jobs) Evaluate(jobName string, forceReschedule bool) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostJobEvaluate(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobEvaluateRequest)
+
+	evalRequest := openapi.NewJobEvaluateRequest()
+	evalRequest.SetJobID(jobName)
+	evalRequest.SetEvalOptions(openapi.EvalOptions{
+		ForceReschedule: &forceReschedule,
+	})
+
+	request = request.JobEvaluateRequest(*evalRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
 }
 
-func (j *Jobs) IsPeriodic(job *openapi.Job) bool {
-	return job.Periodic != nil
+func (j *Jobs) GetJob(jobName string) (*openapi.Job, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJob(j.client.Ctx, jobName)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) GetJobs() ([]openapi.JobListStub, *QueryMeta, error) {
+	request := j.JobsApi().GetJobs(j.client.Ctx)
+	// TODO: Find a way to make this automatic
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobsRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return result, meta, nil
+}
+
+func (j *Jobs) Parse(hcl string, canonicalize, hclV1 bool) (*openapi.Job, error) {
+	if hcl == "" {
+		return nil, errors.New("job hcl not set")
+	}
+
+	request := j.JobsApi().PostJobParse(j.client.Ctx)
+
+	parseRequest := openapi.NewJobsParseRequest()
+	parseRequest.SetJobHCL(hcl)
+	parseRequest.SetCanonicalize(canonicalize)
+	parseRequest.SetHclv1(hclV1)
+
+	request = request.JobsParseRequest(*parseRequest)
+
+	result, _, err := request.Execute()
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, err
+}
+
+type PlanOpts struct {
+	Diff           bool
+	PolicyOverride bool
+}
+
+func (j *Jobs) Plan(job *openapi.Job, diff bool) (*openapi.JobPlanResponse, *WriteMeta, error) {
+	return j.PlanOpts(job, &PlanOpts{Diff: diff})
+}
+
+func (j *Jobs) PlanOpts(job *openapi.Job, opts *PlanOpts) (*openapi.JobPlanResponse, *WriteMeta, error) {
+	requestBody := *openapi.NewJobPlanRequest()
+	requestBody.SetJob(*job)
+	if opts != nil {
+		requestBody.SetDiff(opts.Diff)
+		requestBody.SetPolicyOverride(opts.PolicyOverride)
+	}
+
+	request := j.JobsApi().PostJobPlan(j.client.Ctx, *job.ID)
+	request = request.JobPlanRequest(requestBody)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobPlanRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, err
+}
+
+type RegisterOpts struct {
+	EnforceIndex   bool
+	ModifyIndex    uint64
+	PolicyOverride bool
+	PreserveCounts bool
+}
+
+func (j *Jobs) EnforceRegister(job *openapi.Job, modifyIndex uint64) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	return j.Register(job, &RegisterOpts{
+		EnforceIndex: true,
+		ModifyIndex:  modifyIndex,
+	})
+}
+
+func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	if job == nil {
+		return nil, nil, fmt.Errorf("must pass non-nil job")
+	}
+
+	request := j.JobsApi().PostJob(j.client.Ctx)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobRequest)
+
+	registerRequest := openapi.NewJobRegisterRequest()
+	registerRequest.SetJob(*job)
+
+	if registerOpts != nil {
+		if registerOpts.EnforceIndex {
+			registerRequest.SetEnforceIndex(true)
+			registerRequest.SetJobModifyIndex(int32(registerOpts.ModifyIndex))
+		}
+		registerRequest.SetPolicyOverride(registerOpts.PolicyOverride)
+		registerRequest.SetPreserveCounts(registerOpts.PreserveCounts)
+	}
+
+	request = request.JobRegisterRequest(*registerRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Post(job *openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	return j.Register(job, nil)
+}
+
+func (j *Jobs) PeriodicForce(jobName string) (*openapi.PeriodicForceResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostPeriodicForce(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostPeriodicForceRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) GetLocation(job *openapi.Job) (*time.Location, error) {
+	periodicConfig := *job.Periodic
+	if job.Periodic == nil || periodicConfig.TimeZone == nil || *periodicConfig.TimeZone == "" {
+		return time.UTC, nil
+	}
+
+	return time.LoadLocation(*periodicConfig.TimeZone)
+}
+
+func (j *Jobs) IsMultiRegion(job *openapi.Job) bool {
+	return job.Multiregion != nil && *job.Multiregion.Regions != nil && len(*job.Multiregion.Regions) > 0
 }
 
 func (j *Jobs) IsParameterized(job *openapi.Job) bool {
@@ -152,13 +263,8 @@ func (j *Jobs) IsParameterized(job *openapi.Job) bool {
 	return job.ParameterizedJob != nil && !dispatched
 }
 
-func (j *Jobs) GetLocation(job *openapi.Job) (*time.Location, error) {
-	periodicConfig := *job.Periodic
-	if job.Periodic == nil || periodicConfig.TimeZone == nil || *periodicConfig.TimeZone == "" {
-		return time.UTC, nil
-	}
-
-	return time.LoadLocation(*periodicConfig.TimeZone)
+func (j *Jobs) IsPeriodic(job *openapi.Job) bool {
+	return job.Periodic != nil
 }
 
 // Next returns the closest time instant matching the spec that is after the
@@ -177,27 +283,4 @@ func (j *Jobs) Next(p *openapi.PeriodicConfig, fromTime time.Time) (time.Time, e
 	return time.Time{}, nil
 }
 
-func (j *Jobs) Post(job *openapi.Job) (*openapi.JobRegisterResponse, *WriteMeta, error) {
-	return j.Register(job, nil)
-}
-
-func (j *Jobs) Delete(jobName string, purge, global bool) (*openapi.JobDeregisterResponse, *WriteMeta, error) {
-	if jobName == "" {
-		return nil, nil, errors.New("jobName must be specified")
-	}
-	jobsApi := j.JobsApi()
-	request := jobsApi.DeleteJob(j.client.Ctx, jobName)
-	request = j.client.setWriteOptions(request).(openapi.ApiDeleteJobRequest).Purge(purge).Global(global)
-
-	result, response, err := jobsApi.DeleteJobExecute(request)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	meta, err := parseWriteMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
-}
+var jobNameErr = errors.New("jobName must be specified")

@@ -32,7 +32,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 				newOperation(http.MethodGet, "jobQuery", tags, "GetJob",
 					nil,
 					appendParams(queryOptions, &jobNameParam),
-					newResponseConfig(200, arraySchema, api.Job{}, queryMeta, "GetJobResponse"),
+					newResponseConfig(200, objectSchema, api.Job{}, queryMeta, "GetJobResponse"),
 				),
 				newOperation(http.MethodDelete, "jobDelete", tags, "DeleteJob",
 					nil,
@@ -115,7 +115,6 @@ func (v *v1api) getJobPaths() []*apiPath {
 		//	"/job/{jobName}/deployment")
 		//	"/job/{jobName}/stable")
 		//	"/job/{jobName}/scale")
-		//s.mux.HandleFunc("/v1/jobs/parse", s.wrap(s.JobsParseRequest))
 		//s.mux.HandleFunc("/v1/job/", s.wrap(s.JobSpecificRequest))
 		//s.mux.HandleFunc("/v1/validate/job", s.wrap(s.ValidateJobRequest))
 	}

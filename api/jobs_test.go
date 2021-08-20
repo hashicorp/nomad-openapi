@@ -1,34 +1,40 @@
 package api
 
 import (
-	"net/http"
-	"net/http/httptest"
+	"fmt"
 	"testing"
+	"time"
 
 	openapi "github.com/hashicorp/nomad-openapi/v1/client"
-	"github.com/hashicorp/nomad/api"
 	"github.com/hashicorp/nomad/command/agent"
-	"github.com/hashicorp/nomad/nomad/mock"
+	"github.com/hashicorp/nomad/helper/uuid"
 	"github.com/hashicorp/nomad/nomad/structs"
 	"github.com/stretchr/testify/require"
 )
 
+func postTestJob(s *agent.TestAgent, t *testing.T, job *openapi.Job) {
+	client, err := NewTestWriteClient(s, writeOpts)
+	require.NoError(t, err)
+
+	if job == nil {
+		job = mockJob()
+	}
+	resp, writeMeta, err := client.Jobs().Post(job)
+
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.NotNil(t, writeMeta)
+}
+
 func TestJobsGet(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		client, err := NewTestWriteClient(s, writeOpts)
-		require.NoError(t, err)
-		job := getJob()
-		resp, writeMeta, err := client.Jobs().Post(&job)
+		postTestJob(s, t, nil)
 
-		require.NoError(t, err)
-		require.NotNil(t, resp)
-		require.NotNil(t, writeMeta)
-
-		client, err = NewTestQueryClient(s, queryOpts)
+		client, err := NewTestQueryClient(s, queryOpts)
 		require.NoError(t, err)
 
-		jobs, queryMeta, err := client.Jobs().Get()
+		jobs, queryMeta, err := client.Jobs().GetJobs()
 		require.NoError(t, err)
 		require.NotNil(t, jobs)
 		require.Len(t, jobs, 1)
@@ -36,15 +42,35 @@ func TestJobsGet(t *testing.T) {
 	})
 }
 
+func TestJobGet(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		queryJob, queryMeta, err := client.Jobs().GetJob(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, queryJob)
+		require.NotNil(t, queryMeta)
+
+		if *job.ID != *queryJob.ID {
+			t.Fatalf("TestJobGet invalid job comparison: %s != %s", *job.ID, *queryJob.ID)
+		}
+	})
+}
+
 func TestPostJob(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		job := getJob()
+		job := mockJob()
 
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		resp, meta, err := client.Jobs().Post(&job)
+		resp, meta, err := client.Jobs().Post(job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
@@ -55,22 +81,14 @@ func TestPostJob(t *testing.T) {
 func TestPlanJob(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		job := getJob()
+		postTestJob(s, t, nil)
+
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		request := *openapi.NewJobRegisterRequest()
-		request.SetJob(job)
+		diffJob := mockJobWithDiff()
 
-		resp, meta, err := client.Jobs().Post(&job)
-
-		require.NoError(t, err)
-		require.NotNil(t, resp)
-		require.NotNil(t, meta)
-
-		diffJob := getJobWithDiff()
-		response, meta, err := client.Jobs().Plan(&diffJob, true)
-
+		response, meta, err := client.Jobs().Plan(diffJob, true)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, meta)
@@ -80,200 +98,101 @@ func TestPlanJob(t *testing.T) {
 func TestJobDelete(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		// Create the job
-		job := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		job := mockJob()
+		postTestJob(s, t, job)
 
 		// Make the HTTP request to do a soft delete
-		req, err := http.NewRequest("DELETE", "/v1/job/"+job.ID, nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check the response
-		dereg := obj.(structs.JobDeregisterResponse)
-		if dereg.EvalID == "" {
-			t.Fatalf("bad: %v", dereg)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
-
-		// Check the job is still queryable
-		getReq1 := structs.JobSpecificRequest{
-			JobID: job.ID,
-			QueryOptions: structs.QueryOptions{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var getResp1 structs.SingleJobResponse
-		if err := s.Agent.RPC("Job.GetJob", &getReq1, &getResp1); err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		if getResp1.Job == nil {
-			t.Fatalf("job doesn't exists")
-		}
-		if !getResp1.Job.Stop {
-			t.Fatalf("job should be marked as stop")
-		}
-
-		// Make the HTTP request to do a purge delete
-		req2, err := http.NewRequest("DELETE", "/v1/job/"+job.ID+"?purge=true", nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW.Flush()
-
-		// Make the request
-		obj, err = s.Server.JobSpecificRequest(respW, req2)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check the response
-		dereg = obj.(structs.JobDeregisterResponse)
-		if dereg.EvalID == "" {
-			t.Fatalf("bad: %v", dereg)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
-
-		// Check the job is gone
-		getReq2 := structs.JobSpecificRequest{
-			JobID: job.ID,
-			QueryOptions: structs.QueryOptions{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var getResp2 structs.SingleJobResponse
-		if err := s.Agent.RPC("Job.GetJob", &getReq2, &getResp2); err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		if getResp2.Job != nil {
-			t.Fatalf("job still exists")
-		}
-	})
-
-	t.Parallel()
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		job := getJob()
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		request := *openapi.NewJobRegisterRequest()
-		request.SetJob(job)
-
-		resp, meta, err := client.Jobs().Post(&job)
-
-		require.NoError(t, err)
-		require.NotNil(t, resp)
-		require.NotNil(t, meta)
-
-		response, meta, err := client.Jobs().Delete(*job.ID, true, true)
-
+		response, writeMeta, err := client.Jobs().Delete(*job.ID, false, false)
 		require.NoError(t, err)
 		require.NotNil(t, response)
-		require.NotNil(t, meta)
+		require.NotNil(t, writeMeta)
+
+		// Check the response
+		require.NotNil(t, response.EvalID)
+		require.NotEqual(t, "", *response.EvalID)
+
+		// Check the job is still queryable
+		client, err = NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		rpcRequest := structs.JobSpecificRequest{
+			JobID: *job.ID,
+			QueryOptions: structs.QueryOptions{
+				Region:    "global",
+				Namespace: structs.DefaultNamespace,
+			},
+		}
+
+		var rpcResponse structs.SingleJobResponse
+
+		err = s.Agent.RPC("Job.GetJob", &rpcRequest, &rpcResponse)
+		require.NoError(t, err)
+		require.NotNil(t, rpcResponse.Job)
+		require.True(t, rpcResponse.Job.Stop)
+
+		// Make the HTTP request to do a purge delete
+		client, err = NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		response, writeMeta, err = client.Jobs().Delete(*job.ID, true, false)
+		require.NoError(t, err)
+		require.NotNil(t, response)
+		require.NotNil(t, writeMeta)
+
+		// Check the response
+		require.NotNil(t, response.EvalID)
+		require.NotEqual(t, "", *response.EvalID)
+
+		// Check the job is gone
+		err = s.Agent.RPC("Job.GetJob", rpcRequest, &rpcResponse)
+		require.NoError(t, err)
+		require.Nil(t, rpcResponse.Job)
 	})
 }
 
 func TestJobParse(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		buf := encodeReq(api.JobsParseRequest{JobHCL: mock.HCL()})
-		req, err := http.NewRequest("POST", "/v1/jobs/parse", buf)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
 
-		respW := httptest.NewRecorder()
+		job, err := client.Jobs().Parse(jobHCL, false, false)
+		require.NoError(t, err)
+		require.NotNil(t, job)
 
-		obj, err := s.Server.JobsParseRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		if obj == nil {
-			t.Fatal("response should not be nil")
-		}
+		expected := mockJob()
+		require.NotNil(t, job.Name)
+		require.Equal(t, *job.Name, *expected.Name)
 
-		job := obj.(*api.Job)
-		expected := mock.Job()
-		if job.Name == nil || *job.Name != expected.Name {
-			t.Fatalf("job name is '%s', expected '%s'", *job.Name, expected.Name)
-		}
-
-		if job.Datacenters == nil ||
-			job.Datacenters[0] != expected.Datacenters[0] {
-			t.Fatalf("job datacenters is '%s', expected '%s'",
-				job.Datacenters[0], expected.Datacenters[0])
+		if job.Datacenters == nil {
+			expectedDatacenters := *expected.Datacenters
+			jobDatacenters := *job.Datacenters
+			require.NotEqual(t, jobDatacenters[0], expectedDatacenters[0])
 		}
 	})
 }
 
-func TestHTTP_JobForceEvaluate(t *testing.T) {
+func TestJobEvaluate(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		// Create the job
-		job := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
 		// Make the HTTP request
-		req, err := http.NewRequest("POST", "/v1/job/"+job.ID+"/evaluate", nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		model, meta, err := client.Jobs().Evaluate(*job.ID, false)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotNil(t, model)
 
 		// Check the response
-		reg := obj.(structs.JobRegisterResponse)
-		if reg.EvalID == "" {
-			t.Fatalf("bad: %v", reg)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
+		require.NotNil(t, model.EvalID)
+		require.NotEqual(t, "", *model.EvalID)
 	})
 }
 
@@ -281,106 +200,109 @@ func TestJobPeriodicForce(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		// Create and register a periodic job.
-		job := mock.PeriodicJob()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		job := mockPeriodicJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
 		// Make the HTTP request
-		req, err := http.NewRequest("POST", "/v1/job/"+job.ID+"/periodic/force", nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
-
+		model, meta, err := client.Jobs().PeriodicForce(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
 		// Check the response
-		r := obj.(structs.PeriodicForceResponse)
-		if r.EvalID == "" {
-			t.Fatalf("bad: %#v", r)
-		}
-	})
-}
-
-func TestJobGet(t *testing.T) {
-	t.Parallel()
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		// Create the job
-		job := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Make the HTTP request
-		req, err := http.NewRequest("GET", "/v1/job/"+job.ID, nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
-		if respW.HeaderMap.Get("X-Nomad-KnownLeader") != "true" {
-			t.Fatalf("missing known leader")
-		}
-		if respW.HeaderMap.Get("X-Nomad-LastContact") == "" {
-			t.Fatalf("missing last contact")
-		}
-
-		// Check the job
-		j := obj.(*structs.Job)
-		if j.ID != job.ID {
-			t.Fatalf("bad: %#v", j)
-		}
+		require.NotNil(t, model.EvalID)
+		require.NotEqual(t, "", *model.EvalID)
 	})
 }
 
 var (
-	id               = "cache"
-	dbLabel          = "db"
-	toPort     int32 = 6379
-	jobName          = "cache"
-	redisCache       = "redis-cache"
-	docker           = "docker"
-	redis            = "redis"
+	id                                  = fmt.Sprintf("mock-service-%s", uuid.Generate())
+	dbLabel                             = "db"
+	jobName                             = "my-job"
+	jobTypeService                      = "service"
+	docker                              = "docker"
+	redis                               = "redis"
+	pendingStatus                       = "pending"
+	globalRegion                        = "global"
+	defaultNamespace                    = "default"
+	allAtOnce                           = false
+	lTarget                             = "${attr.kernel.name}"
+	rTarget                             = "linux"
+	operand                             = "="
+	web                                 = "web"
+	priority                      int32 = 50
+	count                         int32 = 10
+	sizeMB                        int32 = 150
+	restartPolicyAttempts         int32 = 3
+	restartPolicyInterval               = int64(10 * time.Minute)
+	restartPolicyDelay                  = int64(1 * time.Minute)
+	restartPolicyMode                   = structs.RestartPolicyModeDelay
+	reschedulePolicyAttempts      int32 = 2
+	reschedulePolicyInterval            = int64(10 * time.Minute)
+	reschedulePolicyDelay               = int64(5 * time.Second)
+	reschedulePolicyDelayFunction       = "constant"
+	maxParallel                   int32 = 1
+	checks                              = "checks"
+	minHealthyTime                      = int64(10 * time.Second)
+	healthyDeadline                     = int64(5 * time.Minute)
+	defaultMigrateStrategy              = &openapi.MigrateStrategy{
+		MaxParallel:     &maxParallel,
+		HealthCheck:     &checks,
+		MinHealthyTime:  &minHealthyTime,
+		HealthyDeadline: &healthyDeadline,
+	}
+	hostMode               = "host"
+	httpLabel              = "http"
+	adminLabel             = "admin"
+	execDriver             = "exec"
+	frontEndTaskName       = "${TASK}-frontend"
+	serviceCheckName       = "check-table"
+	serviceCheckType       = structs.ServiceCheckScript
+	serviceCheckCommand    = "/usr/local/check-table-${meta.database}"
+	serviceCheckInterval   = int64(30 * time.Second)
+	serviceCheckTimeout    = int64(5 * time.Second)
+	adminTaskName          = "${TASK}-admin"
+	logConfigMaxFile       = int32(10)
+	logConfigMaxFileSizeMB = int32(10)
+	defaultLogConfig       = &openapi.LogConfig{
+		MaxFiles:      &logConfigMaxFile,
+		MaxFileSizeMB: &logConfigMaxFileSizeMB,
+	}
+	resourcesCPU      = int32(500)
+	resourcesMemoryMB = int32(256)
+	version           = int32(0)
+	createIndex       = int32(42)
+	modifyIndex       = int32(99)
+	jobModifyIndex    = int32(99)
+	notUnlimited      = false
 )
 
-func getJobWithDiff() openapi.Job {
-	job := getJob()
+func mockPeriodicJob() *openapi.Job {
+	job := mockJob()
+	batch := structs.JobTypeBatch
+	job.Type = &batch
+
+	enabled := true
+	specType := structs.PeriodicSpecCron
+	spec := "*/30 * * * *"
+	running := structs.JobStatusRunning
+
+	job.Periodic = &openapi.PeriodicConfig{
+		Enabled:  &enabled,
+		SpecType: &specType,
+		Spec:     &spec,
+	}
+
+	job.Status = &running
+	tg := *job.TaskGroups
+	tg[0].Migrate = nil
+
+	return job
+}
+
+func mockJobWithDiff() *openapi.Job {
+	job := mockJob()
 
 	tgs := *job.TaskGroups
 	tgs[0].Tasks = &[]openapi.Task{
@@ -397,41 +319,109 @@ func getJobWithDiff() openapi.Job {
 	return job
 }
 
-func getJob() openapi.Job {
-	return openapi.Job{
-		Datacenters: &[]string{"dc1"},
+func mockJob() *openapi.Job {
+	return &openapi.Job{
+		Region:      &globalRegion,
 		ID:          &id,
+		Name:        &jobName,
+		Namespace:   &defaultNamespace,
+		Type:        &jobTypeService,
+		Priority:    &priority,
+		AllAtOnce:   &allAtOnce,
+		Datacenters: &[]string{"dc1"},
+		Constraints: &[]openapi.Constraint{
+			{
+				LTarget: &lTarget,
+				RTarget: &rTarget,
+				Operand: &operand,
+			},
+		},
 		TaskGroups: &[]openapi.TaskGroup{
 			{
-				Name: &jobName,
+				Name:  &web,
+				Count: &count,
+				EphemeralDisk: &openapi.EphemeralDisk{
+					SizeMB: &sizeMB,
+				},
+				RestartPolicy: &openapi.RestartPolicy{
+					Attempts: &restartPolicyAttempts,
+					Interval: &restartPolicyInterval,
+					Delay:    &restartPolicyDelay,
+					Mode:     &restartPolicyMode,
+				},
+				ReschedulePolicy: &openapi.ReschedulePolicy{
+					Attempts:      &reschedulePolicyAttempts,
+					Interval:      &reschedulePolicyInterval,
+					Delay:         &reschedulePolicyDelay,
+					DelayFunction: &reschedulePolicyDelayFunction,
+					Unlimited:     &notUnlimited,
+				},
+				Migrate: defaultMigrateStrategy,
 				Networks: &[]openapi.NetworkResource{
 					{
+						Mode: &hostMode,
 						DynamicPorts: &[]openapi.Port{
-							{
-								Label: &dbLabel,
-								To:    &toPort,
-							},
+							{Label: &httpLabel},
+							{Label: &adminLabel},
 						},
-					},
-				},
-				Services: &[]openapi.Service{
-					{
-						Name:      &redisCache,
-						PortLabel: &dbLabel,
 					},
 				},
 				Tasks: &[]openapi.Task{
 					{
+						Name:   &web,
+						Driver: &execDriver,
 						Config: &map[string]interface{}{
-							"image": "redis:3.2",
-							"ports": []string{dbLabel},
+							"command": "/bin/date",
 						},
-						Driver: &docker,
-						Name:   &redis,
+						Env: &map[string]string{
+							"FOO": "bar",
+						},
+						Services: &[]openapi.Service{
+							{
+								Name:      &frontEndTaskName,
+								PortLabel: &httpLabel,
+								Tags:      &[]string{"pci:${meta.pci-dss}", "datacenter:${node.datacenter}"},
+								Checks: &[]openapi.ServiceCheck{
+									{
+										Name:     &serviceCheckName,
+										Type:     &serviceCheckType,
+										Command:  &serviceCheckCommand,
+										Args:     &[]string{"${meta.version}"},
+										Interval: &serviceCheckInterval,
+										Timeout:  &serviceCheckTimeout,
+									},
+								},
+							},
+							{
+								Name:      &adminTaskName,
+								PortLabel: &adminLabel,
+							},
+						},
+						LogConfig: defaultLogConfig,
+						Resources: &openapi.Resources{
+							CPU:      &resourcesCPU,
+							MemoryMB: &resourcesMemoryMB,
+						},
+						Meta: &map[string]string{
+							"foo": "bar",
+						},
 					},
+				},
+				Meta: &map[string]string{
+					"elb_check_type":     "http",
+					"elb_check_interval": "30s",
+					"elb_check_min":      "3",
 				},
 			},
 		},
+		Meta: &map[string]string{
+			"owner": "armon",
+		},
+		Status:         &pendingStatus,
+		Version:        &version,
+		CreateIndex:    &createIndex,
+		ModifyIndex:    &modifyIndex,
+		JobModifyIndex: &jobModifyIndex,
 	}
 }
 
