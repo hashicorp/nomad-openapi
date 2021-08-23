@@ -46,6 +46,14 @@ var (
 		Name:        "index",
 		In:          inHeader,
 	}
+	jobDiffsParam = parameter{
+		Id:          "JobDiffsParam",
+		SchemaType:  boolSchema,
+		Description: "Boolean flag indicating whether to compute job diffs.",
+		Name:        "diffs",
+		In:          inQuery,
+		Required:    false,
+	}
 	jobNameParam = parameter{
 		Id:          "JobNameParam",
 		SchemaType:  stringSchema,
