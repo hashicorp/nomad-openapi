@@ -44,6 +44,76 @@ func (j *Jobs) Delete(jobName string, purge, global bool) (*openapi.JobDeregiste
 	return &result, meta, nil
 }
 
+func (j *Jobs) Deployment(jobName string) (*openapi.Deployment, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobDeployment(j.client.Ctx, jobName)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobDeploymentRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Deployments(jobName string) (*[]openapi.Deployment, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobDeployments(j.client.Ctx, jobName)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobDeploymentsRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Dispatch(jobName string, payload string, meta map[string]string) (*openapi.JobDispatchResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostJobDispatch(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobDispatchRequest)
+
+	dispatchRequest := openapi.NewJobDispatchRequest()
+	dispatchRequest.SetJobID(jobName)
+	dispatchRequest.SetPayload(payload)
+	dispatchRequest.SetMeta(meta)
+
+	request = request.JobDispatchRequest(*dispatchRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	writeMeta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, writeMeta, nil
+}
+
 func (j *Jobs) Evaluate(jobName string, forceReschedule bool) (*openapi.JobRegisterResponse, *WriteMeta, error) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
@@ -187,8 +257,8 @@ func (j *Jobs) Register(job *openapi.Job, registerOpts *RegisterOpts) (*openapi.
 		return nil, nil, fmt.Errorf("must pass non-nil job")
 	}
 
-	request := j.JobsApi().PostJob(j.client.Ctx)
-	request = j.client.setWriteOptions(request).(openapi.ApiPostJobRequest)
+	request := j.JobsApi().RegisterJob(j.client.Ctx)
+	request = j.client.setWriteOptions(request).(openapi.ApiRegisterJobRequest)
 
 	registerRequest := openapi.NewJobRegisterRequest()
 	registerRequest.SetJob(*job)
@@ -226,8 +296,8 @@ func (j *Jobs) PeriodicForce(jobName string) (*openapi.PeriodicForceResponse, *W
 		return nil, nil, jobNameErr
 	}
 
-	request := j.JobsApi().PostPeriodicForce(j.client.Ctx, jobName)
-	request = j.client.setWriteOptions(request).(openapi.ApiPostPeriodicForceRequest)
+	request := j.JobsApi().PostJobPeriodicForce(j.client.Ctx, jobName)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobPeriodicForceRequest)
 
 	result, response, err := request.Execute()
 	if err != nil {
@@ -235,6 +305,148 @@ func (j *Jobs) PeriodicForce(jobName string) (*openapi.PeriodicForceResponse, *W
 	}
 
 	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Revert(jobName string, versionNumber int32) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostJobRevert(j.client.Ctx, jobName)
+	revertRequest := openapi.NewJobRevertRequest()
+	revertRequest.SetJobVersion(versionNumber)
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobRevertRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Scale(jobName string, count int64, msg string, target map[string]string) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostJobScalingRequest(j.client.Ctx, jobName)
+
+	scalingRequest := openapi.NewScalingRequest()
+	scalingRequest.SetCount(count)
+	scalingRequest.SetMessage(msg)
+	scalingRequest.SetTarget(target)
+
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobScalingRequestRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) ScaleStatus(jobName string) (*openapi.JobScaleStatusResponse, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobScaleStatus(j.client.Ctx, jobName)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobScaleStatusRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Stability(jobName string, versionNumber int32, stable bool) (*openapi.JobStabilityResponse, *WriteMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().PostJobStability(j.client.Ctx, jobName)
+
+	stabilityRequest := openapi.NewJobStabilityRequest()
+	stabilityRequest.SetJobID(jobName)
+	stabilityRequest.SetJobVersion(versionNumber)
+	stabilityRequest.SetStable(stable)
+
+	request = request.JobStabilityRequest(*stabilityRequest)
+
+	request = j.client.setWriteOptions(request).(openapi.ApiPostJobStabilityRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Summary(jobName string) (*openapi.JobSummary, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobSummary(j.client.Ctx, jobName)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobSummaryRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func (j *Jobs) Versions(jobName string, withDiffs bool) (*openapi.JobVersionsResponse, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobVersions(j.client.Ctx, jobName).Diffs(withDiffs)
+	request = j.client.setQueryOptions(request).(openapi.ApiGetJobVersionsRequest)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
 	if err != nil {
 		return nil, nil, err
 	}

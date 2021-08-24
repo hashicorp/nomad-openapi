@@ -110,7 +110,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 				newOperation(http.MethodPost, "periodicForceRequest", tags, "PostJobPeriodicForce",
 					nil,
 					appendParams(writeOptions, &jobNameParam),
-					newResponseConfig(200, stringSchema, nil, writeMeta, "PostJobPeriodicForceResponse"),
+					newResponseConfig(200, objectSchema, structs.PeriodicForceResponse{}, writeMeta, "PostJobPeriodicForceResponse"),
 				),
 			},
 		},

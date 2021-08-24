@@ -195,388 +195,6 @@ func (a *JobsApiService) DeleteJobExecute(r ApiDeleteJobRequest) (JobDeregisterR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAllocationsRequest struct {
-	ctx _context.Context
-	ApiService *JobsApiService
-	jobName string
-	region *string
-	namespace *string
-	index *int32
-	wait *int32
-	stale *string
-	prefix *string
-	xNomadToken *string
-	perPage *int32
-	nextToken *string
-}
-
-func (r ApiGetAllocationsRequest) Region(region string) ApiGetAllocationsRequest {
-	r.region = &region
-	return r
-}
-func (r ApiGetAllocationsRequest) Namespace(namespace string) ApiGetAllocationsRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiGetAllocationsRequest) Index(index int32) ApiGetAllocationsRequest {
-	r.index = &index
-	return r
-}
-func (r ApiGetAllocationsRequest) Wait(wait int32) ApiGetAllocationsRequest {
-	r.wait = &wait
-	return r
-}
-func (r ApiGetAllocationsRequest) Stale(stale string) ApiGetAllocationsRequest {
-	r.stale = &stale
-	return r
-}
-func (r ApiGetAllocationsRequest) Prefix(prefix string) ApiGetAllocationsRequest {
-	r.prefix = &prefix
-	return r
-}
-func (r ApiGetAllocationsRequest) XNomadToken(xNomadToken string) ApiGetAllocationsRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiGetAllocationsRequest) PerPage(perPage int32) ApiGetAllocationsRequest {
-	r.perPage = &perPage
-	return r
-}
-func (r ApiGetAllocationsRequest) NextToken(nextToken string) ApiGetAllocationsRequest {
-	r.nextToken = &nextToken
-	return r
-}
-
-func (r ApiGetAllocationsRequest) Execute() ([]AllocationListStub, *_nethttp.Response, error) {
-	return r.ApiService.GetAllocationsExecute(r)
-}
-
-/*
- * GetAllocations Method for GetAllocations
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jobName The job identifier.
- * @return ApiGetAllocationsRequest
- */
-func (a *JobsApiService) GetAllocations(ctx _context.Context, jobName string) ApiGetAllocationsRequest {
-	return ApiGetAllocationsRequest{
-		ApiService: a,
-		ctx: ctx,
-		jobName: jobName,
-	}
-}
-
-/*
- * Execute executes the request
- * @return []AllocationListStub
- */
-func (a *JobsApiService) GetAllocationsExecute(r ApiGetAllocationsRequest) ([]AllocationListStub, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []AllocationListStub
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetAllocations")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/job/{jobName}/allocations"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.wait != nil {
-		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
-	}
-	if r.stale != nil {
-		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
-	}
-	if r.prefix != nil {
-		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
-	}
-	if r.perPage != nil {
-		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
-	}
-	if r.nextToken != nil {
-		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetEvaluationsRequest struct {
-	ctx _context.Context
-	ApiService *JobsApiService
-	jobName string
-	region *string
-	namespace *string
-	index *int32
-	wait *int32
-	stale *string
-	prefix *string
-	xNomadToken *string
-	perPage *int32
-	nextToken *string
-}
-
-func (r ApiGetEvaluationsRequest) Region(region string) ApiGetEvaluationsRequest {
-	r.region = &region
-	return r
-}
-func (r ApiGetEvaluationsRequest) Namespace(namespace string) ApiGetEvaluationsRequest {
-	r.namespace = &namespace
-	return r
-}
-func (r ApiGetEvaluationsRequest) Index(index int32) ApiGetEvaluationsRequest {
-	r.index = &index
-	return r
-}
-func (r ApiGetEvaluationsRequest) Wait(wait int32) ApiGetEvaluationsRequest {
-	r.wait = &wait
-	return r
-}
-func (r ApiGetEvaluationsRequest) Stale(stale string) ApiGetEvaluationsRequest {
-	r.stale = &stale
-	return r
-}
-func (r ApiGetEvaluationsRequest) Prefix(prefix string) ApiGetEvaluationsRequest {
-	r.prefix = &prefix
-	return r
-}
-func (r ApiGetEvaluationsRequest) XNomadToken(xNomadToken string) ApiGetEvaluationsRequest {
-	r.xNomadToken = &xNomadToken
-	return r
-}
-func (r ApiGetEvaluationsRequest) PerPage(perPage int32) ApiGetEvaluationsRequest {
-	r.perPage = &perPage
-	return r
-}
-func (r ApiGetEvaluationsRequest) NextToken(nextToken string) ApiGetEvaluationsRequest {
-	r.nextToken = &nextToken
-	return r
-}
-
-func (r ApiGetEvaluationsRequest) Execute() ([]Evaluation, *_nethttp.Response, error) {
-	return r.ApiService.GetEvaluationsExecute(r)
-}
-
-/*
- * GetEvaluations Method for GetEvaluations
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jobName The job identifier.
- * @return ApiGetEvaluationsRequest
- */
-func (a *JobsApiService) GetEvaluations(ctx _context.Context, jobName string) ApiGetEvaluationsRequest {
-	return ApiGetEvaluationsRequest{
-		ApiService: a,
-		ctx: ctx,
-		jobName: jobName,
-	}
-}
-
-/*
- * Execute executes the request
- * @return []Evaluation
- */
-func (a *JobsApiService) GetEvaluationsExecute(r ApiGetEvaluationsRequest) ([]Evaluation, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []Evaluation
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetEvaluations")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/job/{jobName}/evaluations"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
-	}
-	if r.namespace != nil {
-		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
-	}
-	if r.wait != nil {
-		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
-	}
-	if r.stale != nil {
-		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
-	}
-	if r.prefix != nil {
-		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
-	}
-	if r.perPage != nil {
-		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
-	}
-	if r.nextToken != nil {
-		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
-	}
-	if r.xNomadToken != nil {
-		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-Nomad-Token"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Nomad-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetJobRequest struct {
 	ctx _context.Context
 	ApiService *JobsApiService
@@ -693,6 +311,1359 @@ func (a *JobsApiService) GetJobExecute(r ApiGetJobRequest) (Job, *_nethttp.Respo
 	}
 	if r.nextToken != nil {
 		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobAllocationsRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetJobAllocationsRequest) Region(region string) ApiGetJobAllocationsRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobAllocationsRequest) Namespace(namespace string) ApiGetJobAllocationsRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobAllocationsRequest) Index(index int32) ApiGetJobAllocationsRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobAllocationsRequest) Wait(wait int32) ApiGetJobAllocationsRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobAllocationsRequest) Stale(stale string) ApiGetJobAllocationsRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobAllocationsRequest) Prefix(prefix string) ApiGetJobAllocationsRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobAllocationsRequest) XNomadToken(xNomadToken string) ApiGetJobAllocationsRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobAllocationsRequest) PerPage(perPage int32) ApiGetJobAllocationsRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobAllocationsRequest) NextToken(nextToken string) ApiGetJobAllocationsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetJobAllocationsRequest) Execute() ([]AllocationListStub, *_nethttp.Response, error) {
+	return r.ApiService.GetJobAllocationsExecute(r)
+}
+
+/*
+ * GetJobAllocations Method for GetJobAllocations
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobAllocationsRequest
+ */
+func (a *JobsApiService) GetJobAllocations(ctx _context.Context, jobName string) ApiGetJobAllocationsRequest {
+	return ApiGetJobAllocationsRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []AllocationListStub
+ */
+func (a *JobsApiService) GetJobAllocationsExecute(r ApiGetJobAllocationsRequest) ([]AllocationListStub, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []AllocationListStub
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobAllocations")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/allocations"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobDeploymentRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetJobDeploymentRequest) Region(region string) ApiGetJobDeploymentRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobDeploymentRequest) Namespace(namespace string) ApiGetJobDeploymentRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobDeploymentRequest) Index(index int32) ApiGetJobDeploymentRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobDeploymentRequest) Wait(wait int32) ApiGetJobDeploymentRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobDeploymentRequest) Stale(stale string) ApiGetJobDeploymentRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobDeploymentRequest) Prefix(prefix string) ApiGetJobDeploymentRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobDeploymentRequest) XNomadToken(xNomadToken string) ApiGetJobDeploymentRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobDeploymentRequest) PerPage(perPage int32) ApiGetJobDeploymentRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobDeploymentRequest) NextToken(nextToken string) ApiGetJobDeploymentRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetJobDeploymentRequest) Execute() (Deployment, *_nethttp.Response, error) {
+	return r.ApiService.GetJobDeploymentExecute(r)
+}
+
+/*
+ * GetJobDeployment Method for GetJobDeployment
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobDeploymentRequest
+ */
+func (a *JobsApiService) GetJobDeployment(ctx _context.Context, jobName string) ApiGetJobDeploymentRequest {
+	return ApiGetJobDeploymentRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Deployment
+ */
+func (a *JobsApiService) GetJobDeploymentExecute(r ApiGetJobDeploymentRequest) (Deployment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Deployment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobDeployment")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/deployment"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobDeploymentsRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+	all *int32
+}
+
+func (r ApiGetJobDeploymentsRequest) Region(region string) ApiGetJobDeploymentsRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) Namespace(namespace string) ApiGetJobDeploymentsRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) Index(index int32) ApiGetJobDeploymentsRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) Wait(wait int32) ApiGetJobDeploymentsRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) Stale(stale string) ApiGetJobDeploymentsRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) Prefix(prefix string) ApiGetJobDeploymentsRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) XNomadToken(xNomadToken string) ApiGetJobDeploymentsRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) PerPage(perPage int32) ApiGetJobDeploymentsRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) NextToken(nextToken string) ApiGetJobDeploymentsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+func (r ApiGetJobDeploymentsRequest) All(all int32) ApiGetJobDeploymentsRequest {
+	r.all = &all
+	return r
+}
+
+func (r ApiGetJobDeploymentsRequest) Execute() ([]Deployment, *_nethttp.Response, error) {
+	return r.ApiService.GetJobDeploymentsExecute(r)
+}
+
+/*
+ * GetJobDeployments Method for GetJobDeployments
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobDeploymentsRequest
+ */
+func (a *JobsApiService) GetJobDeployments(ctx _context.Context, jobName string) ApiGetJobDeploymentsRequest {
+	return ApiGetJobDeploymentsRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []Deployment
+ */
+func (a *JobsApiService) GetJobDeploymentsExecute(r ApiGetJobDeploymentsRequest) ([]Deployment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Deployment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobDeployments")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/deployments"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	if r.all != nil {
+		localVarQueryParams.Add("all", parameterToString(*r.all, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobEvaluationsRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetJobEvaluationsRequest) Region(region string) ApiGetJobEvaluationsRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) Namespace(namespace string) ApiGetJobEvaluationsRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) Index(index int32) ApiGetJobEvaluationsRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) Wait(wait int32) ApiGetJobEvaluationsRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) Stale(stale string) ApiGetJobEvaluationsRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) Prefix(prefix string) ApiGetJobEvaluationsRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) XNomadToken(xNomadToken string) ApiGetJobEvaluationsRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) PerPage(perPage int32) ApiGetJobEvaluationsRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobEvaluationsRequest) NextToken(nextToken string) ApiGetJobEvaluationsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetJobEvaluationsRequest) Execute() ([]Evaluation, *_nethttp.Response, error) {
+	return r.ApiService.GetJobEvaluationsExecute(r)
+}
+
+/*
+ * GetJobEvaluations Method for GetJobEvaluations
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobEvaluationsRequest
+ */
+func (a *JobsApiService) GetJobEvaluations(ctx _context.Context, jobName string) ApiGetJobEvaluationsRequest {
+	return ApiGetJobEvaluationsRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []Evaluation
+ */
+func (a *JobsApiService) GetJobEvaluationsExecute(r ApiGetJobEvaluationsRequest) ([]Evaluation, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Evaluation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobEvaluations")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/evaluations"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobScaleStatusRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetJobScaleStatusRequest) Region(region string) ApiGetJobScaleStatusRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) Namespace(namespace string) ApiGetJobScaleStatusRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) Index(index int32) ApiGetJobScaleStatusRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) Wait(wait int32) ApiGetJobScaleStatusRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) Stale(stale string) ApiGetJobScaleStatusRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) Prefix(prefix string) ApiGetJobScaleStatusRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) XNomadToken(xNomadToken string) ApiGetJobScaleStatusRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) PerPage(perPage int32) ApiGetJobScaleStatusRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobScaleStatusRequest) NextToken(nextToken string) ApiGetJobScaleStatusRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetJobScaleStatusRequest) Execute() (JobScaleStatusResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetJobScaleStatusExecute(r)
+}
+
+/*
+ * GetJobScaleStatus Method for GetJobScaleStatus
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobScaleStatusRequest
+ */
+func (a *JobsApiService) GetJobScaleStatus(ctx _context.Context, jobName string) ApiGetJobScaleStatusRequest {
+	return ApiGetJobScaleStatusRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobScaleStatusResponse
+ */
+func (a *JobsApiService) GetJobScaleStatusExecute(r ApiGetJobScaleStatusRequest) (JobScaleStatusResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobScaleStatusResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobScaleStatus")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/scale"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobSummaryRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetJobSummaryRequest) Region(region string) ApiGetJobSummaryRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobSummaryRequest) Namespace(namespace string) ApiGetJobSummaryRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobSummaryRequest) Index(index int32) ApiGetJobSummaryRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobSummaryRequest) Wait(wait int32) ApiGetJobSummaryRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobSummaryRequest) Stale(stale string) ApiGetJobSummaryRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobSummaryRequest) Prefix(prefix string) ApiGetJobSummaryRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobSummaryRequest) XNomadToken(xNomadToken string) ApiGetJobSummaryRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobSummaryRequest) PerPage(perPage int32) ApiGetJobSummaryRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobSummaryRequest) NextToken(nextToken string) ApiGetJobSummaryRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetJobSummaryRequest) Execute() (JobSummary, *_nethttp.Response, error) {
+	return r.ApiService.GetJobSummaryExecute(r)
+}
+
+/*
+ * GetJobSummary Method for GetJobSummary
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobSummaryRequest
+ */
+func (a *JobsApiService) GetJobSummary(ctx _context.Context, jobName string) ApiGetJobSummaryRequest {
+	return ApiGetJobSummaryRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobSummary
+ */
+func (a *JobsApiService) GetJobSummaryExecute(r ApiGetJobSummaryRequest) (JobSummary, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobSummary
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobSummary")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/summary"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetJobVersionsRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	index *int32
+	wait *int32
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+	diffs *bool
+}
+
+func (r ApiGetJobVersionsRequest) Region(region string) ApiGetJobVersionsRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetJobVersionsRequest) Namespace(namespace string) ApiGetJobVersionsRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetJobVersionsRequest) Index(index int32) ApiGetJobVersionsRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetJobVersionsRequest) Wait(wait int32) ApiGetJobVersionsRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetJobVersionsRequest) Stale(stale string) ApiGetJobVersionsRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetJobVersionsRequest) Prefix(prefix string) ApiGetJobVersionsRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetJobVersionsRequest) XNomadToken(xNomadToken string) ApiGetJobVersionsRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetJobVersionsRequest) PerPage(perPage int32) ApiGetJobVersionsRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetJobVersionsRequest) NextToken(nextToken string) ApiGetJobVersionsRequest {
+	r.nextToken = &nextToken
+	return r
+}
+func (r ApiGetJobVersionsRequest) Diffs(diffs bool) ApiGetJobVersionsRequest {
+	r.diffs = &diffs
+	return r
+}
+
+func (r ApiGetJobVersionsRequest) Execute() (JobVersionsResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetJobVersionsExecute(r)
+}
+
+/*
+ * GetJobVersions Method for GetJobVersions
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiGetJobVersionsRequest
+ */
+func (a *JobsApiService) GetJobVersions(ctx _context.Context, jobName string) ApiGetJobVersionsRequest {
+	return ApiGetJobVersionsRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobVersionsResponse
+ */
+func (a *JobsApiService) GetJobVersionsExecute(r ApiGetJobVersionsRequest) (JobVersionsResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobVersionsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetJobVersions")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/versions"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	if r.diffs != nil {
+		localVarQueryParams.Add("diffs", parameterToString(*r.diffs, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -958,11 +1929,32 @@ func (a *JobsApiService) GetJobsExecute(r ApiGetJobsRequest) ([]JobListStub, *_n
 type ApiPostJobRequest struct {
 	ctx _context.Context
 	ApiService *JobsApiService
+	jobName string
 	jobRegisterRequest *JobRegisterRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
 }
 
 func (r ApiPostJobRequest) JobRegisterRequest(jobRegisterRequest JobRegisterRequest) ApiPostJobRequest {
 	r.jobRegisterRequest = &jobRegisterRequest
+	return r
+}
+func (r ApiPostJobRequest) Region(region string) ApiPostJobRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobRequest) Namespace(namespace string) ApiPostJobRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobRequest) XNomadToken(xNomadToken string) ApiPostJobRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobRequest) IdempotencyToken(idempotencyToken string) ApiPostJobRequest {
+	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
@@ -973,12 +1965,14 @@ func (r ApiPostJobRequest) Execute() (JobRegisterResponse, *_nethttp.Response, e
 /*
  * PostJob Method for PostJob
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
  * @return ApiPostJobRequest
  */
-func (a *JobsApiService) PostJob(ctx _context.Context) ApiPostJobRequest {
+func (a *JobsApiService) PostJob(ctx _context.Context, jobName string) ApiPostJobRequest {
 	return ApiPostJobRequest{
 		ApiService: a,
 		ctx: ctx,
+		jobName: jobName,
 	}
 }
 
@@ -1001,7 +1995,8 @@ func (a *JobsApiService) PostJobExecute(r ApiPostJobRequest) (JobRegisterRespons
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/jobs"
+	localVarPath := localBasePath + "/job/{jobName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1010,6 +2005,15 @@ func (a *JobsApiService) PostJobExecute(r ApiPostJobRequest) (JobRegisterRespons
 		return localVarReturnValue, nil, reportError("jobRegisterRequest is required and must be specified")
 	}
 
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1027,8 +2031,172 @@ func (a *JobsApiService) PostJobExecute(r ApiPostJobRequest) (JobRegisterRespons
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
 	// body params
 	localVarPostBody = r.jobRegisterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostJobDispatchRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	jobDispatchRequest *JobDispatchRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostJobDispatchRequest) JobDispatchRequest(jobDispatchRequest JobDispatchRequest) ApiPostJobDispatchRequest {
+	r.jobDispatchRequest = &jobDispatchRequest
+	return r
+}
+func (r ApiPostJobDispatchRequest) Region(region string) ApiPostJobDispatchRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobDispatchRequest) Namespace(namespace string) ApiPostJobDispatchRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobDispatchRequest) XNomadToken(xNomadToken string) ApiPostJobDispatchRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobDispatchRequest) IdempotencyToken(idempotencyToken string) ApiPostJobDispatchRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostJobDispatchRequest) Execute() (JobDispatchResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobDispatchExecute(r)
+}
+
+/*
+ * PostJobDispatch Method for PostJobDispatch
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiPostJobDispatchRequest
+ */
+func (a *JobsApiService) PostJobDispatch(ctx _context.Context, jobName string) ApiPostJobDispatchRequest {
+	return ApiPostJobDispatchRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobDispatchResponse
+ */
+func (a *JobsApiService) PostJobDispatchExecute(r ApiPostJobDispatchRequest) (JobDispatchResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobDispatchResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobDispatch")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/dispatch"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.jobDispatchRequest == nil {
+		return localVarReturnValue, nil, reportError("jobDispatchRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.jobDispatchRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1366,6 +2534,157 @@ func (a *JobsApiService) PostJobParseExecute(r ApiPostJobParseRequest) (Job, *_n
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPostJobPeriodicForceRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostJobPeriodicForceRequest) Region(region string) ApiPostJobPeriodicForceRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobPeriodicForceRequest) Namespace(namespace string) ApiPostJobPeriodicForceRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobPeriodicForceRequest) XNomadToken(xNomadToken string) ApiPostJobPeriodicForceRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobPeriodicForceRequest) IdempotencyToken(idempotencyToken string) ApiPostJobPeriodicForceRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostJobPeriodicForceRequest) Execute() (PeriodicForceResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobPeriodicForceExecute(r)
+}
+
+/*
+ * PostJobPeriodicForce Method for PostJobPeriodicForce
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiPostJobPeriodicForceRequest
+ */
+func (a *JobsApiService) PostJobPeriodicForce(ctx _context.Context, jobName string) ApiPostJobPeriodicForceRequest {
+	return ApiPostJobPeriodicForceRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return PeriodicForceResponse
+ */
+func (a *JobsApiService) PostJobPeriodicForceExecute(r ApiPostJobPeriodicForceRequest) (PeriodicForceResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  PeriodicForceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobPeriodicForce")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/periodic/force"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPostJobPlanRequest struct {
 	ctx _context.Context
 	ApiService *JobsApiService
@@ -1527,45 +2846,50 @@ func (a *JobsApiService) PostJobPlanExecute(r ApiPostJobPlanRequest) (JobPlanRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostPeriodicForceRequest struct {
+type ApiPostJobRevertRequest struct {
 	ctx _context.Context
 	ApiService *JobsApiService
 	jobName string
+	jobRevertRequest *JobRevertRequest
 	region *string
 	namespace *string
 	xNomadToken *string
 	idempotencyToken *string
 }
 
-func (r ApiPostPeriodicForceRequest) Region(region string) ApiPostPeriodicForceRequest {
+func (r ApiPostJobRevertRequest) JobRevertRequest(jobRevertRequest JobRevertRequest) ApiPostJobRevertRequest {
+	r.jobRevertRequest = &jobRevertRequest
+	return r
+}
+func (r ApiPostJobRevertRequest) Region(region string) ApiPostJobRevertRequest {
 	r.region = &region
 	return r
 }
-func (r ApiPostPeriodicForceRequest) Namespace(namespace string) ApiPostPeriodicForceRequest {
+func (r ApiPostJobRevertRequest) Namespace(namespace string) ApiPostJobRevertRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiPostPeriodicForceRequest) XNomadToken(xNomadToken string) ApiPostPeriodicForceRequest {
+func (r ApiPostJobRevertRequest) XNomadToken(xNomadToken string) ApiPostJobRevertRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiPostPeriodicForceRequest) IdempotencyToken(idempotencyToken string) ApiPostPeriodicForceRequest {
+func (r ApiPostJobRevertRequest) IdempotencyToken(idempotencyToken string) ApiPostJobRevertRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiPostPeriodicForceRequest) Execute() (PeriodicForceResponse, *_nethttp.Response, error) {
-	return r.ApiService.PostPeriodicForceExecute(r)
+func (r ApiPostJobRevertRequest) Execute() (JobRegisterResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobRevertExecute(r)
 }
 
 /*
- * PostPeriodicForce Method for PostPeriodicForce
+ * PostJobRevert Method for PostJobRevert
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobName The job identifier.
- * @return ApiPostPeriodicForceRequest
+ * @return ApiPostJobRevertRequest
  */
-func (a *JobsApiService) PostPeriodicForce(ctx _context.Context, jobName string) ApiPostPeriodicForceRequest {
-	return ApiPostPeriodicForceRequest{
+func (a *JobsApiService) PostJobRevert(ctx _context.Context, jobName string) ApiPostJobRevertRequest {
+	return ApiPostJobRevertRequest{
 		ApiService: a,
 		ctx: ctx,
 		jobName: jobName,
@@ -1574,29 +2898,32 @@ func (a *JobsApiService) PostPeriodicForce(ctx _context.Context, jobName string)
 
 /*
  * Execute executes the request
- * @return PeriodicForceResponse
+ * @return JobRegisterResponse
  */
-func (a *JobsApiService) PostPeriodicForceExecute(r ApiPostPeriodicForceRequest) (PeriodicForceResponse, *_nethttp.Response, error) {
+func (a *JobsApiService) PostJobRevertExecute(r ApiPostJobRevertRequest) (JobRegisterResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  PeriodicForceResponse
+		localVarReturnValue  JobRegisterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostPeriodicForce")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobRevert")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/job/{jobName}/periodic/force"
+	localVarPath := localBasePath + "/job/{jobName}/revert"
 	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.jobRevertRequest == nil {
+		return localVarReturnValue, nil, reportError("jobRevertRequest is required and must be specified")
+	}
 
 	if r.region != nil {
 		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
@@ -1608,7 +2935,7 @@ func (a *JobsApiService) PostPeriodicForceExecute(r ApiPostPeriodicForceRequest)
 		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1627,6 +2954,644 @@ func (a *JobsApiService) PostPeriodicForceExecute(r ApiPostPeriodicForceRequest)
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
 	}
+	// body params
+	localVarPostBody = r.jobRevertRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostJobScalingRequestRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	scalingRequest *ScalingRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostJobScalingRequestRequest) ScalingRequest(scalingRequest ScalingRequest) ApiPostJobScalingRequestRequest {
+	r.scalingRequest = &scalingRequest
+	return r
+}
+func (r ApiPostJobScalingRequestRequest) Region(region string) ApiPostJobScalingRequestRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobScalingRequestRequest) Namespace(namespace string) ApiPostJobScalingRequestRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobScalingRequestRequest) XNomadToken(xNomadToken string) ApiPostJobScalingRequestRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobScalingRequestRequest) IdempotencyToken(idempotencyToken string) ApiPostJobScalingRequestRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostJobScalingRequestRequest) Execute() (JobRegisterResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobScalingRequestExecute(r)
+}
+
+/*
+ * PostJobScalingRequest Method for PostJobScalingRequest
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiPostJobScalingRequestRequest
+ */
+func (a *JobsApiService) PostJobScalingRequest(ctx _context.Context, jobName string) ApiPostJobScalingRequestRequest {
+	return ApiPostJobScalingRequestRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobRegisterResponse
+ */
+func (a *JobsApiService) PostJobScalingRequestExecute(r ApiPostJobScalingRequestRequest) (JobRegisterResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobRegisterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobScalingRequest")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/scale"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.scalingRequest == nil {
+		return localVarReturnValue, nil, reportError("scalingRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.scalingRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostJobStabilityRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobName string
+	jobStabilityRequest *JobStabilityRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostJobStabilityRequest) JobStabilityRequest(jobStabilityRequest JobStabilityRequest) ApiPostJobStabilityRequest {
+	r.jobStabilityRequest = &jobStabilityRequest
+	return r
+}
+func (r ApiPostJobStabilityRequest) Region(region string) ApiPostJobStabilityRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobStabilityRequest) Namespace(namespace string) ApiPostJobStabilityRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobStabilityRequest) XNomadToken(xNomadToken string) ApiPostJobStabilityRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobStabilityRequest) IdempotencyToken(idempotencyToken string) ApiPostJobStabilityRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostJobStabilityRequest) Execute() (JobStabilityResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobStabilityExecute(r)
+}
+
+/*
+ * PostJobStability Method for PostJobStability
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param jobName The job identifier.
+ * @return ApiPostJobStabilityRequest
+ */
+func (a *JobsApiService) PostJobStability(ctx _context.Context, jobName string) ApiPostJobStabilityRequest {
+	return ApiPostJobStabilityRequest{
+		ApiService: a,
+		ctx: ctx,
+		jobName: jobName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobStabilityResponse
+ */
+func (a *JobsApiService) PostJobStabilityExecute(r ApiPostJobStabilityRequest) (JobStabilityResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobStabilityResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobStability")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobName}/stable"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobName"+"}", _neturl.PathEscape(parameterToString(r.jobName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.jobStabilityRequest == nil {
+		return localVarReturnValue, nil, reportError("jobStabilityRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.jobStabilityRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostJobValidateRequestRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobValidateRequest *JobValidateRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostJobValidateRequestRequest) JobValidateRequest(jobValidateRequest JobValidateRequest) ApiPostJobValidateRequestRequest {
+	r.jobValidateRequest = &jobValidateRequest
+	return r
+}
+func (r ApiPostJobValidateRequestRequest) Region(region string) ApiPostJobValidateRequestRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostJobValidateRequestRequest) Namespace(namespace string) ApiPostJobValidateRequestRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostJobValidateRequestRequest) XNomadToken(xNomadToken string) ApiPostJobValidateRequestRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostJobValidateRequestRequest) IdempotencyToken(idempotencyToken string) ApiPostJobValidateRequestRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostJobValidateRequestRequest) Execute() (JobValidateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostJobValidateRequestExecute(r)
+}
+
+/*
+ * PostJobValidateRequest Method for PostJobValidateRequest
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiPostJobValidateRequestRequest
+ */
+func (a *JobsApiService) PostJobValidateRequest(ctx _context.Context) ApiPostJobValidateRequestRequest {
+	return ApiPostJobValidateRequestRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobValidateResponse
+ */
+func (a *JobsApiService) PostJobValidateRequestExecute(r ApiPostJobValidateRequestRequest) (JobValidateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobValidateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.PostJobValidateRequest")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/validate/job"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.jobValidateRequest == nil {
+		return localVarReturnValue, nil, reportError("jobValidateRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.jobValidateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRegisterJobRequest struct {
+	ctx _context.Context
+	ApiService *JobsApiService
+	jobRegisterRequest *JobRegisterRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiRegisterJobRequest) JobRegisterRequest(jobRegisterRequest JobRegisterRequest) ApiRegisterJobRequest {
+	r.jobRegisterRequest = &jobRegisterRequest
+	return r
+}
+func (r ApiRegisterJobRequest) Region(region string) ApiRegisterJobRequest {
+	r.region = &region
+	return r
+}
+func (r ApiRegisterJobRequest) Namespace(namespace string) ApiRegisterJobRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiRegisterJobRequest) XNomadToken(xNomadToken string) ApiRegisterJobRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiRegisterJobRequest) IdempotencyToken(idempotencyToken string) ApiRegisterJobRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiRegisterJobRequest) Execute() (JobRegisterResponse, *_nethttp.Response, error) {
+	return r.ApiService.RegisterJobExecute(r)
+}
+
+/*
+ * RegisterJob Method for RegisterJob
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiRegisterJobRequest
+ */
+func (a *JobsApiService) RegisterJob(ctx _context.Context) ApiRegisterJobRequest {
+	return ApiRegisterJobRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return JobRegisterResponse
+ */
+func (a *JobsApiService) RegisterJobExecute(r ApiRegisterJobRequest) (JobRegisterResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  JobRegisterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.RegisterJob")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/jobs"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.jobRegisterRequest == nil {
+		return localVarReturnValue, nil, reportError("jobRegisterRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.jobRegisterRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

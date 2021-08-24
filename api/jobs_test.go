@@ -2,19 +2,14 @@ package api
 
 import (
 	"fmt"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 	"time"
 
 	openapi "github.com/hashicorp/nomad-openapi/v1/client"
-	"github.com/hashicorp/nomad/api"
 	"github.com/hashicorp/nomad/command/agent"
-	"github.com/hashicorp/nomad/helper"
 	"github.com/hashicorp/nomad/helper/uuid"
 	"github.com/hashicorp/nomad/nomad/mock"
 	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -191,14 +186,14 @@ func TestJobEvaluate(t *testing.T) {
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		model, meta, err := client.Jobs().Evaluate(*job.ID, false)
+		result, meta, err := client.Jobs().Evaluate(*job.ID, false)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
-		require.NotNil(t, model)
+		require.NotNil(t, result)
 
 		// Check the response
-		require.NotNil(t, model.EvalID)
-		require.NotEqual(t, "", *model.EvalID)
+		require.NotNil(t, result.EvalID)
+		require.NotEqual(t, "", *result.EvalID)
 	})
 }
 
@@ -213,402 +208,222 @@ func TestJobPeriodicForce(t *testing.T) {
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		model, meta, err := client.Jobs().PeriodicForce(*job.ID)
+		result, meta, err := client.Jobs().PeriodicForce(*job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
+
 		// Check the response
-		require.NotNil(t, model.EvalID)
-		require.NotEqual(t, "", *model.EvalID)
+		require.NotNil(t, result.EvalID)
+		require.NotEqual(t, "", *result.EvalID)
 	})
 }
 
 func TestJobSummary(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
-		TODO: Find current test
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		result, meta, err := client.Jobs().Summary(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotNil(t, result)
+		require.Equal(t, *job.ID, *result.JobID)
 	})
 }
 
 func TestJobDispatch(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
-		// Create the parameterized job
-		job := mock.BatchJob()
-		job.ParameterizedJob = &structs.ParameterizedJobConfig{}
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
 
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
-		// Make the request
-		respW := httptest.NewRecorder()
-		args2 := structs.JobDispatchRequest{
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		buf := encodeReq(args2)
-
-		// Make the HTTP request
-		req2, err := http.NewRequest("PUT", "/v1/job/"+job.ID+"/dispatch", buf)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW.Flush()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req2)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check the response
-		dispatch := obj.(structs.JobDispatchResponse)
-		if dispatch.EvalID == "" {
-			t.Fatalf("bad: %v", dispatch)
-		}
-
-		if dispatch.DispatchedJobID == "" {
-			t.Fatalf("bad: %v", dispatch)
-		}
+		result, meta, err := client.Jobs().Dispatch(*job.ID, "", nil)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotEqual(t, "", *result.EvalID)
+		require.NotEqual(t, "", *result.DispatchedJobID)
 	})
 }
 
-func TestHTTP_JobVersions(t *testing.T) {
+func TestJobVersions(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
-		// Create the job
-		job := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		p1 := int32(1)
+		job.Priority = &p1
+		postTestJob(s, t, job)
 
-		job2 := mock.Job()
-		job2.ID = job.ID
-		job2.Priority = 100
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
-		args2 := structs.JobRegisterRequest{
-			Job: job2,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp2 structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &args2, &resp2); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		p100 := int32(100)
+		job.Priority = &p100
+		_, _, err = client.Jobs().Register(job, &RegisterOpts{})
+		require.NoError(t, err)
 
 		// Make the HTTP request
-		req, err := http.NewRequest("GET", "/v1/job/"+job.ID+"/versions?diffs=true", nil)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check the response
-		vResp := obj.(structs.JobVersionsResponse)
-		versions := vResp.Versions
-		if len(versions) != 2 {
-			t.Fatalf("got %d versions; want 2", len(versions))
-		}
-
-		if v := versions[0]; v.Version != 1 || v.Priority != 100 {
-			t.Fatalf("bad %v", v)
-		}
-
-		if v := versions[1]; v.Version != 0 {
-			t.Fatalf("bad %v", v)
-		}
-
-		if len(vResp.Diffs) != 1 {
-			t.Fatalf("bad %v", vResp)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
-		if respW.HeaderMap.Get("X-Nomad-KnownLeader") != "true" {
-			t.Fatalf("missing known leader")
-		}
-		if respW.HeaderMap.Get("X-Nomad-LastContact") == "" {
-			t.Fatalf("missing last contact")
-		}
+		result, meta, err := client.Jobs().Versions(*job.ID, true)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		versions := *result.Versions
+		require.Len(t, versions, 2)
+		v1 := versions[0]
+		v0 := versions[1]
+		require.Equal(t, 1, v1.Version)
+		require.Equal(t, 100, v1.Priority)
+		require.Equal(t, 0, v0.Version)
+		require.NotEqual(t, 1, *result.Diffs)
 	})
 }
 
-func TestHTTP_JobRevert(t *testing.T) {
+func TestJobRevert(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
-		// Create the job and register it twice
-		job := mock.Job()
-		regReq := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var regResp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &regReq, &regResp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
 
-		// Change the job to get a new version
-		job.Datacenters = append(job.Datacenters, "foo")
-		if err := s.Agent.RPC("Job.Register", &regReq, &regResp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
-		args := structs.JobRevertRequest{
-			JobID:      job.ID,
-			JobVersion: 0,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		buf := encodeReq(args)
+		dcs := *job.Datacenters
+		dcs = append(dcs, "foo")
+		job.Datacenters = &dcs
+		_, _, err = client.Jobs().Post(job)
+		require.NoError(t, err)
 
-		// Make the HTTP request
-		req, err := http.NewRequest("PUT", "/v1/job/"+job.ID+"/revert", buf)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		// Check the response
-		revertResp := obj.(structs.JobRegisterResponse)
-		if revertResp.EvalID == "" {
-			t.Fatalf("bad: %v", revertResp)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
+		result, meta, err := client.Jobs().Revert(*job.ID, 0)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotEqual(t, "", *result.EvalID)
 	})
 }
 
-func TestHTTP_JobDeployments(t *testing.T) {
-	assert := assert.New(t)
+func TestJobDeployment(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
-		// Create the job
-		j := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: j,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		assert.Nil(s.Agent.RPC("Job.Register", &args, &resp), "JobRegister")
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		// Make the HTTP request
+		result, meta, err := client.Jobs().Deployment(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		require.Equal(t, *job.ID, *result.JobID)
+
+	})
+}
+
+func TestJobDeployments(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
 
 		// Directly manipulate the state
-		state := s.Agent.server.State()
+		state := s.Agent.Server().State()
 		d := mock.Deployment()
-		d.JobID = j.ID
-		d.JobCreateIndex = resp.JobModifyIndex
+		d.JobID = *job.ID
+		d.JobCreateIndex = uint64(*job.JobModifyIndex)
 
-		assert.Nil(state.UpsertDeployment(1000, d), "UpsertDeployment")
+		require.Nil(t, state.UpsertDeployment(1000, d), "UpsertDeployment")
 
 		// Make the HTTP request
-		req, err := http.NewRequest("GET", "/v1/job/"+j.ID+"/deployments", nil)
-		assert.Nil(err, "HTTP")
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		assert.Nil(err, "JobSpecificRequest")
+		result, meta, err := client.Jobs().Deployments(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
 
 		// Check the response
-		deploys := obj.([]*structs.Deployment)
-		assert.Len(deploys, 1, "deployments")
-		assert.Equal(d.ID, deploys[0].ID, "deployment id")
+		deployments := *result
+		require.Len(t, deployments, 1)
+		require.Equal(t, d.ID, deployments[0].ID)
 
-		assert.NotZero(respW.HeaderMap.Get("X-Nomad-Index"), "missing index")
-		assert.Equal("true", respW.HeaderMap.Get("X-Nomad-KnownLeader"), "missing known leader")
-		assert.NotZero(respW.HeaderMap.Get("X-Nomad-LastContact"), "missing last contact")
 	})
 }
 
-func TestHTTP_JobStable(t *testing.T) {
+func TestJobStable(t *testing.T) {
 	t.Parallel()
-	httpTest(t, nil, func(s *TestAgent) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
 		// Create the job and register it twice
-		job := mock.Job()
-		regReq := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var regResp structs.JobRegisterResponse
-		if err := s.Agent.RPC("Job.Register", &regReq, &regResp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		job := mockJob()
+		postTestJob(s, t, job)
+		postTestJob(s, t, job)
 
-		if err := s.Agent.RPC("Job.Register", &regReq, &regResp); err != nil {
-			t.Fatalf("err: %v", err)
-		}
-
-		args := structs.JobStabilityRequest{
-			JobID:      job.ID,
-			JobVersion: 0,
-			Stable:     true,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		buf := encodeReq(args)
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
 
 		// Make the HTTP request
-		req, err := http.NewRequest("PUT", "/v1/job/"+job.ID+"/stable", buf)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		if err != nil {
-			t.Fatalf("err: %v", err)
-		}
+		result, meta, err := client.Jobs().Stability(*job.ID, 0, true)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
 
 		// Check the response
-		stableResp := obj.(structs.JobStabilityResponse)
-		if stableResp.Index == 0 {
-			t.Fatalf("bad: %v", stableResp)
-		}
-
-		// Check for the index
-		if respW.HeaderMap.Get("X-Nomad-Index") == "" {
-			t.Fatalf("missing index")
-		}
+		require.NotEqual(t, 0, *result.LastIndex)
 	})
 }
 
 func TestJobScaleStatus(t *testing.T) {
-t.Parallel()
-
-require := require.New(t)
-
-httpTest(t, nil, func(s *TestAgent) {
-// Create the job
-job := mock.Job()
-args := structs.JobRegisterRequest{
-Job: job,
-WriteRequest: structs.WriteRequest{
-Region:    "global",
-Namespace: structs.DefaultNamespace,
-},
-}
-var resp structs.JobRegisterResponse
-if err := s.Agent.RPC("Job.Register", &args, &resp); err != nil {
-t.Fatalf("err: %v", err)
-}
-
-// Make the HTTP request to scale the job group
-req, err := http.NewRequest("GET", "/v1/job/"+job.ID+"/scale", nil)
-require.NoError(err)
-respW := httptest.NewRecorder()
-
-// Make the request
-obj, err := s.Server.JobSpecificRequest(respW, req)
-require.NoError(err)
-
-// Check the response
-status := obj.(*structs.JobScaleStatus)
-require.NotEmpty(resp.EvalID)
-require.Equal(job.TaskGroups[0].Count, status.TaskGroups[job.TaskGroups[0].Name].Desired)
-
-// Check for the index
-require.NotEmpty(respW.Header().Get("X-Nomad-Index"))
-})
-}
-
-func TestHTTPJobScaleTaskGroup(t *testing.T) {
 	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
 
-	require := require.New(t)
-
-	httpTest(t, nil, func(s *TestAgent) {
-		// Create the job
-		job := mock.Job()
-		args := structs.JobRegisterRequest{
-			Job: job,
-			WriteRequest: structs.WriteRequest{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-		var resp structs.JobRegisterResponse
-		require.NoError(s.Agent.RPC("Job.Register", &args, &resp))
-
-		newCount := job.TaskGroups[0].Count + 1
-		scaleReq := &api.ScalingRequest{
-			Count:   helper.Int64ToPtr(int64(newCount)),
-			Message: "testing",
-			Target: map[string]string{
-				"Job":   job.ID,
-				"Group": job.TaskGroups[0].Name,
-			},
-		}
-		buf := encodeReq(scaleReq)
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
 
 		// Make the HTTP request to scale the job group
-		req, err := http.NewRequest("POST", "/v1/job/"+job.ID+"/scale", buf)
-		require.NoError(err)
-		respW := httptest.NewRecorder()
-
-		// Make the request
-		obj, err := s.Server.JobSpecificRequest(respW, req)
-		require.NoError(err)
+		result, meta, err := client.Jobs().ScaleStatus(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
 
 		// Check the response
-		resp = obj.(structs.JobRegisterResponse)
-		require.NotEmpty(resp.EvalID)
+		status := *result
+		tg := *job.TaskGroups
+		statusTG := *status.TaskGroups
+		require.Equal(t, *tg[0].Count, statusTG[*tg[0].Name].Desired)
+	})
+}
 
-		// Check for the index
-		require.NotEmpty(respW.Header().Get("X-Nomad-Index"))
+func TestJobScaleTaskGroup(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		tg := *job.TaskGroups
+		newCount := int64(*tg[0].Count + 1)
+
+		result, meta, err := client.Jobs().Scale(*job.ID, newCount, "testing", map[string]string{
+			"Job":   *job.ID,
+			"Group": *tg[0].Name,
+		})
+
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		require.NotEmpty(t, *result.EvalID)
 
 		// Check that the group count was changed
 		getReq := structs.JobSpecificRequest{
-			JobID: job.ID,
+			JobID: *job.ID,
 			QueryOptions: structs.QueryOptions{
 				Region:    "global",
 				Namespace: structs.DefaultNamespace,
@@ -616,12 +431,11 @@ func TestHTTPJobScaleTaskGroup(t *testing.T) {
 		}
 		var getResp structs.SingleJobResponse
 		err = s.Agent.RPC("Job.GetJob", &getReq, &getResp)
-		require.NoError(err)
-		require.NotNil(getResp.Job)
-		require.Equal(newCount, getResp.Job.TaskGroups[0].Count)
+		require.NoError(t, err)
+		require.NotNil(t, getResp.Job)
+		require.Equal(t, newCount, getResp.Job.TaskGroups[0].Count)
 	})
 }
-
 
 var (
 	id                                  = fmt.Sprintf("mock-service-%s", uuid.Generate())
