@@ -8,6 +8,7 @@ import (
 	openapi "github.com/hashicorp/nomad-openapi/v1/client"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/helper/uuid"
+	"github.com/hashicorp/nomad/nomad/mock"
 	"github.com/hashicorp/nomad/nomad/structs"
 	"github.com/stretchr/testify/require"
 )
@@ -98,59 +99,64 @@ func TestPlanJob(t *testing.T) {
 func TestJobDelete(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		job := mockJob()
-		postTestJob(s, t, job)
+		job := mock.Job()
+		rpcRegister(t, s, job)
 
 		// Make the HTTP request to do a soft delete
 		client, err := NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		response, writeMeta, err := client.Jobs().Delete(*job.ID, false, false)
+		response, writeMeta, err := client.Jobs().Delete(job.ID, false, false)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, writeMeta)
 
 		// Check the response
 		require.NotNil(t, response.EvalID)
-		require.NotEqual(t, "", *response.EvalID)
+		require.NotEmpty(t, *response.EvalID)
 
 		// Check the job is still queryable
 		client, err = NewTestQueryClient(s, queryOpts)
 		require.NoError(t, err)
 
-		rpcRequest := structs.JobSpecificRequest{
-			JobID: *job.ID,
-			QueryOptions: structs.QueryOptions{
-				Region:    "global",
-				Namespace: structs.DefaultNamespace,
-			},
-		}
-
-		var rpcResponse structs.SingleJobResponse
-
-		err = s.Agent.RPC("Job.GetJob", &rpcRequest, &rpcResponse)
-		require.NoError(t, err)
-		require.NotNil(t, rpcResponse.Job)
-		require.True(t, rpcResponse.Job.Stop)
+		rpcJob := rpcGetJob(t, s, job.ID, job.Region, job.Namespace)
+		require.NotNil(t, rpcJob)
+		require.True(t, rpcJob.Stop)
 
 		// Make the HTTP request to do a purge delete
 		client, err = NewTestWriteClient(s, writeOpts)
 		require.NoError(t, err)
 
-		response, writeMeta, err = client.Jobs().Delete(*job.ID, true, false)
+		response, writeMeta, err = client.Jobs().Delete(job.ID, true, false)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, writeMeta)
 
 		// Check the response
 		require.NotNil(t, response.EvalID)
-		require.NotEqual(t, "", *response.EvalID)
+		require.NotEmpty(t, *response.EvalID)
 
 		// Check the job is gone
-		err = s.Agent.RPC("Job.GetJob", rpcRequest, &rpcResponse)
-		require.NoError(t, err)
-		require.Nil(t, rpcResponse.Job)
+		rpcJob = rpcGetJob(t, s, job.ID, job.Region, job.Namespace)
+		require.Nil(t, rpcJob)
 	})
+}
+
+func rpcGetJob(t *testing.T, s *agent.TestAgent, jobID, region, namespace string) *structs.Job {
+	rpcRequest := structs.JobSpecificRequest{
+		JobID: jobID,
+		QueryOptions: structs.QueryOptions{
+			Region:    region,
+			Namespace: namespace,
+		},
+	}
+
+	var rpcResponse structs.SingleJobResponse
+
+	err := s.Agent.RPC("Job.GetJob", &rpcRequest, &rpcResponse)
+	require.NoError(t, err)
+
+	return rpcResponse.Job
 }
 
 func TestJobParse(t *testing.T) {
@@ -185,14 +191,14 @@ func TestJobEvaluate(t *testing.T) {
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		model, meta, err := client.Jobs().Evaluate(*job.ID, false)
+		result, meta, err := client.Jobs().Evaluate(*job.ID, false)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
-		require.NotNil(t, model)
+		require.NotNil(t, result)
 
 		// Check the response
-		require.NotNil(t, model.EvalID)
-		require.NotEqual(t, "", *model.EvalID)
+		require.NotNil(t, result.EvalID)
+		require.NotEmpty(t, *result.EvalID)
 	})
 }
 
@@ -207,17 +213,262 @@ func TestJobPeriodicForce(t *testing.T) {
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		model, meta, err := client.Jobs().PeriodicForce(*job.ID)
+		result, meta, err := client.Jobs().PeriodicForce(*job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
+
 		// Check the response
-		require.NotNil(t, model.EvalID)
-		require.NotEqual(t, "", *model.EvalID)
+		require.NotNil(t, result.EvalID)
+		require.NotEmpty(t, *result.EvalID)
+	})
+}
+
+func TestJobSummary(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		result, meta, err := client.Jobs().Summary(*job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotNil(t, result)
+		require.Equal(t, *job.ID, *result.JobID)
+	})
+}
+
+func TestJobDispatch(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mock.BatchJob()
+		job.ParameterizedJob = &structs.ParameterizedJobConfig{}
+
+		rpcRegister(t, s, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		result, meta, err := client.Jobs().Dispatch(job.ID, "", nil)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotEmpty(t, *result.EvalID)
+		require.NotEmpty(t, *result.DispatchedJobID)
+	})
+}
+
+func TestJobVersions(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		// Create the job
+		job := mock.Job()
+		rpcRegister(t, s, job)
+
+		job2 := mock.Job()
+		job2.ID = job.ID
+		job2.Priority = 100
+
+		rpcRegister(t, s, job2)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		// Make the HTTP request
+		result, meta, err := client.Jobs().Versions(job.ID, true)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		versions := *result.Versions
+		require.Len(t, versions, 2)
+
+		v1 := versions[0]
+		v0 := versions[1]
+		require.Equal(t, int32(1), *v1.Version)
+		require.Equal(t, int32(100), *v1.Priority)
+		require.Equal(t, int32(0), *v0.Version)
+		require.Len(t, *result.Diffs, 1)
+	})
+}
+
+// rpcRegister is used to register jobs directly with the RPC layer. This is
+// useful for scenarios where the test needs to ensure the job is fully registered
+// to prevent race conditions.
+func rpcRegister(t *testing.T, s *agent.TestAgent, job *structs.Job) {
+	request := structs.JobRegisterRequest{
+		Job: job,
+		WriteRequest: structs.WriteRequest{
+			Region:    "global",
+			Namespace: structs.DefaultNamespace,
+		},
+	}
+	var response structs.JobRegisterResponse
+	require.NoError(t, s.Agent.RPC("Job.Register", &request, &response))
+}
+
+func TestJobRevert(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		dcs := *job.Datacenters
+		dcs = append(dcs, "foo")
+		job.Datacenters = &dcs
+		_, _, err = client.Jobs().Post(job)
+		require.NoError(t, err)
+
+		result, meta, err := client.Jobs().Revert(*job.ID, 0, 0, "", "")
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotEmpty(t, *result.EvalID)
+	})
+}
+
+func TestJobDeployment(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mock.Job()
+		rpcRegister(t, s, job)
+
+		// Directly manipulate the state
+		state := s.Agent.Server().State()
+		deployment := mock.Deployment()
+		deployment.JobID = job.ID
+		deployment.JobCreateIndex = job.JobModifyIndex
+		require.NoError(t, state.UpsertDeployment(1000, deployment))
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+		// Make the HTTP request
+		result, meta, err := client.Jobs().Deployment(job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		require.NotNil(t, result.ID)
+		require.Equal(t, deployment.ID, *result.ID)
+	})
+}
+
+func TestJobDeployments(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mock.Job()
+		rpcRegister(t, s, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		// Directly manipulate the state
+		state := s.Agent.Server().State()
+		deployment := mock.Deployment()
+		deployment.JobID = job.ID
+		deployment.JobCreateIndex = job.JobModifyIndex
+
+		require.Nil(t, state.UpsertDeployment(1000, deployment), "UpsertDeployment")
+
+		// Make the HTTP request
+		result, meta, err := client.Jobs().Deployments(job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		deployments := *result
+		require.Len(t, deployments, 1)
+		require.Equal(t, deployment.ID, *deployments[0].ID)
+	})
+}
+
+func TestJobStable(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		// Create the job and register it twice
+		job := mock.Job()
+		rpcRegister(t, s, job)
+		rpcRegister(t, s, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		// Make the HTTP request
+		result, meta, err := client.Jobs().Stability(job.ID, 0, true)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		require.NotNil(t, result.Index)
+		require.NotEqual(t, 0, *result.Index)
+	})
+}
+
+func TestJobScaleStatus(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mock.Job()
+		rpcRegister(t, s, job)
+
+		client, err := NewTestQueryClient(s, queryOpts)
+		require.NoError(t, err)
+
+		// Make the HTTP request to scale the job group
+		result, meta, err := client.Jobs().ScaleStatus(job.ID)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		status := *result
+		tg := job.TaskGroups
+		statusTG := *status.TaskGroups
+		require.Equal(t, int32(tg[0].Count), *statusTG[tg[0].Name].Desired)
+	})
+}
+
+func TestJobScaleTaskGroup(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		job := mockJob()
+		postTestJob(s, t, job)
+
+		client, err := NewTestWriteClient(s, writeOpts)
+		require.NoError(t, err)
+
+		tg := *job.TaskGroups
+		newCount := int64(*tg[0].Count + 1)
+
+		result, meta, err := client.Jobs().Scale(*job.ID, newCount, "testing", map[string]string{
+			"Job":   *job.ID,
+			"Group": *tg[0].Name,
+		})
+
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		// Check the response
+		require.NotEmpty(t, *result.EvalID)
+
+		// Check that the group count was changed
+		getReq := structs.JobSpecificRequest{
+			JobID: *job.ID,
+			QueryOptions: structs.QueryOptions{
+				Region:    "global",
+				Namespace: structs.DefaultNamespace,
+			},
+		}
+		var getResp structs.SingleJobResponse
+		err = s.Agent.RPC("Job.GetJob", &getReq, &getResp)
+		require.NoError(t, err)
+		require.NotNil(t, getResp.Job)
+		require.Equal(t, newCount, int64(getResp.Job.TaskGroups[0].Count))
 	})
 }
 
 var (
-	id                                  = fmt.Sprintf("mock-service-%s", uuid.Generate())
+	id                                  = "mock-service"
 	dbLabel                             = "db"
 	jobName                             = "my-job"
 	jobTypeService                      = "service"
@@ -320,9 +571,10 @@ func mockJobWithDiff() *openapi.Job {
 }
 
 func mockJob() *openapi.Job {
+	jobID := fmt.Sprintf("%s-%s", id, uuid.Generate())
 	return &openapi.Job{
 		Region:      &globalRegion,
-		ID:          &id,
+		ID:          &jobID,
 		Name:        &jobName,
 		Namespace:   &defaultNamespace,
 		Type:        &jobTypeService,

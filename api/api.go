@@ -165,7 +165,7 @@ func (c *Client) setWriteOptions(iface interface{}) interface{} {
 	}
 
 	_, ok = typeOf.MethodByName("IdempotencyToken")
-	if ok && opts.AuthToken != "" {
+	if ok && opts.IdempotencyToken != "" {
 		iface = valueOf.MethodByName("IdempotencyToken").Call([]reflect.Value{reflect.ValueOf(opts.IdempotencyToken)})[0].Interface()
 	}
 

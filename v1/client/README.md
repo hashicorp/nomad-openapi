@@ -84,15 +84,26 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**GetQuotas**](docs/EnterpriseApi.md#getquotas) | **Get** /quotas | 
 *EnterpriseApi* | [**PostQuotaSpec**](docs/EnterpriseApi.md#postquotaspec) | **Post** /quota/{specName} | 
 *JobsApi* | [**DeleteJob**](docs/JobsApi.md#deletejob) | **Delete** /job/{jobName} | 
-*JobsApi* | [**GetAllocations**](docs/JobsApi.md#getallocations) | **Get** /job/{jobName}/allocations | 
-*JobsApi* | [**GetEvaluations**](docs/JobsApi.md#getevaluations) | **Get** /job/{jobName}/evaluations | 
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /job/{jobName} | 
+*JobsApi* | [**GetJobAllocations**](docs/JobsApi.md#getjoballocations) | **Get** /job/{jobName}/allocations | 
+*JobsApi* | [**GetJobDeployment**](docs/JobsApi.md#getjobdeployment) | **Get** /job/{jobName}/deployment | 
+*JobsApi* | [**GetJobDeployments**](docs/JobsApi.md#getjobdeployments) | **Get** /job/{jobName}/deployments | 
+*JobsApi* | [**GetJobEvaluations**](docs/JobsApi.md#getjobevaluations) | **Get** /job/{jobName}/evaluations | 
+*JobsApi* | [**GetJobScaleStatus**](docs/JobsApi.md#getjobscalestatus) | **Get** /job/{jobName}/scale | 
+*JobsApi* | [**GetJobSummary**](docs/JobsApi.md#getjobsummary) | **Get** /job/{jobName}/summary | 
+*JobsApi* | [**GetJobVersions**](docs/JobsApi.md#getjobversions) | **Get** /job/{jobName}/versions | 
 *JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **Get** /jobs | 
-*JobsApi* | [**PostJob**](docs/JobsApi.md#postjob) | **Post** /jobs | 
+*JobsApi* | [**PostJob**](docs/JobsApi.md#postjob) | **Post** /job/{jobName} | 
+*JobsApi* | [**PostJobDispatch**](docs/JobsApi.md#postjobdispatch) | **Post** /job/{jobName}/dispatch | 
 *JobsApi* | [**PostJobEvaluate**](docs/JobsApi.md#postjobevaluate) | **Post** /job/{jobName}/evaluate | 
 *JobsApi* | [**PostJobParse**](docs/JobsApi.md#postjobparse) | **Post** /jobs/parse | 
+*JobsApi* | [**PostJobPeriodicForce**](docs/JobsApi.md#postjobperiodicforce) | **Post** /job/{jobName}/periodic/force | 
 *JobsApi* | [**PostJobPlan**](docs/JobsApi.md#postjobplan) | **Post** /job/{jobName}/plan | 
-*JobsApi* | [**PostPeriodicForce**](docs/JobsApi.md#postperiodicforce) | **Post** /job/{jobName}/periodic/force | 
+*JobsApi* | [**PostJobRevert**](docs/JobsApi.md#postjobrevert) | **Post** /job/{jobName}/revert | 
+*JobsApi* | [**PostJobScalingRequest**](docs/JobsApi.md#postjobscalingrequest) | **Post** /job/{jobName}/scale | 
+*JobsApi* | [**PostJobStability**](docs/JobsApi.md#postjobstability) | **Post** /job/{jobName}/stable | 
+*JobsApi* | [**PostJobValidateRequest**](docs/JobsApi.md#postjobvalidaterequest) | **Post** /validate/job | 
+*JobsApi* | [**RegisterJob**](docs/JobsApi.md#registerjob) | **Post** /jobs | 
 *MetricsApi* | [**GetMetricsSummary**](docs/MetricsApi.md#getmetricssummary) | **Get** /metrics | 
 *NamespacesApi* | [**CreateNamespace**](docs/NamespacesApi.md#createnamespace) | **Post** /namespace | 
 *NamespacesApi* | [**DeleteNamespace**](docs/NamespacesApi.md#deletenamespace) | **Delete** /namespace/{namespaceName} | 
@@ -161,6 +172,8 @@ Class | Method | HTTP request | Description
  - [ConsulTerminatingConfigEntry](docs/ConsulTerminatingConfigEntry.md)
  - [ConsulUpstream](docs/ConsulUpstream.md)
  - [DNSConfig](docs/DNSConfig.md)
+ - [Deployment](docs/Deployment.md)
+ - [DeploymentState](docs/DeploymentState.md)
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
@@ -176,13 +189,22 @@ Class | Method | HTTP request | Description
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)
+ - [JobDispatchRequest](docs/JobDispatchRequest.md)
+ - [JobDispatchResponse](docs/JobDispatchResponse.md)
  - [JobEvaluateRequest](docs/JobEvaluateRequest.md)
  - [JobListStub](docs/JobListStub.md)
  - [JobPlanRequest](docs/JobPlanRequest.md)
  - [JobPlanResponse](docs/JobPlanResponse.md)
  - [JobRegisterRequest](docs/JobRegisterRequest.md)
  - [JobRegisterResponse](docs/JobRegisterResponse.md)
+ - [JobRevertRequest](docs/JobRevertRequest.md)
+ - [JobScaleStatusResponse](docs/JobScaleStatusResponse.md)
+ - [JobStabilityRequest](docs/JobStabilityRequest.md)
+ - [JobStabilityResponse](docs/JobStabilityResponse.md)
  - [JobSummary](docs/JobSummary.md)
+ - [JobValidateRequest](docs/JobValidateRequest.md)
+ - [JobValidateResponse](docs/JobValidateResponse.md)
+ - [JobVersionsResponse](docs/JobVersionsResponse.md)
  - [JobsParseRequest](docs/JobsParseRequest.md)
  - [LogConfig](docs/LogConfig.md)
  - [MetricsSummary](docs/MetricsSummary.md)
@@ -211,7 +233,9 @@ Class | Method | HTTP request | Description
  - [Resources](docs/Resources.md)
  - [RestartPolicy](docs/RestartPolicy.md)
  - [SampledValue](docs/SampledValue.md)
+ - [ScalingEvent](docs/ScalingEvent.md)
  - [ScalingPolicy](docs/ScalingPolicy.md)
+ - [ScalingRequest](docs/ScalingRequest.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
  - [Service](docs/Service.md)
@@ -226,6 +250,7 @@ Class | Method | HTTP request | Description
  - [TaskEvent](docs/TaskEvent.md)
  - [TaskGroup](docs/TaskGroup.md)
  - [TaskGroupDiff](docs/TaskGroupDiff.md)
+ - [TaskGroupScaleStatus](docs/TaskGroupScaleStatus.md)
  - [TaskGroupSummary](docs/TaskGroupSummary.md)
  - [TaskHandle](docs/TaskHandle.md)
  - [TaskLifecycle](docs/TaskLifecycle.md)

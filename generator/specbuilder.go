@@ -226,6 +226,9 @@ func (b *specBuilder) getOrCreateResponses(configs []*responseConfig) (openapi3.
 	responses := openapi3.Responses{}
 
 	for _, cfg := range configs {
+		if cfg.Response == nil {
+			continue
+		}
 		// if it isn't the global map, add it
 		responseRef, ok := b.spec.Model.Components.Responses[cfg.Response.Name]
 		if !ok {
