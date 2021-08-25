@@ -90882,20 +90882,11 @@ components:
       type: object
     JobStabilityResponse:
       example:
-        LastIndex: 2147483647
-        RequestTime: 1
-        JobModifyIndex: 2147483647
+        Index: 2147483647
       properties:
-        JobModifyIndex:
+        Index:
           maximum: 1.8446744073709552E+19
           minimum: 0
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552E+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
           type: integer
       type: object
     JobSummary:

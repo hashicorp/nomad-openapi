@@ -189,7 +189,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 				newOperation(http.MethodPost, "jobStable", tags, "PostJobStability",
 					newRequestBody(objectSchema, api.JobStabilityRequest{}),
 					appendParams(writeOptions, &jobNameParam),
-					newResponseConfig(200, objectSchema, api.JobStabilityResponse{}, writeMeta, "PostJobStabilityResponse"),
+					newResponseConfig(200, objectSchema, structs.JobStabilityResponse{}, writeMeta, "PostJobStabilityResponse"),
 				),
 			},
 		},

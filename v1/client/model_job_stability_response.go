@@ -17,9 +17,7 @@ import (
 
 // JobStabilityResponse struct for JobStabilityResponse
 type JobStabilityResponse struct {
-	JobModifyIndex *int32 `json:"JobModifyIndex,omitempty"`
-	LastIndex *int32 `json:"LastIndex,omitempty"`
-	RequestTime *int64 `json:"RequestTime,omitempty"`
+	Index *int32 `json:"Index,omitempty"`
 }
 
 // NewJobStabilityResponse instantiates a new JobStabilityResponse object
@@ -39,112 +37,42 @@ func NewJobStabilityResponseWithDefaults() *JobStabilityResponse {
 	return &this
 }
 
-// GetJobModifyIndex returns the JobModifyIndex field value if set, zero value otherwise.
-func (o *JobStabilityResponse) GetJobModifyIndex() int32 {
-	if o == nil || o.JobModifyIndex == nil {
+// GetIndex returns the Index field value if set, zero value otherwise.
+func (o *JobStabilityResponse) GetIndex() int32 {
+	if o == nil || o.Index == nil {
 		var ret int32
 		return ret
 	}
-	return *o.JobModifyIndex
+	return *o.Index
 }
 
-// GetJobModifyIndexOk returns a tuple with the JobModifyIndex field value if set, nil otherwise
+// GetIndexOk returns a tuple with the Index field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobStabilityResponse) GetJobModifyIndexOk() (*int32, bool) {
-	if o == nil || o.JobModifyIndex == nil {
+func (o *JobStabilityResponse) GetIndexOk() (*int32, bool) {
+	if o == nil || o.Index == nil {
 		return nil, false
 	}
-	return o.JobModifyIndex, true
+	return o.Index, true
 }
 
-// HasJobModifyIndex returns a boolean if a field has been set.
-func (o *JobStabilityResponse) HasJobModifyIndex() bool {
-	if o != nil && o.JobModifyIndex != nil {
+// HasIndex returns a boolean if a field has been set.
+func (o *JobStabilityResponse) HasIndex() bool {
+	if o != nil && o.Index != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetJobModifyIndex gets a reference to the given int32 and assigns it to the JobModifyIndex field.
-func (o *JobStabilityResponse) SetJobModifyIndex(v int32) {
-	o.JobModifyIndex = &v
-}
-
-// GetLastIndex returns the LastIndex field value if set, zero value otherwise.
-func (o *JobStabilityResponse) GetLastIndex() int32 {
-	if o == nil || o.LastIndex == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LastIndex
-}
-
-// GetLastIndexOk returns a tuple with the LastIndex field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobStabilityResponse) GetLastIndexOk() (*int32, bool) {
-	if o == nil || o.LastIndex == nil {
-		return nil, false
-	}
-	return o.LastIndex, true
-}
-
-// HasLastIndex returns a boolean if a field has been set.
-func (o *JobStabilityResponse) HasLastIndex() bool {
-	if o != nil && o.LastIndex != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastIndex gets a reference to the given int32 and assigns it to the LastIndex field.
-func (o *JobStabilityResponse) SetLastIndex(v int32) {
-	o.LastIndex = &v
-}
-
-// GetRequestTime returns the RequestTime field value if set, zero value otherwise.
-func (o *JobStabilityResponse) GetRequestTime() int64 {
-	if o == nil || o.RequestTime == nil {
-		var ret int64
-		return ret
-	}
-	return *o.RequestTime
-}
-
-// GetRequestTimeOk returns a tuple with the RequestTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobStabilityResponse) GetRequestTimeOk() (*int64, bool) {
-	if o == nil || o.RequestTime == nil {
-		return nil, false
-	}
-	return o.RequestTime, true
-}
-
-// HasRequestTime returns a boolean if a field has been set.
-func (o *JobStabilityResponse) HasRequestTime() bool {
-	if o != nil && o.RequestTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestTime gets a reference to the given int64 and assigns it to the RequestTime field.
-func (o *JobStabilityResponse) SetRequestTime(v int64) {
-	o.RequestTime = &v
+// SetIndex gets a reference to the given int32 and assigns it to the Index field.
+func (o *JobStabilityResponse) SetIndex(v int32) {
+	o.Index = &v
 }
 
 func (o JobStabilityResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.JobModifyIndex != nil {
-		toSerialize["JobModifyIndex"] = o.JobModifyIndex
-	}
-	if o.LastIndex != nil {
-		toSerialize["LastIndex"] = o.LastIndex
-	}
-	if o.RequestTime != nil {
-		toSerialize["RequestTime"] = o.RequestTime
+	if o.Index != nil {
+		toSerialize["Index"] = o.Index
 	}
 	return json.Marshal(toSerialize)
 }

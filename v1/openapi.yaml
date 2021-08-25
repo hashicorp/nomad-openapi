@@ -2419,16 +2419,9 @@ components:
       type: object
     JobStabilityResponse:
       properties:
-        JobModifyIndex:
+        Index:
           maximum: 1.8446744073709552e+19
           minimum: 0
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
           type: integer
       type: object
     JobSummary:

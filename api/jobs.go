@@ -312,15 +312,31 @@ func (j *Jobs) PeriodicForce(jobName string) (*openapi.PeriodicForceResponse, *W
 	return &result, meta, nil
 }
 
-func (j *Jobs) Revert(jobName string, versionNumber int32) (*openapi.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Revert(jobName string, versionNumber, enforcePriorVersion int32, consulToken, vaultToken string) (*openapi.JobRegisterResponse, *WriteMeta, error) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
 
 	request := j.JobsApi().PostJobRevert(j.client.Ctx, jobName)
+
 	revertRequest := openapi.NewJobRevertRequest()
 	revertRequest.SetJobVersion(versionNumber)
+	revertRequest.SetJobID(jobName)
+
+	if enforcePriorVersion != 0 {
+		revertRequest.SetEnforcePriorVersion(enforcePriorVersion)
+	}
+
+	if consulToken != "" {
+		revertRequest.SetConsulToken(consulToken)
+	}
+
+	if vaultToken != "" {
+		revertRequest.SetVaultToken(vaultToken)
+	}
+
 	request = j.client.setWriteOptions(request).(openapi.ApiPostJobRevertRequest)
+	request = request.JobRevertRequest(*revertRequest)
 
 	result, response, err := request.Execute()
 	if err != nil {
@@ -348,6 +364,7 @@ func (j *Jobs) Scale(jobName string, count int64, msg string, target map[string]
 	scalingRequest.SetTarget(target)
 
 	request = j.client.setWriteOptions(request).(openapi.ApiPostJobScalingRequestRequest)
+	request = request.ScalingRequest(*scalingRequest)
 
 	result, response, err := request.Execute()
 	if err != nil {
