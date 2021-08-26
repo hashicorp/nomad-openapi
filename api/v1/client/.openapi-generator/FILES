@@ -10,8 +10,6 @@ api_search.go
 api_volumes.go
 client.go
 configuration.go
-go.mod
-go.sum
 model_affinity.go
 model_alloc_deployment_status.go
 model_allocated_cpu_resources.go

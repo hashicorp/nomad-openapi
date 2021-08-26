@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	openapi "github.com/hashicorp/nomad-openapi/v1/client"
+	"github.com/hashicorp/nomad-openapi/api/v1/client"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/helper/uuid"
 	"github.com/hashicorp/nomad/nomad/mock"
@@ -14,14 +14,14 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func postTestJob(s *agent.TestAgent, t *testing.T, job *openapi.Job) {
-	client, err := NewTestClient(s)
+func postTestJob(s *agent.TestAgent, t *testing.T, job *client.Job) {
+	testClient, err := NewTestClient(s)
 	require.NoError(t, err)
 
 	if job == nil {
 		job = mockJob()
 	}
-	resp, writeMeta, err := client.Jobs().Post(writeOpts.Ctx(), job)
+	resp, writeMeta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
 
 	require.NoError(t, err)
 	require.NotNil(t, resp)
@@ -33,10 +33,10 @@ func TestJobsGet(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		rpcRegister(t, s, mock.Job())
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		jobs, queryMeta, err := client.Jobs().GetJobs(queryOpts.Ctx())
+		jobs, queryMeta, err := testClient.Jobs().GetJobs(queryOpts.Ctx())
 		require.NoError(t, err)
 		require.NotNil(t, jobs)
 		require.Len(t, jobs, 1)
@@ -50,10 +50,10 @@ func TestJobGet(t *testing.T) {
 		job := mockJob()
 		postTestJob(s, t, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		queryJob, queryMeta, err := client.Jobs().GetJob(queryOpts.Ctx(), *job.ID)
+		queryJob, queryMeta, err := testClient.Jobs().GetJob(queryOpts.Ctx(), *job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, queryJob)
 		require.NotNil(t, queryMeta)
@@ -69,10 +69,10 @@ func TestPostJob(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mockJob()
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		resp, meta, err := client.Jobs().Post(writeOpts.Ctx(), job)
+		resp, meta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
 
 		require.NoError(t, err)
 		require.NotNil(t, resp)
@@ -85,12 +85,12 @@ func TestPlanJob(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		postTestJob(s, t, nil)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		diffJob := mockJobWithDiff()
 
-		response, meta, err := client.Jobs().Plan(writeOpts.Ctx(), diffJob, true)
+		response, meta, err := testClient.Jobs().Plan(writeOpts.Ctx(), diffJob, true)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, meta)
@@ -104,10 +104,10 @@ func TestJobDelete(t *testing.T) {
 		rpcRegister(t, s, job)
 
 		// Make the HTTP request to do a soft delete
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		response, writeMeta, err := client.Jobs().Delete(writeOpts.Ctx(), job.ID, false, false)
+		response, writeMeta, err := testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, false, false)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, writeMeta)
@@ -120,7 +120,7 @@ func TestJobDelete(t *testing.T) {
 		require.NotNil(t, rpcJob)
 		require.True(t, rpcJob.Stop)
 
-		response, writeMeta, err = client.Jobs().Delete(writeOpts.Ctx(), job.ID, true, false)
+		response, writeMeta, err = testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, true, false)
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.NotNil(t, writeMeta)
@@ -138,10 +138,10 @@ func TestJobDelete(t *testing.T) {
 func TestJobParse(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		job, err := client.Jobs().Parse(context.Background(), jobHCL, false, false)
+		job, err := testClient.Jobs().Parse(context.Background(), jobHCL, false, false)
 		require.NoError(t, err)
 		require.NotNil(t, job)
 
@@ -163,11 +163,11 @@ func TestJobEvaluate(t *testing.T) {
 		job := mockJob()
 		postTestJob(s, t, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		result, meta, err := client.Jobs().Evaluate(writeOpts.Ctx(), *job.ID, false)
+		result, meta, err := testClient.Jobs().Evaluate(writeOpts.Ctx(), *job.ID, false)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 		require.NotNil(t, result)
@@ -185,11 +185,11 @@ func TestJobPeriodicForce(t *testing.T) {
 		job := mockPeriodicJob()
 		postTestJob(s, t, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		result, meta, err := client.Jobs().PeriodicForce(writeOpts.Ctx(), *job.ID)
+		result, meta, err := testClient.Jobs().PeriodicForce(writeOpts.Ctx(), *job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -205,10 +205,10 @@ func TestJobSummary(t *testing.T) {
 		job := mockJob()
 		postTestJob(s, t, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, meta, err := client.Jobs().Summary(queryOpts.Ctx(), *job.ID)
+		result, meta, err := testClient.Jobs().Summary(queryOpts.Ctx(), *job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 		require.NotNil(t, result)
@@ -224,10 +224,10 @@ func TestJobDispatch(t *testing.T) {
 
 		rpcRegister(t, s, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, meta, err := client.Jobs().Dispatch(writeOpts.Ctx(), job.ID, "", nil)
+		result, meta, err := testClient.Jobs().Dispatch(writeOpts.Ctx(), job.ID, "", nil)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 		require.NotEmpty(t, *result.EvalID)
@@ -248,11 +248,11 @@ func TestJobVersions(t *testing.T) {
 
 		rpcRegister(t, s, job2)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		result, meta, err := client.Jobs().Versions(queryOpts.Ctx(), job.ID, true)
+		result, meta, err := testClient.Jobs().Versions(queryOpts.Ctx(), job.ID, true)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -271,19 +271,22 @@ func TestJobVersions(t *testing.T) {
 func TestJobRevert(t *testing.T) {
 	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		job := mockJob()
-		postTestJob(s, t, job)
+		rpcJob := mock.Job()
+		rpcRegister(t, s, rpcJob)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+
+		job, _, err := testClient.Jobs().GetJob(queryOpts.Ctx(), rpcJob.ID)
 		require.NoError(t, err)
 
 		dcs := *job.Datacenters
 		dcs = append(dcs, "foo")
 		job.Datacenters = &dcs
-		_, _, err = client.Jobs().Post(writeOpts.Ctx(), job)
+		_, _, err = testClient.Jobs().Post(writeOpts.Ctx(), job)
 		require.NoError(t, err)
 
-		result, meta, err := client.Jobs().Revert(writeOpts.Ctx(), *job.ID, 0, 0, "", "")
+		result, meta, err := testClient.Jobs().Revert(writeOpts.Ctx(), *job.ID, 0, 0, "", "")
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 		require.NotEmpty(t, *result.EvalID)
@@ -303,10 +306,10 @@ func TestJobDeployment(t *testing.T) {
 		deployment.JobCreateIndex = job.JobModifyIndex
 		require.NoError(t, state.UpsertDeployment(1000, deployment))
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 		// Make the HTTP request
-		result, meta, err := client.Jobs().Deployment(queryOpts.Ctx(), job.ID)
+		result, meta, err := testClient.Jobs().Deployment(queryOpts.Ctx(), job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -322,7 +325,7 @@ func TestJobDeployments(t *testing.T) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Directly manipulate the state
@@ -334,7 +337,7 @@ func TestJobDeployments(t *testing.T) {
 		require.Nil(t, state.UpsertDeployment(1000, deployment), "UpsertDeployment")
 
 		// Make the HTTP request
-		result, meta, err := client.Jobs().Deployments(queryOpts.Ctx(), job.ID)
+		result, meta, err := testClient.Jobs().Deployments(queryOpts.Ctx(), job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -353,11 +356,11 @@ func TestJobStable(t *testing.T) {
 		rpcRegister(t, s, job)
 		rpcRegister(t, s, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Make the HTTP request
-		result, meta, err := client.Jobs().Stability(queryOpts.Ctx(), job.ID, 0, true)
+		result, meta, err := testClient.Jobs().Stability(queryOpts.Ctx(), job.ID, 0, true)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -373,11 +376,11 @@ func TestJobScaleStatus(t *testing.T) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		// Make the HTTP request to scale the job group
-		result, meta, err := client.Jobs().ScaleStatus(queryOpts.Ctx(), job.ID)
+		result, meta, err := testClient.Jobs().ScaleStatus(queryOpts.Ctx(), job.ID)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 
@@ -395,13 +398,13 @@ func TestJobScaleTaskGroup(t *testing.T) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
 
-		client, err := NewTestClient(s)
+		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
 		tg := job.TaskGroups
 		newCount := int64(tg[0].Count + 1)
 
-		result, meta, err := client.Jobs().Scale(writeOpts.Ctx(), job.ID, newCount, "testing", map[string]string{
+		result, meta, err := testClient.Jobs().Scale(writeOpts.Ctx(), job.ID, newCount, "testing", map[string]string{
 			"Job":   job.ID,
 			"Group": tg[0].Name,
 		})
@@ -458,7 +461,7 @@ var (
 	checks                              = "checks"
 	minHealthyTime                      = int64(10 * time.Second)
 	healthyDeadline                     = int64(5 * time.Minute)
-	defaultMigrateStrategy              = &openapi.MigrateStrategy{
+	defaultMigrateStrategy              = &client.MigrateStrategy{
 		MaxParallel:     &maxParallel,
 		HealthCheck:     &checks,
 		MinHealthyTime:  &minHealthyTime,
@@ -477,7 +480,7 @@ var (
 	adminTaskName          = "${TASK}-admin"
 	logConfigMaxFile       = int32(10)
 	logConfigMaxFileSizeMB = int32(10)
-	defaultLogConfig       = &openapi.LogConfig{
+	defaultLogConfig       = &client.LogConfig{
 		MaxFiles:      &logConfigMaxFile,
 		MaxFileSizeMB: &logConfigMaxFileSizeMB,
 	}
@@ -490,7 +493,7 @@ var (
 	notUnlimited      = false
 )
 
-func mockPeriodicJob() *openapi.Job {
+func mockPeriodicJob() *client.Job {
 	job := mockJob()
 	batch := structs.JobTypeBatch
 	job.Type = &batch
@@ -500,7 +503,7 @@ func mockPeriodicJob() *openapi.Job {
 	spec := "*/30 * * * *"
 	running := structs.JobStatusRunning
 
-	job.Periodic = &openapi.PeriodicConfig{
+	job.Periodic = &client.PeriodicConfig{
 		Enabled:  &enabled,
 		SpecType: &specType,
 		Spec:     &spec,
@@ -513,11 +516,11 @@ func mockPeriodicJob() *openapi.Job {
 	return job
 }
 
-func mockJobWithDiff() *openapi.Job {
+func mockJobWithDiff() *client.Job {
 	job := mockJob()
 
 	tgs := *job.TaskGroups
-	tgs[0].Tasks = &[]openapi.Task{
+	tgs[0].Tasks = &[]client.Task{
 		{
 			Config: &map[string]interface{}{
 				"image": "redis:3.4",
@@ -531,9 +534,9 @@ func mockJobWithDiff() *openapi.Job {
 	return job
 }
 
-func mockJob() *openapi.Job {
+func mockJob() *client.Job {
 	jobID := fmt.Sprintf("%s-%s", id, uuid.Generate())
-	return &openapi.Job{
+	return &client.Job{
 		Region:      &globalRegion,
 		ID:          &jobID,
 		Name:        &jobName,
@@ -542,27 +545,27 @@ func mockJob() *openapi.Job {
 		Priority:    &priority,
 		AllAtOnce:   &allAtOnce,
 		Datacenters: &[]string{"dc1"},
-		Constraints: &[]openapi.Constraint{
+		Constraints: &[]client.Constraint{
 			{
 				LTarget: &lTarget,
 				RTarget: &rTarget,
 				Operand: &operand,
 			},
 		},
-		TaskGroups: &[]openapi.TaskGroup{
+		TaskGroups: &[]client.TaskGroup{
 			{
 				Name:  &web,
 				Count: &count,
-				EphemeralDisk: &openapi.EphemeralDisk{
+				EphemeralDisk: &client.EphemeralDisk{
 					SizeMB: &sizeMB,
 				},
-				RestartPolicy: &openapi.RestartPolicy{
+				RestartPolicy: &client.RestartPolicy{
 					Attempts: &restartPolicyAttempts,
 					Interval: &restartPolicyInterval,
 					Delay:    &restartPolicyDelay,
 					Mode:     &restartPolicyMode,
 				},
-				ReschedulePolicy: &openapi.ReschedulePolicy{
+				ReschedulePolicy: &client.ReschedulePolicy{
 					Attempts:      &reschedulePolicyAttempts,
 					Interval:      &reschedulePolicyInterval,
 					Delay:         &reschedulePolicyDelay,
@@ -570,16 +573,16 @@ func mockJob() *openapi.Job {
 					Unlimited:     &notUnlimited,
 				},
 				Migrate: defaultMigrateStrategy,
-				Networks: &[]openapi.NetworkResource{
+				Networks: &[]client.NetworkResource{
 					{
 						Mode: &hostMode,
-						DynamicPorts: &[]openapi.Port{
+						DynamicPorts: &[]client.Port{
 							{Label: &httpLabel},
 							{Label: &adminLabel},
 						},
 					},
 				},
-				Tasks: &[]openapi.Task{
+				Tasks: &[]client.Task{
 					{
 						Name:   &web,
 						Driver: &execDriver,
@@ -589,12 +592,12 @@ func mockJob() *openapi.Job {
 						Env: &map[string]string{
 							"FOO": "bar",
 						},
-						Services: &[]openapi.Service{
+						Services: &[]client.Service{
 							{
 								Name:      &frontEndTaskName,
 								PortLabel: &httpLabel,
 								Tags:      &[]string{"pci:${meta.pci-dss}", "datacenter:${node.datacenter}"},
-								Checks: &[]openapi.ServiceCheck{
+								Checks: &[]client.ServiceCheck{
 									{
 										Name:     &serviceCheckName,
 										Type:     &serviceCheckType,
@@ -611,7 +614,7 @@ func mockJob() *openapi.Job {
 							},
 						},
 						LogConfig: defaultLogConfig,
-						Resources: &openapi.Resources{
+						Resources: &client.Resources{
 							CPU:      &resourcesCPU,
 							MemoryMB: &resourcesMemoryMB,
 						},
