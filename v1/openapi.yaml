@@ -161,7 +161,7 @@ components:
       in: query
       name: wait
       schema:
-        type: integer
+        type: string
   requestBodies:
     CSISnapshotCreateRequest:
       content:

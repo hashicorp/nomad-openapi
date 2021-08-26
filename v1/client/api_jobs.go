@@ -202,7 +202,7 @@ type ApiGetJobRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -222,7 +222,7 @@ func (r ApiGetJobRequest) Index(index int32) ApiGetJobRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetJobRequest) Wait(wait int32) ApiGetJobRequest {
+func (r ApiGetJobRequest) Wait(wait string) ApiGetJobRequest {
 	r.wait = &wait
 	return r
 }
@@ -393,7 +393,7 @@ type ApiGetJobAllocationsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -413,7 +413,7 @@ func (r ApiGetJobAllocationsRequest) Index(index int32) ApiGetJobAllocationsRequ
 	r.index = &index
 	return r
 }
-func (r ApiGetJobAllocationsRequest) Wait(wait int32) ApiGetJobAllocationsRequest {
+func (r ApiGetJobAllocationsRequest) Wait(wait string) ApiGetJobAllocationsRequest {
 	r.wait = &wait
 	return r
 }
@@ -584,7 +584,7 @@ type ApiGetJobDeploymentRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -604,7 +604,7 @@ func (r ApiGetJobDeploymentRequest) Index(index int32) ApiGetJobDeploymentReques
 	r.index = &index
 	return r
 }
-func (r ApiGetJobDeploymentRequest) Wait(wait int32) ApiGetJobDeploymentRequest {
+func (r ApiGetJobDeploymentRequest) Wait(wait string) ApiGetJobDeploymentRequest {
 	r.wait = &wait
 	return r
 }
@@ -775,7 +775,7 @@ type ApiGetJobDeploymentsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -796,7 +796,7 @@ func (r ApiGetJobDeploymentsRequest) Index(index int32) ApiGetJobDeploymentsRequ
 	r.index = &index
 	return r
 }
-func (r ApiGetJobDeploymentsRequest) Wait(wait int32) ApiGetJobDeploymentsRequest {
+func (r ApiGetJobDeploymentsRequest) Wait(wait string) ApiGetJobDeploymentsRequest {
 	r.wait = &wait
 	return r
 }
@@ -974,7 +974,7 @@ type ApiGetJobEvaluationsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -994,7 +994,7 @@ func (r ApiGetJobEvaluationsRequest) Index(index int32) ApiGetJobEvaluationsRequ
 	r.index = &index
 	return r
 }
-func (r ApiGetJobEvaluationsRequest) Wait(wait int32) ApiGetJobEvaluationsRequest {
+func (r ApiGetJobEvaluationsRequest) Wait(wait string) ApiGetJobEvaluationsRequest {
 	r.wait = &wait
 	return r
 }
@@ -1165,7 +1165,7 @@ type ApiGetJobScaleStatusRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1185,7 +1185,7 @@ func (r ApiGetJobScaleStatusRequest) Index(index int32) ApiGetJobScaleStatusRequ
 	r.index = &index
 	return r
 }
-func (r ApiGetJobScaleStatusRequest) Wait(wait int32) ApiGetJobScaleStatusRequest {
+func (r ApiGetJobScaleStatusRequest) Wait(wait string) ApiGetJobScaleStatusRequest {
 	r.wait = &wait
 	return r
 }
@@ -1356,7 +1356,7 @@ type ApiGetJobSummaryRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1376,7 +1376,7 @@ func (r ApiGetJobSummaryRequest) Index(index int32) ApiGetJobSummaryRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetJobSummaryRequest) Wait(wait int32) ApiGetJobSummaryRequest {
+func (r ApiGetJobSummaryRequest) Wait(wait string) ApiGetJobSummaryRequest {
 	r.wait = &wait
 	return r
 }
@@ -1547,7 +1547,7 @@ type ApiGetJobVersionsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1568,7 +1568,7 @@ func (r ApiGetJobVersionsRequest) Index(index int32) ApiGetJobVersionsRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetJobVersionsRequest) Wait(wait int32) ApiGetJobVersionsRequest {
+func (r ApiGetJobVersionsRequest) Wait(wait string) ApiGetJobVersionsRequest {
 	r.wait = &wait
 	return r
 }
@@ -1745,7 +1745,7 @@ type ApiGetJobsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1765,7 +1765,7 @@ func (r ApiGetJobsRequest) Index(index int32) ApiGetJobsRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetJobsRequest) Wait(wait int32) ApiGetJobsRequest {
+func (r ApiGetJobsRequest) Wait(wait string) ApiGetJobsRequest {
 	r.wait = &wait
 	return r
 }

@@ -321,7 +321,7 @@ type ApiGetQuotaSpecRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -341,7 +341,7 @@ func (r ApiGetQuotaSpecRequest) Index(index int32) ApiGetQuotaSpecRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetQuotaSpecRequest) Wait(wait int32) ApiGetQuotaSpecRequest {
+func (r ApiGetQuotaSpecRequest) Wait(wait string) ApiGetQuotaSpecRequest {
 	r.wait = &wait
 	return r
 }
@@ -511,7 +511,7 @@ type ApiGetQuotasRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -531,7 +531,7 @@ func (r ApiGetQuotasRequest) Index(index int32) ApiGetQuotasRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetQuotasRequest) Wait(wait int32) ApiGetQuotasRequest {
+func (r ApiGetQuotasRequest) Wait(wait string) ApiGetQuotasRequest {
 	r.wait = &wait
 	return r
 }

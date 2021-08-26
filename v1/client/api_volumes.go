@@ -640,7 +640,7 @@ type ApiGetExternalVolumesRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -661,7 +661,7 @@ func (r ApiGetExternalVolumesRequest) Index(index int32) ApiGetExternalVolumesRe
 	r.index = &index
 	return r
 }
-func (r ApiGetExternalVolumesRequest) Wait(wait int32) ApiGetExternalVolumesRequest {
+func (r ApiGetExternalVolumesRequest) Wait(wait string) ApiGetExternalVolumesRequest {
 	r.wait = &wait
 	return r
 }
@@ -835,7 +835,7 @@ type ApiGetSnapshotsRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -856,7 +856,7 @@ func (r ApiGetSnapshotsRequest) Index(index int32) ApiGetSnapshotsRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetSnapshotsRequest) Wait(wait int32) ApiGetSnapshotsRequest {
+func (r ApiGetSnapshotsRequest) Wait(wait string) ApiGetSnapshotsRequest {
 	r.wait = &wait
 	return r
 }
@@ -1031,7 +1031,7 @@ type ApiGetVolumeRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1051,7 +1051,7 @@ func (r ApiGetVolumeRequest) Index(index int32) ApiGetVolumeRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetVolumeRequest) Wait(wait int32) ApiGetVolumeRequest {
+func (r ApiGetVolumeRequest) Wait(wait string) ApiGetVolumeRequest {
 	r.wait = &wait
 	return r
 }
@@ -1221,7 +1221,7 @@ type ApiGetVolumesRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -1244,7 +1244,7 @@ func (r ApiGetVolumesRequest) Index(index int32) ApiGetVolumesRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetVolumesRequest) Wait(wait int32) ApiGetVolumesRequest {
+func (r ApiGetVolumesRequest) Wait(wait string) ApiGetVolumesRequest {
 	r.wait = &wait
 	return r
 }
