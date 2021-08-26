@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"github.com/hashicorp/cronexpr"
-	oac "github.com/hashicorp/nomad-openapi/v1/client"
+	"github.com/hashicorp/nomad-openapi/api/v1/client"
 )
 
 type Client struct {
-	Ctx        context.Context
-	oapiClient *oac.APIClient
+	Ctx       context.Context
+	apiClient *client.APIClient
 }
 
 func NewClient() (*Client, error) {
@@ -30,18 +30,18 @@ func NewClient() (*Client, error) {
 		return nil, err
 	}
 
-	client := &Client{}
+	c := &Client{}
 
-	client.Ctx = context.WithValue(context.Background(), oac.ContextServerVariables, map[string]string{
+	c.Ctx = context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
 		"scheme":  nomadURL.Scheme,
 		"address": nomadURL.Hostname(),
 		"port":    nomadURL.Port(),
 	})
 
-	configuration := oac.NewConfiguration()
-	client.oapiClient = oac.NewAPIClient(configuration)
+	configuration := client.NewConfiguration()
+	c.apiClient = client.NewAPIClient(configuration)
 
-	return client, nil
+	return c, nil
 }
 
 // setQueryOptions is used to annotate the request with
