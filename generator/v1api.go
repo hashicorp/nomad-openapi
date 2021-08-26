@@ -204,7 +204,7 @@ var (
 	}
 	waitParam = parameter{
 		Id:          "WaitParam",
-		SchemaType:  intSchema,
+		SchemaType:  stringSchema,
 		Description: "Provided with IndexParam to wait for change.",
 		Name:        "wait",
 		In:          inQuery,

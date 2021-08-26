@@ -4,7 +4,7 @@ spec:
 
 .PHONY: test
 test:
-	(cd ./api && go test ./... -v -count=1)
+	(cd ./api/v1 && go test ./... -v -count=1)
 
 .PHONY: openapi
 openapi: spec

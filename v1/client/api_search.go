@@ -34,7 +34,7 @@ type ApiGetFuzzySearchRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -58,7 +58,7 @@ func (r ApiGetFuzzySearchRequest) Index(index int32) ApiGetFuzzySearchRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetFuzzySearchRequest) Wait(wait int32) ApiGetFuzzySearchRequest {
+func (r ApiGetFuzzySearchRequest) Wait(wait string) ApiGetFuzzySearchRequest {
 	r.wait = &wait
 	return r
 }
@@ -231,7 +231,7 @@ type ApiGetSearchRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -255,7 +255,7 @@ func (r ApiGetSearchRequest) Index(index int32) ApiGetSearchRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetSearchRequest) Wait(wait int32) ApiGetSearchRequest {
+func (r ApiGetSearchRequest) Wait(wait string) ApiGetSearchRequest {
 	r.wait = &wait
 	return r
 }

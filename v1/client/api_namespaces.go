@@ -311,7 +311,7 @@ type ApiGetNamespaceRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -331,7 +331,7 @@ func (r ApiGetNamespaceRequest) Index(index int32) ApiGetNamespaceRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetNamespaceRequest) Wait(wait int32) ApiGetNamespaceRequest {
+func (r ApiGetNamespaceRequest) Wait(wait string) ApiGetNamespaceRequest {
 	r.wait = &wait
 	return r
 }
@@ -502,7 +502,7 @@ type ApiGetNamespacesRequest struct {
 	region *string
 	namespace *string
 	index *int32
-	wait *int32
+	wait *string
 	stale *string
 	prefix *string
 	xNomadToken *string
@@ -526,7 +526,7 @@ func (r ApiGetNamespacesRequest) Index(index int32) ApiGetNamespacesRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetNamespacesRequest) Wait(wait int32) ApiGetNamespacesRequest {
+func (r ApiGetNamespacesRequest) Wait(wait string) ApiGetNamespacesRequest {
 	r.wait = &wait
 	return r
 }
