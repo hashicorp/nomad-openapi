@@ -156,9 +156,7 @@ type QueryOpts struct {
 	// until the timeout or the next index is reached
 	WaitIndex int32
 
-	// WaitTime is used to bound the duration of a wait.
-	// Defaults to that of the Config, but can be overridden.
-	// Duration is in milliseconds.
+	// WaitTime is used to bound the duration of a call and is set in milliseconds.
 	WaitTime time.Duration
 
 	// If set, used as prefix for resource list searches

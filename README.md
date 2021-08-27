@@ -15,7 +15,7 @@ _generated_ in a number of programming languages.
 ## Quick start
 
 The latest version of the OpenAPI specification for the Version 1 Nomad HTTP API
-can be found in this repository at [v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/v1/openapi.yaml).
+can be found in this repository at [api/v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/api/v1/openapi.yaml).
 This file _is itself a generated file_ and _should not be edited directly_. You can
 use this file to generate a client for the Nomad HTTP API in the language of your
 choice.
@@ -54,7 +54,7 @@ found online [here](https://www.hashicorp.com/community-guidelines).
 
 ## Issues and Questions
 
-If you have any issues or questions using this pacakge, please raise a Gitub issue
+If you have any issues or questions using this package, please raise a Github issue
 in this repository. Issues raised in the main Nomad repository will be redirected
 here.
 
@@ -64,7 +64,7 @@ The OpenAPI specification is ideal if you are working in a greenfield scenario, 
 write your specification first. This _spec first_ approach is highly recommended and
 widely supported by many of the tool vendors and experts in the OpenAPI space.
 
-Sadly, this approach leaves brownfield projects with an existing API that either
+However, this approach leaves brownfield projects with an existing API that either
 predates the OpenAPI specification, or for whatever reason was built with a _code first_
 approach, to their own devices in terms of generating a specification from existing
 code. The code found in the `generator` directory is one such device. It is highly,
@@ -72,7 +72,7 @@ experimental, and subject to change.
 
 ## Contributing
 
-The `v1/openapi.yaml` specification file is a generated file that should not be
+The `api/v1/openapi.yaml` specification file is a generated file that should not be
 edited manually. 
 
 The [README](https://github.com/hashicorp/nomad-openapi/blob/main/generator/README.md)
