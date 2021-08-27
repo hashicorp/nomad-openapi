@@ -1,6 +1,6 @@
 <p align="center" style="text-align:center;">
   <a href="https://nomadproject.io">
-    <img alt="HashiCorp Nomad logo" src="website/public/img/logo-hashicorp.svg" width="500" />
+    <img alt="HashiCorp Nomad logo" src="https://www.nomadproject.io/img/logo-hashicorp.svg" width="500" />
   </a>
 </p>
 
