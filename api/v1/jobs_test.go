@@ -21,11 +21,11 @@ func postTestJob(s *agent.TestAgent, t *testing.T, job *client.Job) {
 	if job == nil {
 		job = mockJob()
 	}
-	resp, writeMeta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
+	result, meta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
 
 	require.NoError(t, err)
-	require.NotNil(t, resp)
-	require.NotNil(t, writeMeta)
+	require.NotNil(t, result)
+	require.NotNil(t, meta)
 }
 
 func TestJobsGet(t *testing.T) {
@@ -36,11 +36,11 @@ func TestJobsGet(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		jobs, queryMeta, err := testClient.Jobs().GetJobs(queryOpts.Ctx())
+		result, meta, err := testClient.Jobs().GetJobs(queryOpts.Ctx())
 		require.NoError(t, err)
-		require.NotNil(t, jobs)
-		require.Len(t, jobs, 1)
-		require.NotNil(t, queryMeta)
+		require.NotNil(t, result)
+		require.Len(t, result, 1)
+		require.NotNil(t, meta)
 	})
 }
 
@@ -53,13 +53,13 @@ func TestJobGet(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		queryJob, queryMeta, err := testClient.Jobs().GetJob(queryOpts.Ctx(), *job.ID)
+		result, meta, err := testClient.Jobs().GetJob(queryOpts.Ctx(), *job.ID)
 		require.NoError(t, err)
-		require.NotNil(t, queryJob)
-		require.NotNil(t, queryMeta)
+		require.NotNil(t, result)
+		require.NotNil(t, meta)
 
-		if *job.ID != *queryJob.ID {
-			t.Fatalf("TestJobGet invalid job comparison: %s != %s", *job.ID, *queryJob.ID)
+		if *job.ID != *result.ID {
+			t.Fatalf("TestJobGet invalid job comparison: %s != %s", *job.ID, *result.ID)
 		}
 	})
 }
@@ -72,10 +72,10 @@ func TestPostJob(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		resp, meta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
+		result, meta, err := testClient.Jobs().Post(writeOpts.Ctx(), job)
 
 		require.NoError(t, err)
-		require.NotNil(t, resp)
+		require.NotNil(t, result)
 		require.NotNil(t, meta)
 	})
 }
@@ -90,9 +90,9 @@ func TestPlanJob(t *testing.T) {
 
 		diffJob := mockJobWithDiff()
 
-		response, meta, err := testClient.Jobs().Plan(writeOpts.Ctx(), diffJob, true)
+		result, meta, err := testClient.Jobs().Plan(writeOpts.Ctx(), diffJob, true)
 		require.NoError(t, err)
-		require.NotNil(t, response)
+		require.NotNil(t, result)
 		require.NotNil(t, meta)
 	})
 }
@@ -107,27 +107,27 @@ func TestJobDelete(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		response, writeMeta, err := testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, false, false)
+		result, meta, err := testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, false, false)
 		require.NoError(t, err)
-		require.NotNil(t, response)
-		require.NotNil(t, writeMeta)
+		require.NotNil(t, result)
+		require.NotNil(t, meta)
 
-		// Check the response
-		require.NotNil(t, response.EvalID)
-		require.NotEmpty(t, *response.EvalID)
+		// Check the result
+		require.NotNil(t, result.EvalID)
+		require.NotEmpty(t, *result.EvalID)
 
 		rpcJob := rpcGetJob(t, s, job.ID, job.Region, job.Namespace)
 		require.NotNil(t, rpcJob)
 		require.True(t, rpcJob.Stop)
 
-		response, writeMeta, err = testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, true, false)
+		result, meta, err = testClient.Jobs().Delete(writeOpts.Ctx(), job.ID, true, false)
 		require.NoError(t, err)
-		require.NotNil(t, response)
-		require.NotNil(t, writeMeta)
+		require.NotNil(t, result)
+		require.NotNil(t, meta)
 
-		// Check the response
-		require.NotNil(t, response.EvalID)
-		require.NotEmpty(t, *response.EvalID)
+		// Check the result
+		require.NotNil(t, result.EvalID)
+		require.NotEmpty(t, *result.EvalID)
 
 		// Check the job is gone
 		rpcJob = rpcGetJob(t, s, job.ID, job.Region, job.Namespace)
@@ -141,17 +141,17 @@ func TestJobParse(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		job, err := testClient.Jobs().Parse(context.Background(), jobHCL, false, false)
+		result, err := testClient.Jobs().Parse(context.Background(), jobHCL, false, false)
 		require.NoError(t, err)
-		require.NotNil(t, job)
+		require.NotNil(t, result)
 
 		expected := mockJob()
-		require.NotNil(t, job.Name)
-		require.Equal(t, *job.Name, *expected.Name)
+		require.NotNil(t, result.Name)
+		require.Equal(t, *result.Name, *expected.Name)
 
-		if job.Datacenters == nil {
+		if result.Datacenters == nil {
 			expectedDatacenters := *expected.Datacenters
-			jobDatacenters := *job.Datacenters
+			jobDatacenters := *result.Datacenters
 			require.NotEqual(t, jobDatacenters[0], expectedDatacenters[0])
 		}
 	})
