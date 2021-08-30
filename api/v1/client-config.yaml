@@ -5,4 +5,4 @@ gitRepoId: nomad-openapi/api/v1
 inputSpec: /local/api/v1/openapi.yaml
 outputDir: /local/api/v1/client
 packageName: client
-packageVersion: 1.1.3
+packageVersion: 1.1.4

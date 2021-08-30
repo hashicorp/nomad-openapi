@@ -16,4 +16,5 @@
 
 generator/bin
 generator/*.yaml
+asyncapi-generator/*.yaml
 

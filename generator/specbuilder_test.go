@@ -2,14 +2,15 @@ package main
 
 import (
 	"context"
-	"github.com/getkin/kin-openapi/openapi3"
-	"github.com/getkin/kin-openapi/openapi3gen"
-	"github.com/hashicorp/go-hclog"
-	"github.com/hashicorp/nomad/api"
 	"os"
 	"path"
 	"reflect"
 	"testing"
+
+	"github.com/getkin/kin-openapi/openapi3"
+	"github.com/getkin/kin-openapi/openapi3gen"
+	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/nomad/api"
 
 	"github.com/stretchr/testify/require"
 )

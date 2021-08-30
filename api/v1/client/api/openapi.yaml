@@ -145,13 +145,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -359,13 +359,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -486,13 +486,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -611,13 +611,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -901,13 +901,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -1253,13 +1253,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -1531,13 +1531,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -1656,13 +1656,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -1789,13 +1789,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -2167,13 +2167,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -2364,13 +2364,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -2620,13 +2620,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -2817,13 +2817,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -2956,13 +2956,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -3079,13 +3079,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -3345,13 +3345,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -3731,13 +3731,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -3951,13 +3951,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -4150,13 +4150,13 @@ paths:
         style: form
       - description: If set, wait until query exceeds given index. Must be provided
           with WaitParam.
-        explode: false
-        in: header
+        explode: true
+        in: query
         name: index
         required: false
         schema:
           type: integer
-        style: simple
+        style: form
       - description: Provided with IndexParam to wait for change.
         explode: true
         in: query
@@ -4344,13 +4344,13 @@ components:
     IndexHeader:
       description: If set, wait until query exceeds given index. Must be provided
         with WaitParam.
-      explode: false
-      in: header
+      explode: true
+      in: query
       name: index
       required: false
       schema:
         type: integer
-      style: simple
+      style: form
     JobDiffsParam:
       description: Boolean flag indicating whether to compute job diffs.
       explode: true

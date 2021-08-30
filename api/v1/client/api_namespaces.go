@@ -406,6 +406,9 @@ func (a *NamespacesApiService) GetNamespaceExecute(r ApiGetNamespaceRequest) (Na
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -437,9 +440,6 @@ func (a *NamespacesApiService) GetNamespaceExecute(r ApiGetNamespaceRequest) (Na
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -601,6 +601,9 @@ func (a *NamespacesApiService) GetNamespacesExecute(r ApiGetNamespacesRequest) (
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -632,9 +635,6 @@ func (a *NamespacesApiService) GetNamespacesExecute(r ApiGetNamespacesRequest) (
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")

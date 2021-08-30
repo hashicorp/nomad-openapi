@@ -44,7 +44,7 @@ var (
 		SchemaType:  intSchema,
 		Description: "If set, wait until query exceeds given index. Must be provided with WaitParam.",
 		Name:        "index",
-		In:          inHeader,
+		In:          inQuery,
 	}
 	jobDiffsParam = parameter{
 		Id:          "JobDiffsParam",

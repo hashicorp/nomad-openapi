@@ -15,7 +15,7 @@ components:
         type: string
     IndexHeader:
       description: If set, wait until query exceeds given index. Must be provided with WaitParam.
-      in: header
+      in: query
       name: index
       schema:
         type: integer

@@ -416,6 +416,9 @@ func (a *EnterpriseApiService) GetQuotaSpecExecute(r ApiGetQuotaSpecRequest) (Qu
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -447,9 +450,6 @@ func (a *EnterpriseApiService) GetQuotaSpecExecute(r ApiGetQuotaSpecRequest) (Qu
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -603,6 +603,9 @@ func (a *EnterpriseApiService) GetQuotasExecute(r ApiGetQuotasRequest) ([]interf
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -634,9 +637,6 @@ func (a *EnterpriseApiService) GetQuotasExecute(r ApiGetQuotasRequest) ([]interf
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")

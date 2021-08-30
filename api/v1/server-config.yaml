@@ -1,0 +1,11 @@
+generatorName: go-server
+gitUserId: hashicorp
+gitRepoId: nomad-openapi/api/v1
+inputSpec: /local/api/v1/openapi.yaml
+addResponseHeaders: true
+featureCORS: true
+packageName: main
+packageVersion: 1.1.4
+router: mux
+serverPort: 4646
+sourceFolder: /local/api/v1/proxyserver

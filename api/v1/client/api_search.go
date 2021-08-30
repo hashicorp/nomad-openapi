@@ -133,6 +133,9 @@ func (a *SearchApiService) GetFuzzySearchExecute(r ApiGetFuzzySearchRequest) (Fu
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -164,9 +167,6 @@ func (a *SearchApiService) GetFuzzySearchExecute(r ApiGetFuzzySearchRequest) (Fu
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -330,6 +330,9 @@ func (a *SearchApiService) GetSearchExecute(r ApiGetSearchRequest) (SearchRespon
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -361,9 +364,6 @@ func (a *SearchApiService) GetSearchExecute(r ApiGetSearchRequest) (SearchRespon
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")

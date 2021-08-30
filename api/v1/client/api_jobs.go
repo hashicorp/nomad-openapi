@@ -297,6 +297,9 @@ func (a *JobsApiService) GetJobExecute(r ApiGetJobRequest) (Job, *_nethttp.Respo
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -328,9 +331,6 @@ func (a *JobsApiService) GetJobExecute(r ApiGetJobRequest) (Job, *_nethttp.Respo
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -488,6 +488,9 @@ func (a *JobsApiService) GetJobAllocationsExecute(r ApiGetJobAllocationsRequest)
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -519,9 +522,6 @@ func (a *JobsApiService) GetJobAllocationsExecute(r ApiGetJobAllocationsRequest)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -679,6 +679,9 @@ func (a *JobsApiService) GetJobDeploymentExecute(r ApiGetJobDeploymentRequest) (
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -710,9 +713,6 @@ func (a *JobsApiService) GetJobDeploymentExecute(r ApiGetJobDeploymentRequest) (
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -875,6 +875,9 @@ func (a *JobsApiService) GetJobDeploymentsExecute(r ApiGetJobDeploymentsRequest)
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -909,9 +912,6 @@ func (a *JobsApiService) GetJobDeploymentsExecute(r ApiGetJobDeploymentsRequest)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1069,6 +1069,9 @@ func (a *JobsApiService) GetJobEvaluationsExecute(r ApiGetJobEvaluationsRequest)
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1100,9 +1103,6 @@ func (a *JobsApiService) GetJobEvaluationsExecute(r ApiGetJobEvaluationsRequest)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1260,6 +1260,9 @@ func (a *JobsApiService) GetJobScaleStatusExecute(r ApiGetJobScaleStatusRequest)
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1291,9 +1294,6 @@ func (a *JobsApiService) GetJobScaleStatusExecute(r ApiGetJobScaleStatusRequest)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1451,6 +1451,9 @@ func (a *JobsApiService) GetJobSummaryExecute(r ApiGetJobSummaryRequest) (JobSum
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1482,9 +1485,6 @@ func (a *JobsApiService) GetJobSummaryExecute(r ApiGetJobSummaryRequest) (JobSum
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1647,6 +1647,9 @@ func (a *JobsApiService) GetJobVersionsExecute(r ApiGetJobVersionsRequest) (JobV
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1681,9 +1684,6 @@ func (a *JobsApiService) GetJobVersionsExecute(r ApiGetJobVersionsRequest) (JobV
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1837,6 +1837,9 @@ func (a *JobsApiService) GetJobsExecute(r ApiGetJobsRequest) ([]JobListStub, *_n
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1868,9 +1871,6 @@ func (a *JobsApiService) GetJobsExecute(r ApiGetJobsRequest) ([]JobListStub, *_n
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")

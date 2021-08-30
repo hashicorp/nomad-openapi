@@ -737,6 +737,9 @@ func (a *VolumesApiService) GetExternalVolumesExecute(r ApiGetExternalVolumesReq
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -771,9 +774,6 @@ func (a *VolumesApiService) GetExternalVolumesExecute(r ApiGetExternalVolumesReq
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -932,6 +932,9 @@ func (a *VolumesApiService) GetSnapshotsExecute(r ApiGetSnapshotsRequest) (CSISn
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -966,9 +969,6 @@ func (a *VolumesApiService) GetSnapshotsExecute(r ApiGetSnapshotsRequest) (CSISn
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1126,6 +1126,9 @@ func (a *VolumesApiService) GetVolumeExecute(r ApiGetVolumeRequest) (CSIVolume, 
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1157,9 +1160,6 @@ func (a *VolumesApiService) GetVolumeExecute(r ApiGetVolumeRequest) (CSIVolume, 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
@@ -1328,6 +1328,9 @@ func (a *VolumesApiService) GetVolumesExecute(r ApiGetVolumesRequest) ([]CSIVolu
 	if r.namespace != nil {
 		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
 	}
+	if r.index != nil {
+		localVarQueryParams.Add("index", parameterToString(*r.index, ""))
+	}
 	if r.wait != nil {
 		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
 	}
@@ -1368,9 +1371,6 @@ func (a *VolumesApiService) GetVolumesExecute(r ApiGetVolumesRequest) ([]CSIVolu
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.index != nil {
-		localVarHeaderParams["index"] = parameterToString(*r.index, "")
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
