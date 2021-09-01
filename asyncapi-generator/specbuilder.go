@@ -7,6 +7,7 @@ import (
 	"github.com/hashicorp/nomad/nomad/structs"
 	"github.com/swaggest/go-asyncapi/reflector/asyncapi-2.0.0"
 	spec2 "github.com/swaggest/go-asyncapi/spec-2.0.0"
+	"github.com/swaggest/go-asyncapi/swgen/asyncapi-2.0.0"
 )
 
 type spec struct {
@@ -82,8 +83,8 @@ var servers = map[string]spec2.Server{
 
 var eventStreamChannelItem = &spec2.ChannelItem{
 	Parameters: eventStreamParams,
-	Bindings: &spec2.ChannelBindingsObject{
-		HTTP: nil, //HTTPChannelBindingObject{},
+	Publish: &spec2.Operation{
+		Bindings: eventStreamOperationsBinding,
 	},
 }
 
@@ -142,37 +143,13 @@ var subscribeMessage = &asyncapi.MessageSample{
 }
 
 var eventStreamOperationsBinding = &spec2.OperationBindingsObject{
-	//HTTP: &OperationBindingObject{},
+	HTTP: httpEventStreamBindingObject,
 }
 
-type OperationBindingObject struct {
-	Type           string
-	Method         string
-	Query          *SchemaObject
-	BindingVersion string
-}
-
-var httpEventStreamBindingObject = &OperationBindingObject{
-	Type:           "request",
-	Method:         "GET",
-	BindingVersion: "latest",
-	//Query: &SchemaObject{
-	//	type: object
-	//	required:
-	//	- companyId
-	//	properties:
-	//	companyId:
-	//	type: number
-	//	minimum: 1
-	//	description: The Id of the company.
-	//	additionalProperties: false
-	//},
-}
-
-type SchemaObject struct {
-	Name        string
-	Type        string
-	Description string
+var httpEventStreamBindingObject = &spec2.HTTPOperationBindingObject{
+	Type:   "request",
+	Method: "GET",
+	Query:  httpEventStreamQueryObject,
 }
 
 var components = &spec2.Components{
@@ -189,37 +166,31 @@ var components = &spec2.Components{
 	MessageBindings:   nil,
 }
 
-var queryOptionParams = map[string]SchemaObject{
+type queryParam struct {
+	Description string
+	Type        string
+}
+
+var httpEventStreamQueryObject = map[string]interface{}{
+	"type":       "object",
+	"properties": queryOptionParams,
+}
+
+var queryOptionParams = map[string]queryParam{
 	"topic": {
-		Name:        "topic",
 		Description: "colon separate list of topics to subscribe to",
 		Type:        "string",
 	},
 	"index": {
-		Name:        "index",
 		Description: "index to query from",
 		Type:        "integer",
-		//Schema: map[string]interface{}{
-		//	"type": "integer",
-		//},
-		//Location: "$message.payload#/QueryOptions/MinQueryIndex",
 	},
 	"region": {
-		Name:        "region",
 		Description: "region query filter",
 		Type:        "string",
-		//Schema: map[string]interface{}{
-		//	"type": "string",
-		//},
-		//Location: "$message.payload#/QueryOptions/Region",
 	},
 	"namespace": {
-		Name:        "namespace",
 		Description: "namespace query filter",
 		Type:        "string",
-		//Schema: map[string]interface{}{
-		//	"type": "string",
-		//},
-		//Location: "$message.payload#/QueryOptions/Namespace",
 	},
 }

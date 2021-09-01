@@ -2,6 +2,8 @@ module github.com/hashicorp/nomad-openapi/asyncapigenerator
 
 go 1.16
 
+replace github.com/swaggest/go-asyncapi => ../../go-asyncapi
+
 require (
 	github.com/hashicorp/go-hclog v0.16.2 // indirect
 	github.com/hashicorp/nomad v1.1.4 // indirect
