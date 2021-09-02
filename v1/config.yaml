@@ -1,8 +1,8 @@
 # File is used by the openapi-generator cli to generate a test client for unit tests.
 generatorName: go
 gitUserId: hashicorp
-gitRepoId: nomad-openapi/api/v1
-inputSpec: /local/api/v1/openapi.yaml
-outputDir: /local/api/v1/client
+gitRepoId: nomad-openapi/v1
+inputSpec: /local/v1/openapi.yaml
+outputDir: /local/v1/client
 packageName: client
-packageVersion: 1.1.3
+packageVersion: 1.1.4
