@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/cronexpr"
-	"github.com/hashicorp/nomad-openapi/api/v1/client"
+	"github.com/hashicorp/nomad-openapi/v1/client"
 )
 
 // Jobs encapsulates and extends the generated JobsApiService with convenience methods.
