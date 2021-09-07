@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/hashicorp/nomad/api"
 	"net/http"
+
+	"github.com/hashicorp/nomad/api"
 )
 
 func (v *v1api) getMetricsPaths() []*apiPath {
