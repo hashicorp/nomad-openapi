@@ -241,12 +241,6 @@ components:
           schema:
             $ref: '#/components/schemas/Namespace'
       required: true
-    NamespaceListRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NamespaceListRequest'
-      required: true
     QuotaSpec:
       content:
         application/json:
@@ -2590,33 +2584,6 @@ components:
         Quota:
           type: string
       type: object
-    NamespaceListRequest:
-      properties:
-        AllowStale:
-          type: boolean
-        AuthToken:
-          type: string
-        Forwarded:
-          type: boolean
-        MaxQueryTime:
-          format: int64
-          type: integer
-        MinQueryIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        Namespace:
-          type: string
-        NextToken:
-          type: string
-        PerPage:
-          format: int32
-          type: integer
-        Prefix:
-          type: string
-        Region:
-          type: string
-      type: object
     NetworkResource:
       properties:
         CIDR:
@@ -4371,12 +4338,6 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamespaceListRequest'
-        required: true
       responses:
         "200":
           $ref: '#/components/responses/GetNamespacesResponse'

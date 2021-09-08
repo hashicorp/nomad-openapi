@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/nomad/structs"
 )
 
 func (v *v1api) getNamespacePaths() []*apiPath {
@@ -17,7 +16,7 @@ func (v *v1api) getNamespacePaths() []*apiPath {
 			Template: "/namespaces",
 			Operations: []*operation{
 				newOperation(http.MethodGet, "NamespaceRequest", tags, "GetNamespaces",
-					newRequestBody(objectSchema, structs.NamespaceListRequest{}),
+					nil,
 					queryOptions,
 					newResponseConfig(200, arraySchema, api.Namespace{}, queryMeta,
 						"GetNamespacesResponse"),

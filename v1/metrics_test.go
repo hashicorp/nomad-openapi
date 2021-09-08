@@ -20,6 +20,7 @@ func TestMetrics(t *testing.T) {
 		s.Server.AgentSelfRequest(respW, req)
 
 		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
 
 		// now make a metrics endpoint request, which should be already initialized
 		// and written to
