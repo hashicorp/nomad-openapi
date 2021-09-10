@@ -2419,12 +2419,6 @@ paths:
         schema:
           type: string
         style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamespaceListRequest'
-        required: true
       responses:
         "200":
           content:
@@ -4638,12 +4632,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Namespace'
-      required: true
-    NamespaceListRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NamespaceListRequest'
       required: true
     QuotaSpec:
       content:
@@ -107097,44 +107085,6 @@ components:
         Name:
           type: string
         Quota:
-          type: string
-      type: object
-    NamespaceListRequest:
-      example:
-        MinQueryIndex: 2147483647
-        MaxQueryTime: 0
-        NextToken: NextToken
-        PerPage: 1
-        Forwarded: true
-        AuthToken: AuthToken
-        Region: Region
-        Prefix: Prefix
-        Namespace: Namespace
-        AllowStale: true
-      properties:
-        AllowStale:
-          type: boolean
-        AuthToken:
-          type: string
-        Forwarded:
-          type: boolean
-        MaxQueryTime:
-          format: int64
-          type: integer
-        MinQueryIndex:
-          maximum: 1.8446744073709552E+19
-          minimum: 0
-          type: integer
-        Namespace:
-          type: string
-        NextToken:
-          type: string
-        PerPage:
-          format: int32
-          type: integer
-        Prefix:
-          type: string
-        Region:
           type: string
       type: object
     NetworkResource:

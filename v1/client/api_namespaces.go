@@ -498,7 +498,6 @@ func (a *NamespacesApiService) GetNamespaceExecute(r ApiGetNamespaceRequest) (Na
 type ApiGetNamespacesRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
-	namespaceListRequest *NamespaceListRequest
 	region *string
 	namespace *string
 	index *int32
@@ -510,10 +509,6 @@ type ApiGetNamespacesRequest struct {
 	nextToken *string
 }
 
-func (r ApiGetNamespacesRequest) NamespaceListRequest(namespaceListRequest NamespaceListRequest) ApiGetNamespacesRequest {
-	r.namespaceListRequest = &namespaceListRequest
-	return r
-}
 func (r ApiGetNamespacesRequest) Region(region string) ApiGetNamespacesRequest {
 	r.region = &region
 	return r
@@ -591,9 +586,6 @@ func (a *NamespacesApiService) GetNamespacesExecute(r ApiGetNamespacesRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.namespaceListRequest == nil {
-		return localVarReturnValue, nil, reportError("namespaceListRequest is required and must be specified")
-	}
 
 	if r.region != nil {
 		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
@@ -617,7 +609,7 @@ func (a *NamespacesApiService) GetNamespacesExecute(r ApiGetNamespacesRequest) (
 		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -639,8 +631,6 @@ func (a *NamespacesApiService) GetNamespacesExecute(r ApiGetNamespacesRequest) (
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
 	}
-	// body params
-	localVarPostBody = r.namespaceListRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

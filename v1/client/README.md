@@ -213,7 +213,6 @@ Class | Method | HTTP request | Description
  - [MultiregionRegion](docs/MultiregionRegion.md)
  - [MultiregionStrategy](docs/MultiregionStrategy.md)
  - [Namespace](docs/Namespace.md)
- - [NamespaceListRequest](docs/NamespaceListRequest.md)
  - [NetworkResource](docs/NetworkResource.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
  - [ObjectDiff](docs/ObjectDiff.md)

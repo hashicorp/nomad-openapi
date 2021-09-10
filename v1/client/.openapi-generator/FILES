@@ -95,7 +95,6 @@ model_multiregion.go
 model_multiregion_region.go
 model_multiregion_strategy.go
 model_namespace.go
-model_namespace_list_request.go
 model_network_resource.go
 model_node_score_meta.go
 model_object_diff.go
