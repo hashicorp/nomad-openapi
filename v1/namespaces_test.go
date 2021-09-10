@@ -3,6 +3,7 @@ package v1
 import (
 	"testing"
 
+	"github.com/hashicorp/nomad-openapi/v1/client"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/nomad/mock"
 	"github.com/hashicorp/nomad/nomad/structs"
@@ -33,5 +34,70 @@ func TestGetNamespaces(t *testing.T) {
 
 		// Check the output (the 3 we register + default)
 		require.Len(t, *result, 4)
+	})
+}
+
+func TestGetNamespace(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+
+		result, meta, err := testClient.Namespaces().GetNamespace(queryOpts.Ctx(), defaultNamespace)
+		require.NoError(t, err)
+		require.NotNil(t, result)
+		require.NotNil(t, meta)
+
+		require.Equal(t, defaultNamespace, *result.Name)
+	})
+}
+
+func TestPostNamespace(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		mockNS := mock.Namespace()
+		clientNS := client.Namespace{
+			Name: &mockNS.Name,
+		}
+
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+		meta, err := testClient.Namespaces().PostNamespace(writeOpts.Ctx(), &clientNS)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		result, _, err := testClient.Namespaces().GetNamespace(queryOpts.Ctx(), *clientNS.Name)
+		require.NoError(t, err)
+		require.NotNil(t, result)
+		require.NotNil(t, result.Name)
+		require.Equal(t, *clientNS.Name, *result.Name)
+	})
+}
+
+func TestDeleteNamespace(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		mockNS := mock.Namespace()
+		clientNS := client.Namespace{
+			Name: &mockNS.Name,
+		}
+
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+		meta, err := testClient.Namespaces().PostNamespace(writeOpts.Ctx(), &clientNS)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+
+		result, _, err := testClient.Namespaces().GetNamespace(queryOpts.Ctx(), *clientNS.Name)
+		require.NoError(t, err)
+		require.NotNil(t, result)
+		require.NotNil(t, result.Name)
+		require.Equal(t, *clientNS.Name, *result.Name)
+
+		_, err = testClient.Namespaces().DeleteNamespace(writeOpts.Ctx(), *clientNS.Name)
+		require.NoError(t, err)
+
+		_, _, err = testClient.Namespaces().GetNamespace(queryOpts.Ctx(), *clientNS.Name)
+		require.Error(t, err)
 	})
 }
