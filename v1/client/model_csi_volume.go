@@ -23,7 +23,7 @@ type CSIVolume struct {
 	AttachmentMode *string `json:"AttachmentMode,omitempty"`
 	Capacity *int64 `json:"Capacity,omitempty"`
 	CloneID *string `json:"CloneID,omitempty"`
-	Context *map[string]string `json:"Context,omitempty"`
+	Context *Object `json:"Context,omitempty"`
 	ControllerRequired *bool `json:"ControllerRequired,omitempty"`
 	ControllersExpected *int32 `json:"ControllersExpected,omitempty"`
 	ControllersHealthy *int32 `json:"ControllersHealthy,omitempty"`
@@ -36,7 +36,7 @@ type CSIVolume struct {
 	Namespace *string `json:"Namespace,omitempty"`
 	NodesExpected *int32 `json:"NodesExpected,omitempty"`
 	NodesHealthy *int32 `json:"NodesHealthy,omitempty"`
-	Parameters *map[string]string `json:"Parameters,omitempty"`
+	Parameters *Object `json:"Parameters,omitempty"`
 	PluginID *string `json:"PluginID,omitempty"`
 	Provider *string `json:"Provider,omitempty"`
 	ProviderVersion *string `json:"ProviderVersion,omitempty"`
@@ -230,9 +230,9 @@ func (o *CSIVolume) SetCloneID(v string) {
 }
 
 // GetContext returns the Context field value if set, zero value otherwise.
-func (o *CSIVolume) GetContext() map[string]string {
+func (o *CSIVolume) GetContext() Object {
 	if o == nil || o.Context == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Context
@@ -240,7 +240,7 @@ func (o *CSIVolume) GetContext() map[string]string {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CSIVolume) GetContextOk() (*map[string]string, bool) {
+func (o *CSIVolume) GetContextOk() (*Object, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
@@ -256,8 +256,8 @@ func (o *CSIVolume) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given map[string]string and assigns it to the Context field.
-func (o *CSIVolume) SetContext(v map[string]string) {
+// SetContext gets a reference to the given Object and assigns it to the Context field.
+func (o *CSIVolume) SetContext(v Object) {
 	o.Context = &v
 }
 
@@ -646,9 +646,9 @@ func (o *CSIVolume) SetNodesHealthy(v int32) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *CSIVolume) GetParameters() map[string]string {
+func (o *CSIVolume) GetParameters() Object {
 	if o == nil || o.Parameters == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Parameters
@@ -656,7 +656,7 @@ func (o *CSIVolume) GetParameters() map[string]string {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CSIVolume) GetParametersOk() (*map[string]string, bool) {
+func (o *CSIVolume) GetParametersOk() (*Object, bool) {
 	if o == nil || o.Parameters == nil {
 		return nil, false
 	}
@@ -672,8 +672,8 @@ func (o *CSIVolume) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given map[string]string and assigns it to the Parameters field.
-func (o *CSIVolume) SetParameters(v map[string]string) {
+// SetParameters gets a reference to the given Object and assigns it to the Parameters field.
+func (o *CSIVolume) SetParameters(v Object) {
 	o.Parameters = &v
 }
 

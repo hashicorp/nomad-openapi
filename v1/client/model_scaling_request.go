@@ -25,7 +25,7 @@ type ScalingRequest struct {
 	PolicyOverride *bool `json:"PolicyOverride,omitempty"`
 	Region *string `json:"Region,omitempty"`
 	SecretID *string `json:"SecretID,omitempty"`
-	Target *map[string]string `json:"Target,omitempty"`
+	Target *Object `json:"Target,omitempty"`
 }
 
 // NewScalingRequest instantiates a new ScalingRequest object
@@ -302,9 +302,9 @@ func (o *ScalingRequest) SetSecretID(v string) {
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
-func (o *ScalingRequest) GetTarget() map[string]string {
+func (o *ScalingRequest) GetTarget() Object {
 	if o == nil || o.Target == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Target
@@ -312,7 +312,7 @@ func (o *ScalingRequest) GetTarget() map[string]string {
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScalingRequest) GetTargetOk() (*map[string]string, bool) {
+func (o *ScalingRequest) GetTargetOk() (*Object, bool) {
 	if o == nil || o.Target == nil {
 		return nil, false
 	}
@@ -328,8 +328,8 @@ func (o *ScalingRequest) HasTarget() bool {
 	return false
 }
 
-// SetTarget gets a reference to the given map[string]string and assigns it to the Target field.
-func (o *ScalingRequest) SetTarget(v map[string]string) {
+// SetTarget gets a reference to the given Object and assigns it to the Target field.
+func (o *ScalingRequest) SetTarget(v Object) {
 	o.Target = &v
 }
 

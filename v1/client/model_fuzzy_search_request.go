@@ -22,7 +22,7 @@ type FuzzySearchRequest struct {
 	Context *string `json:"Context,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
 	NextToken *string `json:"NextToken,omitempty"`
-	Params *map[string]string `json:"Params,omitempty"`
+	Params *Object `json:"Params,omitempty"`
 	PerPage *int32 `json:"PerPage,omitempty"`
 	Prefix *string `json:"Prefix,omitempty"`
 	Region *string `json:"Region,omitempty"`
@@ -209,9 +209,9 @@ func (o *FuzzySearchRequest) SetNextToken(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *FuzzySearchRequest) GetParams() map[string]string {
+func (o *FuzzySearchRequest) GetParams() Object {
 	if o == nil || o.Params == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Params
@@ -219,7 +219,7 @@ func (o *FuzzySearchRequest) GetParams() map[string]string {
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FuzzySearchRequest) GetParamsOk() (*map[string]string, bool) {
+func (o *FuzzySearchRequest) GetParamsOk() (*Object, bool) {
 	if o == nil || o.Params == nil {
 		return nil, false
 	}
@@ -235,8 +235,8 @@ func (o *FuzzySearchRequest) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given map[string]string and assigns it to the Params field.
-func (o *FuzzySearchRequest) SetParams(v map[string]string) {
+// SetParams gets a reference to the given Object and assigns it to the Params field.
+func (o *FuzzySearchRequest) SetParams(v Object) {
 	o.Params = &v
 }
 

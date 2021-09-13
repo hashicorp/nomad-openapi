@@ -17,7 +17,7 @@ import (
 
 // CSITopology struct for CSITopology
 type CSITopology struct {
-	Segments *map[string]string `json:"Segments,omitempty"`
+	Segments *Object `json:"Segments,omitempty"`
 }
 
 // NewCSITopology instantiates a new CSITopology object
@@ -38,9 +38,9 @@ func NewCSITopologyWithDefaults() *CSITopology {
 }
 
 // GetSegments returns the Segments field value if set, zero value otherwise.
-func (o *CSITopology) GetSegments() map[string]string {
+func (o *CSITopology) GetSegments() Object {
 	if o == nil || o.Segments == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Segments
@@ -48,7 +48,7 @@ func (o *CSITopology) GetSegments() map[string]string {
 
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CSITopology) GetSegmentsOk() (*map[string]string, bool) {
+func (o *CSITopology) GetSegmentsOk() (*Object, bool) {
 	if o == nil || o.Segments == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *CSITopology) HasSegments() bool {
 	return false
 }
 
-// SetSegments gets a reference to the given map[string]string and assigns it to the Segments field.
-func (o *CSITopology) SetSegments(v map[string]string) {
+// SetSegments gets a reference to the given Object and assigns it to the Segments field.
+func (o *CSITopology) SetSegments(v Object) {
 	o.Segments = &v
 }
 

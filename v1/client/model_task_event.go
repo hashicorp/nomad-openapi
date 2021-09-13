@@ -17,7 +17,7 @@ import (
 
 // TaskEvent struct for TaskEvent
 type TaskEvent struct {
-	Details *map[string]string `json:"Details,omitempty"`
+	Details *Object `json:"Details,omitempty"`
 	DiskLimit *int64 `json:"DiskLimit,omitempty"`
 	DiskSize *int64 `json:"DiskSize,omitempty"`
 	DisplayMessage *string `json:"DisplayMessage,omitempty"`
@@ -62,9 +62,9 @@ func NewTaskEventWithDefaults() *TaskEvent {
 }
 
 // GetDetails returns the Details field value if set, zero value otherwise.
-func (o *TaskEvent) GetDetails() map[string]string {
+func (o *TaskEvent) GetDetails() Object {
 	if o == nil || o.Details == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Details
@@ -72,7 +72,7 @@ func (o *TaskEvent) GetDetails() map[string]string {
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskEvent) GetDetailsOk() (*map[string]string, bool) {
+func (o *TaskEvent) GetDetailsOk() (*Object, bool) {
 	if o == nil || o.Details == nil {
 		return nil, false
 	}
@@ -88,8 +88,8 @@ func (o *TaskEvent) HasDetails() bool {
 	return false
 }
 
-// SetDetails gets a reference to the given map[string]string and assigns it to the Details field.
-func (o *TaskEvent) SetDetails(v map[string]string) {
+// SetDetails gets a reference to the given Object and assigns it to the Details field.
+func (o *TaskEvent) SetDetails(v Object) {
 	o.Details = &v
 }
 

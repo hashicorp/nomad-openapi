@@ -24,7 +24,7 @@ type CSIVolumeExternalStub struct {
 	PublishedExternalNodeIDs *[]string `json:"PublishedExternalNodeIDs,omitempty"`
 	SnapshotID *string `json:"SnapshotID,omitempty"`
 	Status *string `json:"Status,omitempty"`
-	VolumeContext *map[string]string `json:"VolumeContext,omitempty"`
+	VolumeContext *Object `json:"VolumeContext,omitempty"`
 }
 
 // NewCSIVolumeExternalStub instantiates a new CSIVolumeExternalStub object
@@ -269,9 +269,9 @@ func (o *CSIVolumeExternalStub) SetStatus(v string) {
 }
 
 // GetVolumeContext returns the VolumeContext field value if set, zero value otherwise.
-func (o *CSIVolumeExternalStub) GetVolumeContext() map[string]string {
+func (o *CSIVolumeExternalStub) GetVolumeContext() Object {
 	if o == nil || o.VolumeContext == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.VolumeContext
@@ -279,7 +279,7 @@ func (o *CSIVolumeExternalStub) GetVolumeContext() map[string]string {
 
 // GetVolumeContextOk returns a tuple with the VolumeContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CSIVolumeExternalStub) GetVolumeContextOk() (*map[string]string, bool) {
+func (o *CSIVolumeExternalStub) GetVolumeContextOk() (*Object, bool) {
 	if o == nil || o.VolumeContext == nil {
 		return nil, false
 	}
@@ -295,8 +295,8 @@ func (o *CSIVolumeExternalStub) HasVolumeContext() bool {
 	return false
 }
 
-// SetVolumeContext gets a reference to the given map[string]string and assigns it to the VolumeContext field.
-func (o *CSIVolumeExternalStub) SetVolumeContext(v map[string]string) {
+// SetVolumeContext gets a reference to the given Object and assigns it to the VolumeContext field.
+func (o *CSIVolumeExternalStub) SetVolumeContext(v Object) {
 	o.VolumeContext = &v
 }
 

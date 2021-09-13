@@ -22,7 +22,7 @@ type CSISnapshot struct {
 	ID *string `json:"ID,omitempty"`
 	IsReady *bool `json:"IsReady,omitempty"`
 	Name *string `json:"Name,omitempty"`
-	Parameters *map[string]string `json:"Parameters,omitempty"`
+	Parameters *Object `json:"Parameters,omitempty"`
 	PluginID *string `json:"PluginID,omitempty"`
 	Secrets *map[string]string `json:"Secrets,omitempty"`
 	SizeBytes *int64 `json:"SizeBytes,omitempty"`
@@ -207,9 +207,9 @@ func (o *CSISnapshot) SetName(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *CSISnapshot) GetParameters() map[string]string {
+func (o *CSISnapshot) GetParameters() Object {
 	if o == nil || o.Parameters == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Parameters
@@ -217,7 +217,7 @@ func (o *CSISnapshot) GetParameters() map[string]string {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CSISnapshot) GetParametersOk() (*map[string]string, bool) {
+func (o *CSISnapshot) GetParametersOk() (*Object, bool) {
 	if o == nil || o.Parameters == nil {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *CSISnapshot) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given map[string]string and assigns it to the Parameters field.
-func (o *CSISnapshot) SetParameters(v map[string]string) {
+// SetParameters gets a reference to the given Object and assigns it to the Parameters field.
+func (o *CSISnapshot) SetParameters(v Object) {
 	o.Parameters = &v
 }
 

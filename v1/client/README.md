@@ -78,6 +78,16 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentApi* | [**GetAgentHealth**](docs/AgentApi.md#getagenthealth) | **Get** /agent/health | 
+*AgentApi* | [**GetAgentHostData**](docs/AgentApi.md#getagenthostdata) | **Get** /agent/host | 
+*AgentApi* | [**GetAgentMembers**](docs/AgentApi.md#getagentmembers) | **Get** /agent/members | 
+*AgentApi* | [**GetAgentPprof**](docs/AgentApi.md#getagentpprof) | **Get** /agent/pprof/{type} | 
+*AgentApi* | [**GetAgentSelf**](docs/AgentApi.md#getagentself) | **Get** /agent/self | 
+*AgentApi* | [**GetAgentServers**](docs/AgentApi.md#getagentservers) | **Get** /agent/servers | 
+*AgentApi* | [**PostAgentForceLeave**](docs/AgentApi.md#postagentforceleave) | **Post** /agent/force-leave | 
+*AgentApi* | [**PostAgentJoin**](docs/AgentApi.md#postagentjoin) | **Post** /agent/join | 
+*AgentApi* | [**PostAgentKeyringAction**](docs/AgentApi.md#postagentkeyringaction) | **Post** /agent/keyring/{action} | 
+*AgentApi* | [**PostAgentServers**](docs/AgentApi.md#postagentservers) | **Post** /agent/servers | 
 *EnterpriseApi* | [**CreateQuotaSpec**](docs/EnterpriseApi.md#createquotaspec) | **Post** /quota | 
 *EnterpriseApi* | [**DeleteQuotaSpec**](docs/EnterpriseApi.md#deletequotaspec) | **Delete** /quota/{specName} | 
 *EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
@@ -129,6 +139,10 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Affinity](docs/Affinity.md)
+ - [AgentHealth](docs/AgentHealth.md)
+ - [AgentHealthResponse](docs/AgentHealthResponse.md)
+ - [AgentMember](docs/AgentMember.md)
+ - [AgentSelf](docs/AgentSelf.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
@@ -176,6 +190,7 @@ Class | Method | HTTP request | Description
  - [DeploymentState](docs/DeploymentState.md)
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
+ - [DiskUsage](docs/DiskUsage.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
  - [EphemeralDisk](docs/EphemeralDisk.md)
  - [EvalOptions](docs/EvalOptions.md)
@@ -185,6 +200,8 @@ Class | Method | HTTP request | Description
  - [FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [GaugeValue](docs/GaugeValue.md)
+ - [HostData](docs/HostData.md)
+ - [HostDataResponse](docs/HostDataResponse.md)
  - [Job](docs/Job.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
@@ -206,6 +223,9 @@ Class | Method | HTTP request | Description
  - [JobValidateResponse](docs/JobValidateResponse.md)
  - [JobVersionsResponse](docs/JobVersionsResponse.md)
  - [JobsParseRequest](docs/JobsParseRequest.md)
+ - [JoinResponse](docs/JoinResponse.md)
+ - [KeyringRequest](docs/KeyringRequest.md)
+ - [KeyringResponse](docs/KeyringResponse.md)
  - [LogConfig](docs/LogConfig.md)
  - [MetricsSummary](docs/MetricsSummary.md)
  - [MigrateStrategy](docs/MigrateStrategy.md)
@@ -237,6 +257,7 @@ Class | Method | HTTP request | Description
  - [ScalingRequest](docs/ScalingRequest.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
+ - [ServerMembers](docs/ServerMembers.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
  - [SidecarTask](docs/SidecarTask.md)

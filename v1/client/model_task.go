@@ -24,14 +24,14 @@ type Task struct {
 	Constraints *[]Constraint `json:"Constraints,omitempty"`
 	DispatchPayload *DispatchPayloadConfig `json:"DispatchPayload,omitempty"`
 	Driver *string `json:"Driver,omitempty"`
-	Env *map[string]string `json:"Env,omitempty"`
+	Env *Object `json:"Env,omitempty"`
 	KillSignal *string `json:"KillSignal,omitempty"`
 	KillTimeout *int64 `json:"KillTimeout,omitempty"`
 	Kind *string `json:"Kind,omitempty"`
 	Leader *bool `json:"Leader,omitempty"`
 	Lifecycle *TaskLifecycle `json:"Lifecycle,omitempty"`
 	LogConfig *LogConfig `json:"LogConfig,omitempty"`
-	Meta *map[string]string `json:"Meta,omitempty"`
+	Meta *Object `json:"Meta,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Resources *Resources `json:"Resources,omitempty"`
 	RestartPolicy *RestartPolicy `json:"RestartPolicy,omitempty"`
@@ -286,9 +286,9 @@ func (o *Task) SetDriver(v string) {
 }
 
 // GetEnv returns the Env field value if set, zero value otherwise.
-func (o *Task) GetEnv() map[string]string {
+func (o *Task) GetEnv() Object {
 	if o == nil || o.Env == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Env
@@ -296,7 +296,7 @@ func (o *Task) GetEnv() map[string]string {
 
 // GetEnvOk returns a tuple with the Env field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Task) GetEnvOk() (*map[string]string, bool) {
+func (o *Task) GetEnvOk() (*Object, bool) {
 	if o == nil || o.Env == nil {
 		return nil, false
 	}
@@ -312,8 +312,8 @@ func (o *Task) HasEnv() bool {
 	return false
 }
 
-// SetEnv gets a reference to the given map[string]string and assigns it to the Env field.
-func (o *Task) SetEnv(v map[string]string) {
+// SetEnv gets a reference to the given Object and assigns it to the Env field.
+func (o *Task) SetEnv(v Object) {
 	o.Env = &v
 }
 
@@ -510,9 +510,9 @@ func (o *Task) SetLogConfig(v LogConfig) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *Task) GetMeta() map[string]string {
+func (o *Task) GetMeta() Object {
 	if o == nil || o.Meta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Meta
@@ -520,7 +520,7 @@ func (o *Task) GetMeta() map[string]string {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Task) GetMetaOk() (*map[string]string, bool) {
+func (o *Task) GetMetaOk() (*Object, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
@@ -536,8 +536,8 @@ func (o *Task) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
-func (o *Task) SetMeta(v map[string]string) {
+// SetMeta gets a reference to the given Object and assigns it to the Meta field.
+func (o *Task) SetMeta(v Object) {
 	o.Meta = &v
 }
 

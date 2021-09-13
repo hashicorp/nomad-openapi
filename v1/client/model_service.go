@@ -18,14 +18,14 @@ import (
 // Service struct for Service
 type Service struct {
 	AddressMode *string `json:"AddressMode,omitempty"`
-	CanaryMeta *map[string]string `json:"CanaryMeta,omitempty"`
+	CanaryMeta *Object `json:"CanaryMeta,omitempty"`
 	CanaryTags *[]string `json:"CanaryTags,omitempty"`
 	CheckRestart *CheckRestart `json:"CheckRestart,omitempty"`
 	Checks *[]ServiceCheck `json:"Checks,omitempty"`
 	Connect *ConsulConnect `json:"Connect,omitempty"`
 	EnableTagOverride *bool `json:"EnableTagOverride,omitempty"`
 	Id *string `json:"Id,omitempty"`
-	Meta *map[string]string `json:"Meta,omitempty"`
+	Meta *Object `json:"Meta,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	OnUpdate *string `json:"OnUpdate,omitempty"`
 	PortLabel *string `json:"PortLabel,omitempty"`
@@ -83,9 +83,9 @@ func (o *Service) SetAddressMode(v string) {
 }
 
 // GetCanaryMeta returns the CanaryMeta field value if set, zero value otherwise.
-func (o *Service) GetCanaryMeta() map[string]string {
+func (o *Service) GetCanaryMeta() Object {
 	if o == nil || o.CanaryMeta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.CanaryMeta
@@ -93,7 +93,7 @@ func (o *Service) GetCanaryMeta() map[string]string {
 
 // GetCanaryMetaOk returns a tuple with the CanaryMeta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetCanaryMetaOk() (*map[string]string, bool) {
+func (o *Service) GetCanaryMetaOk() (*Object, bool) {
 	if o == nil || o.CanaryMeta == nil {
 		return nil, false
 	}
@@ -109,8 +109,8 @@ func (o *Service) HasCanaryMeta() bool {
 	return false
 }
 
-// SetCanaryMeta gets a reference to the given map[string]string and assigns it to the CanaryMeta field.
-func (o *Service) SetCanaryMeta(v map[string]string) {
+// SetCanaryMeta gets a reference to the given Object and assigns it to the CanaryMeta field.
+func (o *Service) SetCanaryMeta(v Object) {
 	o.CanaryMeta = &v
 }
 
@@ -307,9 +307,9 @@ func (o *Service) SetId(v string) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *Service) GetMeta() map[string]string {
+func (o *Service) GetMeta() Object {
 	if o == nil || o.Meta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Meta
@@ -317,7 +317,7 @@ func (o *Service) GetMeta() map[string]string {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetMetaOk() (*map[string]string, bool) {
+func (o *Service) GetMetaOk() (*Object, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
@@ -333,8 +333,8 @@ func (o *Service) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
-func (o *Service) SetMeta(v map[string]string) {
+// SetMeta gets a reference to the given Object and assigns it to the Meta field.
+func (o *Service) SetMeta(v Object) {
 	o.Meta = &v
 }
 

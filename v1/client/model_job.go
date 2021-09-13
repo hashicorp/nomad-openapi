@@ -27,7 +27,7 @@ type Job struct {
 	Dispatched *bool `json:"Dispatched,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	JobModifyIndex *int32 `json:"JobModifyIndex,omitempty"`
-	Meta *map[string]string `json:"Meta,omitempty"`
+	Meta *Object `json:"Meta,omitempty"`
 	Migrate *MigrateStrategy `json:"Migrate,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Multiregion *Multiregion `json:"Multiregion,omitempty"`
@@ -393,9 +393,9 @@ func (o *Job) SetJobModifyIndex(v int32) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *Job) GetMeta() map[string]string {
+func (o *Job) GetMeta() Object {
 	if o == nil || o.Meta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Meta
@@ -403,7 +403,7 @@ func (o *Job) GetMeta() map[string]string {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Job) GetMetaOk() (*map[string]string, bool) {
+func (o *Job) GetMetaOk() (*Object, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
@@ -419,8 +419,8 @@ func (o *Job) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
-func (o *Job) SetMeta(v map[string]string) {
+// SetMeta gets a reference to the given Object and assigns it to the Meta field.
+func (o *Job) SetMeta(v Object) {
 	o.Meta = &v
 }
 

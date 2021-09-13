@@ -17,9 +17,9 @@ import (
 
 // TaskArtifact struct for TaskArtifact
 type TaskArtifact struct {
-	GetterHeaders *map[string]string `json:"GetterHeaders,omitempty"`
+	GetterHeaders *Object `json:"GetterHeaders,omitempty"`
 	GetterMode *string `json:"GetterMode,omitempty"`
-	GetterOptions *map[string]string `json:"GetterOptions,omitempty"`
+	GetterOptions *Object `json:"GetterOptions,omitempty"`
 	GetterSource *string `json:"GetterSource,omitempty"`
 	RelativeDest *string `json:"RelativeDest,omitempty"`
 }
@@ -42,9 +42,9 @@ func NewTaskArtifactWithDefaults() *TaskArtifact {
 }
 
 // GetGetterHeaders returns the GetterHeaders field value if set, zero value otherwise.
-func (o *TaskArtifact) GetGetterHeaders() map[string]string {
+func (o *TaskArtifact) GetGetterHeaders() Object {
 	if o == nil || o.GetterHeaders == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.GetterHeaders
@@ -52,7 +52,7 @@ func (o *TaskArtifact) GetGetterHeaders() map[string]string {
 
 // GetGetterHeadersOk returns a tuple with the GetterHeaders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskArtifact) GetGetterHeadersOk() (*map[string]string, bool) {
+func (o *TaskArtifact) GetGetterHeadersOk() (*Object, bool) {
 	if o == nil || o.GetterHeaders == nil {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *TaskArtifact) HasGetterHeaders() bool {
 	return false
 }
 
-// SetGetterHeaders gets a reference to the given map[string]string and assigns it to the GetterHeaders field.
-func (o *TaskArtifact) SetGetterHeaders(v map[string]string) {
+// SetGetterHeaders gets a reference to the given Object and assigns it to the GetterHeaders field.
+func (o *TaskArtifact) SetGetterHeaders(v Object) {
 	o.GetterHeaders = &v
 }
 
@@ -106,9 +106,9 @@ func (o *TaskArtifact) SetGetterMode(v string) {
 }
 
 // GetGetterOptions returns the GetterOptions field value if set, zero value otherwise.
-func (o *TaskArtifact) GetGetterOptions() map[string]string {
+func (o *TaskArtifact) GetGetterOptions() Object {
 	if o == nil || o.GetterOptions == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.GetterOptions
@@ -116,7 +116,7 @@ func (o *TaskArtifact) GetGetterOptions() map[string]string {
 
 // GetGetterOptionsOk returns a tuple with the GetterOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskArtifact) GetGetterOptionsOk() (*map[string]string, bool) {
+func (o *TaskArtifact) GetGetterOptionsOk() (*Object, bool) {
 	if o == nil || o.GetterOptions == nil {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *TaskArtifact) HasGetterOptions() bool {
 	return false
 }
 
-// SetGetterOptions gets a reference to the given map[string]string and assigns it to the GetterOptions field.
-func (o *TaskArtifact) SetGetterOptions(v map[string]string) {
+// SetGetterOptions gets a reference to the given Object and assigns it to the GetterOptions field.
+func (o *TaskArtifact) SetGetterOptions(v Object) {
 	o.GetterOptions = &v
 }
 

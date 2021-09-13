@@ -18,7 +18,7 @@ import (
 // JobDispatchRequest struct for JobDispatchRequest
 type JobDispatchRequest struct {
 	JobID *string `json:"JobID,omitempty"`
-	Meta *map[string]string `json:"Meta,omitempty"`
+	Meta *Object `json:"Meta,omitempty"`
 	Payload *string `json:"Payload,omitempty"`
 }
 
@@ -72,9 +72,9 @@ func (o *JobDispatchRequest) SetJobID(v string) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *JobDispatchRequest) GetMeta() map[string]string {
+func (o *JobDispatchRequest) GetMeta() Object {
 	if o == nil || o.Meta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Meta
@@ -82,7 +82,7 @@ func (o *JobDispatchRequest) GetMeta() map[string]string {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobDispatchRequest) GetMetaOk() (*map[string]string, bool) {
+func (o *JobDispatchRequest) GetMetaOk() (*Object, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *JobDispatchRequest) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
-func (o *JobDispatchRequest) SetMeta(v map[string]string) {
+// SetMeta gets a reference to the given Object and assigns it to the Meta field.
+func (o *JobDispatchRequest) SetMeta(v Object) {
 	o.Meta = &v
 }
 

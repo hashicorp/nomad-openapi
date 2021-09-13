@@ -46,7 +46,7 @@ type Allocation struct {
 	PreviousAllocation *string `json:"PreviousAllocation,omitempty"`
 	RescheduleTracker *RescheduleTracker `json:"RescheduleTracker,omitempty"`
 	Resources *Resources `json:"Resources,omitempty"`
-	Services *map[string]string `json:"Services,omitempty"`
+	Services *Object `json:"Services,omitempty"`
 	TaskGroup *string `json:"TaskGroup,omitempty"`
 	TaskResources *map[string]Resources `json:"TaskResources,omitempty"`
 	TaskStates *map[string]TaskState `json:"TaskStates,omitempty"`
@@ -998,9 +998,9 @@ func (o *Allocation) SetResources(v Resources) {
 }
 
 // GetServices returns the Services field value if set, zero value otherwise.
-func (o *Allocation) GetServices() map[string]string {
+func (o *Allocation) GetServices() Object {
 	if o == nil || o.Services == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Services
@@ -1008,7 +1008,7 @@ func (o *Allocation) GetServices() map[string]string {
 
 // GetServicesOk returns a tuple with the Services field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Allocation) GetServicesOk() (*map[string]string, bool) {
+func (o *Allocation) GetServicesOk() (*Object, bool) {
 	if o == nil || o.Services == nil {
 		return nil, false
 	}
@@ -1024,8 +1024,8 @@ func (o *Allocation) HasServices() bool {
 	return false
 }
 
-// SetServices gets a reference to the given map[string]string and assigns it to the Services field.
-func (o *Allocation) SetServices(v map[string]string) {
+// SetServices gets a reference to the given Object and assigns it to the Services field.
+func (o *Allocation) SetServices(v Object) {
 	o.Services = &v
 }
 

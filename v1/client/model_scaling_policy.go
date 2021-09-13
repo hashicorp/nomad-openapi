@@ -25,7 +25,7 @@ type ScalingPolicy struct {
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
 	Policy *map[string]interface{} `json:"Policy,omitempty"`
-	Target *map[string]string `json:"Target,omitempty"`
+	Target *Object `json:"Target,omitempty"`
 	Type *string `json:"Type,omitempty"`
 }
 
@@ -303,9 +303,9 @@ func (o *ScalingPolicy) SetPolicy(v map[string]interface{}) {
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
-func (o *ScalingPolicy) GetTarget() map[string]string {
+func (o *ScalingPolicy) GetTarget() Object {
 	if o == nil || o.Target == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Target
@@ -313,7 +313,7 @@ func (o *ScalingPolicy) GetTarget() map[string]string {
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScalingPolicy) GetTargetOk() (*map[string]string, bool) {
+func (o *ScalingPolicy) GetTargetOk() (*Object, bool) {
 	if o == nil || o.Target == nil {
 		return nil, false
 	}
@@ -329,8 +329,8 @@ func (o *ScalingPolicy) HasTarget() bool {
 	return false
 }
 
-// SetTarget gets a reference to the given map[string]string and assigns it to the Target field.
-func (o *ScalingPolicy) SetTarget(v map[string]string) {
+// SetTarget gets a reference to the given Object and assigns it to the Target field.
+func (o *ScalingPolicy) SetTarget(v Object) {
 	o.Target = &v
 }
 

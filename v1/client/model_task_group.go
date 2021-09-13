@@ -22,7 +22,7 @@ type TaskGroup struct {
 	Consul *Consul `json:"Consul,omitempty"`
 	Count *int32 `json:"Count,omitempty"`
 	EphemeralDisk *EphemeralDisk `json:"EphemeralDisk,omitempty"`
-	Meta *map[string]string `json:"Meta,omitempty"`
+	Meta *Object `json:"Meta,omitempty"`
 	Migrate *MigrateStrategy `json:"Migrate,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Networks *[]NetworkResource `json:"Networks,omitempty"`
@@ -216,9 +216,9 @@ func (o *TaskGroup) SetEphemeralDisk(v EphemeralDisk) {
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *TaskGroup) GetMeta() map[string]string {
+func (o *TaskGroup) GetMeta() Object {
 	if o == nil || o.Meta == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Meta
@@ -226,7 +226,7 @@ func (o *TaskGroup) GetMeta() map[string]string {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskGroup) GetMetaOk() (*map[string]string, bool) {
+func (o *TaskGroup) GetMetaOk() (*Object, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *TaskGroup) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
-func (o *TaskGroup) SetMeta(v map[string]string) {
+// SetMeta gets a reference to the given Object and assigns it to the Meta field.
+func (o *TaskGroup) SetMeta(v Object) {
 	o.Meta = &v
 }
 

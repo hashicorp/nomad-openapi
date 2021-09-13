@@ -1,6 +1,7 @@
 .gitignore
 README.md
 api/openapi.yaml
+api_agent.go
 api_enterprise.go
 api_jobs.go
 api_metrics.go
@@ -11,6 +12,10 @@ api_volumes.go
 client.go
 configuration.go
 model_affinity.go
+model_agent_health.go
+model_agent_health_response.go
+model_agent_member.go
+model_agent_self.go
 model_alloc_deployment_status.go
 model_allocated_cpu_resources.go
 model_allocated_device_resource.go
@@ -57,6 +62,7 @@ model_deployment.go
 model_deployment_state.go
 model_desired_transition.go
 model_desired_updates.go
+model_disk_usage.go
 model_dispatch_payload_config.go
 model_dns_config.go
 model_ephemeral_disk.go
@@ -67,6 +73,8 @@ model_fuzzy_match.go
 model_fuzzy_search_request.go
 model_fuzzy_search_response.go
 model_gauge_value.go
+model_host_data.go
+model_host_data_response.go
 model_job.go
 model_job_children_summary.go
 model_job_deregister_response.go
@@ -88,6 +96,9 @@ model_job_validate_request.go
 model_job_validate_response.go
 model_job_versions_response.go
 model_jobs_parse_request.go
+model_join_response.go
+model_keyring_request.go
+model_keyring_response.go
 model_log_config.go
 model_metrics_summary.go
 model_migrate_strategy.go
@@ -119,6 +130,7 @@ model_scaling_policy.go
 model_scaling_request.go
 model_search_request.go
 model_search_response.go
+model_server_members.go
 model_service.go
 model_service_check.go
 model_sidecar_task.go

@@ -17,7 +17,7 @@ import (
 
 // GaugeValue struct for GaugeValue
 type GaugeValue struct {
-	Labels *map[string]string `json:"Labels,omitempty"`
+	Labels *Object `json:"Labels,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Value *float32 `json:"Value,omitempty"`
 }
@@ -40,9 +40,9 @@ func NewGaugeValueWithDefaults() *GaugeValue {
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise.
-func (o *GaugeValue) GetLabels() map[string]string {
+func (o *GaugeValue) GetLabels() Object {
 	if o == nil || o.Labels == nil {
-		var ret map[string]string
+		var ret Object
 		return ret
 	}
 	return *o.Labels
@@ -50,7 +50,7 @@ func (o *GaugeValue) GetLabels() map[string]string {
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GaugeValue) GetLabelsOk() (*map[string]string, bool) {
+func (o *GaugeValue) GetLabelsOk() (*Object, bool) {
 	if o == nil || o.Labels == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *GaugeValue) HasLabels() bool {
 	return false
 }
 
-// SetLabels gets a reference to the given map[string]string and assigns it to the Labels field.
-func (o *GaugeValue) SetLabels(v map[string]string) {
+// SetLabels gets a reference to the given Object and assigns it to the Labels field.
+func (o *GaugeValue) SetLabels(v Object) {
 	o.Labels = &v
 }
 
