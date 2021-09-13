@@ -1,6 +1,20 @@
 # Code generated from hashicorp/nomad-openapi/generator; DO NOT EDIT.
 components:
   parameters:
+    AgentAddressParam:
+      description: List of join server ip addresses. Can be repeated.
+      in: query
+      name: address
+      required: true
+      schema:
+        type: integer
+    AgentTypeParam:
+      description: List of agent types to retrieve health info for (e.g. client,server). Can be repeated.
+      in: query
+      name: type
+      required: true
+      schema:
+        type: string
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -44,6 +58,13 @@ components:
       name: purge
       schema:
         type: boolean
+    KeyringActionParam:
+      description: The action to perform on the keyring (list, install, use, remove).
+      in: path
+      name: action
+      required: true
+      schema:
+        type: string
     MetricsFormatParam:
       description: The format the user requested for the metrics summary (e.g. prometheus)
       in: query
@@ -75,12 +96,38 @@ components:
       name: next_token
       schema:
         type: string
+    NodeIDParam:
+      description: Node ID to get data for. Mutually exclusive with server_id.
+      in: query
+      name: node_id
+      schema:
+        type: string
+    NodeNameParam:
+      description: Node name to target with operation.
+      in: query
+      name: node
+      required: true
+      schema:
+        type: string
     PerPageParam:
       description: Maximum number of results to return.
       in: query
       name: per_page
       schema:
         type: integer
+    PprofProfileParam:
+      description: 'Type of profile data to collect. Valid values are: goroutine, threadcreate, heap, allocs, block, or mutex'
+      in: query
+      name: profile
+      schema:
+        type: string
+    PprofTypeParam:
+      description: 'Type of profile request. Valid values are: cmdline, profile, trace'
+      in: path
+      name: type
+      required: true
+      schema:
+        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -98,6 +145,12 @@ components:
       description: Filters results based on the specified region.
       in: query
       name: region
+      schema:
+        type: string
+    ServerIDParam:
+      description: Server ID to get data for. Mutually exclusive with node_id.
+      in: query
+      name: server_id
       schema:
         type: string
     SnapshotIDParam:
@@ -235,6 +288,12 @@ components:
           schema:
             $ref: '#/components/schemas/JobsParseRequest'
       required: true
+    KeyringRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KeyringRequest'
+      required: true
     Namespace:
       content:
         application/json:
@@ -325,6 +384,41 @@ components:
             type: integer
     ForbiddenResponse:
       description: Forbidden
+    GetAgentHostDataResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HostDataResponse'
+      description: ""
+    GetAgentMembersResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServerMembers'
+      description: ""
+    GetAgentPprofResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              format: byte
+              type: string
+            type: array
+      description: ""
+    GetAgentSelfResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AgentSelf'
+      description: ""
+    GetAgentServersResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              type: string
+            type: array
+      description: ""
     GetExternalVolumesResponse:
       content:
         application/json:
@@ -673,6 +767,25 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    GetTODOResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AgentHealthResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     GetVolumeResponse:
       content:
         application/json:
@@ -717,6 +830,35 @@ components:
       description: Internal server error
     MethodNotAllowedResponse:
       description: Method not allowed
+    PostAgentForceLeaveResponse:
+      description: ""
+    PostAgentJoinResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JoinResponse'
+      description: ""
+    PostAgentKeyringActionResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KeyringResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    PostAgentServersResponse:
+      description: ""
     PostJobDispatchResponse:
       content:
         application/json:
@@ -912,6 +1054,71 @@ components:
           minimum: -128
           type: integer
       type: object
+    AgentHealth:
+      properties:
+        message:
+          type: string
+        ok:
+          type: boolean
+      type: object
+    AgentHealthResponse:
+      properties:
+        client:
+          $ref: '#/components/schemas/AgentHealth'
+        server:
+          $ref: '#/components/schemas/AgentHealth'
+      type: object
+    AgentMember:
+      properties:
+        Addr:
+          type: string
+        DelegateCur:
+          maximum: 255
+          minimum: 0
+          type: integer
+        DelegateMax:
+          maximum: 255
+          minimum: 0
+          type: integer
+        DelegateMin:
+          maximum: 255
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        Port:
+          maximum: 65535
+          minimum: 0
+          type: integer
+        ProtocolCur:
+          maximum: 255
+          minimum: 0
+          type: integer
+        ProtocolMax:
+          maximum: 255
+          minimum: 0
+          type: integer
+        ProtocolMin:
+          maximum: 255
+          minimum: 0
+          type: integer
+        Status:
+          type: string
+        Tags:
+          $ref: '#/components/schemas/'
+      type: object
+    AgentSelf:
+      properties:
+        config:
+          additionalProperties: {}
+          type: object
+        member:
+          $ref: '#/components/schemas/AgentMember'
+        stats:
+          additionalProperties:
+            $ref: '#/components/schemas/'
+          type: object
+      type: object
     AllocDeploymentStatus:
       properties:
         Canary:
@@ -1063,9 +1270,7 @@ components:
         Resources:
           $ref: '#/components/schemas/Resources'
         Services:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         TaskGroup:
           type: string
         TaskResources:
@@ -1222,9 +1427,7 @@ components:
         Name:
           type: string
         Parameters:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         PluginID:
           type: string
         Secrets:
@@ -1291,9 +1494,7 @@ components:
     CSITopology:
       properties:
         Segments:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
       type: object
     CSIVolume:
       properties:
@@ -1311,9 +1512,7 @@ components:
         CloneID:
           type: string
         Context:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         ControllerRequired:
           type: boolean
         ControllersExpected:
@@ -1343,9 +1542,7 @@ components:
         NodesHealthy:
           type: integer
         Parameters:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         PluginID:
           type: string
         Provider:
@@ -1428,9 +1625,7 @@ components:
         Status:
           type: string
         VolumeContext:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
       type: object
     CSIVolumeListExternalResponse:
       properties:
@@ -1822,6 +2017,15 @@ components:
           minimum: 0
           type: integer
       type: object
+    DiskUsage:
+      properties:
+        DiskMB:
+          format: int64
+          type: integer
+        UsedMB:
+          format: int64
+          type: integer
+      type: object
     DispatchPayloadConfig:
       properties:
         File:
@@ -1960,9 +2164,7 @@ components:
         NextToken:
           type: string
         Params:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         PerPage:
           format: int32
           type: integer
@@ -2008,14 +2210,38 @@ components:
     GaugeValue:
       properties:
         Labels:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Name:
           type: string
         Value:
           format: float
           type: number
+      type: object
+    HostData:
+      properties:
+        Disk:
+          additionalProperties:
+            $ref: '#/components/schemas/DiskUsage'
+          type: object
+        Environment:
+          $ref: '#/components/schemas/'
+        Hosts:
+          type: string
+        Network:
+          items:
+            $ref: '#/components/schemas/'
+          type: array
+        OS:
+          type: string
+        ResolvConf:
+          type: string
+      type: object
+    HostDataResponse:
+      properties:
+        AgentID:
+          type: string
+        HostData:
+          $ref: '#/components/schemas/HostData'
       type: object
     Job:
       properties:
@@ -2050,9 +2276,7 @@ components:
           minimum: 0
           type: integer
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Migrate:
           $ref: '#/components/schemas/MigrateStrategy'
         ModifyIndex:
@@ -2175,9 +2399,7 @@ components:
         JobID:
           type: string
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Payload:
           format: byte
           type: string
@@ -2495,6 +2717,29 @@ components:
         hclv1:
           type: boolean
       type: object
+    JoinResponse:
+      properties:
+        error:
+          type: string
+        num_joined:
+          type: integer
+      type: object
+    KeyringRequest:
+      properties:
+        Key:
+          type: string
+      type: object
+    KeyringResponse:
+      properties:
+        Keys:
+          additionalProperties:
+            type: integer
+          type: object
+        Messages:
+          $ref: '#/components/schemas/'
+        NumNodes:
+          type: integer
+      type: object
     LogConfig:
       properties:
         MaxFileSizeMB:
@@ -2554,9 +2799,7 @@ components:
             type: string
           type: array
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Name:
           type: string
       type: object
@@ -2840,9 +3083,7 @@ components:
         Count:
           type: integer
         Labels:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Max:
           format: double
           type: number
@@ -2916,9 +3157,7 @@ components:
           additionalProperties: {}
           type: object
         Target:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Type:
           type: string
       type: object
@@ -2943,9 +3182,7 @@ components:
         SecretID:
           type: string
         Target:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
       type: object
     SearchRequest:
       properties:
@@ -2960,9 +3197,7 @@ components:
         NextToken:
           type: string
         Params:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         PerPage:
           format: int32
           type: integer
@@ -3003,14 +3238,25 @@ components:
             type: boolean
           type: object
       type: object
+    ServerMembers:
+      properties:
+        Members:
+          items:
+            $ref: '#/components/schemas/AgentMember'
+          type: array
+        ServerDC:
+          type: string
+        ServerName:
+          type: string
+        ServerRegion:
+          type: string
+      type: object
     Service:
       properties:
         AddressMode:
           type: string
         CanaryMeta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         CanaryTags:
           items:
             type: string
@@ -3028,9 +3274,7 @@ components:
         Id:
           type: string
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Name:
           type: string
         OnUpdate:
@@ -3111,9 +3355,7 @@ components:
         Driver:
           type: string
         Env:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         KillSignal:
           type: string
         KillTimeout:
@@ -3122,9 +3364,7 @@ components:
         LogConfig:
           $ref: '#/components/schemas/LogConfig'
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Name:
           type: string
         Resources:
@@ -3181,9 +3421,7 @@ components:
         Driver:
           type: string
         Env:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         KillSignal:
           type: string
         KillTimeout:
@@ -3198,9 +3436,7 @@ components:
         LogConfig:
           $ref: '#/components/schemas/LogConfig'
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Name:
           type: string
         Resources:
@@ -3234,15 +3470,11 @@ components:
     TaskArtifact:
       properties:
         GetterHeaders:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         GetterMode:
           type: string
         GetterOptions:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         GetterSource:
           type: string
         RelativeDest:
@@ -3279,9 +3511,7 @@ components:
     TaskEvent:
       properties:
         Details:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         DiskLimit:
           format: int64
           type: integer
@@ -3353,9 +3583,7 @@ components:
         EphemeralDisk:
           $ref: '#/components/schemas/EphemeralDisk'
         Meta:
-          additionalProperties:
-            type: string
-          type: object
+          $ref: '#/components/schemas/'
         Migrate:
           $ref: '#/components/schemas/MigrateStrategy'
         Name:
@@ -3615,6 +3843,10 @@ components:
       maximum: 255
       minimum: 0
       type: integer
+    uint16:
+      maximum: 65535
+      minimum: 0
+      type: integer
     uint64:
       maximum: 1.8446744073709552e+19
       minimum: 0
@@ -3634,6 +3866,246 @@ info:
   version: 1.1.3
 openapi: 3.0.3
 paths:
+  /agent/force-leave:
+    post:
+      operationId: PostAgentForceLeave
+      parameters:
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NodeNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostAgentForceLeaveResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/health:
+    get:
+      operationId: GetAgentHealth
+      parameters:
+      - $ref: '#/components/parameters/AgentTypeParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetTODOResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      tags:
+      - Agent
+  /agent/host:
+    get:
+      operationId: GetAgentHostData
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/ServerIDParam'
+      - $ref: '#/components/parameters/NodeIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAgentHostDataResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/join:
+    post:
+      operationId: PostAgentJoin
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/AgentAddressParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostAgentJoinResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/keyring/{action}:
+    post:
+      operationId: PostAgentKeyringAction
+      parameters:
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/KeyringActionParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyringRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostAgentKeyringActionResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/members:
+    get:
+      operationId: GetAgentMembers
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAgentMembersResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/pprof/{type}:
+    get:
+      operationId: GetAgentPprof
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIDParam'
+      - $ref: '#/components/parameters/ServerIDParam'
+      - $ref: '#/components/parameters/PprofProfileParam'
+      - $ref: '#/components/parameters/PprofTypeParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAgentPprofResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/self:
+    get:
+      operationId: GetAgentSelf
+      parameters:
+      - $ref: '#/components/parameters/NextTokenHeader'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAgentSelfResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+  /agent/servers:
+    get:
+      operationId: GetAgentServers
+      parameters:
+      - $ref: '#/components/parameters/NextTokenHeader'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAgentServersResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
+    post:
+      operationId: PostAgentServers
+      parameters:
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/AgentAddressParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostAgentServersResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Agent
   /job/{jobName}:
     delete:
       operationId: DeleteJob

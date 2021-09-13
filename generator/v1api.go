@@ -32,6 +32,22 @@ func (v *v1api) GetPaths() []*apiPath {
 }
 
 var (
+	agentAddressParam = parameter{
+		Id:          "AgentAddressParam",
+		SchemaType:  intSchema,
+		Description: "List of join server ip addresses. Can be repeated.",
+		Name:        "address",
+		In:          inQuery,
+		Required:    true,
+	}
+	agentTypeParam = parameter{
+		Id:          "AgentTypeParam",
+		SchemaType:  stringSchema,
+		Description: "List of agent types to retrieve health info for (e.g. client,server). Can be repeated.",
+		Name:        "type",
+		In:          inQuery,
+		Required:    true,
+	}
 	allParam = parameter{
 		Id:          "AllParam",
 		SchemaType:  intSchema,
@@ -78,6 +94,14 @@ var (
 		In:          inQuery,
 		Required:    false,
 	}
+	keyringActionParam = parameter{
+		Id:          "KeyringActionParam",
+		SchemaType:  stringSchema,
+		Description: "The action to perform on the keyring (list, install, use, remove).",
+		Name:        "action",
+		In:          inPath,
+		Required:    true,
+	}
 	namespaceNameParam = parameter{
 		Id:          "NamespaceNameParam",
 		SchemaType:  stringSchema,
@@ -116,12 +140,42 @@ var (
 		Name:        "next_token",
 		In:          inQuery,
 	}
+	nodeNameParam = parameter{
+		Id:          "NodeNameParam",
+		SchemaType:  stringSchema,
+		Description: "Node name to target with operation.",
+		Name:        "node",
+		In:          inQuery,
+		Required:    true,
+	}
+	nodeIDParam = parameter{
+		Id:          "NodeIDParam",
+		SchemaType:  stringSchema,
+		Description: "Node ID to get data for. Mutually exclusive with server_id.",
+		Name:        "node_id",
+		In:          inQuery,
+	}
 	perPageParam = parameter{
 		Id:          "PerPageParam",
 		SchemaType:  intSchema,
 		Description: "Maximum number of results to return.",
 		Name:        "per_page",
 		In:          inQuery,
+	}
+	pprofProfileParam = parameter{
+		Id:          "PprofProfileParam",
+		SchemaType:  stringSchema,
+		Description: "Type of profile data to collect. Valid values are: goroutine, threadcreate, heap, allocs, block, or mutex",
+		Name:        "profile",
+		In:          inQuery,
+	}
+	pprofTypeParam = parameter{
+		Id:          "PprofTypeParam",
+		SchemaType:  stringSchema,
+		Description: "Type of profile request. Valid values are: cmdline, profile, trace",
+		Name:        "type",
+		In:          inPath,
+		Required:    true,
 	}
 	prefixParam = parameter{
 		Id:          "PrefixParam",
@@ -135,6 +189,13 @@ var (
 		SchemaType:  stringSchema,
 		Description: "Filters results based on the specified region.",
 		Name:        "region",
+		In:          inQuery,
+	}
+	serverIDParam = parameter{
+		Id:          "ServerIDParam",
+		SchemaType:  stringSchema,
+		Description: "Server ID to get data for. Mutually exclusive with node_id.",
+		Name:        "server_id",
 		In:          inQuery,
 	}
 	snapshotIDParam = parameter{
