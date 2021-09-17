@@ -2,14 +2,17 @@ package main
 
 import (
 	"context"
+	"os"
+	"path"
+	"reflect"
+	"strings"
+	"testing"
+
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/getkin/kin-openapi/openapi3gen"
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/nomad/api"
-	"os"
-	"path"
-	"reflect"
-	"testing"
+	"github.com/hashicorp/nomad/command/agent"
 
 	"github.com/stretchr/testify/require"
 )
@@ -30,6 +33,7 @@ func TestBuildFromModel(t *testing.T) {
 	yaml := string(yamlBytes)
 
 	outputPath := path.Join(t.TempDir(), "test-build-from-model.yaml")
+	outputPath = path.Join("./", "test-build-from-model.yaml")
 	err = os.WriteFile(outputPath, yamlBytes, 0644)
 	require.NoError(t, err)
 	require.NotEmpty(t, yaml)
@@ -64,6 +68,35 @@ func TestSchemaRefs(t *testing.T) {
 	builder.resolveRefPaths()
 
 	require.Equal(t, "#/components/schemas/CSISecrets", ref.Value.Properties["Secrets"].Ref)
+}
+
+func TestSchemaMaps(t *testing.T) {
+	builder := specBuilder{
+		logger: hclog.Default(),
+		kingen: openapi3gen.NewGenerator(openapi3gen.UseAllExportedFields()),
+		spec: &spec{
+			Model: openapi3.T{
+				Components: openapi3.Components{
+					Schemas: openapi3.Schemas{},
+				},
+			},
+		},
+	}
+
+	ref, err := builder.getOrCreateSchemaRef(reflect.TypeOf(agent.ClientConfig{}))
+	require.NoError(t, err)
+	require.NotNil(t, ref)
+
+	var foundSchemaRef *openapi3.SchemaRef
+	builder.resolveRefPaths()
+
+	for refKey, schemaRef := range builder.spec.Model.Components.Schemas {
+		if strings.Contains(refKey, "ChrootEnv") {
+			foundSchemaRef = schemaRef
+		}
+	}
+
+	require.NotNil(t, foundSchemaRef)
 }
 
 var jobResponseSchema = `

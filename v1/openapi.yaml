@@ -3,18 +3,26 @@ components:
   parameters:
     AgentAddressParam:
       description: List of join server ip addresses. Can be repeated.
+      explode: true
       in: query
       name: address
       required: true
       schema:
-        type: integer
+        items:
+          type: string
+        type: array
+      style: form
     AgentTypeParam:
       description: List of agent types to retrieve health info for (e.g. client,server). Can be repeated.
+      explode: true
       in: query
       name: type
       required: true
       schema:
-        type: string
+        items:
+          type: string
+        type: array
+      style: form
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -384,6 +392,12 @@ components:
             type: integer
     ForbiddenResponse:
       description: Forbidden
+    GetAgentHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AgentHealthResponse'
+      description: ""
     GetAgentHostDataResponse:
       content:
         application/json:
@@ -767,25 +781,6 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
-    GetTODOResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AgentHealthResponse'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
     GetVolumeResponse:
       content:
         application/json:
@@ -1041,6 +1036,37 @@ components:
     default:
       description: ""
   schemas:
+    ACLConfig:
+      properties:
+        Enabled:
+          type: boolean
+        PolicyTTL:
+          format: int64
+          type: integer
+        ReplicationToken:
+          type: string
+        TokenTTL:
+          format: int64
+          type: integer
+      type: object
+    Addresses:
+      properties:
+        HTTP:
+          type: string
+        RPC:
+          type: string
+        Serf:
+          type: string
+      type: object
+    AdvertiseAddrs:
+      properties:
+        HTTP:
+          type: string
+        RPC:
+          type: string
+        Serf:
+          type: string
+      type: object
     Affinity:
       properties:
         LTarget:
@@ -1110,10 +1136,9 @@ components:
     AgentSelf:
       properties:
         config:
-          additionalProperties: {}
-          type: object
+          $ref: '#/components/schemas/Config'
         member:
-          $ref: '#/components/schemas/AgentMember'
+          $ref: '#/components/schemas/Member'
         stats:
           additionalProperties:
             $ref: '#/components/schemas/'
@@ -1397,6 +1422,81 @@ components:
             format: double
             type: number
           type: object
+      type: object
+    AuditConfig:
+      properties:
+        Enabled:
+          type: boolean
+        Filters:
+          items:
+            $ref: '#/components/schemas/AuditFilter'
+          type: array
+        Sinks:
+          items:
+            $ref: '#/components/schemas/AuditSink'
+          type: array
+      type: object
+    AuditFilter:
+      properties:
+        Endpoints:
+          items:
+            type: string
+          type: array
+        Name:
+          type: string
+        Operations:
+          items:
+            type: string
+          type: array
+        Stages:
+          items:
+            type: string
+          type: array
+        Type:
+          type: string
+      type: object
+    AuditSink:
+      properties:
+        DeliveryGuarantee:
+          type: string
+        Format:
+          type: string
+        Mode:
+          type: string
+        Name:
+          type: string
+        Path:
+          type: string
+        RotateBytes:
+          type: integer
+        RotateDuration:
+          format: int64
+          type: integer
+        RotateMaxFiles:
+          type: integer
+        Type:
+          type: string
+      type: object
+    AutopilotConfig:
+      properties:
+        CleanupDeadServers:
+          type: boolean
+        DisableUpgradeMigration:
+          type: boolean
+        EnableCustomUpgrades:
+          type: boolean
+        EnableRedundancyZones:
+          type: boolean
+        LastContactThreshold:
+          format: int64
+          type: integer
+        MaxTrailingLogs:
+          type: integer
+        MinQuorum:
+          type: integer
+        ServerStabilizationTime:
+          format: int64
+          type: integer
       type: object
     CSIMountOptions:
       properties:
@@ -1705,6 +1805,202 @@ components:
         Limit:
           type: integer
       type: object
+    ClientConfig:
+      properties:
+        AllocDir:
+          type: string
+        BindWildcardDefaultHostNetwork:
+          type: boolean
+        BridgeNetworkName:
+          type: string
+        BridgeNetworkSubnet:
+          type: string
+        CNIConfigDir:
+          type: string
+        CNIPath:
+          type: string
+        CgroupParent:
+          type: string
+        ChrootEnv:
+          $ref: '#/components/schemas/'
+        ClientMaxPort:
+          type: integer
+        ClientMinPort:
+          type: integer
+        CpuCompute:
+          type: integer
+        DisableRemoteExec:
+          type: boolean
+        Enabled:
+          type: boolean
+        GCDiskUsageThreshold:
+          format: double
+          type: number
+        GCInodeUsageThreshold:
+          format: double
+          type: number
+        GCInterval:
+          format: int64
+          type: integer
+        GCMaxAllocs:
+          type: integer
+        GCParallelDestroys:
+          type: integer
+        HostNetworks:
+          items:
+            $ref: '#/components/schemas/ClientHostNetworkConfig'
+          type: array
+        HostVolumes:
+          items:
+            $ref: '#/components/schemas/ClientHostVolumeConfig'
+          type: array
+        MaxKillTimeout:
+          type: string
+        MemoryMB:
+          type: integer
+        Meta:
+          $ref: '#/components/schemas/'
+        NetworkInterface:
+          type: string
+        NetworkSpeed:
+          type: integer
+        NoHostUUID:
+          type: boolean
+        NodeClass:
+          type: string
+        Options:
+          $ref: '#/components/schemas/'
+        ReserveableCores:
+          type: string
+        Reserved:
+          $ref: '#/components/schemas/Resources'
+        ServerJoin:
+          $ref: '#/components/schemas/ServerJoin'
+        Servers:
+          items:
+            type: string
+          type: array
+        StateDir:
+          type: string
+        TemplateConfig:
+          $ref: '#/components/schemas/ClientTemplateConfig'
+      type: object
+    ClientHostNetworkConfig:
+      properties:
+        CIDR:
+          type: string
+        Interface:
+          type: string
+        Name:
+          type: string
+        ReservedPorts:
+          type: string
+      type: object
+    ClientHostVolumeConfig:
+      properties:
+        Name:
+          type: string
+        Path:
+          type: string
+        ReadOnly:
+          type: boolean
+      type: object
+    ClientTemplateConfig:
+      properties:
+        DisableSandbox:
+          type: boolean
+        FunctionBlacklist:
+          items:
+            type: string
+          type: array
+        FunctionDenylist:
+          items:
+            type: string
+          type: array
+      type: object
+    Config:
+      properties:
+        ACL:
+          $ref: '#/components/schemas/ACLConfig'
+        Addresses:
+          $ref: '#/components/schemas/Addresses'
+        AdvertiseAddrs:
+          $ref: '#/components/schemas/AdvertiseAddrs'
+        Audit:
+          $ref: '#/components/schemas/AuditConfig'
+        Autopilot:
+          $ref: '#/components/schemas/AutopilotConfig'
+        BindAddr:
+          type: string
+        Client:
+          $ref: '#/components/schemas/ClientConfig'
+        Consul:
+          $ref: '#/components/schemas/ConsulConfig'
+        DataDir:
+          type: string
+        Datacenter:
+          type: string
+        DevMode:
+          type: boolean
+        DisableAnonymousSignature:
+          type: boolean
+        DisableUpdateCheck:
+          type: boolean
+        EnableDebug:
+          type: boolean
+        EnableSyslog:
+          type: boolean
+        Files:
+          items:
+            type: string
+          type: array
+        HTTPAPIResponseHeaders:
+          $ref: '#/components/schemas/'
+        LeaveOnInt:
+          type: boolean
+        LeaveOnTerm:
+          type: boolean
+        Limits:
+          $ref: '#/components/schemas/Limits'
+        LogFile:
+          type: string
+        LogJson:
+          type: boolean
+        LogLevel:
+          type: string
+        LogRotateBytes:
+          type: integer
+        LogRotateDuration:
+          type: string
+        LogRotateMaxFiles:
+          type: integer
+        NodeName:
+          type: string
+        PluginDir:
+          type: string
+        Plugins:
+          items:
+            $ref: '#/components/schemas/PluginConfig'
+          type: array
+        Ports:
+          $ref: '#/components/schemas/Ports'
+        Region:
+          type: string
+        Sentinel:
+          $ref: '#/components/schemas/SentinelConfig'
+        Server:
+          $ref: '#/components/schemas/ServerConfig'
+        SyslogFacility:
+          type: string
+        TLSConfig:
+          $ref: '#/components/schemas/TLSConfig'
+        Telemetry:
+          $ref: '#/components/schemas/Telemetry'
+        Vault:
+          $ref: '#/components/schemas/VaultConfig'
+        Version:
+          $ref: '#/components/schemas/VersionInfo'
+      type: object
     Constraint:
       properties:
         LTarget:
@@ -1718,6 +2014,60 @@ components:
       properties:
         Namespace:
           type: string
+      type: object
+    ConsulConfig:
+      properties:
+        Addr:
+          type: string
+        AllowUnauthenticated:
+          type: boolean
+        Auth:
+          type: string
+        AutoAdvertise:
+          type: boolean
+        CAFile:
+          type: string
+        CertFile:
+          type: string
+        ChecksUseAdvertise:
+          type: boolean
+        ClientAutoJoin:
+          type: boolean
+        ClientHTTPCheckName:
+          type: string
+        ClientServiceName:
+          type: string
+        EnableSSL:
+          type: boolean
+        GRPCAddr:
+          type: string
+        KeyFile:
+          type: string
+        Namespace:
+          type: string
+        ServerAutoJoin:
+          type: boolean
+        ServerHTTPCheckName:
+          type: string
+        ServerRPCCheckName:
+          type: string
+        ServerSerfCheckName:
+          type: string
+        ServerServiceName:
+          type: string
+        ShareSSL:
+          type: boolean
+        Tags:
+          items:
+            type: string
+          type: array
+        Timeout:
+          format: int64
+          type: integer
+        Token:
+          type: string
+        VerifySSL:
+          type: boolean
       type: object
     ConsulConnect:
       properties:
@@ -2243,6 +2593,9 @@ components:
         HostData:
           $ref: '#/components/schemas/HostData'
       type: object
+    IP:
+      format: byte
+      type: string
     Job:
       properties:
         Affinities:
@@ -2724,6 +3077,7 @@ components:
         num_joined:
           type: integer
       type: object
+    KeyLoader: {}
     KeyringRequest:
       properties:
         Key:
@@ -2740,12 +3094,63 @@ components:
         NumNodes:
           type: integer
       type: object
+    Limits:
+      properties:
+        HTTPMaxConnsPerClient:
+          type: integer
+        HTTPSHandshakeTimeout:
+          type: string
+        RPCHandshakeTimeout:
+          type: string
+        RPCMaxConnsPerClient:
+          type: integer
+      type: object
     LogConfig:
       properties:
         MaxFileSizeMB:
           type: integer
         MaxFiles:
           type: integer
+      type: object
+    Member:
+      properties:
+        Addr:
+          format: byte
+          type: string
+        DelegateCur:
+          maximum: 255
+          minimum: 0
+          type: integer
+        DelegateMax:
+          maximum: 255
+          minimum: 0
+          type: integer
+        DelegateMin:
+          maximum: 255
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        Port:
+          maximum: 65535
+          minimum: 0
+          type: integer
+        ProtocolCur:
+          maximum: 255
+          minimum: 0
+          type: integer
+        ProtocolMax:
+          maximum: 255
+          minimum: 0
+          type: integer
+        ProtocolMin:
+          maximum: 255
+          minimum: 0
+          type: integer
+        Status:
+          type: string
+        Tags:
+          $ref: '#/components/schemas/'
       type: object
     MetricsSummary:
       properties:
@@ -2928,6 +3333,18 @@ components:
             $ref: '#/components/schemas/AllocationListStub'
           type: array
       type: object
+    PluginConfig:
+      properties:
+        Args:
+          items:
+            type: string
+          type: array
+        Config:
+          additionalProperties: {}
+          type: object
+        Name:
+          type: string
+      type: object
     PointValue:
       properties:
         Name:
@@ -2959,6 +3376,24 @@ components:
           type: integer
         Value:
           type: integer
+      type: object
+    Ports:
+      properties:
+        HTTP:
+          type: integer
+        RPC:
+          type: integer
+        Serf:
+          type: integer
+      type: object
+    PreemptionConfig:
+      properties:
+        BatchSchedulerEnabled:
+          type: boolean
+        ServiceSchedulerEnabled:
+          type: boolean
+        SystemSchedulerEnabled:
+          type: boolean
       type: object
     QuotaLimit:
       properties:
@@ -3184,6 +3619,36 @@ components:
         Target:
           $ref: '#/components/schemas/'
       type: object
+    SchedulerAlgorithm:
+      type: string
+    SchedulerConfiguration:
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        MemoryOversubscriptionEnabled:
+          type: boolean
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        PreemptionConfig:
+          $ref: '#/components/schemas/PreemptionConfig'
+        SchedulerAlgorithm:
+          type: string
+      type: object
+    Search:
+      properties:
+        FuzzyEnabled:
+          type: boolean
+        LimitQuery:
+          type: integer
+        LimitResults:
+          type: integer
+        MinTermLength:
+          type: integer
+      type: object
     SearchRequest:
       properties:
         AllowStale:
@@ -3237,6 +3702,124 @@ components:
           additionalProperties:
             type: boolean
           type: object
+      type: object
+    SentinelConfig:
+      properties:
+        Imports:
+          items:
+            $ref: '#/components/schemas/SentinelImport'
+          type: array
+      type: object
+    SentinelImport:
+      properties:
+        Args:
+          items:
+            type: string
+          type: array
+        Name:
+          type: string
+        Path:
+          type: string
+      type: object
+    ServerConfig:
+      properties:
+        AuthoritativeRegion:
+          type: string
+        BootstrapExpect:
+          type: integer
+        CSIPluginGCThreshold:
+          type: string
+        CSIVolumeClaimGCThreshold:
+          type: string
+        DataDir:
+          type: string
+        DefaultSchedulerConfig:
+          $ref: '#/components/schemas/SchedulerConfiguration'
+        DeploymentGCThreshold:
+          type: string
+        DeploymentQueryRateLimit:
+          format: double
+          type: number
+        EnableEventBroker:
+          type: boolean
+        Enabled:
+          type: boolean
+        EnabledSchedulers:
+          items:
+            type: string
+          type: array
+        EvalGCThreshold:
+          type: string
+        EventBufferSize:
+          type: integer
+        HeartbeatGrace:
+          format: int64
+          type: integer
+        JobGCInterval:
+          type: string
+        JobGCThreshold:
+          type: string
+        LicenseEnv:
+          type: string
+        LicensePath:
+          type: string
+        MaxHeartbeatsPerSecond:
+          format: double
+          type: number
+        MinHeartbeatTTL:
+          format: int64
+          type: integer
+        NodeGCThreshold:
+          type: string
+        NonVotingServer:
+          type: boolean
+        NumSchedulers:
+          type: integer
+        ProtocolVersion:
+          type: integer
+        RaftMultiplier:
+          type: integer
+        RaftProtocol:
+          type: integer
+        RedundancyZone:
+          type: string
+        RejoinAfterLeave:
+          type: boolean
+        RetryInterval:
+          format: int64
+          type: integer
+        RetryJoin:
+          items:
+            type: string
+          type: array
+        RetryMaxAttempts:
+          type: integer
+        Search:
+          $ref: '#/components/schemas/Search'
+        ServerJoin:
+          $ref: '#/components/schemas/ServerJoin'
+        StartJoin:
+          items:
+            type: string
+          type: array
+        UpgradeVersion:
+          type: string
+      type: object
+    ServerJoin:
+      properties:
+        RetryInterval:
+          format: int64
+          type: integer
+        RetryJoin:
+          items:
+            type: string
+          type: array
+        RetryMaxAttempts:
+          type: integer
+        StartJoin:
+          items:
+            type: string
+          type: array
       type: object
     ServerMembers:
       properties:
@@ -3396,6 +3979,34 @@ components:
           type: integer
         Value:
           type: string
+      type: object
+    TLSConfig:
+      properties:
+        CAFile:
+          type: string
+        CertFile:
+          type: string
+        Checksum:
+          type: string
+        EnableHTTP:
+          type: boolean
+        EnableRPC:
+          type: boolean
+        KeyFile:
+          type: string
+        KeyLoader: {}
+        RPCUpgradeMode:
+          type: boolean
+        TLSCipherSuites:
+          type: string
+        TLSMinVersion:
+          type: string
+        TLSPreferServerCipherSuites:
+          type: boolean
+        VerifyHTTPSClient:
+          type: boolean
+        VerifyServerHostname:
+          type: boolean
       type: object
     Task:
       properties:
@@ -3721,6 +4332,65 @@ components:
         TaskHandle:
           $ref: '#/components/schemas/TaskHandle'
       type: object
+    Telemetry:
+      properties:
+        CirconusAPIApp:
+          type: string
+        CirconusAPIToken:
+          type: string
+        CirconusAPIURL:
+          type: string
+        CirconusBrokerID:
+          type: string
+        CirconusBrokerSelectTag:
+          type: string
+        CirconusCheckDisplayName:
+          type: string
+        CirconusCheckForceMetricActivation:
+          type: string
+        CirconusCheckID:
+          type: string
+        CirconusCheckInstanceID:
+          type: string
+        CirconusCheckSearchTag:
+          type: string
+        CirconusCheckSubmissionURL:
+          type: string
+        CirconusCheckTags:
+          type: string
+        CirconusSubmissionInterval:
+          type: string
+        CollectionInterval:
+          type: string
+        DataDogAddr:
+          type: string
+        DataDogTags:
+          items:
+            type: string
+          type: array
+        DisableDispatchedJobSummaryMetrics:
+          type: boolean
+        DisableHostname:
+          type: boolean
+        FilterDefault:
+          type: boolean
+        PrefixFilter:
+          items:
+            type: string
+          type: array
+        PrometheusMetrics:
+          type: boolean
+        PublishAllocationMetrics:
+          type: boolean
+        PublishNodeMetrics:
+          type: boolean
+        StatsdAddr:
+          type: string
+        StatsiteAddr:
+          type: string
+        UseNodeName:
+          type: boolean
+      type: object
     Template:
       properties:
         ChangeMode:
@@ -3790,6 +4460,49 @@ components:
           items:
             type: string
           type: array
+      type: object
+    VaultConfig:
+      properties:
+        Addr:
+          type: string
+        AllowUnauthenticated:
+          type: boolean
+        ConnectionRetryIntv:
+          format: int64
+          type: integer
+        Enabled:
+          type: boolean
+        Namespace:
+          type: string
+        Role:
+          type: string
+        TLSCaFile:
+          type: string
+        TLSCaPath:
+          type: string
+        TLSCertFile:
+          type: string
+        TLSKeyFile:
+          type: string
+        TLSServerName:
+          type: string
+        TLSSkipVerify:
+          type: boolean
+        TaskTokenTTL:
+          type: string
+        Token:
+          type: string
+      type: object
+    VersionInfo:
+      properties:
+        Revision:
+          type: string
+        Version:
+          type: string
+        VersionMetadata:
+          type: string
+        VersionPrerelease:
+          type: string
       type: object
     VolumeMount:
       properties:
@@ -3894,7 +4607,7 @@ paths:
       - $ref: '#/components/parameters/AgentTypeParam'
       responses:
         "200":
-          $ref: '#/components/responses/GetTODOResponse'
+          $ref: '#/components/responses/GetAgentHealthResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

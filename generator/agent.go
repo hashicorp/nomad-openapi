@@ -4,6 +4,10 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/nomad/api"
+	_ "github.com/hashicorp/nomad/client/allocrunner/taskrunner/getter"
+	_ "github.com/hashicorp/nomad/client/allocrunner/taskrunner/template"
+	_ "github.com/hashicorp/nomad/client/fingerprint"
+	"github.com/hashicorp/nomad/command/agent"
 )
 
 func (v *v1api) getAgentPaths() []*apiPath {
@@ -20,7 +24,7 @@ func (v *v1api) getAgentPaths() []*apiPath {
 					[]*parameter{&nomadTokenHeader},
 					newResponseConfig(200,
 						objectSchema,
-						api.AgentSelf{},
+						AgentSelf{},
 						nil,
 						"GetAgentSelfResponse",
 					),
@@ -148,8 +152,8 @@ func (v *v1api) getAgentPaths() []*apiPath {
 					newResponseConfig(200,
 						objectSchema,
 						api.AgentHealthResponse{},
-						queryMeta,
-						"GetTODOResponse",
+						nil,
+						"GetAgentHealthResponse",
 					),
 				),
 			},
@@ -202,4 +206,12 @@ func (v *v1api) getAgentPaths() []*apiPath {
 type JoinResponse struct {
 	NumJoined int    `json:"num_joined"`
 	Error     string `json:"error"`
+}
+
+// AgentSelf is used to report information about an agent and its configuration.
+// Helper struct exposes internal type that is returned by the endpoint.
+type AgentSelf struct {
+	Config *agent.Config                `json:"config"`
+	Member agent.Member                 `json:"member,omitempty"`
+	Stats  map[string]map[string]string `json:"stats"`
 }

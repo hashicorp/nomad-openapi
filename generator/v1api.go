@@ -34,10 +34,12 @@ func (v *v1api) GetPaths() []*apiPath {
 var (
 	agentAddressParam = parameter{
 		Id:          "AgentAddressParam",
-		SchemaType:  intSchema,
+		SchemaType:  stringSchema,
 		Description: "List of join server ip addresses. Can be repeated.",
 		Name:        "address",
 		In:          inQuery,
+		Style:       formStyle,
+		Explode:     true,
 		Required:    true,
 	}
 	agentTypeParam = parameter{
@@ -46,6 +48,8 @@ var (
 		Description: "List of agent types to retrieve health info for (e.g. client,server). Can be repeated.",
 		Name:        "type",
 		In:          inQuery,
+		Style:       formStyle,
+		Explode:     true,
 		Required:    true,
 	}
 	allParam = parameter{
