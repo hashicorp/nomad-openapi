@@ -20,6 +20,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 					queryOptions,
 					newResponseConfig(200, arraySchema, api.JobListStub{}, queryMeta, "GetJobsResponse"),
 				),
+				// TODO: Dedup
 				newOperation(http.MethodPost, "jobUpdate", tags, "RegisterJob",
 					newRequestBody(objectSchema, api.JobRegisterRequest{}),
 					writeOptions,

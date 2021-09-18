@@ -32,6 +32,20 @@ func (v *v1api) GetPaths() []*apiPath {
 }
 
 var (
+	allocationsResourcesParam = parameter{
+		Id:          "AllocationResourcesParam",
+		SchemaType:  boolSchema,
+		Description: "Flag indicating whether to include resources in response.",
+		Name:        "resources",
+		In:          inQuery,
+	}
+	allocationsTasksStatesParam = parameter{
+		Id:          "AllocationsTasksStatesParam",
+		SchemaType:  boolSchema,
+		Description: "Flag indicating whether to include task states in response.",
+		Name:        "task_states",
+		In:          inQuery,
+	}
 	allParam = parameter{
 		Id:          "AllParam",
 		SchemaType:  intSchema,

@@ -2,6 +2,8 @@ module github.com/hashicorp/nomad-openapi
 
 go 1.16
 
+// TODO: Test the replace idea to reference ../clients/go
+
 require (
 	github.com/hashicorp/cronexpr v1.1.1
 	github.com/hashicorp/nomad v1.1.4
