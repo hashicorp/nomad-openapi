@@ -3,7 +3,7 @@ package v1
 import (
 	"testing"
 
-	"github.com/hashicorp/nomad-openapi/v1/client"
+	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/nomad/mock"
 	"github.com/hashicorp/nomad/nomad/structs"

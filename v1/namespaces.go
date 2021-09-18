@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/hashicorp/nomad-openapi/v1/client"
+	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
 
 type Namespaces struct {
