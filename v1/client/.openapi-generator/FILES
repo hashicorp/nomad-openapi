@@ -1,6 +1,7 @@
 .gitignore
 README.md
 api/openapi.yaml
+api_allocations.go
 api_enterprise.go
 api_jobs.go
 api_metrics.go
