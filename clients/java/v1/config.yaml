@@ -1,0 +1,18 @@
+# File is used by the openapi-generator cli to generate a javascript client.
+generatorName: java
+gitUserId: hashicorp
+gitRepoId: nomad-openapi/clients/java/v1
+inputSpec: /local/v1/openapi.yaml
+outputDir: /local/clients/java/v1
+artifactVersion: 1.1.4
+groupId: io.nomadproject
+artifactId: nomad-openapi-java-client
+invokerPackage: io.nomadproject.client
+apiPackage: io.nomadproject.client.api
+modelPackage: io.nomadproject.client.models
+licenseName: Mozilla Public License 2.0
+licenseURL: https://www.mozilla.org/en-US/MPL/2.0/
+developerName: HashiCorp
+developerOrganization: HashiCorp
+developerOrganizationUrl: https://www.nomadproject.io/
+hideGenerationTimestamp: true

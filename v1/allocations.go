@@ -3,7 +3,7 @@ package v1
 import (
 	"context"
 
-	"github.com/hashicorp/nomad-openapi/v1/client"
+	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
 
 // Jobs encapsulates and extends the generated JobsApiService with convenience methods.

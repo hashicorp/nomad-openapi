@@ -3664,7 +3664,7 @@ info:
     name: MPL 2
     url: https://github.com/hashicorp/nomad/blob/main/LICENSE
   title: Nomad
-  version: 1.1.3
+  version: 1.1.4
 openapi: 3.0.3
 paths:
   /allocations:

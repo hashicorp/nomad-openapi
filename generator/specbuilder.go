@@ -80,7 +80,7 @@ func (b *specBuilder) buildSpec() (*spec, error) {
 }
 
 var infoModel = openapi3.Info{
-	Version: "1.1.3", // TODO: Schlep this dynamically from VersionInfo
+	Version: "1.1.4", // TODO: Schlep this dynamically from VersionInfo
 	Title:   "Nomad",
 	Contact: &openapi3.Contact{
 		Email: "support@hashicorp.com",
