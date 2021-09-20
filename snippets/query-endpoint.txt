@@ -1,0 +1,17 @@
+func (todo *TODO) GetTODO(ctx context.Context) (*client.TODO, *QueryMeta, error) {
+
+	request := todo.TODOApi().TODO(todo.client.Ctx)
+	request = todo.client.setQueryOptions(ctx, request).(client.TODO)
+
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}

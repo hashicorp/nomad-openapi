@@ -1,0 +1,13 @@
+func TestTODO(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+
+		result, meta, err := testClient.TODO().TODO(TODOOpts.Ctx())
+		require.NoError(t, err)
+		require.NotNil(t, result)
+		require.NotNil(t, meta)
+
+	})
+}
