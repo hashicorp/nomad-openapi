@@ -1,0 +1,20 @@
+package v1
+
+import (
+	"context"
+
+	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
+)
+
+// TODO encapsulates and extends the generated TODOApiService with convenience methods.
+type TODO struct {
+	client *Client
+}
+
+func (c *Client) TODO() *TODO {
+	return &TODO{client: c}
+}
+
+func (a *TODO) TODOApi() *client.TODOApiService {
+	return a.client.apiClient.TODOApi
+}
