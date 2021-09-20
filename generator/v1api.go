@@ -257,17 +257,17 @@ var (
 	}
 )
 
-var queryMeta = []*responseHeader{
+var defaultQueryMeta = []*responseHeader{
 	&xNomadIndexHeader,
 	&xNomadKnownLeaderHeader,
 	&xNomadLastContactHeader,
 }
 
-var writeMeta = []*responseHeader{
+var defaultWriteMeta = []*responseHeader{
 	&xNomadIndexHeader,
 }
 
-var queryOptions = []*parameter{
+var defaultQueryOpts = []*parameter{
 	&regionParam,
 	&namespaceParam,
 	&indexHeader,
@@ -279,7 +279,7 @@ var queryOptions = []*parameter{
 	&nextTokenParam,
 }
 
-var writeOptions = []*parameter{
+var defaultWriteOpts = []*parameter{
 	&regionParam,
 	&namespaceParam,
 	&nomadTokenHeader,

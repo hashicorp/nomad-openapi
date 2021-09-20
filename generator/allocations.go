@@ -19,14 +19,12 @@ func (v *v1api) getAllocationPaths() []*apiPath {
 					tags,
 					"GetAllocations",
 					nil,
-					// TODO: rename to defaultQueryOptions
-					appendParams(queryOptions, &allocationsResourcesParam, &allocationsTasksStatesParam),
+					appendParams(defaultQueryOpts, &allocationsResourcesParam, &allocationsTasksStatesParam),
 					// TODO: Think of ways to enhance the standard responses to handle the vagaries of different error codes
 					newResponseConfig(200,
 						arraySchema,
 						api.AllocationListStub{},
-						// TODO: rename to defaultQueryMeta
-						queryMeta,
+						defaultQueryMeta,
 						"GetAllocationsResponse",
 					),
 				),
