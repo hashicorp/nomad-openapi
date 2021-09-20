@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/hashicorp/nomad/api"
 	"net/http"
+
+	"github.com/hashicorp/nomad/api"
 )
 
 func (v *v1api) getSearchPaths() []*apiPath {
@@ -15,8 +16,8 @@ func (v *v1api) getSearchPaths() []*apiPath {
 			Operations: []*operation{
 				newOperation(http.MethodPost, "newFuzzySearchRequest", tags, "GetFuzzySearch",
 					newRequestBody(objectSchema, api.FuzzySearchRequest{}),
-					queryOptions,
-					newResponseConfig(200, objectSchema, api.FuzzySearchResponse{}, queryMeta, "GetFuzzySearchResponse"),
+					defaultQueryOpts,
+					newResponseConfig(200, objectSchema, api.FuzzySearchResponse{}, defaultQueryMeta, "GetFuzzySearchResponse"),
 				),
 			},
 		},
@@ -26,8 +27,8 @@ func (v *v1api) getSearchPaths() []*apiPath {
 			Operations: []*operation{
 				newOperation(http.MethodPost, "newSearchRequest", tags, "GetSearch",
 					newRequestBody(objectSchema, api.SearchRequest{}),
-					queryOptions,
-					newResponseConfig(200, objectSchema, api.SearchResponse{}, queryMeta, "GetSearchResponse"),
+					defaultQueryOpts,
+					newResponseConfig(200, objectSchema, api.SearchResponse{}, defaultQueryMeta, "GetSearchResponse"),
 				),
 			},
 		},
