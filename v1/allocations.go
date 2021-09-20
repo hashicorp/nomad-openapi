@@ -24,15 +24,10 @@ func (a *Allocations) GetAllocations(ctx context.Context) (*[]client.AllocationL
 	request := a.AllocationsApi().GetAllocations(a.client.Ctx)
 	request = a.client.setQueryOptions(ctx, request).(client.ApiGetAllocationsRequest)
 
-	result, response, err := request.Execute()
+	result, meta, err := execQuery(request)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	meta, err := parseQueryMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	return result.(*[]client.AllocationListStub), meta, nil
 }

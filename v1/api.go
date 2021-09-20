@@ -453,3 +453,35 @@ func cronParseNext(e *cronexpr.Expression, fromTime time.Time, spec string) (t t
 
 	return e.Next(fromTime), nil
 }
+
+type RequestExecutor interface {
+	Execute() (interface{}, *http.Response, error)
+}
+
+func execQuery(request RequestExecutor) (interface{}, *QueryMeta, error) {
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
+
+func execWrite(request RequestExecutor) (interface{}, *WriteMeta, error) {
+	result, response, err := request.Execute()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return &result, meta, nil
+}
