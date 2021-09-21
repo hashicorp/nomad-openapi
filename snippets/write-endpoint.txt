@@ -1,17 +1,10 @@
 func (todo *TODO) PostTODO(ctx context.Context) (*client.TODO, *WriteMeta, error) {
-
 	request := todo.TODOApi().TODO(todo.client.Ctx)
-	request = todo.client.setWriteOptions(ctx, request).(client.TODO)
-
-	result, response, err := request.Execute()
+	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	meta, err := parseWriteMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	final := result.(client.TODO)
+	return &final, meta, nil
 }

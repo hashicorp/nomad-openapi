@@ -39,7 +39,7 @@ func TestJobsGet(t *testing.T) {
 		result, meta, err := testClient.Jobs().GetJobs(queryOpts.Ctx())
 		require.NoError(t, err)
 		require.NotNil(t, result)
-		require.Len(t, result, 1)
+		require.Len(t, *result, 1)
 		require.NotNil(t, meta)
 	})
 }

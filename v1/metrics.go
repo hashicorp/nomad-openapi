@@ -20,12 +20,12 @@ func (m *Metrics) MetricsApi() *client.MetricsApiService {
 
 func (m *Metrics) GetMetricsSummary(ctx context.Context) (*client.MetricsSummary, error) {
 	request := m.MetricsApi().GetMetricsSummary(m.client.Ctx)
-	request = m.client.setQueryOptions(ctx, request).(client.ApiGetMetricsSummaryRequest)
 
-	result, _, err := request.Execute()
+	result, err := m.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err
 	}
 
-	return &result, nil
+	final := result.(client.MetricsSummary)
+	return &final, nil
 }
