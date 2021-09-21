@@ -44,9 +44,112 @@ func NewClient() (*Client, error) {
 	return c, nil
 }
 
+// ExecQuery executes a request that returns query metadata.
+func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{}, *QueryMeta, error) {
+	typeOf := reflect.TypeOf(request)
+	valueOf := reflect.ValueOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, nil, errors.New("execQuery failed: no Execute method on interface")
+	}
+
+	request = setQueryOptions(ctx, request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+	response := values[1].Interface().(*http.Response)
+
+	meta, err := parseQueryMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return result, meta, nil
+}
+
+// ExecWrite executes a request that returns write metadata.
+func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{}, *WriteMeta, error) {
+	typeOf := reflect.TypeOf(request)
+	valueOf := reflect.ValueOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, nil, errors.New("ExecWrite failed: no Execute method on interface")
+	}
+
+	request = setWriteOptions(ctx, request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+	response := values[1].Interface().(*http.Response)
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return result, meta, nil
+}
+
+// ExecNoResponseWrite executes a request that returns write metadata, but no model.
+func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (*WriteMeta, error) {
+	typeOf := reflect.TypeOf(request)
+	valueOf := reflect.ValueOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecNoResponseWrite failed: no Execute method on interface")
+	}
+
+	request = setWriteOptions(ctx, request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[1].IsNil() {
+		return nil, values[1].Interface().(error)
+	}
+
+	response := values[0].Interface().(*http.Response)
+
+	meta, err := parseWriteMeta(response)
+	if err != nil {
+		return nil, err
+	}
+
+	return meta, nil
+}
+
+// ExecRequest executes a client operation that does not return query or write metadata.
+func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{}, error) {
+	typeOf := reflect.TypeOf(request)
+	valueOf := reflect.ValueOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecRequest failed: no Execute method on interface")
+	}
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+
+	return result, nil
+}
+
 // setQueryOptions is used to annotate the request with
 // additional query options
-func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interface{} {
+func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("QueryOpts").(*QueryOpts)
 	if !ok || opts == nil {
 		return iface
@@ -108,7 +211,7 @@ func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interfa
 }
 
 // setWriteOptions is used to annotate an openapi request with additional write options.
-func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interface{} {
+func setWriteOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("WriteOpts").(*WriteOpts)
 	if !ok || opts == nil {
 		return iface

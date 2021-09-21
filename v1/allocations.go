@@ -20,19 +20,13 @@ func (a *Allocations) AllocationsApi() *client.AllocationsApiService {
 }
 
 func (a *Allocations) GetAllocations(ctx context.Context) (*[]client.AllocationListStub, *QueryMeta, error) {
-
 	request := a.AllocationsApi().GetAllocations(a.client.Ctx)
-	request = a.client.setQueryOptions(ctx, request).(client.ApiGetAllocationsRequest)
 
-	result, response, err := request.Execute()
+	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	meta, err := parseQueryMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	final := result.([]client.AllocationListStub)
+	return &final, meta, nil
 }

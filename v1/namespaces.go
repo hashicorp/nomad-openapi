@@ -24,14 +24,8 @@ func (n *Namespaces) DeleteNamespace(ctx context.Context, name string) (*WriteMe
 		return nil, errors.New("namespace name is required")
 	}
 	request := n.NamespacesApi().DeleteNamespace(n.client.Ctx, name)
-	request = n.client.setWriteOptions(ctx, request).(client.ApiDeleteNamespaceRequest)
 
-	response, err := request.Execute()
-	if err != nil {
-		return nil, err
-	}
-
-	meta, err := parseWriteMeta(response)
+	meta, err := n.client.ExecNoResponseWrite(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -45,35 +39,23 @@ func (n *Namespaces) GetNamespace(ctx context.Context, name string) (*client.Nam
 	}
 
 	request := n.NamespacesApi().GetNamespace(n.client.Ctx, name)
-	request = n.client.setQueryOptions(ctx, request).(client.ApiGetNamespaceRequest)
-
-	result, response, err := request.Execute()
+	result, meta, err := n.client.ExecQuery(ctx, request)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	meta, err := parseQueryMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	final := result.(client.Namespace)
+	return &final, meta, nil
 }
 func (n *Namespaces) GetNamespaces(ctx context.Context) (*[]client.Namespace, *QueryMeta, error) {
 	request := n.NamespacesApi().GetNamespaces(n.client.Ctx)
-	request = n.client.setQueryOptions(ctx, request).(client.ApiGetNamespacesRequest)
-
-	result, response, err := request.Execute()
+	result, meta, err := n.client.ExecQuery(ctx, request)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	meta, err := parseQueryMeta(response)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return &result, meta, nil
+	final := result.([]client.Namespace)
+	return &final, meta, nil
 }
 
 func (n *Namespaces) PostNamespace(ctx context.Context, namespace *client.Namespace) (*WriteMeta, error) {
@@ -81,16 +63,10 @@ func (n *Namespaces) PostNamespace(ctx context.Context, namespace *client.Namesp
 		return nil, errors.New("namespace is required")
 	}
 	request := n.NamespacesApi().PostNamespace(n.client.Ctx, *namespace.Name)
-	request = n.client.setWriteOptions(ctx, request).(client.ApiPostNamespaceRequest)
 
 	request = request.Namespace2(*namespace)
 
-	response, err := request.Execute()
-	if err != nil {
-		return nil, err
-	}
-
-	meta, err := parseWriteMeta(response)
+	meta, err := n.client.ExecNoResponseWrite(ctx, request)
 	if err != nil {
 		return nil, err
 	}
