@@ -1,5 +1,7 @@
 .gitignore
 README.md
+docs/ACLApi.md
+docs/ACLPolicyListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -145,6 +147,7 @@ docs/VolumeRequest.md
 docs/VolumesApi.md
 nomad_client/__init__.py
 nomad_client/api/__init__.py
+nomad_client/api/acl_api.py
 nomad_client/api/allocations_api.py
 nomad_client/api/enterprise_api.py
 nomad_client/api/jobs_api.py
@@ -158,6 +161,7 @@ nomad_client/apis/__init__.py
 nomad_client/configuration.py
 nomad_client/exceptions.py
 nomad_client/model/__init__.py
+nomad_client/model/acl_policy_list_stub.py
 nomad_client/model/affinity.py
 nomad_client/model/alloc_deployment_status.py
 nomad_client/model/allocated_cpu_resources.py

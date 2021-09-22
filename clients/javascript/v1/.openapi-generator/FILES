@@ -1,6 +1,8 @@
 .babelrc
 .gitignore
 README.md
+docs/ACLApi.md
+docs/ACLPolicyListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -143,6 +145,7 @@ docs/VolumesApi.md
 mocha.opts
 package.json
 src/ApiClient.js
+src/api/ACLApi.js
 src/api/AllocationsApi.js
 src/api/EnterpriseApi.js
 src/api/JobsApi.js
@@ -152,6 +155,7 @@ src/api/RegionsApi.js
 src/api/SearchApi.js
 src/api/VolumesApi.js
 src/index.js
+src/model/ACLPolicyListStub.js
 src/model/Affinity.js
 src/model/AllocDeploymentStatus.js
 src/model/AllocatedCpuResources.js

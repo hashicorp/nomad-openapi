@@ -6,7 +6,7 @@
 # raise a `RecursionError`.
 # In order to avoid this, import only the API that you directly need like:
 #
-#   from .api.allocations_api import AllocationsApi
+#   from .api.acl_api import ACLApi
 #
 # or import this package, but before doing it, use:
 #
@@ -14,6 +14,7 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
+from nomad_client.api.acl_api import ACLApi
 from nomad_client.api.allocations_api import AllocationsApi
 from nomad_client.api.enterprise_api import EnterpriseApi
 from nomad_client.api.jobs_api import JobsApi

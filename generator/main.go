@@ -5,9 +5,11 @@ import (
 	"os"
 
 	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/nomad/command/agent"
 )
 
 var logger = hclog.Default()
+var httpServer = agent.HTTPServer{}
 
 func main() {
 	if len(os.Args) != 2 {

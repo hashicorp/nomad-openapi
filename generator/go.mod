@@ -9,5 +9,7 @@ require (
 	github.com/hashicorp/nomad v1.1.4
 	github.com/hashicorp/nomad/api v0.0.0-20210816133024-fdb868400424
 	github.com/stretchr/testify v1.7.0
-	google.golang.org/grpc v1.31.0 // indirect
+	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d // indirect
+	golang.org/x/sys v0.0.0-20210921065528-437939a70204 // indirect
+	google.golang.org/api v0.57.0 // indirect
 )

@@ -762,11 +762,11 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = AllocationsApi()
-        api_instance.get_allocations  # this is an instance of the class Endpoint
-        api_instance.get_allocations()  # this invokes api_instance.get_allocations.__call__()
+        api_instance = ACLApi()
+        api_instance.get_acl_policies  # this is an instance of the class Endpoint
+        api_instance.get_acl_policies()  # this invokes api_instance.get_acl_policies.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.get_allocations.callable or self.callable in this class
+        api_instance.get_acl_policies.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

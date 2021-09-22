@@ -107,7 +107,7 @@ X-Nomad-Token.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //X-Nomad-Token.apiKeyPrefix['X-Nomad-Token'] = "Token"
 
-var api = new nomad-client.AllocationsApi()
+var api = new nomad-client.ACLApi()
 var opts = {
   'region': "region_example", // {String} Filters results based on the specified region.
   'namespace': "namespace_example", // {String} Filters results based on the specified namespace.
@@ -117,9 +117,7 @@ var opts = {
   'prefix': "prefix_example", // {String} Constrains results to jobs that start with the defined prefix
   'xNomadToken': "xNomadToken_example", // {String} A Nomad ACL token.
   'perPage': 56, // {Number} Maximum number of results to return.
-  'nextToken': "nextToken_example", // {String} Indicates where to start paging for queries that support pagination.
-  'resources': true, // {Boolean} Flag indicating whether to include resources in response.
-  'taskStates': true // {Boolean} Flag indicating whether to include task states in response.
+  'nextToken': "nextToken_example" // {String} Indicates where to start paging for queries that support pagination.
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -128,7 +126,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getAllocations(opts, callback);
+api.getACLPolicies(opts, callback);
 
 ```
 
@@ -138,6 +136,7 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*nomad-client.ACLApi* | [**getACLPolicies**](docs/ACLApi.md#getACLPolicies) | **GET** /acl/policies | 
 *nomad-client.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
 *nomad-client.EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *nomad-client.EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
@@ -189,6 +188,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [nomad-client.ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [nomad-client.Affinity](docs/Affinity.md)
  - [nomad-client.AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [nomad-client.AllocatedCpuResources](docs/AllocatedCpuResources.md)

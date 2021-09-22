@@ -3,6 +3,8 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ACLPolicyListStub.md
+docs/AclApi.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -163,6 +165,7 @@ src/main/java/io/nomadproject/client/ProgressResponseBody.java
 src/main/java/io/nomadproject/client/ServerConfiguration.java
 src/main/java/io/nomadproject/client/ServerVariable.java
 src/main/java/io/nomadproject/client/StringUtil.java
+src/main/java/io/nomadproject/client/api/AclApi.java
 src/main/java/io/nomadproject/client/api/AllocationsApi.java
 src/main/java/io/nomadproject/client/api/EnterpriseApi.java
 src/main/java/io/nomadproject/client/api/JobsApi.java
@@ -175,6 +178,7 @@ src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
 src/main/java/io/nomadproject/client/auth/HttpBasicAuth.java
 src/main/java/io/nomadproject/client/auth/HttpBearerAuth.java
+src/main/java/io/nomadproject/client/models/ACLPolicyListStub.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
 src/main/java/io/nomadproject/client/models/AllocatedCpuResources.java
