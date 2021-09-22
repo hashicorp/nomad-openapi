@@ -15,7 +15,7 @@ func (v *v1api) getAllocationPaths() []*apiPath {
 			Template: "/allocations",
 			Operations: []*operation{
 				newOperation(http.MethodGet,
-					"AllocsRequest",
+					httpServer.AllocsRequest,
 					tags,
 					"GetAllocations",
 					nil,

@@ -1,6 +1,7 @@
 .gitignore
 README.md
 api/openapi.yaml
+api_acl.go
 api_allocations.go
 api_enterprise.go
 api_jobs.go
@@ -11,6 +12,8 @@ api_search.go
 api_volumes.go
 client.go
 configuration.go
+docs/ACLApi.md
+docs/ACLPolicyListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -150,6 +153,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+model_acl_policy_list_stub.go
 model_affinity.go
 model_alloc_deployment_status.go
 model_allocated_cpu_resources.go

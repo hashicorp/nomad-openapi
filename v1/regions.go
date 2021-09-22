@@ -21,15 +21,14 @@ func (r *Regions) RegionsApi() *client.RegionsApiService {
 
 func (r *Regions) GetRegions(ctx context.Context) (*[]string, error) {
 	request := r.RegionsApi().GetRegions(r.client.Ctx)
-	request = r.client.setQueryOptions(ctx, request).(client.ApiGetRegionsRequest)
 
-	result, _, err := request.Execute()
+	result, err := r.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err
 	}
 
+	final := result.([]string)
 	// Sort the results, so the output is always consistent.
-	sort.Strings(result)
-
-	return &result, nil
+	sort.Strings(final)
+	return &final, nil
 }

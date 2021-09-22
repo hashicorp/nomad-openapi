@@ -49,8 +49,8 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import time
 import nomad_client
 from pprint import pprint
-from nomad_client.api import allocations_api
-from nomad_client.model.allocation_list_stub import AllocationListStub
+from nomad_client.api import acl_api
+from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
 # Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
@@ -72,7 +72,7 @@ configuration.api_key['X-Nomad-Token'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with nomad_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = allocations_api.AllocationsApi(api_client)
+    api_instance = acl_api.ACLApi(api_client)
     region = "region_example" # str | Filters results based on the specified region. (optional)
 namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
 index = 1 # int | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -82,14 +82,12 @@ prefix = "prefix_example" # str | Constrains results to jobs that start with the
 x_nomad_token = "X-Nomad-Token_example" # str | A Nomad ACL token. (optional)
 per_page = 1 # int | Maximum number of results to return. (optional)
 next_token = "next_token_example" # str | Indicates where to start paging for queries that support pagination. (optional)
-resources = True # bool | Flag indicating whether to include resources in response. (optional)
-task_states = True # bool | Flag indicating whether to include task states in response. (optional)
 
     try:
-        api_response = api_instance.get_allocations(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token, resources=resources, task_states=task_states)
+        api_response = api_instance.get_acl_policies(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token)
         pprint(api_response)
     except nomad_client.ApiException as e:
-        print("Exception when calling AllocationsApi->get_allocations: %s\n" % e)
+        print("Exception when calling ACLApi->get_acl_policies: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -98,6 +96,7 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ACLApi* | [**get_acl_policies**](docs/ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
 *AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
 *EnterpriseApi* | [**create_quota_spec**](docs/EnterpriseApi.md#create_quota_spec) | **POST** /quota | 
 *EnterpriseApi* | [**delete_quota_spec**](docs/EnterpriseApi.md#delete_quota_spec) | **DELETE** /quota/{specName} | 
@@ -149,6 +148,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)

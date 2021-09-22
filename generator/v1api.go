@@ -328,7 +328,7 @@ var standardResponses = []*responseConfig{
 	},
 }
 
-func newOperation(method string, handler string, tags []string, operationId string, requestBody *requestBody, params []*parameter, responses ...*responseConfig) *operation {
+func newOperation(method string, handler interface{}, tags []string, operationId string, requestBody *requestBody, params []*parameter, responses ...*responseConfig) *operation {
 	return &operation{
 		Method:      method,
 		Handler:     handler,

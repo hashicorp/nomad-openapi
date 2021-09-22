@@ -13,6 +13,7 @@
 
 
 import ApiClient from './ApiClient';
+import ACLPolicyListStub from './model/ACLPolicyListStub';
 import Affinity from './model/Affinity';
 import AllocDeploymentStatus from './model/AllocDeploymentStatus';
 import AllocatedCpuResources from './model/AllocatedCpuResources';
@@ -144,6 +145,7 @@ import UpdateStrategy from './model/UpdateStrategy';
 import Vault from './model/Vault';
 import VolumeMount from './model/VolumeMount';
 import VolumeRequest from './model/VolumeRequest';
+import ACLApi from './api/ACLApi';
 import AllocationsApi from './api/AllocationsApi';
 import EnterpriseApi from './api/EnterpriseApi';
 import JobsApi from './api/JobsApi';
@@ -191,6 +193,12 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
+
+    /**
+     * The ACLPolicyListStub model constructor.
+     * @property {module:model/ACLPolicyListStub}
+     */
+    ACLPolicyListStub,
 
     /**
      * The Affinity model constructor.
@@ -977,6 +985,12 @@ export {
      * @property {module:model/VolumeRequest}
      */
     VolumeRequest,
+
+    /**
+    * The ACLApi service constructor.
+    * @property {module:api/ACLApi}
+    */
+    ACLApi,
 
     /**
     * The AllocationsApi service constructor.

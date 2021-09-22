@@ -64,7 +64,7 @@ type responseConfig struct {
 
 type operation struct {
 	Method      string
-	Handler     string
+	Handler     interface{}
 	Tags        []string
 	OperationId string
 	Summary     string

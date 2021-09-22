@@ -77,7 +77,7 @@ import io.nomadproject.client.ApiException;
 import io.nomadproject.client.Configuration;
 import io.nomadproject.client.auth.*;
 import io.nomadproject.client.models.*;
-import io.nomadproject.client.api.AllocationsApi;
+import io.nomadproject.client.api.AclApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -90,7 +90,7 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //X-Nomad-Token.setApiKeyPrefix("Token");
 
-    AllocationsApi apiInstance = new AllocationsApi(defaultClient);
+    AclApi apiInstance = new AclApi(defaultClient);
     String region = "region_example"; // String | Filters results based on the specified region.
     String namespace = "namespace_example"; // String | Filters results based on the specified namespace.
     Integer index = 56; // Integer | If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -100,13 +100,11 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
-    Boolean resources = true; // Boolean | Flag indicating whether to include resources in response.
-    Boolean taskStates = true; // Boolean | Flag indicating whether to include task states in response.
     try {
-      List<AllocationListStub> result = apiInstance.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
+      List<ACLPolicyListStub> result = apiInstance.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AllocationsApi#getAllocations");
+      System.err.println("Exception when calling AclApi#getACLPolicies");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -123,6 +121,7 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AclApi* | [**getACLPolicies**](docs/AclApi.md#getACLPolicies) | **GET** /acl/policies | 
 *AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
 *EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
@@ -174,6 +173,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)

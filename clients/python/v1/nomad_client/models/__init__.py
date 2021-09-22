@@ -9,6 +9,7 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
 from nomad_client.model.affinity import Affinity
 from nomad_client.model.alloc_deployment_status import AllocDeploymentStatus
 from nomad_client.model.allocated_cpu_resources import AllocatedCpuResources
