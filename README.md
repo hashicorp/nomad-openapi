@@ -39,7 +39,14 @@ $ mkdir -p /tmp/nomad-openapi && docker run \
 Generating a client in a different language should be as straightforward as
 changing the `-g` argument in the command above to your language of choice. Check
 the [OpenAPI Generators](https://openapi-generator.tech/docs/generators) page
-for a full list of supported languages. 
+for a full list of supported languages.
+
+If you want to generate a client in a language not yet included in the `clients`
+directory and submit it for inclusion in this repo, review the `Makefile` at the
+root of this repository. Also review the `config.yaml` file in each client folder.
+You will need to create a similar file that is specific to your language. Reference
+the [OpenAPI Generator documentation](https://openapi-generator.tech/docs/configuration)
+for more information on language specific configuration options.
 
 This repository is currently _experimental_, and, as such, there is no guarantee
 of support at this time.
@@ -72,18 +79,19 @@ experimental, and subject to change.
 
 ## Contributing
 
-The `api/v1/openapi.yaml` specification file is a generated file that should not be
-edited manually. 
+The `/v1/openapi.yaml` specification file is a generated file that should not be
+edited manually.
+
+This [presentation](https://docs.google.com/presentation/d/1h4OOjPFOHbDJsbtuQZRYDjotyBH1YZs7V8L7qmEjRXc/edit#slide=id.gf24f7d4584_1_20)
+contains an overview of how to contribute endpoint configurations.
 
 The [README](https://github.com/hashicorp/nomad-openapi/blob/main/generator/README.md)
-file in the `generator` directory contains a detailed technical overview as well
-as instructions on _how to contribute_.
+file in the `generator` directory contains a detailed technical overview of the
+generator package as well as instructions on _how to contribute_ to that package.
 
 ## Client and API packages are not officially supported packages
 
-The `client` and `api` found in this repository are _not officially supported packages_.
-They exist here to be consumed by unit tests as a means of validating the
-specification produced by the `generator` package.
+The `clients` and `v1` packages found in this repository are _not officially supported packages_.
 
 
 
