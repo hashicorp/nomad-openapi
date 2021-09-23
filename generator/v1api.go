@@ -60,6 +60,14 @@ var (
 		Name:        "index",
 		In:          inHeader,
 	}
+	jobAllocationsAllParam = parameter{
+		Id:          "JobAllocationsParam",
+		SchemaType:  boolSchema,
+		Description: "Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.",
+		Name:        "all",
+		In:          inQuery,
+		Required:    false,
+	}
 	jobDiffsParam = parameter{
 		Id:          "JobDiffsParam",
 		SchemaType:  boolSchema,
