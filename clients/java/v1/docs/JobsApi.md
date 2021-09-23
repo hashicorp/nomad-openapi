@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobAllocations"></a>
 # **getJobAllocations**
-> List&lt;AllocationListStub&gt; getJobAllocations(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+> List&lt;AllocationListStub&gt; getJobAllocations(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all)
 
 
 
@@ -237,8 +237,9 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
+    Boolean all = true; // Boolean | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.
     try {
-      List<AllocationListStub> result = apiInstance.getJobAllocations(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+      List<AllocationListStub> result = apiInstance.getJobAllocations(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobAllocations");
@@ -265,6 +266,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **String**| A Nomad ACL token. | [optional]
  **perPage** | **Integer**| Maximum number of results to return. | [optional]
  **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
+ **all** | **Boolean**| Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. | [optional]
 
 ### Return type
 

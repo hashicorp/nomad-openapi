@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ## GetJobAllocations
 
-> []AllocationListStub GetJobAllocations(ctx, jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> []AllocationListStub GetJobAllocations(ctx, jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
 
 
 
@@ -223,10 +223,11 @@ func main() {
     xNomadToken := "xNomadToken_example" // string | A Nomad ACL token. (optional)
     perPage := int32(56) // int32 | Maximum number of results to return. (optional)
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
+    all := true // bool | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobAllocations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    resp, r, err := api_client.JobsApi.GetJobAllocations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobAllocations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,6 +262,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **string** | A Nomad ACL token. | 
  **perPage** | **int32** | Maximum number of results to return. | 
  **nextToken** | **string** | Indicates where to start paging for queries that support pagination. | 
+ **all** | **bool** | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. | 
 
 ### Return type
 

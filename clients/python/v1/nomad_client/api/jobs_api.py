@@ -412,6 +412,7 @@ class JobsApi(object):
                 x_nomad_token (str): A Nomad ACL token.. [optional]
                 per_page (int): Maximum number of results to return.. [optional]
                 next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+                all (bool): Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -483,6 +484,7 @@ class JobsApi(object):
                     'x_nomad_token',
                     'per_page',
                     'next_token',
+                    'all',
                 ],
                 'required': [
                     'job_name',
@@ -520,6 +522,8 @@ class JobsApi(object):
                         (int,),
                     'next_token':
                         (str,),
+                    'all':
+                        (bool,),
                 },
                 'attribute_map': {
                     'job_name': 'jobName',
@@ -532,6 +536,7 @@ class JobsApi(object):
                     'x_nomad_token': 'X-Nomad-Token',
                     'per_page': 'per_page',
                     'next_token': 'next_token',
+                    'all': 'all',
                 },
                 'location_map': {
                     'job_name': 'path',
@@ -544,6 +549,7 @@ class JobsApi(object):
                     'x_nomad_token': 'header',
                     'per_page': 'query',
                     'next_token': 'query',
+                    'all': 'query',
                 },
                 'collection_format_map': {
                 }

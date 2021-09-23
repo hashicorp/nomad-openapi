@@ -188,7 +188,8 @@ let opts = {
   'prefix': "prefix_example", // String | Constrains results to jobs that start with the defined prefix
   'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
   'perPage': 56, // Number | Maximum number of results to return.
-  'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
+  'nextToken': "nextToken_example", // String | Indicates where to start paging for queries that support pagination.
+  'all': true // Boolean | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.
 };
 apiInstance.getJobAllocations(jobName, opts, (error, data, response) => {
   if (error) {
@@ -214,6 +215,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **String**| A Nomad ACL token. | [optional] 
  **perPage** | **Number**| Maximum number of results to return. | [optional] 
  **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] 
+ **all** | **Boolean**| Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. | [optional] 
 
 ### Return type
 

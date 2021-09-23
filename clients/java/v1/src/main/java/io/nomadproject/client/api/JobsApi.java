@@ -465,6 +465,7 @@ public class JobsApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param all Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -478,7 +479,7 @@ public class JobsApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobAllocationsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getJobAllocationsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -519,6 +520,10 @@ public class JobsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
         }
 
+        if (all != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("all", all));
+        }
+
         if (index != null) {
             localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
         }
@@ -546,7 +551,7 @@ public class JobsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getJobAllocationsValidateBeforeCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getJobAllocationsValidateBeforeCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'jobName' is set
         if (jobName == null) {
@@ -554,7 +559,7 @@ public class JobsApi {
         }
         
 
-        okhttp3.Call localVarCall = getJobAllocationsCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        okhttp3.Call localVarCall = getJobAllocationsCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all, _callback);
         return localVarCall;
 
     }
@@ -572,6 +577,7 @@ public class JobsApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param all Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
      * @return List&lt;AllocationListStub&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -584,8 +590,8 @@ public class JobsApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<AllocationListStub> getJobAllocations(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
-        ApiResponse<List<AllocationListStub>> localVarResp = getJobAllocationsWithHttpInfo(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+    public List<AllocationListStub> getJobAllocations(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all) throws ApiException {
+        ApiResponse<List<AllocationListStub>> localVarResp = getJobAllocationsWithHttpInfo(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all);
         return localVarResp.getData();
     }
 
@@ -602,6 +608,7 @@ public class JobsApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param all Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
      * @return ApiResponse&lt;List&lt;AllocationListStub&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -614,8 +621,8 @@ public class JobsApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AllocationListStub>> getJobAllocationsWithHttpInfo(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
-        okhttp3.Call localVarCall = getJobAllocationsValidateBeforeCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+    public ApiResponse<List<AllocationListStub>> getJobAllocationsWithHttpInfo(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all) throws ApiException {
+        okhttp3.Call localVarCall = getJobAllocationsValidateBeforeCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all, null);
         Type localVarReturnType = new TypeToken<List<AllocationListStub>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -633,6 +640,7 @@ public class JobsApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param all Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -646,9 +654,9 @@ public class JobsApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobAllocationsAsync(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<AllocationListStub>> _callback) throws ApiException {
+    public okhttp3.Call getJobAllocationsAsync(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all, final ApiCallback<List<AllocationListStub>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getJobAllocationsValidateBeforeCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        okhttp3.Call localVarCall = getJobAllocationsValidateBeforeCall(jobName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, all, _callback);
         Type localVarReturnType = new TypeToken<List<AllocationListStub>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -682,6 +682,16 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Specifies whether the list of allocations should include allocations
+          from a previously registered job with the same ID. This is possible if the
+          job is deregistered and reregistered.
+        explode: true
+        in: query
+        name: all
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -4684,6 +4694,17 @@ components:
       schema:
         type: integer
       style: simple
+    JobAllocationsParam:
+      description: Specifies whether the list of allocations should include allocations
+        from a previously registered job with the same ID. This is possible if the
+        job is deregistered and reregistered.
+      explode: true
+      in: query
+      name: all
+      required: false
+      schema:
+        type: boolean
+      style: form
     JobDiffsParam:
       description: Boolean flag indicating whether to compute job diffs.
       explode: true
