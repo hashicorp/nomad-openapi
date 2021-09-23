@@ -399,6 +399,7 @@ type ApiGetJobAllocationsRequest struct {
 	xNomadToken *string
 	perPage *int32
 	nextToken *string
+	all *bool
 }
 
 func (r ApiGetJobAllocationsRequest) Region(region string) ApiGetJobAllocationsRequest {
@@ -435,6 +436,10 @@ func (r ApiGetJobAllocationsRequest) PerPage(perPage int32) ApiGetJobAllocations
 }
 func (r ApiGetJobAllocationsRequest) NextToken(nextToken string) ApiGetJobAllocationsRequest {
 	r.nextToken = &nextToken
+	return r
+}
+func (r ApiGetJobAllocationsRequest) All(all bool) ApiGetJobAllocationsRequest {
+	r.all = &all
 	return r
 }
 
@@ -502,6 +507,9 @@ func (a *JobsApiService) GetJobAllocationsExecute(r ApiGetJobAllocationsRequest)
 	}
 	if r.nextToken != nil {
 		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	if r.all != nil {
+		localVarQueryParams.Add("all", parameterToString(*r.all, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -193,6 +193,7 @@ export default class JobsApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {Boolean} opts.all Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.
      * @param {module:api/JobsApi~getJobAllocationsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/AllocationListStub>}
      */
@@ -214,7 +215,8 @@ export default class JobsApi {
         'stale': opts['stale'],
         'prefix': opts['prefix'],
         'per_page': opts['perPage'],
-        'next_token': opts['nextToken']
+        'next_token': opts['nextToken'],
+        'all': opts['all']
       };
       let headerParams = {
         'index': opts['index'],

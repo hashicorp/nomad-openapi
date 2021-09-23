@@ -272,6 +272,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     x_nomad_token = "X-Nomad-Token_example" # str | A Nomad ACL token. (optional)
     per_page = 1 # int | Maximum number of results to return. (optional)
     next_token = "next_token_example" # str | Indicates where to start paging for queries that support pagination. (optional)
+    all = True # bool | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -283,7 +284,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.get_job_allocations(job_name, region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token)
+        api_response = api_instance.get_job_allocations(job_name, region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token, all=all)
         pprint(api_response)
     except nomad_client.ApiException as e:
         print("Exception when calling JobsApi->get_job_allocations: %s\n" % e)
@@ -304,6 +305,7 @@ Name | Type | Description  | Notes
  **x_nomad_token** | **str**| A Nomad ACL token. | [optional]
  **per_page** | **int**| Maximum number of results to return. | [optional]
  **next_token** | **str**| Indicates where to start paging for queries that support pagination. | [optional]
+ **all** | **bool**| Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. | [optional]
 
 ### Return type
 

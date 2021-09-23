@@ -431,6 +431,44 @@ func TestJobScaleTaskGroup(t *testing.T) {
 	})
 }
 
+// TODO: Figure out how to force allocations with the TestAgent
+//func TestGetJobAllocations(t *testing.T) {
+//	t.Parallel()
+//	agentConfFunc := func(c *agent.Config) {
+//		c.Client.Enabled = true
+//	}
+//
+//	httpTest(t, agentConfFunc, func(s *agent.TestAgent) {
+//		job := mock.Job()
+//		rpcRegister(t, s, job)
+//
+//		testClient, err := NewTestClient(s)
+//		require.NoError(t, err)
+//
+//		testutil.WaitForResult(func() (bool, error) {
+//			result, meta, err := testClient.Jobs().Allocations(queryOpts.Ctx(), job.Name, true)
+//			require.NoError(t, err)
+//			require.NotNil(t, result)
+//			require.NotNil(t, meta)
+//
+//			if len(*result) < 1 {
+//				return false, fmt.Errorf("no allocations yet")
+//			}
+//
+//			allocs := *result
+//			alloc := allocs[0]
+//
+//			if *alloc.ClientStatus != "running" {
+//				return false, fmt.Errorf("alloc is not running yet: %v", alloc.ClientStatus)
+//			}
+//
+//			return true, nil
+//		}, func(err error) {
+//			require.NoError(t, err)
+//		})
+//	})
+//}
+
 var (
 	id                                  = "mock-service"
 	dbLabel                             = "db"

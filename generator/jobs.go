@@ -104,7 +104,7 @@ func (v *v1api) getJobPaths() []*apiPath {
 			Operations: []*operation{
 				newOperation(http.MethodGet, "jobAllocations", tags, "GetJobAllocations",
 					nil,
-					appendParams(defaultQueryOpts, &jobNameParam),
+					appendParams(defaultQueryOpts, &jobNameParam, &jobAllocationsAllParam),
 					newResponseConfig(200, arraySchema, api.AllocationListStub{}, defaultQueryMeta, "GetJobAllocationsResponse"),
 				),
 			},

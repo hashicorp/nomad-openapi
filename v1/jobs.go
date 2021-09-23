@@ -23,6 +23,23 @@ func (j *Jobs) JobsApi() *client.JobsApiService {
 	return j.client.apiClient.JobsApi
 }
 
+func (j *Jobs) Allocations(ctx context.Context, jobName string, all bool) (*[]client.AllocationListStub, *QueryMeta, error) {
+	if jobName == "" {
+		return nil, nil, jobNameErr
+	}
+
+	request := j.JobsApi().GetJobAllocations(j.client.Ctx, jobName)
+	request = request.All(all)
+
+	result, meta, err := j.client.ExecQuery(ctx, request)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	final := result.([]client.AllocationListStub)
+	return &final, meta, nil
+}
+
 func (j *Jobs) Delete(ctx context.Context, jobName string, purge, global bool) (*client.JobDeregisterResponse, *WriteMeta, error) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
