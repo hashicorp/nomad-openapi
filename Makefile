@@ -25,3 +25,11 @@ v1: spec
 			--rm \
 			--volume "$(shell pwd):/local" \
 			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/python/v1/config.yaml
+	@docker run \
+			--rm \
+			--volume "$(shell pwd):/local" \
+			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/rust/reqwest/v1/config.yaml
+	@docker run \
+			--rm \
+			--volume "$(shell pwd):/local" \
+			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/rust/hyper/v1/config.yaml
