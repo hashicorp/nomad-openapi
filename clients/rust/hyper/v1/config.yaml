@@ -7,3 +7,8 @@ outputDir: /local/clients/rust/hyper/v1
 packageName: nomad_client
 packageVersion: 1.1.4
 library: hyper
+templateDir: /local/clients/rust/hyper/v1
+files:
+  README.mustache:
+    templateType: SupportingFiles
+    destinationFilename: README.md
