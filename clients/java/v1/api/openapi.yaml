@@ -2763,6 +2763,779 @@ paths:
       tags:
       - Namespaces
       x-accepts: application/json
+  /node/{nodeId}:
+    get:
+      operationId: GetNode
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ID of the node.
+        explode: false
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-accepts: application/json
+  /node/{nodeId}/allocations:
+    get:
+      operationId: GetNodeAllocations
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ID of the node.
+        explode: false
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllocationListStub'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-accepts: application/json
+  /node/{nodeId}/drain:
+    post:
+      operationId: UpdateNodeDrain
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ID of the node.
+        explode: false
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateDrainRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeDrainUpdateResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-contentType: application/json
+      x-accepts: application/json
+  /node/{nodeId}/eligibility:
+    post:
+      operationId: UpdateNodeEligibility
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ID of the node.
+        explode: false
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateEligibilityRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeEligibilityUpdateResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-contentType: application/json
+      x-accepts: application/json
+  /node/{nodeId}/purge:
+    post:
+      operationId: UpdateNodePurge
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ID of the node.
+        explode: false
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodePurgeResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-accepts: application/json
+  /nodes:
+    get:
+      operationId: GetNodes
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Whether or not to include the NodeResources and ReservedResources
+          fields in the response.
+        explode: true
+        in: query
+        name: resources
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NodeListStub'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+      x-accepts: application/json
   /quota:
     post:
       operationId: CreateQuotaSpec
@@ -4788,6 +5561,25 @@ components:
       schema:
         type: string
       style: form
+    NodeIdParam:
+      description: The ID of the node.
+      explode: false
+      in: path
+      name: nodeId
+      required: true
+      schema:
+        type: string
+      style: simple
+    NodeResourcesParam:
+      description: Whether or not to include the NodeResources and ReservedResources
+        fields in the response.
+      explode: true
+      in: query
+      name: resources
+      required: false
+      schema:
+        type: string
+      style: form
     PerPageParam:
       description: Maximum number of results to return.
       explode: true
@@ -4992,6 +5784,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Namespace'
+      required: true
+    NodeUpdateDrainRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeUpdateDrainRequest'
+      required: true
+    NodeUpdateEligibilityRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeUpdateEligibilityRequest'
       required: true
     QuotaSpec:
       content:
@@ -5505,6 +6309,86 @@ components:
           schema:
             type: integer
           style: simple
+    GetNodeAllocationsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllocationListStub'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    GetNodeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Node'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    GetNodesResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/NodeListStub'
+            type: array
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -5675,6 +6559,84 @@ components:
       description: Internal server error
     MethodNotAllowedResponse:
       description: Method not allowed
+    NodeDrainUpdateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeDrainUpdateResponse'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    NodeEligibilityUpdateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeEligibilityUpdateResponse'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    NodePurgeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodePurgeResponse'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
     PostJobDispatchResponse:
       content:
         application/json:
@@ -12631,6 +13593,85 @@ components:
             type: number
           type: object
       type: object
+    Attribute:
+      example:
+        Float: 3.616076749251911
+        Bool: true
+        String: String
+        Unit: Unit
+        Int: 2
+      properties:
+        Bool:
+          type: boolean
+        Float:
+          format: double
+          type: number
+        Int:
+          format: int64
+          type: integer
+        String:
+          type: string
+        Unit:
+          type: string
+      type: object
+    CSIControllerInfo:
+      example:
+        SupportsListVolumes: true
+        SupportsReadOnlyAttach: true
+        SupportsListVolumesAttachedNodes: true
+        SupportsAttachDetach: true
+      properties:
+        SupportsAttachDetach:
+          type: boolean
+        SupportsListVolumes:
+          type: boolean
+        SupportsListVolumesAttachedNodes:
+          type: boolean
+        SupportsReadOnlyAttach:
+          type: boolean
+      type: object
+    CSIInfo:
+      example:
+        HealthDescription: HealthDescription
+        AllocID: AllocID
+        NodeInfo:
+          RequiresNodeStageVolume: true
+          MaxVolumes: 0
+          ID: ID
+          AccessibleTopology:
+            Segments:
+              key: Segments
+        UpdateTime: 2000-01-23T04:56:07.000+00:00
+        RequiresTopologies: true
+        PluginID: PluginID
+        ControllerInfo:
+          SupportsListVolumes: true
+          SupportsReadOnlyAttach: true
+          SupportsListVolumesAttachedNodes: true
+          SupportsAttachDetach: true
+        Healthy: true
+        RequiresControllerPlugin: true
+      properties:
+        AllocID:
+          type: string
+        ControllerInfo:
+          $ref: '#/components/schemas/CSIControllerInfo'
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        NodeInfo:
+          $ref: '#/components/schemas/CSINodeInfo'
+        PluginID:
+          type: string
+        RequiresControllerPlugin:
+          type: boolean
+        RequiresTopologies:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     CSIMountOptions:
       example:
         MountFlags:
@@ -12644,6 +13685,25 @@ components:
           items:
             type: string
           type: array
+      type: object
+    CSINodeInfo:
+      example:
+        RequiresNodeStageVolume: true
+        MaxVolumes: 0
+        ID: ID
+        AccessibleTopology:
+          Segments:
+            key: Segments
+      properties:
+        AccessibleTopology:
+          $ref: '#/components/schemas/CSITopology'
+        ID:
+          type: string
+        MaxVolumes:
+          format: int64
+          type: integer
+        RequiresNodeStageVolume:
+          type: boolean
       type: object
     CSIPluginType:
       type: string
@@ -73415,6 +74475,85 @@ components:
         File:
           type: string
       type: object
+    DrainMetadata:
+      example:
+        Status: Status
+        Meta:
+          key: Meta
+        StartedAt: 2000-01-23T04:56:07.000+00:00
+        UpdatedAt: 2000-01-23T04:56:07.000+00:00
+        AccessorID: AccessorID
+      properties:
+        AccessorID:
+          type: string
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        StartedAt:
+          format: date-time
+          type: string
+        Status:
+          type: string
+        UpdatedAt:
+          format: date-time
+          type: string
+      type: object
+    DrainSpec:
+      example:
+        IgnoreSystemJobs: true
+        Deadline: 0
+      properties:
+        Deadline:
+          format: int64
+          type: integer
+        IgnoreSystemJobs:
+          type: boolean
+      type: object
+    DrainStatus:
+      type: string
+    DrainStrategy:
+      example:
+        ForceDeadline: 2000-01-23T04:56:07.000+00:00
+        IgnoreSystemJobs: true
+        Deadline: 1
+        StartedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        Deadline:
+          format: int64
+          type: integer
+        ForceDeadline:
+          format: date-time
+          type: string
+        IgnoreSystemJobs:
+          type: boolean
+        StartedAt:
+          format: date-time
+          type: string
+      type: object
+    DriverInfo:
+      example:
+        HealthDescription: HealthDescription
+        Detected: true
+        Attributes:
+          key: Attributes
+        UpdateTime: 2000-01-23T04:56:07.000+00:00
+        Healthy: true
+      properties:
+        Attributes:
+          additionalProperties:
+            type: string
+          type: object
+        Detected:
+          type: boolean
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     Duration:
       format: int64
       type: integer
@@ -73832,6 +74971,16 @@ components:
         Value:
           format: float
           type: number
+      type: object
+    HostVolumeInfo:
+      example:
+        Path: Path
+        ReadOnly: true
+      properties:
+        Path:
+          type: string
+        ReadOnly:
+          type: boolean
       type: object
     Job:
       example:
@@ -107580,6 +108729,1133 @@ components:
             $ref: '#/components/schemas/Port'
           type: array
       type: object
+    Node:
+      example:
+        Meta:
+          key: Meta
+        CSINodePlugins:
+          key:
+            HealthDescription: HealthDescription
+            AllocID: AllocID
+            NodeInfo:
+              RequiresNodeStageVolume: true
+              MaxVolumes: 0
+              ID: ID
+              AccessibleTopology:
+                Segments:
+                  key: Segments
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            RequiresTopologies: true
+            PluginID: PluginID
+            ControllerInfo:
+              SupportsListVolumes: true
+              SupportsReadOnlyAttach: true
+              SupportsListVolumesAttachedNodes: true
+              SupportsAttachDetach: true
+            Healthy: true
+            RequiresControllerPlugin: true
+        Drivers:
+          key:
+            HealthDescription: HealthDescription
+            Detected: true
+            Attributes:
+              key: Attributes
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            Healthy: true
+        Attributes:
+          key: Attributes
+        SchedulingEligibility: SchedulingEligibility
+        Name: Name
+        NodeClass: NodeClass
+        StatusUpdatedAt: 6
+        CreateIndex: 2147483647
+        Events:
+        - CreateIndex: 2147483647
+          Details:
+            key: Details
+          Message: Message
+          Subsystem: Subsystem
+          Timestamp: 2000-01-23T04:56:07.000+00:00
+        - CreateIndex: 2147483647
+          Details:
+            key: Details
+          Message: Message
+          Subsystem: Subsystem
+          Timestamp: 2000-01-23T04:56:07.000+00:00
+        TLSEnabled: true
+        ReservedResources:
+          Networks:
+            ReservedHostPorts: ReservedHostPorts
+          Memory:
+            MemoryMB: 2147483647
+          Cpu:
+            CpuShares: 2147483647
+          Disk:
+            DiskMB: 2147483647
+        StatusDescription: StatusDescription
+        LastDrain:
+          Status: Status
+          Meta:
+            key: Meta
+          StartedAt: 2000-01-23T04:56:07.000+00:00
+          UpdatedAt: 2000-01-23T04:56:07.000+00:00
+          AccessorID: AccessorID
+        ID: ID
+        Status: Status
+        CSIControllerPlugins:
+          key:
+            HealthDescription: HealthDescription
+            AllocID: AllocID
+            NodeInfo:
+              RequiresNodeStageVolume: true
+              MaxVolumes: 0
+              ID: ID
+              AccessibleTopology:
+                Segments:
+                  key: Segments
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            RequiresTopologies: true
+            PluginID: PluginID
+            ControllerInfo:
+              SupportsListVolumes: true
+              SupportsReadOnlyAttach: true
+              SupportsListVolumesAttachedNodes: true
+              SupportsAttachDetach: true
+            Healthy: true
+            RequiresControllerPlugin: true
+        NodeResources:
+          Networks:
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          Memory:
+            MemoryMB: 7
+          Cpu:
+            CpuShares: 2
+            ReservableCpuCores:
+            - 46276
+            - 46276
+            TotalCpuCores: 60957
+          Devices:
+          - Instances:
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            Type: Type
+            Attributes:
+              key:
+                Float: 3.616076749251911
+                Bool: true
+                String: String
+                Unit: Unit
+                Int: 2
+            Vendor: Vendor
+            Name: Name
+          - Instances:
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            Type: Type
+            Attributes:
+              key:
+                Float: 3.616076749251911
+                Bool: true
+                String: String
+                Unit: Unit
+                Int: 2
+            Vendor: Vendor
+            Name: Name
+          Disk:
+            DiskMB: 4
+        HTTPAddr: HTTPAddr
+        DrainStrategy:
+          ForceDeadline: 2000-01-23T04:56:07.000+00:00
+          IgnoreSystemJobs: true
+          Deadline: 1
+          StartedAt: 2000-01-23T04:56:07.000+00:00
+        HostVolumes:
+          key:
+            Path: Path
+            ReadOnly: true
+        Drain: true
+        Datacenter: Datacenter
+        Links:
+          key: Links
+        Resources:
+          Cores: 8
+          Networks:
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          DiskMB: 3
+          MemoryMB: 7
+          CPU: 4
+          IOPS: 3
+          Devices:
+          - Constraints:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            Affinities:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            Count: 2147483647
+            Name: Name
+          - Constraints:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            Affinities:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            Count: 2147483647
+            Name: Name
+          MemoryMaxMB: 5
+        ModifyIndex: 2147483647
+        Reserved:
+          Cores: 8
+          Networks:
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          DiskMB: 3
+          MemoryMB: 7
+          CPU: 4
+          IOPS: 3
+          Devices:
+          - Constraints:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            Affinities:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            Count: 2147483647
+            Name: Name
+          - Constraints:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+            Affinities:
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            - LTarget: LTarget
+              RTarget: RTarget
+              Operand: Operand
+              Weight: -107
+            Count: 2147483647
+            Name: Name
+          MemoryMaxMB: 5
+      properties:
+        Attributes:
+          additionalProperties:
+            type: string
+          type: object
+        CSIControllerPlugins:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        CSINodePlugins:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Datacenter:
+          type: string
+        Drain:
+          type: boolean
+        DrainStrategy:
+          $ref: '#/components/schemas/DrainStrategy'
+        Drivers:
+          additionalProperties:
+            $ref: '#/components/schemas/DriverInfo'
+          type: object
+        Events:
+          items:
+            $ref: '#/components/schemas/NodeEvent'
+          type: array
+        HTTPAddr:
+          type: string
+        HostVolumes:
+          additionalProperties:
+            $ref: '#/components/schemas/HostVolumeInfo'
+          type: object
+        ID:
+          type: string
+        LastDrain:
+          $ref: '#/components/schemas/DrainMetadata'
+        Links:
+          additionalProperties:
+            type: string
+          type: object
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        NodeClass:
+          type: string
+        NodeResources:
+          $ref: '#/components/schemas/NodeResources'
+        Reserved:
+          $ref: '#/components/schemas/Resources'
+        ReservedResources:
+          $ref: '#/components/schemas/NodeReservedResources'
+        Resources:
+          $ref: '#/components/schemas/Resources'
+        SchedulingEligibility:
+          type: string
+        Status:
+          type: string
+        StatusDescription:
+          type: string
+        StatusUpdatedAt:
+          format: int64
+          type: integer
+        TLSEnabled:
+          type: boolean
+      type: object
+    NodeCpuResources:
+      example:
+        CpuShares: 2
+        ReservableCpuCores:
+        - 46276
+        - 46276
+        TotalCpuCores: 60957
+      properties:
+        CpuShares:
+          format: int64
+          type: integer
+        ReservableCpuCores:
+          items:
+            maximum: 65535
+            minimum: 0
+            type: integer
+          type: array
+        TotalCpuCores:
+          maximum: 65535
+          minimum: 0
+          type: integer
+      type: object
+    NodeDevice:
+      example:
+        HealthDescription: HealthDescription
+        Locality:
+          PciBusID: PciBusID
+        ID: ID
+        Healthy: true
+      properties:
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        ID:
+          type: string
+        Locality:
+          $ref: '#/components/schemas/NodeDeviceLocality'
+      type: object
+    NodeDeviceLocality:
+      example:
+        PciBusID: PciBusID
+      properties:
+        PciBusID:
+          type: string
+      type: object
+    NodeDeviceResource:
+      example:
+        Instances:
+        - HealthDescription: HealthDescription
+          Locality:
+            PciBusID: PciBusID
+          ID: ID
+          Healthy: true
+        - HealthDescription: HealthDescription
+          Locality:
+            PciBusID: PciBusID
+          ID: ID
+          Healthy: true
+        Type: Type
+        Attributes:
+          key:
+            Float: 3.616076749251911
+            Bool: true
+            String: String
+            Unit: Unit
+            Int: 2
+        Vendor: Vendor
+        Name: Name
+      properties:
+        Attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/Attribute'
+          type: object
+        Instances:
+          items:
+            $ref: '#/components/schemas/NodeDevice'
+          type: array
+        Name:
+          type: string
+        Type:
+          type: string
+        Vendor:
+          type: string
+      type: object
+    NodeDiskResources:
+      example:
+        DiskMB: 4
+      properties:
+        DiskMB:
+          format: int64
+          type: integer
+      type: object
+    NodeDrainUpdateResponse:
+      example:
+        EvalCreateIndex: 2147483647
+        LastIndex: 2147483647
+        NodeModifyIndex: 2147483647
+        RequestTime: 5
+        EvalIDs:
+        - EvalIDs
+        - EvalIDs
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        NodeModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+      type: object
+    NodeEligibilityUpdateResponse:
+      example:
+        EvalCreateIndex: 2147483647
+        LastIndex: 2147483647
+        NodeModifyIndex: 2147483647
+        RequestTime: 5
+        EvalIDs:
+        - EvalIDs
+        - EvalIDs
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        NodeModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+      type: object
+    NodeEvent:
+      example:
+        CreateIndex: 2147483647
+        Details:
+          key: Details
+        Message: Message
+        Subsystem: Subsystem
+        Timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Details:
+          additionalProperties:
+            type: string
+          type: object
+        Message:
+          type: string
+        Subsystem:
+          type: string
+        Timestamp:
+          format: date-time
+          type: string
+      type: object
+    NodeListStub:
+      example:
+        Status: Status
+        NodeResources:
+          Networks:
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          - Device: Device
+            IP: IP
+            Mode: Mode
+            ReservedPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            DNS:
+              Options:
+              - Options
+              - Options
+              Searches:
+              - Searches
+              - Searches
+              Servers:
+              - Servers
+              - Servers
+            CIDR: CIDR
+            DynamicPorts:
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            - Label: Label
+              Value: 1
+              To: 6
+              HostNetwork: HostNetwork
+            MBits: 5
+          Memory:
+            MemoryMB: 7
+          Cpu:
+            CpuShares: 2
+            ReservableCpuCores:
+            - 46276
+            - 46276
+            TotalCpuCores: 60957
+          Devices:
+          - Instances:
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            Type: Type
+            Attributes:
+              key:
+                Float: 3.616076749251911
+                Bool: true
+                String: String
+                Unit: Unit
+                Int: 2
+            Vendor: Vendor
+            Name: Name
+          - Instances:
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            - HealthDescription: HealthDescription
+              Locality:
+                PciBusID: PciBusID
+              ID: ID
+              Healthy: true
+            Type: Type
+            Attributes:
+              key:
+                Float: 3.616076749251911
+                Bool: true
+                String: String
+                Unit: Unit
+                Int: 2
+            Vendor: Vendor
+            Name: Name
+          Disk:
+            DiskMB: 4
+        Address: Address
+        Drivers:
+          key:
+            HealthDescription: HealthDescription
+            Detected: true
+            Attributes:
+              key: Attributes
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            Healthy: true
+        Drain: true
+        SchedulingEligibility: SchedulingEligibility
+        Name: Name
+        NodeClass: NodeClass
+        CreateIndex: 2147483647
+        Version: Version
+        ReservedResources:
+          Networks:
+            ReservedHostPorts: ReservedHostPorts
+          Memory:
+            MemoryMB: 2147483647
+          Cpu:
+            CpuShares: 2147483647
+          Disk:
+            DiskMB: 2147483647
+        StatusDescription: StatusDescription
+        LastDrain:
+          Status: Status
+          Meta:
+            key: Meta
+          StartedAt: 2000-01-23T04:56:07.000+00:00
+          UpdatedAt: 2000-01-23T04:56:07.000+00:00
+          AccessorID: AccessorID
+        Datacenter: Datacenter
+        ID: ID
+        ModifyIndex: 2147483647
+      properties:
+        Address:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Datacenter:
+          type: string
+        Drain:
+          type: boolean
+        Drivers:
+          additionalProperties:
+            $ref: '#/components/schemas/DriverInfo'
+          type: object
+        ID:
+          type: string
+        LastDrain:
+          $ref: '#/components/schemas/DrainMetadata'
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        NodeClass:
+          type: string
+        NodeResources:
+          $ref: '#/components/schemas/NodeResources'
+        ReservedResources:
+          $ref: '#/components/schemas/NodeReservedResources'
+        SchedulingEligibility:
+          type: string
+        Status:
+          type: string
+        StatusDescription:
+          type: string
+        Version:
+          type: string
+      type: object
+    NodeMemoryResources:
+      example:
+        MemoryMB: 7
+      properties:
+        MemoryMB:
+          format: int64
+          type: integer
+      type: object
+    NodePurgeResponse:
+      example:
+        EvalCreateIndex: 2147483647
+        NodeModifyIndex: 2147483647
+        EvalIDs:
+        - EvalIDs
+        - EvalIDs
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        NodeModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedCpuResources:
+      example:
+        CpuShares: 2147483647
+      properties:
+        CpuShares:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedDiskResources:
+      example:
+        DiskMB: 2147483647
+      properties:
+        DiskMB:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedMemoryResources:
+      example:
+        MemoryMB: 2147483647
+      properties:
+        MemoryMB:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedNetworkResources:
+      example:
+        ReservedHostPorts: ReservedHostPorts
+      properties:
+        ReservedHostPorts:
+          type: string
+      type: object
+    NodeReservedResources:
+      example:
+        Networks:
+          ReservedHostPorts: ReservedHostPorts
+        Memory:
+          MemoryMB: 2147483647
+        Cpu:
+          CpuShares: 2147483647
+        Disk:
+          DiskMB: 2147483647
+      properties:
+        Cpu:
+          $ref: '#/components/schemas/NodeReservedCpuResources'
+        Disk:
+          $ref: '#/components/schemas/NodeReservedDiskResources'
+        Memory:
+          $ref: '#/components/schemas/NodeReservedMemoryResources'
+        Networks:
+          $ref: '#/components/schemas/NodeReservedNetworkResources'
+      type: object
+    NodeResources:
+      example:
+        Networks:
+        - Device: Device
+          IP: IP
+          Mode: Mode
+          ReservedPorts:
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          DNS:
+            Options:
+            - Options
+            - Options
+            Searches:
+            - Searches
+            - Searches
+            Servers:
+            - Servers
+            - Servers
+          CIDR: CIDR
+          DynamicPorts:
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          MBits: 5
+        - Device: Device
+          IP: IP
+          Mode: Mode
+          ReservedPorts:
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          DNS:
+            Options:
+            - Options
+            - Options
+            Searches:
+            - Searches
+            - Searches
+            Servers:
+            - Servers
+            - Servers
+          CIDR: CIDR
+          DynamicPorts:
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          - Label: Label
+            Value: 1
+            To: 6
+            HostNetwork: HostNetwork
+          MBits: 5
+        Memory:
+          MemoryMB: 7
+        Cpu:
+          CpuShares: 2
+          ReservableCpuCores:
+          - 46276
+          - 46276
+          TotalCpuCores: 60957
+        Devices:
+        - Instances:
+          - HealthDescription: HealthDescription
+            Locality:
+              PciBusID: PciBusID
+            ID: ID
+            Healthy: true
+          - HealthDescription: HealthDescription
+            Locality:
+              PciBusID: PciBusID
+            ID: ID
+            Healthy: true
+          Type: Type
+          Attributes:
+            key:
+              Float: 3.616076749251911
+              Bool: true
+              String: String
+              Unit: Unit
+              Int: 2
+          Vendor: Vendor
+          Name: Name
+        - Instances:
+          - HealthDescription: HealthDescription
+            Locality:
+              PciBusID: PciBusID
+            ID: ID
+            Healthy: true
+          - HealthDescription: HealthDescription
+            Locality:
+              PciBusID: PciBusID
+            ID: ID
+            Healthy: true
+          Type: Type
+          Attributes:
+            key:
+              Float: 3.616076749251911
+              Bool: true
+              String: String
+              Unit: Unit
+              Int: 2
+          Vendor: Vendor
+          Name: Name
+        Disk:
+          DiskMB: 4
+      properties:
+        Cpu:
+          $ref: '#/components/schemas/NodeCpuResources'
+        Devices:
+          items:
+            $ref: '#/components/schemas/NodeDeviceResource'
+          type: array
+        Disk:
+          $ref: '#/components/schemas/NodeDiskResources'
+        Memory:
+          $ref: '#/components/schemas/NodeMemoryResources'
+        Networks:
+          items:
+            $ref: '#/components/schemas/NetworkResource'
+          type: array
+      type: object
     NodeScoreMeta:
       example:
         NormScore: 1.2315135367772556
@@ -107597,6 +109873,37 @@ components:
             format: double
             type: number
           type: object
+      type: object
+    NodeUpdateDrainRequest:
+      example:
+        DrainSpec:
+          IgnoreSystemJobs: true
+          Deadline: 0
+        Meta:
+          key: Meta
+        MarkEligible: true
+        NodeID: NodeID
+      properties:
+        DrainSpec:
+          $ref: '#/components/schemas/DrainSpec'
+        MarkEligible:
+          type: boolean
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        NodeID:
+          type: string
+      type: object
+    NodeUpdateEligibilityRequest:
+      example:
+        Eligibility: Eligibility
+        NodeID: NodeID
+      properties:
+        Eligibility:
+          type: string
+        NodeID:
+          type: string
       type: object
     ObjectDiff:
       example:
@@ -113959,6 +116266,10 @@ components:
       type: integer
     uint8:
       maximum: 255
+      minimum: 0
+      type: integer
+    uint16:
+      maximum: 65535
       minimum: 0
       type: integer
     uint64:

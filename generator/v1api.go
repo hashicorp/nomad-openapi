@@ -108,6 +108,22 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	nodeIdParam = parameter{
+		Id:          "NodeIdParam",
+		SchemaType:  stringSchema,
+		Description: "The ID of the node.",
+		Name:        "nodeId",
+		In:          inPath,
+		Required:    true,
+	}
+	nodeResourcesParam = parameter{
+		Id:          "NodeResourcesParam",
+		SchemaType:  stringSchema,
+		Description: "Whether or not to include the NodeResources and ReservedResources fields in the response.",
+		Name:        "resources",
+		In:          inQuery,
+		Required:    false,
+	}
 	metricsSummaryFormatParam = parameter{
 		Id:          "MetricsFormatParam",
 		SchemaType:  stringSchema,

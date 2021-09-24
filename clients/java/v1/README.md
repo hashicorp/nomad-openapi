@@ -155,6 +155,12 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+*NodesApi* | [**getNode**](docs/NodesApi.md#getNode) | **GET** /node/{nodeId} | 
+*NodesApi* | [**getNodeAllocations**](docs/NodesApi.md#getNodeAllocations) | **GET** /node/{nodeId}/allocations | 
+*NodesApi* | [**getNodes**](docs/NodesApi.md#getNodes) | **GET** /nodes | 
+*NodesApi* | [**updateNodeDrain**](docs/NodesApi.md#updateNodeDrain) | **POST** /node/{nodeId}/drain | 
+*NodesApi* | [**updateNodeEligibility**](docs/NodesApi.md#updateNodeEligibility) | **POST** /node/{nodeId}/eligibility | 
+*NodesApi* | [**updateNodePurge**](docs/NodesApi.md#updateNodePurge) | **POST** /node/{nodeId}/purge | 
 *RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
@@ -185,7 +191,11 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+ - [Attribute](docs/Attribute.md)
+ - [CSIControllerInfo](docs/CSIControllerInfo.md)
+ - [CSIInfo](docs/CSIInfo.md)
  - [CSIMountOptions](docs/CSIMountOptions.md)
+ - [CSINodeInfo](docs/CSINodeInfo.md)
  - [CSISnapshot](docs/CSISnapshot.md)
  - [CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
  - [CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)
@@ -223,6 +233,10 @@ Class | Method | HTTP request | Description
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
+ - [DrainMetadata](docs/DrainMetadata.md)
+ - [DrainSpec](docs/DrainSpec.md)
+ - [DrainStrategy](docs/DrainStrategy.md)
+ - [DriverInfo](docs/DriverInfo.md)
  - [EphemeralDisk](docs/EphemeralDisk.md)
  - [EvalOptions](docs/EvalOptions.md)
  - [Evaluation](docs/Evaluation.md)
@@ -231,6 +245,7 @@ Class | Method | HTTP request | Description
  - [FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [GaugeValue](docs/GaugeValue.md)
+ - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
@@ -260,7 +275,27 @@ Class | Method | HTTP request | Description
  - [MultiregionStrategy](docs/MultiregionStrategy.md)
  - [Namespace](docs/Namespace.md)
  - [NetworkResource](docs/NetworkResource.md)
+ - [Node](docs/Node.md)
+ - [NodeCpuResources](docs/NodeCpuResources.md)
+ - [NodeDevice](docs/NodeDevice.md)
+ - [NodeDeviceLocality](docs/NodeDeviceLocality.md)
+ - [NodeDeviceResource](docs/NodeDeviceResource.md)
+ - [NodeDiskResources](docs/NodeDiskResources.md)
+ - [NodeDrainUpdateResponse](docs/NodeDrainUpdateResponse.md)
+ - [NodeEligibilityUpdateResponse](docs/NodeEligibilityUpdateResponse.md)
+ - [NodeEvent](docs/NodeEvent.md)
+ - [NodeListStub](docs/NodeListStub.md)
+ - [NodeMemoryResources](docs/NodeMemoryResources.md)
+ - [NodePurgeResponse](docs/NodePurgeResponse.md)
+ - [NodeReservedCpuResources](docs/NodeReservedCpuResources.md)
+ - [NodeReservedDiskResources](docs/NodeReservedDiskResources.md)
+ - [NodeReservedMemoryResources](docs/NodeReservedMemoryResources.md)
+ - [NodeReservedNetworkResources](docs/NodeReservedNetworkResources.md)
+ - [NodeReservedResources](docs/NodeReservedResources.md)
+ - [NodeResources](docs/NodeResources.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
+ - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
+ - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)

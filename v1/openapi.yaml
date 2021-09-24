@@ -93,6 +93,19 @@ components:
       name: next_token
       schema:
         type: string
+    NodeIdParam:
+      description: The ID of the node.
+      in: path
+      name: nodeId
+      required: true
+      schema:
+        type: string
+    NodeResourcesParam:
+      description: Whether or not to include the NodeResources and ReservedResources fields in the response.
+      in: query
+      name: resources
+      schema:
+        type: string
     PerPageParam:
       description: Maximum number of results to return.
       in: query
@@ -258,6 +271,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Namespace'
+      required: true
+    NodeUpdateDrainRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeUpdateDrainRequest'
+      required: true
+    NodeUpdateEligibilityRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeUpdateEligibilityRequest'
       required: true
     QuotaSpec:
       content:
@@ -648,6 +673,65 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    GetNodeAllocationsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllocationListStub'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetNodeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Node'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetNodesResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/NodeListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -777,6 +861,63 @@ components:
       description: Internal server error
     MethodNotAllowedResponse:
       description: Method not allowed
+    NodeDrainUpdateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeDrainUpdateResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    NodeEligibilityUpdateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeEligibilityUpdateResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    NodePurgeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodePurgeResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     PostJobDispatchResponse:
       content:
         application/json:
@@ -1268,6 +1409,54 @@ components:
             type: number
           type: object
       type: object
+    Attribute:
+      properties:
+        Bool:
+          type: boolean
+        Float:
+          format: double
+          type: number
+        Int:
+          format: int64
+          type: integer
+        String:
+          type: string
+        Unit:
+          type: string
+      type: object
+    CSIControllerInfo:
+      properties:
+        SupportsAttachDetach:
+          type: boolean
+        SupportsListVolumes:
+          type: boolean
+        SupportsListVolumesAttachedNodes:
+          type: boolean
+        SupportsReadOnlyAttach:
+          type: boolean
+      type: object
+    CSIInfo:
+      properties:
+        AllocID:
+          type: string
+        ControllerInfo:
+          $ref: '#/components/schemas/CSIControllerInfo'
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        NodeInfo:
+          $ref: '#/components/schemas/CSINodeInfo'
+        PluginID:
+          type: string
+        RequiresControllerPlugin:
+          type: boolean
+        RequiresTopologies:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     CSIMountOptions:
       properties:
         FSType:
@@ -1276,6 +1465,18 @@ components:
           items:
             type: string
           type: array
+      type: object
+    CSINodeInfo:
+      properties:
+        AccessibleTopology:
+          $ref: '#/components/schemas/CSITopology'
+        ID:
+          type: string
+        MaxVolumes:
+          format: int64
+          type: integer
+        RequiresNodeStageVolume:
+          type: boolean
       type: object
     CSIPluginType:
       type: string
@@ -1902,6 +2103,63 @@ components:
         File:
           type: string
       type: object
+    DrainMetadata:
+      properties:
+        AccessorID:
+          type: string
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        StartedAt:
+          format: date-time
+          type: string
+        Status:
+          type: string
+        UpdatedAt:
+          format: date-time
+          type: string
+      type: object
+    DrainSpec:
+      properties:
+        Deadline:
+          format: int64
+          type: integer
+        IgnoreSystemJobs:
+          type: boolean
+      type: object
+    DrainStatus:
+      type: string
+    DrainStrategy:
+      properties:
+        Deadline:
+          format: int64
+          type: integer
+        ForceDeadline:
+          format: date-time
+          type: string
+        IgnoreSystemJobs:
+          type: boolean
+        StartedAt:
+          format: date-time
+          type: string
+      type: object
+    DriverInfo:
+      properties:
+        Attributes:
+          additionalProperties:
+            type: string
+          type: object
+        Detected:
+          type: boolean
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     Duration:
       format: int64
       type: integer
@@ -2091,6 +2349,13 @@ components:
         Value:
           format: float
           type: number
+      type: object
+    HostVolumeInfo:
+      properties:
+        Path:
+          type: string
+        ReadOnly:
+          type: boolean
       type: object
     Job:
       properties:
@@ -2682,6 +2947,317 @@ components:
             $ref: '#/components/schemas/Port'
           type: array
       type: object
+    Node:
+      properties:
+        Attributes:
+          additionalProperties:
+            type: string
+          type: object
+        CSIControllerPlugins:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        CSINodePlugins:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Datacenter:
+          type: string
+        Drain:
+          type: boolean
+        DrainStrategy:
+          $ref: '#/components/schemas/DrainStrategy'
+        Drivers:
+          additionalProperties:
+            $ref: '#/components/schemas/DriverInfo'
+          type: object
+        Events:
+          items:
+            $ref: '#/components/schemas/NodeEvent'
+          type: array
+        HTTPAddr:
+          type: string
+        HostVolumes:
+          additionalProperties:
+            $ref: '#/components/schemas/HostVolumeInfo'
+          type: object
+        ID:
+          type: string
+        LastDrain:
+          $ref: '#/components/schemas/DrainMetadata'
+        Links:
+          additionalProperties:
+            type: string
+          type: object
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        NodeClass:
+          type: string
+        NodeResources:
+          $ref: '#/components/schemas/NodeResources'
+        Reserved:
+          $ref: '#/components/schemas/Resources'
+        ReservedResources:
+          $ref: '#/components/schemas/NodeReservedResources'
+        Resources:
+          $ref: '#/components/schemas/Resources'
+        SchedulingEligibility:
+          type: string
+        Status:
+          type: string
+        StatusDescription:
+          type: string
+        StatusUpdatedAt:
+          format: int64
+          type: integer
+        TLSEnabled:
+          type: boolean
+      type: object
+    NodeCpuResources:
+      properties:
+        CpuShares:
+          format: int64
+          type: integer
+        ReservableCpuCores:
+          items:
+            maximum: 65535
+            minimum: 0
+            type: integer
+          type: array
+        TotalCpuCores:
+          maximum: 65535
+          minimum: 0
+          type: integer
+      type: object
+    NodeDevice:
+      properties:
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        ID:
+          type: string
+        Locality:
+          $ref: '#/components/schemas/NodeDeviceLocality'
+      type: object
+    NodeDeviceLocality:
+      properties:
+        PciBusID:
+          type: string
+      type: object
+    NodeDeviceResource:
+      properties:
+        Attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/Attribute'
+          type: object
+        Instances:
+          items:
+            $ref: '#/components/schemas/NodeDevice'
+          type: array
+        Name:
+          type: string
+        Type:
+          type: string
+        Vendor:
+          type: string
+      type: object
+    NodeDiskResources:
+      properties:
+        DiskMB:
+          format: int64
+          type: integer
+      type: object
+    NodeDrainUpdateResponse:
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        NodeModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+      type: object
+    NodeEligibilityUpdateResponse:
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        NodeModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+      type: object
+    NodeEvent:
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Details:
+          additionalProperties:
+            type: string
+          type: object
+        Message:
+          type: string
+        Subsystem:
+          type: string
+        Timestamp:
+          format: date-time
+          type: string
+      type: object
+    NodeListStub:
+      properties:
+        Address:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Datacenter:
+          type: string
+        Drain:
+          type: boolean
+        Drivers:
+          additionalProperties:
+            $ref: '#/components/schemas/DriverInfo'
+          type: object
+        ID:
+          type: string
+        LastDrain:
+          $ref: '#/components/schemas/DrainMetadata'
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        NodeClass:
+          type: string
+        NodeResources:
+          $ref: '#/components/schemas/NodeResources'
+        ReservedResources:
+          $ref: '#/components/schemas/NodeReservedResources'
+        SchedulingEligibility:
+          type: string
+        Status:
+          type: string
+        StatusDescription:
+          type: string
+        Version:
+          type: string
+      type: object
+    NodeMemoryResources:
+      properties:
+        MemoryMB:
+          format: int64
+          type: integer
+      type: object
+    NodePurgeResponse:
+      properties:
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalIDs:
+          items:
+            type: string
+          type: array
+        NodeModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedCpuResources:
+      properties:
+        CpuShares:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedDiskResources:
+      properties:
+        DiskMB:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedMemoryResources:
+      properties:
+        MemoryMB:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+      type: object
+    NodeReservedNetworkResources:
+      properties:
+        ReservedHostPorts:
+          type: string
+      type: object
+    NodeReservedResources:
+      properties:
+        Cpu:
+          $ref: '#/components/schemas/NodeReservedCpuResources'
+        Disk:
+          $ref: '#/components/schemas/NodeReservedDiskResources'
+        Memory:
+          $ref: '#/components/schemas/NodeReservedMemoryResources'
+        Networks:
+          $ref: '#/components/schemas/NodeReservedNetworkResources'
+      type: object
+    NodeResources:
+      properties:
+        Cpu:
+          $ref: '#/components/schemas/NodeCpuResources'
+        Devices:
+          items:
+            $ref: '#/components/schemas/NodeDeviceResource'
+          type: array
+        Disk:
+          $ref: '#/components/schemas/NodeDiskResources'
+        Memory:
+          $ref: '#/components/schemas/NodeMemoryResources'
+        Networks:
+          items:
+            $ref: '#/components/schemas/NetworkResource'
+          type: array
+      type: object
     NodeScoreMeta:
       properties:
         NodeID:
@@ -2694,6 +3270,26 @@ components:
             format: double
             type: number
           type: object
+      type: object
+    NodeUpdateDrainRequest:
+      properties:
+        DrainSpec:
+          $ref: '#/components/schemas/DrainSpec'
+        MarkEligible:
+          type: boolean
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
+        NodeID:
+          type: string
+      type: object
+    NodeUpdateEligibilityRequest:
+      properties:
+        Eligibility:
+          type: string
+        NodeID:
+          type: string
       type: object
     ObjectDiff:
       properties:
@@ -3690,6 +4286,10 @@ components:
       maximum: 255
       minimum: 0
       type: integer
+    uint16:
+      maximum: 65535
+      minimum: 0
+      type: integer
     uint64:
       maximum: 1.8446744073709552e+19
       minimum: 0
@@ -4487,6 +5087,192 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Namespaces
+  /node/{nodeId}:
+    get:
+      operationId: GetNode
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIdParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetNodeResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+  /node/{nodeId}/allocations:
+    get:
+      operationId: GetNodeAllocations
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIdParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetNodeAllocationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+  /node/{nodeId}/drain:
+    post:
+      operationId: UpdateNodeDrain
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateDrainRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/NodeDrainUpdateResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+  /node/{nodeId}/eligibility:
+    post:
+      operationId: UpdateNodeEligibility
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateEligibilityRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/NodeEligibilityUpdateResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+  /node/{nodeId}/purge:
+    post:
+      operationId: UpdateNodePurge
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeIdParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/NodePurgeResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
+  /nodes:
+    get:
+      operationId: GetNodes
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/NodeResourcesParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetNodesResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Nodes
   /quota:
     post:
       operationId: CreateQuotaSpec

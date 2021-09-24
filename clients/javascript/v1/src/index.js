@@ -25,7 +25,11 @@ import AllocatedTaskResources from './model/AllocatedTaskResources';
 import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
+import Attribute from './model/Attribute';
+import CSIControllerInfo from './model/CSIControllerInfo';
+import CSIInfo from './model/CSIInfo';
 import CSIMountOptions from './model/CSIMountOptions';
+import CSINodeInfo from './model/CSINodeInfo';
 import CSISnapshot from './model/CSISnapshot';
 import CSISnapshotCreateRequest from './model/CSISnapshotCreateRequest';
 import CSISnapshotCreateResponse from './model/CSISnapshotCreateResponse';
@@ -63,6 +67,10 @@ import DeploymentState from './model/DeploymentState';
 import DesiredTransition from './model/DesiredTransition';
 import DesiredUpdates from './model/DesiredUpdates';
 import DispatchPayloadConfig from './model/DispatchPayloadConfig';
+import DrainMetadata from './model/DrainMetadata';
+import DrainSpec from './model/DrainSpec';
+import DrainStrategy from './model/DrainStrategy';
+import DriverInfo from './model/DriverInfo';
 import EphemeralDisk from './model/EphemeralDisk';
 import EvalOptions from './model/EvalOptions';
 import Evaluation from './model/Evaluation';
@@ -71,6 +79,7 @@ import FuzzyMatch from './model/FuzzyMatch';
 import FuzzySearchRequest from './model/FuzzySearchRequest';
 import FuzzySearchResponse from './model/FuzzySearchResponse';
 import GaugeValue from './model/GaugeValue';
+import HostVolumeInfo from './model/HostVolumeInfo';
 import Job from './model/Job';
 import JobChildrenSummary from './model/JobChildrenSummary';
 import JobDeregisterResponse from './model/JobDeregisterResponse';
@@ -100,7 +109,27 @@ import MultiregionRegion from './model/MultiregionRegion';
 import MultiregionStrategy from './model/MultiregionStrategy';
 import Namespace from './model/Namespace';
 import NetworkResource from './model/NetworkResource';
+import Node from './model/Node';
+import NodeCpuResources from './model/NodeCpuResources';
+import NodeDevice from './model/NodeDevice';
+import NodeDeviceLocality from './model/NodeDeviceLocality';
+import NodeDeviceResource from './model/NodeDeviceResource';
+import NodeDiskResources from './model/NodeDiskResources';
+import NodeDrainUpdateResponse from './model/NodeDrainUpdateResponse';
+import NodeEligibilityUpdateResponse from './model/NodeEligibilityUpdateResponse';
+import NodeEvent from './model/NodeEvent';
+import NodeListStub from './model/NodeListStub';
+import NodeMemoryResources from './model/NodeMemoryResources';
+import NodePurgeResponse from './model/NodePurgeResponse';
+import NodeReservedCpuResources from './model/NodeReservedCpuResources';
+import NodeReservedDiskResources from './model/NodeReservedDiskResources';
+import NodeReservedMemoryResources from './model/NodeReservedMemoryResources';
+import NodeReservedNetworkResources from './model/NodeReservedNetworkResources';
+import NodeReservedResources from './model/NodeReservedResources';
+import NodeResources from './model/NodeResources';
 import NodeScoreMeta from './model/NodeScoreMeta';
+import NodeUpdateDrainRequest from './model/NodeUpdateDrainRequest';
+import NodeUpdateEligibilityRequest from './model/NodeUpdateEligibilityRequest';
 import ObjectDiff from './model/ObjectDiff';
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
@@ -151,6 +180,7 @@ import EnterpriseApi from './api/EnterpriseApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
+import NodesApi from './api/NodesApi';
 import RegionsApi from './api/RegionsApi';
 import SearchApi from './api/SearchApi';
 import VolumesApi from './api/VolumesApi';
@@ -267,10 +297,34 @@ export {
     AllocationMetric,
 
     /**
+     * The Attribute model constructor.
+     * @property {module:model/Attribute}
+     */
+    Attribute,
+
+    /**
+     * The CSIControllerInfo model constructor.
+     * @property {module:model/CSIControllerInfo}
+     */
+    CSIControllerInfo,
+
+    /**
+     * The CSIInfo model constructor.
+     * @property {module:model/CSIInfo}
+     */
+    CSIInfo,
+
+    /**
      * The CSIMountOptions model constructor.
      * @property {module:model/CSIMountOptions}
      */
     CSIMountOptions,
+
+    /**
+     * The CSINodeInfo model constructor.
+     * @property {module:model/CSINodeInfo}
+     */
+    CSINodeInfo,
 
     /**
      * The CSISnapshot model constructor.
@@ -495,6 +549,30 @@ export {
     DispatchPayloadConfig,
 
     /**
+     * The DrainMetadata model constructor.
+     * @property {module:model/DrainMetadata}
+     */
+    DrainMetadata,
+
+    /**
+     * The DrainSpec model constructor.
+     * @property {module:model/DrainSpec}
+     */
+    DrainSpec,
+
+    /**
+     * The DrainStrategy model constructor.
+     * @property {module:model/DrainStrategy}
+     */
+    DrainStrategy,
+
+    /**
+     * The DriverInfo model constructor.
+     * @property {module:model/DriverInfo}
+     */
+    DriverInfo,
+
+    /**
      * The EphemeralDisk model constructor.
      * @property {module:model/EphemeralDisk}
      */
@@ -541,6 +619,12 @@ export {
      * @property {module:model/GaugeValue}
      */
     GaugeValue,
+
+    /**
+     * The HostVolumeInfo model constructor.
+     * @property {module:model/HostVolumeInfo}
+     */
+    HostVolumeInfo,
 
     /**
      * The Job model constructor.
@@ -717,10 +801,130 @@ export {
     NetworkResource,
 
     /**
+     * The Node model constructor.
+     * @property {module:model/Node}
+     */
+    Node,
+
+    /**
+     * The NodeCpuResources model constructor.
+     * @property {module:model/NodeCpuResources}
+     */
+    NodeCpuResources,
+
+    /**
+     * The NodeDevice model constructor.
+     * @property {module:model/NodeDevice}
+     */
+    NodeDevice,
+
+    /**
+     * The NodeDeviceLocality model constructor.
+     * @property {module:model/NodeDeviceLocality}
+     */
+    NodeDeviceLocality,
+
+    /**
+     * The NodeDeviceResource model constructor.
+     * @property {module:model/NodeDeviceResource}
+     */
+    NodeDeviceResource,
+
+    /**
+     * The NodeDiskResources model constructor.
+     * @property {module:model/NodeDiskResources}
+     */
+    NodeDiskResources,
+
+    /**
+     * The NodeDrainUpdateResponse model constructor.
+     * @property {module:model/NodeDrainUpdateResponse}
+     */
+    NodeDrainUpdateResponse,
+
+    /**
+     * The NodeEligibilityUpdateResponse model constructor.
+     * @property {module:model/NodeEligibilityUpdateResponse}
+     */
+    NodeEligibilityUpdateResponse,
+
+    /**
+     * The NodeEvent model constructor.
+     * @property {module:model/NodeEvent}
+     */
+    NodeEvent,
+
+    /**
+     * The NodeListStub model constructor.
+     * @property {module:model/NodeListStub}
+     */
+    NodeListStub,
+
+    /**
+     * The NodeMemoryResources model constructor.
+     * @property {module:model/NodeMemoryResources}
+     */
+    NodeMemoryResources,
+
+    /**
+     * The NodePurgeResponse model constructor.
+     * @property {module:model/NodePurgeResponse}
+     */
+    NodePurgeResponse,
+
+    /**
+     * The NodeReservedCpuResources model constructor.
+     * @property {module:model/NodeReservedCpuResources}
+     */
+    NodeReservedCpuResources,
+
+    /**
+     * The NodeReservedDiskResources model constructor.
+     * @property {module:model/NodeReservedDiskResources}
+     */
+    NodeReservedDiskResources,
+
+    /**
+     * The NodeReservedMemoryResources model constructor.
+     * @property {module:model/NodeReservedMemoryResources}
+     */
+    NodeReservedMemoryResources,
+
+    /**
+     * The NodeReservedNetworkResources model constructor.
+     * @property {module:model/NodeReservedNetworkResources}
+     */
+    NodeReservedNetworkResources,
+
+    /**
+     * The NodeReservedResources model constructor.
+     * @property {module:model/NodeReservedResources}
+     */
+    NodeReservedResources,
+
+    /**
+     * The NodeResources model constructor.
+     * @property {module:model/NodeResources}
+     */
+    NodeResources,
+
+    /**
      * The NodeScoreMeta model constructor.
      * @property {module:model/NodeScoreMeta}
      */
     NodeScoreMeta,
+
+    /**
+     * The NodeUpdateDrainRequest model constructor.
+     * @property {module:model/NodeUpdateDrainRequest}
+     */
+    NodeUpdateDrainRequest,
+
+    /**
+     * The NodeUpdateEligibilityRequest model constructor.
+     * @property {module:model/NodeUpdateEligibilityRequest}
+     */
+    NodeUpdateEligibilityRequest,
 
     /**
      * The ObjectDiff model constructor.
@@ -1021,6 +1225,12 @@ export {
     * @property {module:api/NamespacesApi}
     */
     NamespacesApi,
+
+    /**
+    * The NodesApi service constructor.
+    * @property {module:api/NodesApi}
+    */
+    NodesApi,
 
     /**
     * The RegionsApi service constructor.
