@@ -12,24 +12,24 @@ v1: spec
 	@docker run \
 		--rm \
 		--volume "$(shell pwd):/local" \
-		openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/go/v1/config.yaml
+		openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/go/v1/config.yaml
 	@docker run \
     		--rm \
     		--volume "$(shell pwd):/local" \
-    		openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/java/v1/config.yaml
+    		openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/java/v1/config.yaml
 	@docker run \
     		--rm \
     		--volume "$(shell pwd):/local" \
-    		openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/javascript/v1/config.yaml
+    		openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/javascript/v1/config.yaml
 	@docker run \
 			--rm \
 			--volume "$(shell pwd):/local" \
-			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/python/v1/config.yaml
+			openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/python/v1/config.yaml
 	@docker run \
 			--rm \
 			--volume "$(shell pwd):/local" \
-			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/rust/reqwest/v1/config.yaml
+			openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/rust/reqwest/v1/config.yaml
 	@docker run \
 			--rm \
 			--volume "$(shell pwd):/local" \
-			openapitools/openapi-generator-cli:v5.2.0 batch /local/clients/rust/hyper/v1/config.yaml
+			openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/rust/hyper/v1/config.yaml
