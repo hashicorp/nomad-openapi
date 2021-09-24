@@ -262,7 +262,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     x_nomad_token = "X-Nomad-Token_example" # str | A Nomad ACL token. (optional)
     per_page = 1 # int | Maximum number of results to return. (optional)
     next_token = "next_token_example" # str | Indicates where to start paging for queries that support pagination. (optional)
-    resources = "resources_example" # str | Whether or not to include the NodeResources and ReservedResources fields in the response. (optional)
+    resources = True # bool | Whether or not to include the NodeResources and ReservedResources fields in the response. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
  **x_nomad_token** | **str**| A Nomad ACL token. | [optional]
  **per_page** | **int**| Maximum number of results to return. | [optional]
  **next_token** | **str**| Indicates where to start paging for queries that support pagination. | [optional]
- **resources** | **str**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional]
+ **resources** | **bool**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional]
 
 ### Return type
 

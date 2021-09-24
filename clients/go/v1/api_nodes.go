@@ -422,7 +422,7 @@ type ApiGetNodesRequest struct {
 	xNomadToken *string
 	perPage *int32
 	nextToken *string
-	resources *string
+	resources *bool
 }
 
 func (r ApiGetNodesRequest) Region(region string) ApiGetNodesRequest {
@@ -461,7 +461,7 @@ func (r ApiGetNodesRequest) NextToken(nextToken string) ApiGetNodesRequest {
 	r.nextToken = &nextToken
 	return r
 }
-func (r ApiGetNodesRequest) Resources(resources string) ApiGetNodesRequest {
+func (r ApiGetNodesRequest) Resources(resources bool) ApiGetNodesRequest {
 	r.resources = &resources
 	return r
 }

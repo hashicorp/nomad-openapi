@@ -486,7 +486,7 @@ public class NodesApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNodesCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, String resources, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getNodesCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -557,7 +557,7 @@ public class NodesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getNodesValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, String resources, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getNodesValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = getNodesCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, _callback);
@@ -590,7 +590,7 @@ public class NodesApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<NodeListStub> getNodes(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, String resources) throws ApiException {
+    public List<NodeListStub> getNodes(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources) throws ApiException {
         ApiResponse<List<NodeListStub>> localVarResp = getNodesWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
         return localVarResp.getData();
     }
@@ -620,7 +620,7 @@ public class NodesApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<NodeListStub>> getNodesWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, String resources) throws ApiException {
+    public ApiResponse<List<NodeListStub>> getNodesWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources) throws ApiException {
         okhttp3.Call localVarCall = getNodesValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, null);
         Type localVarReturnType = new TypeToken<List<NodeListStub>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -652,7 +652,7 @@ public class NodesApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNodesAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, String resources, final ApiCallback<List<NodeListStub>> _callback) throws ApiException {
+    public okhttp3.Call getNodesAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources, final ApiCallback<List<NodeListStub>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNodesValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, _callback);
         Type localVarReturnType = new TypeToken<List<NodeListStub>>(){}.getType();

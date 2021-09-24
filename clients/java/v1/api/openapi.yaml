@@ -3491,7 +3491,7 @@ paths:
         name: resources
         required: false
         schema:
-          type: string
+          type: boolean
         style: form
       responses:
         "200":
@@ -5578,7 +5578,7 @@ components:
       name: resources
       required: false
       schema:
-        type: string
+        type: boolean
       style: form
     PerPageParam:
       description: Maximum number of results to return.

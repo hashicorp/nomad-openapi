@@ -182,7 +182,7 @@ export default class NodesApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
-     * @param {String} opts.resources Whether or not to include the NodeResources and ReservedResources fields in the response.
+     * @param {Boolean} opts.resources Whether or not to include the NodeResources and ReservedResources fields in the response.
      * @param {module:api/NodesApi~getNodesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/NodeListStub>}
      */

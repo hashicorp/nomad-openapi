@@ -118,7 +118,7 @@ var (
 	}
 	nodeResourcesParam = parameter{
 		Id:          "NodeResourcesParam",
-		SchemaType:  stringSchema,
+		SchemaType:  boolSchema,
 		Description: "Whether or not to include the NodeResources and ReservedResources fields in the response.",
 		Name:        "resources",
 		In:          inQuery,

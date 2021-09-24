@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
 **per_page** | Option<**i32**> | Maximum number of results to return. |  |
 **next_token** | Option<**String**> | Indicates where to start paging for queries that support pagination. |  |
-**resources** | Option<**String**> | Whether or not to include the NodeResources and ReservedResources fields in the response. |  |
+**resources** | Option<**bool**> | Whether or not to include the NodeResources and ReservedResources fields in the response. |  |
 
 ### Return type
 

@@ -227,7 +227,7 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
-    String resources = "resources_example"; // String | Whether or not to include the NodeResources and ReservedResources fields in the response.
+    Boolean resources = true; // Boolean | Whether or not to include the NodeResources and ReservedResources fields in the response.
     try {
       List<NodeListStub> result = apiInstance.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
       System.out.println(result);
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **String**| A Nomad ACL token. | [optional]
  **perPage** | **Integer**| Maximum number of results to return. | [optional]
  **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
- **resources** | **String**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional]
+ **resources** | **Boolean**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional]
 
 ### Return type
 

@@ -105,7 +105,7 @@ components:
       in: query
       name: resources
       schema:
-        type: string
+        type: boolean
     PerPageParam:
       description: Maximum number of results to return.
       in: query

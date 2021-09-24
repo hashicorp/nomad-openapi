@@ -411,7 +411,7 @@ class NodesApi(object):
                 x_nomad_token (str): A Nomad ACL token.. [optional]
                 per_page (int): Maximum number of results to return.. [optional]
                 next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                resources (str): Whether or not to include the NodeResources and ReservedResources fields in the response.. [optional]
+                resources (bool): Whether or not to include the NodeResources and ReservedResources fields in the response.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -515,7 +515,7 @@ class NodesApi(object):
                     'next_token':
                         (str,),
                     'resources':
-                        (str,),
+                        (bool,),
                 },
                 'attribute_map': {
                     'region': 'region',

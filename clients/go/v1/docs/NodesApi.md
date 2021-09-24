@@ -213,7 +213,7 @@ func main() {
     xNomadToken := "xNomadToken_example" // string | A Nomad ACL token. (optional)
     perPage := int32(56) // int32 | Maximum number of results to return. (optional)
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
-    resources := "resources_example" // string | Whether or not to include the NodeResources and ReservedResources fields in the response. (optional)
+    resources := true // bool | Whether or not to include the NodeResources and ReservedResources fields in the response. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **string** | A Nomad ACL token. | 
  **perPage** | **int32** | Maximum number of results to return. | 
  **nextToken** | **string** | Indicates where to start paging for queries that support pagination. | 
- **resources** | **string** | Whether or not to include the NodeResources and ReservedResources fields in the response. | 
+ **resources** | **bool** | Whether or not to include the NodeResources and ReservedResources fields in the response. | 
 
 ### Return type
 

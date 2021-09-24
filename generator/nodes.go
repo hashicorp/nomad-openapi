@@ -14,7 +14,7 @@ func (v *v1api) getNodePaths() []*apiPath {
 		{
 			Template: "/nodes",
 			Operations: []*operation{
-				newOperation(http.MethodGet, "nodeList", tags, "GetNodes",
+				newOperation(http.MethodGet, "NodesRequest", tags, "GetNodes",
 					nil,
 					appendParams(defaultQueryOpts, &nodeResourcesParam),
 					newResponseConfig(200, arraySchema, api.NodeListStub{}, defaultQueryMeta, "GetNodesResponse"),
@@ -58,7 +58,7 @@ func (v *v1api) getNodePaths() []*apiPath {
 		{
 			Template: "/node/{nodeId}/drain",
 			Operations: []*operation{
-				newOperation(http.MethodPost, "nodeDrain", tags, "UpdateNodeDrain",
+				newOperation(http.MethodPost, "nodeToggleDrain", tags, "UpdateNodeDrain",
 					newRequestBody(objectSchema, api.NodeUpdateDrainRequest{}),
 					appendParams(defaultQueryOpts, &nodeIdParam),
 					newResponseConfig(200, objectSchema, api.NodeDrainUpdateResponse{}, defaultQueryMeta, "NodeDrainUpdateResponse"),
@@ -80,7 +80,7 @@ func (v *v1api) getNodePaths() []*apiPath {
 		{
 			Template: "/node/{nodeId}/eligibility",
 			Operations: []*operation{
-				newOperation(http.MethodPost, "nodeEligibility", tags, "UpdateNodeEligibility",
+				newOperation(http.MethodPost, "nodeToggleEligibility", tags, "UpdateNodeEligibility",
 					newRequestBody(objectSchema, api.NodeUpdateEligibilityRequest{}),
 					appendParams(defaultQueryOpts, &nodeIdParam),
 					newResponseConfig(200, objectSchema, api.NodeEligibilityUpdateResponse{}, defaultQueryMeta, "NodeEligibilityUpdateResponse"),

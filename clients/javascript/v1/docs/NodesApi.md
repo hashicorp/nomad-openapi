@@ -179,7 +179,7 @@ let opts = {
   'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
   'perPage': 56, // Number | Maximum number of results to return.
   'nextToken': "nextToken_example", // String | Indicates where to start paging for queries that support pagination.
-  'resources': "resources_example" // String | Whether or not to include the NodeResources and ReservedResources fields in the response.
+  'resources': true // Boolean | Whether or not to include the NodeResources and ReservedResources fields in the response.
 };
 apiInstance.getNodes(opts, (error, data, response) => {
   if (error) {
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
  **xNomadToken** | **String**| A Nomad ACL token. | [optional] 
  **perPage** | **Number**| Maximum number of results to return. | [optional] 
  **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] 
- **resources** | **String**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional] 
+ **resources** | **Boolean**| Whether or not to include the NodeResources and ReservedResources fields in the response. | [optional] 
 
 ### Return type
 

@@ -204,7 +204,7 @@ pub async fn get_node_allocations(configuration: &configuration::Configuration, 
     }
 }
 
-pub async fn get_nodes(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<&str>) -> Result<Vec<crate::models::NodeListStub>, Error<GetNodesError>> {
+pub async fn get_nodes(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<bool>) -> Result<Vec<crate::models::NodeListStub>, Error<GetNodesError>> {
 
     let local_var_client = &configuration.client;
 
