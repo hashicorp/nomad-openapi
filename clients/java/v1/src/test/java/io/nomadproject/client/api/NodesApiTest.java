@@ -14,8 +14,14 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
+import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.Node;
+import io.nomadproject.client.models.NodeDrainUpdateResponse;
+import io.nomadproject.client.models.NodeEligibilityUpdateResponse;
 import io.nomadproject.client.models.NodeListStub;
+import io.nomadproject.client.models.NodePurgeResponse;
+import io.nomadproject.client.models.NodeUpdateDrainRequest;
+import io.nomadproject.client.models.NodeUpdateEligibilityRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -67,6 +73,31 @@ public class NodesApiTest {
      *          if the Api call fails
      */
     @Test
+    public void getNodeAllocationsTest() throws ApiException {
+        String nodeId = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        List<AllocationListStub> response = api.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void getNodesTest() throws ApiException {
         String region = null;
         String namespace = null;
@@ -77,7 +108,85 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<NodeListStub> response = api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        Boolean resources = null;
+        List<NodeListStub> response = api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateNodeDrainTest() throws ApiException {
+        String nodeId = null;
+        NodeUpdateDrainRequest nodeUpdateDrainRequest = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        NodeDrainUpdateResponse response = api.updateNodeDrain(nodeId, nodeUpdateDrainRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateNodeEligibilityTest() throws ApiException {
+        String nodeId = null;
+        NodeUpdateEligibilityRequest nodeUpdateEligibilityRequest = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        NodeEligibilityUpdateResponse response = api.updateNodeEligibility(nodeId, nodeUpdateEligibilityRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateNodePurgeTest() throws ApiException {
+        String nodeId = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        NodePurgeResponse response = api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 
         // TODO: test validations
     }

@@ -263,7 +263,7 @@ class NodesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                AllocationListStub
+                [AllocationListStub]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -292,7 +292,7 @@ class NodesApi(object):
 
         self.get_node_allocations = _Endpoint(
             settings={
-                'response_type': (AllocationListStub,),
+                'response_type': ([AllocationListStub],),
                 'auth': [
                     'X-Nomad-Token'
                 ],

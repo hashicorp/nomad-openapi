@@ -677,7 +677,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/AllocationListStub'
+            items:
+              $ref: '#/components/schemas/AllocationListStub'
+            type: array
       description: ""
       headers:
         X-Nomad-Index:
@@ -872,14 +874,6 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
     NodeEligibilityUpdateResponse:
       content:
         application/json:
@@ -891,14 +885,6 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
     NodePurgeResponse:
       content:
         application/json:
@@ -908,14 +894,6 @@ components:
       headers:
         X-Nomad-Index:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
     PostJobDispatchResponse:

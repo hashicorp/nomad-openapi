@@ -106,7 +106,7 @@ export default class NodesApi {
      * Callback function to receive the result of the getNodeAllocations operation.
      * @callback module:api/NodesApi~getNodeAllocationsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/AllocationListStub} data The data returned by the service call.
+     * @param {Array.<module:model/AllocationListStub>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -123,7 +123,7 @@ export default class NodesApi {
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
      * @param {module:api/NodesApi~getNodeAllocationsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AllocationListStub}
+     * data is of type: {@link Array.<module:model/AllocationListStub>}
      */
     getNodeAllocations(nodeId, opts, callback) {
       opts = opts || {};
@@ -155,7 +155,7 @@ export default class NodesApi {
       let authNames = ['X-Nomad-Token'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = AllocationListStub;
+      let returnType = [AllocationListStub];
       return this.apiClient.callApi(
         '/node/{nodeId}/allocations', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

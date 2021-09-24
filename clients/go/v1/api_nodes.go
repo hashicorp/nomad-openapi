@@ -271,7 +271,7 @@ func (r ApiGetNodeAllocationsRequest) NextToken(nextToken string) ApiGetNodeAllo
 	return r
 }
 
-func (r ApiGetNodeAllocationsRequest) Execute() (AllocationListStub, *_nethttp.Response, error) {
+func (r ApiGetNodeAllocationsRequest) Execute() ([]AllocationListStub, *_nethttp.Response, error) {
 	return r.ApiService.GetNodeAllocationsExecute(r)
 }
 
@@ -291,16 +291,16 @@ func (a *NodesApiService) GetNodeAllocations(ctx _context.Context, nodeId string
 
 /*
  * Execute executes the request
- * @return AllocationListStub
+ * @return []AllocationListStub
  */
-func (a *NodesApiService) GetNodeAllocationsExecute(r ApiGetNodeAllocationsRequest) (AllocationListStub, *_nethttp.Response, error) {
+func (a *NodesApiService) GetNodeAllocationsExecute(r ApiGetNodeAllocationsRequest) ([]AllocationListStub, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AllocationListStub
+		localVarReturnValue  []AllocationListStub
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NodesApiService.GetNodeAllocations")

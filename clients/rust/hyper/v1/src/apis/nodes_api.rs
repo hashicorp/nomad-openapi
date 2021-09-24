@@ -34,7 +34,7 @@ impl<C: hyper::client::Connect> NodesApiClient<C> {
 
 pub trait NodesApi {
     fn get_node(&self, node_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Node, Error = Error<serde_json::Value>>>;
-    fn get_node_allocations(&self, node_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AllocationListStub, Error = Error<serde_json::Value>>>;
+    fn get_node_allocations(&self, node_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>>;
     fn get_nodes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<bool>) -> Box<dyn Future<Item = Vec<crate::models::NodeListStub>, Error = Error<serde_json::Value>>>;
     fn update_node_drain(&self, node_id: &str, node_update_drain_request: crate::models::NodeUpdateDrainRequest, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::NodeDrainUpdateResponse, Error = Error<serde_json::Value>>>;
     fn update_node_eligibility(&self, node_id: &str, node_update_eligibility_request: crate::models::NodeUpdateEligibilityRequest, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::NodeEligibilityUpdateResponse, Error = Error<serde_json::Value>>>;
@@ -82,7 +82,7 @@ impl<C: hyper::client::Connect>NodesApi for NodesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_node_allocations(&self, node_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AllocationListStub, Error = Error<serde_json::Value>>> {
+    fn get_node_allocations(&self, node_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>> {
         let mut req = __internal_request::Request::new(hyper::Method::Get, "/node/{nodeId}/allocations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,

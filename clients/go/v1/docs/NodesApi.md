@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ## GetNodeAllocations
 
-> AllocationListStub GetNodeAllocations(ctx, nodeId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> []AllocationListStub GetNodeAllocations(ctx, nodeId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
 
 
 
@@ -136,7 +136,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NodesApi.GetNodeAllocations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNodeAllocations`: AllocationListStub
+    // response from `GetNodeAllocations`: []AllocationListStub
     fmt.Fprintf(os.Stdout, "Response from `NodesApi.GetNodeAllocations`: %v\n", resp)
 }
 ```
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AllocationListStub**](AllocationListStub.md)
+[**[]AllocationListStub**](AllocationListStub.md)
 
 ### Authorization
 

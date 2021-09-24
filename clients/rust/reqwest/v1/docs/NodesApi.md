@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_node_allocations
 
-> crate::models::AllocationListStub get_node_allocations(node_id, region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
+> Vec<crate::models::AllocationListStub> get_node_allocations(node_id, region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
 
 
 ### Parameters
@@ -73,7 +73,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::AllocationListStub**](AllocationListStub.md)
+[**Vec<crate::models::AllocationListStub>**](AllocationListStub.md)
 
 ### Authorization
 

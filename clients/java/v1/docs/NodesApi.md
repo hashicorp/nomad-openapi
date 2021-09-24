@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 <a name="getNodeAllocations"></a>
 # **getNodeAllocations**
-> AllocationListStub getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+> List&lt;AllocationListStub&gt; getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
 
 
 
@@ -140,7 +140,7 @@ public class Example {
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
     try {
-      AllocationListStub result = apiInstance.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+      List<AllocationListStub> result = apiInstance.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling NodesApi#getNodeAllocations");
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AllocationListStub**](AllocationListStub.md)
+[**List&lt;AllocationListStub&gt;**](AllocationListStub.md)
 
 ### Authorization
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |

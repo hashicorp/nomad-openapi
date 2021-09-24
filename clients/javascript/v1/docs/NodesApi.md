@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## getNodeAllocations
 
-> AllocationListStub getNodeAllocations(nodeId, opts)
+> [AllocationListStub] getNodeAllocations(nodeId, opts)
 
 
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AllocationListStub**](AllocationListStub.md)
+[**[AllocationListStub]**](AllocationListStub.md)
 
 ### Authorization
 
