@@ -113,6 +113,13 @@ components:
       name: per_page
       schema:
         type: integer
+    PolicyNameParam:
+      description: The ACL policy name.
+      in: path
+      name: policyName
+      required: true
+      schema:
+        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -149,6 +156,13 @@ components:
       description: If present, results will include stale reads.
       in: query
       name: stale
+      schema:
+        type: string
+    TokenAccessorParam:
+      description: The token accessor ID.
+      in: path
+      name: tokenAccessor
+      required: true
       schema:
         type: string
     VolumeActionParam:
@@ -994,7 +1008,13 @@ components:
       content:
         application/json:
           schema:
+<<<<<<< HEAD
             $ref: '#/components/schemas/ACLToken'
+=======
+            items:
+              $ref: '#/components/schemas/ACLToken'
+            type: array
+>>>>>>> 548a9f4 (finished acls-api i think)
       description: ""
       headers:
         X-Nomad-Index:
@@ -3010,6 +3030,32 @@ components:
           type: string
       type: object
     OneTimeToken:
+<<<<<<< HEAD
+=======
+      properties:
+        AccessorID:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ExpiresAt:
+          format: date-time
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        OneTimeSecretID:
+          type: string
+      type: object
+    OneTimeTokenExchangeRequest:
+      properties:
+        OneTimeSecretID:
+          type: string
+      type: object
+    ParameterizedJobConfig:
+>>>>>>> 548a9f4 (finished acls-api i think)
       properties:
         AccessorID:
           type: string
@@ -4058,7 +4104,11 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+>>>>>>> 548a9f4 (finished acls-api i think)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4109,9 +4159,15 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLPolicyResponse'
@@ -4136,10 +4192,17 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       responses:
         "200":
           $ref: '#/components/responses/GetACLPolicyResponse'
@@ -4160,9 +4223,15 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       requestBody:
         content:
           application/json:
@@ -4184,6 +4253,7 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+<<<<<<< HEAD
   /acl/token:
     get:
       operationId: GetACLTokenSelf
@@ -4212,15 +4282,23 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+=======
+>>>>>>> 548a9f4 (finished acls-api i think)
   /acl/token/{tokenAccessor}:
     delete:
       operationId: DeleteACLToken
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLTokenResponse'
@@ -4245,10 +4323,17 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       responses:
         "200":
           $ref: '#/components/responses/GetACLTokenResponse'
@@ -4269,9 +4354,15 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+>>>>>>> 548a9f4 (finished acls-api i think)
       requestBody:
         content:
           application/json:
@@ -4299,7 +4390,11 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+>>>>>>> 548a9f4 (finished acls-api i think)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4322,7 +4417,11 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+>>>>>>> 548a9f4 (finished acls-api i think)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       requestBody:
         content:
@@ -4345,6 +4444,37 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+<<<<<<< HEAD
+=======
+  /acl/token/self:
+    get:
+      operationId: GetACLTokenSelf
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLTokenSelfResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+>>>>>>> 548a9f4 (finished acls-api i think)
   /acl/tokens:
     get:
       operationId: GetACLTokens
@@ -4355,7 +4485,11 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+>>>>>>> 548a9f4 (finished acls-api i think)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:

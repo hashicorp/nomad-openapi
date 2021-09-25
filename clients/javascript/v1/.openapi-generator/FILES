@@ -311,6 +311,7 @@ src/model/VolumeRequest.js
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
 test/model/ScalingPolicyListStub.spec.js
@@ -377,3 +378,7 @@ test/model/OneTimeTokenExchangeRequest.spec.js
 =======
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 >>>>>>> 3550113 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+test/model/OneTimeToken.spec.js
+test/model/OneTimeTokenExchangeRequest.spec.js
+>>>>>>> 548a9f4 (finished acls-api i think)
