@@ -15,7 +15,10 @@ api_volumes.go
 client.go
 configuration.go
 docs/ACLApi.md
+docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
+docs/ACLToken.md
+docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -109,6 +112,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -158,7 +163,10 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+model_acl_policy.go
 model_acl_policy_list_stub.go
+model_acl_token.go
+model_acl_token_list_stub.go
 model_affinity.go
 model_alloc_deployment_status.go
 model_allocated_cpu_resources.go
@@ -247,6 +255,8 @@ model_namespace.go
 model_network_resource.go
 model_node_score_meta.go
 model_object_diff.go
+model_one_time_token.go
+model_one_time_token_exchange_request.go
 model_parameterized_job_config.go
 model_periodic_config.go
 model_periodic_force_response.go

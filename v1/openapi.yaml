@@ -99,6 +99,13 @@ components:
       name: per_page
       schema:
         type: integer
+    PolicyNameParam:
+      description: The ACL policy name.
+      in: path
+      name: policyName
+      required: true
+      schema:
+        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -135,6 +142,13 @@ components:
       description: If present, results will include stale reads.
       in: query
       name: stale
+      schema:
+        type: string
+    TokenAccessorParam:
+      description: The token accessor ID.
+      in: path
+      name: tokenAccessor
+      required: true
       schema:
         type: string
     VolumeActionParam:
@@ -188,6 +202,18 @@ components:
       schema:
         type: string
   requestBodies:
+    ACLPolicy:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLPolicy'
+      required: true
+    ACLToken:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLToken'
+      required: true
     CSISnapshotCreateRequest:
       content:
         application/json:
@@ -266,6 +292,12 @@ components:
           schema:
             $ref: '#/components/schemas/Namespace'
       required: true
+    OneTimeTokenExchangeRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneTimeTokenExchangeRequest'
+      required: true
     QuotaSpec:
       content:
         application/json:
@@ -295,6 +327,20 @@ components:
           schema:
             type: integer
     CreateQuotaSpecResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    DeleteACLPolicyResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    DeleteACLTokenResponse:
       description: ""
       headers:
         X-Nomad-Index:
@@ -356,6 +402,84 @@ components:
           schema:
             items:
               $ref: '#/components/schemas/ACLPolicyListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetACLPolicyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLPolicy'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetACLTokenResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLToken'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetACLTokenSelfResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLToken'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetACLTokensResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ACLTokenListStub'
             type: array
       description: ""
       headers:
@@ -824,6 +948,61 @@ components:
       description: Internal server error
     MethodNotAllowedResponse:
       description: Method not allowed
+    PostACLBootstrapResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ACLToken'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostACLPolicyResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostACLTokenOnetimeExchangeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLToken'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostACLTokenOnetimeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneTimeToken'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PostACLTokenResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ACLToken'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
     PostJobDispatchResponse:
       content:
         application/json:
@@ -1010,6 +1189,23 @@ components:
     default:
       description: ""
   schemas:
+    ACLPolicy:
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Description:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        Rules:
+          type: string
+      type: object
     ACLPolicyListStub:
       properties:
         CreateIndex:
@@ -1023,6 +1219,60 @@ components:
           minimum: 0
           type: integer
         Name:
+          type: string
+      type: object
+    ACLToken:
+      properties:
+        AccessorID:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        CreateTime:
+          format: date-time
+          type: string
+        Global:
+          type: boolean
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        Policies:
+          items:
+            type: string
+          type: array
+        SecretID:
+          type: string
+        Type:
+          type: string
+      type: object
+    ACLTokenListStub:
+      properties:
+        AccessorID:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        CreateTime:
+          format: date-time
+          type: string
+        Global:
+          type: boolean
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Name:
+          type: string
+        Policies:
+          items:
+            type: string
+          type: array
+        Type:
           type: string
       type: object
     Affinity:
@@ -2761,6 +3011,29 @@ components:
         Type:
           type: string
       type: object
+    OneTimeToken:
+      properties:
+        AccessorID:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ExpiresAt:
+          format: date-time
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        OneTimeSecretID:
+          type: string
+      type: object
+    OneTimeTokenExchangeRequest:
+      properties:
+        OneTimeSecretID:
+          type: string
+      type: object
     ParameterizedJobConfig:
       properties:
         MetaOptional:
@@ -3781,6 +4054,29 @@ info:
   version: 1.1.4
 openapi: 3.0.3
 paths:
+  /acl/bootstrap:
+    post:
+      operationId: PostACLBootstrap
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostACLBootstrapResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
   /acl/policies:
     get:
       operationId: GetACLPolicies
@@ -3797,6 +4093,276 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetACLPoliciesResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/policy/{policyName}:
+    delete:
+      operationId: DeleteACLPolicy
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/DeleteACLPolicyResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+    get:
+      operationId: GetACLPolicy
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLPolicyResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+    post:
+      operationId: PostACLPolicy
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/PolicyNameParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ACLPolicy'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostACLPolicyResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/token/{tokenAccessor}:
+    delete:
+      operationId: DeleteACLToken
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/DeleteACLTokenResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+    get:
+      operationId: GetACLToken
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLTokenResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+    post:
+      operationId: PostACLToken
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/TokenAccessorParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ACLToken'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostACLTokenResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/token/onetime:
+    post:
+      operationId: PostACLTokenOnetime
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostACLTokenOnetimeResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/token/onetime/exchange:
+    post:
+      operationId: PostACLTokenOnetimeExchange
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OneTimeTokenExchangeRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostACLTokenOnetimeExchangeResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/token/self:
+    get:
+      operationId: GetACLTokenSelf
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLTokenSelfResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/tokens:
+    get:
+      operationId: GetACLTokens
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLTokensResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

@@ -91,20 +91,15 @@ public class Example {
     //X-Nomad-Token.setApiKeyPrefix("Token");
 
     AclApi apiInstance = new AclApi(defaultClient);
+    String policyName = "policyName_example"; // String | The ACL policy name.
     String region = "region_example"; // String | Filters results based on the specified region.
     String namespace = "namespace_example"; // String | Filters results based on the specified namespace.
-    Integer index = 56; // Integer | If set, wait until query exceeds given index. Must be provided with WaitParam.
-    String wait = "wait_example"; // String | Provided with IndexParam to wait for change.
-    String stale = "stale_example"; // String | If present, results will include stale reads.
-    String prefix = "prefix_example"; // String | Constrains results to jobs that start with the defined prefix
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
-    Integer perPage = 56; // Integer | Maximum number of results to return.
-    String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
+    String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      List<ACLPolicyListStub> result = apiInstance.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-      System.out.println(result);
+      apiInstance.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AclApi#getACLPolicies");
+      System.err.println("Exception when calling AclApi#deleteACLPolicy");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -121,7 +116,18 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AclApi* | [**deleteACLPolicy**](docs/AclApi.md#deleteACLPolicy) | **DELETE** /acl/policy/{policyName} | 
+*AclApi* | [**deleteACLToken**](docs/AclApi.md#deleteACLToken) | **DELETE** /acl/token/{tokenAccessor} | 
 *AclApi* | [**getACLPolicies**](docs/AclApi.md#getACLPolicies) | **GET** /acl/policies | 
+*AclApi* | [**getACLPolicy**](docs/AclApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
+*AclApi* | [**getACLToken**](docs/AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
+*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
+*AclApi* | [**getACLTokens**](docs/AclApi.md#getACLTokens) | **GET** /acl/tokens | 
+*AclApi* | [**postACLBootstrap**](docs/AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
+*AclApi* | [**postACLPolicy**](docs/AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
+*AclApi* | [**postACLToken**](docs/AclApi.md#postACLToken) | **POST** /acl/token/{tokenAccessor} | 
+*AclApi* | [**postACLTokenOnetime**](docs/AclApi.md#postACLTokenOnetime) | **POST** /acl/token/onetime | 
+*AclApi* | [**postACLTokenOnetimeExchange**](docs/AclApi.md#postACLTokenOnetimeExchange) | **POST** /acl/token/onetime/exchange | 
 *AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
 *EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
@@ -177,7 +183,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [ACLPolicy](docs/ACLPolicy.md)
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
+ - [ACLToken](docs/ACLToken.md)
+ - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
@@ -266,6 +275,8 @@ Class | Method | HTTP request | Description
  - [NetworkResource](docs/NetworkResource.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+ - [OneTimeToken](docs/OneTimeToken.md)
+ - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)

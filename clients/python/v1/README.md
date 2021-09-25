@@ -50,7 +50,12 @@ import time
 import nomad_client
 from pprint import pprint
 from nomad_client.api import acl_api
+from nomad_client.model.acl_policy import ACLPolicy
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
+from nomad_client.model.acl_token import ACLToken
+from nomad_client.model.acl_token_list_stub import ACLTokenListStub
+from nomad_client.model.one_time_token import OneTimeToken
+from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
 # Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
@@ -73,21 +78,16 @@ configuration.api_key['X-Nomad-Token'] = 'YOUR_API_KEY'
 with nomad_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = acl_api.ACLApi(api_client)
-    region = "region_example" # str | Filters results based on the specified region. (optional)
+    policy_name = "policyName_example" # str | The ACL policy name.
+region = "region_example" # str | Filters results based on the specified region. (optional)
 namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
-index = 1 # int | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
-wait = "wait_example" # str | Provided with IndexParam to wait for change. (optional)
-stale = "stale_example" # str | If present, results will include stale reads. (optional)
-prefix = "prefix_example" # str | Constrains results to jobs that start with the defined prefix (optional)
 x_nomad_token = "X-Nomad-Token_example" # str | A Nomad ACL token. (optional)
-per_page = 1 # int | Maximum number of results to return. (optional)
-next_token = "next_token_example" # str | Indicates where to start paging for queries that support pagination. (optional)
+idempotency_token = "idempotency_token_example" # str | Can be used to ensure operations are only run once. (optional)
 
     try:
-        api_response = api_instance.get_acl_policies(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token)
-        pprint(api_response)
+        api_instance.delete_acl_policy(policy_name, region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
     except nomad_client.ApiException as e:
-        print("Exception when calling ACLApi->get_acl_policies: %s\n" % e)
+        print("Exception when calling ACLApi->delete_acl_policy: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -96,7 +96,18 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ACLApi* | [**delete_acl_policy**](docs/ACLApi.md#delete_acl_policy) | **DELETE** /acl/policy/{policyName} | 
+*ACLApi* | [**delete_acl_token**](docs/ACLApi.md#delete_acl_token) | **DELETE** /acl/token/{tokenAccessor} | 
 *ACLApi* | [**get_acl_policies**](docs/ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
+*ACLApi* | [**get_acl_policy**](docs/ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
+*ACLApi* | [**get_acl_token**](docs/ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
+*ACLApi* | [**get_acl_tokens**](docs/ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
+*ACLApi* | [**post_acl_bootstrap**](docs/ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
+*ACLApi* | [**post_acl_policy**](docs/ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
+*ACLApi* | [**post_acl_token**](docs/ACLApi.md#post_acl_token) | **POST** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **POST** /acl/token/onetime | 
+*ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **POST** /acl/token/onetime/exchange | 
 *AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
 *EnterpriseApi* | [**create_quota_spec**](docs/EnterpriseApi.md#create_quota_spec) | **POST** /quota | 
 *EnterpriseApi* | [**delete_quota_spec**](docs/EnterpriseApi.md#delete_quota_spec) | **DELETE** /quota/{specName} | 
@@ -152,7 +163,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ACLPolicy](docs/ACLPolicy.md)
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
+ - [ACLToken](docs/ACLToken.md)
+ - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
@@ -243,6 +257,8 @@ Class | Method | HTTP request | Description
  - [NetworkResource](docs/NetworkResource.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+ - [OneTimeToken](docs/OneTimeToken.md)
+ - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)

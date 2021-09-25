@@ -1,7 +1,10 @@
 .gitignore
 README.md
 docs/ACLApi.md
+docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
+docs/ACLToken.md
+docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -97,6 +100,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -166,7 +171,10 @@ nomad_client/apis/__init__.py
 nomad_client/configuration.py
 nomad_client/exceptions.py
 nomad_client/model/__init__.py
+nomad_client/model/acl_policy.py
 nomad_client/model/acl_policy_list_stub.py
+nomad_client/model/acl_token.py
+nomad_client/model/acl_token_list_stub.py
 nomad_client/model/affinity.py
 nomad_client/model/alloc_deployment_status.py
 nomad_client/model/allocated_cpu_resources.py
@@ -257,6 +265,8 @@ nomad_client/model/namespace.py
 nomad_client/model/network_resource.py
 nomad_client/model/node_score_meta.py
 nomad_client/model/object_diff.py
+nomad_client/model/one_time_token.py
+nomad_client/model/one_time_token_exchange_request.py
 nomad_client/model/parameterized_job_config.py
 nomad_client/model/periodic_config.py
 nomad_client/model/periodic_force_response.py
@@ -311,7 +321,15 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+<<<<<<< HEAD
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
+=======
+<<<<<<< HEAD
+>>>>>>> 6878d94 (finished acls-api i think)
 test/test_system_api.py
+=======
+test/test_one_time_token.py
+test/test_one_time_token_exchange_request.py
+>>>>>>> 548a9f4 (finished acls-api i think)
 tox.ini
