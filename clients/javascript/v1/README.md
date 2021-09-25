@@ -108,25 +108,21 @@ X-Nomad-Token.apiKey = "YOUR API KEY"
 //X-Nomad-Token.apiKeyPrefix['X-Nomad-Token'] = "Token"
 
 var api = new nomad-client.ACLApi()
+var policyName = "policyName_example"; // {String} The ACL policy name.
 var opts = {
   'region': "region_example", // {String} Filters results based on the specified region.
   'namespace': "namespace_example", // {String} Filters results based on the specified namespace.
-  'index': 56, // {Number} If set, wait until query exceeds given index. Must be provided with WaitParam.
-  'wait': "wait_example", // {String} Provided with IndexParam to wait for change.
-  'stale': "stale_example", // {String} If present, results will include stale reads.
-  'prefix': "prefix_example", // {String} Constrains results to jobs that start with the defined prefix
   'xNomadToken': "xNomadToken_example", // {String} A Nomad ACL token.
-  'perPage': 56, // {Number} Maximum number of results to return.
-  'nextToken': "nextToken_example" // {String} Indicates where to start paging for queries that support pagination.
+  'idempotencyToken': "idempotencyToken_example" // {String} Can be used to ensure operations are only run once.
 };
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.getACLPolicies(opts, callback);
+api.deleteACLPolicy(policyName, opts, callback);
 
 ```
 
@@ -136,7 +132,18 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*nomad-client.ACLApi* | [**deleteACLPolicy**](docs/ACLApi.md#deleteACLPolicy) | **DELETE** /acl/policy/{policyName} | 
+*nomad-client.ACLApi* | [**deleteACLToken**](docs/ACLApi.md#deleteACLToken) | **DELETE** /acl/token/{tokenAccessor} | 
 *nomad-client.ACLApi* | [**getACLPolicies**](docs/ACLApi.md#getACLPolicies) | **GET** /acl/policies | 
+*nomad-client.ACLApi* | [**getACLPolicy**](docs/ACLApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
+*nomad-client.ACLApi* | [**getACLToken**](docs/ACLApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
+*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
+*nomad-client.ACLApi* | [**getACLTokens**](docs/ACLApi.md#getACLTokens) | **GET** /acl/tokens | 
+*nomad-client.ACLApi* | [**postACLBootstrap**](docs/ACLApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
+*nomad-client.ACLApi* | [**postACLPolicy**](docs/ACLApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
+*nomad-client.ACLApi* | [**postACLToken**](docs/ACLApi.md#postACLToken) | **POST** /acl/token/{tokenAccessor} | 
+*nomad-client.ACLApi* | [**postACLTokenOnetime**](docs/ACLApi.md#postACLTokenOnetime) | **POST** /acl/token/onetime | 
+*nomad-client.ACLApi* | [**postACLTokenOnetimeExchange**](docs/ACLApi.md#postACLTokenOnetimeExchange) | **POST** /acl/token/onetime/exchange | 
 *nomad-client.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
 *nomad-client.EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *nomad-client.EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
@@ -188,7 +195,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [nomad-client.ACLPolicy](docs/ACLPolicy.md)
  - [nomad-client.ACLPolicyListStub](docs/ACLPolicyListStub.md)
+ - [nomad-client.ACLToken](docs/ACLToken.md)
+ - [nomad-client.ACLTokenListStub](docs/ACLTokenListStub.md)
  - [nomad-client.Affinity](docs/Affinity.md)
  - [nomad-client.AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [nomad-client.AllocatedCpuResources](docs/AllocatedCpuResources.md)
@@ -277,6 +287,8 @@ Class | Method | HTTP request | Description
  - [nomad-client.NetworkResource](docs/NetworkResource.md)
  - [nomad-client.NodeScoreMeta](docs/NodeScoreMeta.md)
  - [nomad-client.ObjectDiff](docs/ObjectDiff.md)
+ - [nomad-client.OneTimeToken](docs/OneTimeToken.md)
+ - [nomad-client.OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
  - [nomad-client.ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [nomad-client.PeriodicConfig](docs/PeriodicConfig.md)
  - [nomad-client.PeriodicForceResponse](docs/PeriodicForceResponse.md)

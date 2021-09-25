@@ -17,6 +17,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"strings"
 )
 
 // Linger please
@@ -26,6 +27,286 @@ var (
 
 // ACLApiService ACLApi service
 type ACLApiService service
+
+type ApiDeleteACLPolicyRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	policyName string
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiDeleteACLPolicyRequest) Region(region string) ApiDeleteACLPolicyRequest {
+	r.region = &region
+	return r
+}
+func (r ApiDeleteACLPolicyRequest) Namespace(namespace string) ApiDeleteACLPolicyRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiDeleteACLPolicyRequest) XNomadToken(xNomadToken string) ApiDeleteACLPolicyRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiDeleteACLPolicyRequest) IdempotencyToken(idempotencyToken string) ApiDeleteACLPolicyRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiDeleteACLPolicyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteACLPolicyExecute(r)
+}
+
+/*
+ * DeleteACLPolicy Method for DeleteACLPolicy
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param policyName The ACL policy name.
+ * @return ApiDeleteACLPolicyRequest
+ */
+func (a *ACLApiService) DeleteACLPolicy(ctx _context.Context, policyName string) ApiDeleteACLPolicyRequest {
+	return ApiDeleteACLPolicyRequest{
+		ApiService: a,
+		ctx: ctx,
+		policyName: policyName,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *ACLApiService) DeleteACLPolicyExecute(r ApiDeleteACLPolicyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.DeleteACLPolicy")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/policy/{policyName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"policyName"+"}", _neturl.PathEscape(parameterToString(r.policyName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteACLTokenRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	tokenAccessor string
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiDeleteACLTokenRequest) Region(region string) ApiDeleteACLTokenRequest {
+	r.region = &region
+	return r
+}
+func (r ApiDeleteACLTokenRequest) Namespace(namespace string) ApiDeleteACLTokenRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiDeleteACLTokenRequest) XNomadToken(xNomadToken string) ApiDeleteACLTokenRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiDeleteACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiDeleteACLTokenRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiDeleteACLTokenRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteACLTokenExecute(r)
+}
+
+/*
+ * DeleteACLToken Method for DeleteACLToken
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param tokenAccessor The token accessor ID.
+ * @return ApiDeleteACLTokenRequest
+ */
+func (a *ACLApiService) DeleteACLToken(ctx _context.Context, tokenAccessor string) ApiDeleteACLTokenRequest {
+	return ApiDeleteACLTokenRequest{
+		ApiService: a,
+		ctx: ctx,
+		tokenAccessor: tokenAccessor,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *ACLApiService) DeleteACLTokenExecute(r ApiDeleteACLTokenRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.DeleteACLToken")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/{tokenAccessor}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenAccessor"+"}", _neturl.PathEscape(parameterToString(r.tokenAccessor, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
 
 type ApiGetACLPoliciesRequest struct {
 	ctx _context.Context
@@ -163,6 +444,1524 @@ func (a *ACLApiService) GetACLPoliciesExecute(r ApiGetACLPoliciesRequest) ([]ACL
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetACLPolicyRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	policyName string
+	region *string
+	namespace *string
+	index *int32
+	wait *string
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetACLPolicyRequest) Region(region string) ApiGetACLPolicyRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetACLPolicyRequest) Namespace(namespace string) ApiGetACLPolicyRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetACLPolicyRequest) Index(index int32) ApiGetACLPolicyRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetACLPolicyRequest) Wait(wait string) ApiGetACLPolicyRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetACLPolicyRequest) Stale(stale string) ApiGetACLPolicyRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetACLPolicyRequest) Prefix(prefix string) ApiGetACLPolicyRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetACLPolicyRequest) XNomadToken(xNomadToken string) ApiGetACLPolicyRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetACLPolicyRequest) PerPage(perPage int32) ApiGetACLPolicyRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetACLPolicyRequest) NextToken(nextToken string) ApiGetACLPolicyRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetACLPolicyRequest) Execute() (ACLPolicy, *_nethttp.Response, error) {
+	return r.ApiService.GetACLPolicyExecute(r)
+}
+
+/*
+ * GetACLPolicy Method for GetACLPolicy
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param policyName The ACL policy name.
+ * @return ApiGetACLPolicyRequest
+ */
+func (a *ACLApiService) GetACLPolicy(ctx _context.Context, policyName string) ApiGetACLPolicyRequest {
+	return ApiGetACLPolicyRequest{
+		ApiService: a,
+		ctx: ctx,
+		policyName: policyName,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return ACLPolicy
+ */
+func (a *ACLApiService) GetACLPolicyExecute(r ApiGetACLPolicyRequest) (ACLPolicy, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ACLPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.GetACLPolicy")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/policy/{policyName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"policyName"+"}", _neturl.PathEscape(parameterToString(r.policyName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetACLTokenRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	tokenAccessor string
+	region *string
+	namespace *string
+	index *int32
+	wait *string
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetACLTokenRequest) Region(region string) ApiGetACLTokenRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetACLTokenRequest) Namespace(namespace string) ApiGetACLTokenRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetACLTokenRequest) Index(index int32) ApiGetACLTokenRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetACLTokenRequest) Wait(wait string) ApiGetACLTokenRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetACLTokenRequest) Stale(stale string) ApiGetACLTokenRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetACLTokenRequest) Prefix(prefix string) ApiGetACLTokenRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetACLTokenRequest) XNomadToken(xNomadToken string) ApiGetACLTokenRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetACLTokenRequest) PerPage(perPage int32) ApiGetACLTokenRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetACLTokenRequest) NextToken(nextToken string) ApiGetACLTokenRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
+	return r.ApiService.GetACLTokenExecute(r)
+}
+
+/*
+ * GetACLToken Method for GetACLToken
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param tokenAccessor The token accessor ID.
+ * @return ApiGetACLTokenRequest
+ */
+func (a *ACLApiService) GetACLToken(ctx _context.Context, tokenAccessor string) ApiGetACLTokenRequest {
+	return ApiGetACLTokenRequest{
+		ApiService: a,
+		ctx: ctx,
+		tokenAccessor: tokenAccessor,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return ACLToken
+ */
+func (a *ACLApiService) GetACLTokenExecute(r ApiGetACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ACLToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.GetACLToken")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/{tokenAccessor}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenAccessor"+"}", _neturl.PathEscape(parameterToString(r.tokenAccessor, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetACLTokenSelfRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	region *string
+	namespace *string
+	index *int32
+	wait *string
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetACLTokenSelfRequest) Region(region string) ApiGetACLTokenSelfRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) Namespace(namespace string) ApiGetACLTokenSelfRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) Index(index int32) ApiGetACLTokenSelfRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) Wait(wait string) ApiGetACLTokenSelfRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) Stale(stale string) ApiGetACLTokenSelfRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) Prefix(prefix string) ApiGetACLTokenSelfRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) XNomadToken(xNomadToken string) ApiGetACLTokenSelfRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) PerPage(perPage int32) ApiGetACLTokenSelfRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetACLTokenSelfRequest) NextToken(nextToken string) ApiGetACLTokenSelfRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetACLTokenSelfRequest) Execute() (ACLToken, *_nethttp.Response, error) {
+	return r.ApiService.GetACLTokenSelfExecute(r)
+}
+
+/*
+ * GetACLTokenSelf Method for GetACLTokenSelf
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGetACLTokenSelfRequest
+ */
+func (a *ACLApiService) GetACLTokenSelf(ctx _context.Context) ApiGetACLTokenSelfRequest {
+	return ApiGetACLTokenSelfRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return ACLToken
+ */
+func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACLToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ACLToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.GetACLTokenSelf")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/self"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetACLTokensRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	region *string
+	namespace *string
+	index *int32
+	wait *string
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetACLTokensRequest) Region(region string) ApiGetACLTokensRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetACLTokensRequest) Namespace(namespace string) ApiGetACLTokensRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetACLTokensRequest) Index(index int32) ApiGetACLTokensRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetACLTokensRequest) Wait(wait string) ApiGetACLTokensRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetACLTokensRequest) Stale(stale string) ApiGetACLTokensRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetACLTokensRequest) Prefix(prefix string) ApiGetACLTokensRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetACLTokensRequest) XNomadToken(xNomadToken string) ApiGetACLTokensRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetACLTokensRequest) PerPage(perPage int32) ApiGetACLTokensRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetACLTokensRequest) NextToken(nextToken string) ApiGetACLTokensRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetACLTokensRequest) Execute() ([]ACLTokenListStub, *_nethttp.Response, error) {
+	return r.ApiService.GetACLTokensExecute(r)
+}
+
+/*
+ * GetACLTokens Method for GetACLTokens
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiGetACLTokensRequest
+ */
+func (a *ACLApiService) GetACLTokens(ctx _context.Context) ApiGetACLTokensRequest {
+	return ApiGetACLTokensRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []ACLTokenListStub
+ */
+func (a *ACLApiService) GetACLTokensExecute(r ApiGetACLTokensRequest) ([]ACLTokenListStub, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []ACLTokenListStub
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.GetACLTokens")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/tokens"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostACLBootstrapRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostACLBootstrapRequest) Region(region string) ApiPostACLBootstrapRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostACLBootstrapRequest) Namespace(namespace string) ApiPostACLBootstrapRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostACLBootstrapRequest) XNomadToken(xNomadToken string) ApiPostACLBootstrapRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostACLBootstrapRequest) IdempotencyToken(idempotencyToken string) ApiPostACLBootstrapRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostACLBootstrapRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
+	return r.ApiService.PostACLBootstrapExecute(r)
+}
+
+/*
+ * PostACLBootstrap Method for PostACLBootstrap
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiPostACLBootstrapRequest
+ */
+func (a *ACLApiService) PostACLBootstrap(ctx _context.Context) ApiPostACLBootstrapRequest {
+	return ApiPostACLBootstrapRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []ACLToken
+ */
+func (a *ACLApiService) PostACLBootstrapExecute(r ApiPostACLBootstrapRequest) ([]ACLToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []ACLToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLBootstrap")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/bootstrap"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostACLPolicyRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	policyName string
+	aCLPolicy *ACLPolicy
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostACLPolicyRequest) ACLPolicy(aCLPolicy ACLPolicy) ApiPostACLPolicyRequest {
+	r.aCLPolicy = &aCLPolicy
+	return r
+}
+func (r ApiPostACLPolicyRequest) Region(region string) ApiPostACLPolicyRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostACLPolicyRequest) Namespace(namespace string) ApiPostACLPolicyRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostACLPolicyRequest) XNomadToken(xNomadToken string) ApiPostACLPolicyRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostACLPolicyRequest) IdempotencyToken(idempotencyToken string) ApiPostACLPolicyRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostACLPolicyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PostACLPolicyExecute(r)
+}
+
+/*
+ * PostACLPolicy Method for PostACLPolicy
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param policyName The ACL policy name.
+ * @return ApiPostACLPolicyRequest
+ */
+func (a *ACLApiService) PostACLPolicy(ctx _context.Context, policyName string) ApiPostACLPolicyRequest {
+	return ApiPostACLPolicyRequest{
+		ApiService: a,
+		ctx: ctx,
+		policyName: policyName,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *ACLApiService) PostACLPolicyExecute(r ApiPostACLPolicyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLPolicy")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/policy/{policyName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"policyName"+"}", _neturl.PathEscape(parameterToString(r.policyName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.aCLPolicy == nil {
+		return nil, reportError("aCLPolicy is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.aCLPolicy
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPostACLTokenRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	tokenAccessor string
+	aCLToken *ACLToken
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostACLTokenRequest) ACLToken(aCLToken ACLToken) ApiPostACLTokenRequest {
+	r.aCLToken = &aCLToken
+	return r
+}
+func (r ApiPostACLTokenRequest) Region(region string) ApiPostACLTokenRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostACLTokenRequest) Namespace(namespace string) ApiPostACLTokenRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostACLTokenRequest) XNomadToken(xNomadToken string) ApiPostACLTokenRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
+	return r.ApiService.PostACLTokenExecute(r)
+}
+
+/*
+ * PostACLToken Method for PostACLToken
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param tokenAccessor The token accessor ID.
+ * @return ApiPostACLTokenRequest
+ */
+func (a *ACLApiService) PostACLToken(ctx _context.Context, tokenAccessor string) ApiPostACLTokenRequest {
+	return ApiPostACLTokenRequest{
+		ApiService: a,
+		ctx: ctx,
+		tokenAccessor: tokenAccessor,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return []ACLToken
+ */
+func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []ACLToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLToken")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/{tokenAccessor}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenAccessor"+"}", _neturl.PathEscape(parameterToString(r.tokenAccessor, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.aCLToken == nil {
+		return localVarReturnValue, nil, reportError("aCLToken is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.aCLToken
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostACLTokenOnetimeRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostACLTokenOnetimeRequest) Region(region string) ApiPostACLTokenOnetimeRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostACLTokenOnetimeRequest) Namespace(namespace string) ApiPostACLTokenOnetimeRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostACLTokenOnetimeRequest) XNomadToken(xNomadToken string) ApiPostACLTokenOnetimeRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostACLTokenOnetimeRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenOnetimeRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostACLTokenOnetimeRequest) Execute() (OneTimeToken, *_nethttp.Response, error) {
+	return r.ApiService.PostACLTokenOnetimeExecute(r)
+}
+
+/*
+ * PostACLTokenOnetime Method for PostACLTokenOnetime
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiPostACLTokenOnetimeRequest
+ */
+func (a *ACLApiService) PostACLTokenOnetime(ctx _context.Context) ApiPostACLTokenOnetimeRequest {
+	return ApiPostACLTokenOnetimeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return OneTimeToken
+ */
+func (a *ACLApiService) PostACLTokenOnetimeExecute(r ApiPostACLTokenOnetimeRequest) (OneTimeToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OneTimeToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLTokenOnetime")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/onetime"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostACLTokenOnetimeExchangeRequest struct {
+	ctx _context.Context
+	ApiService *ACLApiService
+	oneTimeTokenExchangeRequest *OneTimeTokenExchangeRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostACLTokenOnetimeExchangeRequest) OneTimeTokenExchangeRequest(oneTimeTokenExchangeRequest OneTimeTokenExchangeRequest) ApiPostACLTokenOnetimeExchangeRequest {
+	r.oneTimeTokenExchangeRequest = &oneTimeTokenExchangeRequest
+	return r
+}
+func (r ApiPostACLTokenOnetimeExchangeRequest) Region(region string) ApiPostACLTokenOnetimeExchangeRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostACLTokenOnetimeExchangeRequest) Namespace(namespace string) ApiPostACLTokenOnetimeExchangeRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostACLTokenOnetimeExchangeRequest) XNomadToken(xNomadToken string) ApiPostACLTokenOnetimeExchangeRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostACLTokenOnetimeExchangeRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenOnetimeExchangeRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostACLTokenOnetimeExchangeRequest) Execute() (ACLToken, *_nethttp.Response, error) {
+	return r.ApiService.PostACLTokenOnetimeExchangeExecute(r)
+}
+
+/*
+ * PostACLTokenOnetimeExchange Method for PostACLTokenOnetimeExchange
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiPostACLTokenOnetimeExchangeRequest
+ */
+func (a *ACLApiService) PostACLTokenOnetimeExchange(ctx _context.Context) ApiPostACLTokenOnetimeExchangeRequest {
+	return ApiPostACLTokenOnetimeExchangeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return ACLToken
+ */
+func (a *ACLApiService) PostACLTokenOnetimeExchangeExecute(r ApiPostACLTokenOnetimeExchangeRequest) (ACLToken, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ACLToken
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLTokenOnetimeExchange")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/acl/token/onetime/exchange"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.oneTimeTokenExchangeRequest == nil {
+		return localVarReturnValue, nil, reportError("oneTimeTokenExchangeRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.oneTimeTokenExchangeRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

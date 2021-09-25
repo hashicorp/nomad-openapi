@@ -137,6 +137,14 @@ var (
 		Name:        "per_page",
 		In:          inQuery,
 	}
+	policyNameParam = parameter{
+		Id:          "PolicyNameParam",
+		SchemaType:  stringSchema,
+		Description: "The ACL policy name.",
+		Name:        "policyName",
+		In:          inPath,
+		Required:    true,
+	}
 	prefixParam = parameter{
 		Id:          "PrefixParam",
 		SchemaType:  stringSchema,
@@ -164,6 +172,14 @@ var (
 		Description: "If present, results will include stale reads.",
 		Name:        "stale",
 		In:          inQuery,
+	}
+	tokenAccessorParam = parameter{
+		Id:          "TokenAccessorParam",
+		SchemaType:  stringSchema,
+		Description: "The token accessor ID.",
+		Name:        "tokenAccessor",
+		In:          inPath,
+		Required:    true,
 	}
 	volumeActionParam = parameter{
 		Id:          "VolumeActionParam",

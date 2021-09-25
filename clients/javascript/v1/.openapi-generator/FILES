@@ -2,7 +2,10 @@
 .gitignore
 README.md
 docs/ACLApi.md
+docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
+docs/ACLToken.md
+docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -96,6 +99,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -155,7 +160,10 @@ src/api/RegionsApi.js
 src/api/SearchApi.js
 src/api/VolumesApi.js
 src/index.js
+src/model/ACLPolicy.js
 src/model/ACLPolicyListStub.js
+src/model/ACLToken.js
+src/model/ACLTokenListStub.js
 src/model/Affinity.js
 src/model/AllocDeploymentStatus.js
 src/model/AllocatedCpuResources.js
@@ -244,6 +252,8 @@ src/model/Namespace.js
 src/model/NetworkResource.js
 src/model/NodeScoreMeta.js
 src/model/ObjectDiff.js
+src/model/OneTimeToken.js
+src/model/OneTimeTokenExchangeRequest.js
 src/model/ParameterizedJobConfig.js
 src/model/PeriodicConfig.js
 src/model/PeriodicForceResponse.js
@@ -287,3 +297,5 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/model/OneTimeToken.spec.js
+test/model/OneTimeTokenExchangeRequest.spec.js

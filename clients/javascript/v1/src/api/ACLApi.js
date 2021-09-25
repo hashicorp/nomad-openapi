@@ -13,7 +13,12 @@
 
 
 import ApiClient from "../ApiClient";
+import ACLPolicy from '../model/ACLPolicy';
 import ACLPolicyListStub from '../model/ACLPolicyListStub';
+import ACLToken from '../model/ACLToken';
+import ACLTokenListStub from '../model/ACLTokenListStub';
+import OneTimeToken from '../model/OneTimeToken';
+import OneTimeTokenExchangeRequest from '../model/OneTimeTokenExchangeRequest';
 
 /**
 * ACL service.
@@ -33,6 +38,106 @@ export default class ACLApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the deleteACLPolicy operation.
+     * @callback module:api/ACLApi~deleteACLPolicyCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} policyName The ACL policy name.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~deleteACLPolicyCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteACLPolicy(policyName, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'policyName' is set
+      if (policyName === undefined || policyName === null) {
+        throw new Error("Missing the required parameter 'policyName' when calling deleteACLPolicy");
+      }
+
+      let pathParams = {
+        'policyName': policyName
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/acl/policy/{policyName}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteACLToken operation.
+     * @callback module:api/ACLApi~deleteACLTokenCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} tokenAccessor The token accessor ID.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~deleteACLTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteACLToken(tokenAccessor, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'tokenAccessor' is set
+      if (tokenAccessor === undefined || tokenAccessor === null) {
+        throw new Error("Missing the required parameter 'tokenAccessor' when calling deleteACLToken");
+      }
+
+      let pathParams = {
+        'tokenAccessor': tokenAccessor
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/acl/token/{tokenAccessor}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the getACLPolicies operation.
@@ -84,6 +189,489 @@ export default class ACLApi {
       let returnType = [ACLPolicyListStub];
       return this.apiClient.callApi(
         '/acl/policies', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getACLPolicy operation.
+     * @callback module:api/ACLApi~getACLPolicyCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ACLPolicy} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} policyName The ACL policy name.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {Number} opts.index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param {String} opts.wait Provided with IndexParam to wait for change.
+     * @param {String} opts.stale If present, results will include stale reads.
+     * @param {String} opts.prefix Constrains results to jobs that start with the defined prefix
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {Number} opts.perPage Maximum number of results to return.
+     * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {module:api/ACLApi~getACLPolicyCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ACLPolicy}
+     */
+    getACLPolicy(policyName, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'policyName' is set
+      if (policyName === undefined || policyName === null) {
+        throw new Error("Missing the required parameter 'policyName' when calling getACLPolicy");
+      }
+
+      let pathParams = {
+        'policyName': policyName
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'wait': opts['wait'],
+        'stale': opts['stale'],
+        'prefix': opts['prefix'],
+        'per_page': opts['perPage'],
+        'next_token': opts['nextToken']
+      };
+      let headerParams = {
+        'index': opts['index'],
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ACLPolicy;
+      return this.apiClient.callApi(
+        '/acl/policy/{policyName}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getACLToken operation.
+     * @callback module:api/ACLApi~getACLTokenCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ACLToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} tokenAccessor The token accessor ID.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {Number} opts.index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param {String} opts.wait Provided with IndexParam to wait for change.
+     * @param {String} opts.stale If present, results will include stale reads.
+     * @param {String} opts.prefix Constrains results to jobs that start with the defined prefix
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {Number} opts.perPage Maximum number of results to return.
+     * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {module:api/ACLApi~getACLTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ACLToken}
+     */
+    getACLToken(tokenAccessor, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'tokenAccessor' is set
+      if (tokenAccessor === undefined || tokenAccessor === null) {
+        throw new Error("Missing the required parameter 'tokenAccessor' when calling getACLToken");
+      }
+
+      let pathParams = {
+        'tokenAccessor': tokenAccessor
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'wait': opts['wait'],
+        'stale': opts['stale'],
+        'prefix': opts['prefix'],
+        'per_page': opts['perPage'],
+        'next_token': opts['nextToken']
+      };
+      let headerParams = {
+        'index': opts['index'],
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ACLToken;
+      return this.apiClient.callApi(
+        '/acl/token/{tokenAccessor}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getACLTokenSelf operation.
+     * @callback module:api/ACLApi~getACLTokenSelfCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ACLToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {Number} opts.index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param {String} opts.wait Provided with IndexParam to wait for change.
+     * @param {String} opts.stale If present, results will include stale reads.
+     * @param {String} opts.prefix Constrains results to jobs that start with the defined prefix
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {Number} opts.perPage Maximum number of results to return.
+     * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {module:api/ACLApi~getACLTokenSelfCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ACLToken}
+     */
+    getACLTokenSelf(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'wait': opts['wait'],
+        'stale': opts['stale'],
+        'prefix': opts['prefix'],
+        'per_page': opts['perPage'],
+        'next_token': opts['nextToken']
+      };
+      let headerParams = {
+        'index': opts['index'],
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ACLToken;
+      return this.apiClient.callApi(
+        '/acl/token/self', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getACLTokens operation.
+     * @callback module:api/ACLApi~getACLTokensCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ACLTokenListStub>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {Number} opts.index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param {String} opts.wait Provided with IndexParam to wait for change.
+     * @param {String} opts.stale If present, results will include stale reads.
+     * @param {String} opts.prefix Constrains results to jobs that start with the defined prefix
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {Number} opts.perPage Maximum number of results to return.
+     * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {module:api/ACLApi~getACLTokensCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ACLTokenListStub>}
+     */
+    getACLTokens(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'wait': opts['wait'],
+        'stale': opts['stale'],
+        'prefix': opts['prefix'],
+        'per_page': opts['perPage'],
+        'next_token': opts['nextToken']
+      };
+      let headerParams = {
+        'index': opts['index'],
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ACLTokenListStub];
+      return this.apiClient.callApi(
+        '/acl/tokens', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postACLBootstrap operation.
+     * @callback module:api/ACLApi~postACLBootstrapCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~postACLBootstrapCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ACLToken>}
+     */
+    postACLBootstrap(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ACLToken];
+      return this.apiClient.callApi(
+        '/acl/bootstrap', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postACLPolicy operation.
+     * @callback module:api/ACLApi~postACLPolicyCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} policyName The ACL policy name.
+     * @param {module:model/ACLPolicy} aCLPolicy 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~postACLPolicyCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    postACLPolicy(policyName, aCLPolicy, opts, callback) {
+      opts = opts || {};
+      let postBody = aCLPolicy;
+      // verify the required parameter 'policyName' is set
+      if (policyName === undefined || policyName === null) {
+        throw new Error("Missing the required parameter 'policyName' when calling postACLPolicy");
+      }
+      // verify the required parameter 'aCLPolicy' is set
+      if (aCLPolicy === undefined || aCLPolicy === null) {
+        throw new Error("Missing the required parameter 'aCLPolicy' when calling postACLPolicy");
+      }
+
+      let pathParams = {
+        'policyName': policyName
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/acl/policy/{policyName}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postACLToken operation.
+     * @callback module:api/ACLApi~postACLTokenCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} tokenAccessor The token accessor ID.
+     * @param {module:model/ACLToken} aCLToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~postACLTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ACLToken>}
+     */
+    postACLToken(tokenAccessor, aCLToken, opts, callback) {
+      opts = opts || {};
+      let postBody = aCLToken;
+      // verify the required parameter 'tokenAccessor' is set
+      if (tokenAccessor === undefined || tokenAccessor === null) {
+        throw new Error("Missing the required parameter 'tokenAccessor' when calling postACLToken");
+      }
+      // verify the required parameter 'aCLToken' is set
+      if (aCLToken === undefined || aCLToken === null) {
+        throw new Error("Missing the required parameter 'aCLToken' when calling postACLToken");
+      }
+
+      let pathParams = {
+        'tokenAccessor': tokenAccessor
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = [ACLToken];
+      return this.apiClient.callApi(
+        '/acl/token/{tokenAccessor}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postACLTokenOnetime operation.
+     * @callback module:api/ACLApi~postACLTokenOnetimeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/OneTimeToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~postACLTokenOnetimeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/OneTimeToken}
+     */
+    postACLTokenOnetime(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = OneTimeToken;
+      return this.apiClient.callApi(
+        '/acl/token/onetime', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postACLTokenOnetimeExchange operation.
+     * @callback module:api/ACLApi~postACLTokenOnetimeExchangeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ACLToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {module:model/OneTimeTokenExchangeRequest} oneTimeTokenExchangeRequest 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/ACLApi~postACLTokenOnetimeExchangeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ACLToken}
+     */
+    postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, opts, callback) {
+      opts = opts || {};
+      let postBody = oneTimeTokenExchangeRequest;
+      // verify the required parameter 'oneTimeTokenExchangeRequest' is set
+      if (oneTimeTokenExchangeRequest === undefined || oneTimeTokenExchangeRequest === null) {
+        throw new Error("Missing the required parameter 'oneTimeTokenExchangeRequest' when calling postACLTokenOnetimeExchange");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = ACLToken;
+      return this.apiClient.callApi(
+        '/acl/token/onetime/exchange', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
