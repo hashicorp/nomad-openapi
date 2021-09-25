@@ -83,7 +83,11 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**GetACLPolicies**](docs/ACLApi.md#getaclpolicies) | **Get** /acl/policies | 
 *ACLApi* | [**GetACLPolicy**](docs/ACLApi.md#getaclpolicy) | **Get** /acl/policy/{policyName} | 
 *ACLApi* | [**GetACLToken**](docs/ACLApi.md#getacltoken) | **Get** /acl/token/{tokenAccessor} | 
+<<<<<<< HEAD
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
+=======
+*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
+>>>>>>> 0f409b3 (finished acls-api i think)
 *ACLApi* | [**GetACLTokens**](docs/ACLApi.md#getacltokens) | **Get** /acl/tokens | 
 *ACLApi* | [**PostACLBootstrap**](docs/ACLApi.md#postaclbootstrap) | **Post** /acl/bootstrap | 
 *ACLApi* | [**PostACLPolicy**](docs/ACLApi.md#postaclpolicy) | **Post** /acl/policy/{policyName} | 

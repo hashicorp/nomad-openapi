@@ -325,6 +325,7 @@ test/__init__.py
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
 =======
@@ -339,6 +340,9 @@ test/test_scaling_policy_list_stub.py
 =======
 <<<<<<< HEAD
 >>>>>>> 446ecc2 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+<<<<<<< HEAD
+>>>>>>> 9a77abd (finished acls-api i think)
 test/test_system_api.py
 =======
 test/test_one_time_token.py
@@ -352,4 +356,8 @@ test/test_one_time_token_exchange_request.py
 >>>>>>> e073f3a (merge)
 =======
 >>>>>>> 3386180 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+test/test_one_time_token.py
+test/test_one_time_token_exchange_request.py
+>>>>>>> 0f409b3 (finished acls-api i think)
 tox.ini

@@ -901,7 +901,11 @@ class ACLApi(object):
                 'auth': [
                     'X-Nomad-Token'
                 ],
+<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
+=======
+                'endpoint_path': '/acl/token/self',
+>>>>>>> 0f409b3 (finished acls-api i think)
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
@@ -1471,7 +1475,11 @@ class ACLApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
+<<<<<<< HEAD
                 ACLToken
+=======
+                [ACLToken]
+>>>>>>> 0f409b3 (finished acls-api i think)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1502,7 +1510,11 @@ class ACLApi(object):
 
         self.post_acl_token = _Endpoint(
             settings={
+<<<<<<< HEAD
                 'response_type': (ACLToken,),
+=======
+                'response_type': ([ACLToken],),
+>>>>>>> 0f409b3 (finished acls-api i think)
                 'auth': [
                     'X-Nomad-Token'
                 ],

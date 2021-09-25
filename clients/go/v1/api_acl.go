@@ -963,7 +963,11 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
+<<<<<<< HEAD
 	localVarPath := localBasePath + "/acl/token"
+=======
+	localVarPath := localBasePath + "/acl/token/self"
+>>>>>>> 0f409b3 (finished acls-api i think)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1580,7 +1584,11 @@ func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPos
 	return r
 }
 
+<<<<<<< HEAD
 func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
+=======
+func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
+>>>>>>> 0f409b3 (finished acls-api i think)
 	return r.ApiService.PostACLTokenExecute(r)
 }
 
@@ -1600,16 +1608,26 @@ func (a *ACLApiService) PostACLToken(ctx _context.Context, tokenAccessor string)
 
 /*
  * Execute executes the request
+<<<<<<< HEAD
  * @return ACLToken
  */
 func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
+=======
+ * @return []ACLToken
+ */
+func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
+>>>>>>> 0f409b3 (finished acls-api i think)
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+<<<<<<< HEAD
 		localVarReturnValue  ACLToken
+=======
+		localVarReturnValue  []ACLToken
+>>>>>>> 0f409b3 (finished acls-api i think)
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLToken")

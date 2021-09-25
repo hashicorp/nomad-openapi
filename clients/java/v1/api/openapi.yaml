@@ -38,6 +38,8 @@ paths:
   /acl/bootstrap:
     post:
       operationId: PostACLBootstrap
+<<<<<<< HEAD
+=======
       parameters:
       - description: Filters results based on the specified region.
         explode: true
@@ -102,6 +104,990 @@ paths:
       - ACL
       x-accepts: application/json
   /acl/policies:
+    get:
+      operationId: GetACLPolicies
+>>>>>>> 0f409b3 (finished acls-api i think)
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ACLToken'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+<<<<<<< HEAD
+  /acl/policies:
+=======
+  /acl/policy/{policyName}:
+    delete:
+      operationId: DeleteACLPolicy
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ACL policy name.
+        explode: false
+        in: path
+        name: policyName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+    get:
+      operationId: GetACLPolicy
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ACL policy name.
+        explode: false
+        in: path
+        name: policyName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACLPolicy'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+    post:
+      operationId: PostACLPolicy
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The ACL policy name.
+        explode: false
+        in: path
+        name: policyName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ACLPolicy'
+        required: true
+      responses:
+        "200":
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-contentType: application/json
+      x-accepts: application/json
+  /acl/token/{tokenAccessor}:
+    delete:
+      operationId: DeleteACLToken
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The token accessor ID.
+        explode: false
+        in: path
+        name: tokenAccessor
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+    get:
+      operationId: GetACLToken
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The token accessor ID.
+        explode: false
+        in: path
+        name: tokenAccessor
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACLToken'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+    post:
+      operationId: PostACLToken
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The token accessor ID.
+        explode: false
+        in: path
+        name: tokenAccessor
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ACLToken'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ACLToken'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-contentType: application/json
+      x-accepts: application/json
+  /acl/token/onetime:
+    post:
+      operationId: PostACLTokenOnetime
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneTimeToken'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+  /acl/token/onetime/exchange:
+    post:
+      operationId: PostACLTokenOnetimeExchange
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OneTimeTokenExchangeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACLToken'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-contentType: application/json
+      x-accepts: application/json
+  /acl/token/self:
+    get:
+      operationId: GetACLTokenSelf
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACLToken'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+  /acl/tokens:
+    get:
+      operationId: GetACLTokens
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ACLTokenListStub'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+      x-accepts: application/json
+  /allocations:
+>>>>>>> 0f409b3 (finished acls-api i think)
     get:
       operationId: GetACLPolicies
       parameters:
@@ -6140,6 +7126,15 @@ components:
       schema:
         type: integer
       style: form
+    PolicyNameParam:
+      description: The ACL policy name.
+      explode: false
+      in: path
+      name: policyName
+      required: true
+      schema:
+        type: string
+      style: simple
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       explode: true
@@ -6194,6 +7189,15 @@ components:
       schema:
         type: string
       style: form
+    TokenAccessorParam:
+      description: The token accessor ID.
+      explode: false
+      in: path
+      name: tokenAccessor
+      required: true
+      schema:
+        type: string
+      style: simple
     VolumeActionParam:
       description: The action to perform on the Volume (create, detach, delete).
       explode: false
@@ -7285,6 +8289,63 @@ components:
       content:
         application/json:
           schema:
+            items:
+              $ref: '#/components/schemas/ACLToken'
+            type: array
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+<<<<<<< HEAD
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    InternalServerErrorResponse:
+      description: Internal server error
+    MethodNotAllowedResponse:
+      description: Method not allowed
+    PostACLBootstrapResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ACLToken'
+            type: array
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    PostACLPolicyResponse:
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    PostACLTokenOnetimeExchangeResponse:
+      content:
+        application/json:
+          schema:
             $ref: '#/components/schemas/ACLToken'
       headers:
         X-Nomad-Index:
@@ -7294,6 +8355,34 @@ components:
           schema:
             type: integer
           style: simple
+    PostACLTokenOnetimeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneTimeToken'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    PostACLTokenResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ACLToken'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+=======
+>>>>>>> 0f409b3 (finished acls-api i think)
     PostJobDispatchResponse:
       content:
         application/json:

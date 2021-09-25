@@ -113,6 +113,13 @@ components:
       name: per_page
       schema:
         type: integer
+    PolicyNameParam:
+      description: The ACL policy name.
+      in: path
+      name: policyName
+      required: true
+      schema:
+        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -149,6 +156,13 @@ components:
       description: If present, results will include stale reads.
       in: query
       name: stale
+      schema:
+        type: string
+    TokenAccessorParam:
+      description: The token accessor ID.
+      in: path
+      name: tokenAccessor
+      required: true
       schema:
         type: string
     VolumeActionParam:
