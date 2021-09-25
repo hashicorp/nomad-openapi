@@ -9,7 +9,11 @@ Method | HTTP request | Description
 [**get_acl_policies**](ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
 [**get_acl_policy**](ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
 [**get_acl_token**](ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
+<<<<<<< HEAD
 [**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
+=======
+[**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
+>>>>>>> 0f409b3 (finished acls-api i think)
 [**get_acl_tokens**](ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
 [**post_acl_bootstrap**](ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
 [**post_acl_policy**](ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
@@ -870,7 +874,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_acl_token**
+<<<<<<< HEAD
 > ACLToken post_acl_token(token_accessor, acl_token)
+=======
+> [ACLToken] post_acl_token(token_accessor, acl_token)
+>>>>>>> 0f409b3 (finished acls-api i think)
 
 
 
@@ -953,7 +961,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
+=======
+[**[ACLToken]**](ACLToken.md)
+>>>>>>> 0f409b3 (finished acls-api i think)
 
 ### Authorization
 

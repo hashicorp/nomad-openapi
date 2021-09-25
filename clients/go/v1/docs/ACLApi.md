@@ -9,7 +9,11 @@ Method | HTTP request | Description
 [**GetACLPolicies**](ACLApi.md#GetACLPolicies) | **Get** /acl/policies | 
 [**GetACLPolicy**](ACLApi.md#GetACLPolicy) | **Get** /acl/policy/{policyName} | 
 [**GetACLToken**](ACLApi.md#GetACLToken) | **Get** /acl/token/{tokenAccessor} | 
+<<<<<<< HEAD
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
+=======
+[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token/self | 
+>>>>>>> 0f409b3 (finished acls-api i think)
 [**GetACLTokens**](ACLApi.md#GetACLTokens) | **Get** /acl/tokens | 
 [**PostACLBootstrap**](ACLApi.md#PostACLBootstrap) | **Post** /acl/bootstrap | 
 [**PostACLPolicy**](ACLApi.md#PostACLPolicy) | **Post** /acl/policy/{policyName} | 
@@ -727,7 +731,11 @@ Name | Type | Description  | Notes
 
 ## PostACLToken
 
+<<<<<<< HEAD
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+=======
+> []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+>>>>>>> 0f409b3 (finished acls-api i think)
 
 
 
@@ -758,7 +766,11 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+<<<<<<< HEAD
     // response from `PostACLToken`: ACLToken
+=======
+    // response from `PostACLToken`: []ACLToken
+>>>>>>> 0f409b3 (finished acls-api i think)
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLToken`: %v\n", resp)
 }
 ```
@@ -787,7 +799,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
+=======
+[**[]ACLToken**](ACLToken.md)
+>>>>>>> 0f409b3 (finished acls-api i think)
 
 ### Authorization
 

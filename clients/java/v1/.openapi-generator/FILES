@@ -326,6 +326,7 @@ src/main/java/io/nomadproject/client/models/VolumeRequest.java
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 =======
 src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
@@ -339,3 +340,7 @@ src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
 >>>>>>> e073f3a (merge)
 =======
 >>>>>>> 3386180 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
+src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
+>>>>>>> 0f409b3 (finished acls-api i think)
