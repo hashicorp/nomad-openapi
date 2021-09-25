@@ -3,7 +3,10 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
+docs/ACLToken.md
+docs/ACLTokenListStub.md
 docs/AclApi.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
@@ -98,6 +101,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -178,7 +183,10 @@ src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
 src/main/java/io/nomadproject/client/auth/HttpBasicAuth.java
 src/main/java/io/nomadproject/client/auth/HttpBearerAuth.java
+src/main/java/io/nomadproject/client/models/ACLPolicy.java
 src/main/java/io/nomadproject/client/models/ACLPolicyListStub.java
+src/main/java/io/nomadproject/client/models/ACLToken.java
+src/main/java/io/nomadproject/client/models/ACLTokenListStub.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
 src/main/java/io/nomadproject/client/models/AllocatedCpuResources.java
@@ -267,6 +275,8 @@ src/main/java/io/nomadproject/client/models/Namespace.java
 src/main/java/io/nomadproject/client/models/NetworkResource.java
 src/main/java/io/nomadproject/client/models/NodeScoreMeta.java
 src/main/java/io/nomadproject/client/models/ObjectDiff.java
+src/main/java/io/nomadproject/client/models/OneTimeToken.java
+src/main/java/io/nomadproject/client/models/OneTimeTokenExchangeRequest.java
 src/main/java/io/nomadproject/client/models/ParameterizedJobConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicForceResponse.java
@@ -310,3 +320,5 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
+src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
