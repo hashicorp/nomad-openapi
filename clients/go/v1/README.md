@@ -78,7 +78,18 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ACLApi* | [**DeleteACLPolicy**](docs/ACLApi.md#deleteaclpolicy) | **Delete** /acl/policy/{policyName} | 
+*ACLApi* | [**DeleteACLToken**](docs/ACLApi.md#deleteacltoken) | **Delete** /acl/token/{tokenAccessor} | 
 *ACLApi* | [**GetACLPolicies**](docs/ACLApi.md#getaclpolicies) | **Get** /acl/policies | 
+*ACLApi* | [**GetACLPolicy**](docs/ACLApi.md#getaclpolicy) | **Get** /acl/policy/{policyName} | 
+*ACLApi* | [**GetACLToken**](docs/ACLApi.md#getacltoken) | **Get** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
+*ACLApi* | [**GetACLTokens**](docs/ACLApi.md#getacltokens) | **Get** /acl/tokens | 
+*ACLApi* | [**PostACLBootstrap**](docs/ACLApi.md#postaclbootstrap) | **Post** /acl/bootstrap | 
+*ACLApi* | [**PostACLPolicy**](docs/ACLApi.md#postaclpolicy) | **Post** /acl/policy/{policyName} | 
+*ACLApi* | [**PostACLToken**](docs/ACLApi.md#postacltoken) | **Post** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**PostACLTokenOnetime**](docs/ACLApi.md#postacltokenonetime) | **Post** /acl/token/onetime | 
+*ACLApi* | [**PostACLTokenOnetimeExchange**](docs/ACLApi.md#postacltokenonetimeexchange) | **Post** /acl/token/onetime/exchange | 
 *AllocationsApi* | [**GetAllocations**](docs/AllocationsApi.md#getallocations) | **Get** /allocations | 
 *EnterpriseApi* | [**CreateQuotaSpec**](docs/EnterpriseApi.md#createquotaspec) | **Post** /quota | 
 *EnterpriseApi* | [**DeleteQuotaSpec**](docs/EnterpriseApi.md#deletequotaspec) | **Delete** /quota/{specName} | 
@@ -132,7 +143,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ACLPolicy](docs/ACLPolicy.md)
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
+ - [ACLToken](docs/ACLToken.md)
+ - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
@@ -221,6 +235,8 @@ Class | Method | HTTP request | Description
  - [NetworkResource](docs/NetworkResource.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+ - [OneTimeToken](docs/OneTimeToken.md)
+ - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)

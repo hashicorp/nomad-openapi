@@ -22,7 +22,12 @@ from nomad_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from nomad_client.model.acl_policy import ACLPolicy
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
+from nomad_client.model.acl_token import ACLToken
+from nomad_client.model.acl_token_list_stub import ACLTokenListStub
+from nomad_client.model.one_time_token import OneTimeToken
+from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
 
 
 class ACLApi(object):
@@ -36,6 +41,286 @@ class ACLApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+
+        def __delete_acl_policy(
+            self,
+            policy_name,
+            **kwargs
+        ):
+            """delete_acl_policy  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.delete_acl_policy(policy_name, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                policy_name (str): The ACL policy name.
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['policy_name'] = \
+                policy_name
+            return self.call_with_http_info(**kwargs)
+
+        self.delete_acl_policy = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/policy/{policyName}',
+                'operation_id': 'delete_acl_policy',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'policy_name',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'policy_name',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'policy_name':
+                        (str,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'policy_name': 'policyName',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'policy_name': 'path',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__delete_acl_policy
+        )
+
+        def __delete_acl_token(
+            self,
+            token_accessor,
+            **kwargs
+        ):
+            """delete_acl_token  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.delete_acl_token(token_accessor, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                token_accessor (str): The token accessor ID.
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['token_accessor'] = \
+                token_accessor
+            return self.call_with_http_info(**kwargs)
+
+        self.delete_acl_token = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/{tokenAccessor}',
+                'operation_id': 'delete_acl_token',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'token_accessor',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'token_accessor',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'token_accessor':
+                        (str,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'token_accessor': 'tokenAccessor',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'token_accessor': 'path',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__delete_acl_token
+        )
 
         def __get_acl_policies(
             self,
@@ -195,4 +480,1375 @@ class ACLApi(object):
             },
             api_client=api_client,
             callable=__get_acl_policies
+        )
+
+        def __get_acl_policy(
+            self,
+            policy_name,
+            **kwargs
+        ):
+            """get_acl_policy  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_acl_policy(policy_name, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                policy_name (str): The ACL policy name.
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+                wait (str): Provided with IndexParam to wait for change.. [optional]
+                stale (str): If present, results will include stale reads.. [optional]
+                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                per_page (int): Maximum number of results to return.. [optional]
+                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                ACLPolicy
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['policy_name'] = \
+                policy_name
+            return self.call_with_http_info(**kwargs)
+
+        self.get_acl_policy = _Endpoint(
+            settings={
+                'response_type': (ACLPolicy,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/policy/{policyName}',
+                'operation_id': 'get_acl_policy',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'policy_name',
+                    'region',
+                    'namespace',
+                    'index',
+                    'wait',
+                    'stale',
+                    'prefix',
+                    'x_nomad_token',
+                    'per_page',
+                    'next_token',
+                ],
+                'required': [
+                    'policy_name',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'policy_name':
+                        (str,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'index':
+                        (int,),
+                    'wait':
+                        (str,),
+                    'stale':
+                        (str,),
+                    'prefix':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'next_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'policy_name': 'policyName',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'index': 'index',
+                    'wait': 'wait',
+                    'stale': 'stale',
+                    'prefix': 'prefix',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'per_page': 'per_page',
+                    'next_token': 'next_token',
+                },
+                'location_map': {
+                    'policy_name': 'path',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'index': 'header',
+                    'wait': 'query',
+                    'stale': 'query',
+                    'prefix': 'query',
+                    'x_nomad_token': 'header',
+                    'per_page': 'query',
+                    'next_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_acl_policy
+        )
+
+        def __get_acl_token(
+            self,
+            token_accessor,
+            **kwargs
+        ):
+            """get_acl_token  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_acl_token(token_accessor, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                token_accessor (str): The token accessor ID.
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+                wait (str): Provided with IndexParam to wait for change.. [optional]
+                stale (str): If present, results will include stale reads.. [optional]
+                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                per_page (int): Maximum number of results to return.. [optional]
+                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                ACLToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['token_accessor'] = \
+                token_accessor
+            return self.call_with_http_info(**kwargs)
+
+        self.get_acl_token = _Endpoint(
+            settings={
+                'response_type': (ACLToken,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/{tokenAccessor}',
+                'operation_id': 'get_acl_token',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'token_accessor',
+                    'region',
+                    'namespace',
+                    'index',
+                    'wait',
+                    'stale',
+                    'prefix',
+                    'x_nomad_token',
+                    'per_page',
+                    'next_token',
+                ],
+                'required': [
+                    'token_accessor',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'token_accessor':
+                        (str,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'index':
+                        (int,),
+                    'wait':
+                        (str,),
+                    'stale':
+                        (str,),
+                    'prefix':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'next_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'token_accessor': 'tokenAccessor',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'index': 'index',
+                    'wait': 'wait',
+                    'stale': 'stale',
+                    'prefix': 'prefix',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'per_page': 'per_page',
+                    'next_token': 'next_token',
+                },
+                'location_map': {
+                    'token_accessor': 'path',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'index': 'header',
+                    'wait': 'query',
+                    'stale': 'query',
+                    'prefix': 'query',
+                    'x_nomad_token': 'header',
+                    'per_page': 'query',
+                    'next_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_acl_token
+        )
+
+        def __get_acl_token_self(
+            self,
+            **kwargs
+        ):
+            """get_acl_token_self  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_acl_token_self(async_req=True)
+            >>> result = thread.get()
+
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+                wait (str): Provided with IndexParam to wait for change.. [optional]
+                stale (str): If present, results will include stale reads.. [optional]
+                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                per_page (int): Maximum number of results to return.. [optional]
+                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                ACLToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
+
+        self.get_acl_token_self = _Endpoint(
+            settings={
+                'response_type': (ACLToken,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/self',
+                'operation_id': 'get_acl_token_self',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'region',
+                    'namespace',
+                    'index',
+                    'wait',
+                    'stale',
+                    'prefix',
+                    'x_nomad_token',
+                    'per_page',
+                    'next_token',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'index':
+                        (int,),
+                    'wait':
+                        (str,),
+                    'stale':
+                        (str,),
+                    'prefix':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'next_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'index': 'index',
+                    'wait': 'wait',
+                    'stale': 'stale',
+                    'prefix': 'prefix',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'per_page': 'per_page',
+                    'next_token': 'next_token',
+                },
+                'location_map': {
+                    'region': 'query',
+                    'namespace': 'query',
+                    'index': 'header',
+                    'wait': 'query',
+                    'stale': 'query',
+                    'prefix': 'query',
+                    'x_nomad_token': 'header',
+                    'per_page': 'query',
+                    'next_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_acl_token_self
+        )
+
+        def __get_acl_tokens(
+            self,
+            **kwargs
+        ):
+            """get_acl_tokens  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_acl_tokens(async_req=True)
+            >>> result = thread.get()
+
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+                wait (str): Provided with IndexParam to wait for change.. [optional]
+                stale (str): If present, results will include stale reads.. [optional]
+                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                per_page (int): Maximum number of results to return.. [optional]
+                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [ACLTokenListStub]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
+
+        self.get_acl_tokens = _Endpoint(
+            settings={
+                'response_type': ([ACLTokenListStub],),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/tokens',
+                'operation_id': 'get_acl_tokens',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'region',
+                    'namespace',
+                    'index',
+                    'wait',
+                    'stale',
+                    'prefix',
+                    'x_nomad_token',
+                    'per_page',
+                    'next_token',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'index':
+                        (int,),
+                    'wait':
+                        (str,),
+                    'stale':
+                        (str,),
+                    'prefix':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'next_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'index': 'index',
+                    'wait': 'wait',
+                    'stale': 'stale',
+                    'prefix': 'prefix',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'per_page': 'per_page',
+                    'next_token': 'next_token',
+                },
+                'location_map': {
+                    'region': 'query',
+                    'namespace': 'query',
+                    'index': 'header',
+                    'wait': 'query',
+                    'stale': 'query',
+                    'prefix': 'query',
+                    'x_nomad_token': 'header',
+                    'per_page': 'query',
+                    'next_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_acl_tokens
+        )
+
+        def __post_acl_bootstrap(
+            self,
+            **kwargs
+        ):
+            """post_acl_bootstrap  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_acl_bootstrap(async_req=True)
+            >>> result = thread.get()
+
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [ACLToken]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
+
+        self.post_acl_bootstrap = _Endpoint(
+            settings={
+                'response_type': ([ACLToken],),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/bootstrap',
+                'operation_id': 'post_acl_bootstrap',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__post_acl_bootstrap
+        )
+
+        def __post_acl_policy(
+            self,
+            policy_name,
+            acl_policy,
+            **kwargs
+        ):
+            """post_acl_policy  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_acl_policy(policy_name, acl_policy, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                policy_name (str): The ACL policy name.
+                acl_policy (ACLPolicy):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['policy_name'] = \
+                policy_name
+            kwargs['acl_policy'] = \
+                acl_policy
+            return self.call_with_http_info(**kwargs)
+
+        self.post_acl_policy = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/policy/{policyName}',
+                'operation_id': 'post_acl_policy',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'policy_name',
+                    'acl_policy',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'policy_name',
+                    'acl_policy',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'policy_name':
+                        (str,),
+                    'acl_policy':
+                        (ACLPolicy,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'policy_name': 'policyName',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'policy_name': 'path',
+                    'acl_policy': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_acl_policy
+        )
+
+        def __post_acl_token(
+            self,
+            token_accessor,
+            acl_token,
+            **kwargs
+        ):
+            """post_acl_token  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_acl_token(token_accessor, acl_token, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                token_accessor (str): The token accessor ID.
+                acl_token (ACLToken):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                [ACLToken]
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['token_accessor'] = \
+                token_accessor
+            kwargs['acl_token'] = \
+                acl_token
+            return self.call_with_http_info(**kwargs)
+
+        self.post_acl_token = _Endpoint(
+            settings={
+                'response_type': ([ACLToken],),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/{tokenAccessor}',
+                'operation_id': 'post_acl_token',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'token_accessor',
+                    'acl_token',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'token_accessor',
+                    'acl_token',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'token_accessor':
+                        (str,),
+                    'acl_token':
+                        (ACLToken,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'token_accessor': 'tokenAccessor',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'token_accessor': 'path',
+                    'acl_token': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_acl_token
+        )
+
+        def __post_acl_token_onetime(
+            self,
+            **kwargs
+        ):
+            """post_acl_token_onetime  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_acl_token_onetime(async_req=True)
+            >>> result = thread.get()
+
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                OneTimeToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
+
+        self.post_acl_token_onetime = _Endpoint(
+            settings={
+                'response_type': (OneTimeToken,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/onetime',
+                'operation_id': 'post_acl_token_onetime',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__post_acl_token_onetime
+        )
+
+        def __post_acl_token_onetime_exchange(
+            self,
+            one_time_token_exchange_request,
+            **kwargs
+        ):
+            """post_acl_token_onetime_exchange  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_acl_token_onetime_exchange(one_time_token_exchange_request, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                one_time_token_exchange_request (OneTimeTokenExchangeRequest):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                ACLToken
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['one_time_token_exchange_request'] = \
+                one_time_token_exchange_request
+            return self.call_with_http_info(**kwargs)
+
+        self.post_acl_token_onetime_exchange = _Endpoint(
+            settings={
+                'response_type': (ACLToken,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/acl/token/onetime/exchange',
+                'operation_id': 'post_acl_token_onetime_exchange',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'one_time_token_exchange_request',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'one_time_token_exchange_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'one_time_token_exchange_request':
+                        (OneTimeTokenExchangeRequest,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'one_time_token_exchange_request': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_acl_token_onetime_exchange
         )
