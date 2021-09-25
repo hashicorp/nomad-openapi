@@ -997,6 +997,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         String localVarPath = "/acl/token";
 =======
         String localVarPath = "/acl/token/self";
@@ -1022,6 +1023,9 @@ public class AclApi {
 =======
         String localVarPath = "/acl/token";
 >>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+        String localVarPath = "/acl/token/self";
+>>>>>>> 7a50f49 (finished acls-api i think)
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1790,6 +1794,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @return ACLToken
 =======
      * @return List&lt;ACLToken&gt;
@@ -1809,6 +1814,9 @@ public class AclApi {
 =======
      * @return List&lt;ACLToken&gt;
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+     * @return List&lt;ACLToken&gt;
+>>>>>>> 7a50f49 (finished acls-api i think)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1826,6 +1834,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ACLToken postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
         ApiResponse<ACLToken> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 =======
@@ -1852,6 +1861,10 @@ public class AclApi {
     public List<ACLToken> postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
         ApiResponse<List<ACLToken>> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+    public List<ACLToken> postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<List<ACLToken>> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+>>>>>>> 7a50f49 (finished acls-api i think)
         return localVarResp.getData();
     }
 
@@ -1870,6 +1883,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @return ApiResponse&lt;ACLToken&gt;
 =======
      * @return ApiResponse&lt;List&lt;ACLToken&gt;&gt;
@@ -1889,6 +1903,9 @@ public class AclApi {
 =======
      * @return ApiResponse&lt;List&lt;ACLToken&gt;&gt;
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+     * @return ApiResponse&lt;List&lt;ACLToken&gt;&gt;
+>>>>>>> 7a50f49 (finished acls-api i think)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1906,6 +1923,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ApiResponse<ACLToken> postACLTokenWithHttpInfo(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, null);
         Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
@@ -1939,6 +1957,11 @@ public class AclApi {
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, null);
         Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+    public ApiResponse<List<ACLToken>> postACLTokenWithHttpInfo(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+>>>>>>> 7a50f49 (finished acls-api i think)
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1970,6 +1993,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public okhttp3.Call postACLTokenAsync(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<ACLToken> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, _callback);
@@ -1981,10 +2005,13 @@ public class AclApi {
 >>>>>>> 548a9f4 (finished acls-api i think)
 =======
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+>>>>>>> 7a50f49 (finished acls-api i think)
     public okhttp3.Call postACLTokenAsync(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<List<ACLToken>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, _callback);
         Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2007,6 +2034,8 @@ public class AclApi {
 >>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 =======
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+>>>>>>> 7a50f49 (finished acls-api i think)
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

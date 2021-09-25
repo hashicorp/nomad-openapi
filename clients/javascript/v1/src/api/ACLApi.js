@@ -373,6 +373,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '/acl/token', 'GET',
 =======
         '/acl/token/self', 'GET',
@@ -398,6 +399,9 @@ export default class ACLApi {
 =======
         '/acl/token', 'GET',
 >>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+        '/acl/token/self', 'GET',
+>>>>>>> 7a50f49 (finished acls-api i think)
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -568,6 +572,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param {module:model/ACLToken} data The data returned by the service call.
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
@@ -587,6 +592,9 @@ export default class ACLApi {
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
+>>>>>>> 7a50f49 (finished acls-api i think)
      * @param {String} response The complete HTTP response.
      */
 
@@ -605,6 +613,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * data is of type: {@link module:model/ACLToken}
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
@@ -624,6 +633,9 @@ export default class ACLApi {
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+     * data is of type: {@link Array.<module:model/ACLToken>}
+>>>>>>> 7a50f49 (finished acls-api i think)
      */
     postACLToken(tokenAccessor, aCLToken, opts, callback) {
       opts = opts || {};
@@ -660,6 +672,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       let returnType = ACLToken;
 =======
       let returnType = [ACLToken];
@@ -679,6 +692,9 @@ export default class ACLApi {
 =======
       let returnType = [ACLToken];
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+      let returnType = [ACLToken];
+>>>>>>> 7a50f49 (finished acls-api i think)
       return this.apiClient.callApi(
         '/acl/token/{tokenAccessor}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
