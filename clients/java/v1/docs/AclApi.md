@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getACLToken**](AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
@@ -18,6 +19,9 @@ Method | HTTP request | Description
 =======
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 >>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
+>>>>>>> 7a50f49 (finished acls-api i think)
 [**getACLTokens**](AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 [**postACLBootstrap**](AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 [**postACLPolicy**](AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
@@ -781,10 +785,14 @@ null (empty response body)
 <a name="postACLToken"></a>
 # **postACLToken**
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 =======
 > List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
+>>>>>>> 7a50f49 (finished acls-api i think)
 
 
 
@@ -818,10 +826,14 @@ public class Example {
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 =======
       List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+>>>>>>> 7a50f49 (finished acls-api i think)
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AclApi#postACLToken");
@@ -848,10 +860,14 @@ Name | Type | Description  | Notes
 ### Return type
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**List&lt;ACLToken&gt;**](ACLToken.md)
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+[**List&lt;ACLToken&gt;**](ACLToken.md)
+>>>>>>> 7a50f49 (finished acls-api i think)
 
 ### Authorization
 

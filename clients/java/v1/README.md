@@ -123,6 +123,7 @@ Class | Method | HTTP request | Description
 *AclApi* | [**getACLToken**](docs/AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 *AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 *AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
@@ -130,6 +131,9 @@ Class | Method | HTTP request | Description
 =======
 *AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 >>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
+>>>>>>> 7a50f49 (finished acls-api i think)
 *AclApi* | [**getACLTokens**](docs/AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 *AclApi* | [**postACLBootstrap**](docs/AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 *AclApi* | [**postACLPolicy**](docs/AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
