@@ -82,8 +82,9 @@ experimental, and subject to change.
 The `/v1/openapi.yaml` specification file is a generated file that should not be
 edited manually.
 
-This [presentation](https://docs.google.com/presentation/d/1h4OOjPFOHbDJsbtuQZRYDjotyBH1YZs7V8L7qmEjRXc/edit#slide=id.gf24f7d4584_1_20)
-contains an overview of how to contribute endpoint configurations.
+This [video](https://youtu.be/x1AZbXiUENU) contains an overview of how to
+contribute endpoint configurations. The slide deck for this video can be found
+[here](https://docs.google.com/presentation/d/1h4OOjPFOHbDJsbtuQZRYDjotyBH1YZs7V8L7qmEjRXc/edit#slide=id.gf24f7d4584_1_20).
 
 The [README](https://github.com/hashicorp/nomad-openapi/blob/main/generator/README.md)
 file in the `generator` directory contains a detailed technical overview of the
