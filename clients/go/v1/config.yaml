@@ -6,3 +6,7 @@ inputSpec: /local/v1/openapi.yaml
 outputDir: /local/clients/go/v1
 packageName: client
 packageVersion: 1.1.4
+files:
+  service-layer.mustache:
+    templateType: API
+    destinationFilename:
