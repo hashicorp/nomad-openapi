@@ -901,7 +901,7 @@ class ACLApi(object):
                 'auth': [
                     'X-Nomad-Token'
                 ],
-                'endpoint_path': '/acl/token/self',
+                'endpoint_path': '/acl/token',
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
