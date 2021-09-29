@@ -300,8 +300,11 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/SystemApi.spec.js
 =======
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)

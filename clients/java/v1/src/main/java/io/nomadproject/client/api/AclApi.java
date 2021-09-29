@@ -989,7 +989,7 @@ public class AclApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/acl/token/self";
+        String localVarPath = "/acl/token";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

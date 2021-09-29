@@ -121,7 +121,7 @@ Class | Method | HTTP request | Description
 *AclApi* | [**getACLPolicies**](docs/AclApi.md#getACLPolicies) | **GET** /acl/policies | 
 *AclApi* | [**getACLPolicy**](docs/AclApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
 *AclApi* | [**getACLToken**](docs/AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
+*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 *AclApi* | [**getACLTokens**](docs/AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 *AclApi* | [**postACLBootstrap**](docs/AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 *AclApi* | [**postACLPolicy**](docs/AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
