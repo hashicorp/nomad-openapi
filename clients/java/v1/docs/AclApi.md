@@ -10,10 +10,14 @@ Method | HTTP request | Description
 [**getACLPolicy**](AclApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
 [**getACLToken**](AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
+>>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 [**getACLTokens**](AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 [**postACLBootstrap**](AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 [**postACLPolicy**](AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 

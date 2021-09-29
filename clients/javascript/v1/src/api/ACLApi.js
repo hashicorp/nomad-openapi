@@ -366,10 +366,14 @@ export default class ACLApi {
       let returnType = ACLToken;
       return this.apiClient.callApi(
 <<<<<<< HEAD
+<<<<<<< HEAD
         '/acl/token', 'GET',
 =======
         '/acl/token/self', 'GET',
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+        '/acl/token', 'GET',
+>>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
