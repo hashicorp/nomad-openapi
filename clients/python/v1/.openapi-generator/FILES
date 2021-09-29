@@ -324,6 +324,7 @@ test/__init__.py
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_system_api.py
 =======
 test/test_one_time_token.py
@@ -347,4 +348,6 @@ test/test_one_time_token_exchange_request.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 tox.ini

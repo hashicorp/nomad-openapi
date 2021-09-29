@@ -368,6 +368,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '/acl/token', 'GET',
 =======
         '/acl/token/self', 'GET',
@@ -378,6 +379,9 @@ export default class ACLApi {
 =======
         '/acl/token/self', 'GET',
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+        '/acl/token', 'GET',
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
