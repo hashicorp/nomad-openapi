@@ -18,6 +18,7 @@ Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
 =======
 [**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
@@ -46,6 +47,9 @@ Method | HTTP request | Description
 =======
 [**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+[**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 [**get_acl_tokens**](ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
 [**post_acl_bootstrap**](ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
 [**post_acl_policy**](ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 

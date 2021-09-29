@@ -910,6 +910,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
 =======
                 'endpoint_path': '/acl/token/self',
@@ -938,6 +939,9 @@ class ACLApi(object):
 =======
                 'endpoint_path': '/acl/token/self',
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+                'endpoint_path': '/acl/token',
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
