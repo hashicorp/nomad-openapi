@@ -365,7 +365,7 @@ export default class ACLApi {
       let accepts = ['application/json'];
       let returnType = ACLToken;
       return this.apiClient.callApi(
-        '/acl/token/self', 'GET',
+        '/acl/token', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

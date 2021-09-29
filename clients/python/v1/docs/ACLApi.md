@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**get_acl_policies**](ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
 [**get_acl_policy**](ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
 [**get_acl_token**](ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
-[**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
+[**get_acl_token_self**](ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
 [**get_acl_tokens**](ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
 [**post_acl_bootstrap**](ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
 [**post_acl_policy**](ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
