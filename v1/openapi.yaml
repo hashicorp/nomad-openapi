@@ -8,6 +8,7 @@ components:
       required: true
       schema:
         type: string
+<<<<<<< HEAD
     ACLTokenAccessorParam:
       description: The token accessor ID.
       in: path
@@ -15,6 +16,8 @@ components:
       required: true
       schema:
         type: string
+=======
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -113,13 +116,6 @@ components:
       name: per_page
       schema:
         type: integer
-    PolicyNameParam:
-      description: The ACL policy name.
-      in: path
-      name: policyName
-      required: true
-      schema:
-        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -4166,8 +4162,12 @@ paths:
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PolicyNameParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLPolicyResponse'
@@ -4201,8 +4201,12 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PolicyNameParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
       responses:
         "200":
           $ref: '#/components/responses/GetACLPolicyResponse'
@@ -4230,8 +4234,12 @@ paths:
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PolicyNameParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
       requestBody:
         content:
           application/json:
@@ -4254,6 +4262,9 @@ paths:
       tags:
       - ACL
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
   /acl/token:
     get:
       operationId: GetACLTokenSelf
@@ -4264,7 +4275,11 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4282,8 +4297,11 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+<<<<<<< HEAD
 =======
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
   /acl/token/{tokenAccessor}:
     delete:
       operationId: DeleteACLToken
@@ -4445,6 +4463,7 @@ paths:
       tags:
       - ACL
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /acl/token/self:
     get:
@@ -4475,6 +4494,8 @@ paths:
       tags:
       - ACL
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+>>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
   /acl/tokens:
     get:
       operationId: GetACLTokens
