@@ -102,10 +102,14 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**get_acl_policy**](docs/ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
 *ACLApi* | [**get_acl_token**](docs/ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
 =======
 *ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
 >>>>>>> 0f409b3 (finished acls-api i think)
+=======
+*ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
+>>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 *ACLApi* | [**get_acl_tokens**](docs/ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
 *ACLApi* | [**post_acl_bootstrap**](docs/ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
 *ACLApi* | [**post_acl_policy**](docs/ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
