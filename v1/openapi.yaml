@@ -1,6 +1,13 @@
 # Code generated from hashicorp/nomad-openapi/generator; DO NOT EDIT.
 components:
   parameters:
+    ACLPolicyNameParam:
+      description: The ACL policy name.
+      in: path
+      name: policyName
+      required: true
+      schema:
+        type: string
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -99,13 +106,6 @@ components:
       name: per_page
       schema:
         type: integer
-    PolicyNameParam:
-      description: The ACL policy name.
-      in: path
-      name: policyName
-      required: true
-      schema:
-        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -4113,7 +4113,7 @@ paths:
       - $ref: '#/components/parameters/NamespaceParam'
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/PolicyNameParam'
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLPolicyResponse'
@@ -4141,7 +4141,7 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
-      - $ref: '#/components/parameters/PolicyNameParam'
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
       responses:
         "200":
           $ref: '#/components/responses/GetACLPolicyResponse'
@@ -4164,7 +4164,7 @@ paths:
       - $ref: '#/components/parameters/NamespaceParam'
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/PolicyNameParam'
+      - $ref: '#/components/parameters/ACLPolicyNameParam'
       requestBody:
         content:
           application/json:
@@ -4174,6 +4174,34 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/PostACLPolicyResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - ACL
+  /acl/token:
+    get:
+      operationId: GetACLTokenSelf
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetACLTokenSelfResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -4307,34 +4335,6 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/PostACLTokenOnetimeExchangeResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - ACL
-  /acl/token/self:
-    get:
-      operationId: GetACLTokenSelf
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/IndexHeader'
-      - $ref: '#/components/parameters/WaitParam'
-      - $ref: '#/components/parameters/StaleParam'
-      - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetACLTokenSelfResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
