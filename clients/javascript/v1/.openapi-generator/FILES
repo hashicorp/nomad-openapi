@@ -306,6 +306,7 @@ src/model/VolumeRequest.js
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
 test/model/ScalingPolicyListStub.spec.js
@@ -314,6 +315,8 @@ test/model/ScalingPolicyListStub.spec.js
 >>>>>>> 62166a4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 =======
 >>>>>>> 38d49ca (merge)
+=======
+>>>>>>> 446ecc2 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 <<<<<<< HEAD
 test/api/SystemApi.spec.js
 =======
@@ -332,4 +335,9 @@ test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 >>>>>>> e073f3a (merge)
+<<<<<<< HEAD
 >>>>>>> 38d49ca (merge)
+=======
+=======
+>>>>>>> 3386180 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+>>>>>>> 446ecc2 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
