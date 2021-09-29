@@ -32,6 +32,14 @@ func (v *v1api) GetPaths() []*apiPath {
 }
 
 var (
+	aclPolicyNameParam = parameter{
+		Id:          "ACLPolicyNameParam",
+		SchemaType:  stringSchema,
+		Description: "The ACL policy name.",
+		Name:        "policyName",
+		In:          inPath,
+		Required:    true,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,
@@ -136,14 +144,6 @@ var (
 		Description: "Maximum number of results to return.",
 		Name:        "per_page",
 		In:          inQuery,
-	}
-	policyNameParam = parameter{
-		Id:          "PolicyNameParam",
-		SchemaType:  stringSchema,
-		Description: "The ACL policy name.",
-		Name:        "policyName",
-		In:          inPath,
-		Required:    true,
 	}
 	prefixParam = parameter{
 		Id:          "PrefixParam",

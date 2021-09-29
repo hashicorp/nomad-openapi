@@ -963,7 +963,7 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/acl/token/self"
+	localVarPath := localBasePath + "/acl/token"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

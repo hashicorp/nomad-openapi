@@ -101,7 +101,7 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**get_acl_policies**](docs/ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
 *ACLApi* | [**get_acl_policy**](docs/ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
 *ACLApi* | [**get_acl_token**](docs/ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
-*ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token/self | 
+*ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
 *ACLApi* | [**get_acl_tokens**](docs/ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
 *ACLApi* | [**post_acl_bootstrap**](docs/ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
 *ACLApi* | [**post_acl_policy**](docs/ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
