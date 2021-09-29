@@ -992,6 +992,7 @@ public class AclApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         String localVarPath = "/acl/token";
 =======
         String localVarPath = "/acl/token/self";
@@ -1002,6 +1003,9 @@ public class AclApi {
 =======
         String localVarPath = "/acl/token/self";
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+        String localVarPath = "/acl/token";
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

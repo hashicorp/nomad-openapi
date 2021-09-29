@@ -966,6 +966,7 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	localVarPath := localBasePath + "/acl/token"
 =======
 	localVarPath := localBasePath + "/acl/token/self"
@@ -976,6 +977,9 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 =======
 	localVarPath := localBasePath + "/acl/token/self"
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+	localVarPath := localBasePath + "/acl/token"
+>>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

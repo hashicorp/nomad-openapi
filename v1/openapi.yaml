@@ -113,13 +113,6 @@ components:
       name: per_page
       schema:
         type: integer
-    PolicyNameParam:
-      description: The ACL policy name.
-      in: path
-      name: policyName
-      required: true
-      schema:
-        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
