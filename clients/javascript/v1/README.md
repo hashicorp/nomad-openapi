@@ -173,6 +173,8 @@ Class | Method | HTTP request | Description
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
+*nomad-client.SystemApi* | [**postSystemGC**](docs/SystemApi.md#postSystemGC) | **POST** /system/gc | 
+*nomad-client.SystemApi* | [**postSystemReconcileSummaries**](docs/SystemApi.md#postSystemReconcileSummaries) | **POST** /system/reconcile/summaries | 
 *nomad-client.VolumesApi* | [**createVolume**](docs/VolumesApi.md#createVolume) | **POST** /volume/csi/{volumeId}/{action} | 
 *nomad-client.VolumesApi* | [**deleteSnapshot**](docs/VolumesApi.md#deleteSnapshot) | **DELETE** /volumes/snapshot | 
 *nomad-client.VolumesApi* | [**deleteVolumeRegistration**](docs/VolumesApi.md#deleteVolumeRegistration) | **DELETE** /volume/csi/{volumeId} | 
