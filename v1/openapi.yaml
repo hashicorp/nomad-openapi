@@ -8,6 +8,13 @@ components:
       required: true
       schema:
         type: string
+    ACLTokenAccessorParam:
+      description: The token accessor ID.
+      in: path
+      name: tokenAccessor
+      required: true
+      schema:
+        type: string
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -135,13 +142,6 @@ components:
       description: If present, results will include stale reads.
       in: query
       name: stale
-      schema:
-        type: string
-    TokenAccessorParam:
-      description: The token accessor ID.
-      in: path
-      name: tokenAccessor
-      required: true
       schema:
         type: string
     VolumeActionParam:
@@ -4150,7 +4150,7 @@ paths:
       - $ref: '#/components/parameters/NamespaceParam'
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/TokenAccessorParam'
+      - $ref: '#/components/parameters/ACLTokenAccessorParam'
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLTokenResponse'
@@ -4178,7 +4178,7 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
-      - $ref: '#/components/parameters/TokenAccessorParam'
+      - $ref: '#/components/parameters/ACLTokenAccessorParam'
       responses:
         "200":
           $ref: '#/components/responses/GetACLTokenResponse'
@@ -4201,7 +4201,7 @@ paths:
       - $ref: '#/components/parameters/NamespaceParam'
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/TokenAccessorParam'
+      - $ref: '#/components/parameters/ACLTokenAccessorParam'
       requestBody:
         content:
           application/json:
