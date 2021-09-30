@@ -189,14 +189,6 @@ var (
 		Name:        "stale",
 		In:          inQuery,
 	}
-	tokenAccessorParam = parameter{
-		Id:          "TokenAccessorParam",
-		SchemaType:  stringSchema,
-		Description: "The token accessor ID.",
-		Name:        "tokenAccessor",
-		In:          inPath,
-		Required:    true,
-	}
 	volumeActionParam = parameter{
 		Id:          "VolumeActionParam",
 		SchemaType:  stringSchema,

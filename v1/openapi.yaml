@@ -144,13 +144,6 @@ components:
       name: stale
       schema:
         type: string
-    TokenAccessorParam:
-      description: The token accessor ID.
-      in: path
-      name: tokenAccessor
-      required: true
-      schema:
-        type: string
     VolumeActionParam:
       description: The action to perform on the Volume (create, detach, delete).
       in: path
