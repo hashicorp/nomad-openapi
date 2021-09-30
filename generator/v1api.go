@@ -40,6 +40,14 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	aclTokenAccessorParam = parameter{
+		Id:          "ACLTokenAccessorParam",
+		SchemaType:  stringSchema,
+		Description: "The token accessor ID.",
+		Name:        "tokenAccessor",
+		In:          inPath,
+		Required:    true,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,
@@ -188,14 +196,6 @@ var (
 		Description: "If present, results will include stale reads.",
 		Name:        "stale",
 		In:          inQuery,
-	}
-	tokenAccessorParam = parameter{
-		Id:          "TokenAccessorParam",
-		SchemaType:  stringSchema,
-		Description: "The token accessor ID.",
-		Name:        "tokenAccessor",
-		In:          inPath,
-		Required:    true,
 	}
 	volumeActionParam = parameter{
 		Id:          "VolumeActionParam",
