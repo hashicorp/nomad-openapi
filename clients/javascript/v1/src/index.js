@@ -153,6 +153,7 @@ import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
 import RegionsApi from './api/RegionsApi';
 import SearchApi from './api/SearchApi';
+import SystemApi from './api/SystemApi';
 import VolumesApi from './api/VolumesApi';
 
 
@@ -1033,6 +1034,12 @@ export {
     * @property {module:api/SearchApi}
     */
     SearchApi,
+
+    /**
+    * The SystemApi service constructor.
+    * @property {module:api/SystemApi}
+    */
+    SystemApi,
 
     /**
     * The VolumesApi service constructor.
