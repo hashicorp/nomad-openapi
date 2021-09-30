@@ -9,6 +9,9 @@ components:
       schema:
         type: string
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e17bd45 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
     ACLTokenAccessorParam:
       description: The token accessor ID.
       in: path
@@ -16,8 +19,11 @@ components:
       required: true
       schema:
         type: string
+<<<<<<< HEAD
 =======
 >>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+>>>>>>> e17bd45 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
     AllParam:
       description: Flag indicating whether to constrain by job creation index or not.
       in: query
@@ -152,13 +158,6 @@ components:
       description: If present, results will include stale reads.
       in: query
       name: stale
-      schema:
-        type: string
-    TokenAccessorParam:
-      description: The token accessor ID.
-      in: path
-      name: tokenAccessor
-      required: true
       schema:
         type: string
     VolumeActionParam:
@@ -4339,8 +4338,12 @@ paths:
       - $ref: '#/components/parameters/NomadTokenHeader'
 >>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/TokenAccessorParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/ACLTokenAccessorParam'
+>>>>>>> e17bd45 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
       responses:
         "200":
           $ref: '#/components/responses/DeleteACLTokenResponse'
@@ -4378,8 +4381,12 @@ paths:
 >>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/TokenAccessorParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/ACLTokenAccessorParam'
+>>>>>>> e17bd45 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
       responses:
         "200":
           $ref: '#/components/responses/GetACLTokenResponse'
@@ -4405,6 +4412,7 @@ paths:
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
+<<<<<<< HEAD
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 =======
@@ -4413,6 +4421,8 @@ paths:
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+>>>>>>> e17bd45 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
       requestBody:
         content:
           application/json:
