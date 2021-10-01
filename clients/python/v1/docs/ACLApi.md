@@ -870,7 +870,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_acl_token**
-> [ACLToken] post_acl_token(token_accessor, acl_token)
+> ACLToken post_acl_token(token_accessor, acl_token)
 
 
 
@@ -953,7 +953,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ACLToken]**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

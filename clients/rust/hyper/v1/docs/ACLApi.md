@@ -331,7 +331,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_acl_token
 
-> Vec<crate::models::AclToken> post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
+> crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters
@@ -348,7 +348,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::AclToken>**](ACLToken.md)
+[**crate::models::AclToken**](ACLToken.md)
 
 ### Authorization
 

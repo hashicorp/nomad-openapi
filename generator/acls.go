@@ -193,7 +193,7 @@ func (v *v1api) getACLPaths() []*apiPath {
 					newRequestBody(objectSchema, api.ACLToken{}),
 					appendParams(defaultWriteOpts, &aclTokenAccessorParam),
 					newResponseConfig(200,
-						arraySchema,
+						objectSchema,
 						api.ACLToken{},
 						defaultWriteMeta,
 						"PostACLTokenResponse",
