@@ -1580,7 +1580,7 @@ func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPos
 	return r
 }
 
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
+func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
 	return r.ApiService.PostACLTokenExecute(r)
 }
 
@@ -1600,16 +1600,16 @@ func (a *ACLApiService) PostACLToken(ctx _context.Context, tokenAccessor string)
 
 /*
  * Execute executes the request
- * @return []ACLToken
+ * @return ACLToken
  */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
+func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []ACLToken
+		localVarReturnValue  ACLToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLToken")

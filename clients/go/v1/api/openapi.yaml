@@ -844,9 +844,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/ACLToken'
-                type: array
+                $ref: '#/components/schemas/ACLToken'
           headers:
             X-Nomad-Index:
               description: A unique identifier representing the current state of the
@@ -6787,9 +6785,7 @@ components:
       content:
         application/json:
           schema:
-            items:
-              $ref: '#/components/schemas/ACLToken'
-            type: array
+            $ref: '#/components/schemas/ACLToken'
       headers:
         X-Nomad-Index:
           description: A unique identifier representing the current state of the requested
