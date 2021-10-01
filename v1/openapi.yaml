@@ -1004,12 +1004,16 @@ components:
         application/json:
           schema:
 <<<<<<< HEAD
+<<<<<<< HEAD
             $ref: '#/components/schemas/ACLToken'
 =======
             items:
               $ref: '#/components/schemas/ACLToken'
             type: array
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+            $ref: '#/components/schemas/ACLToken'
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
       description: ""
       headers:
         X-Nomad-Index:

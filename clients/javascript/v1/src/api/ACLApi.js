@@ -558,6 +558,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param {module:model/ACLToken} data The data returned by the service call.
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
@@ -571,6 +572,9 @@ export default class ACLApi {
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+     * @param {module:model/ACLToken} data The data returned by the service call.
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
      * @param {String} response The complete HTTP response.
      */
 
@@ -587,6 +591,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * data is of type: {@link module:model/ACLToken}
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
@@ -600,6 +605,9 @@ export default class ACLApi {
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+     * data is of type: {@link module:model/ACLToken}
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
      */
     postACLToken(tokenAccessor, aCLToken, opts, callback) {
       opts = opts || {};
@@ -634,6 +642,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       let returnType = ACLToken;
 =======
       let returnType = [ACLToken];
@@ -647,6 +656,9 @@ export default class ACLApi {
 =======
       let returnType = [ACLToken];
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      let returnType = ACLToken;
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
       return this.apiClient.callApi(
         '/acl/token/{tokenAccessor}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

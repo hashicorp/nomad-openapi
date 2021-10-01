@@ -755,6 +755,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 =======
 > []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
@@ -768,6 +769,9 @@ Name | Type | Description  | Notes
 =======
 > []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+> ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 
 
@@ -802,6 +806,7 @@ func main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // response from `PostACLToken`: ACLToken
 =======
     // response from `PostACLToken`: []ACLToken
@@ -815,6 +820,9 @@ func main() {
 =======
     // response from `PostACLToken`: []ACLToken
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+    // response from `PostACLToken`: ACLToken
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLToken`: %v\n", resp)
 }
 ```
@@ -847,6 +855,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**[]ACLToken**](ACLToken.md)
@@ -860,6 +869,9 @@ Name | Type | Description  | Notes
 =======
 [**[]ACLToken**](ACLToken.md)
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 ### Authorization
 

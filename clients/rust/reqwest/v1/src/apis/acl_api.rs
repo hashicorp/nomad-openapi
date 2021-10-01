@@ -641,6 +641,7 @@ pub async fn post_acl_policy(configuration: &configuration::Configuration, polic
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenError>> {
 =======
 pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<Vec<crate::models::AclToken>, Error<PostAclTokenError>> {
@@ -651,6 +652,9 @@ pub async fn post_acl_token(configuration: &configuration::Configuration, token_
 =======
 pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<Vec<crate::models::AclToken>, Error<PostAclTokenError>> {
 >>>>>>> e073f3a (merge)
+=======
+pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenError>> {
+>>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
     let local_var_client = &configuration.client;
 
