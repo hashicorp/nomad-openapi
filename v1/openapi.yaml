@@ -1019,6 +1019,7 @@ components:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $ref: '#/components/schemas/ACLToken'
 =======
             items:
@@ -1038,6 +1039,9 @@ components:
               $ref: '#/components/schemas/ACLToken'
             type: array
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+            $ref: '#/components/schemas/ACLToken'
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
       description: ""
       headers:
         X-Nomad-Index:

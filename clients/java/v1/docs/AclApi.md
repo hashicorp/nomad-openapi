@@ -819,6 +819,7 @@ null (empty response body)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 =======
 > List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
@@ -841,6 +842,9 @@ null (empty response body)
 =======
 > List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 
 
@@ -880,6 +884,7 @@ public class Example {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 =======
       List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
@@ -902,6 +907,9 @@ public class Example {
 =======
       List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AclApi#postACLToken");
@@ -934,6 +942,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**List&lt;ACLToken&gt;**](ACLToken.md)
@@ -956,6 +965,9 @@ Name | Type | Description  | Notes
 =======
 [**List&lt;ACLToken&gt;**](ACLToken.md)
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 ### Authorization
 
