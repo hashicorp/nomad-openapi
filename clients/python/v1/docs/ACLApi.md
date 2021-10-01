@@ -888,6 +888,7 @@ void (empty response body)
 # **post_acl_token**
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken post_acl_token(token_accessor, acl_token)
 =======
 > [ACLToken] post_acl_token(token_accessor, acl_token)
@@ -895,6 +896,9 @@ void (empty response body)
 =======
 > [ACLToken] post_acl_token(token_accessor, acl_token)
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+> ACLToken post_acl_token(token_accessor, acl_token)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 
 
@@ -979,6 +983,7 @@ Name | Type | Description  | Notes
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**[ACLToken]**](ACLToken.md)
@@ -986,6 +991,9 @@ Name | Type | Description  | Notes
 =======
 [**[ACLToken]**](ACLToken.md)
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 ### Authorization
 

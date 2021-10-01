@@ -1489,6 +1489,7 @@ class ACLApi(object):
             Returns:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 ACLToken
 =======
                 [ACLToken]
@@ -1496,6 +1497,9 @@ class ACLApi(object):
 =======
                 [ACLToken]
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+                ACLToken
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1528,6 +1532,7 @@ class ACLApi(object):
             settings={
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'response_type': (ACLToken,),
 =======
                 'response_type': ([ACLToken],),
@@ -1535,6 +1540,9 @@ class ACLApi(object):
 =======
                 'response_type': ([ACLToken],),
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+                'response_type': (ACLToken,),
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
                 'auth': [
                     'X-Nomad-Token'
                 ],

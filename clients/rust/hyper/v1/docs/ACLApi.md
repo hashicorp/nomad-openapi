@@ -332,10 +332,14 @@ Name | Type | Description  | Required | Notes
 ## post_acl_token
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 > crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
 =======
 > Vec<crate::models::AclToken> post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
 >>>>>>> b1a8ea3 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
+=======
+> crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 
 ### Parameters
@@ -353,10 +357,14 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**crate::models::AclToken**](ACLToken.md)
 =======
 [**Vec<crate::models::AclToken>**](ACLToken.md)
 >>>>>>> b1a8ea3 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
+=======
+[**crate::models::AclToken**](ACLToken.md)
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
 
 ### Authorization
 

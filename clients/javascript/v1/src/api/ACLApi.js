@@ -548,6 +548,7 @@ export default class ACLApi {
      * @param {String} error Error message, if any.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param {module:model/ACLToken} data The data returned by the service call.
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
@@ -555,6 +556,9 @@ export default class ACLApi {
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+     * @param {module:model/ACLToken} data The data returned by the service call.
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
      * @param {String} response The complete HTTP response.
      */
 
@@ -569,6 +573,7 @@ export default class ACLApi {
      * @param {module:api/ACLApi~postACLTokenCallback} callback The callback function, accepting three arguments: error, data, response
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * data is of type: {@link module:model/ACLToken}
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
@@ -576,6 +581,9 @@ export default class ACLApi {
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+     * data is of type: {@link module:model/ACLToken}
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
      */
     postACLToken(tokenAccessor, aCLToken, opts, callback) {
       opts = opts || {};
@@ -608,6 +616,7 @@ export default class ACLApi {
       let accepts = ['application/json'];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       let returnType = ACLToken;
 =======
       let returnType = [ACLToken];
@@ -615,6 +624,9 @@ export default class ACLApi {
 =======
       let returnType = [ACLToken];
 >>>>>>> 7a50f49 (finished acls-api i think)
+=======
+      let returnType = ACLToken;
+>>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
       return this.apiClient.callApi(
         '/acl/token/{tokenAccessor}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
