@@ -1752,7 +1752,7 @@ public class AclApi {
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
-     * @return List&lt;ACLToken&gt;
+     * @return ACLToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1764,8 +1764,8 @@ public class AclApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<ACLToken> postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        ApiResponse<List<ACLToken>> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+    public ACLToken postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<ACLToken> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
         return localVarResp.getData();
     }
 
@@ -1778,7 +1778,7 @@ public class AclApi {
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
-     * @return ApiResponse&lt;List&lt;ACLToken&gt;&gt;
+     * @return ApiResponse&lt;ACLToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1790,9 +1790,9 @@ public class AclApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ACLToken>> postACLTokenWithHttpInfo(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+    public ApiResponse<ACLToken> postACLTokenWithHttpInfo(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, null);
-        Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1818,10 +1818,10 @@ public class AclApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postACLTokenAsync(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<List<ACLToken>> _callback) throws ApiException {
+    public okhttp3.Call postACLTokenAsync(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<ACLToken> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, _callback);
-        Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

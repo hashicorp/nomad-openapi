@@ -596,7 +596,7 @@ null (empty response body)
 
 ## postACLToken
 
-> [ACLToken] postACLToken(tokenAccessor, aCLToken, opts)
+> ACLToken postACLToken(tokenAccessor, aCLToken, opts)
 
 
 
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ACLToken]**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

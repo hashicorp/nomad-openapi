@@ -947,9 +947,7 @@ components:
       content:
         application/json:
           schema:
-            items:
-              $ref: '#/components/schemas/ACLToken'
-            type: array
+            $ref: '#/components/schemas/ACLToken'
       description: ""
       headers:
         X-Nomad-Index:
