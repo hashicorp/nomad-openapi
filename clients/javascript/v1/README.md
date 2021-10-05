@@ -171,6 +171,8 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
+*nomad-client.ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
+*nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
 *nomad-client.SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
@@ -297,6 +299,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.SampledValue](docs/SampledValue.md)
  - [nomad-client.ScalingEvent](docs/ScalingEvent.md)
  - [nomad-client.ScalingPolicy](docs/ScalingPolicy.md)
+ - [nomad-client.ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [nomad-client.ScalingRequest](docs/ScalingRequest.md)
  - [nomad-client.SearchRequest](docs/SearchRequest.md)
  - [nomad-client.SearchResponse](docs/SearchResponse.md)

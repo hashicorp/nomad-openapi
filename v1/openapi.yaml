@@ -118,6 +118,13 @@ components:
       name: region
       schema:
         type: string
+    ScalingPolicyIDParam:
+      description: The scaling policy identifier.
+      in: path
+      name: policyID
+      required: true
+      schema:
+        type: string
     SnapshotIDParam:
       description: The ID of the snapshot to target.
       in: query
@@ -695,6 +702,46 @@ components:
               type: string
             type: array
       description: ""
+    GetScalingPoliciesResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ScalingPolicyListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetScalingPolicyResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ScalingPolicy'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     GetSearchResponse:
       content:
         application/json:
@@ -3001,6 +3048,27 @@ components:
         Type:
           type: string
       type: object
+    ScalingPolicyListStub:
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Enabled:
+          type: boolean
+        ID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Target:
+          additionalProperties:
+            type: string
+          type: object
+        Type:
+          type: string
+      type: object
     ScalingRequest:
       properties:
         Count:
@@ -4645,6 +4713,63 @@ paths:
           $ref: '#/components/responses/InternalServerErrorResponse'
       tags:
       - Regions
+  /scaling/policies:
+    get:
+      operationId: GetScalingPolicies
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetScalingPoliciesResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Scaling
+  /scaling/policy/{policyID}:
+    get:
+      operationId: GetScalingPolicy
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/ScalingPolicyIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetScalingPolicyResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Scaling
   /search:
     post:
       operationId: GetSearch

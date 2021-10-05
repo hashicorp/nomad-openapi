@@ -120,6 +120,7 @@ import RestartPolicy from './model/RestartPolicy';
 import SampledValue from './model/SampledValue';
 import ScalingEvent from './model/ScalingEvent';
 import ScalingPolicy from './model/ScalingPolicy';
+import ScalingPolicyListStub from './model/ScalingPolicyListStub';
 import ScalingRequest from './model/ScalingRequest';
 import SearchRequest from './model/SearchRequest';
 import SearchResponse from './model/SearchResponse';
@@ -152,6 +153,7 @@ import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
 import RegionsApi from './api/RegionsApi';
+import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
 import SystemApi from './api/SystemApi';
 import VolumesApi from './api/VolumesApi';
@@ -838,6 +840,12 @@ export {
     ScalingPolicy,
 
     /**
+     * The ScalingPolicyListStub model constructor.
+     * @property {module:model/ScalingPolicyListStub}
+     */
+    ScalingPolicyListStub,
+
+    /**
      * The ScalingRequest model constructor.
      * @property {module:model/ScalingRequest}
      */
@@ -1028,6 +1036,12 @@ export {
     * @property {module:api/RegionsApi}
     */
     RegionsApi,
+
+    /**
+    * The ScalingApi service constructor.
+    * @property {module:api/ScalingApi}
+    */
+    ScalingApi,
 
     /**
     * The SearchApi service constructor.
