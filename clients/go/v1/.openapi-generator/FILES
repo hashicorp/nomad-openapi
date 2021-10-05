@@ -7,6 +7,7 @@ api_enterprise.go
 api_jobs.go
 api_metrics.go
 api_namespaces.go
+api_plugins.go
 api_regions.go
 api_search.go
 api_volumes.go
@@ -26,7 +27,12 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/CSIControllerInfo.md
+docs/CSIInfo.md
 docs/CSIMountOptions.md
+docs/CSINodeInfo.md
+docs/CSIPlugin.md
+docs/CSIPluginListStub.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
@@ -111,6 +117,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -184,7 +191,12 @@ model_consul_proxy.go
 model_consul_sidecar_service.go
 model_consul_terminating_config_entry.go
 model_consul_upstream.go
+model_csi_controller_info.go
+model_csi_info.go
 model_csi_mount_options.go
+model_csi_node_info.go
+model_csi_plugin.go
+model_csi_plugin_list_stub.go
 model_csi_snapshot.go
 model_csi_snapshot_create_request.go
 model_csi_snapshot_create_response.go

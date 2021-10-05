@@ -34,7 +34,12 @@ docs/ConsulProxy.md
 docs/ConsulSidecarService.md
 docs/ConsulTerminatingConfigEntry.md
 docs/ConsulUpstream.md
+docs/CsiControllerInfo.md
+docs/CsiInfo.md
 docs/CsiMountOptions.md
+docs/CsiNodeInfo.md
+docs/CsiPlugin.md
+docs/CsiPluginListStub.md
 docs/CsiSnapshot.md
 docs/CsiSnapshotCreateRequest.md
 docs/CsiSnapshotCreateResponse.md
@@ -100,6 +105,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -151,6 +157,7 @@ src/apis/jobs_api.rs
 src/apis/metrics_api.rs
 src/apis/mod.rs
 src/apis/namespaces_api.rs
+src/apis/plugins_api.rs
 src/apis/regions_api.rs
 src/apis/request.rs
 src/apis/search_api.rs
@@ -187,7 +194,12 @@ src/models/consul_proxy.rs
 src/models/consul_sidecar_service.rs
 src/models/consul_terminating_config_entry.rs
 src/models/consul_upstream.rs
+src/models/csi_controller_info.rs
+src/models/csi_info.rs
 src/models/csi_mount_options.rs
+src/models/csi_node_info.rs
+src/models/csi_plugin.rs
+src/models/csi_plugin_list_stub.rs
 src/models/csi_snapshot.rs
 src/models/csi_snapshot_create_request.rs
 src/models/csi_snapshot_create_response.rs

@@ -15,7 +15,12 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/CSIControllerInfo.md
+docs/CSIInfo.md
 docs/CSIMountOptions.md
+docs/CSINodeInfo.md
+docs/CSIPlugin.md
+docs/CSIPluginListStub.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
@@ -100,6 +105,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -151,6 +157,7 @@ src/api/EnterpriseApi.js
 src/api/JobsApi.js
 src/api/MetricsApi.js
 src/api/NamespacesApi.js
+src/api/PluginsApi.js
 src/api/RegionsApi.js
 src/api/SearchApi.js
 src/api/VolumesApi.js
@@ -167,7 +174,12 @@ src/model/AllocatedTaskResources.js
 src/model/Allocation.js
 src/model/AllocationListStub.js
 src/model/AllocationMetric.js
+src/model/CSIControllerInfo.js
+src/model/CSIInfo.js
 src/model/CSIMountOptions.js
+src/model/CSINodeInfo.js
+src/model/CSIPlugin.js
+src/model/CSIPluginListStub.js
 src/model/CSISnapshot.js
 src/model/CSISnapshotCreateRequest.js
 src/model/CSISnapshotCreateResponse.js
@@ -287,3 +299,9 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/api/PluginsApi.spec.js
+test/model/CSIControllerInfo.spec.js
+test/model/CSIInfo.spec.js
+test/model/CSINodeInfo.spec.js
+test/model/CSIPlugin.spec.js
+test/model/CSIPluginListStub.spec.js
