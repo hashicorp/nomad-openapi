@@ -113,8 +113,10 @@ docs/RescheduleTracker.md
 docs/Resources.md
 docs/RestartPolicy.md
 docs/SampledValue.md
+docs/ScalingApi.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
+docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
 docs/SearchApi.md
 docs/SearchRequest.md
@@ -153,6 +155,7 @@ src/apis/mod.rs
 src/apis/namespaces_api.rs
 src/apis/regions_api.rs
 src/apis/request.rs
+src/apis/scaling_api.rs
 src/apis/search_api.rs
 src/apis/volumes_api.rs
 src/lib.rs
@@ -264,6 +267,7 @@ src/models/restart_policy.rs
 src/models/sampled_value.rs
 src/models/scaling_event.rs
 src/models/scaling_policy.rs
+src/models/scaling_policy_list_stub.rs
 src/models/scaling_request.rs
 src/models/search_request.rs
 src/models/search_response.rs

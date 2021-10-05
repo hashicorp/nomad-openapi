@@ -118,6 +118,7 @@ from nomad_client.model.restart_policy import RestartPolicy
 from nomad_client.model.sampled_value import SampledValue
 from nomad_client.model.scaling_event import ScalingEvent
 from nomad_client.model.scaling_policy import ScalingPolicy
+from nomad_client.model.scaling_policy_list_stub import ScalingPolicyListStub
 from nomad_client.model.scaling_request import ScalingRequest
 from nomad_client.model.search_request import SearchRequest
 from nomad_client.model.search_response import SearchResponse

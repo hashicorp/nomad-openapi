@@ -8,6 +8,7 @@ api_jobs.go
 api_metrics.go
 api_namespaces.go
 api_regions.go
+api_scaling.go
 api_search.go
 api_volumes.go
 client.go
@@ -124,8 +125,10 @@ docs/RescheduleTracker.md
 docs/Resources.md
 docs/RestartPolicy.md
 docs/SampledValue.md
+docs/ScalingApi.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
+docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
 docs/SearchApi.md
 docs/SearchRequest.md
@@ -260,6 +263,7 @@ model_restart_policy.go
 model_sampled_value.go
 model_scaling_event.go
 model_scaling_policy.go
+model_scaling_policy_list_stub.go
 model_scaling_request.go
 model_search_request.go
 model_search_response.go

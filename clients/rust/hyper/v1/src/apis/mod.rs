@@ -65,6 +65,8 @@ mod namespaces_api;
 pub use self::namespaces_api::{ NamespacesApi, NamespacesApiClient };
 mod regions_api;
 pub use self::regions_api::{ RegionsApi, RegionsApiClient };
+mod scaling_api;
+pub use self::scaling_api::{ ScalingApi, ScalingApiClient };
 mod search_api;
 pub use self::search_api::{ SearchApi, SearchApiClient };
 mod volumes_api;

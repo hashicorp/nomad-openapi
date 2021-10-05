@@ -60,6 +60,8 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **Get** /namespaces | 
 *NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **Post** /namespace/{namespaceName} | 
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
+*ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **Get** /scaling/policies | 
+*ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **Get** /scaling/policy/{policyID} | 
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **Post** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **Post** /search | 
 *VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **Post** /volume/csi/{volumeId}/{action} | 
@@ -184,6 +186,7 @@ Class | Method | HTTP request | Description
  - [SampledValue](docs/SampledValue.md)
  - [ScalingEvent](docs/ScalingEvent.md)
  - [ScalingPolicy](docs/ScalingPolicy.md)
+ - [ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [ScalingRequest](docs/ScalingRequest.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)

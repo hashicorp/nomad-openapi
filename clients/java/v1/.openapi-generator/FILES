@@ -115,8 +115,10 @@ docs/RescheduleTracker.md
 docs/Resources.md
 docs/RestartPolicy.md
 docs/SampledValue.md
+docs/ScalingApi.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
+docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
 docs/SearchApi.md
 docs/SearchRequest.md
@@ -172,6 +174,7 @@ src/main/java/io/nomadproject/client/api/JobsApi.java
 src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
+src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
@@ -285,6 +288,7 @@ src/main/java/io/nomadproject/client/models/RestartPolicy.java
 src/main/java/io/nomadproject/client/models/SampledValue.java
 src/main/java/io/nomadproject/client/models/ScalingEvent.java
 src/main/java/io/nomadproject/client/models/ScalingPolicy.java
+src/main/java/io/nomadproject/client/models/ScalingPolicyListStub.java
 src/main/java/io/nomadproject/client/models/ScalingRequest.java
 src/main/java/io/nomadproject/client/models/SearchRequest.java
 src/main/java/io/nomadproject/client/models/SearchResponse.java
@@ -310,3 +314,5 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/api/ScalingApiTest.java
+src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
