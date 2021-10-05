@@ -155,6 +155,8 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+*PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
+*PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
 *RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
@@ -187,7 +189,12 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+ - [CSIControllerInfo](docs/CSIControllerInfo.md)
+ - [CSIInfo](docs/CSIInfo.md)
  - [CSIMountOptions](docs/CSIMountOptions.md)
+ - [CSINodeInfo](docs/CSINodeInfo.md)
+ - [CSIPlugin](docs/CSIPlugin.md)
+ - [CSIPluginListStub](docs/CSIPluginListStub.md)
  - [CSISnapshot](docs/CSISnapshot.md)
  - [CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
  - [CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)

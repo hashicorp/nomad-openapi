@@ -99,6 +99,13 @@ components:
       name: per_page
       schema:
         type: integer
+    PluginIdParam:
+      description: The CSI plugin identifier.
+      in: path
+      name: pluginId
+      required: true
+      schema:
+        type: string
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       in: query
@@ -633,6 +640,48 @@ components:
           schema:
             items:
               $ref: '#/components/schemas/Namespace'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetPluginCSIResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/CSIPlugin'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetPluginsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/CSIPluginListStub'
             type: array
       description: ""
       headers:
@@ -1272,6 +1321,39 @@ components:
             type: number
           type: object
       type: object
+    CSIControllerInfo:
+      properties:
+        SupportsAttachDetach:
+          type: boolean
+        SupportsListVolumes:
+          type: boolean
+        SupportsListVolumesAttachedNodes:
+          type: boolean
+        SupportsReadOnlyAttach:
+          type: boolean
+      type: object
+    CSIInfo:
+      properties:
+        AllocID:
+          type: string
+        ControllerInfo:
+          $ref: '#/components/schemas/CSIControllerInfo'
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        NodeInfo:
+          $ref: '#/components/schemas/CSINodeInfo'
+        PluginID:
+          type: string
+        RequiresControllerPlugin:
+          type: boolean
+        RequiresTopologies:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     CSIMountOptions:
       properties:
         FSType:
@@ -1280,6 +1362,82 @@ components:
           items:
             type: string
           type: array
+      type: object
+    CSINodeInfo:
+      properties:
+        AccessibleTopology:
+          $ref: '#/components/schemas/CSITopology'
+        ID:
+          type: string
+        MaxVolumes:
+          format: int64
+          type: integer
+        RequiresNodeStageVolume:
+          type: boolean
+      type: object
+    CSIPlugin:
+      properties:
+        Allocations:
+          items:
+            $ref: '#/components/schemas/AllocationListStub'
+          type: array
+        ControllerRequired:
+          type: boolean
+        Controllers:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        ControllersExpected:
+          type: integer
+        ControllersHealthy:
+          type: integer
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Nodes:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        NodesExpected:
+          type: integer
+        NodesHealthy:
+          type: integer
+        Provider:
+          type: string
+        Version:
+          type: string
+      type: object
+    CSIPluginListStub:
+      properties:
+        ControllerRequired:
+          type: boolean
+        ControllersExpected:
+          type: integer
+        ControllersHealthy:
+          type: integer
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        NodesExpected:
+          type: integer
+        NodesHealthy:
+          type: integer
+        Provider:
+          type: string
       type: object
     CSIPluginType:
       type: string
@@ -4491,6 +4649,63 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Namespaces
+  /plugin/csi/{pluginID}:
+    get:
+      operationId: GetPluginCSI
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/PluginIdParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetPluginCSIResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
+  /plugins:
+    get:
+      operationId: GetPlugins
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetPluginsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
   /quota:
     post:
       operationId: CreateQuotaSpec

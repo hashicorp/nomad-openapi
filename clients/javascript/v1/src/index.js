@@ -25,7 +25,12 @@ import AllocatedTaskResources from './model/AllocatedTaskResources';
 import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
+import CSIControllerInfo from './model/CSIControllerInfo';
+import CSIInfo from './model/CSIInfo';
 import CSIMountOptions from './model/CSIMountOptions';
+import CSINodeInfo from './model/CSINodeInfo';
+import CSIPlugin from './model/CSIPlugin';
+import CSIPluginListStub from './model/CSIPluginListStub';
 import CSISnapshot from './model/CSISnapshot';
 import CSISnapshotCreateRequest from './model/CSISnapshotCreateRequest';
 import CSISnapshotCreateResponse from './model/CSISnapshotCreateResponse';
@@ -151,6 +156,7 @@ import EnterpriseApi from './api/EnterpriseApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
+import PluginsApi from './api/PluginsApi';
 import RegionsApi from './api/RegionsApi';
 import SearchApi from './api/SearchApi';
 import SystemApi from './api/SystemApi';
@@ -268,10 +274,40 @@ export {
     AllocationMetric,
 
     /**
+     * The CSIControllerInfo model constructor.
+     * @property {module:model/CSIControllerInfo}
+     */
+    CSIControllerInfo,
+
+    /**
+     * The CSIInfo model constructor.
+     * @property {module:model/CSIInfo}
+     */
+    CSIInfo,
+
+    /**
      * The CSIMountOptions model constructor.
      * @property {module:model/CSIMountOptions}
      */
     CSIMountOptions,
+
+    /**
+     * The CSINodeInfo model constructor.
+     * @property {module:model/CSINodeInfo}
+     */
+    CSINodeInfo,
+
+    /**
+     * The CSIPlugin model constructor.
+     * @property {module:model/CSIPlugin}
+     */
+    CSIPlugin,
+
+    /**
+     * The CSIPluginListStub model constructor.
+     * @property {module:model/CSIPluginListStub}
+     */
+    CSIPluginListStub,
 
     /**
      * The CSISnapshot model constructor.
@@ -1022,6 +1058,12 @@ export {
     * @property {module:api/NamespacesApi}
     */
     NamespacesApi,
+
+    /**
+    * The PluginsApi service constructor.
+    * @property {module:api/PluginsApi}
+    */
+    PluginsApi,
 
     /**
     * The RegionsApi service constructor.

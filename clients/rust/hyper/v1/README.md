@@ -59,6 +59,8 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**get_namespace**](docs/NamespacesApi.md#get_namespace) | **Get** /namespace/{namespaceName} | 
 *NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **Get** /namespaces | 
 *NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **Post** /namespace/{namespaceName} | 
+*PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **Get** /plugin/csi/{pluginID} | 
+*PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **Get** /plugins | 
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **Post** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **Post** /search | 
@@ -110,7 +112,12 @@ Class | Method | HTTP request | Description
  - [ConsulSidecarService](docs/ConsulSidecarService.md)
  - [ConsulTerminatingConfigEntry](docs/ConsulTerminatingConfigEntry.md)
  - [ConsulUpstream](docs/ConsulUpstream.md)
+ - [CsiControllerInfo](docs/CsiControllerInfo.md)
+ - [CsiInfo](docs/CsiInfo.md)
  - [CsiMountOptions](docs/CsiMountOptions.md)
+ - [CsiNodeInfo](docs/CsiNodeInfo.md)
+ - [CsiPlugin](docs/CsiPlugin.md)
+ - [CsiPluginListStub](docs/CsiPluginListStub.md)
  - [CsiSnapshot](docs/CsiSnapshot.md)
  - [CsiSnapshotCreateRequest](docs/CsiSnapshotCreateRequest.md)
  - [CsiSnapshotCreateResponse](docs/CsiSnapshotCreateResponse.md)
