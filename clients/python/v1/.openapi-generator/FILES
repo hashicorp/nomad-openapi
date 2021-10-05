@@ -324,6 +324,7 @@ setup.py
 test-requirements.txt
 test/__init__.py
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
 =======
@@ -331,11 +332,16 @@ test/test_scaling_policy_list_stub.py
 >>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
 test/test_system_api.py
 =======
+=======
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 test/test_csi_controller_info.py
 test/test_csi_info.py
 test/test_csi_node_info.py
 test/test_csi_plugin.py
 test/test_csi_plugin_list_stub.py
 test/test_plugins_api.py
+<<<<<<< HEAD
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 tox.ini

@@ -116,11 +116,19 @@ var (
 		In:          inQuery,
 		Required:    false,
 	}
+<<<<<<< HEAD
 	pluginIDParam = parameter{
 		Id:          "PluginIDParam",
 		SchemaType:  stringSchema,
 		Description: "The CSI plugin identifier.",
 		Name:        "pluginID",
+=======
+	pluginIdParam = parameter{
+		Id:          "PluginIdParam",
+		SchemaType:  stringSchema,
+		Description: "The CSI plugin identifier.",
+		Name:        "pluginId",
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 		In:          inPath,
 		Required:    true,
 	}

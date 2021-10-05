@@ -99,10 +99,17 @@ components:
       name: per_page
       schema:
         type: integer
+<<<<<<< HEAD
     PluginIDParam:
       description: The CSI plugin identifier.
       in: path
       name: pluginID
+=======
+    PluginIdParam:
+      description: The CSI plugin identifier.
+      in: path
+      name: pluginId
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
       required: true
       schema:
         type: string
@@ -691,6 +698,22 @@ components:
               $ref: '#/components/schemas/CSIPluginListStub'
             type: array
       description: ""
+<<<<<<< HEAD
+=======
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -4717,7 +4740,11 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PluginIDParam'
+=======
+      - $ref: '#/components/parameters/PluginIdParam'
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
       responses:
         "200":
           $ref: '#/components/responses/GetPluginCSIResponse'

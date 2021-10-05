@@ -11,7 +11,11 @@ Method | HTTP request | Description
 
 ## getPluginCSI
 
+<<<<<<< HEAD
 > [CSIPlugin] getPluginCSI(pluginID, opts)
+=======
+> [CSIPlugin] getPluginCSI(pluginId, opts)
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 
 
 
@@ -27,7 +31,11 @@ X-Nomad-Token.apiKey = 'YOUR API KEY';
 //X-Nomad-Token.apiKeyPrefix = 'Token';
 
 let apiInstance = new nomad-client.PluginsApi();
+<<<<<<< HEAD
 let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
+=======
+let pluginId = "pluginId_example"; // String | The CSI plugin identifier.
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 let opts = {
   'region': "region_example", // String | Filters results based on the specified region.
   'namespace': "namespace_example", // String | Filters results based on the specified namespace.
@@ -39,7 +47,11 @@ let opts = {
   'perPage': 56, // Number | Maximum number of results to return.
   'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
 };
+<<<<<<< HEAD
 apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
+=======
+apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
   if (error) {
     console.error(error);
   } else {
@@ -53,7 +65,11 @@ apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+<<<<<<< HEAD
  **pluginID** | **String**| The CSI plugin identifier. | 
+=======
+ **pluginId** | **String**| The CSI plugin identifier. | 
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
  **region** | **String**| Filters results based on the specified region. | [optional] 
  **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
  **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 

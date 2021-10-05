@@ -10,7 +10,11 @@ Method | HTTP request | Description
 
 <a name="getPluginCSI"></a>
 # **getPluginCSI**
+<<<<<<< HEAD
 > List&lt;CSIPlugin&gt; getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+=======
+> List&lt;CSIPlugin&gt; getPluginCSI(pluginId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 
 
 
@@ -36,7 +40,11 @@ public class Example {
     //X-Nomad-Token.setApiKeyPrefix("Token");
 
     PluginsApi apiInstance = new PluginsApi(defaultClient);
+<<<<<<< HEAD
     String pluginID = "pluginID_example"; // String | The CSI plugin identifier.
+=======
+    String pluginId = "pluginId_example"; // String | The CSI plugin identifier.
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
     String region = "region_example"; // String | Filters results based on the specified region.
     String namespace = "namespace_example"; // String | Filters results based on the specified namespace.
     Integer index = 56; // Integer | If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -47,7 +55,11 @@ public class Example {
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
     try {
+<<<<<<< HEAD
       List<CSIPlugin> result = apiInstance.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+=======
+      List<CSIPlugin> result = apiInstance.getPluginCSI(pluginId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PluginsApi#getPluginCSI");
@@ -64,7 +76,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+<<<<<<< HEAD
  **pluginID** | **String**| The CSI plugin identifier. |
+=======
+ **pluginId** | **String**| The CSI plugin identifier. |
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
  **region** | **String**| Filters results based on the specified region. | [optional]
  **namespace** | **String**| Filters results based on the specified namespace. | [optional]
  **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
@@ -178,7 +194,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+<<<<<<< HEAD
 **200** |  |  -  |
+=======
+**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |

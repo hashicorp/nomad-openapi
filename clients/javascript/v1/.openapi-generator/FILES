@@ -306,6 +306,7 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
 test/model/ScalingPolicyListStub.spec.js
@@ -313,11 +314,16 @@ test/model/ScalingPolicyListStub.spec.js
 <<<<<<< HEAD
 test/api/SystemApi.spec.js
 =======
+=======
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 test/api/PluginsApi.spec.js
 test/model/CSIControllerInfo.spec.js
 test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
+<<<<<<< HEAD
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 >>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
+=======
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)

@@ -43,7 +43,11 @@ public class PluginsApiTest {
      */
     @Test
     public void getPluginCSITest() throws ApiException {
+<<<<<<< HEAD
         String pluginID = null;
+=======
+        String pluginId = null;
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
         String region = null;
         String namespace = null;
         Integer index = null;
@@ -53,7 +57,11 @@ public class PluginsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
+<<<<<<< HEAD
         List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+=======
+        List<CSIPlugin> response = api.getPluginCSI(pluginId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 
         // TODO: test validations
     }
