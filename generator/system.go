@@ -10,6 +10,7 @@ func (v *v1api) getSystemPaths() []*apiPath {
 		{
 			Template: "/system/gc",
 			Operations: []*operation{
+				// ATTENTION: nomad system_endpoint only recognizes PUT and not POST
 				newOperation(http.MethodPost,
 					httpServer.GarbageCollectRequest,
 					tags,
@@ -29,6 +30,7 @@ func (v *v1api) getSystemPaths() []*apiPath {
 		{
 			Template: "/system/reconcile/summaries",
 			Operations: []*operation{
+				// ATTENTION: nomad system_endpoint only recognizes PUT and not POST
 				newOperation(http.MethodPost,
 					httpServer.ReconcileJobSummaries,
 					tags,
