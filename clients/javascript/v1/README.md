@@ -170,6 +170,8 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+*nomad-client.PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
+*nomad-client.PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
 *nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
@@ -204,7 +206,12 @@ Class | Method | HTTP request | Description
  - [nomad-client.Allocation](docs/Allocation.md)
  - [nomad-client.AllocationListStub](docs/AllocationListStub.md)
  - [nomad-client.AllocationMetric](docs/AllocationMetric.md)
+ - [nomad-client.CSIControllerInfo](docs/CSIControllerInfo.md)
+ - [nomad-client.CSIInfo](docs/CSIInfo.md)
  - [nomad-client.CSIMountOptions](docs/CSIMountOptions.md)
+ - [nomad-client.CSINodeInfo](docs/CSINodeInfo.md)
+ - [nomad-client.CSIPlugin](docs/CSIPlugin.md)
+ - [nomad-client.CSIPluginListStub](docs/CSIPluginListStub.md)
  - [nomad-client.CSISnapshot](docs/CSISnapshot.md)
  - [nomad-client.CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
  - [nomad-client.CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)

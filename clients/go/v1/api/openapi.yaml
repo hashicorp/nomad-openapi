@@ -2725,6 +2725,252 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Namespaces
+  /plugin/csi/{pluginID}:
+    get:
+      operationId: GetPluginCSI
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The CSI plugin identifier.
+        explode: false
+        in: path
+        name: pluginId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CSIPlugin'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
+  /plugins:
+    get:
+      operationId: GetPlugins
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CSIPluginListStub'
+                type: array
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
   /quota:
     post:
       operationId: CreateQuotaSpec
@@ -5074,6 +5320,15 @@ components:
       schema:
         type: integer
       style: form
+    PluginIdParam:
+      description: The CSI plugin identifier.
+      explode: false
+      in: path
+      name: pluginId
+      required: true
+      schema:
+        type: string
+      style: simple
     PrefixParam:
       description: Constrains results to jobs that start with the defined prefix
       explode: true
@@ -5791,37 +6046,12 @@ components:
           schema:
             type: integer
           style: simple
-    GetQuotaSpecResponse:
+    GetPluginCSIResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/QuotaSpec'
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          explode: false
-          schema:
-            type: boolean
-          style: simple
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by
-            the leader node.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-    GetQuotasResponse:
-      content:
-        application/json:
-          schema:
-            items: {}
+            items:
+              $ref: '#/components/schemas/CSIPlugin'
             type: array
       headers:
         X-Nomad-Index:
@@ -5844,10 +6074,39 @@ components:
           schema:
             type: integer
           style: simple
-    GetRegionsResponse:
+    GetPluginsResponse:
       content:
         application/json:
           schema:
+            items:
+              $ref: '#/components/schemas/CSIPluginListStub'
+            type: array
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    GetQuotaSpecResponse:
+      content:
+        application/json:
+          schema:
+<<<<<<< HEAD
             items:
               type: string
             type: array
@@ -5858,6 +6117,9 @@ components:
             items:
               $ref: '#/components/schemas/ScalingPolicyListStub'
             type: array
+=======
+            $ref: '#/components/schemas/QuotaSpec'
+>>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
       headers:
         X-Nomad-Index:
           description: A unique identifier representing the current state of the requested
@@ -5879,11 +6141,20 @@ components:
           schema:
             type: integer
           style: simple
+<<<<<<< HEAD
     GetScalingPolicyResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ScalingPolicy'
+=======
+    GetQuotasResponse:
+      content:
+        application/json:
+          schema:
+            items: {}
+            type: array
+>>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
       headers:
         X-Nomad-Index:
           description: A unique identifier representing the current state of the requested
@@ -5905,6 +6176,16 @@ components:
           schema:
             type: integer
           style: simple
+<<<<<<< HEAD
+=======
+    GetRegionsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              type: string
+            type: array
+>>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
     GetSearchResponse:
       content:
         application/json:
@@ -12973,6 +13254,64 @@ components:
             type: number
           type: object
       type: object
+    CSIControllerInfo:
+      example:
+        SupportsListVolumes: true
+        SupportsReadOnlyAttach: true
+        SupportsListVolumesAttachedNodes: true
+        SupportsAttachDetach: true
+      properties:
+        SupportsAttachDetach:
+          type: boolean
+        SupportsListVolumes:
+          type: boolean
+        SupportsListVolumesAttachedNodes:
+          type: boolean
+        SupportsReadOnlyAttach:
+          type: boolean
+      type: object
+    CSIInfo:
+      example:
+        HealthDescription: HealthDescription
+        AllocID: AllocID
+        NodeInfo:
+          RequiresNodeStageVolume: true
+          MaxVolumes: 0
+          ID: ID
+          AccessibleTopology:
+            Segments:
+              key: Segments
+        UpdateTime: 2000-01-23T04:56:07.000+00:00
+        RequiresTopologies: true
+        PluginID: PluginID
+        ControllerInfo:
+          SupportsListVolumes: true
+          SupportsReadOnlyAttach: true
+          SupportsListVolumesAttachedNodes: true
+          SupportsAttachDetach: true
+        Healthy: true
+        RequiresControllerPlugin: true
+      properties:
+        AllocID:
+          type: string
+        ControllerInfo:
+          $ref: '#/components/schemas/CSIControllerInfo'
+        HealthDescription:
+          type: string
+        Healthy:
+          type: boolean
+        NodeInfo:
+          $ref: '#/components/schemas/CSINodeInfo'
+        PluginID:
+          type: string
+        RequiresControllerPlugin:
+          type: boolean
+        RequiresTopologies:
+          type: boolean
+        UpdateTime:
+          format: date-time
+          type: string
+      type: object
     CSIMountOptions:
       example:
         MountFlags:
@@ -12986,6 +13325,685 @@ components:
           items:
             type: string
           type: array
+      type: object
+    CSINodeInfo:
+      example:
+        RequiresNodeStageVolume: true
+        MaxVolumes: 0
+        ID: ID
+        AccessibleTopology:
+          Segments:
+            key: Segments
+      properties:
+        AccessibleTopology:
+          $ref: '#/components/schemas/CSITopology'
+        ID:
+          type: string
+        MaxVolumes:
+          format: int64
+          type: integer
+        RequiresNodeStageVolume:
+          type: boolean
+      type: object
+    CSIPlugin:
+      example:
+        Controllers:
+          key:
+            HealthDescription: HealthDescription
+            AllocID: AllocID
+            NodeInfo:
+              RequiresNodeStageVolume: true
+              MaxVolumes: 0
+              ID: ID
+              AccessibleTopology:
+                Segments:
+                  key: Segments
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            RequiresTopologies: true
+            PluginID: PluginID
+            ControllerInfo:
+              SupportsListVolumes: true
+              SupportsReadOnlyAttach: true
+              SupportsListVolumesAttachedNodes: true
+              SupportsAttachDetach: true
+            Healthy: true
+            RequiresControllerPlugin: true
+        Allocations:
+        - ModifyTime: 1
+          PreemptedAllocations:
+          - PreemptedAllocations
+          - PreemptedAllocations
+          NodeName: NodeName
+          AllocatedResources:
+            Tasks:
+              key:
+                Networks:
+                - Device: Device
+                  IP: IP
+                  Mode: Mode
+                  ReservedPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  DNS:
+                    Options:
+                    - Options
+                    - Options
+                    Searches:
+                    - Searches
+                    - Searches
+                    Servers:
+                    - Servers
+                    - Servers
+                  CIDR: CIDR
+                  DynamicPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  MBits: 5
+                - Device: Device
+                  IP: IP
+                  Mode: Mode
+                  ReservedPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  DNS:
+                    Options:
+                    - Options
+                    - Options
+                    Searches:
+                    - Searches
+                    - Searches
+                    Servers:
+                    - Servers
+                    - Servers
+                  CIDR: CIDR
+                  DynamicPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  MBits: 5
+                Memory:
+                  MemoryMB: 9
+                  MemoryMaxMB: 3
+                Cpu:
+                  CpuShares: 7
+                Devices:
+                - DeviceIDs:
+                  - DeviceIDs
+                  - DeviceIDs
+                  Type: Type
+                  Vendor: Vendor
+                  Name: Name
+                - DeviceIDs:
+                  - DeviceIDs
+                  - DeviceIDs
+                  Type: Type
+                  Vendor: Vendor
+                  Name: Name
+            Shared:
+              Networks:
+              - Device: Device
+                IP: IP
+                Mode: Mode
+                ReservedPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                DNS:
+                  Options:
+                  - Options
+                  - Options
+                  Searches:
+                  - Searches
+                  - Searches
+                  Servers:
+                  - Servers
+                  - Servers
+                CIDR: CIDR
+                DynamicPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                MBits: 5
+              - Device: Device
+                IP: IP
+                Mode: Mode
+                ReservedPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                DNS:
+                  Options:
+                  - Options
+                  - Options
+                  Searches:
+                  - Searches
+                  - Searches
+                  Servers:
+                  - Servers
+                  - Servers
+                CIDR: CIDR
+                DynamicPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                MBits: 5
+              DiskMB: 0
+              Ports:
+              - HostIP: HostIP
+                Label: Label
+                Value: 2
+                To: 5
+              - HostIP: HostIP
+                Label: Label
+                Value: 2
+                To: 5
+          Name: Name
+          CreateIndex: 2147483647
+          NodeID: NodeID
+          FollowupEvalID: FollowupEvalID
+          ID: ID
+          PreemptedByAllocation: PreemptedByAllocation
+          TaskStates:
+            key:
+              Events:
+              - KillReason: KillReason
+                Message: Message
+                ExitCode: 4
+                Time: 6
+                GenericSource: GenericSource
+                TaskSignalReason: TaskSignalReason
+                VaultError: VaultError
+                DriverError: DriverError
+                RestartReason: RestartReason
+                DiskLimit: 7
+                Signal: 9
+                DownloadError: DownloadError
+                DiskSize: 1
+                SetupError: SetupError
+                ValidationError: ValidationError
+                FailsTask: true
+                DriverMessage: DriverMessage
+                KillTimeout: 5
+                StartDelay: 9
+                FailedSibling: FailedSibling
+                TaskSignal: TaskSignal
+                Type: Type
+                Details:
+                  key: Details
+                DisplayMessage: DisplayMessage
+                KillError: KillError
+              - KillReason: KillReason
+                Message: Message
+                ExitCode: 4
+                Time: 6
+                GenericSource: GenericSource
+                TaskSignalReason: TaskSignalReason
+                VaultError: VaultError
+                DriverError: DriverError
+                RestartReason: RestartReason
+                DiskLimit: 7
+                Signal: 9
+                DownloadError: DownloadError
+                DiskSize: 1
+                SetupError: SetupError
+                ValidationError: ValidationError
+                FailsTask: true
+                DriverMessage: DriverMessage
+                KillTimeout: 5
+                StartDelay: 9
+                FailedSibling: FailedSibling
+                TaskSignal: TaskSignal
+                Type: Type
+                Details:
+                  key: Details
+                DisplayMessage: DisplayMessage
+                KillError: KillError
+              Failed: true
+              State: State
+              Restarts: 2147483647
+              FinishedAt: 2000-01-23T04:56:07.000+00:00
+              LastRestart: 2000-01-23T04:56:07.000+00:00
+              StartedAt: 2000-01-23T04:56:07.000+00:00
+              TaskHandle:
+                Version: 9
+                DriverState: DriverState
+          DesiredDescription: DesiredDescription
+          ClientStatus: ClientStatus
+          CreateTime: 4
+          Namespace: Namespace
+          JobType: JobType
+          ClientDescription: ClientDescription
+          JobVersion: 2147483647
+          DesiredStatus: DesiredStatus
+          EvalID: EvalID
+          TaskGroup: TaskGroup
+          DeploymentStatus:
+            Canary: true
+            Timestamp: 2000-01-23T04:56:07.000+00:00
+            Healthy: true
+            ModifyIndex: 2147483647
+          JobID: JobID
+          ModifyIndex: 2147483647
+          RescheduleTracker:
+            Events:
+            - PrevAllocID: PrevAllocID
+              RescheduleTime: 6
+              PrevNodeID: PrevNodeID
+            - PrevAllocID: PrevAllocID
+              RescheduleTime: 6
+              PrevNodeID: PrevNodeID
+        - ModifyTime: 1
+          PreemptedAllocations:
+          - PreemptedAllocations
+          - PreemptedAllocations
+          NodeName: NodeName
+          AllocatedResources:
+            Tasks:
+              key:
+                Networks:
+                - Device: Device
+                  IP: IP
+                  Mode: Mode
+                  ReservedPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  DNS:
+                    Options:
+                    - Options
+                    - Options
+                    Searches:
+                    - Searches
+                    - Searches
+                    Servers:
+                    - Servers
+                    - Servers
+                  CIDR: CIDR
+                  DynamicPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  MBits: 5
+                - Device: Device
+                  IP: IP
+                  Mode: Mode
+                  ReservedPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  DNS:
+                    Options:
+                    - Options
+                    - Options
+                    Searches:
+                    - Searches
+                    - Searches
+                    Servers:
+                    - Servers
+                    - Servers
+                  CIDR: CIDR
+                  DynamicPorts:
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  - Label: Label
+                    Value: 1
+                    To: 6
+                    HostNetwork: HostNetwork
+                  MBits: 5
+                Memory:
+                  MemoryMB: 9
+                  MemoryMaxMB: 3
+                Cpu:
+                  CpuShares: 7
+                Devices:
+                - DeviceIDs:
+                  - DeviceIDs
+                  - DeviceIDs
+                  Type: Type
+                  Vendor: Vendor
+                  Name: Name
+                - DeviceIDs:
+                  - DeviceIDs
+                  - DeviceIDs
+                  Type: Type
+                  Vendor: Vendor
+                  Name: Name
+            Shared:
+              Networks:
+              - Device: Device
+                IP: IP
+                Mode: Mode
+                ReservedPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                DNS:
+                  Options:
+                  - Options
+                  - Options
+                  Searches:
+                  - Searches
+                  - Searches
+                  Servers:
+                  - Servers
+                  - Servers
+                CIDR: CIDR
+                DynamicPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                MBits: 5
+              - Device: Device
+                IP: IP
+                Mode: Mode
+                ReservedPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                DNS:
+                  Options:
+                  - Options
+                  - Options
+                  Searches:
+                  - Searches
+                  - Searches
+                  Servers:
+                  - Servers
+                  - Servers
+                CIDR: CIDR
+                DynamicPorts:
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                - Label: Label
+                  Value: 1
+                  To: 6
+                  HostNetwork: HostNetwork
+                MBits: 5
+              DiskMB: 0
+              Ports:
+              - HostIP: HostIP
+                Label: Label
+                Value: 2
+                To: 5
+              - HostIP: HostIP
+                Label: Label
+                Value: 2
+                To: 5
+          Name: Name
+          CreateIndex: 2147483647
+          NodeID: NodeID
+          FollowupEvalID: FollowupEvalID
+          ID: ID
+          PreemptedByAllocation: PreemptedByAllocation
+          TaskStates:
+            key:
+              Events:
+              - KillReason: KillReason
+                Message: Message
+                ExitCode: 4
+                Time: 6
+                GenericSource: GenericSource
+                TaskSignalReason: TaskSignalReason
+                VaultError: VaultError
+                DriverError: DriverError
+                RestartReason: RestartReason
+                DiskLimit: 7
+                Signal: 9
+                DownloadError: DownloadError
+                DiskSize: 1
+                SetupError: SetupError
+                ValidationError: ValidationError
+                FailsTask: true
+                DriverMessage: DriverMessage
+                KillTimeout: 5
+                StartDelay: 9
+                FailedSibling: FailedSibling
+                TaskSignal: TaskSignal
+                Type: Type
+                Details:
+                  key: Details
+                DisplayMessage: DisplayMessage
+                KillError: KillError
+              - KillReason: KillReason
+                Message: Message
+                ExitCode: 4
+                Time: 6
+                GenericSource: GenericSource
+                TaskSignalReason: TaskSignalReason
+                VaultError: VaultError
+                DriverError: DriverError
+                RestartReason: RestartReason
+                DiskLimit: 7
+                Signal: 9
+                DownloadError: DownloadError
+                DiskSize: 1
+                SetupError: SetupError
+                ValidationError: ValidationError
+                FailsTask: true
+                DriverMessage: DriverMessage
+                KillTimeout: 5
+                StartDelay: 9
+                FailedSibling: FailedSibling
+                TaskSignal: TaskSignal
+                Type: Type
+                Details:
+                  key: Details
+                DisplayMessage: DisplayMessage
+                KillError: KillError
+              Failed: true
+              State: State
+              Restarts: 2147483647
+              FinishedAt: 2000-01-23T04:56:07.000+00:00
+              LastRestart: 2000-01-23T04:56:07.000+00:00
+              StartedAt: 2000-01-23T04:56:07.000+00:00
+              TaskHandle:
+                Version: 9
+                DriverState: DriverState
+          DesiredDescription: DesiredDescription
+          ClientStatus: ClientStatus
+          CreateTime: 4
+          Namespace: Namespace
+          JobType: JobType
+          ClientDescription: ClientDescription
+          JobVersion: 2147483647
+          DesiredStatus: DesiredStatus
+          EvalID: EvalID
+          TaskGroup: TaskGroup
+          DeploymentStatus:
+            Canary: true
+            Timestamp: 2000-01-23T04:56:07.000+00:00
+            Healthy: true
+            ModifyIndex: 2147483647
+          JobID: JobID
+          ModifyIndex: 2147483647
+          RescheduleTracker:
+            Events:
+            - PrevAllocID: PrevAllocID
+              RescheduleTime: 6
+              PrevNodeID: PrevNodeID
+            - PrevAllocID: PrevAllocID
+              RescheduleTime: 6
+              PrevNodeID: PrevNodeID
+        ControllersExpected: 6
+        NodesHealthy: 7
+        ControllersHealthy: 1
+        Nodes:
+          key:
+            HealthDescription: HealthDescription
+            AllocID: AllocID
+            NodeInfo:
+              RequiresNodeStageVolume: true
+              MaxVolumes: 0
+              ID: ID
+              AccessibleTopology:
+                Segments:
+                  key: Segments
+            UpdateTime: 2000-01-23T04:56:07.000+00:00
+            RequiresTopologies: true
+            PluginID: PluginID
+            ControllerInfo:
+              SupportsListVolumes: true
+              SupportsReadOnlyAttach: true
+              SupportsListVolumesAttachedNodes: true
+              SupportsAttachDetach: true
+            Healthy: true
+            RequiresControllerPlugin: true
+        Provider: Provider
+        NodesExpected: 2
+        CreateIndex: 2147483647
+        ControllerRequired: true
+        Version: Version
+        ID: ID
+        ModifyIndex: 2147483647
+      properties:
+        Allocations:
+          items:
+            $ref: '#/components/schemas/AllocationListStub'
+          type: array
+        ControllerRequired:
+          type: boolean
+        Controllers:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        ControllersExpected:
+          type: integer
+        ControllersHealthy:
+          type: integer
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        ID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Nodes:
+          additionalProperties:
+            $ref: '#/components/schemas/CSIInfo'
+          type: object
+        NodesExpected:
+          type: integer
+        NodesHealthy:
+          type: integer
+        Provider:
+          type: string
+        Version:
+          type: string
+      type: object
+    CSIPluginListStub:
+      example:
+        NodesExpected: 5
+        ControllersExpected: 0
+        CreateIndex: 2147483647
+        ControllerRequired: true
+        NodesHealthy: 2
+        ControllersHealthy: 6
+        ID: ID
+        ModifyIndex: 2147483647
+        Provider: Provider
+      properties:
+        ControllerRequired:
+          type: boolean
+        ControllersExpected:
+          type: integer
+        ControllersHealthy:
+          type: integer
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        ID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        NodesExpected:
+          type: integer
+        NodesHealthy:
+          type: integer
+        Provider:
+          type: string
       type: object
     CSIPluginType:
       type: string

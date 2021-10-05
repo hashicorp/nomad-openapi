@@ -14,7 +14,12 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/CSIControllerInfo.md
+docs/CSIInfo.md
 docs/CSIMountOptions.md
+docs/CSINodeInfo.md
+docs/CSIPlugin.md
+docs/CSIPluginListStub.md
 docs/CSISecrets.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
@@ -101,6 +106,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -156,6 +162,7 @@ nomad_client/api/enterprise_api.py
 nomad_client/api/jobs_api.py
 nomad_client/api/metrics_api.py
 nomad_client/api/namespaces_api.py
+nomad_client/api/plugins_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
@@ -197,7 +204,12 @@ nomad_client/model/consul_proxy.py
 nomad_client/model/consul_sidecar_service.py
 nomad_client/model/consul_terminating_config_entry.py
 nomad_client/model/consul_upstream.py
+nomad_client/model/csi_controller_info.py
+nomad_client/model/csi_info.py
 nomad_client/model/csi_mount_options.py
+nomad_client/model/csi_node_info.py
+nomad_client/model/csi_plugin.py
+nomad_client/model/csi_plugin_list_stub.py
 nomad_client/model/csi_secrets.py
 nomad_client/model/csi_snapshot.py
 nomad_client/model/csi_snapshot_create_request.py
@@ -311,7 +323,19 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+<<<<<<< HEAD
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
+=======
+<<<<<<< HEAD
+>>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
 test/test_system_api.py
+=======
+test/test_csi_controller_info.py
+test/test_csi_info.py
+test/test_csi_node_info.py
+test/test_csi_plugin.py
+test/test_csi_plugin_list_stub.py
+test/test_plugins_api.py
+>>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 tox.ini
