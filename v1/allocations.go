@@ -30,3 +30,25 @@ func (a *Allocations) GetAllocations(ctx context.Context) (*[]client.AllocationL
 	final := result.([]client.AllocationListStub)
 	return &final, meta, nil
 }
+
+func (a *Allocations) GetAllocation(ctx context.Context, allocationID string) (*client.Allocation, *QueryMeta, error) {
+	request := a.AllocationsApi().GetAllocation(a.client.Ctx, allocationID)
+	result, meta, err := a.client.ExecQuery(ctx, request)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	final := result.(client.Allocation)
+	return &final, meta, nil
+}
+
+func (a *Allocations) Stop(ctx context.Context, allocationID string) (*client.AllocStopResponse, *WriteMeta, error) {
+	request := a.AllocationsApi().StopAllocation(a.client.Ctx, allocationID)
+	result, meta, err := a.client.ExecWrite(ctx, request)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	final := result.(client.AllocStopResponse)
+	return &final, meta, nil
+}

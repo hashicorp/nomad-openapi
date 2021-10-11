@@ -7,6 +7,13 @@ components:
       name: all
       schema:
         type: integer
+    AllocationIDParam:
+      description: Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.
+      in: path
+      name: allocationID
+      required: true
+      schema:
+        type: string
     AllocationResourcesParam:
       description: Flag indicating whether to include resources in response.
       in: query
@@ -350,6 +357,25 @@ components:
             items:
               $ref: '#/components/schemas/ACLPolicyListStub'
             type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetAllocationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Allocation'
       description: ""
       headers:
         X-Nomad-Index:
@@ -956,6 +982,17 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    StopAllocationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllocStopResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
     default:
       description: ""
   schemas:
@@ -1000,6 +1037,18 @@ components:
         Timestamp:
           format: date-time
           type: string
+      type: object
+    AllocStopResponse:
+      properties:
+        EvalID:
+          type: string
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
       type: object
     AllocatedCpuResources:
       properties:
@@ -3737,6 +3786,59 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+  /allocation/{allocationID}:
+    get:
+      operationId: GetAllocation
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/AllocationIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAllocationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Allocations
+  /allocation/{allocationID}/stop:
+    post:
+      operationId: StopAllocation
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/AllocationIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/StopAllocationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Allocations
   /allocations:
     get:
       operationId: GetAllocations

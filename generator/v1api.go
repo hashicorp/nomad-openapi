@@ -32,6 +32,14 @@ func (v *v1api) GetPaths() []*apiPath {
 }
 
 var (
+	allocationIDParam = parameter{
+		Id:          "AllocationIDParam",
+		SchemaType:  stringSchema,
+		Description: "Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.",
+		Name:        "allocationID",
+		In:          inPath,
+		Required:    true,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,

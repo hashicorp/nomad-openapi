@@ -31,5 +31,42 @@ func (v *v1api) getAllocationPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/allocation/", s.wrap(s.AllocSpecificRequest))
+		{
+			Template: "/allocation/{allocationID}",
+			Operations: []*operation{
+				newOperation(http.MethodGet,
+					httpServer.AllocSpecificRequest,
+					tags,
+					"GetAllocation",
+					nil,
+					appendParams(defaultQueryOpts, &allocationIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.Allocation{},
+						defaultQueryMeta,
+						"GetAllocationResponse",
+					),
+				),
+			},
+		},
+		//s.mux.HandleFunc("/v1/allocation/", s.wrap(s.AllocSpecificRequest))
+		{
+			Template: "/allocation/{allocationID}/stop",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.AllocSpecificRequest,
+					tags,
+					"StopAllocation",
+					nil,
+					appendParams(defaultWriteOpts, &allocationIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.AllocStopResponse{},
+						defaultWriteMeta,
+						"StopAllocationResponse",
+					),
+				),
+			},
+		},
 	}
 }
