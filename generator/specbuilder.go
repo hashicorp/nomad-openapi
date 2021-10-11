@@ -180,6 +180,8 @@ func (b *specBuilder) buildGraphFromModel() error {
 				pathItem.Get = op
 			case http.MethodPost:
 				pathItem.Post = op
+			case http.MethodPut:
+				pathItem.Put = op
 			case http.MethodDelete:
 				pathItem.Delete = op
 			}
