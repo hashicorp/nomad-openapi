@@ -16,6 +16,7 @@ import ApiClient from './ApiClient';
 import ACLPolicyListStub from './model/ACLPolicyListStub';
 import Affinity from './model/Affinity';
 import AllocDeploymentStatus from './model/AllocDeploymentStatus';
+import AllocStopResponse from './model/AllocStopResponse';
 import AllocatedCpuResources from './model/AllocatedCpuResources';
 import AllocatedDeviceResource from './model/AllocatedDeviceResource';
 import AllocatedMemoryResources from './model/AllocatedMemoryResources';
@@ -211,6 +212,12 @@ export {
      * @property {module:model/AllocDeploymentStatus}
      */
     AllocDeploymentStatus,
+
+    /**
+     * The AllocStopResponse model constructor.
+     * @property {module:model/AllocStopResponse}
+     */
+    AllocStopResponse,
 
     /**
      * The AllocatedCpuResources model constructor.

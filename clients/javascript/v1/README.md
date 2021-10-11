@@ -137,7 +137,9 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *nomad-client.ACLApi* | [**getACLPolicies**](docs/ACLApi.md#getACLPolicies) | **GET** /acl/policies | 
+*nomad-client.AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocation/{allocationID} | 
 *nomad-client.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
+*nomad-client.AllocationsApi* | [**stopAllocation**](docs/AllocationsApi.md#stopAllocation) | **POST** /allocation/{allocationID}/stop | 
 *nomad-client.EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *nomad-client.EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
 *nomad-client.EnterpriseApi* | [**getQuotaSpec**](docs/EnterpriseApi.md#getQuotaSpec) | **GET** /quota/{specName} | 
@@ -191,6 +193,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [nomad-client.Affinity](docs/Affinity.md)
  - [nomad-client.AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [nomad-client.AllocStopResponse](docs/AllocStopResponse.md)
  - [nomad-client.AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [nomad-client.AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [nomad-client.AllocatedMemoryResources](docs/AllocatedMemoryResources.md)

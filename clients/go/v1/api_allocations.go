@@ -17,6 +17,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"strings"
 )
 
 // Linger please
@@ -26,6 +27,197 @@ var (
 
 // AllocationsApiService AllocationsApi service
 type AllocationsApiService service
+
+type ApiGetAllocationRequest struct {
+	ctx _context.Context
+	ApiService *AllocationsApiService
+	allocationID string
+	region *string
+	namespace *string
+	index *int32
+	wait *string
+	stale *string
+	prefix *string
+	xNomadToken *string
+	perPage *int32
+	nextToken *string
+}
+
+func (r ApiGetAllocationRequest) Region(region string) ApiGetAllocationRequest {
+	r.region = &region
+	return r
+}
+func (r ApiGetAllocationRequest) Namespace(namespace string) ApiGetAllocationRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiGetAllocationRequest) Index(index int32) ApiGetAllocationRequest {
+	r.index = &index
+	return r
+}
+func (r ApiGetAllocationRequest) Wait(wait string) ApiGetAllocationRequest {
+	r.wait = &wait
+	return r
+}
+func (r ApiGetAllocationRequest) Stale(stale string) ApiGetAllocationRequest {
+	r.stale = &stale
+	return r
+}
+func (r ApiGetAllocationRequest) Prefix(prefix string) ApiGetAllocationRequest {
+	r.prefix = &prefix
+	return r
+}
+func (r ApiGetAllocationRequest) XNomadToken(xNomadToken string) ApiGetAllocationRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiGetAllocationRequest) PerPage(perPage int32) ApiGetAllocationRequest {
+	r.perPage = &perPage
+	return r
+}
+func (r ApiGetAllocationRequest) NextToken(nextToken string) ApiGetAllocationRequest {
+	r.nextToken = &nextToken
+	return r
+}
+
+func (r ApiGetAllocationRequest) Execute() (Allocation, *_nethttp.Response, error) {
+	return r.ApiService.GetAllocationExecute(r)
+}
+
+/*
+ * GetAllocation Method for GetAllocation
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param allocationID Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.
+ * @return ApiGetAllocationRequest
+ */
+func (a *AllocationsApiService) GetAllocation(ctx _context.Context, allocationID string) ApiGetAllocationRequest {
+	return ApiGetAllocationRequest{
+		ApiService: a,
+		ctx: ctx,
+		allocationID: allocationID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Allocation
+ */
+func (a *AllocationsApiService) GetAllocationExecute(r ApiGetAllocationRequest) (Allocation, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Allocation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllocationsApiService.GetAllocation")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/allocation/{allocationID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"allocationID"+"}", _neturl.PathEscape(parameterToString(r.allocationID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.wait != nil {
+		localVarQueryParams.Add("wait", parameterToString(*r.wait, ""))
+	}
+	if r.stale != nil {
+		localVarQueryParams.Add("stale", parameterToString(*r.stale, ""))
+	}
+	if r.prefix != nil {
+		localVarQueryParams.Add("prefix", parameterToString(*r.prefix, ""))
+	}
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.nextToken != nil {
+		localVarQueryParams.Add("next_token", parameterToString(*r.nextToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.index != nil {
+		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiGetAllocationsRequest struct {
 	ctx _context.Context
@@ -175,6 +367,157 @@ func (a *AllocationsApiService) GetAllocationsExecute(r ApiGetAllocationsRequest
 	}
 	if r.index != nil {
 		localVarHeaderParams["index"] = parameterToString(*r.index, "")
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStopAllocationRequest struct {
+	ctx _context.Context
+	ApiService *AllocationsApiService
+	allocationID string
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiStopAllocationRequest) Region(region string) ApiStopAllocationRequest {
+	r.region = &region
+	return r
+}
+func (r ApiStopAllocationRequest) Namespace(namespace string) ApiStopAllocationRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiStopAllocationRequest) XNomadToken(xNomadToken string) ApiStopAllocationRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiStopAllocationRequest) IdempotencyToken(idempotencyToken string) ApiStopAllocationRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiStopAllocationRequest) Execute() (AllocStopResponse, *_nethttp.Response, error) {
+	return r.ApiService.StopAllocationExecute(r)
+}
+
+/*
+ * StopAllocation Method for StopAllocation
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param allocationID Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.
+ * @return ApiStopAllocationRequest
+ */
+func (a *AllocationsApiService) StopAllocation(ctx _context.Context, allocationID string) ApiStopAllocationRequest {
+	return ApiStopAllocationRequest{
+		ApiService: a,
+		ctx: ctx,
+		allocationID: allocationID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return AllocStopResponse
+ */
+func (a *AllocationsApiService) StopAllocationExecute(r ApiStopAllocationRequest) (AllocStopResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AllocStopResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllocationsApiService.StopAllocation")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/allocation/{allocationID}/stop"
+	localVarPath = strings.Replace(localVarPath, "{"+"allocationID"+"}", _neturl.PathEscape(parameterToString(r.allocationID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.xNomadToken != nil {
 		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")

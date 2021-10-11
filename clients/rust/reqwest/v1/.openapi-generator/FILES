@@ -5,6 +5,7 @@ docs/ACLApi.md
 docs/AclPolicyListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -157,6 +158,7 @@ src/lib.rs
 src/models/acl_policy_list_stub.rs
 src/models/affinity.rs
 src/models/alloc_deployment_status.rs
+src/models/alloc_stop_response.rs
 src/models/allocated_cpu_resources.rs
 src/models/allocated_device_resource.rs
 src/models/allocated_memory_resources.rs

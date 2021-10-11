@@ -79,7 +79,9 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ACLApi* | [**GetACLPolicies**](docs/ACLApi.md#getaclpolicies) | **Get** /acl/policies | 
+*AllocationsApi* | [**GetAllocation**](docs/AllocationsApi.md#getallocation) | **Get** /allocation/{allocationID} | 
 *AllocationsApi* | [**GetAllocations**](docs/AllocationsApi.md#getallocations) | **Get** /allocations | 
+*AllocationsApi* | [**StopAllocation**](docs/AllocationsApi.md#stopallocation) | **Post** /allocation/{allocationID}/stop | 
 *EnterpriseApi* | [**CreateQuotaSpec**](docs/EnterpriseApi.md#createquotaspec) | **Post** /quota | 
 *EnterpriseApi* | [**DeleteQuotaSpec**](docs/EnterpriseApi.md#deletequotaspec) | **Delete** /quota/{specName} | 
 *EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
@@ -133,6 +135,7 @@ Class | Method | HTTP request | Description
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [AllocStopResponse](docs/AllocStopResponse.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [AllocatedMemoryResources](docs/AllocatedMemoryResources.md)

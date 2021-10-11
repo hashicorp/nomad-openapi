@@ -5,6 +5,7 @@ docs/ACLApi.md
 docs/ACLPolicyListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -158,6 +159,7 @@ src/index.js
 src/model/ACLPolicyListStub.js
 src/model/Affinity.js
 src/model/AllocDeploymentStatus.js
+src/model/AllocStopResponse.js
 src/model/AllocatedCpuResources.js
 src/model/AllocatedDeviceResource.js
 src/model/AllocatedMemoryResources.js
@@ -287,3 +289,4 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/model/AllocStopResponse.spec.js

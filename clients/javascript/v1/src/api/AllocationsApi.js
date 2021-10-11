@@ -13,6 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
+import AllocStopResponse from '../model/AllocStopResponse';
+import Allocation from '../model/Allocation';
 import AllocationListStub from '../model/AllocationListStub';
 
 /**
@@ -33,6 +35,67 @@ export default class AllocationsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the getAllocation operation.
+     * @callback module:api/AllocationsApi~getAllocationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Allocation} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} allocationID Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {Number} opts.index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param {String} opts.wait Provided with IndexParam to wait for change.
+     * @param {String} opts.stale If present, results will include stale reads.
+     * @param {String} opts.prefix Constrains results to jobs that start with the defined prefix
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {Number} opts.perPage Maximum number of results to return.
+     * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
+     * @param {module:api/AllocationsApi~getAllocationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Allocation}
+     */
+    getAllocation(allocationID, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'allocationID' is set
+      if (allocationID === undefined || allocationID === null) {
+        throw new Error("Missing the required parameter 'allocationID' when calling getAllocation");
+      }
+
+      let pathParams = {
+        'allocationID': allocationID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'wait': opts['wait'],
+        'stale': opts['stale'],
+        'prefix': opts['prefix'],
+        'per_page': opts['perPage'],
+        'next_token': opts['nextToken']
+      };
+      let headerParams = {
+        'index': opts['index'],
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Allocation;
+      return this.apiClient.callApi(
+        '/allocation/{allocationID}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the getAllocations operation.
@@ -88,6 +151,57 @@ export default class AllocationsApi {
       let returnType = [AllocationListStub];
       return this.apiClient.callApi(
         '/allocations', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the stopAllocation operation.
+     * @callback module:api/AllocationsApi~stopAllocationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/AllocStopResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} allocationID Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one. This is specified as part of the path.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/AllocationsApi~stopAllocationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/AllocStopResponse}
+     */
+    stopAllocation(allocationID, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'allocationID' is set
+      if (allocationID === undefined || allocationID === null) {
+        throw new Error("Missing the required parameter 'allocationID' when calling stopAllocation");
+      }
+
+      let pathParams = {
+        'allocationID': allocationID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AllocStopResponse;
+      return this.apiClient.callApi(
+        '/allocation/{allocationID}/stop', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

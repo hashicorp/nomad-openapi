@@ -12,6 +12,7 @@
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
 from nomad_client.model.affinity import Affinity
 from nomad_client.model.alloc_deployment_status import AllocDeploymentStatus
+from nomad_client.model.alloc_stop_response import AllocStopResponse
 from nomad_client.model.allocated_cpu_resources import AllocatedCpuResources
 from nomad_client.model.allocated_device_resource import AllocatedDeviceResource
 from nomad_client.model.allocated_memory_resources import AllocatedMemoryResources

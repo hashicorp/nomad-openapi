@@ -7,6 +7,7 @@ docs/ACLPolicyListStub.md
 docs/AclApi.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -181,6 +182,7 @@ src/main/java/io/nomadproject/client/auth/HttpBearerAuth.java
 src/main/java/io/nomadproject/client/models/ACLPolicyListStub.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
+src/main/java/io/nomadproject/client/models/AllocStopResponse.java
 src/main/java/io/nomadproject/client/models/AllocatedCpuResources.java
 src/main/java/io/nomadproject/client/models/AllocatedDeviceResource.java
 src/main/java/io/nomadproject/client/models/AllocatedMemoryResources.java
@@ -310,3 +312,4 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/models/AllocStopResponseTest.java

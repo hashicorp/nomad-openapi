@@ -4,6 +4,8 @@ pub mod affinity;
 pub use self::affinity::Affinity;
 pub mod alloc_deployment_status;
 pub use self::alloc_deployment_status::AllocDeploymentStatus;
+pub mod alloc_stop_response;
+pub use self::alloc_stop_response::AllocStopResponse;
 pub mod allocated_cpu_resources;
 pub use self::allocated_cpu_resources::AllocatedCpuResources;
 pub mod allocated_device_resource;
