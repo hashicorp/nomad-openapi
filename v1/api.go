@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
 	"net/http"
 	"net/url"
 	"os"
@@ -18,6 +19,9 @@ import (
 type Client struct {
 	Ctx       context.Context
 	apiClient *client.APIClient
+
+	// nomadToken
+	nomadToken string
 }
 
 func NewClient() (*Client, error) {
@@ -33,10 +37,15 @@ func NewClient() (*Client, error) {
 	c := &Client{}
 
 	c.Ctx = context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
-		"scheme":  nomadURL.Scheme,
-		"address": nomadURL.Hostname(),
-		"port":    nomadURL.Port(),
+		"scheme":                       nomadURL.Scheme,
+		"address":                      nomadURL.Hostname(),
+		"port":                         nomadURL.Port(),
+		client.ContextAPIKeys.String(): "",
 	})
+
+	if nomadToken := os.Getenv("NOMAD_TOKEN"); nomadToken != "" {
+		c.nomadToken = nomadToken
+	}
 
 	configuration := client.NewConfiguration()
 	c.apiClient = client.NewAPIClient(configuration)
@@ -54,7 +63,7 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 		return nil, nil, errors.New("execQuery failed: no Execute method on interface")
 	}
 
-	request = setQueryOptions(ctx, request)
+	request = c.setQueryOptions(ctx, request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -82,7 +91,7 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 		return nil, nil, errors.New("ExecWrite failed: no Execute method on interface")
 	}
 
-	request = setWriteOptions(ctx, request)
+	request = c.setWriteOptions(ctx, request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -110,7 +119,7 @@ func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (
 		return nil, errors.New("ExecNoResponseWrite failed: no Execute method on interface")
 	}
 
-	request = setWriteOptions(ctx, request)
+	request = c.setWriteOptions(ctx, request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
@@ -149,7 +158,7 @@ func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{
 
 // setQueryOptions is used to annotate the request with
 // additional query options
-func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
+func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("QueryOpts").(*QueryOpts)
 	if !ok || opts == nil {
 		return iface
@@ -171,6 +180,9 @@ func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
+	} else if c.nomadToken != "" && ok {
+		fmt.Println("here")
+		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(c.nomadToken)})[0].Interface()
 	}
 
 	_, ok = typeOf.MethodByName("Stale")
@@ -207,11 +219,13 @@ func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	//if c.config.Params != nil {
 	//}
 
+	spew.Dump(iface)
+
 	return iface
 }
 
 // setWriteOptions is used to annotate an openapi request with additional write options.
-func setWriteOptions(ctx context.Context, iface interface{}) interface{} {
+func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("WriteOpts").(*WriteOpts)
 	if !ok || opts == nil {
 		return iface
@@ -232,6 +246,8 @@ func setWriteOptions(ctx context.Context, iface interface{}) interface{} {
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
+	} else if c.nomadToken != "" {
+		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(c.nomadToken)})[0].Interface()
 	}
 
 	_, ok = typeOf.MethodByName(IdempotencyTokenKey)
