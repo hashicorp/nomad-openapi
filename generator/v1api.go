@@ -239,7 +239,7 @@ var (
 		In:          inQuery,
 	}
 	nomadTokenHeader = parameter{
-		Id:          "NextTokenHeader",
+		Id:          "NomadTokenHeader",
 		SchemaType:  stringSchema,
 		Description: "A Nomad ACL token.",
 		Name:        "X-Nomad-Token",

@@ -4703,15 +4703,6 @@ components:
       schema:
         type: string
       style: form
-    NextTokenHeader:
-      description: A Nomad ACL token.
-      explode: false
-      in: header
-      name: X-Nomad-Token
-      required: false
-      schema:
-        type: string
-      style: simple
     NextTokenParam:
       description: Indicates where to start paging for queries that support pagination.
       explode: true
@@ -4721,6 +4712,15 @@ components:
       schema:
         type: string
       style: form
+    NomadTokenHeader:
+      description: A Nomad ACL token.
+      explode: false
+      in: header
+      name: X-Nomad-Token
+      required: false
+      schema:
+        type: string
+      style: simple
     PerPageParam:
       description: Maximum number of results to return.
       explode: true

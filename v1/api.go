@@ -47,14 +47,15 @@ func NewClient() (*Client, error) {
 // ExecQuery executes a request that returns query metadata.
 func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{}, *QueryMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
 		return nil, nil, errors.New("execQuery failed: no Execute method on interface")
 	}
 
-	request = setQueryOptions(ctx, request)
+	request = c.setQueryOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -75,14 +76,15 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 // ExecWrite executes a request that returns write metadata.
 func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{}, *WriteMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
 		return nil, nil, errors.New("ExecWrite failed: no Execute method on interface")
 	}
 
-	request = setWriteOptions(ctx, request)
+	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -103,14 +105,15 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 // ExecNoResponseWrite executes a request that returns write metadata, but no model.
 func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (*WriteMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
 		return nil, errors.New("ExecNoResponseWrite failed: no Execute method on interface")
 	}
 
-	request = setWriteOptions(ctx, request)
+	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
@@ -149,7 +152,7 @@ func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{
 
 // setQueryOptions is used to annotate the request with
 // additional query options
-func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
+func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("QueryOpts").(*QueryOpts)
 	if !ok || opts == nil {
 		return iface
@@ -161,46 +164,55 @@ func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 	_, ok = typeOf.MethodByName(RegionKey)
 	if ok && opts.Region != "" {
 		iface = valueOf.MethodByName(RegionKey).Call([]reflect.Value{reflect.ValueOf(opts.Region)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NamespaceKey)
 	if ok && opts.Namespace != "" {
 		iface = valueOf.MethodByName(NamespaceKey).Call([]reflect.Value{reflect.ValueOf(opts.Namespace)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Stale")
 	if ok && opts.AllowStale {
 		iface = valueOf.MethodByName("Stale").Call([]reflect.Value{reflect.ValueOf("")})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Index")
 	if ok && opts.WaitIndex != 0 {
 		iface = valueOf.MethodByName("Index").Call([]reflect.Value{reflect.ValueOf(opts.WaitIndex)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Wait")
 	if ok && opts.WaitTime != 0 {
 		iface = valueOf.MethodByName("Wait").Call([]reflect.Value{reflect.ValueOf(fmt.Sprintf("%dms", opts.WaitTime))})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(PrefixKey)
 	if ok && opts.Prefix != "" {
 		iface = valueOf.MethodByName(PrefixKey).Call([]reflect.Value{reflect.ValueOf(opts.Prefix)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(PerPageKey)
 	if ok && opts.PerPage != 0 {
 		iface = valueOf.MethodByName(PerPageKey).Call([]reflect.Value{reflect.ValueOf(opts.PerPage)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NextTokenKey)
 	if ok && opts.NextToken != "" {
 		iface = valueOf.MethodByName(NextTokenKey).Call([]reflect.Value{reflect.ValueOf(opts.NextToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	// TODO: Handle extra params
@@ -211,7 +223,7 @@ func setQueryOptions(ctx context.Context, iface interface{}) interface{} {
 }
 
 // setWriteOptions is used to annotate an openapi request with additional write options.
-func setWriteOptions(ctx context.Context, iface interface{}) interface{} {
+func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interface{} {
 	opts, ok := ctx.Value("WriteOpts").(*WriteOpts)
 	if !ok || opts == nil {
 		return iface
@@ -222,21 +234,25 @@ func setWriteOptions(ctx context.Context, iface interface{}) interface{} {
 	_, ok = typeOf.MethodByName(RegionKey)
 	if ok && opts.Region != "" {
 		iface = valueOf.MethodByName(RegionKey).Call([]reflect.Value{reflect.ValueOf(opts.Region)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NamespaceKey)
 	if ok && opts.Namespace != "" {
 		iface = valueOf.MethodByName(NamespaceKey).Call([]reflect.Value{reflect.ValueOf(opts.Namespace)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(IdempotencyTokenKey)
 	if ok && opts.IdempotencyToken != "" {
 		iface = valueOf.MethodByName(IdempotencyTokenKey).Call([]reflect.Value{reflect.ValueOf(opts.IdempotencyToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	return iface
