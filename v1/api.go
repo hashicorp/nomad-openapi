@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/davecgh/go-spew/spew"
 	"net/http"
 	"net/url"
 	"os"
@@ -19,9 +18,6 @@ import (
 type Client struct {
 	Ctx       context.Context
 	apiClient *client.APIClient
-
-	// nomadToken
-	nomadToken string
 }
 
 func NewClient() (*Client, error) {
@@ -37,15 +33,10 @@ func NewClient() (*Client, error) {
 	c := &Client{}
 
 	c.Ctx = context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
-		"scheme":                       nomadURL.Scheme,
-		"address":                      nomadURL.Hostname(),
-		"port":                         nomadURL.Port(),
-		client.ContextAPIKeys.String(): "",
+		"scheme":  nomadURL.Scheme,
+		"address": nomadURL.Hostname(),
+		"port":    nomadURL.Port(),
 	})
-
-	if nomadToken := os.Getenv("NOMAD_TOKEN"); nomadToken != "" {
-		c.nomadToken = nomadToken
-	}
 
 	configuration := client.NewConfiguration()
 	c.apiClient = client.NewAPIClient(configuration)
@@ -56,7 +47,6 @@ func NewClient() (*Client, error) {
 // ExecQuery executes a request that returns query metadata.
 func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{}, *QueryMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
@@ -64,6 +54,8 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 	}
 
 	request = c.setQueryOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -84,7 +76,6 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 // ExecWrite executes a request that returns write metadata.
 func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{}, *WriteMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
@@ -92,6 +83,8 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 	}
 
 	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
@@ -112,7 +105,6 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 // ExecNoResponseWrite executes a request that returns write metadata, but no model.
 func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (*WriteMeta, error) {
 	typeOf := reflect.TypeOf(request)
-	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
@@ -120,6 +112,8 @@ func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (
 	}
 
 	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
@@ -170,56 +164,60 @@ func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interfa
 	_, ok = typeOf.MethodByName(RegionKey)
 	if ok && opts.Region != "" {
 		iface = valueOf.MethodByName(RegionKey).Call([]reflect.Value{reflect.ValueOf(opts.Region)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NamespaceKey)
 	if ok && opts.Namespace != "" {
 		iface = valueOf.MethodByName(NamespaceKey).Call([]reflect.Value{reflect.ValueOf(opts.Namespace)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
-	} else if c.nomadToken != "" && ok {
-		fmt.Println("here")
-		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(c.nomadToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Stale")
 	if ok && opts.AllowStale {
 		iface = valueOf.MethodByName("Stale").Call([]reflect.Value{reflect.ValueOf("")})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Index")
 	if ok && opts.WaitIndex != 0 {
 		iface = valueOf.MethodByName("Index").Call([]reflect.Value{reflect.ValueOf(opts.WaitIndex)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("Wait")
 	if ok && opts.WaitTime != 0 {
 		iface = valueOf.MethodByName("Wait").Call([]reflect.Value{reflect.ValueOf(fmt.Sprintf("%dms", opts.WaitTime))})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(PrefixKey)
 	if ok && opts.Prefix != "" {
 		iface = valueOf.MethodByName(PrefixKey).Call([]reflect.Value{reflect.ValueOf(opts.Prefix)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(PerPageKey)
 	if ok && opts.PerPage != 0 {
 		iface = valueOf.MethodByName(PerPageKey).Call([]reflect.Value{reflect.ValueOf(opts.PerPage)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NextTokenKey)
 	if ok && opts.NextToken != "" {
 		iface = valueOf.MethodByName(NextTokenKey).Call([]reflect.Value{reflect.ValueOf(opts.NextToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	// TODO: Handle extra params
 	//if c.config.Params != nil {
 	//}
-
-	spew.Dump(iface)
 
 	return iface
 }
@@ -236,23 +234,25 @@ func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interfa
 	_, ok = typeOf.MethodByName(RegionKey)
 	if ok && opts.Region != "" {
 		iface = valueOf.MethodByName(RegionKey).Call([]reflect.Value{reflect.ValueOf(opts.Region)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(NamespaceKey)
 	if ok && opts.Namespace != "" {
 		iface = valueOf.MethodByName(NamespaceKey).Call([]reflect.Value{reflect.ValueOf(opts.Namespace)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName("XNomadToken")
 	if ok && opts.AuthToken != "" {
 		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(opts.AuthToken)})[0].Interface()
-	} else if c.nomadToken != "" {
-		iface = valueOf.MethodByName("XNomadToken").Call([]reflect.Value{reflect.ValueOf(c.nomadToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	_, ok = typeOf.MethodByName(IdempotencyTokenKey)
 	if ok && opts.IdempotencyToken != "" {
 		iface = valueOf.MethodByName(IdempotencyTokenKey).Call([]reflect.Value{reflect.ValueOf(opts.IdempotencyToken)})[0].Interface()
+		valueOf = reflect.ValueOf(iface)
 	}
 
 	return iface
