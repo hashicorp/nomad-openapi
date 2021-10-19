@@ -20,7 +20,7 @@ func (a *ACL) ACLApi() *client.ACLApiService {
 }
 
 // returns arraySchema
-func (a *ACL) GetACLPolicies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, error) {
+func (a *ACL) ListPolicies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, error) {
 	request := a.ACLApi().GetACLPolicies(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -32,7 +32,8 @@ func (a *ACL) GetACLPolicies(ctx context.Context) (*[]client.ACLPolicyListStub, 
 }
 
 // returns objectSchema
-func (a *ACL) GetACLPolicy(ctx context.Context, policyName string) (*client.ACLPolicy, *QueryMeta, error) {
+// pass in policy name, no payload
+func (a *ACL) GetPolicy(ctx context.Context, policyName string) (*client.ACLPolicy, *QueryMeta, error) {
 	if policyName == "" {
 		return nil, nil, errors.New("policy name is required")
 	}
@@ -48,13 +49,15 @@ func (a *ACL) GetACLPolicy(ctx context.Context, policyName string) (*client.ACLP
 }
 
 // returns nilSchema
-func (a *ACL) PostACLPolicy(ctx context.Context, policyName string) (*WriteMeta, error) {
-	if policyName == "" {
+// pass in policy name WITH payload
+// can't use "Save", because there's an ACL "Save" for tokens as well
+func (a *ACL) SavePolicy(ctx context.Context, policy *client.ACLPolicy) (*WriteMeta, error) {
+	if *policy.Name == "" {
 		return nil, errors.New("policy name is required")
 	}
 
 	// appending payload?  something that's taken care of by appendParams so I don't have to worry about it?
-	request := a.ACLApi().PostACLPolicy(a.client.Ctx, policyName)
+	request := a.ACLApi().PostACLPolicy(a.client.Ctx, *policy.Name)
 	meta, err := a.client.ExecNoResponseWrite(ctx, request)
 	if err != nil {
 		return nil, err
@@ -63,7 +66,9 @@ func (a *ACL) PostACLPolicy(ctx context.Context, policyName string) (*WriteMeta,
 	return meta, nil
 }
 
-func (a *ACL) DeleteACLPolicy(ctx context.Context, policyName string) (*WriteMeta, error) {
+// pass in name, no payload
+// can't use "Delete", because there's an ACL "Delete" for tokens as well
+func (a *ACL) DeletePolicy(ctx context.Context, policyName string) (*WriteMeta, error) {
 	if policyName == "" {
 		return nil, errors.New("policy name is required")
 	}
@@ -77,7 +82,7 @@ func (a *ACL) DeleteACLPolicy(ctx context.Context, policyName string) (*WriteMet
 	return meta, nil
 }
 
-func (a *ACL) PostACLTokenOnetime(ctx context.Context) (*client.OneTimeToken, *WriteMeta, error) {
+func (a *ACL) OnetimeToken(ctx context.Context) (*client.OneTimeToken, *WriteMeta, error) {
 	request := a.ACLApi().PostACLTokenOnetime(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -88,7 +93,7 @@ func (a *ACL) PostACLTokenOnetime(ctx context.Context) (*client.OneTimeToken, *W
 	return &final, meta, nil
 }
 
-func (a *ACL) PostACLTokenOnetimeExchange(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
+func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
 	request := a.ACLApi().PostACLTokenOnetimeExchange(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -99,7 +104,7 @@ func (a *ACL) PostACLTokenOnetimeExchange(ctx context.Context) (*client.ACLToken
 	return &final, meta, nil
 }
 
-func (a *ACL) PostACLBootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
+func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
 	request := a.ACLApi().PostACLBootstrap(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -110,7 +115,7 @@ func (a *ACL) PostACLBootstrap(ctx context.Context) (*client.ACLToken, *WriteMet
 	return &final, meta, nil
 }
 
-func (a *ACL) GetACLTokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, error) {
+func (a *ACL) ListTokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, error) {
 	request := a.ACLApi().GetACLTokens(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -121,7 +126,7 @@ func (a *ACL) GetACLTokens(ctx context.Context) (*[]client.ACLTokenListStub, *Qu
 	return &final, meta, nil
 }
 
-func (a *ACL) GetACLTokenSelf(ctx context.Context) (*client.ACLToken, *QueryMeta, error) {
+func (a *ACL) Self(ctx context.Context) (*client.ACLToken, *QueryMeta, error) {
 	request := a.ACLApi().GetACLTokenSelf(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -132,7 +137,7 @@ func (a *ACL) GetACLTokenSelf(ctx context.Context) (*client.ACLToken, *QueryMeta
 	return &final, meta, nil
 }
 
-func (a *ACL) GetACLToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *QueryMeta, error) {
+func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *QueryMeta, error) {
 	if tokenAccessor == "" {
 		return nil, nil, errors.New("token accessor id is required")
 	}
@@ -147,12 +152,12 @@ func (a *ACL) GetACLToken(ctx context.Context, tokenAccessor string) (*client.AC
 	return &final, meta, nil
 }
 
-func (a *ACL) PostACLToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *WriteMeta, error) {
-	if tokenAccessor == "" {
+func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.ACLToken, *WriteMeta, error) {
+	if *token.AccessorID == "" {
 		return nil, nil, errors.New("token accessor id is required")
 	}
 
-	request := a.ACLApi().PostACLToken(a.client.Ctx, tokenAccessor)
+	request := a.ACLApi().PostACLToken(a.client.Ctx, *token.AccessorID)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
 		return nil, nil, err
@@ -162,7 +167,7 @@ func (a *ACL) PostACLToken(ctx context.Context, tokenAccessor string) (*client.A
 	return &final, meta, nil
 }
 
-func (a *ACL) DeleteACLToken(ctx context.Context, tokenAccessor string) (*WriteMeta, error) {
+func (a *ACL) DeleteToken(ctx context.Context, tokenAccessor string) (*WriteMeta, error) {
 	if tokenAccessor == "" {
 		return nil, errors.New("token accessor id is required")
 	}
