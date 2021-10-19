@@ -2,7 +2,10 @@
 Cargo.toml
 README.md
 docs/ACLApi.md
+docs/AclPolicy.md
 docs/AclPolicyListStub.md
+docs/AclToken.md
+docs/AclTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -96,6 +99,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -156,7 +161,10 @@ src/apis/search_api.rs
 src/apis/system_api.rs
 src/apis/volumes_api.rs
 src/lib.rs
+src/models/acl_policy.rs
 src/models/acl_policy_list_stub.rs
+src/models/acl_token.rs
+src/models/acl_token_list_stub.rs
 src/models/affinity.rs
 src/models/alloc_deployment_status.rs
 src/models/allocated_cpu_resources.rs
@@ -246,6 +254,8 @@ src/models/namespace.rs
 src/models/network_resource.rs
 src/models/node_score_meta.rs
 src/models/object_diff.rs
+src/models/one_time_token.rs
+src/models/one_time_token_exchange_request.rs
 src/models/parameterized_job_config.rs
 src/models/periodic_config.rs
 src/models/periodic_force_response.rs
