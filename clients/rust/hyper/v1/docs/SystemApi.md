@@ -4,14 +4,14 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**post_system_gc**](SystemApi.md#post_system_gc) | **Post** /system/gc | 
-[**post_system_reconcile_summaries**](SystemApi.md#post_system_reconcile_summaries) | **Post** /system/reconcile/summaries | 
+[**put_system_gc**](SystemApi.md#put_system_gc) | **Put** /system/gc | 
+[**put_system_reconcile_summaries**](SystemApi.md#put_system_reconcile_summaries) | **Put** /system/reconcile/summaries | 
 
 
 
-## post_system_gc
+## put_system_gc
 
-> post_system_gc(region, namespace, x_nomad_token, idempotency_token)
+> put_system_gc(region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters
@@ -40,9 +40,9 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## post_system_reconcile_summaries
+## put_system_reconcile_summaries
 
-> post_system_reconcile_summaries(region, namespace, x_nomad_token, idempotency_token)
+> put_system_reconcile_summaries(region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters

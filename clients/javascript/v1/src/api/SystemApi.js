@@ -34,8 +34,8 @@ export default class SystemApi {
 
 
     /**
-     * Callback function to receive the result of the postSystemGC operation.
-     * @callback module:api/SystemApi~postSystemGCCallback
+     * Callback function to receive the result of the putSystemGC operation.
+     * @callback module:api/SystemApi~putSystemGCCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -47,9 +47,9 @@ export default class SystemApi {
      * @param {String} opts.namespace Filters results based on the specified namespace.
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
-     * @param {module:api/SystemApi~postSystemGCCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/SystemApi~putSystemGCCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    postSystemGC(opts, callback) {
+    putSystemGC(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -71,15 +71,15 @@ export default class SystemApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/system/gc', 'POST',
+        '/system/gc', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the postSystemReconcileSummaries operation.
-     * @callback module:api/SystemApi~postSystemReconcileSummariesCallback
+     * Callback function to receive the result of the putSystemReconcileSummaries operation.
+     * @callback module:api/SystemApi~putSystemReconcileSummariesCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -91,9 +91,9 @@ export default class SystemApi {
      * @param {String} opts.namespace Filters results based on the specified namespace.
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
-     * @param {module:api/SystemApi~postSystemReconcileSummariesCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/SystemApi~putSystemReconcileSummariesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    postSystemReconcileSummaries(opts, callback) {
+    putSystemReconcileSummaries(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -115,7 +115,7 @@ export default class SystemApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/system/reconcile/summaries', 'POST',
+        '/system/reconcile/summaries', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

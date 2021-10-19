@@ -4,12 +4,12 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**post_system_gc**](SystemApi.md#post_system_gc) | **POST** /system/gc | 
-[**post_system_reconcile_summaries**](SystemApi.md#post_system_reconcile_summaries) | **POST** /system/reconcile/summaries | 
+[**put_system_gc**](SystemApi.md#put_system_gc) | **PUT** /system/gc | 
+[**put_system_reconcile_summaries**](SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
 
 
-# **post_system_gc**
-> post_system_gc()
+# **put_system_gc**
+> put_system_gc()
 
 
 
@@ -50,9 +50,9 @@ with nomad_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_instance.post_system_gc(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
+        api_instance.put_system_gc(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
     except nomad_client.ApiException as e:
-        print("Exception when calling SystemApi->post_system_gc: %s\n" % e)
+        print("Exception when calling SystemApi->put_system_gc: %s\n" % e)
 ```
 
 
@@ -90,8 +90,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **post_system_reconcile_summaries**
-> post_system_reconcile_summaries()
+# **put_system_reconcile_summaries**
+> put_system_reconcile_summaries()
 
 
 
@@ -132,9 +132,9 @@ with nomad_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_instance.post_system_reconcile_summaries(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
+        api_instance.put_system_reconcile_summaries(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
     except nomad_client.ApiException as e:
-        print("Exception when calling SystemApi->post_system_reconcile_summaries: %s\n" % e)
+        print("Exception when calling SystemApi->put_system_reconcile_summaries: %s\n" % e)
 ```
 
 

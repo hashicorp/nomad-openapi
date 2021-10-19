@@ -915,20 +915,6 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-    PostSystemGCResponse:
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-    PostSystemReconcileSummariesResponse:
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
     PostVolumeRegistrationResponse:
       description: ""
       headers:
@@ -949,6 +935,20 @@ components:
             type: boolean
         X-Nomad-LastContact:
           description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    PutSystemGCResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+    PutSystemReconcileSummariesResponse:
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     RegisterJobResponse:
@@ -4724,8 +4724,8 @@ paths:
       tags:
       - Search
   /system/gc:
-    post:
-      operationId: PostSystemGC
+    put:
+      operationId: PutSystemGC
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -4733,7 +4733,7 @@ paths:
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
-          $ref: '#/components/responses/PostSystemGCResponse'
+          $ref: '#/components/responses/PutSystemGCResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -4747,8 +4747,8 @@ paths:
       tags:
       - System
   /system/reconcile/summaries:
-    post:
-      operationId: PostSystemReconcileSummaries
+    put:
+      operationId: PutSystemReconcileSummaries
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -4756,7 +4756,7 @@ paths:
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
-          $ref: '#/components/responses/PostSystemReconcileSummariesResponse'
+          $ref: '#/components/responses/PutSystemReconcileSummariesResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

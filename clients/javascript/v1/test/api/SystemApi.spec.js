@@ -48,20 +48,20 @@
   }
 
   describe('SystemApi', function() {
-    describe('postSystemGC', function() {
-      it('should call postSystemGC successfully', function(done) {
-        //uncomment below and update the code to test postSystemGC
-        //instance.postSystemGC(function(error) {
+    describe('putSystemGC', function() {
+      it('should call putSystemGC successfully', function(done) {
+        //uncomment below and update the code to test putSystemGC
+        //instance.putSystemGC(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('postSystemReconcileSummaries', function() {
-      it('should call postSystemReconcileSummaries successfully', function(done) {
-        //uncomment below and update the code to test postSystemReconcileSummaries
-        //instance.postSystemReconcileSummaries(function(error) {
+    describe('putSystemReconcileSummaries', function() {
+      it('should call putSystemReconcileSummaries successfully', function(done) {
+        //uncomment below and update the code to test putSystemReconcileSummaries
+        //instance.putSystemReconcileSummaries(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

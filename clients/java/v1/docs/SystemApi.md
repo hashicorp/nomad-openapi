@@ -4,13 +4,13 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postSystemGC**](SystemApi.md#postSystemGC) | **POST** /system/gc | 
-[**postSystemReconcileSummaries**](SystemApi.md#postSystemReconcileSummaries) | **POST** /system/reconcile/summaries | 
+[**putSystemGC**](SystemApi.md#putSystemGC) | **PUT** /system/gc | 
+[**putSystemReconcileSummaries**](SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
 
 
-<a name="postSystemGC"></a>
-# **postSystemGC**
-> postSystemGC(region, namespace, xNomadToken, idempotencyToken)
+<a name="putSystemGC"></a>
+# **putSystemGC**
+> putSystemGC(region, namespace, xNomadToken, idempotencyToken)
 
 
 
@@ -41,9 +41,9 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      apiInstance.postSystemGC(region, namespace, xNomadToken, idempotencyToken);
+      apiInstance.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
     } catch (ApiException e) {
-      System.err.println("Exception when calling SystemApi#postSystemGC");
+      System.err.println("Exception when calling SystemApi#putSystemGC");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,9 +84,9 @@ null (empty response body)
 **405** | Method not allowed |  -  |
 **500** | Internal server error |  -  |
 
-<a name="postSystemReconcileSummaries"></a>
-# **postSystemReconcileSummaries**
-> postSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken)
+<a name="putSystemReconcileSummaries"></a>
+# **putSystemReconcileSummaries**
+> putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken)
 
 
 
@@ -117,9 +117,9 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      apiInstance.postSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
+      apiInstance.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
     } catch (ApiException e) {
-      System.err.println("Exception when calling SystemApi#postSystemReconcileSummaries");
+      System.err.println("Exception when calling SystemApi#putSystemReconcileSummaries");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

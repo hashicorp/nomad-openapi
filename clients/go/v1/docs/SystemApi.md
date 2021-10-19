@@ -4,14 +4,14 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PostSystemGC**](SystemApi.md#PostSystemGC) | **Post** /system/gc | 
-[**PostSystemReconcileSummaries**](SystemApi.md#PostSystemReconcileSummaries) | **Post** /system/reconcile/summaries | 
+[**PutSystemGC**](SystemApi.md#PutSystemGC) | **Put** /system/gc | 
+[**PutSystemReconcileSummaries**](SystemApi.md#PutSystemReconcileSummaries) | **Put** /system/reconcile/summaries | 
 
 
 
-## PostSystemGC
+## PutSystemGC
 
-> PostSystemGC(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+> PutSystemGC(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 
 
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SystemApi.PostSystemGC(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    resp, r, err := api_client.SystemApi.PutSystemGC(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.PostSystemGC``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.PutSystemGC``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostSystemGCRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSystemGCRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostSystemReconcileSummaries
+## PutSystemReconcileSummaries
 
-> PostSystemReconcileSummaries(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+> PutSystemReconcileSummaries(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 
 
 
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SystemApi.PostSystemReconcileSummaries(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    resp, r, err := api_client.SystemApi.PutSystemReconcileSummaries(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.PostSystemReconcileSummaries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.PutSystemReconcileSummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -117,7 +117,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostSystemReconcileSummariesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSystemReconcileSummariesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

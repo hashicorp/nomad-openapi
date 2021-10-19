@@ -3439,8 +3439,8 @@ paths:
       tags:
       - Search
   /system/gc:
-    post:
-      operationId: PostSystemGC
+    put:
+      operationId: PutSystemGC
       parameters:
       - description: Filters results based on the specified region.
         explode: true
@@ -3498,8 +3498,8 @@ paths:
       tags:
       - System
   /system/reconcile/summaries:
-    post:
-      operationId: PostSystemReconcileSummaries
+    put:
+      operationId: PutSystemReconcileSummaries
       parameters:
       - description: Filters results based on the specified region.
         explode: true
@@ -5892,24 +5892,6 @@ components:
           schema:
             type: integer
           style: simple
-    PostSystemGCResponse:
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-    PostSystemReconcileSummariesResponse:
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
     PostVolumeRegistrationResponse:
       headers:
         X-Nomad-Index:
@@ -5937,6 +5919,24 @@ components:
         X-Nomad-LastContact:
           description: The time in milliseconds that a server was last contacted by
             the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    PutSystemGCResponse:
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+    PutSystemReconcileSummariesResponse:
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           explode: false
           schema:
             type: integer

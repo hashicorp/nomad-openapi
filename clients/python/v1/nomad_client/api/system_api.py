@@ -36,16 +36,16 @@ class SystemApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __post_system_gc(
+        def __put_system_gc(
             self,
             **kwargs
         ):
-            """post_system_gc  # noqa: E501
+            """put_system_gc  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.post_system_gc(async_req=True)
+            >>> thread = api.put_system_gc(async_req=True)
             >>> result = thread.get()
 
 
@@ -100,15 +100,15 @@ class SystemApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             return self.call_with_http_info(**kwargs)
 
-        self.post_system_gc = _Endpoint(
+        self.put_system_gc = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
                     'X-Nomad-Token'
                 ],
                 'endpoint_path': '/system/gc',
-                'operation_id': 'post_system_gc',
-                'http_method': 'POST',
+                'operation_id': 'put_system_gc',
+                'http_method': 'PUT',
                 'servers': None,
             },
             params_map={
@@ -161,19 +161,19 @@ class SystemApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__post_system_gc
+            callable=__put_system_gc
         )
 
-        def __post_system_reconcile_summaries(
+        def __put_system_reconcile_summaries(
             self,
             **kwargs
         ):
-            """post_system_reconcile_summaries  # noqa: E501
+            """put_system_reconcile_summaries  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.post_system_reconcile_summaries(async_req=True)
+            >>> thread = api.put_system_reconcile_summaries(async_req=True)
             >>> result = thread.get()
 
 
@@ -228,15 +228,15 @@ class SystemApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             return self.call_with_http_info(**kwargs)
 
-        self.post_system_reconcile_summaries = _Endpoint(
+        self.put_system_reconcile_summaries = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
                     'X-Nomad-Token'
                 ],
                 'endpoint_path': '/system/reconcile/summaries',
-                'operation_id': 'post_system_reconcile_summaries',
-                'http_method': 'POST',
+                'operation_id': 'put_system_reconcile_summaries',
+                'http_method': 'PUT',
                 'servers': None,
             },
             params_map={
@@ -289,5 +289,5 @@ class SystemApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__post_system_reconcile_summaries
+            callable=__put_system_reconcile_summaries
         )

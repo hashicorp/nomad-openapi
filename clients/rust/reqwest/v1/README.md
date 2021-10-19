@@ -62,8 +62,8 @@ Class | Method | HTTP request | Description
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 
-*SystemApi* | [**post_system_gc**](docs/SystemApi.md#post_system_gc) | **POST** /system/gc | 
-*SystemApi* | [**post_system_reconcile_summaries**](docs/SystemApi.md#post_system_reconcile_summaries) | **POST** /system/reconcile/summaries | 
+*SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
+*SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
 *VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **DELETE** /volumes/snapshot | 
 *VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **DELETE** /volume/csi/{volumeId} | 
