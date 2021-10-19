@@ -315,4 +315,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_one_time_token.py
+test/test_one_time_token_exchange_request.py
 tox.ini

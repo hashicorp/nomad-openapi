@@ -297,3 +297,5 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/model/OneTimeToken.spec.js
+test/model/OneTimeTokenExchangeRequest.spec.js
