@@ -4101,10 +4101,14 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4156,11 +4160,15 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
 <<<<<<< HEAD
       - $ref: '#/components/parameters/PolicyNameParam'
@@ -4193,12 +4201,16 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
 <<<<<<< HEAD
@@ -4228,11 +4240,15 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
 <<<<<<< HEAD
       - $ref: '#/components/parameters/PolicyNameParam'
@@ -4276,10 +4292,14 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 >>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4309,11 +4329,15 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
@@ -4342,12 +4366,16 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
@@ -4373,11 +4401,15 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLTokenAccessorParam'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
 >>>>>>> 548a9f4 (finished acls-api i think)
@@ -4409,10 +4441,14 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4436,10 +4472,14 @@ paths:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       requestBody:
         content:
@@ -4507,10 +4547,14 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
 >>>>>>> 548a9f4 (finished acls-api i think)
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> e073f3a (merge)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
