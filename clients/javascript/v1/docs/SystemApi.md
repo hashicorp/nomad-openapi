@@ -4,14 +4,14 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postSystemGC**](SystemApi.md#postSystemGC) | **POST** /system/gc | 
-[**postSystemReconcileSummaries**](SystemApi.md#postSystemReconcileSummaries) | **POST** /system/reconcile/summaries | 
+[**putSystemGC**](SystemApi.md#putSystemGC) | **PUT** /system/gc | 
+[**putSystemReconcileSummaries**](SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
 
 
 
-## postSystemGC
+## putSystemGC
 
-> postSystemGC(opts)
+> putSystemGC(opts)
 
 
 
@@ -33,7 +33,7 @@ let opts = {
   'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
   'idempotencyToken': "idempotencyToken_example" // String | Can be used to ensure operations are only run once.
 };
-apiInstance.postSystemGC(opts, (error, data, response) => {
+apiInstance.putSystemGC(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -66,9 +66,9 @@ null (empty response body)
 - **Accept**: Not defined
 
 
-## postSystemReconcileSummaries
+## putSystemReconcileSummaries
 
-> postSystemReconcileSummaries(opts)
+> putSystemReconcileSummaries(opts)
 
 
 
@@ -90,7 +90,7 @@ let opts = {
   'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
   'idempotencyToken': "idempotencyToken_example" // String | Can be used to ensure operations are only run once.
 };
-apiInstance.postSystemReconcileSummaries(opts, (error, data, response) => {
+apiInstance.putSystemReconcileSummaries(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

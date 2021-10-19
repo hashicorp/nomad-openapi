@@ -40,12 +40,12 @@ public class SystemApiTest {
      *          if the Api call fails
      */
     @Test
-    public void postSystemGCTest() throws ApiException {
+    public void putSystemGCTest() throws ApiException {
         String region = null;
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postSystemGC(region, namespace, xNomadToken, idempotencyToken);
+        api.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }
@@ -59,12 +59,12 @@ public class SystemApiTest {
      *          if the Api call fails
      */
     @Test
-    public void postSystemReconcileSummariesTest() throws ApiException {
+    public void putSystemReconcileSummariesTest() throws ApiException {
         String region = null;
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
+        api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }

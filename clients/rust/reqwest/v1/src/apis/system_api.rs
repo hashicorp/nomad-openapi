@@ -15,10 +15,10 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `post_system_gc`
+/// struct for typed errors of method `put_system_gc`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum PostSystemGcError {
+pub enum PutSystemGcError {
     Status400(),
     Status403(),
     Status405(),
@@ -26,10 +26,10 @@ pub enum PostSystemGcError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_system_reconcile_summaries`
+/// struct for typed errors of method `put_system_reconcile_summaries`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum PostSystemReconcileSummariesError {
+pub enum PutSystemReconcileSummariesError {
     Status400(),
     Status403(),
     Status405(),
@@ -38,12 +38,12 @@ pub enum PostSystemReconcileSummariesError {
 }
 
 
-pub async fn post_system_gc(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostSystemGcError>> {
+pub async fn put_system_gc(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PutSystemGcError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/system/gc", configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
         local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
@@ -78,18 +78,18 @@ pub async fn post_system_gc(configuration: &configuration::Configuration, region
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<PostSystemGcError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<PutSystemGcError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
-pub async fn post_system_reconcile_summaries(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostSystemReconcileSummariesError>> {
+pub async fn put_system_reconcile_summaries(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PutSystemReconcileSummariesError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/system/reconcile/summaries", configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
         local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
@@ -124,7 +124,7 @@ pub async fn post_system_reconcile_summaries(configuration: &configuration::Conf
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<PostSystemReconcileSummariesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<PutSystemReconcileSummariesError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

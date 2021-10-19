@@ -27,7 +27,7 @@ var (
 // SystemApiService SystemApi service
 type SystemApiService service
 
-type ApiPostSystemGCRequest struct {
+type ApiPutSystemGCRequest struct {
 	ctx _context.Context
 	ApiService *SystemApiService
 	region *string
@@ -36,34 +36,34 @@ type ApiPostSystemGCRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiPostSystemGCRequest) Region(region string) ApiPostSystemGCRequest {
+func (r ApiPutSystemGCRequest) Region(region string) ApiPutSystemGCRequest {
 	r.region = &region
 	return r
 }
-func (r ApiPostSystemGCRequest) Namespace(namespace string) ApiPostSystemGCRequest {
+func (r ApiPutSystemGCRequest) Namespace(namespace string) ApiPutSystemGCRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiPostSystemGCRequest) XNomadToken(xNomadToken string) ApiPostSystemGCRequest {
+func (r ApiPutSystemGCRequest) XNomadToken(xNomadToken string) ApiPutSystemGCRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiPostSystemGCRequest) IdempotencyToken(idempotencyToken string) ApiPostSystemGCRequest {
+func (r ApiPutSystemGCRequest) IdempotencyToken(idempotencyToken string) ApiPutSystemGCRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiPostSystemGCRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.PostSystemGCExecute(r)
+func (r ApiPutSystemGCRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PutSystemGCExecute(r)
 }
 
 /*
- * PostSystemGC Method for PostSystemGC
+ * PutSystemGC Method for PutSystemGC
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiPostSystemGCRequest
+ * @return ApiPutSystemGCRequest
  */
-func (a *SystemApiService) PostSystemGC(ctx _context.Context) ApiPostSystemGCRequest {
-	return ApiPostSystemGCRequest{
+func (a *SystemApiService) PutSystemGC(ctx _context.Context) ApiPutSystemGCRequest {
+	return ApiPutSystemGCRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -72,16 +72,16 @@ func (a *SystemApiService) PostSystemGC(ctx _context.Context) ApiPostSystemGCReq
 /*
  * Execute executes the request
  */
-func (a *SystemApiService) PostSystemGCExecute(r ApiPostSystemGCRequest) (*_nethttp.Response, error) {
+func (a *SystemApiService) PutSystemGCExecute(r ApiPutSystemGCRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.PostSystemGC")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.PutSystemGC")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -163,7 +163,7 @@ func (a *SystemApiService) PostSystemGCExecute(r ApiPostSystemGCRequest) (*_neth
 	return localVarHTTPResponse, nil
 }
 
-type ApiPostSystemReconcileSummariesRequest struct {
+type ApiPutSystemReconcileSummariesRequest struct {
 	ctx _context.Context
 	ApiService *SystemApiService
 	region *string
@@ -172,34 +172,34 @@ type ApiPostSystemReconcileSummariesRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiPostSystemReconcileSummariesRequest) Region(region string) ApiPostSystemReconcileSummariesRequest {
+func (r ApiPutSystemReconcileSummariesRequest) Region(region string) ApiPutSystemReconcileSummariesRequest {
 	r.region = &region
 	return r
 }
-func (r ApiPostSystemReconcileSummariesRequest) Namespace(namespace string) ApiPostSystemReconcileSummariesRequest {
+func (r ApiPutSystemReconcileSummariesRequest) Namespace(namespace string) ApiPutSystemReconcileSummariesRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiPostSystemReconcileSummariesRequest) XNomadToken(xNomadToken string) ApiPostSystemReconcileSummariesRequest {
+func (r ApiPutSystemReconcileSummariesRequest) XNomadToken(xNomadToken string) ApiPutSystemReconcileSummariesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiPostSystemReconcileSummariesRequest) IdempotencyToken(idempotencyToken string) ApiPostSystemReconcileSummariesRequest {
+func (r ApiPutSystemReconcileSummariesRequest) IdempotencyToken(idempotencyToken string) ApiPutSystemReconcileSummariesRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiPostSystemReconcileSummariesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.PostSystemReconcileSummariesExecute(r)
+func (r ApiPutSystemReconcileSummariesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PutSystemReconcileSummariesExecute(r)
 }
 
 /*
- * PostSystemReconcileSummaries Method for PostSystemReconcileSummaries
+ * PutSystemReconcileSummaries Method for PutSystemReconcileSummaries
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiPostSystemReconcileSummariesRequest
+ * @return ApiPutSystemReconcileSummariesRequest
  */
-func (a *SystemApiService) PostSystemReconcileSummaries(ctx _context.Context) ApiPostSystemReconcileSummariesRequest {
-	return ApiPostSystemReconcileSummariesRequest{
+func (a *SystemApiService) PutSystemReconcileSummaries(ctx _context.Context) ApiPutSystemReconcileSummariesRequest {
+	return ApiPutSystemReconcileSummariesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -208,16 +208,16 @@ func (a *SystemApiService) PostSystemReconcileSummaries(ctx _context.Context) Ap
 /*
  * Execute executes the request
  */
-func (a *SystemApiService) PostSystemReconcileSummariesExecute(r ApiPostSystemReconcileSummariesRequest) (*_nethttp.Response, error) {
+func (a *SystemApiService) PutSystemReconcileSummariesExecute(r ApiPutSystemReconcileSummariesRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.PostSystemReconcileSummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.PutSystemReconcileSummaries")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}

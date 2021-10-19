@@ -24,14 +24,14 @@ class TestSystemApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_post_system_gc(self):
-        """Test case for post_system_gc
+    def test_put_system_gc(self):
+        """Test case for put_system_gc
 
         """
         pass
 
-    def test_post_system_reconcile_summaries(self):
-        """Test case for post_system_reconcile_summaries
+    def test_put_system_reconcile_summaries(self):
+        """Test case for put_system_reconcile_summaries
 
         """
         pass

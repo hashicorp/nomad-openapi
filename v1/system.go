@@ -19,7 +19,7 @@ func (s *System) SystemApi() *client.SystemApiService {
 }
 
 func (s *System) GarbageCollection(ctx context.Context) (*WriteMeta, error) {
-	request := s.SystemApi().PostSystemGC(s.client.Ctx)
+	request := s.SystemApi().PutSystemGC(s.client.Ctx)
 	meta, err := s.client.ExecNoResponseWrite(ctx, request)
 	if err != nil {
 		return nil, err
@@ -29,7 +29,7 @@ func (s *System) GarbageCollection(ctx context.Context) (*WriteMeta, error) {
 }
 
 func (s *System) Reconcile(ctx context.Context) (*WriteMeta, error) {
-	request := s.SystemApi().PostSystemReconcileSummaries(s.client.Ctx)
+	request := s.SystemApi().PutSystemReconcileSummaries(s.client.Ctx)
 	meta, err := s.client.ExecNoResponseWrite(ctx, request)
 	if err != nil {
 		return nil, err
@@ -37,4 +37,3 @@ func (s *System) Reconcile(ctx context.Context) (*WriteMeta, error) {
 
 	return meta, nil
 }
-

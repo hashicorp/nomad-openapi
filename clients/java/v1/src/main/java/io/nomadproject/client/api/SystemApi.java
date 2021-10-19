@@ -54,7 +54,7 @@ public class SystemApi {
     }
 
     /**
-     * Build call for postSystemGC
+     * Build call for putSystemGC
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
@@ -72,7 +72,7 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSystemGCCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSystemGCCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -115,14 +115,14 @@ public class SystemApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSystemGCValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSystemGCValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = postSystemGCCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = putSystemGCCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         return localVarCall;
 
     }
@@ -145,8 +145,8 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public void postSystemGC(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        postSystemGCWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
+    public void putSystemGC(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        putSystemGCWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
     }
 
     /**
@@ -168,8 +168,8 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> postSystemGCWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        okhttp3.Call localVarCall = postSystemGCValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
+    public ApiResponse<Void> putSystemGCWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = putSystemGCValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,14 +193,14 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSystemGCAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putSystemGCAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSystemGCValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = putSystemGCValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postSystemReconcileSummaries
+     * Build call for putSystemReconcileSummaries
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
@@ -218,7 +218,7 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSystemReconcileSummariesCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSystemReconcileSummariesCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -261,14 +261,14 @@ public class SystemApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSystemReconcileSummariesValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSystemReconcileSummariesValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = postSystemReconcileSummariesCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = putSystemReconcileSummariesCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         return localVarCall;
 
     }
@@ -291,8 +291,8 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public void postSystemReconcileSummaries(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        postSystemReconcileSummariesWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
+    public void putSystemReconcileSummaries(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        putSystemReconcileSummariesWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
     }
 
     /**
@@ -314,8 +314,8 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> postSystemReconcileSummariesWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        okhttp3.Call localVarCall = postSystemReconcileSummariesValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
+    public ApiResponse<Void> putSystemReconcileSummariesWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = putSystemReconcileSummariesValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -339,9 +339,9 @@ public class SystemApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSystemReconcileSummariesAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putSystemReconcileSummariesAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSystemReconcileSummariesValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = putSystemReconcileSummariesValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
