@@ -4060,7 +4060,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4111,7 +4111,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
       responses:
@@ -4138,7 +4138,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
@@ -4162,7 +4162,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/ACLPolicyNameParam'
       requestBody:
@@ -4196,7 +4196,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4220,7 +4220,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
       responses:
@@ -4247,7 +4247,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
@@ -4271,7 +4271,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       - $ref: '#/components/parameters/TokenAccessorParam'
       requestBody:
@@ -4301,7 +4301,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4324,7 +4324,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       requestBody:
         content:
@@ -4357,7 +4357,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:

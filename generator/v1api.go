@@ -153,6 +153,14 @@ var (
 		Name:        "per_page",
 		In:          inQuery,
 	}
+	policyNameParam = parameter{
+		Id:          "PolicyNameParam",
+		SchemaType:  stringSchema,
+		Description: "The ACL policy name.",
+		Name:        "policyName",
+		In:          inPath,
+		Required:    true,
+	}
 	prefixParam = parameter{
 		Id:          "PrefixParam",
 		SchemaType:  stringSchema,
