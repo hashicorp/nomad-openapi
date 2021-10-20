@@ -317,8 +317,13 @@ src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 =======
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
 >>>>>>> dc9dbb0 (added scalingPolicyIDParam in v1api.go, populated generator/scaling.go, added v1/scaling.go)
+=======
+src/test/java/io/nomadproject/client/api/ScalingApiTest.java
+src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
+>>>>>>> a98ece81fc131ead8a880b0a3f2ece8d2d8ed6ac

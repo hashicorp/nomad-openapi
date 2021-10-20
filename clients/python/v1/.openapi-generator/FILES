@@ -312,9 +312,14 @@ setup.py
 test-requirements.txt
 test/__init__.py
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_system_api.py
 =======
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
 >>>>>>> dc9dbb0 (added scalingPolicyIDParam in v1api.go, populated generator/scaling.go, added v1/scaling.go)
+=======
+test/test_scaling_api.py
+test/test_scaling_policy_list_stub.py
+>>>>>>> a98ece81fc131ead8a880b0a3f2ece8d2d8ed6ac
 tox.ini
