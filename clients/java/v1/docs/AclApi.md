@@ -13,6 +13,7 @@ Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
@@ -26,6 +27,9 @@ Method | HTTP request | Description
 =======
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
+>>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 [**getACLTokens**](AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 [**postACLBootstrap**](AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 [**postACLPolicy**](AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
@@ -791,6 +795,7 @@ null (empty response body)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 =======
 > List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
@@ -801,6 +806,9 @@ null (empty response body)
 =======
 > ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
+>>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 
 
 
@@ -836,6 +844,7 @@ public class Example {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 =======
       List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
@@ -846,6 +855,9 @@ public class Example {
 =======
       ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+>>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AclApi#postACLToken");
@@ -874,6 +886,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**List&lt;ACLToken&gt;**](ACLToken.md)
@@ -884,6 +897,9 @@ Name | Type | Description  | Notes
 =======
 [**ACLToken**](ACLToken.md)
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 
 ### Authorization
 
