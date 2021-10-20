@@ -342,6 +342,7 @@ src/main/java/io/nomadproject/client/models/VolumeRequest.java
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
@@ -361,10 +362,12 @@ src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
 =======
 >>>>>>> 3550113 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 <<<<<<< HEAD
-src/test/java/io/nomadproject/client/api/SystemApiTest.java
 =======
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
+src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
+<<<<<<< HEAD
 >>>>>>> 548a9f4 (finished acls-api i think)
 <<<<<<< HEAD
 >>>>>>> 6878d94 (finished acls-api i think)
@@ -432,3 +435,5 @@ src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
 >>>>>>> 7a50f49 (finished acls-api i think)
 =======
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+>>>>>>> 8a16833 (rebased, regenerated client outputs)

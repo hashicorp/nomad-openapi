@@ -19,6 +19,7 @@ Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
 =======
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token/self | 
@@ -50,6 +51,9 @@ Method | HTTP request | Description
 =======
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 [**GetACLTokens**](ACLApi.md#GetACLTokens) | **Get** /acl/tokens | 
 [**PostACLBootstrap**](ACLApi.md#PostACLBootstrap) | **Post** /acl/bootstrap | 
 [**PostACLPolicy**](ACLApi.md#PostACLPolicy) | **Post** /acl/policy/{policyName} | 
@@ -775,6 +779,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 =======
 > []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
@@ -800,6 +805,9 @@ Name | Type | Description  | Notes
 =======
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+> ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 
 
 
@@ -838,6 +846,7 @@ func main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // response from `PostACLToken`: ACLToken
 =======
     // response from `PostACLToken`: []ACLToken
@@ -863,6 +872,9 @@ func main() {
 =======
     // response from `PostACLToken`: ACLToken
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+    // response from `PostACLToken`: ACLToken
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLToken`: %v\n", resp)
 }
 ```
@@ -899,6 +911,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**[]ACLToken**](ACLToken.md)
@@ -924,6 +937,9 @@ Name | Type | Description  | Notes
 =======
 [**ACLToken**](ACLToken.md)
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 
 ### Authorization
 

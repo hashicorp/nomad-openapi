@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
 =======
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
@@ -124,6 +125,9 @@ Class | Method | HTTP request | Description
 =======
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 *ACLApi* | [**GetACLTokens**](docs/ACLApi.md#getacltokens) | **Get** /acl/tokens | 
 *ACLApi* | [**PostACLBootstrap**](docs/ACLApi.md#postaclbootstrap) | **Post** /acl/bootstrap | 
 *ACLApi* | [**PostACLPolicy**](docs/ACLApi.md#postaclpolicy) | **Post** /acl/policy/{policyName} | 

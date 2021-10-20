@@ -19,6 +19,7 @@ Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**getACLTokenSelf**](ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 [**getACLTokenSelf**](ACLApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
@@ -50,6 +51,9 @@ Method | HTTP request | Description
 =======
 [**getACLTokenSelf**](ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+[**getACLTokenSelf**](ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 [**getACLTokens**](ACLApi.md#getACLTokens) | **GET** /acl/tokens | 
 [**postACLBootstrap**](ACLApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 [**postACLPolicy**](ACLApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
@@ -644,6 +648,7 @@ null (empty response body)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken postACLToken(tokenAccessor, aCLToken, opts)
 =======
 > [ACLToken] postACLToken(tokenAccessor, aCLToken, opts)
@@ -669,6 +674,9 @@ null (empty response body)
 =======
 > ACLToken postACLToken(tokenAccessor, aCLToken, opts)
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+> ACLToken postACLToken(tokenAccessor, aCLToken, opts)
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 
 
 
@@ -723,6 +731,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**[ACLToken]**](ACLToken.md)
@@ -748,6 +757,9 @@ Name | Type | Description  | Notes
 =======
 [**ACLToken**](ACLToken.md)
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
 
 ### Authorization
 

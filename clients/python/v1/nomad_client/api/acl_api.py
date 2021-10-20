@@ -911,6 +911,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
 =======
                 'endpoint_path': '/acl/token/self',
@@ -942,6 +943,9 @@ class ACLApi(object):
 =======
                 'endpoint_path': '/acl/token',
 >>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
+=======
+                'endpoint_path': '/acl/token',
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
@@ -1519,6 +1523,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 ACLToken
 =======
                 [ACLToken]
@@ -1544,6 +1549,9 @@ class ACLApi(object):
 =======
                 ACLToken
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+                ACLToken
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1582,6 +1590,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'response_type': (ACLToken,),
 =======
                 'response_type': ([ACLToken],),
@@ -1607,6 +1616,9 @@ class ACLApi(object):
 =======
                 'response_type': (ACLToken,),
 >>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
+=======
+                'response_type': (ACLToken,),
+>>>>>>> 8a16833 (rebased, regenerated client outputs)
                 'auth': [
                     'X-Nomad-Token'
                 ],
