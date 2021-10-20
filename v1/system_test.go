@@ -13,9 +13,8 @@ func TestPutSystemGC(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, err := testClient.System().GarbageCollection(writeOpts.Ctx())
+		err = testClient.System().GarbageCollect(writeOpts.Ctx())
 		require.NoError(t, err)
-		require.NotNil(t, result)
 	})
 }
 
@@ -25,8 +24,7 @@ func TestPutSystemReconcileSummaries(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, err := testClient.System().Reconcile(writeOpts.Ctx())
+		err = testClient.System().Reconcile(writeOpts.Ctx())
 		require.NoError(t, err)
-		require.NotNil(t, result)
 	})
 }

@@ -151,24 +151,21 @@ func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{
 }
 
 // ExecNoResponseRequest executes a client operation that does not return a model, query or write metadata.
-//func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) (string, error) {
-func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) (interface{}, error) {
+func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) error {
 	typeOf := reflect.TypeOf(request)
 	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, errors.New("ExecNoResponseRequest failed: no Execute method on interface")
+		return errors.New("ExecNoResponseRequest failed: no Execute method on interface")
 	}
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
-		return nil, values[1].Interface().(error)
+		return values[1].Interface().(error)
 	}
 
-	result := values[0].Interface()
-
-	return result, nil
+	return nil
 }
 
 // setQueryOptions is used to annotate the request with
