@@ -939,18 +939,8 @@ components:
             type: integer
     PutSystemGCResponse:
       description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
     PutSystemReconcileSummariesResponse:
       description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
     RegisterJobResponse:
       content:
         application/json:
@@ -4729,7 +4719,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4752,7 +4742,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":

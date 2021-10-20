@@ -3525,16 +3525,7 @@ paths:
           type: string
         style: form
       responses:
-        "200":
-          headers:
-            X-Nomad-Index:
-              description: A unique identifier representing the current state of the
-                requested resource. On a new Nomad cluster the value of this index
-                starts at 1.
-              explode: false
-              schema:
-                type: integer
-              style: simple
+        "200": {}
         "400":
           description: Bad request
         "403":
@@ -3585,16 +3576,7 @@ paths:
           type: string
         style: form
       responses:
-        "200":
-          headers:
-            X-Nomad-Index:
-              description: A unique identifier representing the current state of the
-                requested resource. On a new Nomad cluster the value of this index
-                starts at 1.
-              explode: false
-              schema:
-                type: integer
-              style: simple
+        "200": {}
         "400":
           description: Bad request
         "403":
@@ -5992,24 +5974,8 @@ components:
           schema:
             type: integer
           style: simple
-    PutSystemGCResponse:
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-    PutSystemReconcileSummariesResponse:
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
+    PutSystemGCResponse: {}
+    PutSystemReconcileSummariesResponse: {}
     RegisterJobResponse:
       content:
         application/json:

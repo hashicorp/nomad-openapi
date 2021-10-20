@@ -18,22 +18,24 @@ func (s *System) SystemApi() *client.SystemApiService {
 	return s.client.apiClient.SystemApi
 }
 
-func (s *System) GarbageCollection(ctx context.Context) (*WriteMeta, error) {
+func (s *System) GarbageCollection(ctx context.Context) (string, error) {
 	request := s.SystemApi().PutSystemGC(s.client.Ctx)
-	meta, err := s.client.ExecNoResponseWrite(ctx, request)
+
+	result, err := s.client.ExecNoResponseRequest(ctx, request)
 	if err != nil {
-		return nil, err
+		return result, err
 	}
 
-	return meta, nil
+	return result, nil
 }
 
-func (s *System) Reconcile(ctx context.Context) (*WriteMeta, error) {
+func (s *System) Reconcile(ctx context.Context) (string, error) {
 	request := s.SystemApi().PutSystemReconcileSummaries(s.client.Ctx)
-	meta, err := s.client.ExecNoResponseWrite(ctx, request)
+
+	result, err := s.client.ExecNoResponseRequest(ctx, request)
 	if err != nil {
-		return nil, err
+		return result, err
 	}
 
-	return meta, nil
+	return result, nil
 }

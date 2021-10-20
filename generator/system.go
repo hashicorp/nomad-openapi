@@ -1,6 +1,8 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func (v *v1api) getSystemPaths() []*apiPath {
 	tags := []string{"System"}
@@ -19,7 +21,7 @@ func (v *v1api) getSystemPaths() []*apiPath {
 					newResponseConfig(200,
 						nilSchema,
 						nil,
-						defaultWriteMeta,
+						nil,
 						"PutSystemGCResponse",
 					),
 				),
@@ -38,7 +40,7 @@ func (v *v1api) getSystemPaths() []*apiPath {
 					newResponseConfig(200,
 						nilSchema,
 						nil,
-						defaultWriteMeta,
+						nil,
 						"PutSystemReconcileSummariesResponse",
 					),
 				),

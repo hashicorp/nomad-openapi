@@ -82,7 +82,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
+**200** |  |  -  |
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |
@@ -164,7 +164,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
+**200** |  |  -  |
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |
