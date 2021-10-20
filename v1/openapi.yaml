@@ -4723,7 +4723,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4751,7 +4751,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       - $ref: '#/components/parameters/ScalingPolicyIDParam'

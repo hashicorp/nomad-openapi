@@ -293,14 +293,6 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
-<<<<<<< HEAD
-<<<<<<< HEAD
+test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
-=======
-test/api/ScalingApi.spec.js
 test/model/ScalingPolicyListStub.spec.js
->>>>>>> dc9dbb0 (added scalingPolicyIDParam in v1api.go, populated generator/scaling.go, added v1/scaling.go)
-=======
-test/api/ScalingApi.spec.js
-test/model/ScalingPolicyListStub.spec.js
->>>>>>> a98ece81fc131ead8a880b0a3f2ece8d2d8ed6ac
