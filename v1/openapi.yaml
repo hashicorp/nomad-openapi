@@ -4747,7 +4747,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
 <<<<<<< HEAD
@@ -4784,7 +4784,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:

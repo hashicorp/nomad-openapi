@@ -13525,6 +13525,7 @@ components:
           type: object
       type: object
     CSIControllerInfo:
+<<<<<<< HEAD
       example:
         SupportsListVolumes: true
         SupportsReadOnlyAttach: true
@@ -14294,6 +14295,8 @@ components:
           type: object
       type: object
     CSIControllerInfo:
+=======
+>>>>>>> 770b881 (rebase and regenerated client)
       example:
         SupportsListVolumes: true
         SupportsReadOnlyAttach: true
