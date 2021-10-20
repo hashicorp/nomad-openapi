@@ -301,19 +301,10 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-test/api/SystemApi.spec.js
-=======
-=======
->>>>>>> 13a3eee18f79329a388d9c60a3e9cf16fcf61f39
 test/api/PluginsApi.spec.js
+test/api/SystemApi.spec.js
 test/model/CSIControllerInfo.spec.js
 test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
-<<<<<<< HEAD
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
->>>>>>> 13a3eee18f79329a388d9c60a3e9cf16fcf61f39

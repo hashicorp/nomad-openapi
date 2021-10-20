@@ -13006,67 +13006,6 @@ components:
           type: object
       type: object
     CSIControllerInfo:
-<<<<<<< HEAD
-      example:
-        SupportsListVolumes: true
-        SupportsReadOnlyAttach: true
-        SupportsListVolumesAttachedNodes: true
-        SupportsAttachDetach: true
-      properties:
-        SupportsAttachDetach:
-          type: boolean
-        SupportsListVolumes:
-          type: boolean
-        SupportsListVolumesAttachedNodes:
-          type: boolean
-        SupportsReadOnlyAttach:
-          type: boolean
-      type: object
-    CSIInfo:
-      example:
-        HealthDescription: HealthDescription
-        AllocID: AllocID
-        NodeInfo:
-          RequiresNodeStageVolume: true
-          MaxVolumes: 0
-          ID: ID
-          AccessibleTopology:
-            Segments:
-              key: Segments
-        UpdateTime: 2000-01-23T04:56:07.000+00:00
-        RequiresTopologies: true
-        PluginID: PluginID
-        ControllerInfo:
-          SupportsListVolumes: true
-          SupportsReadOnlyAttach: true
-          SupportsListVolumesAttachedNodes: true
-          SupportsAttachDetach: true
-        Healthy: true
-        RequiresControllerPlugin: true
-      properties:
-        AllocID:
-          type: string
-        ControllerInfo:
-          $ref: '#/components/schemas/CSIControllerInfo'
-        HealthDescription:
-          type: string
-        Healthy:
-          type: boolean
-        NodeInfo:
-          $ref: '#/components/schemas/CSINodeInfo'
-        PluginID:
-          type: string
-        RequiresControllerPlugin:
-          type: boolean
-        RequiresTopologies:
-          type: boolean
-        UpdateTime:
-          format: date-time
-          type: string
-      type: object
-    CSIMountOptions:
-=======
->>>>>>> 13a3eee18f79329a388d9c60a3e9cf16fcf61f39
       example:
         SupportsListVolumes: true
         SupportsReadOnlyAttach: true

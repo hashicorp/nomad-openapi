@@ -324,19 +324,10 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
-<<<<<<< HEAD
-<<<<<<< HEAD
-src/test/java/io/nomadproject/client/api/SystemApiTest.java
-=======
-=======
->>>>>>> 13a3eee18f79329a388d9c60a3e9cf16fcf61f39
 src/test/java/io/nomadproject/client/api/PluginsApiTest.java
+src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/models/CSIControllerInfoTest.java
 src/test/java/io/nomadproject/client/models/CSIInfoTest.java
 src/test/java/io/nomadproject/client/models/CSINodeInfoTest.java
 src/test/java/io/nomadproject/client/models/CSIPluginListStubTest.java
 src/test/java/io/nomadproject/client/models/CSIPluginTest.java
-<<<<<<< HEAD
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
->>>>>>> 13a3eee18f79329a388d9c60a3e9cf16fcf61f39

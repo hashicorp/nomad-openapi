@@ -21,7 +21,12 @@ from openapi_client.model.allocated_task_resources import AllocatedTaskResources
 from openapi_client.model.allocation import Allocation
 from openapi_client.model.allocation_list_stub import AllocationListStub
 from openapi_client.model.allocation_metric import AllocationMetric
+from openapi_client.model.csi_controller_info import CSIControllerInfo
+from openapi_client.model.csi_info import CSIInfo
 from openapi_client.model.csi_mount_options import CSIMountOptions
+from openapi_client.model.csi_node_info import CSINodeInfo
+from openapi_client.model.csi_plugin import CSIPlugin
+from openapi_client.model.csi_plugin_list_stub import CSIPluginListStub
 from openapi_client.model.csi_secrets import CSISecrets
 from openapi_client.model.csi_snapshot import CSISnapshot
 from openapi_client.model.csi_snapshot_create_request import CSISnapshotCreateRequest
