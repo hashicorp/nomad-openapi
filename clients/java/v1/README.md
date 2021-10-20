@@ -121,27 +121,7 @@ Class | Method | HTTP request | Description
 *AclApi* | [**getACLPolicies**](docs/AclApi.md#getACLPolicies) | **GET** /acl/policies | 
 *AclApi* | [**getACLPolicy**](docs/AclApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
 *AclApi* | [**getACLToken**](docs/AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 *AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
-=======
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*AclApi* | [**getACLTokenSelf**](docs/AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 *AclApi* | [**getACLTokens**](docs/AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 *AclApi* | [**postACLBootstrap**](docs/AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 *AclApi* | [**postACLPolicy**](docs/AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 

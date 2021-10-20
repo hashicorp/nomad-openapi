@@ -137,27 +137,7 @@ Class | Method | HTTP request | Description
 *nomad-client.ACLApi* | [**getACLPolicies**](docs/ACLApi.md#getACLPolicies) | **GET** /acl/policies | 
 *nomad-client.ACLApi* | [**getACLPolicy**](docs/ACLApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
 *nomad-client.ACLApi* | [**getACLToken**](docs/ACLApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 *nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
-=======
-*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 *nomad-client.ACLApi* | [**getACLTokens**](docs/ACLApi.md#getACLTokens) | **GET** /acl/tokens | 
 *nomad-client.ACLApi* | [**postACLBootstrap**](docs/ACLApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 *nomad-client.ACLApi* | [**postACLPolicy**](docs/ACLApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 

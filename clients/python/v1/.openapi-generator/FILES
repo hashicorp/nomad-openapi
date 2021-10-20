@@ -317,37 +317,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+test/test_one_time_token.py
+test/test_one_time_token_exchange_request.py
 test/test_system_api.py
-=======
-test/test_one_time_token.py
-test/test_one_time_token_exchange_request.py
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-test/test_one_time_token.py
-test/test_one_time_token_exchange_request.py
->>>>>>> e073f3a (merge)
-=======
->>>>>>> 3386180 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-test/test_one_time_token.py
-test/test_one_time_token_exchange_request.py
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-test/test_one_time_token.py
-test/test_one_time_token_exchange_request.py
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
 tox.ini

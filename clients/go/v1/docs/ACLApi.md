@@ -9,27 +9,7 @@ Method | HTTP request | Description
 [**GetACLPolicies**](ACLApi.md#GetACLPolicies) | **Get** /acl/policies | 
 [**GetACLPolicy**](ACLApi.md#GetACLPolicy) | **Get** /acl/policy/{policyName} | 
 [**GetACLToken**](ACLApi.md#GetACLToken) | **Get** /acl/token/{tokenAccessor} | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
-=======
-[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 [**GetACLTokens**](ACLApi.md#GetACLTokens) | **Get** /acl/tokens | 
 [**PostACLBootstrap**](ACLApi.md#PostACLBootstrap) | **Post** /acl/bootstrap | 
 [**PostACLPolicy**](ACLApi.md#PostACLPolicy) | **Post** /acl/policy/{policyName} | 
@@ -747,23 +727,7 @@ Name | Type | Description  | Notes
 
 ## PostACLToken
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
-=======
-> []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-> []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-> ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-> ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 
 
 
@@ -794,23 +758,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     // response from `PostACLToken`: ACLToken
-=======
-    // response from `PostACLToken`: []ACLToken
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-    // response from `PostACLToken`: []ACLToken
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-    // response from `PostACLToken`: ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-    // response from `PostACLToken`: ACLToken
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLToken`: %v\n", resp)
 }
 ```
@@ -839,23 +787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
-=======
-[**[]ACLToken**](ACLToken.md)
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**[]ACLToken**](ACLToken.md)
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
 
 ### Authorization
 

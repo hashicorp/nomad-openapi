@@ -42,19 +42,7 @@ pub trait ACLApi {
     fn get_acl_tokens(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AclTokenListStub>, Error = Error<serde_json::Value>>>;
     fn post_acl_bootstrap(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AclToken>, Error = Error<serde_json::Value>>>;
     fn post_acl_policy(&self, policy_name: &str, acl_policy: crate::models::AclPolicy, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>>;
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AclToken>, Error = Error<serde_json::Value>>>;
->>>>>>> b1a8ea3 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>>;
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>>;
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
     fn post_acl_token_onetime(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::OneTimeToken, Error = Error<serde_json::Value>>>;
     fn post_acl_token_onetime_exchange(&self, one_time_token_exchange_request: crate::models::OneTimeTokenExchangeRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>>;
 }
@@ -360,19 +348,7 @@ impl<C: hyper::client::Connect>ACLApi for ACLApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>> {
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AclToken>, Error = Error<serde_json::Value>>> {
->>>>>>> b1a8ea3 (tokenAccessorParam --> aclTokenAccessorParam to stay aligned with naming)
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>> {
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-    fn post_acl_token(&self, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AclToken, Error = Error<serde_json::Value>>> {
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
         let mut req = __internal_request::Request::new(hyper::Method::Post, "/acl/token/{tokenAccessor}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,

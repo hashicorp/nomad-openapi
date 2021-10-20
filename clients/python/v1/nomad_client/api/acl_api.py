@@ -901,27 +901,7 @@ class ACLApi(object):
                 'auth': [
                     'X-Nomad-Token'
                 ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
@@ -1491,23 +1471,7 @@ class ACLApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 ACLToken
-=======
-                [ACLToken]
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                [ACLToken]
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                ACLToken
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1538,23 +1502,7 @@ class ACLApi(object):
 
         self.post_acl_token = _Endpoint(
             settings={
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 'response_type': (ACLToken,),
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'response_type': (ACLToken,),
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                'response_type': (ACLToken,),
->>>>>>> 51ceb3249cd133c28963d031156b821caaf7e2b7
                 'auth': [
                     'X-Nomad-Token'
                 ],
