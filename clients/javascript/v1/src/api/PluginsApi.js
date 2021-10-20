@@ -45,10 +45,14 @@ export default class PluginsApi {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param {String} pluginID The CSI plugin identifier.
 =======
      * @param {String} pluginId The CSI plugin identifier.
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+     * @param {String} pluginID The CSI plugin identifier.
+>>>>>>> 13a3eee (added tests for plugins)
      * @param {Object} opts Optional parameters
      * @param {String} opts.region Filters results based on the specified region.
      * @param {String} opts.namespace Filters results based on the specified namespace.
@@ -63,6 +67,7 @@ export default class PluginsApi {
      * data is of type: {@link Array.<module:model/CSIPlugin>}
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     getPluginCSI(pluginID, opts, callback) {
       opts = opts || {};
       let postBody = null;
@@ -75,16 +80,23 @@ export default class PluginsApi {
         'pluginID': pluginID
 =======
     getPluginCSI(pluginId, opts, callback) {
+=======
+    getPluginCSI(pluginID, opts, callback) {
+>>>>>>> 13a3eee (added tests for plugins)
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'pluginId' is set
-      if (pluginId === undefined || pluginId === null) {
-        throw new Error("Missing the required parameter 'pluginId' when calling getPluginCSI");
+      // verify the required parameter 'pluginID' is set
+      if (pluginID === undefined || pluginID === null) {
+        throw new Error("Missing the required parameter 'pluginID' when calling getPluginCSI");
       }
 
       let pathParams = {
+<<<<<<< HEAD
         'pluginId': pluginId
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+        'pluginID': pluginID
+>>>>>>> 13a3eee (added tests for plugins)
       };
       let queryParams = {
         'region': opts['region'],

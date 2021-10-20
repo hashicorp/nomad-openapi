@@ -44,10 +44,14 @@ with nomad_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = plugins_api.PluginsApi(api_client)
 <<<<<<< HEAD
+<<<<<<< HEAD
     plugin_id = "pluginID_example" # str | The CSI plugin identifier.
 =======
     plugin_id = "pluginId_example" # str | The CSI plugin identifier.
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+    plugin_id = "pluginID_example" # str | The CSI plugin identifier.
+>>>>>>> 13a3eee (added tests for plugins)
     region = "region_example" # str | Filters results based on the specified region. (optional)
     namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
     index = 1 # int | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -202,10 +206,14 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 <<<<<<< HEAD
+<<<<<<< HEAD
 **200** |  |  -  |
 =======
 **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+**200** |  |  -  |
+>>>>>>> 13a3eee (added tests for plugins)
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |

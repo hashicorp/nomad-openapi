@@ -12,10 +12,14 @@ Method | HTTP request | Description
 ## getPluginCSI
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 > [CSIPlugin] getPluginCSI(pluginID, opts)
 =======
 > [CSIPlugin] getPluginCSI(pluginId, opts)
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+> [CSIPlugin] getPluginCSI(pluginID, opts)
+>>>>>>> 13a3eee (added tests for plugins)
 
 
 
@@ -32,10 +36,14 @@ X-Nomad-Token.apiKey = 'YOUR API KEY';
 
 let apiInstance = new nomad-client.PluginsApi();
 <<<<<<< HEAD
+<<<<<<< HEAD
 let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
 =======
 let pluginId = "pluginId_example"; // String | The CSI plugin identifier.
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
+>>>>>>> 13a3eee (added tests for plugins)
 let opts = {
   'region': "region_example", // String | Filters results based on the specified region.
   'namespace': "namespace_example", // String | Filters results based on the specified namespace.
@@ -48,10 +56,14 @@ let opts = {
   'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
 =======
 apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
+>>>>>>> 13a3eee (added tests for plugins)
   if (error) {
     console.error(error);
   } else {
@@ -66,10 +78,14 @@ apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 <<<<<<< HEAD
+<<<<<<< HEAD
  **pluginID** | **String**| The CSI plugin identifier. | 
 =======
  **pluginId** | **String**| The CSI plugin identifier. | 
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+ **pluginID** | **String**| The CSI plugin identifier. | 
+>>>>>>> 13a3eee (added tests for plugins)
  **region** | **String**| Filters results based on the specified region. | [optional] 
  **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
  **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 

@@ -100,6 +100,7 @@ components:
       schema:
         type: integer
 <<<<<<< HEAD
+<<<<<<< HEAD
     PluginIDParam:
       description: The CSI plugin identifier.
       in: path
@@ -110,6 +111,12 @@ components:
       in: path
       name: pluginId
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+    PluginIDParam:
+      description: The CSI plugin identifier.
+      in: path
+      name: pluginID
+>>>>>>> 13a3eee (added tests for plugins)
       required: true
       schema:
         type: string
@@ -699,6 +706,7 @@ components:
             type: array
       description: ""
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       headers:
         X-Nomad-Index:
@@ -714,6 +722,8 @@ components:
           schema:
             type: integer
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+>>>>>>> 13a3eee (added tests for plugins)
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -4741,10 +4751,14 @@ paths:
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PluginIDParam'
 =======
       - $ref: '#/components/parameters/PluginIdParam'
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
+=======
+      - $ref: '#/components/parameters/PluginIDParam'
+>>>>>>> 13a3eee (added tests for plugins)
       responses:
         "200":
           $ref: '#/components/responses/GetPluginCSIResponse'
