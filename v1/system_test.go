@@ -15,7 +15,7 @@ func TestPutSystemGC(t *testing.T) {
 
 		result, err := testClient.System().GarbageCollection(writeOpts.Ctx())
 		require.NoError(t, err)
-		require.Empty(t, result)
+		require.NotNil(t, result)
 	})
 }
 
@@ -27,6 +27,6 @@ func TestPutSystemReconcileSummaries(t *testing.T) {
 
 		result, err := testClient.System().Reconcile(writeOpts.Ctx())
 		require.NoError(t, err)
-		require.Empty(t, result)
+		require.NotNil(t, result)
 	})
 }

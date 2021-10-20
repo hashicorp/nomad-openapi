@@ -18,7 +18,7 @@ func (s *System) SystemApi() *client.SystemApiService {
 	return s.client.apiClient.SystemApi
 }
 
-func (s *System) GarbageCollection(ctx context.Context) (string, error) {
+func (s *System) GarbageCollection(ctx context.Context) (interface{}, error) {
 	request := s.SystemApi().PutSystemGC(s.client.Ctx)
 
 	result, err := s.client.ExecNoResponseRequest(ctx, request)
@@ -29,7 +29,7 @@ func (s *System) GarbageCollection(ctx context.Context) (string, error) {
 	return result, nil
 }
 
-func (s *System) Reconcile(ctx context.Context) (string, error) {
+func (s *System) Reconcile(ctx context.Context) (interface{}, error) {
 	request := s.SystemApi().PutSystemReconcileSummaries(s.client.Ctx)
 
 	result, err := s.client.ExecNoResponseRequest(ctx, request)
