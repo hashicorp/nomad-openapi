@@ -115,6 +115,8 @@ Class | Method | HTTP request | Description
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
 *SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
+*SystemApi* | [**PutSystemGC**](docs/SystemApi.md#putsystemgc) | **Put** /system/gc | 
+*SystemApi* | [**PutSystemReconcileSummaries**](docs/SystemApi.md#putsystemreconcilesummaries) | **Put** /system/reconcile/summaries | 
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**DeleteSnapshot**](docs/VolumesApi.md#deletesnapshot) | **Delete** /volumes/snapshot | 
 *VolumesApi* | [**DeleteVolumeRegistration**](docs/VolumesApi.md#deletevolumeregistration) | **Delete** /volume/csi/{volumeId} | 

@@ -62,6 +62,8 @@ Class | Method | HTTP request | Description
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **Post** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **Post** /search | 
+*SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **Put** /system/gc | 
+*SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **Put** /system/reconcile/summaries | 
 *VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **Post** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **Delete** /volumes/snapshot | 
 *VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **Delete** /volume/csi/{volumeId} | 

@@ -3488,6 +3488,108 @@ paths:
       - Search
       x-contentType: application/json
       x-accepts: application/json
+  /system/gc:
+    put:
+      operationId: PutSystemGC
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200": {}
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - System
+      x-accepts: application/json
+  /system/reconcile/summaries:
+    put:
+      operationId: PutSystemReconcileSummaries
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200": {}
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - System
+      x-accepts: application/json
   /validate/job:
     post:
       operationId: PostJobValidateRequest
@@ -5872,6 +5974,8 @@ components:
           schema:
             type: integer
           style: simple
+    PutSystemGCResponse: {}
+    PutSystemReconcileSummariesResponse: {}
     RegisterJobResponse:
       content:
         application/json:
