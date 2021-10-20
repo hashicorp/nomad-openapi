@@ -19,23 +19,23 @@ func (p *Plugins) PluginsApi() *client.PluginsApiService {
 	return p.client.apiClient.PluginsApi
 }
 
-func (p *Plugins) List(ctx context.Context) (*[]client.CSIPluginListStub, *QueryMeta, error) {
+func (p *Plugins) List(ctx context.Context) (*[]client.CSIPluginListStub, error) {
 	request := p.PluginsApi().GetPlugins(p.client.Ctx)
-	result, meta, err := p.client.ExecQuery(ctx, request)
+	result, err := p.client.ExecRequest(ctx, request)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 
 	final := result.([]client.CSIPluginListStub)
-	return &final, meta, nil
+	return &final, nil
 }
 
-func (p *Plugins) CSI(ctx context.Context, pluginId string) (*[]client.CSIPlugin, *QueryMeta, error) {
-	if pluginId == "" {
+func (p *Plugins) GetPlugin(ctx context.Context, pluginID string) (*[]client.CSIPlugin, *QueryMeta, error) {
+	if pluginID == "" {
 		return nil, nil, errors.New("plugin id is required")
 	}
 
-	request := p.PluginsApi().GetPluginCSI(p.client.Ctx, pluginId)
+	request := p.PluginsApi().GetPluginCSI(p.client.Ctx, pluginID)
 	result, meta, err := p.client.ExecQuery(ctx, request)
 	if err != nil {
 		return nil, nil, err

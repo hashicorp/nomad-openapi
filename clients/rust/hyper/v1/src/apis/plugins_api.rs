@@ -67,7 +67,7 @@ impl<C: hyper::client::Connect>PluginsApi for PluginsApiClient<C> {
         if let Some(ref s) = next_token {
             req = req.with_query_param("next_token".to_string(), s.to_string());
         }
-        req = req.with_path_param("pluginId".to_string(), plugin_id.to_string());
+        req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
         }
