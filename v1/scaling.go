@@ -19,17 +19,6 @@ func (s *Scaling) ScalingApi() *client.ScalingApiService {
 	return s.client.apiClient.ScalingApi
 }
 
-func (s *Scaling) ListPolicies(ctx context.Context) (*[]client.ScalingPolicyListStub, *QueryMeta, error) {
-	request := s.ScalingApi().GetScalingPolicies(s.client.Ctx)
-	result, meta, err := s.client.ExecQuery(ctx, request)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	final := result.([]client.ScalingPolicyListStub)
-	return &final, meta, nil
-}
-
 func (s *Scaling) Policies(ctx context.Context) (*[]client.ScalingPolicyListStub, *QueryMeta, error) {
 	request := s.ScalingApi().GetScalingPolicies(s.client.Ctx)
 	result, meta, err := s.client.ExecQuery(ctx, request)
@@ -41,7 +30,7 @@ func (s *Scaling) Policies(ctx context.Context) (*[]client.ScalingPolicyListStub
 	return &final, meta, nil
 }
 
-func (s *Scaling) Policy(ctx context.Context, policyID string) (*client.ScalingPolicy, *QueryMeta, error) {
+func (s *Scaling) GetPolicy(ctx context.Context, policyID string) (*client.ScalingPolicy, *QueryMeta, error) {
 	if policyID == "" {
 		return nil, nil, errors.New("scaling policy id is required")
 	}
