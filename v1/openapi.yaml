@@ -99,10 +99,10 @@ components:
       name: per_page
       schema:
         type: integer
-    PluginIdParam:
+    PluginIDParam:
       description: The CSI plugin identifier.
       in: path
-      name: pluginId
+      name: pluginID
       required: true
       schema:
         type: string
@@ -684,19 +684,6 @@ components:
               $ref: '#/components/schemas/CSIPluginListStub'
             type: array
       description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -4662,7 +4649,7 @@ paths:
       - $ref: '#/components/parameters/NextTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
-      - $ref: '#/components/parameters/PluginIdParam'
+      - $ref: '#/components/parameters/PluginIDParam'
       responses:
         "200":
           $ref: '#/components/responses/GetPluginCSIResponse'

@@ -2843,7 +2843,7 @@ paths:
       - description: The CSI plugin identifier.
         explode: false
         in: path
-        name: pluginId
+        name: pluginID
         required: true
         schema:
           type: string
@@ -2976,28 +2976,6 @@ paths:
                 items:
                   $ref: '#/components/schemas/CSIPluginListStub'
                 type: array
-          headers:
-            X-Nomad-Index:
-              description: A unique identifier representing the current state of the
-                requested resource. On a new Nomad cluster the value of this index
-                starts at 1.
-              explode: false
-              schema:
-                type: integer
-              style: simple
-            X-Nomad-KnownLeader:
-              description: Boolean indicating if there is a known cluster leader.
-              explode: false
-              schema:
-                type: boolean
-              style: simple
-            X-Nomad-LastContact:
-              description: The time in milliseconds that a server was last contacted
-                by the leader node.
-              explode: false
-              schema:
-                type: integer
-              style: simple
         "400":
           description: Bad request
         "403":
@@ -5147,11 +5125,11 @@ components:
       schema:
         type: integer
       style: form
-    PluginIdParam:
+    PluginIDParam:
       description: The CSI plugin identifier.
       explode: false
       in: path
-      name: pluginId
+      name: pluginID
       required: true
       schema:
         type: string
@@ -5899,27 +5877,6 @@ components:
             items:
               $ref: '#/components/schemas/CSIPluginListStub'
             type: array
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          explode: false
-          schema:
-            type: integer
-          style: simple
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          explode: false
-          schema:
-            type: boolean
-          style: simple
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by
-            the leader node.
-          explode: false
-          schema:
-            type: integer
-          style: simple
     GetQuotaSpecResponse:
       content:
         application/json:

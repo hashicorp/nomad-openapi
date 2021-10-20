@@ -116,11 +116,11 @@ var (
 		In:          inQuery,
 		Required:    false,
 	}
-	pluginIdParam = parameter{
-		Id:          "PluginIdParam",
+	pluginIDParam = parameter{
+		Id:          "PluginIDParam",
 		SchemaType:  stringSchema,
 		Description: "The CSI plugin identifier.",
-		Name:        "pluginId",
+		Name:        "pluginID",
 		In:          inPath,
 		Required:    true,
 	}

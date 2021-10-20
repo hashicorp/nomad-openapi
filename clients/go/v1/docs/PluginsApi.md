@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetPluginCSI
 
-> []CSIPlugin GetPluginCSI(ctx, pluginId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> []CSIPlugin GetPluginCSI(ctx, pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
 
 
 
@@ -28,7 +28,7 @@ import (
 )
 
 func main() {
-    pluginId := "pluginId_example" // string | The CSI plugin identifier.
+    pluginID := "pluginID_example" // string | The CSI plugin identifier.
     region := "region_example" // string | Filters results based on the specified region. (optional)
     namespace := "namespace_example" // string | Filters results based on the specified namespace. (optional)
     index := int32(56) // int32 | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -41,7 +41,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PluginsApi.GetPluginCSI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,7 +57,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pluginId** | **string** | The CSI plugin identifier. | 
+**pluginID** | **string** | The CSI plugin identifier. | 
 
 ### Other Parameters
 
