@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## getPluginCSI
 
-> [CSIPlugin] getPluginCSI(pluginId, opts)
+> [CSIPlugin] getPluginCSI(pluginID, opts)
 
 
 
@@ -27,7 +27,7 @@ X-Nomad-Token.apiKey = 'YOUR API KEY';
 //X-Nomad-Token.apiKeyPrefix = 'Token';
 
 let apiInstance = new nomad-client.PluginsApi();
-let pluginId = "pluginId_example"; // String | The CSI plugin identifier.
+let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
 let opts = {
   'region': "region_example", // String | Filters results based on the specified region.
   'namespace': "namespace_example", // String | Filters results based on the specified namespace.
@@ -39,7 +39,7 @@ let opts = {
   'perPage': 56, // Number | Maximum number of results to return.
   'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
 };
-apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
+apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -53,7 +53,7 @@ apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pluginId** | **String**| The CSI plugin identifier. | 
+ **pluginID** | **String**| The CSI plugin identifier. | 
  **region** | **String**| Filters results based on the specified region. | [optional] 
  **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
  **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 

@@ -42,7 +42,7 @@ pub async fn get_plugin_csi(configuration: &configuration::Configuration, plugin
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/plugin/csi/{pluginID}", configuration.base_path, pluginId=crate::apis::urlencode(plugin_id));
+    let local_var_uri_str = format!("{}/plugin/csi/{pluginID}", configuration.base_path, pluginID=crate::apis::urlencode(plugin_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {

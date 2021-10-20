@@ -44,7 +44,7 @@ export default class PluginsApi {
      */
 
     /**
-     * @param {String} pluginId The CSI plugin identifier.
+     * @param {String} pluginID The CSI plugin identifier.
      * @param {Object} opts Optional parameters
      * @param {String} opts.region Filters results based on the specified region.
      * @param {String} opts.namespace Filters results based on the specified namespace.
@@ -58,16 +58,16 @@ export default class PluginsApi {
      * @param {module:api/PluginsApi~getPluginCSICallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/CSIPlugin>}
      */
-    getPluginCSI(pluginId, opts, callback) {
+    getPluginCSI(pluginID, opts, callback) {
       opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'pluginId' is set
-      if (pluginId === undefined || pluginId === null) {
-        throw new Error("Missing the required parameter 'pluginId' when calling getPluginCSI");
+      // verify the required parameter 'pluginID' is set
+      if (pluginID === undefined || pluginID === null) {
+        throw new Error("Missing the required parameter 'pluginID' when calling getPluginCSI");
       }
 
       let pathParams = {
-        'pluginId': pluginId
+        'pluginID': pluginID
       };
       let queryParams = {
         'region': opts['region'],

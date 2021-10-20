@@ -174,7 +174,7 @@ class PluginsApi(object):
                         (str,),
                 },
                 'attribute_map': {
-                    'plugin_id': 'pluginId',
+                    'plugin_id': 'pluginID',
                     'region': 'region',
                     'namespace': 'namespace',
                     'index': 'index',

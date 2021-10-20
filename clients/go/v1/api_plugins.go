@@ -31,7 +31,7 @@ type PluginsApiService service
 type ApiGetPluginCSIRequest struct {
 	ctx _context.Context
 	ApiService *PluginsApiService
-	pluginId string
+	pluginID string
 	region *string
 	namespace *string
 	index *int32
@@ -87,14 +87,14 @@ func (r ApiGetPluginCSIRequest) Execute() ([]CSIPlugin, *_nethttp.Response, erro
 /*
  * GetPluginCSI Method for GetPluginCSI
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param pluginId The CSI plugin identifier.
+ * @param pluginID The CSI plugin identifier.
  * @return ApiGetPluginCSIRequest
  */
-func (a *PluginsApiService) GetPluginCSI(ctx _context.Context, pluginId string) ApiGetPluginCSIRequest {
+func (a *PluginsApiService) GetPluginCSI(ctx _context.Context, pluginID string) ApiGetPluginCSIRequest {
 	return ApiGetPluginCSIRequest{
 		ApiService: a,
 		ctx: ctx,
-		pluginId: pluginId,
+		pluginID: pluginID,
 	}
 }
 
@@ -118,7 +118,7 @@ func (a *PluginsApiService) GetPluginCSIExecute(r ApiGetPluginCSIRequest) ([]CSI
 	}
 
 	localVarPath := localBasePath + "/plugin/csi/{pluginID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"pluginId"+"}", _neturl.PathEscape(parameterToString(r.pluginId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pluginID"+"}", _neturl.PathEscape(parameterToString(r.pluginID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
