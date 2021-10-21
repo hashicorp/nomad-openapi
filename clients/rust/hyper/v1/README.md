@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**get_namespace**](docs/NamespacesApi.md#get_namespace) | **Get** /namespace/{namespaceName} | 
 *NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **Get** /namespaces | 
 *NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **Post** /namespace/{namespaceName} | 
+<<<<<<< HEAD
 *NodesApi* | [**get_node**](docs/NodesApi.md#get_node) | **Get** /node/{nodeId} | 
 *NodesApi* | [**get_node_allocations**](docs/NodesApi.md#get_node_allocations) | **Get** /node/{nodeId}/allocations | 
 *NodesApi* | [**get_nodes**](docs/NodesApi.md#get_nodes) | **Get** /nodes | 
@@ -89,6 +90,14 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **Post** /node/{nodeId}/purge | 
 *PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **Get** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **Get** /plugins | 
+=======
+*OperatorApi* | [**delete_operator_raft**](docs/OperatorApi.md#delete_operator_raft) | **Delete** /operator/raft/ | 
+*OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **Get** /operator/autopilot/configuration | 
+*OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **Get** /operator/autopilot/health | 
+*OperatorApi* | [**get_operator_raft**](docs/OperatorApi.md#get_operator_raft) | **Get** /operator/raft/ | 
+*OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **Get** /operator/scheduler/configuration | 
+*OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **Post** /operator/scheduler/configuration | 
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
 *ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **Get** /scaling/policies | 
 *ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **Get** /scaling/policy/{policyID} | 
@@ -126,7 +135,11 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+<<<<<<< HEAD
  - [Attribute](docs/Attribute.md)
+=======
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
+>>>>>>> 2fdd42e (updates to generator/operator.go)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -239,8 +252,12 @@ Class | Method | HTTP request | Description
  - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
  - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+<<<<<<< HEAD
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
+=======
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
+>>>>>>> 2fdd42e (updates to generator/operator.go)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -248,8 +265,10 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [Port](docs/Port.md)
  - [PortMapping](docs/PortMapping.md)
+ - [PreemptionConfig](docs/PreemptionConfig.md)
  - [QuotaLimit](docs/QuotaLimit.md)
  - [QuotaSpec](docs/QuotaSpec.md)
+ - [RaftServer](docs/RaftServer.md)
  - [RequestedDevice](docs/RequestedDevice.md)
  - [RescheduleEvent](docs/RescheduleEvent.md)
  - [ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -261,8 +280,12 @@ Class | Method | HTTP request | Description
  - [ScalingPolicy](docs/ScalingPolicy.md)
  - [ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [ScalingRequest](docs/ScalingRequest.md)
+ - [SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
+ - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
  - [SidecarTask](docs/SidecarTask.md)

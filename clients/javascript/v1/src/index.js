@@ -28,9 +28,13 @@ import AllocatedTaskResources from './model/AllocatedTaskResources';
 import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
+<<<<<<< HEAD
 import Attribute from './model/Attribute';
 import CSIControllerInfo from './model/CSIControllerInfo';
 import CSIInfo from './model/CSIInfo';
+=======
+import AutopilotConfiguration from './model/AutopilotConfiguration';
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 import CSIMountOptions from './model/CSIMountOptions';
 import CSINodeInfo from './model/CSINodeInfo';
 import CSIPlugin from './model/CSIPlugin';
@@ -141,8 +145,12 @@ import NodeScoreMeta from './model/NodeScoreMeta';
 import NodeUpdateDrainRequest from './model/NodeUpdateDrainRequest';
 import NodeUpdateEligibilityRequest from './model/NodeUpdateEligibilityRequest';
 import ObjectDiff from './model/ObjectDiff';
+<<<<<<< HEAD
 import OneTimeToken from './model/OneTimeToken';
 import OneTimeTokenExchangeRequest from './model/OneTimeTokenExchangeRequest';
+=======
+import OperatorHealthReply from './model/OperatorHealthReply';
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
 import PeriodicForceResponse from './model/PeriodicForceResponse';
@@ -150,8 +158,10 @@ import PlanAnnotations from './model/PlanAnnotations';
 import PointValue from './model/PointValue';
 import Port from './model/Port';
 import PortMapping from './model/PortMapping';
+import PreemptionConfig from './model/PreemptionConfig';
 import QuotaLimit from './model/QuotaLimit';
 import QuotaSpec from './model/QuotaSpec';
+import RaftServer from './model/RaftServer';
 import RequestedDevice from './model/RequestedDevice';
 import RescheduleEvent from './model/RescheduleEvent';
 import ReschedulePolicy from './model/ReschedulePolicy';
@@ -163,8 +173,12 @@ import ScalingEvent from './model/ScalingEvent';
 import ScalingPolicy from './model/ScalingPolicy';
 import ScalingPolicyListStub from './model/ScalingPolicyListStub';
 import ScalingRequest from './model/ScalingRequest';
+import SchedulerConfiguration from './model/SchedulerConfiguration';
+import SchedulerConfigurationResponse from './model/SchedulerConfigurationResponse';
+import SchedulerSetConfigurationResponse from './model/SchedulerSetConfigurationResponse';
 import SearchRequest from './model/SearchRequest';
 import SearchResponse from './model/SearchResponse';
+import ServerHealth from './model/ServerHealth';
 import Service from './model/Service';
 import ServiceCheck from './model/ServiceCheck';
 import SidecarTask from './model/SidecarTask';
@@ -195,8 +209,12 @@ import EvaluationsApi from './api/EvaluationsApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
+<<<<<<< HEAD
 import NodesApi from './api/NodesApi';
 import PluginsApi from './api/PluginsApi';
+=======
+import OperatorApi from './api/OperatorApi';
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
@@ -333,6 +351,7 @@ export {
     AllocationMetric,
 
     /**
+<<<<<<< HEAD
      * The Attribute model constructor.
      * @property {module:model/Attribute}
      */
@@ -349,6 +368,12 @@ export {
      * @property {module:model/CSIInfo}
      */
     CSIInfo,
+=======
+     * The AutopilotConfiguration model constructor.
+     * @property {module:model/AutopilotConfiguration}
+     */
+    AutopilotConfiguration,
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 
     /**
      * The CSIMountOptions model constructor.
@@ -1011,6 +1036,7 @@ export {
     ObjectDiff,
 
     /**
+<<<<<<< HEAD
      * The OneTimeToken model constructor.
      * @property {module:model/OneTimeToken}
      */
@@ -1021,6 +1047,12 @@ export {
      * @property {module:model/OneTimeTokenExchangeRequest}
      */
     OneTimeTokenExchangeRequest,
+=======
+     * The OperatorHealthReply model constructor.
+     * @property {module:model/OperatorHealthReply}
+     */
+    OperatorHealthReply,
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 
     /**
      * The ParameterizedJobConfig model constructor.
@@ -1065,6 +1097,12 @@ export {
     PortMapping,
 
     /**
+     * The PreemptionConfig model constructor.
+     * @property {module:model/PreemptionConfig}
+     */
+    PreemptionConfig,
+
+    /**
      * The QuotaLimit model constructor.
      * @property {module:model/QuotaLimit}
      */
@@ -1075,6 +1113,12 @@ export {
      * @property {module:model/QuotaSpec}
      */
     QuotaSpec,
+
+    /**
+     * The RaftServer model constructor.
+     * @property {module:model/RaftServer}
+     */
+    RaftServer,
 
     /**
      * The RequestedDevice model constructor.
@@ -1143,6 +1187,24 @@ export {
     ScalingRequest,
 
     /**
+     * The SchedulerConfiguration model constructor.
+     * @property {module:model/SchedulerConfiguration}
+     */
+    SchedulerConfiguration,
+
+    /**
+     * The SchedulerConfigurationResponse model constructor.
+     * @property {module:model/SchedulerConfigurationResponse}
+     */
+    SchedulerConfigurationResponse,
+
+    /**
+     * The SchedulerSetConfigurationResponse model constructor.
+     * @property {module:model/SchedulerSetConfigurationResponse}
+     */
+    SchedulerSetConfigurationResponse,
+
+    /**
      * The SearchRequest model constructor.
      * @property {module:model/SearchRequest}
      */
@@ -1153,6 +1215,12 @@ export {
      * @property {module:model/SearchResponse}
      */
     SearchResponse,
+
+    /**
+     * The ServerHealth model constructor.
+     * @property {module:model/ServerHealth}
+     */
+    ServerHealth,
 
     /**
      * The Service model constructor.
@@ -1335,6 +1403,7 @@ export {
     NamespacesApi,
 
     /**
+<<<<<<< HEAD
     * The NodesApi service constructor.
     * @property {module:api/NodesApi}
     */
@@ -1345,6 +1414,12 @@ export {
     * @property {module:api/PluginsApi}
     */
     PluginsApi,
+=======
+    * The OperatorApi service constructor.
+    * @property {module:api/OperatorApi}
+    */
+    OperatorApi,
+>>>>>>> 2fdd42e (updates to generator/operator.go)
 
     /**
     * The RegionsApi service constructor.
