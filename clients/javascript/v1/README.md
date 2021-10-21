@@ -170,6 +170,12 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+*nomad-client.OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
+*nomad-client.OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
+*nomad-client.OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
+*nomad-client.OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
+*nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
+*nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
@@ -200,6 +206,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.Allocation](docs/Allocation.md)
  - [nomad-client.AllocationListStub](docs/AllocationListStub.md)
  - [nomad-client.AllocationMetric](docs/AllocationMetric.md)
+ - [nomad-client.AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [nomad-client.CSIMountOptions](docs/CSIMountOptions.md)
  - [nomad-client.CSISnapshot](docs/CSISnapshot.md)
  - [nomad-client.CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
@@ -277,6 +284,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.NetworkResource](docs/NetworkResource.md)
  - [nomad-client.NodeScoreMeta](docs/NodeScoreMeta.md)
  - [nomad-client.ObjectDiff](docs/ObjectDiff.md)
+ - [nomad-client.OperatorHealthReply](docs/OperatorHealthReply.md)
  - [nomad-client.ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [nomad-client.PeriodicConfig](docs/PeriodicConfig.md)
  - [nomad-client.PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -284,8 +292,10 @@ Class | Method | HTTP request | Description
  - [nomad-client.PointValue](docs/PointValue.md)
  - [nomad-client.Port](docs/Port.md)
  - [nomad-client.PortMapping](docs/PortMapping.md)
+ - [nomad-client.PreemptionConfig](docs/PreemptionConfig.md)
  - [nomad-client.QuotaLimit](docs/QuotaLimit.md)
  - [nomad-client.QuotaSpec](docs/QuotaSpec.md)
+ - [nomad-client.RaftServer](docs/RaftServer.md)
  - [nomad-client.RequestedDevice](docs/RequestedDevice.md)
  - [nomad-client.RescheduleEvent](docs/RescheduleEvent.md)
  - [nomad-client.ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -296,8 +306,12 @@ Class | Method | HTTP request | Description
  - [nomad-client.ScalingEvent](docs/ScalingEvent.md)
  - [nomad-client.ScalingPolicy](docs/ScalingPolicy.md)
  - [nomad-client.ScalingRequest](docs/ScalingRequest.md)
+ - [nomad-client.SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [nomad-client.SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [nomad-client.SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [nomad-client.SearchRequest](docs/SearchRequest.md)
  - [nomad-client.SearchResponse](docs/SearchResponse.md)
+ - [nomad-client.ServerHealth](docs/ServerHealth.md)
  - [nomad-client.Service](docs/Service.md)
  - [nomad-client.ServiceCheck](docs/ServiceCheck.md)
  - [nomad-client.SidecarTask](docs/SidecarTask.md)

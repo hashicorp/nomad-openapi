@@ -2725,6 +2725,527 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Namespaces
+  /operator/autopilot/configuration:
+    get:
+      operationId: GetOperatorAutopilotConfiguration
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutopilotConfiguration'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/autopilot/health:
+    get:
+      operationId: GetOperatorAutopilotHealth
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHealthReply'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/raft/:
+    delete:
+      operationId: DeleteOperatorRaft
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200": {}
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+    get:
+      operationId: GetOperatorRaft
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RaftServer'
+                type: array
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/scheduler/configuration:
+    get:
+      operationId: GetOperatorSchedulerConfiguration
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerConfigurationResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+    post:
+      operationId: PostOperatorSchedulerConfiguration
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulerConfiguration'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
   /quota:
     post:
       operationId: CreateQuotaSpec
@@ -4848,6 +5369,12 @@ components:
         type: string
       style: form
   requestBodies:
+    AutopilotConfiguration:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AutopilotConfiguration'
+      required: true
     CSISnapshotCreateRequest:
       content:
         application/json:
@@ -4938,6 +5465,12 @@ components:
           schema:
             $ref: '#/components/schemas/ScalingRequest'
       required: true
+    SchedulerConfiguration:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerConfiguration'
+      required: true
     SearchRequest:
       content:
         application/json:
@@ -4987,6 +5520,7 @@ components:
           schema:
             type: integer
           style: simple
+    DeleteOperatorRaftResponse: {}
     DeleteSnapshotResponse:
       headers:
         X-Nomad-Index:
@@ -5438,6 +5972,49 @@ components:
           schema:
             type: integer
           style: simple
+    GetOperatorAutopilotConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AutopilotConfiguration'
+    GetOperatorAutopilotHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperatorHealthReply'
+    GetOperatorRaftResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/RaftServer'
+            type: array
+    GetOperatorSchedulerConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerConfigurationResponse'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          explode: false
+          schema:
+            type: boolean
+          style: simple
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          explode: false
+          schema:
+            type: integer
+          style: simple
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -5752,6 +6329,19 @@ components:
           schema:
             type: integer
           style: simple
+    PostOperatorSchedulerConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          explode: false
+          schema:
+            type: integer
+          style: simple
     PostQuotaSpecResponse:
       headers:
         X-Nomad-Index:
@@ -5805,6 +6395,7 @@ components:
           schema:
             type: integer
           style: simple
+    PutOperatorAutopilotConfigurationResponse: {}
     RegisterJobResponse:
       content:
         application/json:
@@ -12563,6 +13154,49 @@ components:
             format: double
             type: number
           type: object
+      type: object
+    AutopilotConfiguration:
+      example:
+        EnableCustomUpgrades: true
+        LastContactThreshold: 6
+        CreateIndex: 2147483647
+        MaxTrailingLogs: 2147483647
+        MinQuorum: 0
+        ServerStabilizationTime: 2
+        DisableUpgradeMigration: true
+        EnableRedundancyZones: true
+        ModifyIndex: 2147483647
+        CleanupDeadServers: true
+      properties:
+        CleanupDeadServers:
+          type: boolean
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        DisableUpgradeMigration:
+          type: boolean
+        EnableCustomUpgrades:
+          type: boolean
+        EnableRedundancyZones:
+          type: boolean
+        LastContactThreshold:
+          format: int64
+          type: integer
+        MaxTrailingLogs:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        MinQuorum:
+          minimum: 0
+          type: integer
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        ServerStabilizationTime:
+          format: int64
+          type: integer
       type: object
     CSIMountOptions:
       example:
@@ -107567,6 +108201,45 @@ components:
         Type:
           type: string
       type: object
+    OperatorHealthReply:
+      example:
+        FailureTolerance: 0
+        Servers:
+        - Address: Address
+          LastContact: 6
+          Leader: true
+          StableSince: 2000-01-23T04:56:07.000+00:00
+          LastIndex: 2147483647
+          Version: Version
+          Voter: true
+          ID: ID
+          SerfStatus: SerfStatus
+          Healthy: true
+          LastTerm: 2147483647
+          Name: Name
+        - Address: Address
+          LastContact: 6
+          Leader: true
+          StableSince: 2000-01-23T04:56:07.000+00:00
+          LastIndex: 2147483647
+          Version: Version
+          Voter: true
+          ID: ID
+          SerfStatus: SerfStatus
+          Healthy: true
+          LastTerm: 2147483647
+          Name: Name
+        Healthy: true
+      properties:
+        FailureTolerance:
+          type: integer
+        Healthy:
+          type: boolean
+        Servers:
+          items:
+            $ref: '#/components/schemas/ServerHealth'
+          type: array
+      type: object
     ParameterizedJobConfig:
       example:
         MetaOptional:
@@ -108226,6 +108899,22 @@ components:
         Value:
           type: integer
       type: object
+    PreemptionConfig:
+      example:
+        SystemSchedulerEnabled: true
+        BatchSchedulerEnabled: true
+        ServiceSchedulerEnabled: true
+        SysBatchSchedulerEnabled: true
+      properties:
+        BatchSchedulerEnabled:
+          type: boolean
+        ServiceSchedulerEnabled:
+          type: boolean
+        SysBatchSchedulerEnabled:
+          type: boolean
+        SystemSchedulerEnabled:
+          type: boolean
+      type: object
     QuotaLimit:
       example:
         Region: Region
@@ -108602,6 +109291,28 @@ components:
           type: string
       type: object
     Quotas: {}
+    RaftServer:
+      example:
+        Address: Address
+        Leader: true
+        Node: Node
+        Voter: true
+        ID: ID
+        RaftProtocol: RaftProtocol
+      properties:
+        Address:
+          type: string
+        ID:
+          type: string
+        Leader:
+          type: boolean
+        Node:
+          type: string
+        RaftProtocol:
+          type: string
+        Voter:
+          type: boolean
+      type: object
     RequestedDevice:
       example:
         Constraints:
@@ -109002,6 +109713,83 @@ components:
             type: string
           type: object
       type: object
+    SchedulerAlgorithm:
+      type: string
+    SchedulerConfiguration:
+      example:
+        PreemptionConfig:
+          SystemSchedulerEnabled: true
+          BatchSchedulerEnabled: true
+          ServiceSchedulerEnabled: true
+          SysBatchSchedulerEnabled: true
+        CreateIndex: 2147483647
+        MemoryOversubscriptionEnabled: true
+        SchedulerAlgorithm: SchedulerAlgorithm
+        ModifyIndex: 2147483647
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        MemoryOversubscriptionEnabled:
+          type: boolean
+        ModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        PreemptionConfig:
+          $ref: '#/components/schemas/PreemptionConfig'
+        SchedulerAlgorithm:
+          type: string
+      type: object
+    SchedulerConfigurationResponse:
+      example:
+        LastContact: 0
+        LastIndex: 2147483647
+        RequestTime: 1
+        KnownLeader: true
+        SchedulerConfig:
+          PreemptionConfig:
+            SystemSchedulerEnabled: true
+            BatchSchedulerEnabled: true
+            ServiceSchedulerEnabled: true
+            SysBatchSchedulerEnabled: true
+          CreateIndex: 2147483647
+          MemoryOversubscriptionEnabled: true
+          SchedulerAlgorithm: SchedulerAlgorithm
+          ModifyIndex: 2147483647
+      properties:
+        KnownLeader:
+          type: boolean
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        SchedulerConfig:
+          $ref: '#/components/schemas/SchedulerConfiguration'
+      type: object
+    SchedulerSetConfigurationResponse:
+      example:
+        Updated: true
+        LastIndex: 2147483647
+        RequestTime: 6
+      properties:
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        Updated:
+          type: boolean
+      type: object
     SearchRequest:
       example:
         Context: Context
@@ -109081,6 +109869,52 @@ components:
           additionalProperties:
             type: boolean
           type: object
+      type: object
+    ServerHealth:
+      example:
+        Address: Address
+        LastContact: 6
+        Leader: true
+        StableSince: 2000-01-23T04:56:07.000+00:00
+        LastIndex: 2147483647
+        Version: Version
+        Voter: true
+        ID: ID
+        SerfStatus: SerfStatus
+        Healthy: true
+        LastTerm: 2147483647
+        Name: Name
+      properties:
+        Address:
+          type: string
+        Healthy:
+          type: boolean
+        ID:
+          type: string
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        LastTerm:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        Leader:
+          type: boolean
+        Name:
+          type: string
+        SerfStatus:
+          type: string
+        StableSince:
+          format: date-time
+          type: string
+        Version:
+          type: string
+        Voter:
+          type: boolean
       type: object
     Service:
       example:
@@ -113889,6 +114723,9 @@ components:
       type: integer
     int64:
       format: int64
+      type: integer
+    uint:
+      minimum: 0
       type: integer
     uint8:
       maximum: 255

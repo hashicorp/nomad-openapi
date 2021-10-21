@@ -112,6 +112,12 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**GetNamespace**](docs/NamespacesApi.md#getnamespace) | **Get** /namespace/{namespaceName} | 
 *NamespacesApi* | [**GetNamespaces**](docs/NamespacesApi.md#getnamespaces) | **Get** /namespaces | 
 *NamespacesApi* | [**PostNamespace**](docs/NamespacesApi.md#postnamespace) | **Post** /namespace/{namespaceName} | 
+*OperatorApi* | [**DeleteOperatorRaft**](docs/OperatorApi.md#deleteoperatorraft) | **Delete** /operator/raft/ | 
+*OperatorApi* | [**GetOperatorAutopilotConfiguration**](docs/OperatorApi.md#getoperatorautopilotconfiguration) | **Get** /operator/autopilot/configuration | 
+*OperatorApi* | [**GetOperatorAutopilotHealth**](docs/OperatorApi.md#getoperatorautopilothealth) | **Get** /operator/autopilot/health | 
+*OperatorApi* | [**GetOperatorRaft**](docs/OperatorApi.md#getoperatorraft) | **Get** /operator/raft/ | 
+*OperatorApi* | [**GetOperatorSchedulerConfiguration**](docs/OperatorApi.md#getoperatorschedulerconfiguration) | **Get** /operator/scheduler/configuration | 
+*OperatorApi* | [**PostOperatorSchedulerConfiguration**](docs/OperatorApi.md#postoperatorschedulerconfiguration) | **Post** /operator/scheduler/configuration | 
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
 *SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
@@ -142,6 +148,7 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [CSIMountOptions](docs/CSIMountOptions.md)
  - [CSISnapshot](docs/CSISnapshot.md)
  - [CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
@@ -219,6 +226,7 @@ Class | Method | HTTP request | Description
  - [NetworkResource](docs/NetworkResource.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -226,8 +234,10 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [Port](docs/Port.md)
  - [PortMapping](docs/PortMapping.md)
+ - [PreemptionConfig](docs/PreemptionConfig.md)
  - [QuotaLimit](docs/QuotaLimit.md)
  - [QuotaSpec](docs/QuotaSpec.md)
+ - [RaftServer](docs/RaftServer.md)
  - [RequestedDevice](docs/RequestedDevice.md)
  - [RescheduleEvent](docs/RescheduleEvent.md)
  - [ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -238,8 +248,12 @@ Class | Method | HTTP request | Description
  - [ScalingEvent](docs/ScalingEvent.md)
  - [ScalingPolicy](docs/ScalingPolicy.md)
  - [ScalingRequest](docs/ScalingRequest.md)
+ - [SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
+ - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
  - [SidecarTask](docs/SidecarTask.md)

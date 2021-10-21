@@ -15,6 +15,7 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/AutopilotConfiguration.md
 docs/CSIMountOptions.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
@@ -96,6 +97,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -103,8 +106,10 @@ docs/PlanAnnotations.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -116,9 +121,13 @@ docs/SampledValue.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -151,6 +160,7 @@ src/api/EnterpriseApi.js
 src/api/JobsApi.js
 src/api/MetricsApi.js
 src/api/NamespacesApi.js
+src/api/OperatorApi.js
 src/api/RegionsApi.js
 src/api/SearchApi.js
 src/api/VolumesApi.js
@@ -167,6 +177,7 @@ src/model/AllocatedTaskResources.js
 src/model/Allocation.js
 src/model/AllocationListStub.js
 src/model/AllocationMetric.js
+src/model/AutopilotConfiguration.js
 src/model/CSIMountOptions.js
 src/model/CSISnapshot.js
 src/model/CSISnapshotCreateRequest.js
@@ -244,6 +255,7 @@ src/model/Namespace.js
 src/model/NetworkResource.js
 src/model/NodeScoreMeta.js
 src/model/ObjectDiff.js
+src/model/OperatorHealthReply.js
 src/model/ParameterizedJobConfig.js
 src/model/PeriodicConfig.js
 src/model/PeriodicForceResponse.js
@@ -251,8 +263,10 @@ src/model/PlanAnnotations.js
 src/model/PointValue.js
 src/model/Port.js
 src/model/PortMapping.js
+src/model/PreemptionConfig.js
 src/model/QuotaLimit.js
 src/model/QuotaSpec.js
+src/model/RaftServer.js
 src/model/RequestedDevice.js
 src/model/RescheduleEvent.js
 src/model/ReschedulePolicy.js
@@ -263,8 +277,12 @@ src/model/SampledValue.js
 src/model/ScalingEvent.js
 src/model/ScalingPolicy.js
 src/model/ScalingRequest.js
+src/model/SchedulerConfiguration.js
+src/model/SchedulerConfigurationResponse.js
+src/model/SchedulerSetConfigurationResponse.js
 src/model/SearchRequest.js
 src/model/SearchResponse.js
+src/model/ServerHealth.js
 src/model/Service.js
 src/model/ServiceCheck.js
 src/model/SidecarTask.js
@@ -287,3 +305,12 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/api/OperatorApi.spec.js
+test/model/AutopilotConfiguration.spec.js
+test/model/OperatorHealthReply.spec.js
+test/model/PreemptionConfig.spec.js
+test/model/RaftServer.spec.js
+test/model/SchedulerConfiguration.spec.js
+test/model/SchedulerConfigurationResponse.spec.js
+test/model/SchedulerSetConfigurationResponse.spec.js
+test/model/ServerHealth.spec.js

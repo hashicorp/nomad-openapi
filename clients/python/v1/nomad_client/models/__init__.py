@@ -21,6 +21,7 @@ from nomad_client.model.allocated_task_resources import AllocatedTaskResources
 from nomad_client.model.allocation import Allocation
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from nomad_client.model.allocation_metric import AllocationMetric
+from nomad_client.model.autopilot_configuration import AutopilotConfiguration
 from nomad_client.model.csi_mount_options import CSIMountOptions
 from nomad_client.model.csi_secrets import CSISecrets
 from nomad_client.model.csi_snapshot import CSISnapshot
@@ -100,6 +101,7 @@ from nomad_client.model.namespace import Namespace
 from nomad_client.model.network_resource import NetworkResource
 from nomad_client.model.node_score_meta import NodeScoreMeta
 from nomad_client.model.object_diff import ObjectDiff
+from nomad_client.model.operator_health_reply import OperatorHealthReply
 from nomad_client.model.parameterized_job_config import ParameterizedJobConfig
 from nomad_client.model.periodic_config import PeriodicConfig
 from nomad_client.model.periodic_force_response import PeriodicForceResponse
@@ -107,8 +109,10 @@ from nomad_client.model.plan_annotations import PlanAnnotations
 from nomad_client.model.point_value import PointValue
 from nomad_client.model.port import Port
 from nomad_client.model.port_mapping import PortMapping
+from nomad_client.model.preemption_config import PreemptionConfig
 from nomad_client.model.quota_limit import QuotaLimit
 from nomad_client.model.quota_spec import QuotaSpec
+from nomad_client.model.raft_server import RaftServer
 from nomad_client.model.requested_device import RequestedDevice
 from nomad_client.model.reschedule_event import RescheduleEvent
 from nomad_client.model.reschedule_policy import ReschedulePolicy
@@ -119,8 +123,12 @@ from nomad_client.model.sampled_value import SampledValue
 from nomad_client.model.scaling_event import ScalingEvent
 from nomad_client.model.scaling_policy import ScalingPolicy
 from nomad_client.model.scaling_request import ScalingRequest
+from nomad_client.model.scheduler_configuration import SchedulerConfiguration
+from nomad_client.model.scheduler_configuration_response import SchedulerConfigurationResponse
+from nomad_client.model.scheduler_set_configuration_response import SchedulerSetConfigurationResponse
 from nomad_client.model.search_request import SearchRequest
 from nomad_client.model.search_response import SearchResponse
+from nomad_client.model.server_health import ServerHealth
 from nomad_client.model.service import Service
 from nomad_client.model.service_check import ServiceCheck
 from nomad_client.model.sidecar_task import SidecarTask
@@ -139,6 +147,7 @@ from nomad_client.model.task_handle import TaskHandle
 from nomad_client.model.task_lifecycle import TaskLifecycle
 from nomad_client.model.task_state import TaskState
 from nomad_client.model.template import Template
+from nomad_client.model.uint import Uint
 from nomad_client.model.uint64 import Uint64
 from nomad_client.model.uint8 import Uint8
 from nomad_client.model.update_strategy import UpdateStrategy

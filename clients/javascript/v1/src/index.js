@@ -25,6 +25,7 @@ import AllocatedTaskResources from './model/AllocatedTaskResources';
 import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
+import AutopilotConfiguration from './model/AutopilotConfiguration';
 import CSIMountOptions from './model/CSIMountOptions';
 import CSISnapshot from './model/CSISnapshot';
 import CSISnapshotCreateRequest from './model/CSISnapshotCreateRequest';
@@ -102,6 +103,7 @@ import Namespace from './model/Namespace';
 import NetworkResource from './model/NetworkResource';
 import NodeScoreMeta from './model/NodeScoreMeta';
 import ObjectDiff from './model/ObjectDiff';
+import OperatorHealthReply from './model/OperatorHealthReply';
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
 import PeriodicForceResponse from './model/PeriodicForceResponse';
@@ -109,8 +111,10 @@ import PlanAnnotations from './model/PlanAnnotations';
 import PointValue from './model/PointValue';
 import Port from './model/Port';
 import PortMapping from './model/PortMapping';
+import PreemptionConfig from './model/PreemptionConfig';
 import QuotaLimit from './model/QuotaLimit';
 import QuotaSpec from './model/QuotaSpec';
+import RaftServer from './model/RaftServer';
 import RequestedDevice from './model/RequestedDevice';
 import RescheduleEvent from './model/RescheduleEvent';
 import ReschedulePolicy from './model/ReschedulePolicy';
@@ -121,8 +125,12 @@ import SampledValue from './model/SampledValue';
 import ScalingEvent from './model/ScalingEvent';
 import ScalingPolicy from './model/ScalingPolicy';
 import ScalingRequest from './model/ScalingRequest';
+import SchedulerConfiguration from './model/SchedulerConfiguration';
+import SchedulerConfigurationResponse from './model/SchedulerConfigurationResponse';
+import SchedulerSetConfigurationResponse from './model/SchedulerSetConfigurationResponse';
 import SearchRequest from './model/SearchRequest';
 import SearchResponse from './model/SearchResponse';
+import ServerHealth from './model/ServerHealth';
 import Service from './model/Service';
 import ServiceCheck from './model/ServiceCheck';
 import SidecarTask from './model/SidecarTask';
@@ -151,6 +159,7 @@ import EnterpriseApi from './api/EnterpriseApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
+import OperatorApi from './api/OperatorApi';
 import RegionsApi from './api/RegionsApi';
 import SearchApi from './api/SearchApi';
 import VolumesApi from './api/VolumesApi';
@@ -265,6 +274,12 @@ export {
      * @property {module:model/AllocationMetric}
      */
     AllocationMetric,
+
+    /**
+     * The AutopilotConfiguration model constructor.
+     * @property {module:model/AutopilotConfiguration}
+     */
+    AutopilotConfiguration,
 
     /**
      * The CSIMountOptions model constructor.
@@ -729,6 +744,12 @@ export {
     ObjectDiff,
 
     /**
+     * The OperatorHealthReply model constructor.
+     * @property {module:model/OperatorHealthReply}
+     */
+    OperatorHealthReply,
+
+    /**
      * The ParameterizedJobConfig model constructor.
      * @property {module:model/ParameterizedJobConfig}
      */
@@ -771,6 +792,12 @@ export {
     PortMapping,
 
     /**
+     * The PreemptionConfig model constructor.
+     * @property {module:model/PreemptionConfig}
+     */
+    PreemptionConfig,
+
+    /**
      * The QuotaLimit model constructor.
      * @property {module:model/QuotaLimit}
      */
@@ -781,6 +808,12 @@ export {
      * @property {module:model/QuotaSpec}
      */
     QuotaSpec,
+
+    /**
+     * The RaftServer model constructor.
+     * @property {module:model/RaftServer}
+     */
+    RaftServer,
 
     /**
      * The RequestedDevice model constructor.
@@ -843,6 +876,24 @@ export {
     ScalingRequest,
 
     /**
+     * The SchedulerConfiguration model constructor.
+     * @property {module:model/SchedulerConfiguration}
+     */
+    SchedulerConfiguration,
+
+    /**
+     * The SchedulerConfigurationResponse model constructor.
+     * @property {module:model/SchedulerConfigurationResponse}
+     */
+    SchedulerConfigurationResponse,
+
+    /**
+     * The SchedulerSetConfigurationResponse model constructor.
+     * @property {module:model/SchedulerSetConfigurationResponse}
+     */
+    SchedulerSetConfigurationResponse,
+
+    /**
      * The SearchRequest model constructor.
      * @property {module:model/SearchRequest}
      */
@@ -853,6 +904,12 @@ export {
      * @property {module:model/SearchResponse}
      */
     SearchResponse,
+
+    /**
+     * The ServerHealth model constructor.
+     * @property {module:model/ServerHealth}
+     */
+    ServerHealth,
 
     /**
      * The Service model constructor.
@@ -1021,6 +1078,12 @@ export {
     * @property {module:api/NamespacesApi}
     */
     NamespacesApi,
+
+    /**
+    * The OperatorApi service constructor.
+    * @property {module:api/OperatorApi}
+    */
+    OperatorApi,
 
     /**
     * The RegionsApi service constructor.

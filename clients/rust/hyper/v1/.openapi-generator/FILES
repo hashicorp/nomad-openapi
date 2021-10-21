@@ -15,6 +15,7 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/AutopilotConfiguration.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -96,6 +97,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -103,8 +106,10 @@ docs/PlanAnnotations.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -116,9 +121,13 @@ docs/SampledValue.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -151,6 +160,7 @@ src/apis/jobs_api.rs
 src/apis/metrics_api.rs
 src/apis/mod.rs
 src/apis/namespaces_api.rs
+src/apis/operator_api.rs
 src/apis/regions_api.rs
 src/apis/request.rs
 src/apis/search_api.rs
@@ -168,6 +178,7 @@ src/models/allocated_task_resources.rs
 src/models/allocation.rs
 src/models/allocation_list_stub.rs
 src/models/allocation_metric.rs
+src/models/autopilot_configuration.rs
 src/models/check_restart.rs
 src/models/constraint.rs
 src/models/consul.rs
@@ -246,6 +257,7 @@ src/models/namespace.rs
 src/models/network_resource.rs
 src/models/node_score_meta.rs
 src/models/object_diff.rs
+src/models/operator_health_reply.rs
 src/models/parameterized_job_config.rs
 src/models/periodic_config.rs
 src/models/periodic_force_response.rs
@@ -253,8 +265,10 @@ src/models/plan_annotations.rs
 src/models/point_value.rs
 src/models/port.rs
 src/models/port_mapping.rs
+src/models/preemption_config.rs
 src/models/quota_limit.rs
 src/models/quota_spec.rs
+src/models/raft_server.rs
 src/models/requested_device.rs
 src/models/reschedule_event.rs
 src/models/reschedule_policy.rs
@@ -265,8 +279,12 @@ src/models/sampled_value.rs
 src/models/scaling_event.rs
 src/models/scaling_policy.rs
 src/models/scaling_request.rs
+src/models/scheduler_configuration.rs
+src/models/scheduler_configuration_response.rs
+src/models/scheduler_set_configuration_response.rs
 src/models/search_request.rs
 src/models/search_response.rs
+src/models/server_health.rs
 src/models/service.rs
 src/models/service_check.rs
 src/models/sidecar_task.rs
