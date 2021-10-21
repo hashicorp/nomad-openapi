@@ -176,6 +176,7 @@ Class | Method | HTTP request | Description
 *nomad-client.OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
 *nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
+*nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 

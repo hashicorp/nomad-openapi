@@ -1001,17 +1001,11 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
+    PutOperatorAutopilotConfigurationResponse:
+      description: ""
     PutSystemGCResponse:
       description: ""
     PutSystemReconcileSummariesResponse:
-=======
-    PutOperatorAutopilotConfigurationResponse:
->>>>>>> 685e8ca (updates to generator/operator.go)
-=======
-    PutOperatorAutopilotConfigurationResponse:
->>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
       description: ""
     RegisterJobResponse:
       content:
@@ -4726,12 +4720,40 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
         "200":
           $ref: '#/components/responses/GetOperatorAutopilotConfigurationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+    put:
+      operationId: PutOperatorAutopilotConfiguration
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutopilotConfiguration'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PutOperatorAutopilotConfigurationResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -4754,7 +4776,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4778,7 +4800,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -4804,7 +4826,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4832,7 +4854,7 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -4855,7 +4877,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       requestBody:
         content:

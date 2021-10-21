@@ -64,7 +64,3 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
-
-.travis.yml
-git_push.sh
-.gitlab-ci.yml

@@ -21,6 +21,7 @@ from openapi_client.model.allocated_task_resources import AllocatedTaskResources
 from openapi_client.model.allocation import Allocation
 from openapi_client.model.allocation_list_stub import AllocationListStub
 from openapi_client.model.allocation_metric import AllocationMetric
+from openapi_client.model.autopilot_configuration import AutopilotConfiguration
 from openapi_client.model.csi_mount_options import CSIMountOptions
 from openapi_client.model.csi_secrets import CSISecrets
 from openapi_client.model.csi_snapshot import CSISnapshot
@@ -100,6 +101,7 @@ from openapi_client.model.namespace import Namespace
 from openapi_client.model.network_resource import NetworkResource
 from openapi_client.model.node_score_meta import NodeScoreMeta
 from openapi_client.model.object_diff import ObjectDiff
+from openapi_client.model.operator_health_reply import OperatorHealthReply
 from openapi_client.model.parameterized_job_config import ParameterizedJobConfig
 from openapi_client.model.periodic_config import PeriodicConfig
 from openapi_client.model.periodic_force_response import PeriodicForceResponse
@@ -107,8 +109,10 @@ from openapi_client.model.plan_annotations import PlanAnnotations
 from openapi_client.model.point_value import PointValue
 from openapi_client.model.port import Port
 from openapi_client.model.port_mapping import PortMapping
+from openapi_client.model.preemption_config import PreemptionConfig
 from openapi_client.model.quota_limit import QuotaLimit
 from openapi_client.model.quota_spec import QuotaSpec
+from openapi_client.model.raft_server import RaftServer
 from openapi_client.model.requested_device import RequestedDevice
 from openapi_client.model.reschedule_event import RescheduleEvent
 from openapi_client.model.reschedule_policy import ReschedulePolicy
@@ -119,8 +123,12 @@ from openapi_client.model.sampled_value import SampledValue
 from openapi_client.model.scaling_event import ScalingEvent
 from openapi_client.model.scaling_policy import ScalingPolicy
 from openapi_client.model.scaling_request import ScalingRequest
+from openapi_client.model.scheduler_configuration import SchedulerConfiguration
+from openapi_client.model.scheduler_configuration_response import SchedulerConfigurationResponse
+from openapi_client.model.scheduler_set_configuration_response import SchedulerSetConfigurationResponse
 from openapi_client.model.search_request import SearchRequest
 from openapi_client.model.search_response import SearchResponse
+from openapi_client.model.server_health import ServerHealth
 from openapi_client.model.service import Service
 from openapi_client.model.service_check import ServiceCheck
 from openapi_client.model.sidecar_task import SidecarTask
@@ -139,6 +147,7 @@ from openapi_client.model.task_handle import TaskHandle
 from openapi_client.model.task_lifecycle import TaskLifecycle
 from openapi_client.model.task_state import TaskState
 from openapi_client.model.template import Template
+from openapi_client.model.uint import Uint
 from openapi_client.model.uint64 import Uint64
 from openapi_client.model.uint8 import Uint8
 from openapi_client.model.update_strategy import UpdateStrategy

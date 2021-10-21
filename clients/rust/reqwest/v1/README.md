@@ -65,6 +65,7 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**get_operator_raft**](docs/OperatorApi.md#get_operator_raft) | **GET** /operator/raft/ | 
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
+*OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 

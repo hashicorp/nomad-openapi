@@ -118,6 +118,7 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**GetOperatorRaft**](docs/OperatorApi.md#getoperatorraft) | **Get** /operator/raft/ | 
 *OperatorApi* | [**GetOperatorSchedulerConfiguration**](docs/OperatorApi.md#getoperatorschedulerconfiguration) | **Get** /operator/scheduler/configuration | 
 *OperatorApi* | [**PostOperatorSchedulerConfiguration**](docs/OperatorApi.md#postoperatorschedulerconfiguration) | **Post** /operator/scheduler/configuration | 
+*OperatorApi* | [**PutOperatorAutopilotConfiguration**](docs/OperatorApi.md#putoperatorautopilotconfiguration) | **Put** /operator/autopilot/configuration | 
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
 *SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 

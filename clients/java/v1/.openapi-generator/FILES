@@ -330,13 +330,8 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
-<<<<<<< HEAD
-<<<<<<< HEAD
-src/test/java/io/nomadproject/client/api/SystemApiTest.java
-=======
-=======
->>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
 src/test/java/io/nomadproject/client/api/OperatorApiTest.java
+src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/models/AutopilotConfigurationTest.java
 src/test/java/io/nomadproject/client/models/OperatorHealthReplyTest.java
 src/test/java/io/nomadproject/client/models/PreemptionConfigTest.java
@@ -345,7 +340,3 @@ src/test/java/io/nomadproject/client/models/SchedulerConfigurationResponseTest.j
 src/test/java/io/nomadproject/client/models/SchedulerConfigurationTest.java
 src/test/java/io/nomadproject/client/models/SchedulerSetConfigurationResponseTest.java
 src/test/java/io/nomadproject/client/models/ServerHealthTest.java
-<<<<<<< HEAD
->>>>>>> 685e8ca (updates to generator/operator.go)
-=======
->>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575

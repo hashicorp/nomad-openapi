@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
 *OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
+*OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
 *RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
