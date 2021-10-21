@@ -2766,6 +2766,7 @@ paths:
   /operator/autopilot/configuration:
     get:
       operationId: GetOperatorAutopilotConfiguration
+<<<<<<< HEAD
       parameters:
       - description: Filters results based on the specified region.
         explode: true
@@ -3398,6 +3399,536 @@ paths:
 =======
   /quota:
 >>>>>>> 685e8ca (updates to generator/operator.go)
+    post:
+      operationId: CreateQuotaSpec
+=======
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutopilotConfiguration'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-accepts: application/json
+  /operator/autopilot/health:
+    get:
+      operationId: GetOperatorAutopilotHealth
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHealthReply'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-accepts: application/json
+  /operator/raft/:
+    delete:
+      operationId: DeleteOperatorRaft
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200": {}
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-accepts: application/json
+    get:
+      operationId: GetOperatorRaft
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RaftServer'
+                type: array
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-accepts: application/json
+  /operator/scheduler/configuration:
+    get:
+      operationId: GetOperatorSchedulerConfiguration
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If set, wait until query exceeds given index. Must be provided
+          with WaitParam.
+        explode: false
+        in: header
+        name: index
+        required: false
+        schema:
+          type: integer
+        style: simple
+      - description: Provided with IndexParam to wait for change.
+        explode: true
+        in: query
+        name: wait
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: If present, results will include stale reads.
+        explode: true
+        in: query
+        name: stale
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Constrains results to jobs that start with the defined prefix
+        explode: true
+        in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Maximum number of results to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Indicates where to start paging for queries that support pagination.
+        explode: true
+        in: query
+        name: next_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerConfigurationResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Nomad-KnownLeader:
+              description: Boolean indicating if there is a known cluster leader.
+              explode: false
+              schema:
+                type: boolean
+              style: simple
+            X-Nomad-LastContact:
+              description: The time in milliseconds that a server was last contacted
+                by the leader node.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-accepts: application/json
+    post:
+      operationId: PostOperatorSchedulerConfiguration
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulerConfiguration'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
+          headers:
+            X-Nomad-Index:
+              description: A unique identifier representing the current state of the
+                requested resource. On a new Nomad cluster the value of this index
+                starts at 1.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+      x-contentType: application/json
+      x-accepts: application/json
+  /quota:
     post:
       operationId: CreateQuotaSpec
       parameters:
@@ -6576,11 +7107,15 @@ components:
             type: integer
           style: simple
 <<<<<<< HEAD
+<<<<<<< HEAD
     PutSystemGCResponse: {}
     PutSystemReconcileSummariesResponse: {}
 =======
     PutOperatorAutopilotConfigurationResponse: {}
 >>>>>>> 685e8ca (updates to generator/operator.go)
+=======
+    PutOperatorAutopilotConfigurationResponse: {}
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
     RegisterJobResponse:
       content:
         application/json:

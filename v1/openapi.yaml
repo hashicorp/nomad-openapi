@@ -1002,12 +1002,16 @@ components:
           schema:
             type: integer
 <<<<<<< HEAD
+<<<<<<< HEAD
     PutSystemGCResponse:
       description: ""
     PutSystemReconcileSummariesResponse:
 =======
     PutOperatorAutopilotConfigurationResponse:
 >>>>>>> 685e8ca (updates to generator/operator.go)
+=======
+    PutOperatorAutopilotConfigurationResponse:
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
       description: ""
     RegisterJobResponse:
       content:

@@ -328,8 +328,11 @@ setup.py
 test-requirements.txt
 test/__init__.py
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_system_api.py
 =======
+=======
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
 test/test_autopilot_configuration.py
 test/test_operator_api.py
 test/test_operator_health_reply.py
@@ -340,5 +343,8 @@ test/test_scheduler_configuration_response.py
 test/test_scheduler_set_configuration_response.py
 test/test_server_health.py
 test/test_uint.py
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
+=======
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
 tox.ini

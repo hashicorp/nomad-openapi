@@ -308,8 +308,11 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/SystemApi.spec.js
 =======
+=======
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
 test/api/OperatorApi.spec.js
 test/model/AutopilotConfiguration.spec.js
 test/model/OperatorHealthReply.spec.js
@@ -319,4 +322,7 @@ test/model/SchedulerConfiguration.spec.js
 test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
+=======
+>>>>>>> 685e8caeaec44d3d279bc09e95399f8f21a96575
