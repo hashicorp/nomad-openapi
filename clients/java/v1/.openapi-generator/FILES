@@ -440,6 +440,7 @@ src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
 src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
@@ -630,7 +631,10 @@ src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
 <<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 =======
+=======
+>>>>>>> 4825049 (rebase & regenerated clients)
 src/test/java/io/nomadproject/client/api/OperatorApiTest.java
+src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/models/AutopilotConfigurationTest.java
 src/test/java/io/nomadproject/client/models/OperatorHealthReplyTest.java
 src/test/java/io/nomadproject/client/models/PreemptionConfigTest.java
@@ -639,5 +643,8 @@ src/test/java/io/nomadproject/client/models/SchedulerConfigurationResponseTest.j
 src/test/java/io/nomadproject/client/models/SchedulerConfigurationTest.java
 src/test/java/io/nomadproject/client/models/SchedulerSetConfigurationResponseTest.java
 src/test/java/io/nomadproject/client/models/ServerHealthTest.java
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+>>>>>>> 4825049 (rebase & regenerated clients)

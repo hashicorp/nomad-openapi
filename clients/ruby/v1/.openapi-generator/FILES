@@ -19,9 +19,13 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+<<<<<<< HEAD
 docs/Attribute.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
+=======
+docs/AutopilotConfiguration.md
+>>>>>>> 4825049 (rebase & regenerated clients)
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -141,8 +145,13 @@ docs/NodeUpdateDrainRequest.md
 docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
+<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
+=======
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
+>>>>>>> 4825049 (rebase & regenerated clients)
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -151,8 +160,10 @@ docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -166,9 +177,13 @@ docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -188,7 +203,11 @@ docs/TaskHandle.md
 docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
+<<<<<<< HEAD
 docs/Uint16.md
+=======
+docs/Uint.md
+>>>>>>> 4825049 (rebase & regenerated clients)
 docs/Uint64.md
 docs/Uint8.md
 docs/UpdateStrategy.md
@@ -207,8 +226,12 @@ openapi_client/api/evaluations_api.py
 openapi_client/api/jobs_api.py
 openapi_client/api/metrics_api.py
 openapi_client/api/namespaces_api.py
+<<<<<<< HEAD
 openapi_client/api/nodes_api.py
 openapi_client/api/plugins_api.py
+=======
+openapi_client/api/operator_api.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 openapi_client/api/regions_api.py
 openapi_client/api/scaling_api.py
 openapi_client/api/search_api.py
@@ -234,7 +257,11 @@ openapi_client/model/allocated_task_resources.py
 openapi_client/model/allocation.py
 openapi_client/model/allocation_list_stub.py
 openapi_client/model/allocation_metric.py
+<<<<<<< HEAD
 openapi_client/model/attribute.py
+=======
+openapi_client/model/autopilot_configuration.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 openapi_client/model/check_restart.py
 openapi_client/model/constraint.py
 openapi_client/model/consul.py
@@ -349,8 +376,12 @@ openapi_client/model/node_score_meta.py
 openapi_client/model/node_update_drain_request.py
 openapi_client/model/node_update_eligibility_request.py
 openapi_client/model/object_diff.py
+<<<<<<< HEAD
 openapi_client/model/one_time_token.py
 openapi_client/model/one_time_token_exchange_request.py
+=======
+openapi_client/model/operator_health_reply.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 openapi_client/model/parameterized_job_config.py
 openapi_client/model/periodic_config.py
 openapi_client/model/periodic_force_response.py
@@ -358,8 +389,10 @@ openapi_client/model/plan_annotations.py
 openapi_client/model/point_value.py
 openapi_client/model/port.py
 openapi_client/model/port_mapping.py
+openapi_client/model/preemption_config.py
 openapi_client/model/quota_limit.py
 openapi_client/model/quota_spec.py
+openapi_client/model/raft_server.py
 openapi_client/model/requested_device.py
 openapi_client/model/reschedule_event.py
 openapi_client/model/reschedule_policy.py
@@ -371,8 +404,12 @@ openapi_client/model/scaling_event.py
 openapi_client/model/scaling_policy.py
 openapi_client/model/scaling_policy_list_stub.py
 openapi_client/model/scaling_request.py
+openapi_client/model/scheduler_configuration.py
+openapi_client/model/scheduler_configuration_response.py
+openapi_client/model/scheduler_set_configuration_response.py
 openapi_client/model/search_request.py
 openapi_client/model/search_response.py
+openapi_client/model/server_health.py
 openapi_client/model/service.py
 openapi_client/model/service_check.py
 openapi_client/model/sidecar_task.py
@@ -391,7 +428,11 @@ openapi_client/model/task_handle.py
 openapi_client/model/task_lifecycle.py
 openapi_client/model/task_state.py
 openapi_client/model/template.py
+<<<<<<< HEAD
 openapi_client/model/uint16.py
+=======
+openapi_client/model/uint.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 openapi_client/model/uint64.py
 openapi_client/model/uint8.py
 openapi_client/model/update_strategy.py
@@ -423,7 +464,11 @@ test/test_allocation.py
 test/test_allocation_list_stub.py
 test/test_allocation_metric.py
 test/test_allocations_api.py
+<<<<<<< HEAD
 test/test_attribute.py
+=======
+test/test_autopilot_configuration.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 test/test_check_restart.py
 test/test_constraint.py
 test/test_consul.py
@@ -545,8 +590,13 @@ test/test_node_update_drain_request.py
 test/test_node_update_eligibility_request.py
 test/test_nodes_api.py
 test/test_object_diff.py
+<<<<<<< HEAD
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py
+=======
+test/test_operator_api.py
+test/test_operator_health_reply.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 test/test_parameterized_job_config.py
 test/test_periodic_config.py
 test/test_periodic_force_response.py
@@ -555,8 +605,10 @@ test/test_plugins_api.py
 test/test_point_value.py
 test/test_port.py
 test/test_port_mapping.py
+test/test_preemption_config.py
 test/test_quota_limit.py
 test/test_quota_spec.py
+test/test_raft_server.py
 test/test_regions_api.py
 test/test_requested_device.py
 test/test_reschedule_event.py
@@ -570,9 +622,13 @@ test/test_scaling_event.py
 test/test_scaling_policy.py
 test/test_scaling_policy_list_stub.py
 test/test_scaling_request.py
+test/test_scheduler_configuration.py
+test/test_scheduler_configuration_response.py
+test/test_scheduler_set_configuration_response.py
 test/test_search_api.py
 test/test_search_request.py
 test/test_search_response.py
+test/test_server_health.py
 test/test_service.py
 test/test_service_check.py
 test/test_sidecar_task.py
@@ -592,7 +648,11 @@ test/test_task_handle.py
 test/test_task_lifecycle.py
 test/test_task_state.py
 test/test_template.py
+<<<<<<< HEAD
 test/test_uint16.py
+=======
+test/test_uint.py
+>>>>>>> 4825049 (rebase & regenerated clients)
 test/test_uint64.py
 test/test_uint8.py
 test/test_update_strategy.py

@@ -417,6 +417,7 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/PluginsApi.spec.js
@@ -439,7 +440,10 @@ test/model/ScalingPolicyListStub.spec.js
 <<<<<<< HEAD
 test/api/SystemApi.spec.js
 =======
+=======
+>>>>>>> 4825049 (rebase & regenerated clients)
 test/api/OperatorApi.spec.js
+test/api/SystemApi.spec.js
 test/model/AutopilotConfiguration.spec.js
 test/model/OperatorHealthReply.spec.js
 test/model/PreemptionConfig.spec.js
@@ -448,5 +452,8 @@ test/model/SchedulerConfiguration.spec.js
 test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+>>>>>>> 4825049 (rebase & regenerated clients)

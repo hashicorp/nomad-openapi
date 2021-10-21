@@ -204,7 +204,11 @@ Class | Method | HTTP request | Description
 *nomad-client.OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
 *nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+*nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
+>>>>>>> 4825049 (rebase & regenerated clients)
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
 *nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 

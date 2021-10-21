@@ -150,7 +150,11 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**GetOperatorRaft**](docs/OperatorApi.md#getoperatorraft) | **Get** /operator/raft/ | 
 *OperatorApi* | [**GetOperatorSchedulerConfiguration**](docs/OperatorApi.md#getoperatorschedulerconfiguration) | **Get** /operator/scheduler/configuration | 
 *OperatorApi* | [**PostOperatorSchedulerConfiguration**](docs/OperatorApi.md#postoperatorschedulerconfiguration) | **Post** /operator/scheduler/configuration | 
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+*OperatorApi* | [**PutOperatorAutopilotConfiguration**](docs/OperatorApi.md#putoperatorautopilotconfiguration) | **Put** /operator/autopilot/configuration | 
+>>>>>>> 4825049 (rebase & regenerated clients)
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
 *ScalingApi* | [**GetScalingPolicies**](docs/ScalingApi.md#getscalingpolicies) | **Get** /scaling/policies | 
 *ScalingApi* | [**GetScalingPolicy**](docs/ScalingApi.md#getscalingpolicy) | **Get** /scaling/policy/{policyID} | 

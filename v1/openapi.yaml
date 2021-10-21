@@ -1261,6 +1261,7 @@ components:
           schema:
             type: integer
 <<<<<<< HEAD
+<<<<<<< HEAD
     GetVolumeResponse:
       content:
         application/json:
@@ -1275,6 +1276,13 @@ components:
     PutOperatorAutopilotConfigurationResponse:
 >>>>>>> 685e8ca (updates to generator/operator.go)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+    PutOperatorAutopilotConfigurationResponse:
+      description: ""
+    PutSystemGCResponse:
+      description: ""
+    PutSystemReconcileSummariesResponse:
+>>>>>>> 4825049 (rebase & regenerated clients)
       description: ""
       headers:
         X-Nomad-Index:
@@ -6747,6 +6755,7 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -6756,6 +6765,9 @@ paths:
           $ref: '#/components/responses/GetNodeResponse'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> 4825049 (rebase & regenerated clients)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -6780,6 +6792,34 @@ paths:
       operationId: GetNodeAllocations
 =======
       - Operator
+    put:
+      operationId: PutOperatorAutopilotConfiguration
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutopilotConfiguration'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PutOperatorAutopilotConfigurationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
   /operator/autopilot/health:
     get:
       operationId: GetOperatorAutopilotHealth
@@ -6792,6 +6832,7 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -6801,6 +6842,9 @@ paths:
           $ref: '#/components/responses/GetNodeAllocationsResponse'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> 4825049 (rebase & regenerated clients)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -6915,7 +6959,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       responses:
         "200":
@@ -6950,6 +6994,7 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -6959,6 +7004,9 @@ paths:
           $ref: '#/components/responses/GetNodesResponse'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> 4825049 (rebase & regenerated clients)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -6995,6 +7043,7 @@ paths:
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -7004,6 +7053,9 @@ paths:
           $ref: '#/components/responses/GetPluginCSIResponse'
 =======
       - $ref: '#/components/parameters/NextTokenHeader'
+=======
+      - $ref: '#/components/parameters/NomadTokenHeader'
+>>>>>>> 4825049 (rebase & regenerated clients)
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
@@ -7046,7 +7098,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/IdempotencyTokenParam'
       requestBody:
         content:

@@ -97,7 +97,11 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**get_operator_raft**](docs/OperatorApi.md#get_operator_raft) | **Get** /operator/raft/ | 
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **Get** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **Post** /operator/scheduler/configuration | 
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+*OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **Put** /operator/autopilot/configuration | 
+>>>>>>> 4825049 (rebase & regenerated clients)
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
 *ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **Get** /scaling/policies | 
 *ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **Get** /scaling/policy/{policyID} | 
