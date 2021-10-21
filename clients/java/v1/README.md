@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+<<<<<<< HEAD
 *NodesApi* | [**getNode**](docs/NodesApi.md#getNode) | **GET** /node/{nodeId} | 
 *NodesApi* | [**getNodeAllocations**](docs/NodesApi.md#getNodeAllocations) | **GET** /node/{nodeId}/allocations | 
 *NodesApi* | [**getNodes**](docs/NodesApi.md#getNodes) | **GET** /nodes | 
@@ -181,6 +182,7 @@ Class | Method | HTTP request | Description
 <<<<<<< HEAD
 *PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -195,6 +197,16 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 >>>>>>> 2fdd42e (updates to generator/operator.go)
 >>>>>>> a5079de (added a few tests, missing snapshot request/restore)
+=======
+=======
+*OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
+*OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
+*OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
+*OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
+*OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
+*OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
+>>>>>>> 2fdd42e (updates to generator/operator.go)
+>>>>>>> 3622eaf (updates to generator/operator.go)
 *RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
 *ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
@@ -234,9 +246,13 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+<<<<<<< HEAD
  - [Attribute](docs/Attribute.md)
  - [CSIControllerInfo](docs/CSIControllerInfo.md)
  - [CSIInfo](docs/CSIInfo.md)
+=======
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
+>>>>>>> 2fdd42e (updates to generator/operator.go)
  - [CSIMountOptions](docs/CSIMountOptions.md)
  - [CSINodeInfo](docs/CSINodeInfo.md)
  - [CSIPlugin](docs/CSIPlugin.md)
@@ -347,8 +363,12 @@ Class | Method | HTTP request | Description
  - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
  - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
+<<<<<<< HEAD
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
+=======
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
+>>>>>>> 2fdd42e (updates to generator/operator.go)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -356,8 +376,10 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [Port](docs/Port.md)
  - [PortMapping](docs/PortMapping.md)
+ - [PreemptionConfig](docs/PreemptionConfig.md)
  - [QuotaLimit](docs/QuotaLimit.md)
  - [QuotaSpec](docs/QuotaSpec.md)
+ - [RaftServer](docs/RaftServer.md)
  - [RequestedDevice](docs/RequestedDevice.md)
  - [RescheduleEvent](docs/RescheduleEvent.md)
  - [ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -369,8 +391,12 @@ Class | Method | HTTP request | Description
  - [ScalingPolicy](docs/ScalingPolicy.md)
  - [ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [ScalingRequest](docs/ScalingRequest.md)
+ - [SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
+ - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
  - [SidecarTask](docs/SidecarTask.md)

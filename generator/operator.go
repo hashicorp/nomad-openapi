@@ -6,44 +6,45 @@ import (
 	"github.com/hashicorp/nomad/api"
 )
 
+var AutopilotSetConfiguration bool
+
 func (v *v1api) getOperatorPaths() []*apiPath {
-	// tags := []string{"Operator"}
+	tags := []string{"Operator"}
 
 	return []*apiPath{
 		//s.mux.HandleFunc("/v1/operator/license", s.wrap(s.LicenseRequest))
+		// NOTE: there's no license endpoint
+		// QUESTION: should this be under the enterprise-api instead...?
 		//s.mux.HandleFunc("/v1/operator/raft/", s.wrap(s.OperatorRequest))
 		{
-			Template: "/operator/raft/configuration",
+			Template: "/operator/raft/",
 			Operations: []*operation{
+				//configuration
 				newOperation(http.MethodGet,
 					httpServer.OperatorRequest,
 					tags,
-					"GetOperatorRaftConfiguration",
+					"GetOperatorRaft",
 					nil,
 					defaultQueryOpts,
 					newResponseConfig(200,
 						arraySchema,
 						api.RaftServer{},
 						nil,
-						"GetOperatorRaftConfigurationResponse",
+						"GetOperatorRaftResponse",
 					),
 				),
-			},
-		},
-		{
-			Template: "/operator/raft/peer",
-			Operations: []*operation{
+				//peer
 				newOperation(http.MethodDelete,
 					httpServer.OperatorRequest,
 					tags,
-					"DeleteOperatorRaftPeer",
+					"DeleteOperatorRaft",
 					nil,
 					defaultWriteOpts,
 					newResponseConfig(200,
 						nilSchema,
 						nil,
 						nil,
-						"DeleteOperatorRaftPeerResponse",
+						"DeleteOperatorRaftResponse",
 					),
 				),
 			},
@@ -74,7 +75,7 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultWriteOpts,
 					newResponseConfig(200,
 						boolSchema,
-						true, // any bool here will work?
+						AutopilotSetConfiguration, // ??
 						nil,
 						"PutOperatorAutopilotConfigurationResponse",
 					),
@@ -82,8 +83,25 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/operator/autopilot/health", s.wrap(s.OperatorServerHealth))
+		{
+			Template: "/operator/autopilot/health",
+			Operations: []*operation{
+				newOperation(http.MethodGet,
+					httpServer.OperatorServerHealth,
+					tags,
+					"GetOperatorAutopilotHealth",
+					nil,
+					defaultQueryOpts,
+					newResponseConfig(200,
+						objectSchema,
+						api.OperatorHealthReply{},
+						nil,
+						"GetOperatorAutopilotHealthResponse",
+					),
+				),
+			},
+		},
 		//s.mux.HandleFunc("/v1/operator/snapshot", s.wrap(s.SnapshotRequest))
-		// NOTE: I don't know how to handle the snapshots :(
 		/* {
 		    Template: "/operator/snapshot",
 		    Operations: []*operation{
@@ -117,5 +135,36 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 		    },
 		}, */
 		//s.mux.HandleFunc("/v1/operator/scheduler/configuration", s.wrap(s.OperatorSchedulerConfiguration))
+		{
+			Template: "/operator/scheduler/configuration",
+			Operations: []*operation{
+				newOperation(http.MethodGet,
+					httpServer.OperatorSchedulerConfiguration,
+					tags,
+					"GetOperatorSchedulerConfiguration",
+					nil,
+					defaultQueryOpts,
+					newResponseConfig(200,
+						objectSchema,
+						api.SchedulerConfigurationResponse{},
+						defaultQueryMeta,
+						"GetOperatorSchedulerConfigurationResponse",
+					),
+				),
+				newOperation(http.MethodPost,
+					httpServer.OperatorSchedulerConfiguration,
+					tags,
+					"PostOperatorSchedulerConfiguration",
+					newRequestBody(objectSchema, api.SchedulerConfiguration{}),
+					defaultWriteOpts,
+					newResponseConfig(200,
+						objectSchema,
+						api.SchedulerSetConfigurationResponse{},
+						defaultWriteMeta,
+						"PostOperatorSchedulerConfigurationResponse",
+					),
+				),
+			},
+		},
 	}
 }
