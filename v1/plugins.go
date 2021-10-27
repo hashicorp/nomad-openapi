@@ -19,7 +19,7 @@ func (p *Plugins) PluginsApi() *client.PluginsApiService {
 	return p.client.apiClient.PluginsApi
 }
 
-func (p *Plugins) List(ctx context.Context) (*[]client.CSIPluginListStub, error) {
+func (p *Plugins) Get(ctx context.Context) (*[]client.CSIPluginListStub, error) {
 	request := p.PluginsApi().GetPlugins(p.client.Ctx)
 	result, err := p.client.ExecRequest(ctx, request)
 	if err != nil {
