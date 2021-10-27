@@ -901,55 +901,7 @@ class ACLApi(object):
                 'auth': [
                     'X-Nomad-Token'
                 ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token/self',
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-                'endpoint_path': '/acl/token',
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
@@ -1519,47 +1471,7 @@ class ACLApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 ACLToken
-=======
-                [ACLToken]
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                [ACLToken]
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                [ACLToken]
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-                ACLToken
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                [ACLToken]
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                [ACLToken]
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                ACLToken
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-                ACLToken
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1590,47 +1502,7 @@ class ACLApi(object):
 
         self.post_acl_token = _Endpoint(
             settings={
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 'response_type': (ACLToken,),
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'response_type': (ACLToken,),
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-                'response_type': (ACLToken,),
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-                'response_type': ([ACLToken],),
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-                'response_type': (ACLToken,),
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-                'response_type': (ACLToken,),
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-                'response_type': (ACLToken,),
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                 'auth': [
                     'X-Nomad-Token'
                 ],

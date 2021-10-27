@@ -9,7 +9,10 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from openapi_client.model.acl_policy import ACLPolicy
 from openapi_client.model.acl_policy_list_stub import ACLPolicyListStub
+from openapi_client.model.acl_token import ACLToken
+from openapi_client.model.acl_token_list_stub import ACLTokenListStub
 from openapi_client.model.affinity import Affinity
 from openapi_client.model.alloc_deployment_status import AllocDeploymentStatus
 from openapi_client.model.allocated_cpu_resources import AllocatedCpuResources
@@ -100,6 +103,8 @@ from openapi_client.model.namespace import Namespace
 from openapi_client.model.network_resource import NetworkResource
 from openapi_client.model.node_score_meta import NodeScoreMeta
 from openapi_client.model.object_diff import ObjectDiff
+from openapi_client.model.one_time_token import OneTimeToken
+from openapi_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
 from openapi_client.model.parameterized_job_config import ParameterizedJobConfig
 from openapi_client.model.periodic_config import PeriodicConfig
 from openapi_client.model.periodic_force_response import PeriodicForceResponse

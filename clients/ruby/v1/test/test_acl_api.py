@@ -24,8 +24,74 @@ class TestACLApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_delete_acl_policy(self):
+        """Test case for delete_acl_policy
+
+        """
+        pass
+
+    def test_delete_acl_token(self):
+        """Test case for delete_acl_token
+
+        """
+        pass
+
     def test_get_acl_policies(self):
         """Test case for get_acl_policies
+
+        """
+        pass
+
+    def test_get_acl_policy(self):
+        """Test case for get_acl_policy
+
+        """
+        pass
+
+    def test_get_acl_token(self):
+        """Test case for get_acl_token
+
+        """
+        pass
+
+    def test_get_acl_token_self(self):
+        """Test case for get_acl_token_self
+
+        """
+        pass
+
+    def test_get_acl_tokens(self):
+        """Test case for get_acl_tokens
+
+        """
+        pass
+
+    def test_post_acl_bootstrap(self):
+        """Test case for post_acl_bootstrap
+
+        """
+        pass
+
+    def test_post_acl_policy(self):
+        """Test case for post_acl_policy
+
+        """
+        pass
+
+    def test_post_acl_token(self):
+        """Test case for post_acl_token
+
+        """
+        pass
+
+    def test_post_acl_token_onetime(self):
+        """Test case for post_acl_token_onetime
+
+        """
+        pass
+
+    def test_post_acl_token_onetime_exchange(self):
+        """Test case for post_acl_token_onetime_exchange
 
         """
         pass

@@ -963,55 +963,7 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	localVarPath := localBasePath + "/acl/token"
-=======
-	localVarPath := localBasePath + "/acl/token/self"
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-	localVarPath := localBasePath + "/acl/token/self"
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-	localVarPath := localBasePath + "/acl/token/self"
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-	localVarPath := localBasePath + "/acl/token/self"
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-	localVarPath := localBasePath + "/acl/token/self"
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-	localVarPath := localBasePath + "/acl/token"
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1628,47 +1580,7 @@ func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPos
 	return r
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
-=======
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	return r.ApiService.PostACLTokenExecute(r)
 }
 
@@ -1688,116 +1600,16 @@ func (a *ACLApiService) PostACLToken(ctx _context.Context, tokenAccessor string)
 
 /*
  * Execute executes the request
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
  * @return ACLToken
  */
 func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
-=======
- * @return []ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
- * @return []ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
- * @return ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
- * @return []ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
- * @return ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
- * @return []ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
- * @return []ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) ([]ACLToken, *_nethttp.Response, error) {
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
- * @return ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
- * @return ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
- * @return ACLToken
- */
-func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		localVarReturnValue  ACLToken
-=======
-		localVarReturnValue  []ACLToken
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-		localVarReturnValue  []ACLToken
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-		localVarReturnValue  ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-		localVarReturnValue  []ACLToken
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-		localVarReturnValue  ACLToken
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-		localVarReturnValue  []ACLToken
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-		localVarReturnValue  []ACLToken
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-		localVarReturnValue  ACLToken
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-		localVarReturnValue  ACLToken
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-		localVarReturnValue  ACLToken
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLToken")

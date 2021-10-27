@@ -9,55 +9,7 @@ Method | HTTP request | Description
 [**getACLPolicies**](AclApi.md#getACLPolicies) | **GET** /acl/policies | 
 [**getACLPolicy**](AclApi.md#getACLPolicy) | **GET** /acl/policy/{policyName} | 
 [**getACLToken**](AclApi.md#getACLToken) | **GET** /acl/token/{tokenAccessor} | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 [**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-[**getACLTokenSelf**](AclApi.md#getACLTokenSelf) | **GET** /acl/token | 
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 [**getACLTokens**](AclApi.md#getACLTokens) | **GET** /acl/tokens | 
 [**postACLBootstrap**](AclApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 [**postACLPolicy**](AclApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 
@@ -820,47 +772,7 @@ null (empty response body)
 
 <a name="postACLToken"></a>
 # **postACLToken**
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 > ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
-=======
-> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-> List&lt;ACLToken&gt; postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-> ACLToken postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken)
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 
 
@@ -893,47 +805,7 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
-=======
-      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-      List<ACLToken> result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-      ACLToken result = apiInstance.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AclApi#postACLToken");
@@ -959,47 +831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
-=======
-[**List&lt;ACLToken&gt;**](ACLToken.md)
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**List&lt;ACLToken&gt;**](ACLToken.md)
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-[**List&lt;ACLToken&gt;**](ACLToken.md)
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-[**List&lt;ACLToken&gt;**](ACLToken.md)
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-[**List&lt;ACLToken&gt;**](ACLToken.md)
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-[**ACLToken**](ACLToken.md)
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 ### Authorization
 

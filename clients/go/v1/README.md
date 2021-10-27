@@ -83,55 +83,7 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**GetACLPolicies**](docs/ACLApi.md#getaclpolicies) | **Get** /acl/policies | 
 *ACLApi* | [**GetACLPolicy**](docs/ACLApi.md#getaclpolicy) | **Get** /acl/policy/{policyName} | 
 *ACLApi* | [**GetACLToken**](docs/ACLApi.md#getacltoken) | **Get** /acl/token/{tokenAccessor} | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 *ACLApi* | [**GetACLTokens**](docs/ACLApi.md#getacltokens) | **Get** /acl/tokens | 
 *ACLApi* | [**PostACLBootstrap**](docs/ACLApi.md#postaclbootstrap) | **Post** /acl/bootstrap | 
 *ACLApi* | [**PostACLPolicy**](docs/ACLApi.md#postaclpolicy) | **Post** /acl/policy/{policyName} | 

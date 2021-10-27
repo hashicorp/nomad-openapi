@@ -365,55 +365,7 @@ export default class ACLApi {
       let accepts = ['application/json'];
       let returnType = ACLToken;
       return this.apiClient.callApi(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         '/acl/token', 'GET',
-=======
-        '/acl/token/self', 'GET',
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-        '/acl/token', 'GET',
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-        '/acl/token/self', 'GET',
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-        '/acl/token', 'GET',
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-        '/acl/token/self', 'GET',
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-        '/acl/token', 'GET',
->>>>>>> 2ee5a7e (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-        '/acl/token/self', 'GET',
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-        '/acl/token', 'GET',
->>>>>>> 7fd7d07 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-        '/acl/token/self', 'GET',
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-        '/acl/token', 'GET',
->>>>>>> 77759f4 (acls-api, added aclPolicyNameParam and tokenNameParam to v1api)
-=======
-        '/acl/token', 'GET',
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-        '/acl/token', 'GET',
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -578,47 +530,7 @@ export default class ACLApi {
      * Callback function to receive the result of the postACLToken operation.
      * @callback module:api/ACLApi~postACLTokenCallback
      * @param {String} error Error message, if any.
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
      * @param {module:model/ACLToken} data The data returned by the service call.
-=======
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-     * @param {module:model/ACLToken} data The data returned by the service call.
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-     * @param {module:model/ACLToken} data The data returned by the service call.
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-     * @param {module:model/ACLToken} data The data returned by the service call.
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * @param {module:model/ACLToken} data The data returned by the service call.
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-     * @param {module:model/ACLToken} data The data returned by the service call.
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
      * @param {String} response The complete HTTP response.
      */
 
@@ -631,47 +543,7 @@ export default class ACLApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
      * @param {module:api/ACLApi~postACLTokenCallback} callback The callback function, accepting three arguments: error, data, response
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
      * data is of type: {@link module:model/ACLToken}
-=======
-     * data is of type: {@link Array.<module:model/ACLToken>}
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-     * data is of type: {@link Array.<module:model/ACLToken>}
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-     * data is of type: {@link module:model/ACLToken}
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * data is of type: {@link Array.<module:model/ACLToken>}
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-     * data is of type: {@link module:model/ACLToken}
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * data is of type: {@link Array.<module:model/ACLToken>}
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-     * data is of type: {@link Array.<module:model/ACLToken>}
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-     * data is of type: {@link module:model/ACLToken}
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-     * data is of type: {@link module:model/ACLToken}
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-     * data is of type: {@link module:model/ACLToken}
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
      */
     postACLToken(tokenAccessor, aCLToken, opts, callback) {
       opts = opts || {};
@@ -702,47 +574,7 @@ export default class ACLApi {
       let authNames = ['X-Nomad-Token'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       let returnType = ACLToken;
-=======
-      let returnType = [ACLToken];
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-      let returnType = [ACLToken];
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-      let returnType = ACLToken;
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      let returnType = [ACLToken];
->>>>>>> 548a9f4 (finished acls-api i think)
-=======
-      let returnType = ACLToken;
->>>>>>> 87acc5b (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      let returnType = [ACLToken];
->>>>>>> 0f409b3 (finished acls-api i think)
-=======
-      let returnType = [ACLToken];
->>>>>>> 7a50f49 (finished acls-api i think)
-=======
-      let returnType = ACLToken;
->>>>>>> eed23b0 (acl.go PostACLToken should return objectSchema and not arraySchema, added v1/acl.go)
-=======
-      let returnType = ACLToken;
->>>>>>> 8a16833 (rebased, regenerated client outputs)
-=======
-      let returnType = ACLToken;
->>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
       return this.apiClient.callApi(
         '/acl/token/{tokenAccessor}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
