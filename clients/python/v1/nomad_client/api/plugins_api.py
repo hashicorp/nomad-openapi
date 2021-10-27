@@ -174,19 +174,7 @@ class PluginsApi(object):
                         (str,),
                 },
                 'attribute_map': {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                     'plugin_id': 'pluginID',
-=======
-                    'plugin_id': 'pluginId',
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-                    'plugin_id': 'pluginID',
->>>>>>> 13a3eee (added tests for plugins)
-=======
-                    'plugin_id': 'pluginID',
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
                     'region': 'region',
                     'namespace': 'namespace',
                     'index': 'index',

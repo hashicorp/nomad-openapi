@@ -323,41 +323,13 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+test/test_csi_controller_info.py
+test/test_csi_info.py
+test/test_csi_node_info.py
+test/test_csi_plugin.py
+test/test_csi_plugin_list_stub.py
+test/test_plugins_api.py
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
-=======
-<<<<<<< HEAD
->>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
-=======
-test/test_csi_controller_info.py
-test/test_csi_info.py
-test/test_csi_node_info.py
-test/test_csi_plugin.py
-test/test_csi_plugin_list_stub.py
-test/test_plugins_api.py
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 test/test_system_api.py
-=======
-=======
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
->>>>>>> 770b881 (rebase and regenerated client)
-test/test_csi_controller_info.py
-test/test_csi_info.py
-test/test_csi_node_info.py
-test/test_csi_plugin.py
-test/test_csi_plugin_list_stub.py
-test/test_plugins_api.py
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-test/test_system_api.py
->>>>>>> 770b881 (rebase and regenerated client)
 tox.ini

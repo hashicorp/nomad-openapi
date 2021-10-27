@@ -99,30 +99,10 @@ components:
       name: per_page
       schema:
         type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     PluginIDParam:
       description: The CSI plugin identifier.
       in: path
       name: pluginID
-<<<<<<< HEAD
-=======
-    PluginIdParam:
-      description: The CSI plugin identifier.
-      in: path
-      name: pluginId
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-    PluginIDParam:
-      description: The CSI plugin identifier.
-      in: path
-      name: pluginID
->>>>>>> 13a3eee (added tests for plugins)
-=======
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
       required: true
       schema:
         type: string
@@ -711,28 +691,6 @@ components:
               $ref: '#/components/schemas/CSIPluginListStub'
             type: array
       description: ""
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
->>>>>>> 13a3eee (added tests for plugins)
-=======
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -4759,19 +4717,7 @@ paths:
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       - $ref: '#/components/parameters/PluginIDParam'
-=======
-      - $ref: '#/components/parameters/PluginIdParam'
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-      - $ref: '#/components/parameters/PluginIDParam'
->>>>>>> 13a3eee (added tests for plugins)
-=======
-      - $ref: '#/components/parameters/PluginIDParam'
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
       responses:
         "200":
           $ref: '#/components/responses/GetPluginCSIResponse'

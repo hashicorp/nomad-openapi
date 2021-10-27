@@ -11,19 +11,7 @@ Method | HTTP request | Description
 
 ## getPluginCSI
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 > [CSIPlugin] getPluginCSI(pluginID, opts)
-=======
-> [CSIPlugin] getPluginCSI(pluginId, opts)
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-> [CSIPlugin] getPluginCSI(pluginID, opts)
->>>>>>> 13a3eee (added tests for plugins)
-=======
-> [CSIPlugin] getPluginCSI(pluginID, opts)
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 
 
 
@@ -39,19 +27,7 @@ X-Nomad-Token.apiKey = 'YOUR API KEY';
 //X-Nomad-Token.apiKeyPrefix = 'Token';
 
 let apiInstance = new nomad-client.PluginsApi();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
-=======
-let pluginId = "pluginId_example"; // String | The CSI plugin identifier.
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
->>>>>>> 13a3eee (added tests for plugins)
-=======
-let pluginID = "pluginID_example"; // String | The CSI plugin identifier.
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 let opts = {
   'region': "region_example", // String | Filters results based on the specified region.
   'namespace': "namespace_example", // String | Filters results based on the specified namespace.
@@ -63,19 +39,7 @@ let opts = {
   'perPage': 56, // Number | Maximum number of results to return.
   'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
-=======
-apiInstance.getPluginCSI(pluginId, opts, (error, data, response) => {
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
->>>>>>> 13a3eee (added tests for plugins)
-=======
-apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
   if (error) {
     console.error(error);
   } else {
@@ -89,19 +53,7 @@ apiInstance.getPluginCSI(pluginID, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
  **pluginID** | **String**| The CSI plugin identifier. | 
-=======
- **pluginId** | **String**| The CSI plugin identifier. | 
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
- **pluginID** | **String**| The CSI plugin identifier. | 
->>>>>>> 13a3eee (added tests for plugins)
-=======
- **pluginID** | **String**| The CSI plugin identifier. | 
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
  **region** | **String**| Filters results based on the specified region. | [optional] 
  **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
  **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 

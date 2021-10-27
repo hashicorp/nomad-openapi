@@ -11,19 +11,7 @@ Method | HTTP request | Description
 
 ## GetPluginCSI
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 > []CSIPlugin GetPluginCSI(ctx, pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
-=======
-> []CSIPlugin GetPluginCSI(ctx, pluginId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-> []CSIPlugin GetPluginCSI(ctx, pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> 13a3eee (added tests for plugins)
-=======
-> []CSIPlugin GetPluginCSI(ctx, pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 
 
 
@@ -40,19 +28,7 @@ import (
 )
 
 func main() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     pluginID := "pluginID_example" // string | The CSI plugin identifier.
-=======
-    pluginId := "pluginId_example" // string | The CSI plugin identifier.
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-    pluginID := "pluginID_example" // string | The CSI plugin identifier.
->>>>>>> 13a3eee (added tests for plugins)
-=======
-    pluginID := "pluginID_example" // string | The CSI plugin identifier.
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     region := "region_example" // string | Filters results based on the specified region. (optional)
     namespace := "namespace_example" // string | Filters results based on the specified namespace. (optional)
     index := int32(56) // int32 | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -65,19 +41,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
-=======
-    resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-    resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> 13a3eee (added tests for plugins)
-=======
-    resp, r, err := api_client.PluginsApi.GetPluginCSI(context.Background(), pluginID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PluginsApi.GetPluginCSI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -93,19 +57,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 **pluginID** | **string** | The CSI plugin identifier. | 
-=======
-**pluginId** | **string** | The CSI plugin identifier. | 
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-**pluginID** | **string** | The CSI plugin identifier. | 
->>>>>>> 13a3eee (added tests for plugins)
-=======
-**pluginID** | **string** | The CSI plugin identifier. | 
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 
 ### Other Parameters
 

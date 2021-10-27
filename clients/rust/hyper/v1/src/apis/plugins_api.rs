@@ -67,19 +67,7 @@ impl<C: hyper::client::Connect>PluginsApi for PluginsApiClient<C> {
         if let Some(ref s) = next_token {
             req = req.with_query_param("next_token".to_string(), s.to_string());
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
-=======
-        req = req.with_path_param("pluginId".to_string(), plugin_id.to_string());
->>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
-=======
-        req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
->>>>>>> 13a3eee (added tests for plugins)
-=======
-        req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
->>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
         }
