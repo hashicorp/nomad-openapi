@@ -338,6 +338,7 @@ Name | Type | Description  | Required | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
 =======
 > Vec<crate::models::AclToken> post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
@@ -360,6 +361,9 @@ Name | Type | Description  | Required | Notes
 =======
 > crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+> crate::models::AclToken post_acl_token(token_accessor, acl_token, region, namespace, x_nomad_token, idempotency_token)
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 
 ### Parameters
@@ -383,6 +387,7 @@ Name | Type | Description  | Required | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**crate::models::AclToken**](ACLToken.md)
 =======
 [**Vec<crate::models::AclToken>**](ACLToken.md)
@@ -405,6 +410,9 @@ Name | Type | Description  | Required | Notes
 =======
 [**crate::models::AclToken**](ACLToken.md)
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+[**crate::models::AclToken**](ACLToken.md)
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 ### Authorization
 

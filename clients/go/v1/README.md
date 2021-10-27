@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
 =======
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token/self | 
@@ -128,6 +129,9 @@ Class | Method | HTTP request | Description
 =======
 *ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+*ACLApi* | [**GetACLTokenSelf**](docs/ACLApi.md#getacltokenself) | **Get** /acl/token | 
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 *ACLApi* | [**GetACLTokens**](docs/ACLApi.md#getacltokens) | **Get** /acl/tokens | 
 *ACLApi* | [**PostACLBootstrap**](docs/ACLApi.md#postaclbootstrap) | **Post** /acl/bootstrap | 
 *ACLApi* | [**PostACLPolicy**](docs/ACLApi.md#postaclpolicy) | **Post** /acl/policy/{policyName} | 

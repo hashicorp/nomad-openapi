@@ -912,6 +912,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'endpoint_path': '/acl/token',
 =======
                 'endpoint_path': '/acl/token/self',
@@ -946,6 +947,9 @@ class ACLApi(object):
 =======
                 'endpoint_path': '/acl/token',
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+                'endpoint_path': '/acl/token',
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                 'operation_id': 'get_acl_token_self',
                 'http_method': 'GET',
                 'servers': None,
@@ -1524,6 +1528,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 ACLToken
 =======
                 [ACLToken]
@@ -1552,6 +1557,9 @@ class ACLApi(object):
 =======
                 ACLToken
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+                ACLToken
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1591,6 +1599,7 @@ class ACLApi(object):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'response_type': (ACLToken,),
 =======
                 'response_type': ([ACLToken],),
@@ -1619,6 +1628,9 @@ class ACLApi(object):
 =======
                 'response_type': (ACLToken,),
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+                'response_type': (ACLToken,),
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
                 'auth': [
                     'X-Nomad-Token'
                 ],

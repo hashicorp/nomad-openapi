@@ -20,6 +20,7 @@ Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
 =======
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token/self | 
@@ -54,6 +55,9 @@ Method | HTTP request | Description
 =======
 [**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+[**GetACLTokenSelf**](ACLApi.md#GetACLTokenSelf) | **Get** /acl/token | 
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 [**GetACLTokens**](ACLApi.md#GetACLTokens) | **Get** /acl/tokens | 
 [**PostACLBootstrap**](ACLApi.md#PostACLBootstrap) | **Post** /acl/bootstrap | 
 [**PostACLPolicy**](ACLApi.md#PostACLPolicy) | **Post** /acl/policy/{policyName} | 
@@ -780,6 +784,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 =======
 > []ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
@@ -808,6 +813,9 @@ Name | Type | Description  | Notes
 =======
 > ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+> ACLToken PostACLToken(ctx, tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 
 
@@ -847,6 +855,7 @@ func main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // response from `PostACLToken`: ACLToken
 =======
     // response from `PostACLToken`: []ACLToken
@@ -875,6 +884,9 @@ func main() {
 =======
     // response from `PostACLToken`: ACLToken
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+    // response from `PostACLToken`: ACLToken
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLToken`: %v\n", resp)
 }
 ```
@@ -912,6 +924,7 @@ Name | Type | Description  | Notes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [**ACLToken**](ACLToken.md)
 =======
 [**[]ACLToken**](ACLToken.md)
@@ -940,6 +953,9 @@ Name | Type | Description  | Notes
 =======
 [**ACLToken**](ACLToken.md)
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+[**ACLToken**](ACLToken.md)
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 ### Authorization
 

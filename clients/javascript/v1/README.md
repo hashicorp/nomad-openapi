@@ -148,6 +148,7 @@ Class | Method | HTTP request | Description
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 *nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
 =======
 *nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token/self | 
@@ -182,6 +183,9 @@ Class | Method | HTTP request | Description
 =======
 *nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+*nomad-client.ACLApi* | [**getACLTokenSelf**](docs/ACLApi.md#getACLTokenSelf) | **GET** /acl/token | 
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 *nomad-client.ACLApi* | [**getACLTokens**](docs/ACLApi.md#getACLTokens) | **GET** /acl/tokens | 
 *nomad-client.ACLApi* | [**postACLBootstrap**](docs/ACLApi.md#postACLBootstrap) | **POST** /acl/bootstrap | 
 *nomad-client.ACLApi* | [**postACLPolicy**](docs/ACLApi.md#postACLPolicy) | **POST** /acl/policy/{policyName} | 

@@ -376,6 +376,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '/acl/token', 'GET',
 =======
         '/acl/token/self', 'GET',
@@ -410,6 +411,9 @@ export default class ACLApi {
 =======
         '/acl/token', 'GET',
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+        '/acl/token', 'GET',
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -583,6 +587,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param {module:model/ACLToken} data The data returned by the service call.
 =======
      * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
@@ -611,6 +616,9 @@ export default class ACLApi {
 =======
      * @param {module:model/ACLToken} data The data returned by the service call.
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+     * @param {module:model/ACLToken} data The data returned by the service call.
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
      * @param {String} response The complete HTTP response.
      */
 
@@ -632,6 +640,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * data is of type: {@link module:model/ACLToken}
 =======
      * data is of type: {@link Array.<module:model/ACLToken>}
@@ -660,6 +669,9 @@ export default class ACLApi {
 =======
      * data is of type: {@link module:model/ACLToken}
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+     * data is of type: {@link module:model/ACLToken}
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
      */
     postACLToken(tokenAccessor, aCLToken, opts, callback) {
       opts = opts || {};
@@ -699,6 +711,7 @@ export default class ACLApi {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       let returnType = ACLToken;
 =======
       let returnType = [ACLToken];
@@ -727,6 +740,9 @@ export default class ACLApi {
 =======
       let returnType = ACLToken;
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+      let returnType = ACLToken;
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
       return this.apiClient.callApi(
         '/acl/token/{tokenAccessor}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

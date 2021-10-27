@@ -974,6 +974,7 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	localVarPath := localBasePath + "/acl/token"
 =======
 	localVarPath := localBasePath + "/acl/token/self"
@@ -1008,6 +1009,9 @@ func (a *ACLApiService) GetACLTokenSelfExecute(r ApiGetACLTokenSelfRequest) (ACL
 =======
 	localVarPath := localBasePath + "/acl/token"
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+	localVarPath := localBasePath + "/acl/token"
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1633,6 +1637,7 @@ func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPos
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
 =======
 func (r ApiPostACLTokenRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
@@ -1661,6 +1666,9 @@ func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) 
 =======
 func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+func (r ApiPostACLTokenRequest) Execute() (ACLToken, *_nethttp.Response, error) {
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	return r.ApiService.PostACLTokenExecute(r)
 }
 
@@ -1689,6 +1697,7 @@ func (a *ACLApiService) PostACLToken(ctx _context.Context, tokenAccessor string)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @return ACLToken
  */
 func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
@@ -1737,6 +1746,11 @@ func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken,
  */
 func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+ * @return ACLToken
+ */
+func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken, *_nethttp.Response, error) {
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -1752,6 +1766,7 @@ func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		localVarReturnValue  ACLToken
 =======
 		localVarReturnValue  []ACLToken
@@ -1780,6 +1795,9 @@ func (a *ACLApiService) PostACLTokenExecute(r ApiPostACLTokenRequest) (ACLToken,
 =======
 		localVarReturnValue  ACLToken
 >>>>>>> 8a16833 (rebased, regenerated client outputs)
+=======
+		localVarReturnValue  ACLToken
+>>>>>>> 4ae04b0c534c2e150c31f72123a512f12efb97c2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLToken")
