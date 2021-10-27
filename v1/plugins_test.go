@@ -13,7 +13,7 @@ func TestListPlugins(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, err := testClient.Plugins().List(queryOpts.Ctx())
+		result, err := testClient.Plugins().Get(queryOpts.Ctx())
 		require.NoError(t, err)
 		require.Len(t, *result, 0)
 		require.NotNil(t, result)
