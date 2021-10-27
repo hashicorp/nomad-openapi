@@ -308,6 +308,7 @@ src/model/VolumeRequest.js
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
 test/model/ScalingPolicyListStub.spec.js
@@ -321,11 +322,16 @@ test/api/SystemApi.spec.js
 >>>>>>> 770b881 (rebase and regenerated client)
 test/api/PluginsApi.spec.js
 test/api/SystemApi.spec.js
+=======
+test/api/PluginsApi.spec.js
+test/api/SystemApi.spec.js
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 test/model/CSIControllerInfo.spec.js
 test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
@@ -334,3 +340,5 @@ test/model/CSIPluginListStub.spec.js
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 =======
 >>>>>>> 770b881 (rebase and regenerated client)
+=======
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b

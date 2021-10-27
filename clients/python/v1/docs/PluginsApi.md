@@ -45,6 +45,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     api_instance = plugins_api.PluginsApi(api_client)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     plugin_id = "pluginID_example" # str | The CSI plugin identifier.
 =======
     plugin_id = "pluginId_example" # str | The CSI plugin identifier.
@@ -52,6 +53,9 @@ with nomad_client.ApiClient(configuration) as api_client:
 =======
     plugin_id = "pluginID_example" # str | The CSI plugin identifier.
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    plugin_id = "pluginID_example" # str | The CSI plugin identifier.
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     region = "region_example" # str | Filters results based on the specified region. (optional)
     namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
     index = 1 # int | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -207,6 +211,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 **200** |  |  -  |
 =======
 **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
@@ -214,6 +219,9 @@ Name | Type | Description  | Notes
 =======
 **200** |  |  -  |
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+**200** |  |  -  |
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 **400** | Bad request |  -  |
 **403** | Forbidden |  -  |
 **405** | Method not allowed |  -  |

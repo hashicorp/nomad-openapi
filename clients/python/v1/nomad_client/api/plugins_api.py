@@ -176,6 +176,7 @@ class PluginsApi(object):
                 'attribute_map': {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     'plugin_id': 'pluginID',
 =======
                     'plugin_id': 'pluginId',
@@ -183,6 +184,9 @@ class PluginsApi(object):
 =======
                     'plugin_id': 'pluginID',
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+                    'plugin_id': 'pluginID',
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
                     'region': 'region',
                     'namespace': 'namespace',
                     'index': 'index',

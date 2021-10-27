@@ -59,6 +59,7 @@ public class PluginsApi {
      * Build call for getPluginCSI
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param pluginID The CSI plugin identifier. (required)
 =======
      * @param pluginId The CSI plugin identifier. (required)
@@ -66,6 +67,9 @@ public class PluginsApi {
 =======
      * @param pluginID The CSI plugin identifier. (required)
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+     * @param pluginID The CSI plugin identifier. (required)
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -90,6 +94,7 @@ public class PluginsApi {
      */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public okhttp3.Call getPluginCSICall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
 =======
     public okhttp3.Call getPluginCSICall(String pluginId, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
@@ -97,10 +102,14 @@ public class PluginsApi {
 =======
     public okhttp3.Call getPluginCSICall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    public okhttp3.Call getPluginCSICall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/plugin/csi/{pluginID}"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             .replaceAll("\\{" + "pluginID" + "\\}", localVarApiClient.escapeString(pluginID.toString()));
@@ -110,6 +119,9 @@ public class PluginsApi {
 =======
             .replaceAll("\\{" + "pluginID" + "\\}", localVarApiClient.escapeString(pluginID.toString()));
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+            .replaceAll("\\{" + "pluginID" + "\\}", localVarApiClient.escapeString(pluginID.toString()));
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -174,6 +186,7 @@ public class PluginsApi {
     @SuppressWarnings("rawtypes")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private okhttp3.Call getPluginCSIValidateBeforeCall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'pluginID' is set
@@ -188,6 +201,9 @@ public class PluginsApi {
 =======
     private okhttp3.Call getPluginCSIValidateBeforeCall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    private okhttp3.Call getPluginCSIValidateBeforeCall(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         
         // verify the required parameter 'pluginID' is set
         if (pluginID == null) {
@@ -196,11 +212,15 @@ public class PluginsApi {
         
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         okhttp3.Call localVarCall = getPluginCSICall(pluginId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 =======
         okhttp3.Call localVarCall = getPluginCSICall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        okhttp3.Call localVarCall = getPluginCSICall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         return localVarCall;
 
     }
@@ -210,6 +230,7 @@ public class PluginsApi {
      * 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param pluginID The CSI plugin identifier. (required)
 =======
      * @param pluginId The CSI plugin identifier. (required)
@@ -217,6 +238,9 @@ public class PluginsApi {
 =======
      * @param pluginID The CSI plugin identifier. (required)
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+     * @param pluginID The CSI plugin identifier. (required)
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -240,6 +264,7 @@ public class PluginsApi {
      */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<CSIPlugin> getPluginCSI(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
         ApiResponse<List<CSIPlugin>> localVarResp = getPluginCSIWithHttpInfo(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 =======
@@ -250,12 +275,17 @@ public class PluginsApi {
     public List<CSIPlugin> getPluginCSI(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
         ApiResponse<List<CSIPlugin>> localVarResp = getPluginCSIWithHttpInfo(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    public List<CSIPlugin> getPluginCSI(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<List<CSIPlugin>> localVarResp = getPluginCSIWithHttpInfo(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         return localVarResp.getData();
     }
 
     /**
      * 
      * 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
      * @param pluginID The CSI plugin identifier. (required)
@@ -265,6 +295,9 @@ public class PluginsApi {
 =======
      * @param pluginID The CSI plugin identifier. (required)
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+     * @param pluginID The CSI plugin identifier. (required)
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -288,6 +321,7 @@ public class PluginsApi {
      */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ApiResponse<List<CSIPlugin>> getPluginCSIWithHttpInfo(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
         okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
 =======
@@ -298,6 +332,10 @@ public class PluginsApi {
     public ApiResponse<List<CSIPlugin>> getPluginCSIWithHttpInfo(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
         okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    public ApiResponse<List<CSIPlugin>> getPluginCSIWithHttpInfo(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         Type localVarReturnType = new TypeToken<List<CSIPlugin>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,6 +345,7 @@ public class PluginsApi {
      * 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param pluginID The CSI plugin identifier. (required)
 =======
      * @param pluginId The CSI plugin identifier. (required)
@@ -314,6 +353,9 @@ public class PluginsApi {
 =======
      * @param pluginID The CSI plugin identifier. (required)
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+     * @param pluginID The CSI plugin identifier. (required)
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -338,6 +380,7 @@ public class PluginsApi {
      */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public okhttp3.Call getPluginCSIAsync(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<CSIPlugin>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
@@ -351,6 +394,11 @@ public class PluginsApi {
 
         okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+    public okhttp3.Call getPluginCSIAsync(String pluginID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<CSIPlugin>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPluginCSIValidateBeforeCall(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         Type localVarReturnType = new TypeToken<List<CSIPlugin>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -374,6 +422,7 @@ public class PluginsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 =======
         <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
@@ -381,6 +430,9 @@ public class PluginsApi {
 =======
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
@@ -481,6 +533,7 @@ public class PluginsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 =======
         <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
@@ -488,6 +541,9 @@ public class PluginsApi {
 =======
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
@@ -518,6 +574,7 @@ public class PluginsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 =======
         <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
@@ -525,6 +582,9 @@ public class PluginsApi {
 =======
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
@@ -557,6 +617,7 @@ public class PluginsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 =======
         <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
@@ -564,6 +625,9 @@ public class PluginsApi {
 =======
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>

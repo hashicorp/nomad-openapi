@@ -45,6 +45,7 @@ public class PluginsApiTest {
     public void getPluginCSITest() throws ApiException {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         String pluginID = null;
 =======
         String pluginId = null;
@@ -52,6 +53,9 @@ public class PluginsApiTest {
 =======
         String pluginID = null;
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        String pluginID = null;
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         String region = null;
         String namespace = null;
         Integer index = null;
@@ -63,6 +67,7 @@ public class PluginsApiTest {
         String nextToken = null;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 =======
         List<CSIPlugin> response = api.getPluginCSI(pluginId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
@@ -70,6 +75,9 @@ public class PluginsApiTest {
 =======
         List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 
         // TODO: test validations
     }

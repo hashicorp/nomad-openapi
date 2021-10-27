@@ -101,10 +101,14 @@ components:
         type: integer
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     PluginIDParam:
       description: The CSI plugin identifier.
       in: path
       name: pluginID
+<<<<<<< HEAD
 =======
     PluginIdParam:
       description: The CSI plugin identifier.
@@ -117,6 +121,8 @@ components:
       in: path
       name: pluginID
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
       required: true
       schema:
         type: string
@@ -707,6 +713,7 @@ components:
       description: ""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       headers:
         X-Nomad-Index:
@@ -724,6 +731,8 @@ components:
 >>>>>>> d99c3e2 (populated generator/plugins.go, added v1/plugins.go)
 =======
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
     GetQuotaSpecResponse:
       content:
         application/json:
@@ -4752,6 +4761,7 @@ paths:
       - $ref: '#/components/parameters/NextTokenParam'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       - $ref: '#/components/parameters/PluginIDParam'
 =======
       - $ref: '#/components/parameters/PluginIdParam'
@@ -4759,6 +4769,9 @@ paths:
 =======
       - $ref: '#/components/parameters/PluginIDParam'
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+      - $ref: '#/components/parameters/PluginIDParam'
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
       responses:
         "200":
           $ref: '#/components/responses/GetPluginCSIResponse'

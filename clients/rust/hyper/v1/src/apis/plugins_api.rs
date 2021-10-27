@@ -69,6 +69,7 @@ impl<C: hyper::client::Connect>PluginsApi for PluginsApiClient<C> {
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
 =======
         req = req.with_path_param("pluginId".to_string(), plugin_id.to_string());
@@ -76,6 +77,9 @@ impl<C: hyper::client::Connect>PluginsApi for PluginsApiClient<C> {
 =======
         req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
 >>>>>>> 13a3eee (added tests for plugins)
+=======
+        req = req.with_path_param("pluginID".to_string(), plugin_id.to_string());
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
         }

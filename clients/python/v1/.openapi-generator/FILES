@@ -326,11 +326,20 @@ test/__init__.py
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
 =======
 <<<<<<< HEAD
 >>>>>>> 1c45228 (populated generator/plugins.go, added v1/plugins.go)
+=======
+test/test_csi_controller_info.py
+test/test_csi_info.py
+test/test_csi_node_info.py
+test/test_csi_plugin.py
+test/test_csi_plugin_list_stub.py
+test/test_plugins_api.py
+>>>>>>> 6f570d317a34c315cff4c0923431310f4315843b
 test/test_system_api.py
 =======
 =======
