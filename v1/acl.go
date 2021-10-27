@@ -20,7 +20,7 @@ func (a *ACL) ACLApi() *client.ACLApiService {
 }
 
 // returns arraySchema
-func (a *ACL) ListPolicies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, error) {
+func (a *ACL) Policies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, error) {
 	request := a.ACLApi().GetACLPolicies(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -115,7 +115,7 @@ func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, erro
 	return &final, meta, nil
 }
 
-func (a *ACL) ListTokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, error) {
+func (a *ACL) Tokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, error) {
 	request := a.ACLApi().GetACLTokens(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
