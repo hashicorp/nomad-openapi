@@ -68,6 +68,7 @@ pub mod jobs_api;
 pub mod metrics_api;
 pub mod namespaces_api;
 pub mod regions_api;
+pub mod scaling_api;
 pub mod search_api;
 pub mod system_api;
 pub mod volumes_api;

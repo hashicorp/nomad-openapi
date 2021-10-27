@@ -212,6 +212,8 @@ pub mod scaling_event;
 pub use self::scaling_event::ScalingEvent;
 pub mod scaling_policy;
 pub use self::scaling_policy::ScalingPolicy;
+pub mod scaling_policy_list_stub;
+pub use self::scaling_policy_list_stub::ScalingPolicyListStub;
 pub mod scaling_request;
 pub use self::scaling_request::ScalingRequest;
 pub mod search_request;

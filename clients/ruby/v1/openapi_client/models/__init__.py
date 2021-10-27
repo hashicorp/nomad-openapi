@@ -118,6 +118,7 @@ from openapi_client.model.restart_policy import RestartPolicy
 from openapi_client.model.sampled_value import SampledValue
 from openapi_client.model.scaling_event import ScalingEvent
 from openapi_client.model.scaling_policy import ScalingPolicy
+from openapi_client.model.scaling_policy_list_stub import ScalingPolicyListStub
 from openapi_client.model.scaling_request import ScalingRequest
 from openapi_client.model.search_request import SearchRequest
 from openapi_client.model.search_response import SearchResponse

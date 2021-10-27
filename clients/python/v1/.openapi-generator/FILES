@@ -114,8 +114,10 @@ docs/RescheduleTracker.md
 docs/Resources.md
 docs/RestartPolicy.md
 docs/SampledValue.md
+docs/ScalingApi.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
+docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
 docs/SearchApi.md
 docs/SearchRequest.md
@@ -155,6 +157,7 @@ nomad_client/api/jobs_api.py
 nomad_client/api/metrics_api.py
 nomad_client/api/namespaces_api.py
 nomad_client/api/regions_api.py
+nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
 nomad_client/api/system_api.py
 nomad_client/api/volumes_api.py
@@ -272,6 +275,7 @@ nomad_client/model/restart_policy.py
 nomad_client/model/sampled_value.py
 nomad_client/model/scaling_event.py
 nomad_client/model/scaling_policy.py
+nomad_client/model/scaling_policy_list_stub.py
 nomad_client/model/scaling_request.py
 nomad_client/model/search_request.py
 nomad_client/model/search_response.py
@@ -307,5 +311,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_scaling_api.py
+test/test_scaling_policy_list_stub.py
 test/test_system_api.py
 tox.ini

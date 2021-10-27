@@ -113,8 +113,10 @@ docs/RescheduleTracker.md
 docs/Resources.md
 docs/RestartPolicy.md
 docs/SampledValue.md
+docs/ScalingApi.md
 docs/ScalingEvent.md
 docs/ScalingPolicy.md
+docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
 docs/SearchApi.md
 docs/SearchRequest.md
@@ -153,6 +155,7 @@ src/api/JobsApi.js
 src/api/MetricsApi.js
 src/api/NamespacesApi.js
 src/api/RegionsApi.js
+src/api/ScalingApi.js
 src/api/SearchApi.js
 src/api/SystemApi.js
 src/api/VolumesApi.js
@@ -264,6 +267,7 @@ src/model/RestartPolicy.js
 src/model/SampledValue.js
 src/model/ScalingEvent.js
 src/model/ScalingPolicy.js
+src/model/ScalingPolicyListStub.js
 src/model/ScalingRequest.js
 src/model/SearchRequest.js
 src/model/SearchResponse.js
@@ -289,4 +293,6 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/api/ScalingApi.spec.js
 test/api/SystemApi.spec.js
+test/model/ScalingPolicyListStub.spec.js

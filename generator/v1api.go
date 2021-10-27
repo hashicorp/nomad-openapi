@@ -159,6 +159,14 @@ var (
 		Name:        "region",
 		In:          inQuery,
 	}
+	scalingPolicyIDParam = parameter{
+		Id:          "ScalingPolicyIDParam",
+		SchemaType:  stringSchema,
+		Description: "The scaling policy identifier.",
+		Name:        "policyID",
+		In:          inPath,
+		Required:    true,
+	}
 	snapshotIDParam = parameter{
 		Id:          "SnapshotIDParam",
 		SchemaType:  stringSchema,
