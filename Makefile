@@ -37,3 +37,7 @@ v1: spec
 			--rm \
 			--volume "$(shell pwd):/local" \
 			openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/ruby/v1/config.yaml
+	@docker run \
+			--rm \
+			--volume "$(shell pwd):/local" \
+			openapitools/openapi-generator-cli:v5.2.0 batch --clean /local/clients/typescript/v1/config.yaml
