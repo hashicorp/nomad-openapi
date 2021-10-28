@@ -21,7 +21,12 @@ from nomad_client.model.allocated_task_resources import AllocatedTaskResources
 from nomad_client.model.allocation import Allocation
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from nomad_client.model.allocation_metric import AllocationMetric
+from nomad_client.model.csi_controller_info import CSIControllerInfo
+from nomad_client.model.csi_info import CSIInfo
 from nomad_client.model.csi_mount_options import CSIMountOptions
+from nomad_client.model.csi_node_info import CSINodeInfo
+from nomad_client.model.csi_plugin import CSIPlugin
+from nomad_client.model.csi_plugin_list_stub import CSIPluginListStub
 from nomad_client.model.csi_secrets import CSISecrets
 from nomad_client.model.csi_snapshot import CSISnapshot
 from nomad_client.model.csi_snapshot_create_request import CSISnapshotCreateRequest

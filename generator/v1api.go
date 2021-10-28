@@ -116,6 +116,14 @@ var (
 		In:          inQuery,
 		Required:    false,
 	}
+	pluginIDParam = parameter{
+		Id:          "PluginIDParam",
+		SchemaType:  stringSchema,
+		Description: "The CSI plugin identifier.",
+		Name:        "pluginID",
+		In:          inPath,
+		Required:    true,
+	}
 	quotaSpecNameParam = parameter{
 		Id:          "QuotaSpecNameParam",
 		SchemaType:  stringSchema,

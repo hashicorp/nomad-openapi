@@ -17,7 +17,12 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/CSIControllerInfo.md
+docs/CSIInfo.md
 docs/CSIMountOptions.md
+docs/CSINodeInfo.md
+docs/CSIPlugin.md
+docs/CSIPluginListStub.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
@@ -102,6 +107,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -174,6 +180,7 @@ src/main/java/io/nomadproject/client/api/EnterpriseApi.java
 src/main/java/io/nomadproject/client/api/JobsApi.java
 src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
+src/main/java/io/nomadproject/client/api/PluginsApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
@@ -195,7 +202,12 @@ src/main/java/io/nomadproject/client/models/AllocatedTaskResources.java
 src/main/java/io/nomadproject/client/models/Allocation.java
 src/main/java/io/nomadproject/client/models/AllocationListStub.java
 src/main/java/io/nomadproject/client/models/AllocationMetric.java
+src/main/java/io/nomadproject/client/models/CSIControllerInfo.java
+src/main/java/io/nomadproject/client/models/CSIInfo.java
 src/main/java/io/nomadproject/client/models/CSIMountOptions.java
+src/main/java/io/nomadproject/client/models/CSINodeInfo.java
+src/main/java/io/nomadproject/client/models/CSIPlugin.java
+src/main/java/io/nomadproject/client/models/CSIPluginListStub.java
 src/main/java/io/nomadproject/client/models/CSISnapshot.java
 src/main/java/io/nomadproject/client/models/CSISnapshotCreateRequest.java
 src/main/java/io/nomadproject/client/models/CSISnapshotCreateResponse.java
@@ -316,6 +328,12 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
+src/test/java/io/nomadproject/client/models/CSIControllerInfoTest.java
+src/test/java/io/nomadproject/client/models/CSIInfoTest.java
+src/test/java/io/nomadproject/client/models/CSINodeInfoTest.java
+src/test/java/io/nomadproject/client/models/CSIPluginListStubTest.java
+src/test/java/io/nomadproject/client/models/CSIPluginTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java

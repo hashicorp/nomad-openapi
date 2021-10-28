@@ -62,6 +62,8 @@ type APIClient struct {
 
 	NamespacesApi *NamespacesApiService
 
+	PluginsApi *PluginsApiService
+
 	RegionsApi *RegionsApiService
 
 	ScalingApi *ScalingApiService
@@ -95,6 +97,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobsApi = (*JobsApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
+	c.PluginsApi = (*PluginsApiService)(&c.common)
 	c.RegionsApi = (*RegionsApiService)(&c.common)
 	c.ScalingApi = (*ScalingApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)

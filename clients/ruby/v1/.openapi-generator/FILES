@@ -16,7 +16,12 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
+docs/CSIControllerInfo.md
+docs/CSIInfo.md
 docs/CSIMountOptions.md
+docs/CSINodeInfo.md
+docs/CSIPlugin.md
+docs/CSIPluginListStub.md
 docs/CSISecrets.md
 docs/CSISnapshot.md
 docs/CSISnapshotCreateRequest.md
@@ -103,6 +108,7 @@ docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
 docs/PlanAnnotations.md
+docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
@@ -159,6 +165,7 @@ openapi_client/api/enterprise_api.py
 openapi_client/api/jobs_api.py
 openapi_client/api/metrics_api.py
 openapi_client/api/namespaces_api.py
+openapi_client/api/plugins_api.py
 openapi_client/api/regions_api.py
 openapi_client/api/scaling_api.py
 openapi_client/api/search_api.py
@@ -200,7 +207,12 @@ openapi_client/model/consul_proxy.py
 openapi_client/model/consul_sidecar_service.py
 openapi_client/model/consul_terminating_config_entry.py
 openapi_client/model/consul_upstream.py
+openapi_client/model/csi_controller_info.py
+openapi_client/model/csi_info.py
 openapi_client/model/csi_mount_options.py
+openapi_client/model/csi_node_info.py
+openapi_client/model/csi_plugin.py
+openapi_client/model/csi_plugin_list_stub.py
 openapi_client/model/csi_secrets.py
 openapi_client/model/csi_snapshot.py
 openapi_client/model/csi_snapshot_create_request.py
@@ -347,7 +359,12 @@ test/test_consul_proxy.py
 test/test_consul_sidecar_service.py
 test/test_consul_terminating_config_entry.py
 test/test_consul_upstream.py
+test/test_csi_controller_info.py
+test/test_csi_info.py
 test/test_csi_mount_options.py
+test/test_csi_node_info.py
+test/test_csi_plugin.py
+test/test_csi_plugin_list_stub.py
 test/test_csi_secrets.py
 test/test_csi_snapshot.py
 test/test_csi_snapshot_create_request.py
@@ -415,6 +432,7 @@ test/test_parameterized_job_config.py
 test/test_periodic_config.py
 test/test_periodic_force_response.py
 test/test_plan_annotations.py
+test/test_plugins_api.py
 test/test_point_value.py
 test/test_port.py
 test/test_port_mapping.py
