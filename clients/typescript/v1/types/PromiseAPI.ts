@@ -2,7 +2,10 @@ import { ResponseContext, RequestContext, HttpFile } from '../http/http';
 import * as models from '../models/all';
 import { Configuration} from '../configuration'
 
+import { ACLPolicy } from '../models/ACLPolicy';
 import { ACLPolicyListStub } from '../models/ACLPolicyListStub';
+import { ACLToken } from '../models/ACLToken';
+import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
@@ -96,6 +99,8 @@ import { Namespace } from '../models/Namespace';
 import { NetworkResource } from '../models/NetworkResource';
 import { NodeScoreMeta } from '../models/NodeScoreMeta';
 import { ObjectDiff } from '../models/ObjectDiff';
+import { OneTimeToken } from '../models/OneTimeToken';
+import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
 import { ParameterizedJobConfig } from '../models/ParameterizedJobConfig';
 import { PeriodicConfig } from '../models/PeriodicConfig';
 import { PeriodicForceResponse } from '../models/PeriodicForceResponse';
@@ -155,6 +160,30 @@ export class PromiseACLApi {
     }
 
     /**
+     * @param policyName The ACL policy name.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public deleteACLPolicy(policyName: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public deleteACLToken(tokenAccessor: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -167,6 +196,132 @@ export class PromiseACLApi {
      */
     public getACLPolicies(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<ACLPolicyListStub>> {
         const result = this.api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param policyName The ACL policy name.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLPolicy(policyName: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<ACLPolicy> {
+        const result = this.api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLToken(tokenAccessor: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<ACLToken> {
+        const result = this.api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLTokenSelf(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<ACLToken> {
+        const result = this.api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLTokens(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<ACLTokenListStub>> {
+        const result = this.api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<Array<ACLToken>> {
+        const result = this.api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param policyName The ACL policy name.
+     * @param aCLPolicy 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLPolicy(policyName: string, aCLPolicy: ACLPolicy, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.postACLPolicy(policyName, aCLPolicy, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param aCLToken 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLToken(tokenAccessor: string, aCLToken: ACLToken, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<ACLToken> {
+        const result = this.api.postACLToken(tokenAccessor, aCLToken, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLTokenOnetime(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<OneTimeToken> {
+        const result = this.api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param oneTimeTokenExchangeRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest: OneTimeTokenExchangeRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<ACLToken> {
+        const result = this.api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }
 

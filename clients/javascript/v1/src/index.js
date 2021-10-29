@@ -13,7 +13,10 @@
 
 
 import ApiClient from './ApiClient';
+import ACLPolicy from './model/ACLPolicy';
 import ACLPolicyListStub from './model/ACLPolicyListStub';
+import ACLToken from './model/ACLToken';
+import ACLTokenListStub from './model/ACLTokenListStub';
 import Affinity from './model/Affinity';
 import AllocDeploymentStatus from './model/AllocDeploymentStatus';
 import AllocatedCpuResources from './model/AllocatedCpuResources';
@@ -107,6 +110,8 @@ import Namespace from './model/Namespace';
 import NetworkResource from './model/NetworkResource';
 import NodeScoreMeta from './model/NodeScoreMeta';
 import ObjectDiff from './model/ObjectDiff';
+import OneTimeToken from './model/OneTimeToken';
+import OneTimeTokenExchangeRequest from './model/OneTimeTokenExchangeRequest';
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
 import PeriodicForceResponse from './model/PeriodicForceResponse';
@@ -204,10 +209,28 @@ export {
     ApiClient,
 
     /**
+     * The ACLPolicy model constructor.
+     * @property {module:model/ACLPolicy}
+     */
+    ACLPolicy,
+
+    /**
      * The ACLPolicyListStub model constructor.
      * @property {module:model/ACLPolicyListStub}
      */
     ACLPolicyListStub,
+
+    /**
+     * The ACLToken model constructor.
+     * @property {module:model/ACLToken}
+     */
+    ACLToken,
+
+    /**
+     * The ACLTokenListStub model constructor.
+     * @property {module:model/ACLTokenListStub}
+     */
+    ACLTokenListStub,
 
     /**
      * The Affinity model constructor.
@@ -766,6 +789,18 @@ export {
      * @property {module:model/ObjectDiff}
      */
     ObjectDiff,
+
+    /**
+     * The OneTimeToken model constructor.
+     * @property {module:model/OneTimeToken}
+     */
+    OneTimeToken,
+
+    /**
+     * The OneTimeTokenExchangeRequest model constructor.
+     * @property {module:model/OneTimeTokenExchangeRequest}
+     */
+    OneTimeTokenExchangeRequest,
 
     /**
      * The ParameterizedJobConfig model constructor.

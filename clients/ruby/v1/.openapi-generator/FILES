@@ -3,7 +3,10 @@
 .travis.yml
 README.md
 docs/ACLApi.md
+docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
+docs/ACLToken.md
+docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocatedCpuResources.md
@@ -104,6 +107,8 @@ docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/NodeScoreMeta.md
 docs/ObjectDiff.md
+docs/OneTimeToken.md
+docs/OneTimeTokenExchangeRequest.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -176,7 +181,10 @@ openapi_client/apis/__init__.py
 openapi_client/configuration.py
 openapi_client/exceptions.py
 openapi_client/model/__init__.py
+openapi_client/model/acl_policy.py
 openapi_client/model/acl_policy_list_stub.py
+openapi_client/model/acl_token.py
+openapi_client/model/acl_token_list_stub.py
 openapi_client/model/affinity.py
 openapi_client/model/alloc_deployment_status.py
 openapi_client/model/allocated_cpu_resources.py
@@ -272,6 +280,8 @@ openapi_client/model/namespace.py
 openapi_client/model/network_resource.py
 openapi_client/model/node_score_meta.py
 openapi_client/model/object_diff.py
+openapi_client/model/one_time_token.py
+openapi_client/model/one_time_token_exchange_request.py
 openapi_client/model/parameterized_job_config.py
 openapi_client/model/periodic_config.py
 openapi_client/model/periodic_force_response.py
@@ -327,7 +337,10 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_acl_api.py
+test/test_acl_policy.py
 test/test_acl_policy_list_stub.py
+test/test_acl_token.py
+test/test_acl_token_list_stub.py
 test/test_affinity.py
 test/test_alloc_deployment_status.py
 test/test_allocated_cpu_resources.py
@@ -428,6 +441,8 @@ test/test_namespaces_api.py
 test/test_network_resource.py
 test/test_node_score_meta.py
 test/test_object_diff.py
+test/test_one_time_token.py
+test/test_one_time_token_exchange_request.py
 test/test_parameterized_job_config.py
 test/test_periodic_config.py
 test/test_periodic_force_response.py

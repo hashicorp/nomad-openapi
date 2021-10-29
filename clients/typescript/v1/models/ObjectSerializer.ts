@@ -1,4 +1,7 @@
+export * from './ACLPolicy';
 export * from './ACLPolicyListStub';
+export * from './ACLToken';
+export * from './ACLTokenListStub';
 export * from './Affinity';
 export * from './AllocDeploymentStatus';
 export * from './AllocatedCpuResources';
@@ -92,6 +95,8 @@ export * from './Namespace';
 export * from './NetworkResource';
 export * from './NodeScoreMeta';
 export * from './ObjectDiff';
+export * from './OneTimeToken';
+export * from './OneTimeTokenExchangeRequest';
 export * from './ParameterizedJobConfig';
 export * from './PeriodicConfig';
 export * from './PeriodicForceResponse';
@@ -137,7 +142,10 @@ export * from './Vault';
 export * from './VolumeMount';
 export * from './VolumeRequest';
 
+import { ACLPolicy } from './ACLPolicy';
 import { ACLPolicyListStub } from './ACLPolicyListStub';
+import { ACLToken } from './ACLToken';
+import { ACLTokenListStub } from './ACLTokenListStub';
 import { Affinity } from './Affinity';
 import { AllocDeploymentStatus } from './AllocDeploymentStatus';
 import { AllocatedCpuResources } from './AllocatedCpuResources';
@@ -231,6 +239,8 @@ import { Namespace } from './Namespace';
 import { NetworkResource } from './NetworkResource';
 import { NodeScoreMeta } from './NodeScoreMeta';
 import { ObjectDiff } from './ObjectDiff';
+import { OneTimeToken } from './OneTimeToken';
+import { OneTimeTokenExchangeRequest } from './OneTimeTokenExchangeRequest';
 import { ParameterizedJobConfig } from './ParameterizedJobConfig';
 import { PeriodicConfig } from './PeriodicConfig';
 import { PeriodicForceResponse } from './PeriodicForceResponse';
@@ -298,7 +308,10 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "ACLPolicy": ACLPolicy,
     "ACLPolicyListStub": ACLPolicyListStub,
+    "ACLToken": ACLToken,
+    "ACLTokenListStub": ACLTokenListStub,
     "Affinity": Affinity,
     "AllocDeploymentStatus": AllocDeploymentStatus,
     "AllocatedCpuResources": AllocatedCpuResources,
@@ -392,6 +405,8 @@ let typeMap: {[index: string]: any} = {
     "NetworkResource": NetworkResource,
     "NodeScoreMeta": NodeScoreMeta,
     "ObjectDiff": ObjectDiff,
+    "OneTimeToken": OneTimeToken,
+    "OneTimeTokenExchangeRequest": OneTimeTokenExchangeRequest,
     "ParameterizedJobConfig": ParameterizedJobConfig,
     "PeriodicConfig": PeriodicConfig,
     "PeriodicForceResponse": PeriodicForceResponse,
