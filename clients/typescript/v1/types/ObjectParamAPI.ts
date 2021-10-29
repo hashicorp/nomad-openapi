@@ -2,7 +2,10 @@ import { ResponseContext, RequestContext, HttpFile } from '../http/http';
 import * as models from '../models/all';
 import { Configuration} from '../configuration'
 
+import { ACLPolicy } from '../models/ACLPolicy';
 import { ACLPolicyListStub } from '../models/ACLPolicyListStub';
+import { ACLToken } from '../models/ACLToken';
+import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
@@ -96,6 +99,8 @@ import { Namespace } from '../models/Namespace';
 import { NetworkResource } from '../models/NetworkResource';
 import { NodeScoreMeta } from '../models/NodeScoreMeta';
 import { ObjectDiff } from '../models/ObjectDiff';
+import { OneTimeToken } from '../models/OneTimeToken';
+import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
 import { ParameterizedJobConfig } from '../models/ParameterizedJobConfig';
 import { PeriodicConfig } from '../models/PeriodicConfig';
 import { PeriodicForceResponse } from '../models/PeriodicForceResponse';
@@ -143,6 +148,72 @@ import { VolumeRequest } from '../models/VolumeRequest';
 
 import { ObservableACLApi } from "./ObservableAPI";
 import { ACLApiRequestFactory, ACLApiResponseProcessor} from "../apis/ACLApi";
+
+export interface ACLApiDeleteACLPolicyRequest {
+    /**
+     * The ACL policy name.
+     * @type string
+     * @memberof ACLApideleteACLPolicy
+     */
+    policyName: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApideleteACLPolicy
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApideleteACLPolicy
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApideleteACLPolicy
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApideleteACLPolicy
+     */
+    idempotencyToken?: string
+}
+
+export interface ACLApiDeleteACLTokenRequest {
+    /**
+     * The token accessor ID.
+     * @type string
+     * @memberof ACLApideleteACLToken
+     */
+    tokenAccessor: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApideleteACLToken
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApideleteACLToken
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApideleteACLToken
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApideleteACLToken
+     */
+    idempotencyToken?: string
+}
 
 export interface ACLApiGetACLPoliciesRequest {
     /**
@@ -201,6 +272,411 @@ export interface ACLApiGetACLPoliciesRequest {
     nextToken?: string
 }
 
+export interface ACLApiGetACLPolicyRequest {
+    /**
+     * The ACL policy name.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    policyName: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof ACLApigetACLPolicy
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof ACLApigetACLPolicy
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof ACLApigetACLPolicy
+     */
+    nextToken?: string
+}
+
+export interface ACLApiGetACLTokenRequest {
+    /**
+     * The token accessor ID.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    tokenAccessor: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof ACLApigetACLToken
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof ACLApigetACLToken
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof ACLApigetACLToken
+     */
+    nextToken?: string
+}
+
+export interface ACLApiGetACLTokenSelfRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof ACLApigetACLTokenSelf
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof ACLApigetACLTokenSelf
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof ACLApigetACLTokenSelf
+     */
+    nextToken?: string
+}
+
+export interface ACLApiGetACLTokensRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof ACLApigetACLTokens
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof ACLApigetACLTokens
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof ACLApigetACLTokens
+     */
+    nextToken?: string
+}
+
+export interface ACLApiPostACLBootstrapRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApipostACLBootstrap
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApipostACLBootstrap
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApipostACLBootstrap
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApipostACLBootstrap
+     */
+    idempotencyToken?: string
+}
+
+export interface ACLApiPostACLPolicyRequest {
+    /**
+     * The ACL policy name.
+     * @type string
+     * @memberof ACLApipostACLPolicy
+     */
+    policyName: string
+    /**
+     * 
+     * @type ACLPolicy
+     * @memberof ACLApipostACLPolicy
+     */
+    aCLPolicy: ACLPolicy
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApipostACLPolicy
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApipostACLPolicy
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApipostACLPolicy
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApipostACLPolicy
+     */
+    idempotencyToken?: string
+}
+
+export interface ACLApiPostACLTokenRequest {
+    /**
+     * The token accessor ID.
+     * @type string
+     * @memberof ACLApipostACLToken
+     */
+    tokenAccessor: string
+    /**
+     * 
+     * @type ACLToken
+     * @memberof ACLApipostACLToken
+     */
+    aCLToken: ACLToken
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApipostACLToken
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApipostACLToken
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApipostACLToken
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApipostACLToken
+     */
+    idempotencyToken?: string
+}
+
+export interface ACLApiPostACLTokenOnetimeRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetime
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetime
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetime
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetime
+     */
+    idempotencyToken?: string
+}
+
+export interface ACLApiPostACLTokenOnetimeExchangeRequest {
+    /**
+     * 
+     * @type OneTimeTokenExchangeRequest
+     * @memberof ACLApipostACLTokenOnetimeExchange
+     */
+    oneTimeTokenExchangeRequest: OneTimeTokenExchangeRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetimeExchange
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetimeExchange
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetimeExchange
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof ACLApipostACLTokenOnetimeExchange
+     */
+    idempotencyToken?: string
+}
+
 export class ObjectACLApi {
     private api: ObservableACLApi
 
@@ -211,8 +687,85 @@ export class ObjectACLApi {
     /**
      * @param param the request object
      */
+    public deleteACLPolicy(param: ACLApiDeleteACLPolicyRequest, options?: Configuration): Promise<void> {
+        return this.api.deleteACLPolicy(param.policyName, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public deleteACLToken(param: ACLApiDeleteACLTokenRequest, options?: Configuration): Promise<void> {
+        return this.api.deleteACLToken(param.tokenAccessor, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
     public getACLPolicies(param: ACLApiGetACLPoliciesRequest, options?: Configuration): Promise<Array<ACLPolicyListStub>> {
         return this.api.getACLPolicies(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getACLPolicy(param: ACLApiGetACLPolicyRequest, options?: Configuration): Promise<ACLPolicy> {
+        return this.api.getACLPolicy(param.policyName, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getACLToken(param: ACLApiGetACLTokenRequest, options?: Configuration): Promise<ACLToken> {
+        return this.api.getACLToken(param.tokenAccessor, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getACLTokenSelf(param: ACLApiGetACLTokenSelfRequest, options?: Configuration): Promise<ACLToken> {
+        return this.api.getACLTokenSelf(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getACLTokens(param: ACLApiGetACLTokensRequest, options?: Configuration): Promise<Array<ACLTokenListStub>> {
+        return this.api.getACLTokens(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postACLBootstrap(param: ACLApiPostACLBootstrapRequest, options?: Configuration): Promise<Array<ACLToken>> {
+        return this.api.postACLBootstrap(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postACLPolicy(param: ACLApiPostACLPolicyRequest, options?: Configuration): Promise<void> {
+        return this.api.postACLPolicy(param.policyName, param.aCLPolicy, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postACLToken(param: ACLApiPostACLTokenRequest, options?: Configuration): Promise<ACLToken> {
+        return this.api.postACLToken(param.tokenAccessor, param.aCLToken, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postACLTokenOnetime(param: ACLApiPostACLTokenOnetimeRequest, options?: Configuration): Promise<OneTimeToken> {
+        return this.api.postACLTokenOnetime(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postACLTokenOnetimeExchange(param: ACLApiPostACLTokenOnetimeExchangeRequest, options?: Configuration): Promise<ACLToken> {
+        return this.api.postACLTokenOnetimeExchange(param.oneTimeTokenExchangeRequest, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
 }

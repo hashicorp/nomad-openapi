@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 apis/ACLApi.ts
 apis/AllocationsApi.ts
@@ -22,7 +21,10 @@ http/http.ts
 http/isomorphic-fetch.ts
 index.ts
 middleware.ts
+models/ACLPolicy.ts
 models/ACLPolicyListStub.ts
+models/ACLToken.ts
+models/ACLTokenListStub.ts
 models/Affinity.ts
 models/AllocDeploymentStatus.ts
 models/AllocatedCpuResources.ts
@@ -117,6 +119,8 @@ models/NetworkResource.ts
 models/NodeScoreMeta.ts
 models/ObjectDiff.ts
 models/ObjectSerializer.ts
+models/OneTimeToken.ts
+models/OneTimeTokenExchangeRequest.ts
 models/ParameterizedJobConfig.ts
 models/PeriodicConfig.ts
 models/PeriodicForceResponse.ts

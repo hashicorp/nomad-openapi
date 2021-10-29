@@ -32,6 +32,22 @@ func (v *v1api) GetPaths() []*apiPath {
 }
 
 var (
+	aclPolicyNameParam = parameter{
+		Id:          "ACLPolicyNameParam",
+		SchemaType:  stringSchema,
+		Description: "The ACL policy name.",
+		Name:        "policyName",
+		In:          inPath,
+		Required:    true,
+	}
+	aclTokenAccessorParam = parameter{
+		Id:          "ACLTokenAccessorParam",
+		SchemaType:  stringSchema,
+		Description: "The token accessor ID.",
+		Name:        "tokenAccessor",
+		In:          inPath,
+		Required:    true,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,

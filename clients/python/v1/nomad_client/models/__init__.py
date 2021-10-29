@@ -9,7 +9,10 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from nomad_client.model.acl_policy import ACLPolicy
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
+from nomad_client.model.acl_token import ACLToken
+from nomad_client.model.acl_token_list_stub import ACLTokenListStub
 from nomad_client.model.affinity import Affinity
 from nomad_client.model.alloc_deployment_status import AllocDeploymentStatus
 from nomad_client.model.allocated_cpu_resources import AllocatedCpuResources
@@ -105,6 +108,8 @@ from nomad_client.model.namespace import Namespace
 from nomad_client.model.network_resource import NetworkResource
 from nomad_client.model.node_score_meta import NodeScoreMeta
 from nomad_client.model.object_diff import ObjectDiff
+from nomad_client.model.one_time_token import OneTimeToken
+from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
 from nomad_client.model.parameterized_job_config import ParameterizedJobConfig
 from nomad_client.model.periodic_config import PeriodicConfig
 from nomad_client.model.periodic_force_response import PeriodicForceResponse

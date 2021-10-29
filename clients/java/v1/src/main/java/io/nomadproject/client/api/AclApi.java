@@ -27,7 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.nomadproject.client.models.ACLPolicy;
 import io.nomadproject.client.models.ACLPolicyListStub;
+import io.nomadproject.client.models.ACLToken;
+import io.nomadproject.client.models.ACLTokenListStub;
+import io.nomadproject.client.models.OneTimeToken;
+import io.nomadproject.client.models.OneTimeTokenExchangeRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -54,6 +59,318 @@ public class AclApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for deleteACLPolicy
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteACLPolicyCall(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/policy/{policyName}"
+            .replaceAll("\\{" + "policyName" + "\\}", localVarApiClient.escapeString(policyName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteACLPolicyValidateBeforeCall(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'policyName' is set
+        if (policyName == null) {
+            throw new ApiException("Missing the required parameter 'policyName' when calling deleteACLPolicy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteACLPolicyCall(policyName, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteACLPolicy(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        deleteACLPolicyWithHttpInfo(policyName, region, namespace, xNomadToken, idempotencyToken);
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteACLPolicyWithHttpInfo(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = deleteACLPolicyValidateBeforeCall(policyName, region, namespace, xNomadToken, idempotencyToken, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteACLPolicyAsync(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteACLPolicyValidateBeforeCall(policyName, region, namespace, xNomadToken, idempotencyToken, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteACLToken
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteACLTokenCall(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/token/{tokenAccessor}"
+            .replaceAll("\\{" + "tokenAccessor" + "\\}", localVarApiClient.escapeString(tokenAccessor.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteACLTokenValidateBeforeCall(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'tokenAccessor' is set
+        if (tokenAccessor == null) {
+            throw new ApiException("Missing the required parameter 'tokenAccessor' when calling deleteACLToken(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteACLTokenCall(tokenAccessor, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteACLToken(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        deleteACLTokenWithHttpInfo(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteACLTokenWithHttpInfo(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = deleteACLTokenValidateBeforeCall(tokenAccessor, region, namespace, xNomadToken, idempotencyToken, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteACLTokenAsync(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteACLTokenValidateBeforeCall(tokenAccessor, region, namespace, xNomadToken, idempotencyToken, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getACLPolicies
      * @param region Filters results based on the specified region. (optional)
@@ -241,6 +558,1579 @@ public class AclApi {
 
         okhttp3.Call localVarCall = getACLPoliciesValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
         Type localVarReturnType = new TypeToken<List<ACLPolicyListStub>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getACLPolicy
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLPolicyCall(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/policy/{policyName}"
+            .replaceAll("\\{" + "policyName" + "\\}", localVarApiClient.escapeString(policyName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getACLPolicyValidateBeforeCall(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'policyName' is set
+        if (policyName == null) {
+            throw new ApiException("Missing the required parameter 'policyName' when calling getACLPolicy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getACLPolicyCall(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ACLPolicy
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ACLPolicy getACLPolicy(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<ACLPolicy> localVarResp = getACLPolicyWithHttpInfo(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;ACLPolicy&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ACLPolicy> getACLPolicyWithHttpInfo(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getACLPolicyValidateBeforeCall(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<ACLPolicy>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLPolicyAsync(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<ACLPolicy> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getACLPolicyValidateBeforeCall(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<ACLPolicy>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getACLToken
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokenCall(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/token/{tokenAccessor}"
+            .replaceAll("\\{" + "tokenAccessor" + "\\}", localVarApiClient.escapeString(tokenAccessor.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getACLTokenValidateBeforeCall(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'tokenAccessor' is set
+        if (tokenAccessor == null) {
+            throw new ApiException("Missing the required parameter 'tokenAccessor' when calling getACLToken(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getACLTokenCall(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ACLToken
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ACLToken getACLToken(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<ACLToken> localVarResp = getACLTokenWithHttpInfo(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;ACLToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ACLToken> getACLTokenWithHttpInfo(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getACLTokenValidateBeforeCall(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokenAsync(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<ACLToken> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getACLTokenValidateBeforeCall(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getACLTokenSelf
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokenSelfCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/token";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getACLTokenSelfValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getACLTokenSelfCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ACLToken
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ACLToken getACLTokenSelf(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<ACLToken> localVarResp = getACLTokenSelfWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;ACLToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ACLToken> getACLTokenSelfWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getACLTokenSelfValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokenSelfAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<ACLToken> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getACLTokenSelfValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getACLTokens
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokensCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/tokens";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getACLTokensValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getACLTokensCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return List&lt;ACLTokenListStub&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ACLTokenListStub> getACLTokens(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<List<ACLTokenListStub>> localVarResp = getACLTokensWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;List&lt;ACLTokenListStub&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ACLTokenListStub>> getACLTokensWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getACLTokensValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<List<ACLTokenListStub>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getACLTokensAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<ACLTokenListStub>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getACLTokensValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<List<ACLTokenListStub>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postACLBootstrap
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLBootstrapCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/bootstrap";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postACLBootstrapValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = postACLBootstrapCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return List&lt;ACLToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ACLToken> postACLBootstrap(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<List<ACLToken>> localVarResp = postACLBootstrapWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;List&lt;ACLToken&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ACLToken>> postACLBootstrapWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLBootstrapValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLBootstrapAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<List<ACLToken>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postACLBootstrapValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<List<ACLToken>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postACLPolicy
+     * @param policyName The ACL policy name. (required)
+     * @param acLPolicy  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLPolicyCall(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = acLPolicy;
+
+        // create path and map variables
+        String localVarPath = "/acl/policy/{policyName}"
+            .replaceAll("\\{" + "policyName" + "\\}", localVarApiClient.escapeString(policyName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postACLPolicyValidateBeforeCall(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'policyName' is set
+        if (policyName == null) {
+            throw new ApiException("Missing the required parameter 'policyName' when calling postACLPolicy(Async)");
+        }
+        
+        // verify the required parameter 'acLPolicy' is set
+        if (acLPolicy == null) {
+            throw new ApiException("Missing the required parameter 'acLPolicy' when calling postACLPolicy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postACLPolicyCall(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param acLPolicy  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void postACLPolicy(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        postACLPolicyWithHttpInfo(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
+    }
+
+    /**
+     * 
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param acLPolicy  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> postACLPolicyWithHttpInfo(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLPolicyValidateBeforeCall(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param policyName The ACL policy name. (required)
+     * @param acLPolicy  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLPolicyAsync(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postACLPolicyValidateBeforeCall(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postACLToken
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param acLToken  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenCall(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = acLToken;
+
+        // create path and map variables
+        String localVarPath = "/acl/token/{tokenAccessor}"
+            .replaceAll("\\{" + "tokenAccessor" + "\\}", localVarApiClient.escapeString(tokenAccessor.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postACLTokenValidateBeforeCall(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'tokenAccessor' is set
+        if (tokenAccessor == null) {
+            throw new ApiException("Missing the required parameter 'tokenAccessor' when calling postACLToken(Async)");
+        }
+        
+        // verify the required parameter 'acLToken' is set
+        if (acLToken == null) {
+            throw new ApiException("Missing the required parameter 'acLToken' when calling postACLToken(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postACLTokenCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param acLToken  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ACLToken
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ACLToken postACLToken(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<ACLToken> localVarResp = postACLTokenWithHttpInfo(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param acLToken  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;ACLToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ACLToken> postACLTokenWithHttpInfo(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param tokenAccessor The token accessor ID. (required)
+     * @param acLToken  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenAsync(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<ACLToken> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postACLTokenValidateBeforeCall(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postACLTokenOnetime
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenOnetimeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/acl/token/onetime";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postACLTokenOnetimeValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = postACLTokenOnetimeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return OneTimeToken
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public OneTimeToken postACLTokenOnetime(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<OneTimeToken> localVarResp = postACLTokenOnetimeWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;OneTimeToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<OneTimeToken> postACLTokenOnetimeWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLTokenOnetimeValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<OneTimeToken>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenOnetimeAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<OneTimeToken> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postACLTokenOnetimeValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<OneTimeToken>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postACLTokenOnetimeExchange
+     * @param oneTimeTokenExchangeRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenOnetimeExchangeCall(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = oneTimeTokenExchangeRequest;
+
+        // create path and map variables
+        String localVarPath = "/acl/token/onetime/exchange";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postACLTokenOnetimeExchangeValidateBeforeCall(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'oneTimeTokenExchangeRequest' is set
+        if (oneTimeTokenExchangeRequest == null) {
+            throw new ApiException("Missing the required parameter 'oneTimeTokenExchangeRequest' when calling postACLTokenOnetimeExchange(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postACLTokenOnetimeExchangeCall(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param oneTimeTokenExchangeRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ACLToken
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ACLToken postACLTokenOnetimeExchange(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<ACLToken> localVarResp = postACLTokenOnetimeExchangeWithHttpInfo(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param oneTimeTokenExchangeRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;ACLToken&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ACLToken> postACLTokenOnetimeExchangeWithHttpInfo(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postACLTokenOnetimeExchangeValidateBeforeCall(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param oneTimeTokenExchangeRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postACLTokenOnetimeExchangeAsync(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<ACLToken> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postACLTokenOnetimeExchangeValidateBeforeCall(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<ACLToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

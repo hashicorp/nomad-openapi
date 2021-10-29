@@ -3,7 +3,10 @@ import * as models from '../models/all';
 import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
+import { ACLPolicy } from '../models/ACLPolicy';
 import { ACLPolicyListStub } from '../models/ACLPolicyListStub';
+import { ACLToken } from '../models/ACLToken';
+import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
@@ -97,6 +100,8 @@ import { Namespace } from '../models/Namespace';
 import { NetworkResource } from '../models/NetworkResource';
 import { NodeScoreMeta } from '../models/NodeScoreMeta';
 import { ObjectDiff } from '../models/ObjectDiff';
+import { OneTimeToken } from '../models/OneTimeToken';
+import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
 import { ParameterizedJobConfig } from '../models/ParameterizedJobConfig';
 import { PeriodicConfig } from '../models/PeriodicConfig';
 import { PeriodicForceResponse } from '../models/PeriodicForceResponse';
@@ -159,6 +164,58 @@ export class ObservableACLApi {
     }
 
     /**
+     * @param policyName The ACL policy name.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public deleteACLPolicy(policyName: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteACLPolicy(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public deleteACLToken(tokenAccessor: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteACLToken(rsp)));
+            }));
+    }
+ 
+    /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -185,6 +242,258 @@ export class ObservableACLApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLPolicies(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param policyName The ACL policy name.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLPolicy(policyName: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<ACLPolicy> {
+        const requestContextPromise = this.requestFactory.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLPolicy(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLToken(tokenAccessor: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<ACLToken> {
+        const requestContextPromise = this.requestFactory.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLToken(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLTokenSelf(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<ACLToken> {
+        const requestContextPromise = this.requestFactory.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLTokenSelf(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getACLTokens(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<ACLTokenListStub>> {
+        const requestContextPromise = this.requestFactory.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLTokens(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<Array<ACLToken>> {
+        const requestContextPromise = this.requestFactory.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLBootstrap(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param policyName The ACL policy name.
+     * @param aCLPolicy 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLPolicy(policyName: string, aCLPolicy: ACLPolicy, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.postACLPolicy(policyName, aCLPolicy, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLPolicy(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param tokenAccessor The token accessor ID.
+     * @param aCLToken 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLToken(tokenAccessor: string, aCLToken: ACLToken, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<ACLToken> {
+        const requestContextPromise = this.requestFactory.postACLToken(tokenAccessor, aCLToken, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLToken(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLTokenOnetime(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<OneTimeToken> {
+        const requestContextPromise = this.requestFactory.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLTokenOnetime(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param oneTimeTokenExchangeRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest: OneTimeTokenExchangeRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<ACLToken> {
+        const requestContextPromise = this.requestFactory.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLTokenOnetimeExchange(rsp)));
             }));
     }
  
