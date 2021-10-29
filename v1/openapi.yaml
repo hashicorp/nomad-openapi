@@ -33,6 +33,13 @@ components:
       name: task_states
       schema:
         type: boolean
+    EvalIDParam:
+      description: Evaluation ID.
+      in: path
+      name: evalID
+      required: true
+      schema:
+        type: string
     IdempotencyTokenParam:
       description: Can be used to ensure operations are only run once.
       in: query
@@ -508,6 +515,67 @@ components:
           schema:
             items:
               $ref: '#/components/schemas/AllocationListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetEvaluationAllocationsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AllocationListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetEvaluationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Evaluation'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+    GetEvaluationsResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/Evaluation'
             type: array
       description: ""
       headers:
@@ -4548,6 +4616,92 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Allocations
+  /evaluation/{evalID}:
+    get:
+      operationId: GetEvaluation
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/EvalIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetEvaluationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Evaluations
+  /evaluation/{evalID}/allocations:
+    get:
+      operationId: GetEvaluationAllocations
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/EvalIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetEvaluationAllocationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Evaluations
+  /evaluations:
+    get:
+      operationId: GetEvaluations
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetEvaluationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Evaluations
   /job/{jobName}:
     delete:
       operationId: DeleteJob

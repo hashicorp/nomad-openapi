@@ -134,6 +134,9 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**getQuotaSpec**](docs/EnterpriseApi.md#getQuotaSpec) | **GET** /quota/{specName} | 
 *EnterpriseApi* | [**getQuotas**](docs/EnterpriseApi.md#getQuotas) | **GET** /quotas | 
 *EnterpriseApi* | [**postQuotaSpec**](docs/EnterpriseApi.md#postQuotaSpec) | **POST** /quota/{specName} | 
+*EvaluationsApi* | [**getEvaluation**](docs/EvaluationsApi.md#getEvaluation) | **GET** /evaluation/{evalID} | 
+*EvaluationsApi* | [**getEvaluationAllocations**](docs/EvaluationsApi.md#getEvaluationAllocations) | **GET** /evaluation/{evalID}/allocations | 
+*EvaluationsApi* | [**getEvaluations**](docs/EvaluationsApi.md#getEvaluations) | **GET** /evaluations | 
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job/{jobName} | 
 *JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job/{jobName} | 
 *JobsApi* | [**getJobAllocations**](docs/JobsApi.md#getJobAllocations) | **GET** /job/{jobName}/allocations | 

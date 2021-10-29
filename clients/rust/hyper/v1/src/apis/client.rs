@@ -7,6 +7,7 @@ pub struct APIClient {
     acl_api: Box<dyn crate::apis::ACLApi>,
     allocations_api: Box<dyn crate::apis::AllocationsApi>,
     enterprise_api: Box<dyn crate::apis::EnterpriseApi>,
+    evaluations_api: Box<dyn crate::apis::EvaluationsApi>,
     jobs_api: Box<dyn crate::apis::JobsApi>,
     metrics_api: Box<dyn crate::apis::MetricsApi>,
     namespaces_api: Box<dyn crate::apis::NamespacesApi>,
@@ -26,6 +27,7 @@ impl APIClient {
             acl_api: Box::new(crate::apis::ACLApiClient::new(rc.clone())),
             allocations_api: Box::new(crate::apis::AllocationsApiClient::new(rc.clone())),
             enterprise_api: Box::new(crate::apis::EnterpriseApiClient::new(rc.clone())),
+            evaluations_api: Box::new(crate::apis::EvaluationsApiClient::new(rc.clone())),
             jobs_api: Box::new(crate::apis::JobsApiClient::new(rc.clone())),
             metrics_api: Box::new(crate::apis::MetricsApiClient::new(rc.clone())),
             namespaces_api: Box::new(crate::apis::NamespacesApiClient::new(rc.clone())),
@@ -48,6 +50,10 @@ impl APIClient {
 
     pub fn enterprise_api(&self) -> &dyn crate::apis::EnterpriseApi{
         self.enterprise_api.as_ref()
+    }
+
+    pub fn evaluations_api(&self) -> &dyn crate::apis::EvaluationsApi{
+        self.evaluations_api.as_ref()
     }
 
     pub fn jobs_api(&self) -> &dyn crate::apis::JobsApi{

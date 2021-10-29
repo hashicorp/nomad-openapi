@@ -3,6 +3,7 @@ README.md
 apis/ACLApi.ts
 apis/AllocationsApi.ts
 apis/EnterpriseApi.ts
+apis/EvaluationsApi.ts
 apis/JobsApi.ts
 apis/MetricsApi.ts
 apis/NamespacesApi.ts
@@ -16,7 +17,6 @@ apis/baseapi.ts
 apis/exception.ts
 auth/auth.ts
 configuration.ts
-git_push.sh
 http/http.ts
 http/isomorphic-fetch.ts
 index.ts

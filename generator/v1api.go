@@ -69,6 +69,14 @@ var (
 		Name:        "all",
 		In:          inQuery,
 	}
+	evalIDParam = parameter{
+		Id:          "EvalIDParam",
+		SchemaType:  stringSchema,
+		Description: "Evaluation ID.",
+		Name:        "evalID",
+		In:          inPath,
+		Required:    true,
+	}
 	indexHeader = parameter{
 		Id:          "IndexHeader",
 		SchemaType:  intSchema,

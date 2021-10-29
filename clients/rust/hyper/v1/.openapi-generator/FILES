@@ -65,6 +65,7 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
@@ -161,6 +162,7 @@ src/apis/allocations_api.rs
 src/apis/client.rs
 src/apis/configuration.rs
 src/apis/enterprise_api.rs
+src/apis/evaluations_api.rs
 src/apis/jobs_api.rs
 src/apis/metrics_api.rs
 src/apis/mod.rs

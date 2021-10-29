@@ -456,6 +456,75 @@ export class PromiseEnterpriseApi {
 
 
 
+import { ObservableEvaluationsApi } from './ObservableAPI';
+
+import { EvaluationsApiRequestFactory, EvaluationsApiResponseProcessor} from "../apis/EvaluationsApi";
+export class PromiseEvaluationsApi {
+    private api: ObservableEvaluationsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: EvaluationsApiRequestFactory,
+        responseProcessor?: EvaluationsApiResponseProcessor
+    ) {
+        this.api = new ObservableEvaluationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param evalID Evaluation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluation(evalID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Evaluation> {
+        const result = this.api.getEvaluation(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param evalID Evaluation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluationAllocations(evalID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<AllocationListStub>> {
+        const result = this.api.getEvaluationAllocations(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluations(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<Evaluation>> {
+        const result = this.api.getEvaluations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableJobsApi } from './ObservableAPI';
 
 import { JobsApiRequestFactory, JobsApiResponseProcessor} from "../apis/JobsApi";

@@ -67,6 +67,7 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
@@ -182,6 +183,7 @@ src/main/java/io/nomadproject/client/StringUtil.java
 src/main/java/io/nomadproject/client/api/AclApi.java
 src/main/java/io/nomadproject/client/api/AllocationsApi.java
 src/main/java/io/nomadproject/client/api/EnterpriseApi.java
+src/main/java/io/nomadproject/client/api/EvaluationsApi.java
 src/main/java/io/nomadproject/client/api/JobsApi.java
 src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
@@ -338,6 +340,7 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/api/EvaluationsApiTest.java
 src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java

@@ -4,6 +4,7 @@ api/openapi.yaml
 api_acl.go
 api_allocations.go
 api_enterprise.go
+api_evaluations.go
 api_jobs.go
 api_metrics.go
 api_namespaces.go
@@ -79,6 +80,7 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
