@@ -56,6 +56,8 @@ type APIClient struct {
 
 	EnterpriseApi *EnterpriseApiService
 
+	EvaluationsApi *EvaluationsApiService
+
 	JobsApi *JobsApiService
 
 	MetricsApi *MetricsApiService
@@ -94,6 +96,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ACLApi = (*ACLApiService)(&c.common)
 	c.AllocationsApi = (*AllocationsApiService)(&c.common)
 	c.EnterpriseApi = (*EnterpriseApiService)(&c.common)
+	c.EvaluationsApi = (*EvaluationsApiService)(&c.common)
 	c.JobsApi = (*JobsApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)

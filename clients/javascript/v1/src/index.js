@@ -159,6 +159,7 @@ import VolumeRequest from './model/VolumeRequest';
 import ACLApi from './api/ACLApi';
 import AllocationsApi from './api/AllocationsApi';
 import EnterpriseApi from './api/EnterpriseApi';
+import EvaluationsApi from './api/EvaluationsApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
@@ -1083,6 +1084,12 @@ export {
     * @property {module:api/EnterpriseApi}
     */
     EnterpriseApi,
+
+    /**
+    * The EvaluationsApi service constructor.
+    * @property {module:api/EvaluationsApi}
+    */
+    EvaluationsApi,
 
     /**
     * The JobsApi service constructor.

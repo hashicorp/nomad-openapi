@@ -67,6 +67,7 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
@@ -167,6 +168,7 @@ openapi_client/api/__init__.py
 openapi_client/api/acl_api.py
 openapi_client/api/allocations_api.py
 openapi_client/api/enterprise_api.py
+openapi_client/api/evaluations_api.py
 openapi_client/api/jobs_api.py
 openapi_client/api/metrics_api.py
 openapi_client/api/namespaces_api.py
@@ -401,6 +403,7 @@ test/test_enterprise_api.py
 test/test_ephemeral_disk.py
 test/test_eval_options.py
 test/test_evaluation.py
+test/test_evaluations_api.py
 test/test_field_diff.py
 test/test_fuzzy_match.py
 test/test_fuzzy_search_request.py

@@ -96,6 +96,9 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
 *EnterpriseApi* | [**GetQuotas**](docs/EnterpriseApi.md#getquotas) | **Get** /quotas | 
 *EnterpriseApi* | [**PostQuotaSpec**](docs/EnterpriseApi.md#postquotaspec) | **Post** /quota/{specName} | 
+*EvaluationsApi* | [**GetEvaluation**](docs/EvaluationsApi.md#getevaluation) | **Get** /evaluation/{evalID} | 
+*EvaluationsApi* | [**GetEvaluationAllocations**](docs/EvaluationsApi.md#getevaluationallocations) | **Get** /evaluation/{evalID}/allocations | 
+*EvaluationsApi* | [**GetEvaluations**](docs/EvaluationsApi.md#getevaluations) | **Get** /evaluations | 
 *JobsApi* | [**DeleteJob**](docs/JobsApi.md#deletejob) | **Delete** /job/{jobName} | 
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /job/{jobName} | 
 *JobsApi* | [**GetJobAllocations**](docs/JobsApi.md#getjoballocations) | **Get** /job/{jobName}/allocations | 

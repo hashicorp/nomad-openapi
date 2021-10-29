@@ -1130,6 +1130,222 @@ export class ObjectEnterpriseApi {
 
 }
 
+import { ObservableEvaluationsApi } from "./ObservableAPI";
+import { EvaluationsApiRequestFactory, EvaluationsApiResponseProcessor} from "../apis/EvaluationsApi";
+
+export interface EvaluationsApiGetEvaluationRequest {
+    /**
+     * Evaluation ID.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    evalID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof EvaluationsApigetEvaluation
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof EvaluationsApigetEvaluation
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof EvaluationsApigetEvaluation
+     */
+    nextToken?: string
+}
+
+export interface EvaluationsApiGetEvaluationAllocationsRequest {
+    /**
+     * Evaluation ID.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    evalID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof EvaluationsApigetEvaluationAllocations
+     */
+    nextToken?: string
+}
+
+export interface EvaluationsApiGetEvaluationsRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof EvaluationsApigetEvaluations
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof EvaluationsApigetEvaluations
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof EvaluationsApigetEvaluations
+     */
+    nextToken?: string
+}
+
+export class ObjectEvaluationsApi {
+    private api: ObservableEvaluationsApi
+
+    public constructor(configuration: Configuration, requestFactory?: EvaluationsApiRequestFactory, responseProcessor?: EvaluationsApiResponseProcessor) {
+        this.api = new ObservableEvaluationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getEvaluation(param: EvaluationsApiGetEvaluationRequest, options?: Configuration): Promise<Evaluation> {
+        return this.api.getEvaluation(param.evalID, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getEvaluationAllocations(param: EvaluationsApiGetEvaluationAllocationsRequest, options?: Configuration): Promise<Array<AllocationListStub>> {
+        return this.api.getEvaluationAllocations(param.evalID, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getEvaluations(param: EvaluationsApiGetEvaluationsRequest, options?: Configuration): Promise<Array<Evaluation>> {
+        return this.api.getEvaluations(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+}
+
 import { ObservableJobsApi } from "./ObservableAPI";
 import { JobsApiRequestFactory, JobsApiResponseProcessor} from "../apis/JobsApi";
 

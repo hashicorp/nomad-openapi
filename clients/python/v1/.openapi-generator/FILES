@@ -65,6 +65,7 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
@@ -164,6 +165,7 @@ nomad_client/api/__init__.py
 nomad_client/api/acl_api.py
 nomad_client/api/allocations_api.py
 nomad_client/api/enterprise_api.py
+nomad_client/api/evaluations_api.py
 nomad_client/api/jobs_api.py
 nomad_client/api/metrics_api.py
 nomad_client/api/namespaces_api.py
@@ -338,6 +340,7 @@ test/test_csi_info.py
 test/test_csi_node_info.py
 test/test_csi_plugin.py
 test/test_csi_plugin_list_stub.py
+test/test_evaluations_api.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py
 test/test_plugins_api.py

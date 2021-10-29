@@ -43,6 +43,9 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**get_quota_spec**](docs/EnterpriseApi.md#get_quota_spec) | **GET** /quota/{specName} | 
 *EnterpriseApi* | [**get_quotas**](docs/EnterpriseApi.md#get_quotas) | **GET** /quotas | 
 *EnterpriseApi* | [**post_quota_spec**](docs/EnterpriseApi.md#post_quota_spec) | **POST** /quota/{specName} | 
+*EvaluationsApi* | [**get_evaluation**](docs/EvaluationsApi.md#get_evaluation) | **GET** /evaluation/{evalID} | 
+*EvaluationsApi* | [**get_evaluation_allocations**](docs/EvaluationsApi.md#get_evaluation_allocations) | **GET** /evaluation/{evalID}/allocations | 
+*EvaluationsApi* | [**get_evaluations**](docs/EvaluationsApi.md#get_evaluations) | **GET** /evaluations | 
 *JobsApi* | [**delete_job**](docs/JobsApi.md#delete_job) | **DELETE** /job/{jobName} | 
 *JobsApi* | [**get_job**](docs/JobsApi.md#get_job) | **GET** /job/{jobName} | 
 *JobsApi* | [**get_job_allocations**](docs/JobsApi.md#get_job_allocations) | **GET** /job/{jobName}/allocations | 

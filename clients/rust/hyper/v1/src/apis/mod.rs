@@ -57,6 +57,8 @@ mod allocations_api;
 pub use self::allocations_api::{ AllocationsApi, AllocationsApiClient };
 mod enterprise_api;
 pub use self::enterprise_api::{ EnterpriseApi, EnterpriseApiClient };
+mod evaluations_api;
+pub use self::evaluations_api::{ EvaluationsApi, EvaluationsApiClient };
 mod jobs_api;
 pub use self::jobs_api::{ JobsApi, JobsApiClient };
 mod metrics_api;

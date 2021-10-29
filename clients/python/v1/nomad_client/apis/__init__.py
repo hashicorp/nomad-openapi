@@ -17,6 +17,7 @@
 from nomad_client.api.acl_api import ACLApi
 from nomad_client.api.allocations_api import AllocationsApi
 from nomad_client.api.enterprise_api import EnterpriseApi
+from nomad_client.api.evaluations_api import EvaluationsApi
 from nomad_client.api.jobs_api import JobsApi
 from nomad_client.api.metrics_api import MetricsApi
 from nomad_client.api.namespaces_api import NamespacesApi

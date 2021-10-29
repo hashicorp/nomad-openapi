@@ -150,6 +150,9 @@ Class | Method | HTTP request | Description
 *nomad-client.EnterpriseApi* | [**getQuotaSpec**](docs/EnterpriseApi.md#getQuotaSpec) | **GET** /quota/{specName} | 
 *nomad-client.EnterpriseApi* | [**getQuotas**](docs/EnterpriseApi.md#getQuotas) | **GET** /quotas | 
 *nomad-client.EnterpriseApi* | [**postQuotaSpec**](docs/EnterpriseApi.md#postQuotaSpec) | **POST** /quota/{specName} | 
+*nomad-client.EvaluationsApi* | [**getEvaluation**](docs/EvaluationsApi.md#getEvaluation) | **GET** /evaluation/{evalID} | 
+*nomad-client.EvaluationsApi* | [**getEvaluationAllocations**](docs/EvaluationsApi.md#getEvaluationAllocations) | **GET** /evaluation/{evalID}/allocations | 
+*nomad-client.EvaluationsApi* | [**getEvaluations**](docs/EvaluationsApi.md#getEvaluations) | **GET** /evaluations | 
 *nomad-client.JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job/{jobName} | 
 *nomad-client.JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job/{jobName} | 
 *nomad-client.JobsApi* | [**getJobAllocations**](docs/JobsApi.md#getJobAllocations) | **GET** /job/{jobName}/allocations | 

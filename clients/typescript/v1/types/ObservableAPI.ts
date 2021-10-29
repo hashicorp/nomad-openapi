@@ -707,6 +707,116 @@ export class ObservableEnterpriseApi {
  
 }
 
+import { EvaluationsApiRequestFactory, EvaluationsApiResponseProcessor} from "../apis/EvaluationsApi";
+export class ObservableEvaluationsApi {
+    private requestFactory: EvaluationsApiRequestFactory;
+    private responseProcessor: EvaluationsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: EvaluationsApiRequestFactory,
+        responseProcessor?: EvaluationsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new EvaluationsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new EvaluationsApiResponseProcessor();
+    }
+
+    /**
+     * @param evalID Evaluation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluation(evalID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Evaluation> {
+        const requestContextPromise = this.requestFactory.getEvaluation(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluation(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param evalID Evaluation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluationAllocations(evalID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<AllocationListStub>> {
+        const requestContextPromise = this.requestFactory.getEvaluationAllocations(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluationAllocations(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getEvaluations(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<Evaluation>> {
+        const requestContextPromise = this.requestFactory.getEvaluations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluations(rsp)));
+            }));
+    }
+ 
+}
+
 import { JobsApiRequestFactory, JobsApiResponseProcessor} from "../apis/JobsApi";
 export class ObservableJobsApi {
     private requestFactory: JobsApiRequestFactory;
