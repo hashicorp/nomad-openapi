@@ -38,6 +38,9 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **Post** /acl/token/onetime | 
 *ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **Post** /acl/token/onetime/exchange | 
 *AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **Get** /allocations | 
+*DeploymentsApi* | [**get_deployment**](docs/DeploymentsApi.md#get_deployment) | **Get** /deployment/{deploymentID} | 
+*DeploymentsApi* | [**get_deployment_allocations**](docs/DeploymentsApi.md#get_deployment_allocations) | **Get** /deployment/allocations/{deploymentID} | 
+*DeploymentsApi* | [**get_deployments**](docs/DeploymentsApi.md#get_deployments) | **Get** /deployments | 
 *EnterpriseApi* | [**create_quota_spec**](docs/EnterpriseApi.md#create_quota_spec) | **Post** /quota | 
 *EnterpriseApi* | [**delete_quota_spec**](docs/EnterpriseApi.md#delete_quota_spec) | **Delete** /quota/{specName} | 
 *EnterpriseApi* | [**get_quota_spec**](docs/EnterpriseApi.md#get_quota_spec) | **Get** /quota/{specName} | 

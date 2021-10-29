@@ -2,6 +2,7 @@
 README.md
 apis/ACLApi.ts
 apis/AllocationsApi.ts
+apis/DeploymentsApi.ts
 apis/EnterpriseApi.ts
 apis/EvaluationsApi.ts
 apis/JobsApi.ts

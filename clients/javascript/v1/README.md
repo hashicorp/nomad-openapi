@@ -145,6 +145,9 @@ Class | Method | HTTP request | Description
 *nomad-client.ACLApi* | [**postACLTokenOnetime**](docs/ACLApi.md#postACLTokenOnetime) | **POST** /acl/token/onetime | 
 *nomad-client.ACLApi* | [**postACLTokenOnetimeExchange**](docs/ACLApi.md#postACLTokenOnetimeExchange) | **POST** /acl/token/onetime/exchange | 
 *nomad-client.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
+*nomad-client.DeploymentsApi* | [**getDeployment**](docs/DeploymentsApi.md#getDeployment) | **GET** /deployment/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**getDeploymentAllocations**](docs/DeploymentsApi.md#getDeploymentAllocations) | **GET** /deployment/allocations/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**getDeployments**](docs/DeploymentsApi.md#getDeployments) | **GET** /deployments | 
 *nomad-client.EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *nomad-client.EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
 *nomad-client.EnterpriseApi* | [**getQuotaSpec**](docs/EnterpriseApi.md#getQuotaSpec) | **GET** /quota/{specName} | 

@@ -55,6 +55,8 @@ mod acl_api;
 pub use self::acl_api::{ ACLApi, ACLApiClient };
 mod allocations_api;
 pub use self::allocations_api::{ AllocationsApi, AllocationsApiClient };
+mod deployments_api;
+pub use self::deployments_api::{ DeploymentsApi, DeploymentsApiClient };
 mod enterprise_api;
 pub use self::enterprise_api::{ EnterpriseApi, EnterpriseApiClient };
 mod evaluations_api;

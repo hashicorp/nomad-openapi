@@ -3,6 +3,7 @@ README.md
 api/openapi.yaml
 api_acl.go
 api_allocations.go
+api_deployments.go
 api_enterprise.go
 api_evaluations.go
 api_jobs.go
@@ -73,6 +74,7 @@ docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
 docs/DeploymentState.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md

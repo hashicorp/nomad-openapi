@@ -57,6 +57,7 @@ docs/CsiVolumeListStub.md
 docs/CsiVolumeRegisterRequest.md
 docs/Deployment.md
 docs/DeploymentState.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -161,6 +162,7 @@ src/apis/acl_api.rs
 src/apis/allocations_api.rs
 src/apis/client.rs
 src/apis/configuration.rs
+src/apis/deployments_api.rs
 src/apis/enterprise_api.rs
 src/apis/evaluations_api.rs
 src/apis/jobs_api.rs

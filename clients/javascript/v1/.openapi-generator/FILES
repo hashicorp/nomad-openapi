@@ -58,6 +58,7 @@ docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
 docs/DeploymentState.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -162,6 +163,7 @@ package.json
 src/ApiClient.js
 src/api/ACLApi.js
 src/api/AllocationsApi.js
+src/api/DeploymentsApi.js
 src/api/EnterpriseApi.js
 src/api/EvaluationsApi.js
 src/api/JobsApi.js
@@ -317,6 +319,7 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js

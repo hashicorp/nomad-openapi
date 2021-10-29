@@ -16,6 +16,7 @@
 # Import APIs into API package:
 from openapi_client.api.acl_api import ACLApi
 from openapi_client.api.allocations_api import AllocationsApi
+from openapi_client.api.deployments_api import DeploymentsApi
 from openapi_client.api.enterprise_api import EnterpriseApi
 from openapi_client.api.evaluations_api import EvaluationsApi
 from openapi_client.api.jobs_api import JobsApi

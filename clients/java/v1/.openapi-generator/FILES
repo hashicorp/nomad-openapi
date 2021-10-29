@@ -60,6 +60,7 @@ docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
 docs/DeploymentState.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -182,6 +183,7 @@ src/main/java/io/nomadproject/client/ServerVariable.java
 src/main/java/io/nomadproject/client/StringUtil.java
 src/main/java/io/nomadproject/client/api/AclApi.java
 src/main/java/io/nomadproject/client/api/AllocationsApi.java
+src/main/java/io/nomadproject/client/api/DeploymentsApi.java
 src/main/java/io/nomadproject/client/api/EnterpriseApi.java
 src/main/java/io/nomadproject/client/api/EvaluationsApi.java
 src/main/java/io/nomadproject/client/api/JobsApi.java
@@ -340,6 +342,7 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
 src/test/java/io/nomadproject/client/api/EvaluationsApiTest.java
 src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java

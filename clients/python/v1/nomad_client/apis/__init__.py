@@ -16,6 +16,7 @@
 # Import APIs into API package:
 from nomad_client.api.acl_api import ACLApi
 from nomad_client.api.allocations_api import AllocationsApi
+from nomad_client.api.deployments_api import DeploymentsApi
 from nomad_client.api.enterprise_api import EnterpriseApi
 from nomad_client.api.evaluations_api import EvaluationsApi
 from nomad_client.api.jobs_api import JobsApi

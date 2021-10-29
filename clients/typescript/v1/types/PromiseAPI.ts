@@ -367,6 +367,75 @@ export class PromiseAllocationsApi {
 
 
 
+import { ObservableDeploymentsApi } from './ObservableAPI';
+
+import { DeploymentsApiRequestFactory, DeploymentsApiResponseProcessor} from "../apis/DeploymentsApi";
+export class PromiseDeploymentsApi {
+    private api: ObservableDeploymentsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DeploymentsApiRequestFactory,
+        responseProcessor?: DeploymentsApiResponseProcessor
+    ) {
+        this.api = new ObservableDeploymentsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeployment(deploymentID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Deployment> {
+        const result = this.api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeploymentAllocations(deploymentID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<AllocationListStub>> {
+        const result = this.api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeployments(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<Deployment>> {
+        const result = this.api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableEnterpriseApi } from './ObservableAPI';
 
 import { EnterpriseApiRequestFactory, EnterpriseApiResponseProcessor} from "../apis/EnterpriseApi";

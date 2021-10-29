@@ -58,6 +58,7 @@ docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
 docs/DeploymentState.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -164,6 +165,7 @@ nomad_client/__init__.py
 nomad_client/api/__init__.py
 nomad_client/api/acl_api.py
 nomad_client/api/allocations_api.py
+nomad_client/api/deployments_api.py
 nomad_client/api/enterprise_api.py
 nomad_client/api/evaluations_api.py
 nomad_client/api/jobs_api.py
@@ -340,6 +342,7 @@ test/test_csi_info.py
 test/test_csi_node_info.py
 test/test_csi_plugin.py
 test/test_csi_plugin_list_stub.py
+test/test_deployments_api.py
 test/test_evaluations_api.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py

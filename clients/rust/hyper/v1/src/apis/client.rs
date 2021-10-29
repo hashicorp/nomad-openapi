@@ -6,6 +6,7 @@ use super::configuration::Configuration;
 pub struct APIClient {
     acl_api: Box<dyn crate::apis::ACLApi>,
     allocations_api: Box<dyn crate::apis::AllocationsApi>,
+    deployments_api: Box<dyn crate::apis::DeploymentsApi>,
     enterprise_api: Box<dyn crate::apis::EnterpriseApi>,
     evaluations_api: Box<dyn crate::apis::EvaluationsApi>,
     jobs_api: Box<dyn crate::apis::JobsApi>,
@@ -26,6 +27,7 @@ impl APIClient {
         APIClient {
             acl_api: Box::new(crate::apis::ACLApiClient::new(rc.clone())),
             allocations_api: Box::new(crate::apis::AllocationsApiClient::new(rc.clone())),
+            deployments_api: Box::new(crate::apis::DeploymentsApiClient::new(rc.clone())),
             enterprise_api: Box::new(crate::apis::EnterpriseApiClient::new(rc.clone())),
             evaluations_api: Box::new(crate::apis::EvaluationsApiClient::new(rc.clone())),
             jobs_api: Box::new(crate::apis::JobsApiClient::new(rc.clone())),
@@ -46,6 +48,10 @@ impl APIClient {
 
     pub fn allocations_api(&self) -> &dyn crate::apis::AllocationsApi{
         self.allocations_api.as_ref()
+    }
+
+    pub fn deployments_api(&self) -> &dyn crate::apis::DeploymentsApi{
+        self.deployments_api.as_ref()
     }
 
     pub fn enterprise_api(&self) -> &dyn crate::apis::EnterpriseApi{

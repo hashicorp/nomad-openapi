@@ -158,6 +158,7 @@ import VolumeMount from './model/VolumeMount';
 import VolumeRequest from './model/VolumeRequest';
 import ACLApi from './api/ACLApi';
 import AllocationsApi from './api/AllocationsApi';
+import DeploymentsApi from './api/DeploymentsApi';
 import EnterpriseApi from './api/EnterpriseApi';
 import EvaluationsApi from './api/EvaluationsApi';
 import JobsApi from './api/JobsApi';
@@ -1078,6 +1079,12 @@ export {
     * @property {module:api/AllocationsApi}
     */
     AllocationsApi,
+
+    /**
+    * The DeploymentsApi service constructor.
+    * @property {module:api/DeploymentsApi}
+    */
+    DeploymentsApi,
 
     /**
     * The EnterpriseApi service constructor.
