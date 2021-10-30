@@ -64,7 +64,12 @@ from openapi_client.model.consul_terminating_config_entry import ConsulTerminati
 from openapi_client.model.consul_upstream import ConsulUpstream
 from openapi_client.model.dns_config import DNSConfig
 from openapi_client.model.deployment import Deployment
+from openapi_client.model.deployment_alloc_health_request import DeploymentAllocHealthRequest
+from openapi_client.model.deployment_pause_request import DeploymentPauseRequest
+from openapi_client.model.deployment_promote_request import DeploymentPromoteRequest
 from openapi_client.model.deployment_state import DeploymentState
+from openapi_client.model.deployment_unblock_request import DeploymentUnblockRequest
+from openapi_client.model.deployment_update_response import DeploymentUpdateResponse
 from openapi_client.model.desired_transition import DesiredTransition
 from openapi_client.model.desired_updates import DesiredUpdates
 from openapi_client.model.dispatch_payload_config import DispatchPayloadConfig

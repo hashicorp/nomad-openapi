@@ -67,7 +67,12 @@ import ConsulTerminatingConfigEntry from './model/ConsulTerminatingConfigEntry';
 import ConsulUpstream from './model/ConsulUpstream';
 import DNSConfig from './model/DNSConfig';
 import Deployment from './model/Deployment';
+import DeploymentAllocHealthRequest from './model/DeploymentAllocHealthRequest';
+import DeploymentPauseRequest from './model/DeploymentPauseRequest';
+import DeploymentPromoteRequest from './model/DeploymentPromoteRequest';
 import DeploymentState from './model/DeploymentState';
+import DeploymentUnblockRequest from './model/DeploymentUnblockRequest';
+import DeploymentUpdateResponse from './model/DeploymentUpdateResponse';
 import DesiredTransition from './model/DesiredTransition';
 import DesiredUpdates from './model/DesiredUpdates';
 import DispatchPayloadConfig from './model/DispatchPayloadConfig';
@@ -535,10 +540,40 @@ export {
     Deployment,
 
     /**
+     * The DeploymentAllocHealthRequest model constructor.
+     * @property {module:model/DeploymentAllocHealthRequest}
+     */
+    DeploymentAllocHealthRequest,
+
+    /**
+     * The DeploymentPauseRequest model constructor.
+     * @property {module:model/DeploymentPauseRequest}
+     */
+    DeploymentPauseRequest,
+
+    /**
+     * The DeploymentPromoteRequest model constructor.
+     * @property {module:model/DeploymentPromoteRequest}
+     */
+    DeploymentPromoteRequest,
+
+    /**
      * The DeploymentState model constructor.
      * @property {module:model/DeploymentState}
      */
     DeploymentState,
+
+    /**
+     * The DeploymentUnblockRequest model constructor.
+     * @property {module:model/DeploymentUnblockRequest}
+     */
+    DeploymentUnblockRequest,
+
+    /**
+     * The DeploymentUpdateResponse model constructor.
+     * @property {module:model/DeploymentUpdateResponse}
+     */
+    DeploymentUpdateResponse,
 
     /**
      * The DesiredTransition model constructor.

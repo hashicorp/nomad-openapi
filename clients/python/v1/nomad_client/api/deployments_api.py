@@ -24,6 +24,11 @@ from nomad_client.model_utils import (  # noqa: F401
 )
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from nomad_client.model.deployment import Deployment
+from nomad_client.model.deployment_alloc_health_request import DeploymentAllocHealthRequest
+from nomad_client.model.deployment_pause_request import DeploymentPauseRequest
+from nomad_client.model.deployment_promote_request import DeploymentPromoteRequest
+from nomad_client.model.deployment_unblock_request import DeploymentUnblockRequest
+from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 
 
 class DeploymentsApi(object):
@@ -540,4 +545,758 @@ class DeploymentsApi(object):
             },
             api_client=api_client,
             callable=__get_deployments
+        )
+
+        def __post_deployment_allocation_health(
+            self,
+            deployment_id,
+            deployment_alloc_health_request,
+            **kwargs
+        ):
+            """post_deployment_allocation_health  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_deployment_allocation_health(deployment_id, deployment_alloc_health_request, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                deployment_id (str): Deployment ID.
+                deployment_alloc_health_request (DeploymentAllocHealthRequest):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                DeploymentUpdateResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['deployment_id'] = \
+                deployment_id
+            kwargs['deployment_alloc_health_request'] = \
+                deployment_alloc_health_request
+            return self.call_with_http_info(**kwargs)
+
+        self.post_deployment_allocation_health = _Endpoint(
+            settings={
+                'response_type': (DeploymentUpdateResponse,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/deployment/allocation-health/{deploymentID}',
+                'operation_id': 'post_deployment_allocation_health',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'deployment_id',
+                    'deployment_alloc_health_request',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'deployment_id',
+                    'deployment_alloc_health_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'deployment_id':
+                        (str,),
+                    'deployment_alloc_health_request':
+                        (DeploymentAllocHealthRequest,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'deployment_id': 'deploymentID',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'deployment_id': 'path',
+                    'deployment_alloc_health_request': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_deployment_allocation_health
+        )
+
+        def __post_deployment_fail(
+            self,
+            deployment_id,
+            **kwargs
+        ):
+            """post_deployment_fail  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_deployment_fail(deployment_id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                deployment_id (str): Deployment ID.
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                DeploymentUpdateResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['deployment_id'] = \
+                deployment_id
+            return self.call_with_http_info(**kwargs)
+
+        self.post_deployment_fail = _Endpoint(
+            settings={
+                'response_type': (DeploymentUpdateResponse,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/deployment/fail/{deploymentID}',
+                'operation_id': 'post_deployment_fail',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'deployment_id',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'deployment_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'deployment_id':
+                        (str,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'deployment_id': 'deploymentID',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'deployment_id': 'path',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__post_deployment_fail
+        )
+
+        def __post_deployment_pause(
+            self,
+            deployment_id,
+            deployment_pause_request,
+            **kwargs
+        ):
+            """post_deployment_pause  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_deployment_pause(deployment_id, deployment_pause_request, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                deployment_id (str): Deployment ID.
+                deployment_pause_request (DeploymentPauseRequest):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                DeploymentUpdateResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['deployment_id'] = \
+                deployment_id
+            kwargs['deployment_pause_request'] = \
+                deployment_pause_request
+            return self.call_with_http_info(**kwargs)
+
+        self.post_deployment_pause = _Endpoint(
+            settings={
+                'response_type': (DeploymentUpdateResponse,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/deployment/pause/{deploymentID}',
+                'operation_id': 'post_deployment_pause',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'deployment_id',
+                    'deployment_pause_request',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'deployment_id',
+                    'deployment_pause_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'deployment_id':
+                        (str,),
+                    'deployment_pause_request':
+                        (DeploymentPauseRequest,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'deployment_id': 'deploymentID',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'deployment_id': 'path',
+                    'deployment_pause_request': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_deployment_pause
+        )
+
+        def __post_deployment_promote(
+            self,
+            deployment_id,
+            deployment_promote_request,
+            **kwargs
+        ):
+            """post_deployment_promote  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_deployment_promote(deployment_id, deployment_promote_request, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                deployment_id (str): Deployment ID.
+                deployment_promote_request (DeploymentPromoteRequest):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                DeploymentUpdateResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['deployment_id'] = \
+                deployment_id
+            kwargs['deployment_promote_request'] = \
+                deployment_promote_request
+            return self.call_with_http_info(**kwargs)
+
+        self.post_deployment_promote = _Endpoint(
+            settings={
+                'response_type': (DeploymentUpdateResponse,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/deployment/promote/{deploymentID}',
+                'operation_id': 'post_deployment_promote',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'deployment_id',
+                    'deployment_promote_request',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'deployment_id',
+                    'deployment_promote_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'deployment_id':
+                        (str,),
+                    'deployment_promote_request':
+                        (DeploymentPromoteRequest,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'deployment_id': 'deploymentID',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'deployment_id': 'path',
+                    'deployment_promote_request': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_deployment_promote
+        )
+
+        def __post_deployment_unblock(
+            self,
+            deployment_id,
+            deployment_unblock_request,
+            **kwargs
+        ):
+            """post_deployment_unblock  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.post_deployment_unblock(deployment_id, deployment_unblock_request, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                deployment_id (str): Deployment ID.
+                deployment_unblock_request (DeploymentUnblockRequest):
+
+            Keyword Args:
+                region (str): Filters results based on the specified region.. [optional]
+                namespace (str): Filters results based on the specified namespace.. [optional]
+                x_nomad_token (str): A Nomad ACL token.. [optional]
+                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                DeploymentUpdateResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['deployment_id'] = \
+                deployment_id
+            kwargs['deployment_unblock_request'] = \
+                deployment_unblock_request
+            return self.call_with_http_info(**kwargs)
+
+        self.post_deployment_unblock = _Endpoint(
+            settings={
+                'response_type': (DeploymentUpdateResponse,),
+                'auth': [
+                    'X-Nomad-Token'
+                ],
+                'endpoint_path': '/deployment/unblock/{deploymentID}',
+                'operation_id': 'post_deployment_unblock',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'deployment_id',
+                    'deployment_unblock_request',
+                    'region',
+                    'namespace',
+                    'x_nomad_token',
+                    'idempotency_token',
+                ],
+                'required': [
+                    'deployment_id',
+                    'deployment_unblock_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'deployment_id':
+                        (str,),
+                    'deployment_unblock_request':
+                        (DeploymentUnblockRequest,),
+                    'region':
+                        (str,),
+                    'namespace':
+                        (str,),
+                    'x_nomad_token':
+                        (str,),
+                    'idempotency_token':
+                        (str,),
+                },
+                'attribute_map': {
+                    'deployment_id': 'deploymentID',
+                    'region': 'region',
+                    'namespace': 'namespace',
+                    'x_nomad_token': 'X-Nomad-Token',
+                    'idempotency_token': 'idempotency_token',
+                },
+                'location_map': {
+                    'deployment_id': 'path',
+                    'deployment_unblock_request': 'body',
+                    'region': 'query',
+                    'namespace': 'query',
+                    'x_nomad_token': 'header',
+                    'idempotency_token': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__post_deployment_unblock
         )

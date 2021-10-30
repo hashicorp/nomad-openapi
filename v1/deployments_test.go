@@ -47,3 +47,15 @@ func TestGetDeploymentAllocations(t *testing.T) {
 		require.NotNil(t, result)
 	})
 }
+
+func TestPostDeploymentFail(t *testing.T) {
+	t.Parallel()
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+
+		result, err := testClient.Deployments().Fail(writeOpts.Ctx(), "5456bd7a-9fc0-c0dd-6131-cbee77f57577")
+		require.Error(t, err, "deployment not found")
+		require.Nil(t, result)
+	})
+}

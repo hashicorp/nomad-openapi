@@ -596,3 +596,798 @@ func (a *DeploymentsApiService) GetDeploymentsExecute(r ApiGetDeploymentsRequest
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiPostDeploymentAllocationHealthRequest struct {
+	ctx _context.Context
+	ApiService *DeploymentsApiService
+	deploymentID string
+	deploymentAllocHealthRequest *DeploymentAllocHealthRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostDeploymentAllocationHealthRequest) DeploymentAllocHealthRequest(deploymentAllocHealthRequest DeploymentAllocHealthRequest) ApiPostDeploymentAllocationHealthRequest {
+	r.deploymentAllocHealthRequest = &deploymentAllocHealthRequest
+	return r
+}
+func (r ApiPostDeploymentAllocationHealthRequest) Region(region string) ApiPostDeploymentAllocationHealthRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostDeploymentAllocationHealthRequest) Namespace(namespace string) ApiPostDeploymentAllocationHealthRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostDeploymentAllocationHealthRequest) XNomadToken(xNomadToken string) ApiPostDeploymentAllocationHealthRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostDeploymentAllocationHealthRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentAllocationHealthRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostDeploymentAllocationHealthRequest) Execute() (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostDeploymentAllocationHealthExecute(r)
+}
+
+/*
+ * PostDeploymentAllocationHealth Method for PostDeploymentAllocationHealth
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deploymentID Deployment ID.
+ * @return ApiPostDeploymentAllocationHealthRequest
+ */
+func (a *DeploymentsApiService) PostDeploymentAllocationHealth(ctx _context.Context, deploymentID string) ApiPostDeploymentAllocationHealthRequest {
+	return ApiPostDeploymentAllocationHealthRequest{
+		ApiService: a,
+		ctx: ctx,
+		deploymentID: deploymentID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DeploymentUpdateResponse
+ */
+func (a *DeploymentsApiService) PostDeploymentAllocationHealthExecute(r ApiPostDeploymentAllocationHealthRequest) (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DeploymentUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.PostDeploymentAllocationHealth")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deployment/allocation-health/{deploymentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentID"+"}", _neturl.PathEscape(parameterToString(r.deploymentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.deploymentAllocHealthRequest == nil {
+		return localVarReturnValue, nil, reportError("deploymentAllocHealthRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.deploymentAllocHealthRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostDeploymentFailRequest struct {
+	ctx _context.Context
+	ApiService *DeploymentsApiService
+	deploymentID string
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostDeploymentFailRequest) Region(region string) ApiPostDeploymentFailRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostDeploymentFailRequest) Namespace(namespace string) ApiPostDeploymentFailRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostDeploymentFailRequest) XNomadToken(xNomadToken string) ApiPostDeploymentFailRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostDeploymentFailRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentFailRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostDeploymentFailRequest) Execute() (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostDeploymentFailExecute(r)
+}
+
+/*
+ * PostDeploymentFail Method for PostDeploymentFail
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deploymentID Deployment ID.
+ * @return ApiPostDeploymentFailRequest
+ */
+func (a *DeploymentsApiService) PostDeploymentFail(ctx _context.Context, deploymentID string) ApiPostDeploymentFailRequest {
+	return ApiPostDeploymentFailRequest{
+		ApiService: a,
+		ctx: ctx,
+		deploymentID: deploymentID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DeploymentUpdateResponse
+ */
+func (a *DeploymentsApiService) PostDeploymentFailExecute(r ApiPostDeploymentFailRequest) (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DeploymentUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.PostDeploymentFail")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deployment/fail/{deploymentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentID"+"}", _neturl.PathEscape(parameterToString(r.deploymentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostDeploymentPauseRequest struct {
+	ctx _context.Context
+	ApiService *DeploymentsApiService
+	deploymentID string
+	deploymentPauseRequest *DeploymentPauseRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostDeploymentPauseRequest) DeploymentPauseRequest(deploymentPauseRequest DeploymentPauseRequest) ApiPostDeploymentPauseRequest {
+	r.deploymentPauseRequest = &deploymentPauseRequest
+	return r
+}
+func (r ApiPostDeploymentPauseRequest) Region(region string) ApiPostDeploymentPauseRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostDeploymentPauseRequest) Namespace(namespace string) ApiPostDeploymentPauseRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostDeploymentPauseRequest) XNomadToken(xNomadToken string) ApiPostDeploymentPauseRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostDeploymentPauseRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentPauseRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostDeploymentPauseRequest) Execute() (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostDeploymentPauseExecute(r)
+}
+
+/*
+ * PostDeploymentPause Method for PostDeploymentPause
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deploymentID Deployment ID.
+ * @return ApiPostDeploymentPauseRequest
+ */
+func (a *DeploymentsApiService) PostDeploymentPause(ctx _context.Context, deploymentID string) ApiPostDeploymentPauseRequest {
+	return ApiPostDeploymentPauseRequest{
+		ApiService: a,
+		ctx: ctx,
+		deploymentID: deploymentID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DeploymentUpdateResponse
+ */
+func (a *DeploymentsApiService) PostDeploymentPauseExecute(r ApiPostDeploymentPauseRequest) (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DeploymentUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.PostDeploymentPause")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deployment/pause/{deploymentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentID"+"}", _neturl.PathEscape(parameterToString(r.deploymentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.deploymentPauseRequest == nil {
+		return localVarReturnValue, nil, reportError("deploymentPauseRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.deploymentPauseRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostDeploymentPromoteRequest struct {
+	ctx _context.Context
+	ApiService *DeploymentsApiService
+	deploymentID string
+	deploymentPromoteRequest *DeploymentPromoteRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostDeploymentPromoteRequest) DeploymentPromoteRequest(deploymentPromoteRequest DeploymentPromoteRequest) ApiPostDeploymentPromoteRequest {
+	r.deploymentPromoteRequest = &deploymentPromoteRequest
+	return r
+}
+func (r ApiPostDeploymentPromoteRequest) Region(region string) ApiPostDeploymentPromoteRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostDeploymentPromoteRequest) Namespace(namespace string) ApiPostDeploymentPromoteRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostDeploymentPromoteRequest) XNomadToken(xNomadToken string) ApiPostDeploymentPromoteRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostDeploymentPromoteRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentPromoteRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostDeploymentPromoteRequest) Execute() (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostDeploymentPromoteExecute(r)
+}
+
+/*
+ * PostDeploymentPromote Method for PostDeploymentPromote
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deploymentID Deployment ID.
+ * @return ApiPostDeploymentPromoteRequest
+ */
+func (a *DeploymentsApiService) PostDeploymentPromote(ctx _context.Context, deploymentID string) ApiPostDeploymentPromoteRequest {
+	return ApiPostDeploymentPromoteRequest{
+		ApiService: a,
+		ctx: ctx,
+		deploymentID: deploymentID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DeploymentUpdateResponse
+ */
+func (a *DeploymentsApiService) PostDeploymentPromoteExecute(r ApiPostDeploymentPromoteRequest) (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DeploymentUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.PostDeploymentPromote")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deployment/promote/{deploymentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentID"+"}", _neturl.PathEscape(parameterToString(r.deploymentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.deploymentPromoteRequest == nil {
+		return localVarReturnValue, nil, reportError("deploymentPromoteRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.deploymentPromoteRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostDeploymentUnblockRequest struct {
+	ctx _context.Context
+	ApiService *DeploymentsApiService
+	deploymentID string
+	deploymentUnblockRequest *DeploymentUnblockRequest
+	region *string
+	namespace *string
+	xNomadToken *string
+	idempotencyToken *string
+}
+
+func (r ApiPostDeploymentUnblockRequest) DeploymentUnblockRequest(deploymentUnblockRequest DeploymentUnblockRequest) ApiPostDeploymentUnblockRequest {
+	r.deploymentUnblockRequest = &deploymentUnblockRequest
+	return r
+}
+func (r ApiPostDeploymentUnblockRequest) Region(region string) ApiPostDeploymentUnblockRequest {
+	r.region = &region
+	return r
+}
+func (r ApiPostDeploymentUnblockRequest) Namespace(namespace string) ApiPostDeploymentUnblockRequest {
+	r.namespace = &namespace
+	return r
+}
+func (r ApiPostDeploymentUnblockRequest) XNomadToken(xNomadToken string) ApiPostDeploymentUnblockRequest {
+	r.xNomadToken = &xNomadToken
+	return r
+}
+func (r ApiPostDeploymentUnblockRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentUnblockRequest {
+	r.idempotencyToken = &idempotencyToken
+	return r
+}
+
+func (r ApiPostDeploymentUnblockRequest) Execute() (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	return r.ApiService.PostDeploymentUnblockExecute(r)
+}
+
+/*
+ * PostDeploymentUnblock Method for PostDeploymentUnblock
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deploymentID Deployment ID.
+ * @return ApiPostDeploymentUnblockRequest
+ */
+func (a *DeploymentsApiService) PostDeploymentUnblock(ctx _context.Context, deploymentID string) ApiPostDeploymentUnblockRequest {
+	return ApiPostDeploymentUnblockRequest{
+		ApiService: a,
+		ctx: ctx,
+		deploymentID: deploymentID,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return DeploymentUpdateResponse
+ */
+func (a *DeploymentsApiService) PostDeploymentUnblockExecute(r ApiPostDeploymentUnblockRequest) (DeploymentUpdateResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DeploymentUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentsApiService.PostDeploymentUnblock")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deployment/unblock/{deploymentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentID"+"}", _neturl.PathEscape(parameterToString(r.deploymentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.deploymentUnblockRequest == nil {
+		return localVarReturnValue, nil, reportError("deploymentUnblockRequest is required and must be specified")
+	}
+
+	if r.region != nil {
+		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+	}
+	if r.namespace != nil {
+		localVarQueryParams.Add("namespace", parameterToString(*r.namespace, ""))
+	}
+	if r.idempotencyToken != nil {
+		localVarQueryParams.Add("idempotency_token", parameterToString(*r.idempotencyToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xNomadToken != nil {
+		localVarHeaderParams["X-Nomad-Token"] = parameterToString(*r.xNomadToken, "")
+	}
+	// body params
+	localVarPostBody = r.deploymentUnblockRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-Nomad-Token"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Nomad-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

@@ -57,7 +57,12 @@ import { ConsulTerminatingConfigEntry } from '../models/ConsulTerminatingConfigE
 import { ConsulUpstream } from '../models/ConsulUpstream';
 import { DNSConfig } from '../models/DNSConfig';
 import { Deployment } from '../models/Deployment';
+import { DeploymentAllocHealthRequest } from '../models/DeploymentAllocHealthRequest';
+import { DeploymentPauseRequest } from '../models/DeploymentPauseRequest';
+import { DeploymentPromoteRequest } from '../models/DeploymentPromoteRequest';
 import { DeploymentState } from '../models/DeploymentState';
+import { DeploymentUnblockRequest } from '../models/DeploymentUnblockRequest';
+import { DeploymentUpdateResponse } from '../models/DeploymentUpdateResponse';
 import { DesiredTransition } from '../models/DesiredTransition';
 import { DesiredUpdates } from '../models/DesiredUpdates';
 import { DispatchPayloadConfig } from '../models/DispatchPayloadConfig';
@@ -654,6 +659,140 @@ export class ObservableDeploymentsApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDeployments(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentAllocHealthRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentAllocationHealth(deploymentID: string, deploymentAllocHealthRequest: DeploymentAllocHealthRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<DeploymentUpdateResponse> {
+        const requestContextPromise = this.requestFactory.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentAllocationHealth(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentFail(deploymentID: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<DeploymentUpdateResponse> {
+        const requestContextPromise = this.requestFactory.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentFail(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentPauseRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentPause(deploymentID: string, deploymentPauseRequest: DeploymentPauseRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<DeploymentUpdateResponse> {
+        const requestContextPromise = this.requestFactory.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentPause(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentPromoteRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentPromote(deploymentID: string, deploymentPromoteRequest: DeploymentPromoteRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<DeploymentUpdateResponse> {
+        const requestContextPromise = this.requestFactory.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentPromote(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentUnblockRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentUnblock(deploymentID: string, deploymentUnblockRequest: DeploymentUnblockRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<DeploymentUpdateResponse> {
+        const requestContextPromise = this.requestFactory.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentUnblock(rsp)));
             }));
     }
  

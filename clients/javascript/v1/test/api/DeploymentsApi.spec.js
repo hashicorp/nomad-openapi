@@ -78,6 +78,56 @@
         done();
       });
     });
+    describe('postDeploymentAllocationHealth', function() {
+      it('should call postDeploymentAllocationHealth successfully', function(done) {
+        //uncomment below and update the code to test postDeploymentAllocationHealth
+        //instance.postDeploymentAllocationHealth(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postDeploymentFail', function() {
+      it('should call postDeploymentFail successfully', function(done) {
+        //uncomment below and update the code to test postDeploymentFail
+        //instance.postDeploymentFail(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postDeploymentPause', function() {
+      it('should call postDeploymentPause successfully', function(done) {
+        //uncomment below and update the code to test postDeploymentPause
+        //instance.postDeploymentPause(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postDeploymentPromote', function() {
+      it('should call postDeploymentPromote successfully', function(done) {
+        //uncomment below and update the code to test postDeploymentPromote
+        //instance.postDeploymentPromote(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postDeploymentUnblock', function() {
+      it('should call postDeploymentUnblock successfully', function(done) {
+        //uncomment below and update the code to test postDeploymentUnblock
+        //instance.postDeploymentUnblock(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
   });
 
 }));

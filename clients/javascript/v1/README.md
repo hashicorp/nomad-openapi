@@ -148,6 +148,11 @@ Class | Method | HTTP request | Description
 *nomad-client.DeploymentsApi* | [**getDeployment**](docs/DeploymentsApi.md#getDeployment) | **GET** /deployment/{deploymentID} | 
 *nomad-client.DeploymentsApi* | [**getDeploymentAllocations**](docs/DeploymentsApi.md#getDeploymentAllocations) | **GET** /deployment/allocations/{deploymentID} | 
 *nomad-client.DeploymentsApi* | [**getDeployments**](docs/DeploymentsApi.md#getDeployments) | **GET** /deployments | 
+*nomad-client.DeploymentsApi* | [**postDeploymentAllocationHealth**](docs/DeploymentsApi.md#postDeploymentAllocationHealth) | **POST** /deployment/allocation-health/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**postDeploymentFail**](docs/DeploymentsApi.md#postDeploymentFail) | **POST** /deployment/fail/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**postDeploymentPause**](docs/DeploymentsApi.md#postDeploymentPause) | **POST** /deployment/pause/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**postDeploymentPromote**](docs/DeploymentsApi.md#postDeploymentPromote) | **POST** /deployment/promote/{deploymentID} | 
+*nomad-client.DeploymentsApi* | [**postDeploymentUnblock**](docs/DeploymentsApi.md#postDeploymentUnblock) | **POST** /deployment/unblock/{deploymentID} | 
 *nomad-client.EnterpriseApi* | [**createQuotaSpec**](docs/EnterpriseApi.md#createQuotaSpec) | **POST** /quota | 
 *nomad-client.EnterpriseApi* | [**deleteQuotaSpec**](docs/EnterpriseApi.md#deleteQuotaSpec) | **DELETE** /quota/{specName} | 
 *nomad-client.EnterpriseApi* | [**getQuotaSpec**](docs/EnterpriseApi.md#getQuotaSpec) | **GET** /quota/{specName} | 
@@ -261,7 +266,12 @@ Class | Method | HTTP request | Description
  - [nomad-client.ConsulUpstream](docs/ConsulUpstream.md)
  - [nomad-client.DNSConfig](docs/DNSConfig.md)
  - [nomad-client.Deployment](docs/Deployment.md)
+ - [nomad-client.DeploymentAllocHealthRequest](docs/DeploymentAllocHealthRequest.md)
+ - [nomad-client.DeploymentPauseRequest](docs/DeploymentPauseRequest.md)
+ - [nomad-client.DeploymentPromoteRequest](docs/DeploymentPromoteRequest.md)
  - [nomad-client.DeploymentState](docs/DeploymentState.md)
+ - [nomad-client.DeploymentUnblockRequest](docs/DeploymentUnblockRequest.md)
+ - [nomad-client.DeploymentUpdateResponse](docs/DeploymentUpdateResponse.md)
  - [nomad-client.DesiredTransition](docs/DesiredTransition.md)
  - [nomad-client.DesiredUpdates](docs/DesiredUpdates.md)
  - [nomad-client.DispatchPayloadConfig](docs/DispatchPayloadConfig.md)

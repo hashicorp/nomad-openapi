@@ -1377,6 +1377,74 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Deployments
+  /deployment/allocation-health/{deploymentID}:
+    post:
+      operationId: PostDeploymentAllocationHealth
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID.
+        explode: false
+        in: path
+        name: deploymentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentAllocHealthRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentUpdateResponse'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
   /deployment/allocations/{deploymentID}:
     get:
       operationId: GetDeploymentAllocations
@@ -1492,6 +1560,272 @@ paths:
               schema:
                 type: integer
               style: simple
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/fail/{deploymentID}:
+    post:
+      operationId: PostDeploymentFail
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID.
+        explode: false
+        in: path
+        name: deploymentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentUpdateResponse'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/pause/{deploymentID}:
+    post:
+      operationId: PostDeploymentPause
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID.
+        explode: false
+        in: path
+        name: deploymentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentPauseRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentUpdateResponse'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/promote/{deploymentID}:
+    post:
+      operationId: PostDeploymentPromote
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID.
+        explode: false
+        in: path
+        name: deploymentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentPromoteRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentUpdateResponse'
+        "400":
+          description: Bad request
+        "403":
+          description: Forbidden
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/unblock/{deploymentID}:
+    post:
+      operationId: PostDeploymentUnblock
+      parameters:
+      - description: Filters results based on the specified region.
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filters results based on the specified namespace.
+        explode: true
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A Nomad ACL token.
+        explode: false
+        in: header
+        name: X-Nomad-Token
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Can be used to ensure operations are only run once.
+        explode: true
+        in: query
+        name: idempotency_token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Deployment ID.
+        explode: false
+        in: path
+        name: deploymentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentUnblockRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentUpdateResponse'
         "400":
           description: Bad request
         "403":
@@ -7205,6 +7539,30 @@ components:
           schema:
             $ref: '#/components/schemas/CSIVolumeRegisterRequest'
       required: true
+    DeploymentAllocHealthRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentAllocHealthRequest'
+      required: true
+    DeploymentPauseRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentPauseRequest'
+      required: true
+    DeploymentPromoteRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentPromoteRequest'
+      required: true
+    DeploymentUnblockRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUnblockRequest'
+      required: true
     FuzzySearchRequest:
       content:
         application/json:
@@ -8393,6 +8751,31 @@ components:
           schema:
             type: integer
           style: simple
+    PostDeploymentAllocationHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+    PostDeploymentFailResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+    PostDeploymentPauseResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+    PostDeploymentPromoteResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+    PostDeploymentUnblockResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
     PostJobDispatchResponse:
       content:
         application/json:
@@ -76871,6 +77254,81 @@ components:
             $ref: '#/components/schemas/DeploymentState'
           type: object
       type: object
+    DeploymentAllocHealthRequest:
+      example:
+        DeploymentID: DeploymentID
+        HealthyAllocationIDs:
+        - HealthyAllocationIDs
+        - HealthyAllocationIDs
+        SecretID: SecretID
+        Region: Region
+        Namespace: Namespace
+        UnhealthyAllocationIDs:
+        - UnhealthyAllocationIDs
+        - UnhealthyAllocationIDs
+      properties:
+        DeploymentID:
+          type: string
+        HealthyAllocationIDs:
+          items:
+            type: string
+          type: array
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+        UnhealthyAllocationIDs:
+          items:
+            type: string
+          type: array
+      type: object
+    DeploymentPauseRequest:
+      example:
+        DeploymentID: DeploymentID
+        Pause: true
+        SecretID: SecretID
+        Region: Region
+        Namespace: Namespace
+      properties:
+        DeploymentID:
+          type: string
+        Namespace:
+          type: string
+        Pause:
+          type: boolean
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
+    DeploymentPromoteRequest:
+      example:
+        All: true
+        DeploymentID: DeploymentID
+        Groups:
+        - Groups
+        - Groups
+        SecretID: SecretID
+        Region: Region
+        Namespace: Namespace
+      properties:
+        All:
+          type: boolean
+        DeploymentID:
+          type: string
+        Groups:
+          items:
+            type: string
+          type: array
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
     DeploymentState:
       example:
         PlacedAllocs: 2
@@ -76909,6 +77367,53 @@ components:
           format: date-time
           type: string
         UnhealthyAllocs:
+          type: integer
+      type: object
+    DeploymentUnblockRequest:
+      example:
+        DeploymentID: DeploymentID
+        SecretID: SecretID
+        Region: Region
+        Namespace: Namespace
+      properties:
+        DeploymentID:
+          type: string
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
+    DeploymentUpdateResponse:
+      example:
+        EvalCreateIndex: 2147483647
+        LastIndex: 2147483647
+        DeploymentModifyIndex: 2147483647
+        RequestTime: 5
+        RevertedJobVersion: 2147483647
+        EvalID: EvalID
+      properties:
+        DeploymentModifyIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        EvalCreateIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        EvalID:
+          type: string
+        LastIndex:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        RevertedJobVersion:
+          maximum: 1.8446744073709552E+19
+          minimum: 0
           type: integer
       type: object
     DesiredTransition:

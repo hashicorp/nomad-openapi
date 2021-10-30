@@ -68,9 +68,101 @@ func (v *v1api) getDeploymentsPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/deployment/fail/{deploymentID}", s.wrap(s.DeploymentSpecificRequest))
+		{
+			Template: "/deployment/fail/{deploymentID}",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.DeploymentSpecificRequest,
+					tags,
+					"PostDeploymentFail",
+					nil,
+					appendParams(defaultWriteOpts, &deploymentIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.DeploymentUpdateResponse{},
+						nil,
+						"PostDeploymentFailResponse",
+					),
+				),
+			},
+		},
 		//s.mux.HandleFunc("/v1/deployment/pause/{deploymentID}", s.wrap(s.DeploymentSpecificRequest))
+		{
+			Template: "/deployment/pause/{deploymentID}",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.DeploymentSpecificRequest,
+					tags,
+					"PostDeploymentPause",
+					newRequestBody(objectSchema, api.DeploymentPauseRequest{}),
+					appendParams(defaultWriteOpts, &deploymentIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.DeploymentUpdateResponse{},
+						nil,
+						"PostDeploymentPauseResponse",
+					),
+				),
+			},
+		},
 		//s.mux.HandleFunc("/v1/deployment/promote/{deploymentID}", s.wrap(s.DeploymentSpecificRequest))
+		{
+			Template: "/deployment/promote/{deploymentID}",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.DeploymentSpecificRequest,
+					tags,
+					"PostDeploymentPromote",
+					newRequestBody(objectSchema, api.DeploymentPromoteRequest{}),
+					appendParams(defaultWriteOpts, &deploymentIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.DeploymentUpdateResponse{},
+						nil,
+						"PostDeploymentPromoteResponse",
+					),
+				),
+			},
+		},
 		//s.mux.HandleFunc("/v1/deployment/allocation-health/{deploymentID}", s.wrap(s.DeploymentSpecificRequest))
+		{
+			Template: "/deployment/allocation-health/{deploymentID}",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.DeploymentSpecificRequest,
+					tags,
+					"PostDeploymentAllocationHealth",
+					newRequestBody(objectSchema, api.DeploymentAllocHealthRequest{}),
+					appendParams(defaultWriteOpts, &deploymentIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.DeploymentUpdateResponse{},
+						nil,
+						"PostDeploymentAllocationHealthResponse",
+					),
+				),
+			},
+		},
 		//s.mux.HandleFunc("/v1/deployment/unblock/{deploymentID}", s.wrap(s.DeploymentSpecificRequest))
+		// NOTE: API documention is wrong!!  There should be a request body/payload
+		// https://www.nomadproject.io/api-docs/deployments#unblock-deployment
+		{
+			Template: "/deployment/unblock/{deploymentID}",
+			Operations: []*operation{
+				newOperation(http.MethodPost,
+					httpServer.DeploymentSpecificRequest,
+					tags,
+					"PostDeploymentUnblock",
+					newRequestBody(objectSchema, api.DeploymentUnblockRequest{}),
+					appendParams(defaultWriteOpts, &deploymentIDParam),
+					newResponseConfig(200,
+						objectSchema,
+						api.DeploymentUpdateResponse{},
+						nil,
+						"PostDeploymentUnblockResponse",
+					),
+				),
+			},
+		},
 	}
 }

@@ -94,6 +94,11 @@ Class | Method | HTTP request | Description
 *DeploymentsApi* | [**GetDeployment**](docs/DeploymentsApi.md#getdeployment) | **Get** /deployment/{deploymentID} | 
 *DeploymentsApi* | [**GetDeploymentAllocations**](docs/DeploymentsApi.md#getdeploymentallocations) | **Get** /deployment/allocations/{deploymentID} | 
 *DeploymentsApi* | [**GetDeployments**](docs/DeploymentsApi.md#getdeployments) | **Get** /deployments | 
+*DeploymentsApi* | [**PostDeploymentAllocationHealth**](docs/DeploymentsApi.md#postdeploymentallocationhealth) | **Post** /deployment/allocation-health/{deploymentID} | 
+*DeploymentsApi* | [**PostDeploymentFail**](docs/DeploymentsApi.md#postdeploymentfail) | **Post** /deployment/fail/{deploymentID} | 
+*DeploymentsApi* | [**PostDeploymentPause**](docs/DeploymentsApi.md#postdeploymentpause) | **Post** /deployment/pause/{deploymentID} | 
+*DeploymentsApi* | [**PostDeploymentPromote**](docs/DeploymentsApi.md#postdeploymentpromote) | **Post** /deployment/promote/{deploymentID} | 
+*DeploymentsApi* | [**PostDeploymentUnblock**](docs/DeploymentsApi.md#postdeploymentunblock) | **Post** /deployment/unblock/{deploymentID} | 
 *EnterpriseApi* | [**CreateQuotaSpec**](docs/EnterpriseApi.md#createquotaspec) | **Post** /quota | 
 *EnterpriseApi* | [**DeleteQuotaSpec**](docs/EnterpriseApi.md#deletequotaspec) | **Delete** /quota/{specName} | 
 *EnterpriseApi* | [**GetQuotaSpec**](docs/EnterpriseApi.md#getquotaspec) | **Get** /quota/{specName} | 
@@ -207,7 +212,12 @@ Class | Method | HTTP request | Description
  - [ConsulUpstream](docs/ConsulUpstream.md)
  - [DNSConfig](docs/DNSConfig.md)
  - [Deployment](docs/Deployment.md)
+ - [DeploymentAllocHealthRequest](docs/DeploymentAllocHealthRequest.md)
+ - [DeploymentPauseRequest](docs/DeploymentPauseRequest.md)
+ - [DeploymentPromoteRequest](docs/DeploymentPromoteRequest.md)
  - [DeploymentState](docs/DeploymentState.md)
+ - [DeploymentUnblockRequest](docs/DeploymentUnblockRequest.md)
+ - [DeploymentUpdateResponse](docs/DeploymentUpdateResponse.md)
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)

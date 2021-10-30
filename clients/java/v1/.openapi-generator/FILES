@@ -59,7 +59,12 @@ docs/ConsulTerminatingConfigEntry.md
 docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
+docs/DeploymentAllocHealthRequest.md
+docs/DeploymentPauseRequest.md
+docs/DeploymentPromoteRequest.md
 docs/DeploymentState.md
+docs/DeploymentUnblockRequest.md
+docs/DeploymentUpdateResponse.md
 docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
@@ -253,7 +258,12 @@ src/main/java/io/nomadproject/client/models/ConsulTerminatingConfigEntry.java
 src/main/java/io/nomadproject/client/models/ConsulUpstream.java
 src/main/java/io/nomadproject/client/models/DNSConfig.java
 src/main/java/io/nomadproject/client/models/Deployment.java
+src/main/java/io/nomadproject/client/models/DeploymentAllocHealthRequest.java
+src/main/java/io/nomadproject/client/models/DeploymentPauseRequest.java
+src/main/java/io/nomadproject/client/models/DeploymentPromoteRequest.java
 src/main/java/io/nomadproject/client/models/DeploymentState.java
+src/main/java/io/nomadproject/client/models/DeploymentUnblockRequest.java
+src/main/java/io/nomadproject/client/models/DeploymentUpdateResponse.java
 src/main/java/io/nomadproject/client/models/DesiredTransition.java
 src/main/java/io/nomadproject/client/models/DesiredUpdates.java
 src/main/java/io/nomadproject/client/models/DispatchPayloadConfig.java
@@ -352,6 +362,11 @@ src/test/java/io/nomadproject/client/models/CSIInfoTest.java
 src/test/java/io/nomadproject/client/models/CSINodeInfoTest.java
 src/test/java/io/nomadproject/client/models/CSIPluginListStubTest.java
 src/test/java/io/nomadproject/client/models/CSIPluginTest.java
+src/test/java/io/nomadproject/client/models/DeploymentAllocHealthRequestTest.java
+src/test/java/io/nomadproject/client/models/DeploymentPauseRequestTest.java
+src/test/java/io/nomadproject/client/models/DeploymentPromoteRequestTest.java
+src/test/java/io/nomadproject/client/models/DeploymentUnblockRequestTest.java
+src/test/java/io/nomadproject/client/models/DeploymentUpdateResponseTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java

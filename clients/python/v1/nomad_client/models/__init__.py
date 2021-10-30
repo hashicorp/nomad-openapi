@@ -64,7 +64,12 @@ from nomad_client.model.consul_terminating_config_entry import ConsulTerminating
 from nomad_client.model.consul_upstream import ConsulUpstream
 from nomad_client.model.dns_config import DNSConfig
 from nomad_client.model.deployment import Deployment
+from nomad_client.model.deployment_alloc_health_request import DeploymentAllocHealthRequest
+from nomad_client.model.deployment_pause_request import DeploymentPauseRequest
+from nomad_client.model.deployment_promote_request import DeploymentPromoteRequest
 from nomad_client.model.deployment_state import DeploymentState
+from nomad_client.model.deployment_unblock_request import DeploymentUnblockRequest
+from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from nomad_client.model.desired_transition import DesiredTransition
 from nomad_client.model.desired_updates import DesiredUpdates
 from nomad_client.model.dispatch_payload_config import DispatchPayloadConfig

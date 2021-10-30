@@ -56,7 +56,12 @@ import { ConsulTerminatingConfigEntry } from '../models/ConsulTerminatingConfigE
 import { ConsulUpstream } from '../models/ConsulUpstream';
 import { DNSConfig } from '../models/DNSConfig';
 import { Deployment } from '../models/Deployment';
+import { DeploymentAllocHealthRequest } from '../models/DeploymentAllocHealthRequest';
+import { DeploymentPauseRequest } from '../models/DeploymentPauseRequest';
+import { DeploymentPromoteRequest } from '../models/DeploymentPromoteRequest';
 import { DeploymentState } from '../models/DeploymentState';
+import { DeploymentUnblockRequest } from '../models/DeploymentUnblockRequest';
+import { DeploymentUpdateResponse } from '../models/DeploymentUpdateResponse';
 import { DesiredTransition } from '../models/DesiredTransition';
 import { DesiredUpdates } from '../models/DesiredUpdates';
 import { DispatchPayloadConfig } from '../models/DispatchPayloadConfig';
@@ -1044,6 +1049,195 @@ export interface DeploymentsApiGetDeploymentsRequest {
     nextToken?: string
 }
 
+export interface DeploymentsApiPostDeploymentAllocationHealthRequest {
+    /**
+     * Deployment ID.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    deploymentID: string
+    /**
+     * 
+     * @type DeploymentAllocHealthRequest
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    deploymentAllocHealthRequest: DeploymentAllocHealthRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentAllocationHealth
+     */
+    idempotencyToken?: string
+}
+
+export interface DeploymentsApiPostDeploymentFailRequest {
+    /**
+     * Deployment ID.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentFail
+     */
+    deploymentID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentFail
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentFail
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentFail
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentFail
+     */
+    idempotencyToken?: string
+}
+
+export interface DeploymentsApiPostDeploymentPauseRequest {
+    /**
+     * Deployment ID.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    deploymentID: string
+    /**
+     * 
+     * @type DeploymentPauseRequest
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    deploymentPauseRequest: DeploymentPauseRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPause
+     */
+    idempotencyToken?: string
+}
+
+export interface DeploymentsApiPostDeploymentPromoteRequest {
+    /**
+     * Deployment ID.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    deploymentID: string
+    /**
+     * 
+     * @type DeploymentPromoteRequest
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    deploymentPromoteRequest: DeploymentPromoteRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentPromote
+     */
+    idempotencyToken?: string
+}
+
+export interface DeploymentsApiPostDeploymentUnblockRequest {
+    /**
+     * Deployment ID.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    deploymentID: string
+    /**
+     * 
+     * @type DeploymentUnblockRequest
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    deploymentUnblockRequest: DeploymentUnblockRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof DeploymentsApipostDeploymentUnblock
+     */
+    idempotencyToken?: string
+}
+
 export class ObjectDeploymentsApi {
     private api: ObservableDeploymentsApi
 
@@ -1070,6 +1264,41 @@ export class ObjectDeploymentsApi {
      */
     public getDeployments(param: DeploymentsApiGetDeploymentsRequest, options?: Configuration): Promise<Array<Deployment>> {
         return this.api.getDeployments(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postDeploymentAllocationHealth(param: DeploymentsApiPostDeploymentAllocationHealthRequest, options?: Configuration): Promise<DeploymentUpdateResponse> {
+        return this.api.postDeploymentAllocationHealth(param.deploymentID, param.deploymentAllocHealthRequest, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postDeploymentFail(param: DeploymentsApiPostDeploymentFailRequest, options?: Configuration): Promise<DeploymentUpdateResponse> {
+        return this.api.postDeploymentFail(param.deploymentID, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postDeploymentPause(param: DeploymentsApiPostDeploymentPauseRequest, options?: Configuration): Promise<DeploymentUpdateResponse> {
+        return this.api.postDeploymentPause(param.deploymentID, param.deploymentPauseRequest, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postDeploymentPromote(param: DeploymentsApiPostDeploymentPromoteRequest, options?: Configuration): Promise<DeploymentUpdateResponse> {
+        return this.api.postDeploymentPromote(param.deploymentID, param.deploymentPromoteRequest, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postDeploymentUnblock(param: DeploymentsApiPostDeploymentUnblockRequest, options?: Configuration): Promise<DeploymentUpdateResponse> {
+        return this.api.postDeploymentUnblock(param.deploymentID, param.deploymentUnblockRequest, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
 }

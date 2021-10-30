@@ -15,6 +15,11 @@
 import ApiClient from "../ApiClient";
 import AllocationListStub from '../model/AllocationListStub';
 import Deployment from '../model/Deployment';
+import DeploymentAllocHealthRequest from '../model/DeploymentAllocHealthRequest';
+import DeploymentPauseRequest from '../model/DeploymentPauseRequest';
+import DeploymentPromoteRequest from '../model/DeploymentPromoteRequest';
+import DeploymentUnblockRequest from '../model/DeploymentUnblockRequest';
+import DeploymentUpdateResponse from '../model/DeploymentUpdateResponse';
 
 /**
 * Deployments service.
@@ -207,6 +212,281 @@ export default class DeploymentsApi {
       let returnType = [Deployment];
       return this.apiClient.callApi(
         '/deployments', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postDeploymentAllocationHealth operation.
+     * @callback module:api/DeploymentsApi~postDeploymentAllocationHealthCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DeploymentUpdateResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} deploymentID Deployment ID.
+     * @param {module:model/DeploymentAllocHealthRequest} deploymentAllocHealthRequest 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/DeploymentsApi~postDeploymentAllocationHealthCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DeploymentUpdateResponse}
+     */
+    postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, opts, callback) {
+      opts = opts || {};
+      let postBody = deploymentAllocHealthRequest;
+      // verify the required parameter 'deploymentID' is set
+      if (deploymentID === undefined || deploymentID === null) {
+        throw new Error("Missing the required parameter 'deploymentID' when calling postDeploymentAllocationHealth");
+      }
+      // verify the required parameter 'deploymentAllocHealthRequest' is set
+      if (deploymentAllocHealthRequest === undefined || deploymentAllocHealthRequest === null) {
+        throw new Error("Missing the required parameter 'deploymentAllocHealthRequest' when calling postDeploymentAllocationHealth");
+      }
+
+      let pathParams = {
+        'deploymentID': deploymentID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DeploymentUpdateResponse;
+      return this.apiClient.callApi(
+        '/deployment/allocation-health/{deploymentID}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postDeploymentFail operation.
+     * @callback module:api/DeploymentsApi~postDeploymentFailCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DeploymentUpdateResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} deploymentID Deployment ID.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/DeploymentsApi~postDeploymentFailCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DeploymentUpdateResponse}
+     */
+    postDeploymentFail(deploymentID, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'deploymentID' is set
+      if (deploymentID === undefined || deploymentID === null) {
+        throw new Error("Missing the required parameter 'deploymentID' when calling postDeploymentFail");
+      }
+
+      let pathParams = {
+        'deploymentID': deploymentID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = DeploymentUpdateResponse;
+      return this.apiClient.callApi(
+        '/deployment/fail/{deploymentID}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postDeploymentPause operation.
+     * @callback module:api/DeploymentsApi~postDeploymentPauseCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DeploymentUpdateResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} deploymentID Deployment ID.
+     * @param {module:model/DeploymentPauseRequest} deploymentPauseRequest 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/DeploymentsApi~postDeploymentPauseCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DeploymentUpdateResponse}
+     */
+    postDeploymentPause(deploymentID, deploymentPauseRequest, opts, callback) {
+      opts = opts || {};
+      let postBody = deploymentPauseRequest;
+      // verify the required parameter 'deploymentID' is set
+      if (deploymentID === undefined || deploymentID === null) {
+        throw new Error("Missing the required parameter 'deploymentID' when calling postDeploymentPause");
+      }
+      // verify the required parameter 'deploymentPauseRequest' is set
+      if (deploymentPauseRequest === undefined || deploymentPauseRequest === null) {
+        throw new Error("Missing the required parameter 'deploymentPauseRequest' when calling postDeploymentPause");
+      }
+
+      let pathParams = {
+        'deploymentID': deploymentID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DeploymentUpdateResponse;
+      return this.apiClient.callApi(
+        '/deployment/pause/{deploymentID}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postDeploymentPromote operation.
+     * @callback module:api/DeploymentsApi~postDeploymentPromoteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DeploymentUpdateResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} deploymentID Deployment ID.
+     * @param {module:model/DeploymentPromoteRequest} deploymentPromoteRequest 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/DeploymentsApi~postDeploymentPromoteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DeploymentUpdateResponse}
+     */
+    postDeploymentPromote(deploymentID, deploymentPromoteRequest, opts, callback) {
+      opts = opts || {};
+      let postBody = deploymentPromoteRequest;
+      // verify the required parameter 'deploymentID' is set
+      if (deploymentID === undefined || deploymentID === null) {
+        throw new Error("Missing the required parameter 'deploymentID' when calling postDeploymentPromote");
+      }
+      // verify the required parameter 'deploymentPromoteRequest' is set
+      if (deploymentPromoteRequest === undefined || deploymentPromoteRequest === null) {
+        throw new Error("Missing the required parameter 'deploymentPromoteRequest' when calling postDeploymentPromote");
+      }
+
+      let pathParams = {
+        'deploymentID': deploymentID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DeploymentUpdateResponse;
+      return this.apiClient.callApi(
+        '/deployment/promote/{deploymentID}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the postDeploymentUnblock operation.
+     * @callback module:api/DeploymentsApi~postDeploymentUnblockCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DeploymentUpdateResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} deploymentID Deployment ID.
+     * @param {module:model/DeploymentUnblockRequest} deploymentUnblockRequest 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.region Filters results based on the specified region.
+     * @param {String} opts.namespace Filters results based on the specified namespace.
+     * @param {String} opts.xNomadToken A Nomad ACL token.
+     * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
+     * @param {module:api/DeploymentsApi~postDeploymentUnblockCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DeploymentUpdateResponse}
+     */
+    postDeploymentUnblock(deploymentID, deploymentUnblockRequest, opts, callback) {
+      opts = opts || {};
+      let postBody = deploymentUnblockRequest;
+      // verify the required parameter 'deploymentID' is set
+      if (deploymentID === undefined || deploymentID === null) {
+        throw new Error("Missing the required parameter 'deploymentID' when calling postDeploymentUnblock");
+      }
+      // verify the required parameter 'deploymentUnblockRequest' is set
+      if (deploymentUnblockRequest === undefined || deploymentUnblockRequest === null) {
+        throw new Error("Missing the required parameter 'deploymentUnblockRequest' when calling postDeploymentUnblock");
+      }
+
+      let pathParams = {
+        'deploymentID': deploymentID
+      };
+      let queryParams = {
+        'region': opts['region'],
+        'namespace': opts['namespace'],
+        'idempotency_token': opts['idempotencyToken']
+      };
+      let headerParams = {
+        'X-Nomad-Token': opts['xNomadToken']
+      };
+      let formParams = {
+      };
+
+      let authNames = ['X-Nomad-Token'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DeploymentUpdateResponse;
+      return this.apiClient.callApi(
+        '/deployment/unblock/{deploymentID}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

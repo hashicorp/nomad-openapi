@@ -42,6 +42,36 @@ class TestDeploymentsApi(unittest.TestCase):
         """
         pass
 
+    def test_post_deployment_allocation_health(self):
+        """Test case for post_deployment_allocation_health
+
+        """
+        pass
+
+    def test_post_deployment_fail(self):
+        """Test case for post_deployment_fail
+
+        """
+        pass
+
+    def test_post_deployment_pause(self):
+        """Test case for post_deployment_pause
+
+        """
+        pass
+
+    def test_post_deployment_promote(self):
+        """Test case for post_deployment_promote
+
+        """
+        pass
+
+    def test_post_deployment_unblock(self):
+        """Test case for post_deployment_unblock
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -253,6 +253,30 @@ components:
           schema:
             $ref: '#/components/schemas/CSIVolumeRegisterRequest'
       required: true
+    DeploymentAllocHealthRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentAllocHealthRequest'
+      required: true
+    DeploymentPauseRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentPauseRequest'
+      required: true
+    DeploymentPromoteRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentPromoteRequest'
+      required: true
+    DeploymentUnblockRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUnblockRequest'
+      required: true
     FuzzySearchRequest:
       content:
         application/json:
@@ -1173,6 +1197,36 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
+    PostDeploymentAllocationHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+      description: ""
+    PostDeploymentFailResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+      description: ""
+    PostDeploymentPauseResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+      description: ""
+    PostDeploymentPromoteResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+      description: ""
+    PostDeploymentUnblockResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeploymentUpdateResponse'
+      description: ""
     PostJobDispatchResponse:
       content:
         application/json:
@@ -2408,6 +2462,55 @@ components:
             $ref: '#/components/schemas/DeploymentState'
           type: object
       type: object
+    DeploymentAllocHealthRequest:
+      properties:
+        DeploymentID:
+          type: string
+        HealthyAllocationIDs:
+          items:
+            type: string
+          type: array
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+        UnhealthyAllocationIDs:
+          items:
+            type: string
+          type: array
+      type: object
+    DeploymentPauseRequest:
+      properties:
+        DeploymentID:
+          type: string
+        Namespace:
+          type: string
+        Pause:
+          type: boolean
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
+    DeploymentPromoteRequest:
+      properties:
+        All:
+          type: boolean
+        DeploymentID:
+          type: string
+        Groups:
+          items:
+            type: string
+          type: array
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
     DeploymentState:
       properties:
         AutoRevert:
@@ -2433,6 +2536,41 @@ components:
           format: date-time
           type: string
         UnhealthyAllocs:
+          type: integer
+      type: object
+    DeploymentUnblockRequest:
+      properties:
+        DeploymentID:
+          type: string
+        Namespace:
+          type: string
+        Region:
+          type: string
+        SecretID:
+          type: string
+      type: object
+    DeploymentUpdateResponse:
+      properties:
+        DeploymentModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalCreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        EvalID:
+          type: string
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        RevertedJobVersion:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
           type: integer
       type: object
     DesiredTransition:
@@ -4713,6 +4851,36 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Deployments
+  /deployment/allocation-health/{deploymentID}:
+    post:
+      operationId: PostDeploymentAllocationHealth
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/DeploymentIDParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentAllocHealthRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostDeploymentAllocationHealthResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
   /deployment/allocations/{deploymentID}:
     get:
       operationId: GetDeploymentAllocations
@@ -4730,6 +4898,120 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetDeploymentAllocationsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/fail/{deploymentID}:
+    post:
+      operationId: PostDeploymentFail
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/DeploymentIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostDeploymentFailResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/pause/{deploymentID}:
+    post:
+      operationId: PostDeploymentPause
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/DeploymentIDParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentPauseRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostDeploymentPauseResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/promote/{deploymentID}:
+    post:
+      operationId: PostDeploymentPromote
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/DeploymentIDParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentPromoteRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostDeploymentPromoteResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Deployments
+  /deployment/unblock/{deploymentID}:
+    post:
+      operationId: PostDeploymentUnblock
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      - $ref: '#/components/parameters/DeploymentIDParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentUnblockRequest'
+        required: true
+      responses:
+        "200":
+          $ref: '#/components/responses/PostDeploymentUnblockResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

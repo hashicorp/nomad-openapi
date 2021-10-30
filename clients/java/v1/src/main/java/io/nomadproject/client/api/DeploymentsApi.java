@@ -29,6 +29,11 @@ import java.io.IOException;
 
 import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.Deployment;
+import io.nomadproject.client.models.DeploymentAllocHealthRequest;
+import io.nomadproject.client.models.DeploymentPauseRequest;
+import io.nomadproject.client.models.DeploymentPromoteRequest;
+import io.nomadproject.client.models.DeploymentUnblockRequest;
+import io.nomadproject.client.models.DeploymentUpdateResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -642,6 +647,842 @@ public class DeploymentsApi {
 
         okhttp3.Call localVarCall = getDeploymentsValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
         Type localVarReturnType = new TypeToken<List<Deployment>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDeploymentAllocationHealth
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentAllocHealthRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentAllocationHealthCall(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = deploymentAllocHealthRequest;
+
+        // create path and map variables
+        String localVarPath = "/deployment/allocation-health/{deploymentID}"
+            .replaceAll("\\{" + "deploymentID" + "\\}", localVarApiClient.escapeString(deploymentID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDeploymentAllocationHealthValidateBeforeCall(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'deploymentID' is set
+        if (deploymentID == null) {
+            throw new ApiException("Missing the required parameter 'deploymentID' when calling postDeploymentAllocationHealth(Async)");
+        }
+        
+        // verify the required parameter 'deploymentAllocHealthRequest' is set
+        if (deploymentAllocHealthRequest == null) {
+            throw new ApiException("Missing the required parameter 'deploymentAllocHealthRequest' when calling postDeploymentAllocationHealth(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postDeploymentAllocationHealthCall(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentAllocHealthRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return DeploymentUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeploymentUpdateResponse postDeploymentAllocationHealth(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<DeploymentUpdateResponse> localVarResp = postDeploymentAllocationHealthWithHttpInfo(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentAllocHealthRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;DeploymentUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeploymentUpdateResponse> postDeploymentAllocationHealthWithHttpInfo(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postDeploymentAllocationHealthValidateBeforeCall(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentAllocHealthRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentAllocationHealthAsync(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<DeploymentUpdateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDeploymentAllocationHealthValidateBeforeCall(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDeploymentFail
+     * @param deploymentID Deployment ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentFailCall(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/deployment/fail/{deploymentID}"
+            .replaceAll("\\{" + "deploymentID" + "\\}", localVarApiClient.escapeString(deploymentID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDeploymentFailValidateBeforeCall(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'deploymentID' is set
+        if (deploymentID == null) {
+            throw new ApiException("Missing the required parameter 'deploymentID' when calling postDeploymentFail(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postDeploymentFailCall(deploymentID, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return DeploymentUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeploymentUpdateResponse postDeploymentFail(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<DeploymentUpdateResponse> localVarResp = postDeploymentFailWithHttpInfo(deploymentID, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;DeploymentUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeploymentUpdateResponse> postDeploymentFailWithHttpInfo(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postDeploymentFailValidateBeforeCall(deploymentID, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentFailAsync(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<DeploymentUpdateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDeploymentFailValidateBeforeCall(deploymentID, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDeploymentPause
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPauseRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentPauseCall(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = deploymentPauseRequest;
+
+        // create path and map variables
+        String localVarPath = "/deployment/pause/{deploymentID}"
+            .replaceAll("\\{" + "deploymentID" + "\\}", localVarApiClient.escapeString(deploymentID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDeploymentPauseValidateBeforeCall(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'deploymentID' is set
+        if (deploymentID == null) {
+            throw new ApiException("Missing the required parameter 'deploymentID' when calling postDeploymentPause(Async)");
+        }
+        
+        // verify the required parameter 'deploymentPauseRequest' is set
+        if (deploymentPauseRequest == null) {
+            throw new ApiException("Missing the required parameter 'deploymentPauseRequest' when calling postDeploymentPause(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postDeploymentPauseCall(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPauseRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return DeploymentUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeploymentUpdateResponse postDeploymentPause(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<DeploymentUpdateResponse> localVarResp = postDeploymentPauseWithHttpInfo(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPauseRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;DeploymentUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeploymentUpdateResponse> postDeploymentPauseWithHttpInfo(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postDeploymentPauseValidateBeforeCall(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPauseRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentPauseAsync(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<DeploymentUpdateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDeploymentPauseValidateBeforeCall(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDeploymentPromote
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPromoteRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentPromoteCall(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = deploymentPromoteRequest;
+
+        // create path and map variables
+        String localVarPath = "/deployment/promote/{deploymentID}"
+            .replaceAll("\\{" + "deploymentID" + "\\}", localVarApiClient.escapeString(deploymentID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDeploymentPromoteValidateBeforeCall(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'deploymentID' is set
+        if (deploymentID == null) {
+            throw new ApiException("Missing the required parameter 'deploymentID' when calling postDeploymentPromote(Async)");
+        }
+        
+        // verify the required parameter 'deploymentPromoteRequest' is set
+        if (deploymentPromoteRequest == null) {
+            throw new ApiException("Missing the required parameter 'deploymentPromoteRequest' when calling postDeploymentPromote(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postDeploymentPromoteCall(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPromoteRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return DeploymentUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeploymentUpdateResponse postDeploymentPromote(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<DeploymentUpdateResponse> localVarResp = postDeploymentPromoteWithHttpInfo(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPromoteRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;DeploymentUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeploymentUpdateResponse> postDeploymentPromoteWithHttpInfo(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postDeploymentPromoteValidateBeforeCall(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentPromoteRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentPromoteAsync(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<DeploymentUpdateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDeploymentPromoteValidateBeforeCall(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDeploymentUnblock
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentUnblockRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentUnblockCall(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = deploymentUnblockRequest;
+
+        // create path and map variables
+        String localVarPath = "/deployment/unblock/{deploymentID}"
+            .replaceAll("\\{" + "deploymentID" + "\\}", localVarApiClient.escapeString(deploymentID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (idempotencyToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("idempotency_token", idempotencyToken));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDeploymentUnblockValidateBeforeCall(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'deploymentID' is set
+        if (deploymentID == null) {
+            throw new ApiException("Missing the required parameter 'deploymentID' when calling postDeploymentUnblock(Async)");
+        }
+        
+        // verify the required parameter 'deploymentUnblockRequest' is set
+        if (deploymentUnblockRequest == null) {
+            throw new ApiException("Missing the required parameter 'deploymentUnblockRequest' when calling postDeploymentUnblock(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postDeploymentUnblockCall(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentUnblockRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return DeploymentUpdateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeploymentUpdateResponse postDeploymentUnblock(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<DeploymentUpdateResponse> localVarResp = postDeploymentUnblockWithHttpInfo(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentUnblockRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return ApiResponse&lt;DeploymentUpdateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeploymentUpdateResponse> postDeploymentUnblockWithHttpInfo(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = postDeploymentUnblockValidateBeforeCall(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken, null);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param deploymentID Deployment ID. (required)
+     * @param deploymentUnblockRequest  (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDeploymentUnblockAsync(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<DeploymentUpdateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDeploymentUnblockValidateBeforeCall(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken, _callback);
+        Type localVarReturnType = new TypeToken<DeploymentUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
