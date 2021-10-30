@@ -75,15 +75,18 @@ func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.De
 	return &final, nil
 }
 
-/* func (d *Deployments) Pause(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool) (*client.DeploymentUpdateResponse, error) {
 	if deploymentID == "" {
 		return nil, errors.New("deployment id is required")
 	}
 
 	request := d.DeploymentsApi().PostDeploymentPause(d.client.Ctx, deploymentID)
 
-	deploymentsRequest := client.NewDeployment()
-	deploymentsRequest.SetID(deploymentID)
+	pauseRequest := client.NewDeploymentPauseRequest()
+	pauseRequest.SetDeploymentID(deploymentID)
+	pauseRequest.SetPause(pause)
+
+	request = request.DeploymentPauseRequest(*pauseRequest)
 
 	result, err := d.client.ExecRequest(ctx, request)
 	if err != nil {
@@ -92,17 +95,65 @@ func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.De
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
-} */
+}
 
-/* func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool, groups []string) (*client.DeploymentUpdateResponse, error) {
+	if deploymentID == "" {
+		return nil, errors.New("deployment id is required")
+	}
+
+	request := d.DeploymentsApi().PostDeploymentPromote(d.client.Ctx, deploymentID)
+
+	promoteRequest := client.NewDeploymentPromoteRequest()
+	promoteRequest.SetDeploymentID(deploymentID)
+	promoteRequest.SetAll(all)
+	promoteRequest.SetGroups(groups)
+
+	request = request.DeploymentPromoteRequest(*promoteRequest)
+
+	result, err := d.client.ExecRequest(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	final := result.(client.DeploymentUpdateResponse)
+	return &final, nil
+}
+
+func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string, healthyallocs []string, unhealthyallocs []string) (*client.DeploymentUpdateResponse, error) {
+	if deploymentID == "" {
+		return nil, errors.New("deployment id is required")
+	}
+
+	request := d.DeploymentsApi().PostDeploymentAllocationHealth(d.client.Ctx, deploymentID)
+
+	allocHealthRequest := client.NewDeploymentAllocHealthRequest()
+	allocHealthRequest.SetDeploymentID(deploymentID)
+	allocHealthRequest.SetHealthyAllocationIDs(healthyallocs)
+	allocHealthRequest.SetUnhealthyAllocationIDs(unhealthyallocs)
+
+	request = request.DeploymentAllocHealthRequest(*allocHealthRequest)
+
+	result, err := d.client.ExecRequest(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	final := result.(client.DeploymentUpdateResponse)
+	return &final, nil
+}
+
+func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, error) {
 	if deploymentID == "" {
 		return nil, errors.New("deployment id is required")
 	}
 
 	request := d.DeploymentsApi().PostDeploymentUnblock(d.client.Ctx, deploymentID)
 
-	deploymentsRequest := client.NewDeployment()
-	deploymentsRequest.SetID(deploymentID)
+	unblockRequest := client.NewDeploymentUnblockRequest()
+	unblockRequest.SetDeploymentID(deploymentID)
+
+	request = request.DeploymentUnblockRequest(*unblockRequest)
 
 	result, err := d.client.ExecRequest(ctx, request)
 	if err != nil {
@@ -111,4 +162,4 @@ func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.De
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
-} */
+}
