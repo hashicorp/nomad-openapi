@@ -3,6 +3,7 @@ README.md
 api/openapi.yaml
 api_acl.go
 api_allocations.go
+api_deployments.go
 api_enterprise.go
 api_evaluations.go
 api_jobs.go
@@ -72,7 +73,13 @@ docs/ConsulTerminatingConfigEntry.md
 docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
+docs/DeploymentAllocHealthRequest.md
+docs/DeploymentPauseRequest.md
+docs/DeploymentPromoteRequest.md
 docs/DeploymentState.md
+docs/DeploymentUnblockRequest.md
+docs/DeploymentUpdateResponse.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -225,7 +232,12 @@ model_csi_volume_list_external_response.go
 model_csi_volume_list_stub.go
 model_csi_volume_register_request.go
 model_deployment.go
+model_deployment_alloc_health_request.go
+model_deployment_pause_request.go
+model_deployment_promote_request.go
 model_deployment_state.go
+model_deployment_unblock_request.go
+model_deployment_update_response.go
 model_desired_transition.go
 model_desired_updates.go
 model_dispatch_payload_config.go

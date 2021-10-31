@@ -2,6 +2,7 @@
 README.md
 apis/ACLApi.ts
 apis/AllocationsApi.ts
+apis/DeploymentsApi.ts
 apis/EnterpriseApi.ts
 apis/EvaluationsApi.ts
 apis/JobsApi.ts
@@ -75,7 +76,12 @@ models/ConsulTerminatingConfigEntry.ts
 models/ConsulUpstream.ts
 models/DNSConfig.ts
 models/Deployment.ts
+models/DeploymentAllocHealthRequest.ts
+models/DeploymentPauseRequest.ts
+models/DeploymentPromoteRequest.ts
 models/DeploymentState.ts
+models/DeploymentUnblockRequest.ts
+models/DeploymentUpdateResponse.ts
 models/DesiredTransition.ts
 models/DesiredUpdates.ts
 models/DispatchPayloadConfig.ts

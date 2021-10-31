@@ -52,7 +52,12 @@ export * from './ConsulTerminatingConfigEntry';
 export * from './ConsulUpstream';
 export * from './DNSConfig';
 export * from './Deployment';
+export * from './DeploymentAllocHealthRequest';
+export * from './DeploymentPauseRequest';
+export * from './DeploymentPromoteRequest';
 export * from './DeploymentState';
+export * from './DeploymentUnblockRequest';
+export * from './DeploymentUpdateResponse';
 export * from './DesiredTransition';
 export * from './DesiredUpdates';
 export * from './DispatchPayloadConfig';
@@ -196,7 +201,12 @@ import { ConsulTerminatingConfigEntry } from './ConsulTerminatingConfigEntry';
 import { ConsulUpstream } from './ConsulUpstream';
 import { DNSConfig } from './DNSConfig';
 import { Deployment } from './Deployment';
+import { DeploymentAllocHealthRequest } from './DeploymentAllocHealthRequest';
+import { DeploymentPauseRequest } from './DeploymentPauseRequest';
+import { DeploymentPromoteRequest } from './DeploymentPromoteRequest';
 import { DeploymentState } from './DeploymentState';
+import { DeploymentUnblockRequest } from './DeploymentUnblockRequest';
+import { DeploymentUpdateResponse } from './DeploymentUpdateResponse';
 import { DesiredTransition } from './DesiredTransition';
 import { DesiredUpdates } from './DesiredUpdates';
 import { DispatchPayloadConfig } from './DispatchPayloadConfig';
@@ -362,7 +372,12 @@ let typeMap: {[index: string]: any} = {
     "ConsulUpstream": ConsulUpstream,
     "DNSConfig": DNSConfig,
     "Deployment": Deployment,
+    "DeploymentAllocHealthRequest": DeploymentAllocHealthRequest,
+    "DeploymentPauseRequest": DeploymentPauseRequest,
+    "DeploymentPromoteRequest": DeploymentPromoteRequest,
     "DeploymentState": DeploymentState,
+    "DeploymentUnblockRequest": DeploymentUnblockRequest,
+    "DeploymentUpdateResponse": DeploymentUpdateResponse,
     "DesiredTransition": DesiredTransition,
     "DesiredUpdates": DesiredUpdates,
     "DispatchPayloadConfig": DispatchPayloadConfig,

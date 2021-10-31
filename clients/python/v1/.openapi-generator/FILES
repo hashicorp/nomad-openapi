@@ -57,7 +57,13 @@ docs/ConsulTerminatingConfigEntry.md
 docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
+docs/DeploymentAllocHealthRequest.md
+docs/DeploymentPauseRequest.md
+docs/DeploymentPromoteRequest.md
 docs/DeploymentState.md
+docs/DeploymentUnblockRequest.md
+docs/DeploymentUpdateResponse.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -164,6 +170,7 @@ nomad_client/__init__.py
 nomad_client/api/__init__.py
 nomad_client/api/acl_api.py
 nomad_client/api/allocations_api.py
+nomad_client/api/deployments_api.py
 nomad_client/api/enterprise_api.py
 nomad_client/api/evaluations_api.py
 nomad_client/api/jobs_api.py
@@ -234,7 +241,12 @@ nomad_client/model/csi_volume_list_external_response.py
 nomad_client/model/csi_volume_list_stub.py
 nomad_client/model/csi_volume_register_request.py
 nomad_client/model/deployment.py
+nomad_client/model/deployment_alloc_health_request.py
+nomad_client/model/deployment_pause_request.py
+nomad_client/model/deployment_promote_request.py
 nomad_client/model/deployment_state.py
+nomad_client/model/deployment_unblock_request.py
+nomad_client/model/deployment_update_response.py
 nomad_client/model/desired_transition.py
 nomad_client/model/desired_updates.py
 nomad_client/model/dispatch_payload_config.py
@@ -340,6 +352,12 @@ test/test_csi_info.py
 test/test_csi_node_info.py
 test/test_csi_plugin.py
 test/test_csi_plugin_list_stub.py
+test/test_deployment_alloc_health_request.py
+test/test_deployment_pause_request.py
+test/test_deployment_promote_request.py
+test/test_deployment_unblock_request.py
+test/test_deployment_update_response.py
+test/test_deployments_api.py
 test/test_evaluations_api.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py

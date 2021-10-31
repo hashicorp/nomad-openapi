@@ -56,7 +56,13 @@ docs/CsiVolumeListExternalResponse.md
 docs/CsiVolumeListStub.md
 docs/CsiVolumeRegisterRequest.md
 docs/Deployment.md
+docs/DeploymentAllocHealthRequest.md
+docs/DeploymentPauseRequest.md
+docs/DeploymentPromoteRequest.md
 docs/DeploymentState.md
+docs/DeploymentUnblockRequest.md
+docs/DeploymentUpdateResponse.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -160,6 +166,7 @@ docs/VolumesApi.md
 src/apis/acl_api.rs
 src/apis/allocations_api.rs
 src/apis/configuration.rs
+src/apis/deployments_api.rs
 src/apis/enterprise_api.rs
 src/apis/evaluations_api.rs
 src/apis/jobs_api.rs
@@ -226,7 +233,12 @@ src/models/csi_volume_list_external_response.rs
 src/models/csi_volume_list_stub.rs
 src/models/csi_volume_register_request.rs
 src/models/deployment.rs
+src/models/deployment_alloc_health_request.rs
+src/models/deployment_pause_request.rs
+src/models/deployment_promote_request.rs
 src/models/deployment_state.rs
+src/models/deployment_unblock_request.rs
+src/models/deployment_update_response.rs
 src/models/desired_transition.rs
 src/models/desired_updates.rs
 src/models/dispatch_payload_config.rs

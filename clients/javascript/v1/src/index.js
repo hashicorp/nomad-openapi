@@ -67,7 +67,12 @@ import ConsulTerminatingConfigEntry from './model/ConsulTerminatingConfigEntry';
 import ConsulUpstream from './model/ConsulUpstream';
 import DNSConfig from './model/DNSConfig';
 import Deployment from './model/Deployment';
+import DeploymentAllocHealthRequest from './model/DeploymentAllocHealthRequest';
+import DeploymentPauseRequest from './model/DeploymentPauseRequest';
+import DeploymentPromoteRequest from './model/DeploymentPromoteRequest';
 import DeploymentState from './model/DeploymentState';
+import DeploymentUnblockRequest from './model/DeploymentUnblockRequest';
+import DeploymentUpdateResponse from './model/DeploymentUpdateResponse';
 import DesiredTransition from './model/DesiredTransition';
 import DesiredUpdates from './model/DesiredUpdates';
 import DispatchPayloadConfig from './model/DispatchPayloadConfig';
@@ -158,6 +163,7 @@ import VolumeMount from './model/VolumeMount';
 import VolumeRequest from './model/VolumeRequest';
 import ACLApi from './api/ACLApi';
 import AllocationsApi from './api/AllocationsApi';
+import DeploymentsApi from './api/DeploymentsApi';
 import EnterpriseApi from './api/EnterpriseApi';
 import EvaluationsApi from './api/EvaluationsApi';
 import JobsApi from './api/JobsApi';
@@ -534,10 +540,40 @@ export {
     Deployment,
 
     /**
+     * The DeploymentAllocHealthRequest model constructor.
+     * @property {module:model/DeploymentAllocHealthRequest}
+     */
+    DeploymentAllocHealthRequest,
+
+    /**
+     * The DeploymentPauseRequest model constructor.
+     * @property {module:model/DeploymentPauseRequest}
+     */
+    DeploymentPauseRequest,
+
+    /**
+     * The DeploymentPromoteRequest model constructor.
+     * @property {module:model/DeploymentPromoteRequest}
+     */
+    DeploymentPromoteRequest,
+
+    /**
      * The DeploymentState model constructor.
      * @property {module:model/DeploymentState}
      */
     DeploymentState,
+
+    /**
+     * The DeploymentUnblockRequest model constructor.
+     * @property {module:model/DeploymentUnblockRequest}
+     */
+    DeploymentUnblockRequest,
+
+    /**
+     * The DeploymentUpdateResponse model constructor.
+     * @property {module:model/DeploymentUpdateResponse}
+     */
+    DeploymentUpdateResponse,
 
     /**
      * The DesiredTransition model constructor.
@@ -1078,6 +1114,12 @@ export {
     * @property {module:api/AllocationsApi}
     */
     AllocationsApi,
+
+    /**
+    * The DeploymentsApi service constructor.
+    * @property {module:api/DeploymentsApi}
+    */
+    DeploymentsApi,
 
     /**
     * The EnterpriseApi service constructor.

@@ -57,7 +57,13 @@ docs/ConsulTerminatingConfigEntry.md
 docs/ConsulUpstream.md
 docs/DNSConfig.md
 docs/Deployment.md
+docs/DeploymentAllocHealthRequest.md
+docs/DeploymentPauseRequest.md
+docs/DeploymentPromoteRequest.md
 docs/DeploymentState.md
+docs/DeploymentUnblockRequest.md
+docs/DeploymentUpdateResponse.md
+docs/DeploymentsApi.md
 docs/DesiredTransition.md
 docs/DesiredUpdates.md
 docs/DispatchPayloadConfig.md
@@ -162,6 +168,7 @@ package.json
 src/ApiClient.js
 src/api/ACLApi.js
 src/api/AllocationsApi.js
+src/api/DeploymentsApi.js
 src/api/EnterpriseApi.js
 src/api/EvaluationsApi.js
 src/api/JobsApi.js
@@ -228,7 +235,12 @@ src/model/ConsulTerminatingConfigEntry.js
 src/model/ConsulUpstream.js
 src/model/DNSConfig.js
 src/model/Deployment.js
+src/model/DeploymentAllocHealthRequest.js
+src/model/DeploymentPauseRequest.js
+src/model/DeploymentPromoteRequest.js
 src/model/DeploymentState.js
+src/model/DeploymentUnblockRequest.js
+src/model/DeploymentUpdateResponse.js
 src/model/DesiredTransition.js
 src/model/DesiredUpdates.js
 src/model/DispatchPayloadConfig.js
@@ -317,6 +329,7 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js
@@ -326,6 +339,11 @@ test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
+test/model/DeploymentAllocHealthRequest.spec.js
+test/model/DeploymentPauseRequest.spec.js
+test/model/DeploymentPromoteRequest.spec.js
+test/model/DeploymentUnblockRequest.spec.js
+test/model/DeploymentUpdateResponse.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/ScalingPolicyListStub.spec.js

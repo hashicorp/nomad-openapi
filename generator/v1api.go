@@ -69,6 +69,14 @@ var (
 		Name:        "all",
 		In:          inQuery,
 	}
+	deploymentIDParam = parameter{
+		Id:          "DeploymentIDParam",
+		SchemaType:  stringSchema,
+		Description: "Deployment ID.",
+		Name:        "deploymentID",
+		In:          inPath,
+		Required:    true,
+	}
 	evalIDParam = parameter{
 		Id:          "EvalIDParam",
 		SchemaType:  stringSchema,

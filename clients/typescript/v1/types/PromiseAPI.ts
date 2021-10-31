@@ -56,7 +56,12 @@ import { ConsulTerminatingConfigEntry } from '../models/ConsulTerminatingConfigE
 import { ConsulUpstream } from '../models/ConsulUpstream';
 import { DNSConfig } from '../models/DNSConfig';
 import { Deployment } from '../models/Deployment';
+import { DeploymentAllocHealthRequest } from '../models/DeploymentAllocHealthRequest';
+import { DeploymentPauseRequest } from '../models/DeploymentPauseRequest';
+import { DeploymentPromoteRequest } from '../models/DeploymentPromoteRequest';
 import { DeploymentState } from '../models/DeploymentState';
+import { DeploymentUnblockRequest } from '../models/DeploymentUnblockRequest';
+import { DeploymentUpdateResponse } from '../models/DeploymentUpdateResponse';
 import { DesiredTransition } from '../models/DesiredTransition';
 import { DesiredUpdates } from '../models/DesiredUpdates';
 import { DispatchPayloadConfig } from '../models/DispatchPayloadConfig';
@@ -359,6 +364,139 @@ export class PromiseAllocationsApi {
      */
     public getAllocations(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, resources?: boolean, taskStates?: boolean, _options?: Configuration): Promise<Array<AllocationListStub>> {
         const result = this.api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableDeploymentsApi } from './ObservableAPI';
+
+import { DeploymentsApiRequestFactory, DeploymentsApiResponseProcessor} from "../apis/DeploymentsApi";
+export class PromiseDeploymentsApi {
+    private api: ObservableDeploymentsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DeploymentsApiRequestFactory,
+        responseProcessor?: DeploymentsApiResponseProcessor
+    ) {
+        this.api = new ObservableDeploymentsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeployment(deploymentID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Deployment> {
+        const result = this.api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeploymentAllocations(deploymentID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<AllocationListStub>> {
+        const result = this.api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getDeployments(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<Deployment>> {
+        const result = this.api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentAllocHealthRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentAllocationHealth(deploymentID: string, deploymentAllocHealthRequest: DeploymentAllocHealthRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<DeploymentUpdateResponse> {
+        const result = this.api.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentFail(deploymentID: string, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<DeploymentUpdateResponse> {
+        const result = this.api.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentPauseRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentPause(deploymentID: string, deploymentPauseRequest: DeploymentPauseRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<DeploymentUpdateResponse> {
+        const result = this.api.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentPromoteRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentPromote(deploymentID: string, deploymentPromoteRequest: DeploymentPromoteRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<DeploymentUpdateResponse> {
+        const result = this.api.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param deploymentID Deployment ID.
+     * @param deploymentUnblockRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postDeploymentUnblock(deploymentID: string, deploymentUnblockRequest: DeploymentUnblockRequest, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<DeploymentUpdateResponse> {
+        const result = this.api.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }
 

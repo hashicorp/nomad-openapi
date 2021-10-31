@@ -109,6 +109,14 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **POST** /acl/token/onetime | 
 *ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **POST** /acl/token/onetime/exchange | 
 *AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
+*DeploymentsApi* | [**get_deployment**](docs/DeploymentsApi.md#get_deployment) | **GET** /deployment/{deploymentID} | 
+*DeploymentsApi* | [**get_deployment_allocations**](docs/DeploymentsApi.md#get_deployment_allocations) | **GET** /deployment/allocations/{deploymentID} | 
+*DeploymentsApi* | [**get_deployments**](docs/DeploymentsApi.md#get_deployments) | **GET** /deployments | 
+*DeploymentsApi* | [**post_deployment_allocation_health**](docs/DeploymentsApi.md#post_deployment_allocation_health) | **POST** /deployment/allocation-health/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_fail**](docs/DeploymentsApi.md#post_deployment_fail) | **POST** /deployment/fail/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_pause**](docs/DeploymentsApi.md#post_deployment_pause) | **POST** /deployment/pause/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_promote**](docs/DeploymentsApi.md#post_deployment_promote) | **POST** /deployment/promote/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_unblock**](docs/DeploymentsApi.md#post_deployment_unblock) | **POST** /deployment/unblock/{deploymentID} | 
 *EnterpriseApi* | [**create_quota_spec**](docs/EnterpriseApi.md#create_quota_spec) | **POST** /quota | 
 *EnterpriseApi* | [**delete_quota_spec**](docs/EnterpriseApi.md#delete_quota_spec) | **DELETE** /quota/{specName} | 
 *EnterpriseApi* | [**get_quota_spec**](docs/EnterpriseApi.md#get_quota_spec) | **GET** /quota/{specName} | 
@@ -223,7 +231,12 @@ Class | Method | HTTP request | Description
  - [ConsulUpstream](docs/ConsulUpstream.md)
  - [DNSConfig](docs/DNSConfig.md)
  - [Deployment](docs/Deployment.md)
+ - [DeploymentAllocHealthRequest](docs/DeploymentAllocHealthRequest.md)
+ - [DeploymentPauseRequest](docs/DeploymentPauseRequest.md)
+ - [DeploymentPromoteRequest](docs/DeploymentPromoteRequest.md)
  - [DeploymentState](docs/DeploymentState.md)
+ - [DeploymentUnblockRequest](docs/DeploymentUnblockRequest.md)
+ - [DeploymentUpdateResponse](docs/DeploymentUpdateResponse.md)
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
