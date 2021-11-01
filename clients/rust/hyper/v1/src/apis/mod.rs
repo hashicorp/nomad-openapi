@@ -67,6 +67,8 @@ mod metrics_api;
 pub use self::metrics_api::{ MetricsApi, MetricsApiClient };
 mod namespaces_api;
 pub use self::namespaces_api::{ NamespacesApi, NamespacesApiClient };
+mod nodes_api;
+pub use self::nodes_api::{ NodesApi, NodesApiClient };
 mod plugins_api;
 pub use self::plugins_api::{ PluginsApi, PluginsApiClient };
 mod regions_api;

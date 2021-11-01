@@ -22,6 +22,7 @@ from nomad_client.api.evaluations_api import EvaluationsApi
 from nomad_client.api.jobs_api import JobsApi
 from nomad_client.api.metrics_api import MetricsApi
 from nomad_client.api.namespaces_api import NamespacesApi
+from nomad_client.api.nodes_api import NodesApi
 from nomad_client.api.plugins_api import PluginsApi
 from nomad_client.api.regions_api import RegionsApi
 from nomad_client.api.scaling_api import ScalingApi

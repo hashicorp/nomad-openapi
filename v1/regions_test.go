@@ -8,7 +8,6 @@ import (
 )
 
 func TestRegions_GetRegions(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 
 		// Make the HTTP request

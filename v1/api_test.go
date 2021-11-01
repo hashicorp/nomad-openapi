@@ -41,7 +41,6 @@ func NewTestClient(testAgent *agent.TestAgent) (*Client, error) {
 }
 
 func TestSetQueryOptions(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 
 		ctx := queryOpts.Ctx()
@@ -60,7 +59,6 @@ func TestSetQueryOptions(t *testing.T) {
 }
 
 func TestSetWriteOptions(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		ctx := writeOpts.Ctx()
 		wCtx := ctx.Value("WriteOpts").(*WriteOpts)

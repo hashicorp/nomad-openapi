@@ -1,17 +1,18 @@
 package v1
 
 import (
+	"fmt"
 	"testing"
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
+	"github.com/hashicorp/nomad/helper/uuid"
 	"github.com/hashicorp/nomad/nomad/mock"
 	"github.com/hashicorp/nomad/nomad/structs"
 	"github.com/stretchr/testify/require"
 )
 
 func TestGetNamespaces(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		ns1 := mock.Namespace()
 		ns2 := mock.Namespace()
@@ -38,7 +39,6 @@ func TestGetNamespaces(t *testing.T) {
 }
 
 func TestGetNamespace(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -53,11 +53,10 @@ func TestGetNamespace(t *testing.T) {
 }
 
 func TestPostNamespace(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		mockNS := mock.Namespace()
+		name := fmt.Sprintf("openapi-ns-%s", uuid.Generate())
 		clientNS := client.Namespace{
-			Name: &mockNS.Name,
+			Name: &name,
 		}
 
 		testClient, err := NewTestClient(s)
@@ -75,11 +74,10 @@ func TestPostNamespace(t *testing.T) {
 }
 
 func TestDeleteNamespace(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
-		mockNS := mock.Namespace()
+		name := fmt.Sprintf("openapi-ns-%s", uuid.Generate())
 		clientNS := client.Namespace{
-			Name: &mockNS.Name,
+			Name: &name,
 		}
 
 		testClient, err := NewTestClient(s)

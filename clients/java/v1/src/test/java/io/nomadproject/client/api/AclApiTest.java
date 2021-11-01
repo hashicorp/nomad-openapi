@@ -14,7 +14,12 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
+import io.nomadproject.client.models.ACLPolicy;
 import io.nomadproject.client.models.ACLPolicyListStub;
+import io.nomadproject.client.models.ACLToken;
+import io.nomadproject.client.models.ACLTokenListStub;
+import io.nomadproject.client.models.OneTimeToken;
+import io.nomadproject.client.models.OneTimeTokenExchangeRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,6 +46,46 @@ public class AclApiTest {
      *          if the Api call fails
      */
     @Test
+    public void deleteACLPolicyTest() throws ApiException {
+        String policyName = null;
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteACLTokenTest() throws ApiException {
+        String tokenAccessor = null;
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void getACLPoliciesTest() throws ApiException {
         String region = null;
         String namespace = null;
@@ -52,6 +97,204 @@ public class AclApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<ACLPolicyListStub> response = api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getACLPolicyTest() throws ApiException {
+        String policyName = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        ACLPolicy response = api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getACLTokenTest() throws ApiException {
+        String tokenAccessor = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        ACLToken response = api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getACLTokenSelfTest() throws ApiException {
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        ACLToken response = api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getACLTokensTest() throws ApiException {
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        List<ACLTokenListStub> response = api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postACLBootstrapTest() throws ApiException {
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        List<ACLToken> response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postACLPolicyTest() throws ApiException {
+        String policyName = null;
+        ACLPolicy acLPolicy = null;
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        api.postACLPolicy(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postACLTokenTest() throws ApiException {
+        String tokenAccessor = null;
+        ACLToken acLToken = null;
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        ACLToken response = api.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postACLTokenOnetimeTest() throws ApiException {
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        OneTimeToken response = api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postACLTokenOnetimeExchangeTest() throws ApiException {
+        OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest = null;
+        String region = null;
+        String namespace = null;
+        String xNomadToken = null;
+        String idempotencyToken = null;
+        ACLToken response = api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }

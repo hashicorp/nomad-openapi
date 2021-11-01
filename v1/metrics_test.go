@@ -10,7 +10,6 @@ import (
 )
 
 func TestMetrics(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		// make a separate HTTP request first, to ensure Nomad has written metrics
 		// and prevent a race condition

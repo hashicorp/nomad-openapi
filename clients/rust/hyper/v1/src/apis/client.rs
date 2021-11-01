@@ -12,6 +12,7 @@ pub struct APIClient {
     jobs_api: Box<dyn crate::apis::JobsApi>,
     metrics_api: Box<dyn crate::apis::MetricsApi>,
     namespaces_api: Box<dyn crate::apis::NamespacesApi>,
+    nodes_api: Box<dyn crate::apis::NodesApi>,
     plugins_api: Box<dyn crate::apis::PluginsApi>,
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
@@ -33,6 +34,7 @@ impl APIClient {
             jobs_api: Box::new(crate::apis::JobsApiClient::new(rc.clone())),
             metrics_api: Box::new(crate::apis::MetricsApiClient::new(rc.clone())),
             namespaces_api: Box::new(crate::apis::NamespacesApiClient::new(rc.clone())),
+            nodes_api: Box::new(crate::apis::NodesApiClient::new(rc.clone())),
             plugins_api: Box::new(crate::apis::PluginsApiClient::new(rc.clone())),
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
@@ -72,6 +74,10 @@ impl APIClient {
 
     pub fn namespaces_api(&self) -> &dyn crate::apis::NamespacesApi{
         self.namespaces_api.as_ref()
+    }
+
+    pub fn nodes_api(&self) -> &dyn crate::apis::NodesApi{
+        self.nodes_api.as_ref()
     }
 
     pub fn plugins_api(&self) -> &dyn crate::apis::PluginsApi{

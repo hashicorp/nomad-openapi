@@ -10,7 +10,6 @@ import (
 )
 
 func TestGetAllocations(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 
 		// Directly manipulate the state

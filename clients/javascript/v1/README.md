@@ -188,6 +188,12 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
+*nomad-client.NodesApi* | [**getNode**](docs/NodesApi.md#getNode) | **GET** /node/{nodeId} | 
+*nomad-client.NodesApi* | [**getNodeAllocations**](docs/NodesApi.md#getNodeAllocations) | **GET** /node/{nodeId}/allocations | 
+*nomad-client.NodesApi* | [**getNodes**](docs/NodesApi.md#getNodes) | **GET** /nodes | 
+*nomad-client.NodesApi* | [**updateNodeDrain**](docs/NodesApi.md#updateNodeDrain) | **POST** /node/{nodeId}/drain | 
+*nomad-client.NodesApi* | [**updateNodeEligibility**](docs/NodesApi.md#updateNodeEligibility) | **POST** /node/{nodeId}/eligibility | 
+*nomad-client.NodesApi* | [**updateNodePurge**](docs/NodesApi.md#updateNodePurge) | **POST** /node/{nodeId}/purge | 
 *nomad-client.PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
 *nomad-client.PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
@@ -227,6 +233,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.Allocation](docs/Allocation.md)
  - [nomad-client.AllocationListStub](docs/AllocationListStub.md)
  - [nomad-client.AllocationMetric](docs/AllocationMetric.md)
+ - [nomad-client.Attribute](docs/Attribute.md)
  - [nomad-client.CSIControllerInfo](docs/CSIControllerInfo.md)
  - [nomad-client.CSIInfo](docs/CSIInfo.md)
  - [nomad-client.CSIMountOptions](docs/CSIMountOptions.md)
@@ -275,6 +282,10 @@ Class | Method | HTTP request | Description
  - [nomad-client.DesiredTransition](docs/DesiredTransition.md)
  - [nomad-client.DesiredUpdates](docs/DesiredUpdates.md)
  - [nomad-client.DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
+ - [nomad-client.DrainMetadata](docs/DrainMetadata.md)
+ - [nomad-client.DrainSpec](docs/DrainSpec.md)
+ - [nomad-client.DrainStrategy](docs/DrainStrategy.md)
+ - [nomad-client.DriverInfo](docs/DriverInfo.md)
  - [nomad-client.EphemeralDisk](docs/EphemeralDisk.md)
  - [nomad-client.EvalOptions](docs/EvalOptions.md)
  - [nomad-client.Evaluation](docs/Evaluation.md)
@@ -283,6 +294,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [nomad-client.FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [nomad-client.GaugeValue](docs/GaugeValue.md)
+ - [nomad-client.HostVolumeInfo](docs/HostVolumeInfo.md)
  - [nomad-client.Job](docs/Job.md)
  - [nomad-client.JobChildrenSummary](docs/JobChildrenSummary.md)
  - [nomad-client.JobDeregisterResponse](docs/JobDeregisterResponse.md)
@@ -312,7 +324,27 @@ Class | Method | HTTP request | Description
  - [nomad-client.MultiregionStrategy](docs/MultiregionStrategy.md)
  - [nomad-client.Namespace](docs/Namespace.md)
  - [nomad-client.NetworkResource](docs/NetworkResource.md)
+ - [nomad-client.Node](docs/Node.md)
+ - [nomad-client.NodeCpuResources](docs/NodeCpuResources.md)
+ - [nomad-client.NodeDevice](docs/NodeDevice.md)
+ - [nomad-client.NodeDeviceLocality](docs/NodeDeviceLocality.md)
+ - [nomad-client.NodeDeviceResource](docs/NodeDeviceResource.md)
+ - [nomad-client.NodeDiskResources](docs/NodeDiskResources.md)
+ - [nomad-client.NodeDrainUpdateResponse](docs/NodeDrainUpdateResponse.md)
+ - [nomad-client.NodeEligibilityUpdateResponse](docs/NodeEligibilityUpdateResponse.md)
+ - [nomad-client.NodeEvent](docs/NodeEvent.md)
+ - [nomad-client.NodeListStub](docs/NodeListStub.md)
+ - [nomad-client.NodeMemoryResources](docs/NodeMemoryResources.md)
+ - [nomad-client.NodePurgeResponse](docs/NodePurgeResponse.md)
+ - [nomad-client.NodeReservedCpuResources](docs/NodeReservedCpuResources.md)
+ - [nomad-client.NodeReservedDiskResources](docs/NodeReservedDiskResources.md)
+ - [nomad-client.NodeReservedMemoryResources](docs/NodeReservedMemoryResources.md)
+ - [nomad-client.NodeReservedNetworkResources](docs/NodeReservedNetworkResources.md)
+ - [nomad-client.NodeReservedResources](docs/NodeReservedResources.md)
+ - [nomad-client.NodeResources](docs/NodeResources.md)
  - [nomad-client.NodeScoreMeta](docs/NodeScoreMeta.md)
+ - [nomad-client.NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
+ - [nomad-client.NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [nomad-client.ObjectDiff](docs/ObjectDiff.md)
  - [nomad-client.OneTimeToken](docs/OneTimeToken.md)
  - [nomad-client.OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)

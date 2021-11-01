@@ -7,5 +7,5 @@ export * from "./apis/exception";
 export * from "./servers";
 
 export { PromiseMiddleware as Middleware } from './middleware';
-export { PromiseACLApi as ACLApi,  PromiseAllocationsApi as AllocationsApi,  PromiseDeploymentsApi as DeploymentsApi,  PromiseEnterpriseApi as EnterpriseApi,  PromiseEvaluationsApi as EvaluationsApi,  PromiseJobsApi as JobsApi,  PromiseMetricsApi as MetricsApi,  PromiseNamespacesApi as NamespacesApi,  PromisePluginsApi as PluginsApi,  PromiseRegionsApi as RegionsApi,  PromiseScalingApi as ScalingApi,  PromiseSearchApi as SearchApi,  PromiseSystemApi as SystemApi,  PromiseVolumesApi as VolumesApi } from './types/PromiseAPI';
+export { PromiseACLApi as ACLApi,  PromiseAllocationsApi as AllocationsApi,  PromiseDeploymentsApi as DeploymentsApi,  PromiseEnterpriseApi as EnterpriseApi,  PromiseEvaluationsApi as EvaluationsApi,  PromiseJobsApi as JobsApi,  PromiseMetricsApi as MetricsApi,  PromiseNamespacesApi as NamespacesApi,  PromiseNodesApi as NodesApi,  PromisePluginsApi as PluginsApi,  PromiseRegionsApi as RegionsApi,  PromiseScalingApi as ScalingApi,  PromiseSearchApi as SearchApi,  PromiseSystemApi as SystemApi,  PromiseVolumesApi as VolumesApi } from './types/PromiseAPI';
 

@@ -17,6 +17,7 @@ import { AllocatedTaskResources } from '../models/AllocatedTaskResources';
 import { Allocation } from '../models/Allocation';
 import { AllocationListStub } from '../models/AllocationListStub';
 import { AllocationMetric } from '../models/AllocationMetric';
+import { Attribute } from '../models/Attribute';
 import { CSIControllerInfo } from '../models/CSIControllerInfo';
 import { CSIInfo } from '../models/CSIInfo';
 import { CSIMountOptions } from '../models/CSIMountOptions';
@@ -65,6 +66,10 @@ import { DeploymentUpdateResponse } from '../models/DeploymentUpdateResponse';
 import { DesiredTransition } from '../models/DesiredTransition';
 import { DesiredUpdates } from '../models/DesiredUpdates';
 import { DispatchPayloadConfig } from '../models/DispatchPayloadConfig';
+import { DrainMetadata } from '../models/DrainMetadata';
+import { DrainSpec } from '../models/DrainSpec';
+import { DrainStrategy } from '../models/DrainStrategy';
+import { DriverInfo } from '../models/DriverInfo';
 import { EphemeralDisk } from '../models/EphemeralDisk';
 import { EvalOptions } from '../models/EvalOptions';
 import { Evaluation } from '../models/Evaluation';
@@ -73,6 +78,7 @@ import { FuzzyMatch } from '../models/FuzzyMatch';
 import { FuzzySearchRequest } from '../models/FuzzySearchRequest';
 import { FuzzySearchResponse } from '../models/FuzzySearchResponse';
 import { GaugeValue } from '../models/GaugeValue';
+import { HostVolumeInfo } from '../models/HostVolumeInfo';
 import { Job } from '../models/Job';
 import { JobChildrenSummary } from '../models/JobChildrenSummary';
 import { JobDeregisterResponse } from '../models/JobDeregisterResponse';
@@ -102,7 +108,27 @@ import { MultiregionRegion } from '../models/MultiregionRegion';
 import { MultiregionStrategy } from '../models/MultiregionStrategy';
 import { Namespace } from '../models/Namespace';
 import { NetworkResource } from '../models/NetworkResource';
+import { Node } from '../models/Node';
+import { NodeCpuResources } from '../models/NodeCpuResources';
+import { NodeDevice } from '../models/NodeDevice';
+import { NodeDeviceLocality } from '../models/NodeDeviceLocality';
+import { NodeDeviceResource } from '../models/NodeDeviceResource';
+import { NodeDiskResources } from '../models/NodeDiskResources';
+import { NodeDrainUpdateResponse } from '../models/NodeDrainUpdateResponse';
+import { NodeEligibilityUpdateResponse } from '../models/NodeEligibilityUpdateResponse';
+import { NodeEvent } from '../models/NodeEvent';
+import { NodeListStub } from '../models/NodeListStub';
+import { NodeMemoryResources } from '../models/NodeMemoryResources';
+import { NodePurgeResponse } from '../models/NodePurgeResponse';
+import { NodeReservedCpuResources } from '../models/NodeReservedCpuResources';
+import { NodeReservedDiskResources } from '../models/NodeReservedDiskResources';
+import { NodeReservedMemoryResources } from '../models/NodeReservedMemoryResources';
+import { NodeReservedNetworkResources } from '../models/NodeReservedNetworkResources';
+import { NodeReservedResources } from '../models/NodeReservedResources';
+import { NodeResources } from '../models/NodeResources';
 import { NodeScoreMeta } from '../models/NodeScoreMeta';
+import { NodeUpdateDrainRequest } from '../models/NodeUpdateDrainRequest';
+import { NodeUpdateEligibilityRequest } from '../models/NodeUpdateEligibilityRequest';
 import { ObjectDiff } from '../models/ObjectDiff';
 import { OneTimeToken } from '../models/OneTimeToken';
 import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
@@ -1093,6 +1119,129 @@ export class PromiseNamespacesApi {
      */
     public postNamespace(namespaceName: string, namespace2: Namespace, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
         const result = this.api.postNamespace(namespaceName, namespace2, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableNodesApi } from './ObservableAPI';
+
+import { NodesApiRequestFactory, NodesApiResponseProcessor} from "../apis/NodesApi";
+export class PromiseNodesApi {
+    private api: ObservableNodesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: NodesApiRequestFactory,
+        responseProcessor?: NodesApiResponseProcessor
+    ) {
+        this.api = new ObservableNodesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param nodeId The ID of the node.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getNode(nodeId: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Node> {
+        const result = this.api.getNode(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param nodeId The ID of the node.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getNodeAllocations(nodeId: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<AllocationListStub>> {
+        const result = this.api.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     * @param resources Whether or not to include the NodeResources and ReservedResources fields in the response.
+     */
+    public getNodes(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, resources?: boolean, _options?: Configuration): Promise<Array<NodeListStub>> {
+        const result = this.api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param nodeId The ID of the node.
+     * @param nodeUpdateDrainRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public updateNodeDrain(nodeId: string, nodeUpdateDrainRequest: NodeUpdateDrainRequest, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<NodeDrainUpdateResponse> {
+        const result = this.api.updateNodeDrain(nodeId, nodeUpdateDrainRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param nodeId The ID of the node.
+     * @param nodeUpdateEligibilityRequest 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public updateNodeEligibility(nodeId: string, nodeUpdateEligibilityRequest: NodeUpdateEligibilityRequest, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<NodeEligibilityUpdateResponse> {
+        const result = this.api.updateNodeEligibility(nodeId, nodeUpdateEligibilityRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param nodeId The ID of the node.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public updateNodePurge(nodeId: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<NodePurgeResponse> {
+        const result = this.api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
         return result.toPromise();
     }
 

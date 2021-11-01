@@ -17,6 +17,7 @@ import { AllocatedTaskResources } from '../models/AllocatedTaskResources';
 import { Allocation } from '../models/Allocation';
 import { AllocationListStub } from '../models/AllocationListStub';
 import { AllocationMetric } from '../models/AllocationMetric';
+import { Attribute } from '../models/Attribute';
 import { CSIControllerInfo } from '../models/CSIControllerInfo';
 import { CSIInfo } from '../models/CSIInfo';
 import { CSIMountOptions } from '../models/CSIMountOptions';
@@ -65,6 +66,10 @@ import { DeploymentUpdateResponse } from '../models/DeploymentUpdateResponse';
 import { DesiredTransition } from '../models/DesiredTransition';
 import { DesiredUpdates } from '../models/DesiredUpdates';
 import { DispatchPayloadConfig } from '../models/DispatchPayloadConfig';
+import { DrainMetadata } from '../models/DrainMetadata';
+import { DrainSpec } from '../models/DrainSpec';
+import { DrainStrategy } from '../models/DrainStrategy';
+import { DriverInfo } from '../models/DriverInfo';
 import { EphemeralDisk } from '../models/EphemeralDisk';
 import { EvalOptions } from '../models/EvalOptions';
 import { Evaluation } from '../models/Evaluation';
@@ -73,6 +78,7 @@ import { FuzzyMatch } from '../models/FuzzyMatch';
 import { FuzzySearchRequest } from '../models/FuzzySearchRequest';
 import { FuzzySearchResponse } from '../models/FuzzySearchResponse';
 import { GaugeValue } from '../models/GaugeValue';
+import { HostVolumeInfo } from '../models/HostVolumeInfo';
 import { Job } from '../models/Job';
 import { JobChildrenSummary } from '../models/JobChildrenSummary';
 import { JobDeregisterResponse } from '../models/JobDeregisterResponse';
@@ -102,7 +108,27 @@ import { MultiregionRegion } from '../models/MultiregionRegion';
 import { MultiregionStrategy } from '../models/MultiregionStrategy';
 import { Namespace } from '../models/Namespace';
 import { NetworkResource } from '../models/NetworkResource';
+import { Node } from '../models/Node';
+import { NodeCpuResources } from '../models/NodeCpuResources';
+import { NodeDevice } from '../models/NodeDevice';
+import { NodeDeviceLocality } from '../models/NodeDeviceLocality';
+import { NodeDeviceResource } from '../models/NodeDeviceResource';
+import { NodeDiskResources } from '../models/NodeDiskResources';
+import { NodeDrainUpdateResponse } from '../models/NodeDrainUpdateResponse';
+import { NodeEligibilityUpdateResponse } from '../models/NodeEligibilityUpdateResponse';
+import { NodeEvent } from '../models/NodeEvent';
+import { NodeListStub } from '../models/NodeListStub';
+import { NodeMemoryResources } from '../models/NodeMemoryResources';
+import { NodePurgeResponse } from '../models/NodePurgeResponse';
+import { NodeReservedCpuResources } from '../models/NodeReservedCpuResources';
+import { NodeReservedDiskResources } from '../models/NodeReservedDiskResources';
+import { NodeReservedMemoryResources } from '../models/NodeReservedMemoryResources';
+import { NodeReservedNetworkResources } from '../models/NodeReservedNetworkResources';
+import { NodeReservedResources } from '../models/NodeReservedResources';
+import { NodeResources } from '../models/NodeResources';
 import { NodeScoreMeta } from '../models/NodeScoreMeta';
+import { NodeUpdateDrainRequest } from '../models/NodeUpdateDrainRequest';
+import { NodeUpdateEligibilityRequest } from '../models/NodeUpdateEligibilityRequest';
 import { ObjectDiff } from '../models/ObjectDiff';
 import { OneTimeToken } from '../models/OneTimeToken';
 import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
@@ -3245,6 +3271,450 @@ export class ObjectNamespacesApi {
      */
     public postNamespace(param: NamespacesApiPostNamespaceRequest, options?: Configuration): Promise<void> {
         return this.api.postNamespace(param.namespaceName, param.namespace2, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+}
+
+import { ObservableNodesApi } from "./ObservableAPI";
+import { NodesApiRequestFactory, NodesApiResponseProcessor} from "../apis/NodesApi";
+
+export interface NodesApiGetNodeRequest {
+    /**
+     * The ID of the node.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    nodeId: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApigetNode
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApigetNode
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApigetNode
+     */
+    nextToken?: string
+}
+
+export interface NodesApiGetNodeAllocationsRequest {
+    /**
+     * The ID of the node.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    nodeId: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApigetNodeAllocations
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApigetNodeAllocations
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApigetNodeAllocations
+     */
+    nextToken?: string
+}
+
+export interface NodesApiGetNodesRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApigetNodes
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApigetNodes
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApigetNodes
+     */
+    nextToken?: string
+    /**
+     * Whether or not to include the NodeResources and ReservedResources fields in the response.
+     * @type boolean
+     * @memberof NodesApigetNodes
+     */
+    resources?: boolean
+}
+
+export interface NodesApiUpdateNodeDrainRequest {
+    /**
+     * The ID of the node.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    nodeId: string
+    /**
+     * 
+     * @type NodeUpdateDrainRequest
+     * @memberof NodesApiupdateNodeDrain
+     */
+    nodeUpdateDrainRequest: NodeUpdateDrainRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApiupdateNodeDrain
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApiupdateNodeDrain
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApiupdateNodeDrain
+     */
+    nextToken?: string
+}
+
+export interface NodesApiUpdateNodeEligibilityRequest {
+    /**
+     * The ID of the node.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    nodeId: string
+    /**
+     * 
+     * @type NodeUpdateEligibilityRequest
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    nodeUpdateEligibilityRequest: NodeUpdateEligibilityRequest
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApiupdateNodeEligibility
+     */
+    nextToken?: string
+}
+
+export interface NodesApiUpdateNodePurgeRequest {
+    /**
+     * The ID of the node.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    nodeId: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof NodesApiupdateNodePurge
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof NodesApiupdateNodePurge
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof NodesApiupdateNodePurge
+     */
+    nextToken?: string
+}
+
+export class ObjectNodesApi {
+    private api: ObservableNodesApi
+
+    public constructor(configuration: Configuration, requestFactory?: NodesApiRequestFactory, responseProcessor?: NodesApiResponseProcessor) {
+        this.api = new ObservableNodesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getNode(param: NodesApiGetNodeRequest, options?: Configuration): Promise<Node> {
+        return this.api.getNode(param.nodeId, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getNodeAllocations(param: NodesApiGetNodeAllocationsRequest, options?: Configuration): Promise<Array<AllocationListStub>> {
+        return this.api.getNodeAllocations(param.nodeId, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getNodes(param: NodesApiGetNodesRequest, options?: Configuration): Promise<Array<NodeListStub>> {
+        return this.api.getNodes(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.resources,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public updateNodeDrain(param: NodesApiUpdateNodeDrainRequest, options?: Configuration): Promise<NodeDrainUpdateResponse> {
+        return this.api.updateNodeDrain(param.nodeId, param.nodeUpdateDrainRequest, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public updateNodeEligibility(param: NodesApiUpdateNodeEligibilityRequest, options?: Configuration): Promise<NodeEligibilityUpdateResponse> {
+        return this.api.updateNodeEligibility(param.nodeId, param.nodeUpdateEligibilityRequest, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public updateNodePurge(param: NodesApiUpdateNodePurgeRequest, options?: Configuration): Promise<NodePurgeResponse> {
+        return this.api.updateNodePurge(param.nodeId, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
 }
