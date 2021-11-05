@@ -2,6 +2,8 @@ package v1
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"errors"
 	"fmt"
 	"net/http"
@@ -22,9 +24,14 @@ type Client struct {
 
 func NewClient() (*Client, error) {
 	nomadAddr := os.Getenv("NOMAD_ADDR")
+	configuration := client.NewConfiguration()
+
+	// Set to the dev agent default if empty
 	if nomadAddr == "" {
 		nomadAddr = "http://127.0.0.1:4646"
 	}
+
+	// Parse the URL so we can extract scheme and port
 	nomadURL, err := url.Parse(nomadAddr)
 	if err != nil {
 		return nil, err
@@ -38,10 +45,94 @@ func NewClient() (*Client, error) {
 		"port":    nomadURL.Port(),
 	})
 
-	configuration := client.NewConfiguration()
+	err = configureAuth(configuration)
+	if err != nil {
+		return nil, err
+	}
+
 	c.apiClient = client.NewAPIClient(configuration)
 
 	return c, nil
+}
+
+func configureAuth(configuration *client.Configuration) error {
+	nomadToken := os.Getenv("NOMAD_TOKEN")
+	// If environment has a NOMAD_TOKEN, set that in the header
+	if nomadToken != "" {
+		configuration.DefaultHeader["X-Nomad-Token"] = nomadToken
+	}
+
+	err := configureTLS(configuration)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// Configures TLS if the client environment contains TLS configuration settings.
+func configureTLS(configuration *client.Configuration) error {
+	tlsConfig, err := tlsConfigFromEnv()
+	if err != nil {
+		return err
+	}
+
+	// if environment is not configured for tls, return nil
+	if tlsConfig == nil {
+		return nil
+	}
+
+	// throw error if the environment is configured for TLS, but the HTTPClient
+	// is already set.
+	if configuration.HTTPClient != nil {
+		return errors.New("client HTTPClient is already configured")
+	}
+
+	configuration.HTTPClient = &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: tlsConfig,
+		},
+	}
+
+	return nil
+}
+
+func tlsConfigFromEnv() (*tls.Config, error) {
+	serverCertPath := os.Getenv("NOMAD_CACERT")
+	clientCertPath := os.Getenv("NOMAD_CLIENT_CERT")
+	clientKeyPath := os.Getenv("NOMAD_CLIENT_KEY")
+
+	// If environment is not configured for TLS, return
+	if serverCertPath == "" || clientCertPath == "" || clientKeyPath == "" {
+		return nil, nil
+	}
+
+	cfg := &tls.Config{}
+
+	// Load the certificate authority certificate bytes
+	serverCertBytes, err := os.ReadFile(serverCertPath)
+	if err != nil {
+		return nil, fmt.Errorf("error reading NOMAD_CACERT: %v", err)
+	}
+
+	// Load a client certificate from the client settings
+	clientCert, err := tls.LoadX509KeyPair(clientCertPath, clientKeyPath)
+	if err != nil {
+		return nil, err
+	}
+
+	// Set the root CA from the server cert
+	cfg.RootCAs = x509.NewCertPool()
+	cfg.RootCAs.AppendCertsFromPEM(serverCertBytes)
+	// Set the client certificate
+	cfg.Certificates = []tls.Certificate{clientCert}
+
+	cfg.ServerName = "server.global.nomad"
+	region := os.Getenv("NOMAD_REGION")
+	if region != "" {
+		cfg.ServerName = fmt.Sprintf("server.%s.nomad", region)
+	}
+
+	return cfg, nil
 }
 
 // ExecQuery executes a request that returns query metadata.

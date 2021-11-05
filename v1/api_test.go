@@ -14,11 +14,9 @@ import (
 var queryOpts = DefaultQueryOpts().
 	WithAllowStale(true).
 	WithWaitIndex(1000).
-	WithWaitTime(100 * time.Second).
-	WithAuthToken("foobar")
+	WithWaitTime(100 * time.Second)
 
-var writeOpts = DefaultWriteOpts().
-	WithAuthToken("foobar")
+var writeOpts = DefaultWriteOpts()
 
 // makeHTTPServer returns a test server whose logs will be written to
 // the passed writer. If the writer is nil, the logs are written to stderr.
@@ -68,4 +66,22 @@ func TestSetWriteOptions(t *testing.T) {
 		require.Equal(t, wCtx.AuthToken, writeOpts.AuthToken)
 		require.Equal(t, wCtx.IdempotencyToken, writeOpts.IdempotencyToken)
 	})
+}
+
+func TestTLS(t *testing.T) {
+	if os.Getenv("NOMAD_TOKEN") == "" {
+		return
+	}
+
+	client, err := NewClient()
+	require.NoError(t, err)
+
+	q := &QueryOpts{
+		Region:    globalRegion,
+		Namespace: defaultNamespace,
+	}
+	result, meta, err := client.Jobs().GetJobs(q.Ctx())
+	require.NoError(t, err)
+	require.NotNil(t, meta)
+	require.NotNil(t, result)
 }

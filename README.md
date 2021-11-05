@@ -20,6 +20,58 @@ This file _is itself a generated file_ and _should not be edited directly_. You 
 use this file to generate a client for the Nomad HTTP API in the language of your
 choice.
 
+## Using the Go Client
+
+To use the Go client add a reference to it in your `go.mod` with `go get`.
+
+```shell
+$ go get github.com/hashicorp/nomad-openapi
+```
+
+You can use it from your client applications like this.
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+	
+	v1 "github.com/hashicorp/nomad-openapi/v1"
+)
+
+func main() {
+	client, err := v1.NewClient()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	jobName := "example"
+	opts := v1.DefaultQueryOpts()
+	
+	job, meta, err := client.Jobs().GetJob(opts.Ctx(), jobName)
+	if err != nil {
+		os.Exit(1)
+	}
+	
+	fmt.Println(*job.ID)
+	fmt.Printf("%v", &meta)
+}
+```
+
+## Environmental Configuration 
+
+This client supports the following Nomad environment variables.
+
+- `NOMAD_ADDR` - Required to overide the default of `http://127.0.0.1:4646`.
+- `NOMAD_TOKEN` - Required with ACLs enabled. Can be overidden with `QueryOpts` or `WriteOpts`.
+- `NOMAD_CACERT` - Required with TLS enabled.
+- `NOMAD_CLIENT_CERT` - Required with TLS enabled.
+- `NOMAD_CLIENT_KEY` - Required with TLS enabled.
+- `NOMAD_REGION` - Required if you are calling a server in a region other than
+  `global` as the `NOMAD_CACERT` SAN will follow the convention of `server.<region>.nomad`.
+
+## Code generation
 The OpenAPI ecosystem has a number of existing code generators to choose from.
 This repository uses the [OpenAPI Generator](https://openapi-generator.tech/)
 project to generate a test client in Golang that is then used to validate the
