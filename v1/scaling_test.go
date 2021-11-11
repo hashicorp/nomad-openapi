@@ -8,7 +8,6 @@ import (
 )
 
 func TestGetScalingPolicies(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -22,7 +21,6 @@ func TestGetScalingPolicies(t *testing.T) {
 }
 
 func TestGetPolicy(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)

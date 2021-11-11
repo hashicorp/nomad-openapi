@@ -8,7 +8,6 @@ import (
 )
 
 func TestGetDeployments(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -22,7 +21,6 @@ func TestGetDeployments(t *testing.T) {
 }
 
 func TestGetDeployment(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -35,7 +33,6 @@ func TestGetDeployment(t *testing.T) {
 }
 
 func TestGetDeploymentAllocations(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -49,7 +46,6 @@ func TestGetDeploymentAllocations(t *testing.T) {
 }
 
 func TestPostDeploymentFail(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -61,7 +57,6 @@ func TestPostDeploymentFail(t *testing.T) {
 }
 
 func TestPostDeploymentPause(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -73,7 +68,6 @@ func TestPostDeploymentPause(t *testing.T) {
 }
 
 func TestPostDeploymentPromote1(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -85,7 +79,6 @@ func TestPostDeploymentPromote1(t *testing.T) {
 }
 
 func TestPostDeploymentPromote2(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -97,7 +90,6 @@ func TestPostDeploymentPromote2(t *testing.T) {
 }
 
 func TestPostDeploymentAllocationHealth1(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -109,7 +101,6 @@ func TestPostDeploymentAllocationHealth1(t *testing.T) {
 }
 
 func TestPostDeploymentAllocationHealth2(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -121,7 +112,6 @@ func TestPostDeploymentAllocationHealth2(t *testing.T) {
 }
 
 func TestPostDeploymentUnblock(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)

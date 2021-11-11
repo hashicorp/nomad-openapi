@@ -13,6 +13,7 @@ export * from './AllocatedTaskResources';
 export * from './Allocation';
 export * from './AllocationListStub';
 export * from './AllocationMetric';
+export * from './Attribute';
 export * from './CSIControllerInfo';
 export * from './CSIInfo';
 export * from './CSIMountOptions';
@@ -61,6 +62,10 @@ export * from './DeploymentUpdateResponse';
 export * from './DesiredTransition';
 export * from './DesiredUpdates';
 export * from './DispatchPayloadConfig';
+export * from './DrainMetadata';
+export * from './DrainSpec';
+export * from './DrainStrategy';
+export * from './DriverInfo';
 export * from './EphemeralDisk';
 export * from './EvalOptions';
 export * from './Evaluation';
@@ -69,6 +74,7 @@ export * from './FuzzyMatch';
 export * from './FuzzySearchRequest';
 export * from './FuzzySearchResponse';
 export * from './GaugeValue';
+export * from './HostVolumeInfo';
 export * from './Job';
 export * from './JobChildrenSummary';
 export * from './JobDeregisterResponse';
@@ -98,7 +104,27 @@ export * from './MultiregionRegion';
 export * from './MultiregionStrategy';
 export * from './Namespace';
 export * from './NetworkResource';
+export * from './Node';
+export * from './NodeCpuResources';
+export * from './NodeDevice';
+export * from './NodeDeviceLocality';
+export * from './NodeDeviceResource';
+export * from './NodeDiskResources';
+export * from './NodeDrainUpdateResponse';
+export * from './NodeEligibilityUpdateResponse';
+export * from './NodeEvent';
+export * from './NodeListStub';
+export * from './NodeMemoryResources';
+export * from './NodePurgeResponse';
+export * from './NodeReservedCpuResources';
+export * from './NodeReservedDiskResources';
+export * from './NodeReservedMemoryResources';
+export * from './NodeReservedNetworkResources';
+export * from './NodeReservedResources';
+export * from './NodeResources';
 export * from './NodeScoreMeta';
+export * from './NodeUpdateDrainRequest';
+export * from './NodeUpdateEligibilityRequest';
 export * from './ObjectDiff';
 export * from './OneTimeToken';
 export * from './OneTimeTokenExchangeRequest';
@@ -162,6 +188,7 @@ import { AllocatedTaskResources } from './AllocatedTaskResources';
 import { Allocation } from './Allocation';
 import { AllocationListStub } from './AllocationListStub';
 import { AllocationMetric } from './AllocationMetric';
+import { Attribute } from './Attribute';
 import { CSIControllerInfo } from './CSIControllerInfo';
 import { CSIInfo } from './CSIInfo';
 import { CSIMountOptions } from './CSIMountOptions';
@@ -210,6 +237,10 @@ import { DeploymentUpdateResponse } from './DeploymentUpdateResponse';
 import { DesiredTransition } from './DesiredTransition';
 import { DesiredUpdates } from './DesiredUpdates';
 import { DispatchPayloadConfig } from './DispatchPayloadConfig';
+import { DrainMetadata } from './DrainMetadata';
+import { DrainSpec } from './DrainSpec';
+import { DrainStrategy } from './DrainStrategy';
+import { DriverInfo } from './DriverInfo';
 import { EphemeralDisk } from './EphemeralDisk';
 import { EvalOptions } from './EvalOptions';
 import { Evaluation } from './Evaluation';
@@ -218,6 +249,7 @@ import { FuzzyMatch } from './FuzzyMatch';
 import { FuzzySearchRequest } from './FuzzySearchRequest';
 import { FuzzySearchResponse } from './FuzzySearchResponse';
 import { GaugeValue } from './GaugeValue';
+import { HostVolumeInfo } from './HostVolumeInfo';
 import { Job } from './Job';
 import { JobChildrenSummary } from './JobChildrenSummary';
 import { JobDeregisterResponse } from './JobDeregisterResponse';
@@ -247,7 +279,27 @@ import { MultiregionRegion } from './MultiregionRegion';
 import { MultiregionStrategy } from './MultiregionStrategy';
 import { Namespace } from './Namespace';
 import { NetworkResource } from './NetworkResource';
+import { Node } from './Node';
+import { NodeCpuResources } from './NodeCpuResources';
+import { NodeDevice } from './NodeDevice';
+import { NodeDeviceLocality } from './NodeDeviceLocality';
+import { NodeDeviceResource } from './NodeDeviceResource';
+import { NodeDiskResources } from './NodeDiskResources';
+import { NodeDrainUpdateResponse } from './NodeDrainUpdateResponse';
+import { NodeEligibilityUpdateResponse } from './NodeEligibilityUpdateResponse';
+import { NodeEvent } from './NodeEvent';
+import { NodeListStub } from './NodeListStub';
+import { NodeMemoryResources } from './NodeMemoryResources';
+import { NodePurgeResponse } from './NodePurgeResponse';
+import { NodeReservedCpuResources } from './NodeReservedCpuResources';
+import { NodeReservedDiskResources } from './NodeReservedDiskResources';
+import { NodeReservedMemoryResources } from './NodeReservedMemoryResources';
+import { NodeReservedNetworkResources } from './NodeReservedNetworkResources';
+import { NodeReservedResources } from './NodeReservedResources';
+import { NodeResources } from './NodeResources';
 import { NodeScoreMeta } from './NodeScoreMeta';
+import { NodeUpdateDrainRequest } from './NodeUpdateDrainRequest';
+import { NodeUpdateEligibilityRequest } from './NodeUpdateEligibilityRequest';
 import { ObjectDiff } from './ObjectDiff';
 import { OneTimeToken } from './OneTimeToken';
 import { OneTimeTokenExchangeRequest } from './OneTimeTokenExchangeRequest';
@@ -333,6 +385,7 @@ let typeMap: {[index: string]: any} = {
     "Allocation": Allocation,
     "AllocationListStub": AllocationListStub,
     "AllocationMetric": AllocationMetric,
+    "Attribute": Attribute,
     "CSIControllerInfo": CSIControllerInfo,
     "CSIInfo": CSIInfo,
     "CSIMountOptions": CSIMountOptions,
@@ -381,6 +434,10 @@ let typeMap: {[index: string]: any} = {
     "DesiredTransition": DesiredTransition,
     "DesiredUpdates": DesiredUpdates,
     "DispatchPayloadConfig": DispatchPayloadConfig,
+    "DrainMetadata": DrainMetadata,
+    "DrainSpec": DrainSpec,
+    "DrainStrategy": DrainStrategy,
+    "DriverInfo": DriverInfo,
     "EphemeralDisk": EphemeralDisk,
     "EvalOptions": EvalOptions,
     "Evaluation": Evaluation,
@@ -389,6 +446,7 @@ let typeMap: {[index: string]: any} = {
     "FuzzySearchRequest": FuzzySearchRequest,
     "FuzzySearchResponse": FuzzySearchResponse,
     "GaugeValue": GaugeValue,
+    "HostVolumeInfo": HostVolumeInfo,
     "Job": Job,
     "JobChildrenSummary": JobChildrenSummary,
     "JobDeregisterResponse": JobDeregisterResponse,
@@ -418,7 +476,27 @@ let typeMap: {[index: string]: any} = {
     "MultiregionStrategy": MultiregionStrategy,
     "Namespace": Namespace,
     "NetworkResource": NetworkResource,
+    "Node": Node,
+    "NodeCpuResources": NodeCpuResources,
+    "NodeDevice": NodeDevice,
+    "NodeDeviceLocality": NodeDeviceLocality,
+    "NodeDeviceResource": NodeDeviceResource,
+    "NodeDiskResources": NodeDiskResources,
+    "NodeDrainUpdateResponse": NodeDrainUpdateResponse,
+    "NodeEligibilityUpdateResponse": NodeEligibilityUpdateResponse,
+    "NodeEvent": NodeEvent,
+    "NodeListStub": NodeListStub,
+    "NodeMemoryResources": NodeMemoryResources,
+    "NodePurgeResponse": NodePurgeResponse,
+    "NodeReservedCpuResources": NodeReservedCpuResources,
+    "NodeReservedDiskResources": NodeReservedDiskResources,
+    "NodeReservedMemoryResources": NodeReservedMemoryResources,
+    "NodeReservedNetworkResources": NodeReservedNetworkResources,
+    "NodeReservedResources": NodeReservedResources,
+    "NodeResources": NodeResources,
     "NodeScoreMeta": NodeScoreMeta,
+    "NodeUpdateDrainRequest": NodeUpdateDrainRequest,
+    "NodeUpdateEligibilityRequest": NodeUpdateEligibilityRequest,
     "ObjectDiff": ObjectDiff,
     "OneTimeToken": OneTimeToken,
     "OneTimeTokenExchangeRequest": OneTimeTokenExchangeRequest,

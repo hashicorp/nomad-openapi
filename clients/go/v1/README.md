@@ -134,6 +134,12 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**GetNamespace**](docs/NamespacesApi.md#getnamespace) | **Get** /namespace/{namespaceName} | 
 *NamespacesApi* | [**GetNamespaces**](docs/NamespacesApi.md#getnamespaces) | **Get** /namespaces | 
 *NamespacesApi* | [**PostNamespace**](docs/NamespacesApi.md#postnamespace) | **Post** /namespace/{namespaceName} | 
+*NodesApi* | [**GetNode**](docs/NodesApi.md#getnode) | **Get** /node/{nodeId} | 
+*NodesApi* | [**GetNodeAllocations**](docs/NodesApi.md#getnodeallocations) | **Get** /node/{nodeId}/allocations | 
+*NodesApi* | [**GetNodes**](docs/NodesApi.md#getnodes) | **Get** /nodes | 
+*NodesApi* | [**UpdateNodeDrain**](docs/NodesApi.md#updatenodedrain) | **Post** /node/{nodeId}/drain | 
+*NodesApi* | [**UpdateNodeEligibility**](docs/NodesApi.md#updatenodeeligibility) | **Post** /node/{nodeId}/eligibility | 
+*NodesApi* | [**UpdateNodePurge**](docs/NodesApi.md#updatenodepurge) | **Post** /node/{nodeId}/purge | 
 *PluginsApi* | [**GetPluginCSI**](docs/PluginsApi.md#getplugincsi) | **Get** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**GetPlugins**](docs/PluginsApi.md#getplugins) | **Get** /plugins | 
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
@@ -173,6 +179,7 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
+ - [Attribute](docs/Attribute.md)
  - [CSIControllerInfo](docs/CSIControllerInfo.md)
  - [CSIInfo](docs/CSIInfo.md)
  - [CSIMountOptions](docs/CSIMountOptions.md)
@@ -221,6 +228,10 @@ Class | Method | HTTP request | Description
  - [DesiredTransition](docs/DesiredTransition.md)
  - [DesiredUpdates](docs/DesiredUpdates.md)
  - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
+ - [DrainMetadata](docs/DrainMetadata.md)
+ - [DrainSpec](docs/DrainSpec.md)
+ - [DrainStrategy](docs/DrainStrategy.md)
+ - [DriverInfo](docs/DriverInfo.md)
  - [EphemeralDisk](docs/EphemeralDisk.md)
  - [EvalOptions](docs/EvalOptions.md)
  - [Evaluation](docs/Evaluation.md)
@@ -229,6 +240,7 @@ Class | Method | HTTP request | Description
  - [FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [GaugeValue](docs/GaugeValue.md)
+ - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
@@ -258,7 +270,27 @@ Class | Method | HTTP request | Description
  - [MultiregionStrategy](docs/MultiregionStrategy.md)
  - [Namespace](docs/Namespace.md)
  - [NetworkResource](docs/NetworkResource.md)
+ - [Node](docs/Node.md)
+ - [NodeCpuResources](docs/NodeCpuResources.md)
+ - [NodeDevice](docs/NodeDevice.md)
+ - [NodeDeviceLocality](docs/NodeDeviceLocality.md)
+ - [NodeDeviceResource](docs/NodeDeviceResource.md)
+ - [NodeDiskResources](docs/NodeDiskResources.md)
+ - [NodeDrainUpdateResponse](docs/NodeDrainUpdateResponse.md)
+ - [NodeEligibilityUpdateResponse](docs/NodeEligibilityUpdateResponse.md)
+ - [NodeEvent](docs/NodeEvent.md)
+ - [NodeListStub](docs/NodeListStub.md)
+ - [NodeMemoryResources](docs/NodeMemoryResources.md)
+ - [NodePurgeResponse](docs/NodePurgeResponse.md)
+ - [NodeReservedCpuResources](docs/NodeReservedCpuResources.md)
+ - [NodeReservedDiskResources](docs/NodeReservedDiskResources.md)
+ - [NodeReservedMemoryResources](docs/NodeReservedMemoryResources.md)
+ - [NodeReservedNetworkResources](docs/NodeReservedNetworkResources.md)
+ - [NodeReservedResources](docs/NodeReservedResources.md)
+ - [NodeResources](docs/NodeResources.md)
  - [NodeScoreMeta](docs/NodeScoreMeta.md)
+ - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
+ - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)

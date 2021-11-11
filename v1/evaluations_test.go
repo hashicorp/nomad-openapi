@@ -8,7 +8,6 @@ import (
 )
 
 func TestGetEvaluations(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -22,7 +21,6 @@ func TestGetEvaluations(t *testing.T) {
 }
 
 func TestGetEvaluation(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -35,7 +33,6 @@ func TestGetEvaluation(t *testing.T) {
 }
 
 func TestGetEvaluationAllocations(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)

@@ -8,7 +8,6 @@ import (
 )
 
 func TestPutSystemGC(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -19,7 +18,6 @@ func TestPutSystemGC(t *testing.T) {
 }
 
 func TestPutSystemReconcileSummaries(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)

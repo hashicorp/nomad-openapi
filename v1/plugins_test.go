@@ -8,7 +8,6 @@ import (
 )
 
 func TestListPlugins(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -21,7 +20,6 @@ func TestListPlugins(t *testing.T) {
 }
 
 func TestGetCSIPlugin(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)

@@ -29,7 +29,6 @@ func postTestJob(s *agent.TestAgent, t *testing.T, job *client.Job) {
 }
 
 func TestJobsGet(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		rpcRegister(t, s, mock.Job())
 
@@ -45,7 +44,6 @@ func TestJobsGet(t *testing.T) {
 }
 
 func TestJobGet(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mockJob()
 		postTestJob(s, t, job)
@@ -65,7 +63,6 @@ func TestJobGet(t *testing.T) {
 }
 
 func TestPostJob(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mockJob()
 
@@ -81,7 +78,6 @@ func TestPostJob(t *testing.T) {
 }
 
 func TestPlanJob(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		postTestJob(s, t, nil)
 
@@ -98,7 +94,6 @@ func TestPlanJob(t *testing.T) {
 }
 
 func TestJobDelete(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
@@ -136,7 +131,6 @@ func TestJobDelete(t *testing.T) {
 }
 
 func TestJobParse(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
@@ -158,7 +152,6 @@ func TestJobParse(t *testing.T) {
 }
 
 func TestJobEvaluate(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mockJob()
 		postTestJob(s, t, job)
@@ -179,7 +172,6 @@ func TestJobEvaluate(t *testing.T) {
 }
 
 func TestJobPeriodicForce(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		// Create and register a periodic job.
 		job := mockPeriodicJob()
@@ -200,7 +192,6 @@ func TestJobPeriodicForce(t *testing.T) {
 }
 
 func TestJobSummary(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mockJob()
 		postTestJob(s, t, job)
@@ -217,7 +208,6 @@ func TestJobSummary(t *testing.T) {
 }
 
 func TestJobDispatch(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.BatchJob()
 		job.ParameterizedJob = &structs.ParameterizedJobConfig{}
@@ -236,7 +226,6 @@ func TestJobDispatch(t *testing.T) {
 }
 
 func TestJobVersions(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		// Create the job
 		job := mock.Job()
@@ -269,7 +258,6 @@ func TestJobVersions(t *testing.T) {
 }
 
 func TestJobRevert(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		rpcJob := mock.Job()
 		rpcRegister(t, s, rpcJob)
@@ -294,7 +282,6 @@ func TestJobRevert(t *testing.T) {
 }
 
 func TestJobDeployment(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
@@ -320,7 +307,6 @@ func TestJobDeployment(t *testing.T) {
 }
 
 func TestJobDeployments(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
@@ -349,7 +335,6 @@ func TestJobDeployments(t *testing.T) {
 }
 
 func TestJobStable(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		// Create the job and register it twice
 		job := mock.Job()
@@ -371,7 +356,6 @@ func TestJobStable(t *testing.T) {
 }
 
 func TestJobScaleStatus(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
@@ -393,7 +377,6 @@ func TestJobScaleStatus(t *testing.T) {
 }
 
 func TestJobScaleTaskGroup(t *testing.T) {
-	t.Parallel()
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		job := mock.Job()
 		rpcRegister(t, s, job)
@@ -433,7 +416,7 @@ func TestJobScaleTaskGroup(t *testing.T) {
 
 // TODO: Figure out how to force allocations with the TestAgent
 //func TestGetJobAllocations(t *testing.T) {
-//	t.Parallel()
+//
 //	agentConfFunc := func(c *agent.Config) {
 //		c.Client.Enabled = true
 //	}
