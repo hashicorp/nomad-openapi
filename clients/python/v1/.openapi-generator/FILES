@@ -125,6 +125,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -155,6 +156,7 @@ nomad_client/api/metrics_api.py
 nomad_client/api/namespaces_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/search_api.py
+nomad_client/api/status_api.py
 nomad_client/api/volumes_api.py
 nomad_client/api_client.py
 nomad_client/apis/__init__.py
@@ -305,4 +307,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_status_api.py
 tox.ini

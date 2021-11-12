@@ -69,6 +69,7 @@ pub mod metrics_api;
 pub mod namespaces_api;
 pub mod regions_api;
 pub mod search_api;
+pub mod status_api;
 pub mod volumes_api;
 
 pub mod configuration;

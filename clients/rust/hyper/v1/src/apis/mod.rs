@@ -67,6 +67,8 @@ mod regions_api;
 pub use self::regions_api::{ RegionsApi, RegionsApiClient };
 mod search_api;
 pub use self::search_api::{ SearchApi, SearchApiClient };
+mod status_api;
+pub use self::status_api::{ StatusApi, StatusApiClient };
 mod volumes_api;
 pub use self::volumes_api::{ VolumesApi, VolumesApiClient };
 

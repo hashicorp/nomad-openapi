@@ -22,4 +22,5 @@ from nomad_client.api.metrics_api import MetricsApi
 from nomad_client.api.namespaces_api import NamespacesApi
 from nomad_client.api.regions_api import RegionsApi
 from nomad_client.api.search_api import SearchApi
+from nomad_client.api.status_api import StatusApi
 from nomad_client.api.volumes_api import VolumesApi

@@ -12,6 +12,7 @@ pub struct APIClient {
     namespaces_api: Box<dyn crate::apis::NamespacesApi>,
     regions_api: Box<dyn crate::apis::RegionsApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
+    status_api: Box<dyn crate::apis::StatusApi>,
     volumes_api: Box<dyn crate::apis::VolumesApi>,
 }
 
@@ -28,6 +29,7 @@ impl APIClient {
             namespaces_api: Box::new(crate::apis::NamespacesApiClient::new(rc.clone())),
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
+            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
             volumes_api: Box::new(crate::apis::VolumesApiClient::new(rc.clone())),
         }
     }
@@ -62,6 +64,10 @@ impl APIClient {
 
     pub fn search_api(&self) -> &dyn crate::apis::SearchApi{
         self.search_api.as_ref()
+    }
+
+    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
+        self.status_api.as_ref()
     }
 
     pub fn volumes_api(&self) -> &dyn crate::apis::VolumesApi{

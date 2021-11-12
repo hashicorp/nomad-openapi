@@ -126,6 +126,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -173,6 +174,7 @@ src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
+src/main/java/io/nomadproject/client/api/StatusApi.java
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
@@ -310,3 +312,4 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/test/java/io/nomadproject/client/api/StatusApiTest.java

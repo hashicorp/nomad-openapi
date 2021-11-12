@@ -124,6 +124,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCsiPluginConfig.md
@@ -154,6 +155,7 @@ src/apis/namespaces_api.rs
 src/apis/regions_api.rs
 src/apis/request.rs
 src/apis/search_api.rs
+src/apis/status_api.rs
 src/apis/volumes_api.rs
 src/lib.rs
 src/models/acl_policy_list_stub.rs
