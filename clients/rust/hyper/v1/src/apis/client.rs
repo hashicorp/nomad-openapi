@@ -17,7 +17,11 @@ pub struct APIClient {
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
+<<<<<<< HEAD
     system_api: Box<dyn crate::apis::SystemApi>,
+=======
+    status_api: Box<dyn crate::apis::StatusApi>,
+>>>>>>> 8d74053 (updated generator/status.go)
     volumes_api: Box<dyn crate::apis::VolumesApi>,
 }
 
@@ -39,7 +43,11 @@ impl APIClient {
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
+<<<<<<< HEAD
             system_api: Box::new(crate::apis::SystemApiClient::new(rc.clone())),
+=======
+            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
+>>>>>>> 8d74053 (updated generator/status.go)
             volumes_api: Box::new(crate::apis::VolumesApiClient::new(rc.clone())),
         }
     }
@@ -96,8 +104,13 @@ impl APIClient {
         self.search_api.as_ref()
     }
 
+<<<<<<< HEAD
     pub fn system_api(&self) -> &dyn crate::apis::SystemApi{
         self.system_api.as_ref()
+=======
+    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
+        self.status_api.as_ref()
+>>>>>>> 8d74053 (updated generator/status.go)
     }
 
     pub fn volumes_api(&self) -> &dyn crate::apis::VolumesApi{

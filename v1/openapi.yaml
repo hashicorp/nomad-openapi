@@ -847,7 +847,25 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+<<<<<<< HEAD
     GetJobScaleStatusResponse:
+=======
+    GetStatusLeaderResponse:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: ""
+    GetStatusPeersResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              type: string
+            type: array
+      description: ""
+    GetVolumeResponse:
+>>>>>>> 8d74053 (updated generator/status.go)
       content:
         application/json:
           schema:
@@ -6913,6 +6931,7 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Search
+<<<<<<< HEAD
   /system/gc:
     put:
       operationId: PutSystemGC
@@ -6924,6 +6943,24 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/PutSystemGCResponse'
+=======
+  /status/leader:
+    get:
+      operationId: GetStatusLeader
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetStatusLeaderResponse'
+>>>>>>> 8d74053 (updated generator/status.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -6935,6 +6972,7 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+<<<<<<< HEAD
       - System
   /system/reconcile/summaries:
     put:
@@ -6947,6 +6985,25 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/PutSystemReconcileSummariesResponse'
+=======
+      - Status
+  /status/peers:
+    get:
+      operationId: GetStatusPeers
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetStatusPeersResponse'
+>>>>>>> 8d74053 (updated generator/status.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -6958,7 +7015,11 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+<<<<<<< HEAD
       - System
+=======
+      - Status
+>>>>>>> 8d74053 (updated generator/status.go)
   /validate/job:
     post:
       operationId: PostJobValidateRequest
