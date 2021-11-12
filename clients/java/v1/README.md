@@ -185,8 +185,13 @@ Class | Method | HTTP request | Description
 *ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
 *SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
+<<<<<<< HEAD
 *SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
 *SystemApi* | [**putSystemReconcileSummaries**](docs/SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
+=======
+*StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
+*StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
+>>>>>>> 8d74053 (updated generator/status.go)
 *VolumesApi* | [**createVolume**](docs/VolumesApi.md#createVolume) | **POST** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**deleteSnapshot**](docs/VolumesApi.md#deleteSnapshot) | **DELETE** /volumes/snapshot | 
 *VolumesApi* | [**deleteVolumeRegistration**](docs/VolumesApi.md#deleteVolumeRegistration) | **DELETE** /volume/csi/{volumeId} | 

@@ -172,7 +172,11 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+<<<<<<< HEAD
 docs/SystemApi.md
+=======
+docs/StatusApi.md
+>>>>>>> 8d74053 (updated generator/status.go)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -209,7 +213,11 @@ nomad_client/api/plugins_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
+<<<<<<< HEAD
 nomad_client/api/system_api.py
+=======
+nomad_client/api/status_api.py
+>>>>>>> 8d74053 (updated generator/status.go)
 nomad_client/api/volumes_api.py
 nomad_client/api_client.py
 nomad_client/apis/__init__.py
@@ -403,6 +411,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+<<<<<<< HEAD
 test/test_csi_controller_info.py
 test/test_csi_info.py
 test/test_csi_node_info.py
@@ -421,4 +430,7 @@ test/test_plugins_api.py
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
 test/test_system_api.py
+=======
+test/test_status_api.py
+>>>>>>> 8d74053 (updated generator/status.go)
 tox.ini
