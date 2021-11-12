@@ -848,8 +848,11 @@ components:
           schema:
             type: integer
 <<<<<<< HEAD
+<<<<<<< HEAD
     GetJobScaleStatusResponse:
 =======
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
     GetStatusLeaderResponse:
       content:
         application/json:
@@ -6932,6 +6935,7 @@ paths:
       tags:
       - Search
 <<<<<<< HEAD
+<<<<<<< HEAD
   /system/gc:
     put:
       operationId: PutSystemGC
@@ -6944,6 +6948,8 @@ paths:
         "200":
           $ref: '#/components/responses/PutSystemGCResponse'
 =======
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
   /status/leader:
     get:
       operationId: GetStatusLeader
@@ -6960,7 +6966,10 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetStatusLeaderResponse'
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -6972,6 +6981,7 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
       - System
   /system/reconcile/summaries:
@@ -6986,6 +6996,8 @@ paths:
         "200":
           $ref: '#/components/responses/PutSystemReconcileSummariesResponse'
 =======
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
       - Status
   /status/peers:
     get:
@@ -7003,7 +7015,10 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetStatusPeersResponse'
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7016,10 +7031,14 @@ paths:
       - X-Nomad-Token: []
       tags:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - System
 =======
       - Status
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+      - Status
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
   /validate/job:
     post:
       operationId: PostJobValidateRequest

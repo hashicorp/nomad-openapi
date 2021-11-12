@@ -95,12 +95,17 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
 *SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
 =======
 *StatusApi* | [**get_status_leader**](docs/StatusApi.md#get_status_leader) | **GET** /status/leader | 
 *StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+*StatusApi* | [**get_status_leader**](docs/StatusApi.md#get_status_leader) | **GET** /status/leader | 
+*StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 *VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **DELETE** /volumes/snapshot | 
 *VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **DELETE** /volume/csi/{volumeId} | 

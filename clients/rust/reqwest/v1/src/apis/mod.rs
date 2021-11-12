@@ -75,10 +75,14 @@ pub mod regions_api;
 pub mod scaling_api;
 pub mod search_api;
 <<<<<<< HEAD
+<<<<<<< HEAD
 pub mod system_api;
 =======
 pub mod status_api;
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+pub mod status_api;
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 pub mod volumes_api;
 
 pub mod configuration;

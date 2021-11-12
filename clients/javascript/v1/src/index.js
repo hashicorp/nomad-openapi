@@ -201,10 +201,14 @@ import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import SystemApi from './api/SystemApi';
 =======
 import StatusApi from './api/StatusApi';
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+import StatusApi from './api/StatusApi';
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 import VolumesApi from './api/VolumesApi';
 
 
@@ -1370,16 +1374,22 @@ export {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
     * The SystemApi service constructor.
     * @property {module:api/SystemApi}
     */
     SystemApi,
 =======
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
     * The StatusApi service constructor.
     * @property {module:api/StatusApi}
     */
     StatusApi,
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 
     /**
     * The VolumesApi service constructor.
