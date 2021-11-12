@@ -172,15 +172,12 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 docs/SystemApi.md
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -217,15 +214,12 @@ nomad_client/api/plugins_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
+nomad_client/api/status_api.py
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 nomad_client/api/system_api.py
-=======
-nomad_client/api/status_api.py
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-nomad_client/api/status_api.py
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 nomad_client/api/volumes_api.py
 nomad_client/api_client.py
 nomad_client/apis/__init__.py
@@ -419,8 +413,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-<<<<<<< HEAD
-<<<<<<< HEAD
 test/test_csi_controller_info.py
 test/test_csi_info.py
 test/test_csi_node_info.py
@@ -438,11 +430,13 @@ test/test_one_time_token_exchange_request.py
 test/test_plugins_api.py
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
+test/test_status_api.py
+<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
+test/test_status_api.py
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 test/test_system_api.py
-=======
-test/test_status_api.py
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-test/test_status_api.py
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 tox.ini

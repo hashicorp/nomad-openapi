@@ -4185,6 +4185,146 @@ export class ObjectSearchApi {
 
 }
 
+import { ObservableStatusApi } from "./ObservableAPI";
+import { StatusApiRequestFactory, StatusApiResponseProcessor} from "../apis/StatusApi";
+
+export interface StatusApiGetStatusLeaderRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof StatusApigetStatusLeader
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof StatusApigetStatusLeader
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof StatusApigetStatusLeader
+     */
+    nextToken?: string
+}
+
+export interface StatusApiGetStatusPeersRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof StatusApigetStatusPeers
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof StatusApigetStatusPeers
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof StatusApigetStatusPeers
+     */
+    nextToken?: string
+}
+
+export class ObjectStatusApi {
+    private api: ObservableStatusApi
+
+    public constructor(configuration: Configuration, requestFactory?: StatusApiRequestFactory, responseProcessor?: StatusApiResponseProcessor) {
+        this.api = new ObservableStatusApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getStatusLeader(param: StatusApiGetStatusLeaderRequest, options?: Configuration): Promise<string> {
+        return this.api.getStatusLeader(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getStatusPeers(param: StatusApiGetStatusPeersRequest, options?: Configuration): Promise<Array<string>> {
+        return this.api.getStatusPeers(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+}
+
 import { ObservableSystemApi } from "./ObservableAPI";
 import { SystemApiRequestFactory, SystemApiResponseProcessor} from "../apis/SystemApi";
 

@@ -74,15 +74,12 @@ pub mod plugins_api;
 pub mod regions_api;
 pub mod scaling_api;
 pub mod search_api;
+pub mod status_api;
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 pub mod system_api;
-=======
-pub mod status_api;
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-pub mod status_api;
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 pub mod volumes_api;
 
 pub mod configuration;

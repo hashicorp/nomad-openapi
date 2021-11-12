@@ -200,15 +200,12 @@ import PluginsApi from './api/PluginsApi';
 import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
+import StatusApi from './api/StatusApi';
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 import SystemApi from './api/SystemApi';
-=======
-import StatusApi from './api/StatusApi';
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-import StatusApi from './api/StatusApi';
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 import VolumesApi from './api/VolumesApi';
 
 
@@ -1375,6 +1372,7 @@ export {
     /**
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     * The SystemApi service constructor.
     * @property {module:api/SystemApi}
     */
@@ -1382,14 +1380,25 @@ export {
 =======
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
     * The StatusApi service constructor.
     * @property {module:api/StatusApi}
     */
     StatusApi,
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+
+    /**
+    * The SystemApi service constructor.
+    * @property {module:api/SystemApi}
+    */
+    SystemApi,
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 
     /**
     * The VolumesApi service constructor.

@@ -173,15 +173,12 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 docs/SystemApi.md
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -234,15 +231,12 @@ src/main/java/io/nomadproject/client/api/PluginsApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
+src/main/java/io/nomadproject/client/api/StatusApi.java
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 src/main/java/io/nomadproject/client/api/SystemApi.java
-=======
-src/main/java/io/nomadproject/client/api/StatusApi.java
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-src/main/java/io/nomadproject/client/api/StatusApi.java
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
@@ -422,8 +416,6 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
-<<<<<<< HEAD
-<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
 src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
@@ -437,6 +429,7 @@ src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/RegionsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SearchApiTest.java
+src/test/java/io/nomadproject/client/api/StatusApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/api/VolumesApiTest.java
 src/test/java/io/nomadproject/client/models/ACLPolicyListStubTest.java
@@ -610,9 +603,12 @@ src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
+<<<<<<< HEAD
 =======
 src/test/java/io/nomadproject/client/api/StatusApiTest.java
 >>>>>>> 8d74053 (updated generator/status.go)
 =======
 src/test/java/io/nomadproject/client/api/StatusApiTest.java
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)

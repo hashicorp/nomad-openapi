@@ -77,18 +77,14 @@ mod scaling_api;
 pub use self::scaling_api::{ ScalingApi, ScalingApiClient };
 mod search_api;
 pub use self::search_api::{ SearchApi, SearchApiClient };
+mod status_api;
+pub use self::status_api::{ StatusApi, StatusApiClient };
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 mod system_api;
 pub use self::system_api::{ SystemApi, SystemApiClient };
-=======
-mod status_api;
-pub use self::status_api::{ StatusApi, StatusApiClient };
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-mod status_api;
-pub use self::status_api::{ StatusApi, StatusApiClient };
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 mod volumes_api;
 pub use self::volumes_api::{ VolumesApi, VolumesApiClient };
 

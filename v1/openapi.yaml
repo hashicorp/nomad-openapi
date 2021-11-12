@@ -847,9 +847,8 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
     GetJobScaleStatusResponse:
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -869,6 +868,8 @@ components:
       description: ""
     GetVolumeResponse:
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
       content:
         application/json:
           schema:
@@ -1207,6 +1208,20 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    GetStatusLeaderResponse:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: ""
+    GetStatusPeersResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              type: string
+            type: array
+      description: ""
     GetVolumeResponse:
       content:
         application/json:
@@ -6936,6 +6951,7 @@ paths:
       - Search
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /system/gc:
     put:
       operationId: PutSystemGC
@@ -6950,6 +6966,8 @@ paths:
 =======
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
   /status/leader:
     get:
       operationId: GetStatusLeader
@@ -6960,16 +6978,19 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
         "200":
           $ref: '#/components/responses/GetStatusLeaderResponse'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -6981,6 +7002,7 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       - System
@@ -6998,6 +7020,8 @@ paths:
 =======
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
       - Status
   /status/peers:
     get:
@@ -7009,16 +7033,19 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
         "200":
           $ref: '#/components/responses/GetStatusPeersResponse'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8d74053 (updated generator/status.go)
 =======
 >>>>>>> 8d74053 (updated generator/status.go)
+=======
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7030,15 +7057,60 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+      - Status
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
+      - Status
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
+  /system/gc:
+    put:
+      operationId: PutSystemGC
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PutSystemGCResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
       - System
-=======
-      - Status
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-      - Status
->>>>>>> 8d74053 (updated generator/status.go)
+  /system/reconcile/summaries:
+    put:
+      operationId: PutSystemReconcileSummaries
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PutSystemReconcileSummariesResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - System
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
   /validate/job:
     post:
       operationId: PostJobValidateRequest

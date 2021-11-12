@@ -201,18 +201,14 @@ Class | Method | HTTP request | Description
 *nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
+*nomad-client.StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
+*nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
 <<<<<<< HEAD
-<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 *nomad-client.SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
 *nomad-client.SystemApi* | [**putSystemReconcileSummaries**](docs/SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
-=======
-*nomad-client.StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
-*nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-*nomad-client.StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
-*nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
->>>>>>> 8d74053 (updated generator/status.go)
+>>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 *nomad-client.VolumesApi* | [**createVolume**](docs/VolumesApi.md#createVolume) | **POST** /volume/csi/{volumeId}/{action} | 
 *nomad-client.VolumesApi* | [**deleteSnapshot**](docs/VolumesApi.md#deleteSnapshot) | **DELETE** /volumes/snapshot | 
 *nomad-client.VolumesApi* | [**deleteVolumeRegistration**](docs/VolumesApi.md#deleteVolumeRegistration) | **DELETE** /volume/csi/{volumeId} | 

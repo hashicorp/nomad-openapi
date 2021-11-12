@@ -1433,6 +1433,57 @@ export class PromiseSearchApi {
 
 
 
+import { ObservableStatusApi } from './ObservableAPI';
+
+import { StatusApiRequestFactory, StatusApiResponseProcessor} from "../apis/StatusApi";
+export class PromiseStatusApi {
+    private api: ObservableStatusApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: StatusApiRequestFactory,
+        responseProcessor?: StatusApiResponseProcessor
+    ) {
+        this.api = new ObservableStatusApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getStatusLeader(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<string> {
+        const result = this.api.getStatusLeader(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getStatusPeers(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<string>> {
+        const result = this.api.getStatusPeers(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableSystemApi } from './ObservableAPI';
 
 import { SystemApiRequestFactory, SystemApiResponseProcessor} from "../apis/SystemApi";
