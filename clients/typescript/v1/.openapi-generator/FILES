@@ -13,6 +13,7 @@ apis/PluginsApi.ts
 apis/RegionsApi.ts
 apis/ScalingApi.ts
 apis/SearchApi.ts
+apis/StatusApi.ts
 apis/SystemApi.ts
 apis/VolumesApi.ts
 apis/baseapi.ts

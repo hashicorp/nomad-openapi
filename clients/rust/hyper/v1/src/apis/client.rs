@@ -17,15 +17,8 @@ pub struct APIClient {
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
-<<<<<<< HEAD
-<<<<<<< HEAD
+    status_api: Box<dyn crate::apis::StatusApi>,
     system_api: Box<dyn crate::apis::SystemApi>,
-=======
-    status_api: Box<dyn crate::apis::StatusApi>,
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-    status_api: Box<dyn crate::apis::StatusApi>,
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
     volumes_api: Box<dyn crate::apis::VolumesApi>,
 }
 
@@ -47,15 +40,8 @@ impl APIClient {
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
-<<<<<<< HEAD
-<<<<<<< HEAD
+            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
             system_api: Box::new(crate::apis::SystemApiClient::new(rc.clone())),
-=======
-            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
             volumes_api: Box::new(crate::apis::VolumesApiClient::new(rc.clone())),
         }
     }
@@ -112,18 +98,12 @@ impl APIClient {
         self.search_api.as_ref()
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
+        self.status_api.as_ref()
+    }
+
     pub fn system_api(&self) -> &dyn crate::apis::SystemApi{
         self.system_api.as_ref()
-=======
-    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
-        self.status_api.as_ref()
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
-        self.status_api.as_ref()
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
     }
 
     pub fn volumes_api(&self) -> &dyn crate::apis::VolumesApi{

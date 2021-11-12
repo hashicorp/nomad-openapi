@@ -171,15 +171,8 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
-<<<<<<< HEAD
-<<<<<<< HEAD
+docs/StatusApi.md
 docs/SystemApi.md
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-docs/StatusApi.md
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCsiPluginConfig.md
@@ -215,15 +208,8 @@ src/apis/regions_api.rs
 src/apis/request.rs
 src/apis/scaling_api.rs
 src/apis/search_api.rs
-<<<<<<< HEAD
-<<<<<<< HEAD
+src/apis/status_api.rs
 src/apis/system_api.rs
-=======
-src/apis/status_api.rs
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-src/apis/status_api.rs
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 src/apis/volumes_api.rs
 src/lib.rs
 src/models/acl_policy.rs

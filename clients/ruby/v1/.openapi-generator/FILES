@@ -174,6 +174,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/SystemApi.md
 docs/Task.md
 docs/TaskArtifact.md
@@ -212,6 +213,7 @@ openapi_client/api/plugins_api.py
 openapi_client/api/regions_api.py
 openapi_client/api/scaling_api.py
 openapi_client/api/search_api.py
+openapi_client/api/status_api.py
 openapi_client/api/system_api.py
 openapi_client/api/volumes_api.py
 openapi_client/api_client.py
@@ -578,6 +580,7 @@ test/test_service_check.py
 test/test_sidecar_task.py
 test/test_spread.py
 test/test_spread_target.py
+test/test_status_api.py
 test/test_system_api.py
 test/test_task.py
 test/test_task_artifact.py

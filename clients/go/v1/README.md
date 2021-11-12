@@ -147,18 +147,10 @@ Class | Method | HTTP request | Description
 *ScalingApi* | [**GetScalingPolicy**](docs/ScalingApi.md#getscalingpolicy) | **Get** /scaling/policy/{policyID} | 
 *SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
-<<<<<<< HEAD
-<<<<<<< HEAD
+*StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
+*StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
 *SystemApi* | [**PutSystemGC**](docs/SystemApi.md#putsystemgc) | **Put** /system/gc | 
 *SystemApi* | [**PutSystemReconcileSummaries**](docs/SystemApi.md#putsystemreconcilesummaries) | **Put** /system/reconcile/summaries | 
-=======
-*StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
-*StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-*StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
-*StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**DeleteSnapshot**](docs/VolumesApi.md#deletesnapshot) | **Delete** /volumes/snapshot | 
 *VolumesApi* | [**DeleteVolumeRegistration**](docs/VolumesApi.md#deletevolumeregistration) | **Delete** /volume/csi/{volumeId} | 

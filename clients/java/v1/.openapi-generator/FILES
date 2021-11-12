@@ -173,15 +173,8 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
-<<<<<<< HEAD
-<<<<<<< HEAD
+docs/StatusApi.md
 docs/SystemApi.md
-=======
-docs/StatusApi.md
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-docs/StatusApi.md
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -234,15 +227,8 @@ src/main/java/io/nomadproject/client/api/PluginsApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
-<<<<<<< HEAD
-<<<<<<< HEAD
+src/main/java/io/nomadproject/client/api/StatusApi.java
 src/main/java/io/nomadproject/client/api/SystemApi.java
-=======
-src/main/java/io/nomadproject/client/api/StatusApi.java
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-src/main/java/io/nomadproject/client/api/StatusApi.java
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
@@ -422,8 +408,6 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
-<<<<<<< HEAD
-<<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
 src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
@@ -437,6 +421,7 @@ src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/RegionsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SearchApiTest.java
+src/test/java/io/nomadproject/client/api/StatusApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/api/VolumesApiTest.java
 src/test/java/io/nomadproject/client/models/ACLPolicyListStubTest.java
@@ -610,9 +595,3 @@ src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
-=======
-src/test/java/io/nomadproject/client/api/StatusApiTest.java
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-src/test/java/io/nomadproject/client/api/StatusApiTest.java
->>>>>>> 8d740532dde0257a17ecc2d8a4800f339b8d2e93

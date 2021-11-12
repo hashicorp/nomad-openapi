@@ -27,5 +27,6 @@ from openapi_client.api.plugins_api import PluginsApi
 from openapi_client.api.regions_api import RegionsApi
 from openapi_client.api.scaling_api import ScalingApi
 from openapi_client.api.search_api import SearchApi
+from openapi_client.api.status_api import StatusApi
 from openapi_client.api.system_api import SystemApi
 from openapi_client.api.volumes_api import VolumesApi
