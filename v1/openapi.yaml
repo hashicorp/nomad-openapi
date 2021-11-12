@@ -848,8 +848,11 @@ components:
           schema:
             type: integer
 <<<<<<< HEAD
+<<<<<<< HEAD
     GetJobScaleStatusResponse:
 =======
+=======
+>>>>>>> 8d74053 (updated generator/status.go)
     GetStatusLeaderResponse:
       content:
         application/json:
@@ -6932,6 +6935,7 @@ paths:
       tags:
       - Search
 <<<<<<< HEAD
+<<<<<<< HEAD
   /system/gc:
     put:
       operationId: PutSystemGC
@@ -6944,6 +6948,8 @@ paths:
         "200":
           $ref: '#/components/responses/PutSystemGCResponse'
 =======
+=======
+>>>>>>> 8d74053 (updated generator/status.go)
   /status/leader:
     get:
       operationId: GetStatusLeader
@@ -6960,6 +6966,9 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetStatusLeaderResponse'
+<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 >>>>>>> 8d74053 (updated generator/status.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
@@ -6972,6 +6981,7 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
       - System
   /system/reconcile/summaries:
@@ -6986,6 +6996,8 @@ paths:
         "200":
           $ref: '#/components/responses/PutSystemReconcileSummariesResponse'
 =======
+=======
+>>>>>>> 8d74053 (updated generator/status.go)
       - Status
   /status/peers:
     get:
@@ -7003,6 +7015,9 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetStatusPeersResponse'
+<<<<<<< HEAD
+>>>>>>> 8d74053 (updated generator/status.go)
+=======
 >>>>>>> 8d74053 (updated generator/status.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
@@ -7016,7 +7031,11 @@ paths:
       - X-Nomad-Token: []
       tags:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - System
+=======
+      - Status
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
       - Status
 >>>>>>> 8d74053 (updated generator/status.go)

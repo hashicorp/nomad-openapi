@@ -172,7 +172,11 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/SystemApi.md
+=======
+docs/StatusApi.md
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 docs/StatusApi.md
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -211,7 +215,11 @@ src/api/RegionsApi.js
 src/api/ScalingApi.js
 src/api/SearchApi.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/api/SystemApi.js
+=======
+src/api/StatusApi.js
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 src/api/StatusApi.js
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -392,6 +400,7 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/PluginsApi.spec.js
@@ -410,6 +419,9 @@ test/model/DeploymentUpdateResponse.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/ScalingPolicyListStub.spec.js
+=======
+test/api/StatusApi.spec.js
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 test/api/StatusApi.spec.js
 >>>>>>> 8d74053 (updated generator/status.go)

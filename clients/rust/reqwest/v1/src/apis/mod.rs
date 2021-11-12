@@ -75,7 +75,11 @@ pub mod regions_api;
 pub mod scaling_api;
 pub mod search_api;
 <<<<<<< HEAD
+<<<<<<< HEAD
 pub mod system_api;
+=======
+pub mod status_api;
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 pub mod status_api;
 >>>>>>> 8d74053 (updated generator/status.go)

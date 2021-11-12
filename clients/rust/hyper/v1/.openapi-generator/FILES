@@ -172,7 +172,11 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/SystemApi.md
+=======
+docs/StatusApi.md
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 docs/StatusApi.md
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -212,7 +216,11 @@ src/apis/request.rs
 src/apis/scaling_api.rs
 src/apis/search_api.rs
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/apis/system_api.rs
+=======
+src/apis/status_api.rs
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 src/apis/status_api.rs
 >>>>>>> 8d74053 (updated generator/status.go)

@@ -148,8 +148,13 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**GetFuzzySearch**](docs/SearchApi.md#getfuzzysearch) | **Post** /search/fuzzy | 
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *SystemApi* | [**PutSystemGC**](docs/SystemApi.md#putsystemgc) | **Put** /system/gc | 
 *SystemApi* | [**PutSystemReconcileSummaries**](docs/SystemApi.md#putsystemreconcilesummaries) | **Put** /system/reconcile/summaries | 
+=======
+*StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
+*StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 *StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
 *StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 

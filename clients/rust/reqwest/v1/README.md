@@ -95,8 +95,13 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
 *SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
 *SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
+=======
+*StatusApi* | [**get_status_leader**](docs/StatusApi.md#get_status_leader) | **GET** /status/leader | 
+*StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 *StatusApi* | [**get_status_leader**](docs/StatusApi.md#get_status_leader) | **GET** /status/leader | 
 *StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 

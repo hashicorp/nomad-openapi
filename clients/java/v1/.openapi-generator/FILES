@@ -174,7 +174,11 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/SystemApi.md
+=======
+docs/StatusApi.md
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 docs/StatusApi.md
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -231,7 +235,11 @@ src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/main/java/io/nomadproject/client/api/SystemApi.java
+=======
+src/main/java/io/nomadproject/client/api/StatusApi.java
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 src/main/java/io/nomadproject/client/api/StatusApi.java
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -414,6 +422,7 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+<<<<<<< HEAD
 <<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
@@ -601,6 +610,9 @@ src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
+=======
+src/test/java/io/nomadproject/client/api/StatusApiTest.java
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 src/test/java/io/nomadproject/client/api/StatusApiTest.java
 >>>>>>> 8d74053 (updated generator/status.go)

@@ -15,7 +15,11 @@ api_regions.go
 api_scaling.go
 api_search.go
 <<<<<<< HEAD
+<<<<<<< HEAD
 api_system.go
+=======
+api_status.go
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 api_status.go
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -193,7 +197,11 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/SystemApi.md
+=======
+docs/StatusApi.md
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 docs/StatusApi.md
 >>>>>>> 8d74053 (updated generator/status.go)

@@ -78,8 +78,13 @@ pub use self::scaling_api::{ ScalingApi, ScalingApiClient };
 mod search_api;
 pub use self::search_api::{ SearchApi, SearchApiClient };
 <<<<<<< HEAD
+<<<<<<< HEAD
 mod system_api;
 pub use self::system_api::{ SystemApi, SystemApiClient };
+=======
+mod status_api;
+pub use self::status_api::{ StatusApi, StatusApiClient };
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 mod status_api;
 pub use self::status_api::{ StatusApi, StatusApiClient };

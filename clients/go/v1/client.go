@@ -77,7 +77,11 @@ type APIClient struct {
 	SearchApi *SearchApiService
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SystemApi *SystemApiService
+=======
+	StatusApi *StatusApiService
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 	StatusApi *StatusApiService
 >>>>>>> 8d74053 (updated generator/status.go)
@@ -115,7 +119,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ScalingApi = (*ScalingApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	c.SystemApi = (*SystemApiService)(&c.common)
+=======
+	c.StatusApi = (*StatusApiService)(&c.common)
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 	c.StatusApi = (*StatusApiService)(&c.common)
 >>>>>>> 8d74053 (updated generator/status.go)

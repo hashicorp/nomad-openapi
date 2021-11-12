@@ -202,8 +202,13 @@ Class | Method | HTTP request | Description
 *nomad-client.SearchApi* | [**getFuzzySearch**](docs/SearchApi.md#getFuzzySearch) | **POST** /search/fuzzy | 
 *nomad-client.SearchApi* | [**getSearch**](docs/SearchApi.md#getSearch) | **POST** /search | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *nomad-client.SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
 *nomad-client.SystemApi* | [**putSystemReconcileSummaries**](docs/SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
+=======
+*nomad-client.StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
+*nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
+>>>>>>> 8d74053 (updated generator/status.go)
 =======
 *nomad-client.StatusApi* | [**getStatusLeader**](docs/StatusApi.md#getStatusLeader) | **GET** /status/leader | 
 *nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
