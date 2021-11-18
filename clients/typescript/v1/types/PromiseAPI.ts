@@ -18,6 +18,7 @@ import { Allocation } from '../models/Allocation';
 import { AllocationListStub } from '../models/AllocationListStub';
 import { AllocationMetric } from '../models/AllocationMetric';
 import { Attribute } from '../models/Attribute';
+import { AutopilotConfiguration } from '../models/AutopilotConfiguration';
 import { CSIControllerInfo } from '../models/CSIControllerInfo';
 import { CSIInfo } from '../models/CSIInfo';
 import { CSIMountOptions } from '../models/CSIMountOptions';
@@ -132,6 +133,7 @@ import { NodeUpdateEligibilityRequest } from '../models/NodeUpdateEligibilityReq
 import { ObjectDiff } from '../models/ObjectDiff';
 import { OneTimeToken } from '../models/OneTimeToken';
 import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
+import { OperatorHealthReply } from '../models/OperatorHealthReply';
 import { ParameterizedJobConfig } from '../models/ParameterizedJobConfig';
 import { PeriodicConfig } from '../models/PeriodicConfig';
 import { PeriodicForceResponse } from '../models/PeriodicForceResponse';
@@ -139,8 +141,10 @@ import { PlanAnnotations } from '../models/PlanAnnotations';
 import { PointValue } from '../models/PointValue';
 import { Port } from '../models/Port';
 import { PortMapping } from '../models/PortMapping';
+import { PreemptionConfig } from '../models/PreemptionConfig';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
+import { RaftServer } from '../models/RaftServer';
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
 import { ReschedulePolicy } from '../models/ReschedulePolicy';
@@ -152,8 +156,12 @@ import { ScalingEvent } from '../models/ScalingEvent';
 import { ScalingPolicy } from '../models/ScalingPolicy';
 import { ScalingPolicyListStub } from '../models/ScalingPolicyListStub';
 import { ScalingRequest } from '../models/ScalingRequest';
+import { SchedulerConfiguration } from '../models/SchedulerConfiguration';
+import { SchedulerConfigurationResponse } from '../models/SchedulerConfigurationResponse';
+import { SchedulerSetConfigurationResponse } from '../models/SchedulerSetConfigurationResponse';
 import { SearchRequest } from '../models/SearchRequest';
 import { SearchResponse } from '../models/SearchResponse';
+import { ServerHealth } from '../models/ServerHealth';
 import { Service } from '../models/Service';
 import { ServiceCheck } from '../models/ServiceCheck';
 import { SidecarTask } from '../models/SidecarTask';
@@ -1242,6 +1250,124 @@ export class PromiseNodesApi {
      */
     public updateNodePurge(nodeId: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<NodePurgeResponse> {
         const result = this.api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableOperatorApi } from './ObservableAPI';
+
+import { OperatorApiRequestFactory, OperatorApiResponseProcessor} from "../apis/OperatorApi";
+export class PromiseOperatorApi {
+    private api: ObservableOperatorApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OperatorApiRequestFactory,
+        responseProcessor?: OperatorApiResponseProcessor
+    ) {
+        this.api = new ObservableOperatorApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public deleteOperatorRaft(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getOperatorAutopilotConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<AutopilotConfiguration> {
+        const result = this.api.getOperatorAutopilotConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getOperatorAutopilotHealth(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<OperatorHealthReply> {
+        const result = this.api.getOperatorAutopilotHealth(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getOperatorRaft(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<RaftServer>> {
+        const result = this.api.getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getOperatorSchedulerConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<SchedulerConfigurationResponse> {
+        const result = this.api.getOperatorSchedulerConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param schedulerConfiguration 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public postOperatorSchedulerConfiguration(schedulerConfiguration: SchedulerConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<SchedulerSetConfigurationResponse> {
+        const result = this.api.postOperatorSchedulerConfiguration(schedulerConfiguration, region, namespace, xNomadToken, idempotencyToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param autopilotConfiguration 
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param xNomadToken A Nomad ACL token.
+     * @param idempotencyToken Can be used to ensure operations are only run once.
+     */
+    public putOperatorAutopilotConfiguration(autopilotConfiguration: AutopilotConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }
 

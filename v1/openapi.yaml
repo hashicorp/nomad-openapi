@@ -236,8 +236,6 @@ components:
       schema:
         type: string
   requestBodies:
-<<<<<<< HEAD
-<<<<<<< HEAD
     ACLPolicy:
       content:
         application/json:
@@ -249,18 +247,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ACLToken'
-=======
-=======
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
+      required: true
     AutopilotConfiguration:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/AutopilotConfiguration'
-<<<<<<< HEAD
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
       required: true
     CSISnapshotCreateRequest:
       content:
@@ -789,93 +781,7 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
     GetJobDeploymentResponse:
-=======
-    GetOperatorAutopilotConfigurationResponse:
-=======
-    GetOperatorAutopilotConfigurationResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AutopilotConfiguration'
-      description: ""
-    GetOperatorAutopilotHealthResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OperatorHealthReply'
-      description: ""
-    GetOperatorRaftResponse:
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/RaftServer'
-            type: array
-      description: ""
-    GetOperatorSchedulerConfigurationResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchedulerConfigurationResponse'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
-    GetQuotaSpecResponse:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AutopilotConfiguration'
-      description: ""
-    GetOperatorAutopilotHealthResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OperatorHealthReply'
-      description: ""
-    GetOperatorRaftResponse:
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/RaftServer'
-            type: array
-      description: ""
-    GetOperatorSchedulerConfigurationResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchedulerConfigurationResponse'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
-          schema:
-            type: integer
-    GetQuotaSpecResponse:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       content:
         application/json:
           schema:
@@ -1140,6 +1046,45 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    GetOperatorAutopilotConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AutopilotConfiguration'
+      description: ""
+    GetOperatorAutopilotHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperatorHealthReply'
+      description: ""
+    GetOperatorRaftResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/RaftServer'
+            type: array
+      description: ""
+    GetOperatorSchedulerConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerConfigurationResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
     GetPluginCSIResponse:
       content:
         application/json:
@@ -1200,7 +1145,6 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-<<<<<<< HEAD
         X-Nomad-KnownLeader:
           description: Boolean indicating if there is a known cluster leader.
           schema:
@@ -1224,31 +1168,6 @@ components:
             items:
               $ref: '#/components/schemas/ScalingPolicyListStub'
             type: array
-=======
-    PostOperatorSchedulerConfigurationResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-    PostOperatorSchedulerConfigurationResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-    PostQuotaSpecResponse:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       description: ""
       headers:
         X-Nomad-Index:
@@ -1320,34 +1239,11 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     GetVolumeResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/CSIVolume'
-=======
-<<<<<<< HEAD
-=======
-    PutOperatorAutopilotConfigurationResponse:
-      description: ""
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
-    PutSystemGCResponse:
-      description: ""
-    PutSystemReconcileSummariesResponse:
-=======
-    PutOperatorAutopilotConfigurationResponse:
->>>>>>> 685e8ca (updates to generator/operator.go)
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-    PutOperatorAutopilotConfigurationResponse:
-      description: ""
-    PutSystemGCResponse:
-      description: ""
-    PutSystemReconcileSummariesResponse:
->>>>>>> 4825049 (rebase & regenerated clients)
       description: ""
       headers:
         X-Nomad-Index:
@@ -1440,8 +1336,6 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
     PostACLTokenOnetimeExchangeResponse:
       content:
         application/json:
@@ -1625,6 +1519,17 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
+    PostOperatorSchedulerConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerSetConfigurationResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
     PostQuotaSpecResponse:
       description: ""
       headers:
@@ -1665,6 +1570,8 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+    PutOperatorAutopilotConfigurationResponse:
+      description: ""
     PutSystemGCResponse:
       description: ""
     PutSystemReconcileSummariesResponse:
@@ -1692,365 +1599,12 @@ components:
       description: ""
   schemas:
     ACLPolicy:
-=======
-          type: object
-        NodesEvaluated:
-          type: integer
-        NodesExhausted:
-          type: integer
-        NodesFiltered:
-          type: integer
-        QuotaExhausted:
-          items:
-            type: string
-          type: array
-        ResourcesExhausted:
-          additionalProperties:
-            $ref: '#/components/schemas/Resources'
-          type: object
-        ScoreMetaData:
-          items:
-            $ref: '#/components/schemas/NodeScoreMeta'
-          type: array
-        Scores:
-          additionalProperties:
-            format: double
-            type: number
-          type: object
-      type: object
-    AutopilotConfiguration:
       properties:
-        CleanupDeadServers:
-          type: boolean
         CreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
-        DisableUpgradeMigration:
-          type: boolean
-        EnableCustomUpgrades:
-          type: boolean
-        EnableRedundancyZones:
-          type: boolean
-        LastContactThreshold:
-          format: int64
-          type: integer
-        MaxTrailingLogs:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        MinQuorum:
-          minimum: 0
-          type: integer
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        ServerStabilizationTime:
-          format: int64
-          type: integer
-      type: object
-    CSIMountOptions:
-      properties:
-        FSType:
-          type: string
-        MountFlags:
-          items:
-            type: string
-          type: array
-      type: object
-    CSIPluginType:
-      type: string
-    CSISecrets:
-      additionalProperties:
-        type: string
-      type: object
-    CSISnapshot:
-      properties:
-        CreateTime:
-          format: int64
-          type: integer
-        ExternalSourceVolumeID:
-          type: string
-        ID:
-          type: string
-        IsReady:
-          type: boolean
-        Name:
-          type: string
-        Parameters:
-          additionalProperties:
-            type: string
-          type: object
-        PluginID:
-          type: string
-        Secrets:
-          $ref: '#/components/schemas/CSISecrets'
-        SizeBytes:
-          format: int64
-          type: integer
-        SourceVolumeID:
-          type: string
-      type: object
-    CSISnapshotCreateRequest:
-      properties:
-        Namespace:
-          type: string
-        Region:
-          type: string
-        SecretID:
-          type: string
-        Snapshots:
-          items:
-            $ref: '#/components/schemas/CSISnapshot'
-          type: array
-      type: object
-    CSISnapshotCreateResponse:
-      properties:
-        KnownLeader:
-          type: boolean
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
-          type: integer
-        Snapshots:
-          items:
-            $ref: '#/components/schemas/CSISnapshot'
-          type: array
-      type: object
-    CSISnapshotListResponse:
-      properties:
-        KnownLeader:
-          type: boolean
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        NextToken:
-          type: string
-        RequestTime:
-          format: int64
-          type: integer
-        Snapshots:
-          items:
-            $ref: '#/components/schemas/CSISnapshot'
-          type: array
-      type: object
-    CSITopology:
-      properties:
-        Segments:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    CSIVolume:
-      properties:
-        AccessMode:
-          type: string
-        Allocations:
-          items:
-            $ref: '#/components/schemas/AllocationListStub'
-          type: array
-        AttachmentMode:
-          type: string
-        Capacity:
-          format: int64
-          type: integer
-        CloneID:
-          type: string
-        Context:
-          additionalProperties:
-            type: string
-          type: object
-        ControllerRequired:
-          type: boolean
-        ControllersExpected:
-          type: integer
-        ControllersHealthy:
-          type: integer
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        ExternalID:
-          type: string
-        ID:
-          type: string
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        MountOptions:
-          $ref: '#/components/schemas/CSIMountOptions'
-        Name:
-          type: string
-        Namespace:
-          type: string
-        NodesExpected:
-          type: integer
-        NodesHealthy:
-          type: integer
-        Parameters:
-          additionalProperties:
-            type: string
-          type: object
-        PluginID:
-          type: string
-        Provider:
-          type: string
-        ProviderVersion:
-          type: string
-        ReadAllocs:
-          additionalProperties:
-            $ref: '#/components/schemas/Allocation'
-          type: object
-        RequestedCapabilities:
-          items:
-            $ref: '#/components/schemas/CSIVolumeCapability'
-          type: array
-        RequestedCapacityMax:
-          format: int64
-          type: integer
-        RequestedCapacityMin:
-          format: int64
-          type: integer
-        ResourceExhausted:
-          format: date-time
-          type: string
-        Schedulable:
-          type: boolean
-        Secrets:
-          $ref: '#/components/schemas/CSISecrets'
-        SnapshotID:
-          type: string
-        Topologies:
-          items:
-            $ref: '#/components/schemas/CSITopology'
-          type: array
-        WriteAllocs:
-          additionalProperties:
-            $ref: '#/components/schemas/Allocation'
-          type: object
-      type: object
-    CSIVolumeAccessMode:
-      type: string
-    CSIVolumeAttachmentMode:
-      type: string
-    CSIVolumeCapability:
-      properties:
-        AccessMode:
-          type: string
-        AttachmentMode:
-          type: string
-      type: object
-    CSIVolumeCreateRequest:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
-      properties:
-=======
-          type: object
-        NodesEvaluated:
-          type: integer
-        NodesExhausted:
-          type: integer
-        NodesFiltered:
-          type: integer
-        QuotaExhausted:
-          items:
-            type: string
-          type: array
-        ResourcesExhausted:
-          additionalProperties:
-            $ref: '#/components/schemas/Resources'
-          type: object
-        ScoreMetaData:
-          items:
-            $ref: '#/components/schemas/NodeScoreMeta'
-          type: array
-        Scores:
-          additionalProperties:
-            format: double
-            type: number
-          type: object
-      type: object
-    AutopilotConfiguration:
-      properties:
-        CleanupDeadServers:
-          type: boolean
->>>>>>> 2fdd42e (updates to generator/operator.go)
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-<<<<<<< HEAD
         Description:
-=======
-        DisableUpgradeMigration:
-          type: boolean
-        EnableCustomUpgrades:
-          type: boolean
-        EnableRedundancyZones:
-          type: boolean
-        LastContactThreshold:
-          format: int64
-          type: integer
-        MaxTrailingLogs:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        MinQuorum:
-          minimum: 0
-          type: integer
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        ServerStabilizationTime:
-          format: int64
-          type: integer
-      type: object
-    CSIMountOptions:
-      properties:
-        FSType:
-          type: string
-        MountFlags:
-          items:
-            type: string
-          type: array
-      type: object
-    CSIPluginType:
-      type: string
-    CSISecrets:
-      additionalProperties:
-        type: string
-      type: object
-    CSISnapshot:
-      properties:
-        CreateTime:
-          format: int64
-          type: integer
-        ExternalSourceVolumeID:
-          type: string
-        ID:
-          type: string
-        IsReady:
-          type: boolean
-        Name:
-          type: string
-        Parameters:
-          additionalProperties:
-            type: string
-          type: object
-        PluginID:
->>>>>>> 2fdd42e (updates to generator/operator.go)
           type: string
         ModifyIndex:
           maximum: 1.8446744073709552e+19
@@ -2438,6 +1992,38 @@ components:
           type: string
         Unit:
           type: string
+      type: object
+    AutopilotConfiguration:
+      properties:
+        CleanupDeadServers:
+          type: boolean
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        DisableUpgradeMigration:
+          type: boolean
+        EnableCustomUpgrades:
+          type: boolean
+        EnableRedundancyZones:
+          type: boolean
+        LastContactThreshold:
+          format: int64
+          type: integer
+        MaxTrailingLogs:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        MinQuorum:
+          minimum: 0
+          type: integer
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ServerStabilizationTime:
+          format: int64
+          type: integer
       type: object
     CSIControllerInfo:
       properties:
@@ -3157,22 +2743,7 @@ components:
         SecretID:
           type: string
       type: object
-<<<<<<< HEAD
     DeploymentState:
-=======
-    OperatorHealthReply:
-      properties:
-        FailureTolerance:
-          type: integer
-        Healthy:
-          type: boolean
-        Servers:
-          items:
-            $ref: '#/components/schemas/ServerHealth'
-          type: array
-      type: object
-    ParameterizedJobConfig:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
       properties:
         AutoRevert:
           type: boolean
@@ -3259,35 +2830,7 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
-<<<<<<< HEAD
         Migrate:
-=======
-      type: object
-    PreemptionConfig:
-      properties:
-        BatchSchedulerEnabled:
-          type: boolean
-        ServiceSchedulerEnabled:
-          type: boolean
-        SysBatchSchedulerEnabled:
-          type: boolean
-        SystemSchedulerEnabled:
-          type: boolean
-      type: object
-    QuotaLimit:
-      properties:
-        Hash:
-          format: byte
-          type: string
-        Region:
-          type: string
-        RegionLimit:
-          $ref: '#/components/schemas/Resources'
-      type: object
-    QuotaSpec:
-      properties:
-        CreateIndex:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
@@ -3295,40 +2838,7 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
-<<<<<<< HEAD
         Preemptions:
-=======
-        Name:
-          type: string
-      type: object
-    Quotas: {}
-    RaftServer:
-      properties:
-        Address:
-          type: string
-        ID:
-          type: string
-        Leader:
-          type: boolean
-        Node:
-          type: string
-        RaftProtocol:
-          type: string
-        Voter:
-          type: boolean
-      type: object
-    RequestedDevice:
-      properties:
-        Affinities:
-          items:
-            $ref: '#/components/schemas/Affinity'
-          type: array
-        Constraints:
-          items:
-            $ref: '#/components/schemas/Constraint'
-          type: array
-        Count:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
@@ -3510,22 +3020,7 @@ components:
         Type:
           type: string
       type: object
-<<<<<<< HEAD
     FuzzyMatch:
-=======
-    OperatorHealthReply:
-      properties:
-        FailureTolerance:
-          type: integer
-        Healthy:
-          type: boolean
-        Servers:
-          items:
-            $ref: '#/components/schemas/ServerHealth'
-          type: array
-      type: object
-    ParameterizedJobConfig:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       properties:
         ID:
           type: string
@@ -3534,59 +3029,7 @@ components:
             type: string
           type: array
       type: object
-<<<<<<< HEAD
     FuzzySearchRequest:
-=======
-    SchedulerAlgorithm:
-      type: string
-    SchedulerConfiguration:
-      properties:
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        MemoryOversubscriptionEnabled:
-          type: boolean
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        PreemptionConfig:
-          $ref: '#/components/schemas/PreemptionConfig'
-        SchedulerAlgorithm:
-          type: string
-      type: object
-    SchedulerConfigurationResponse:
-      properties:
-        KnownLeader:
-          type: boolean
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
-          type: integer
-        SchedulerConfig:
-          $ref: '#/components/schemas/SchedulerConfiguration'
-      type: object
-    SchedulerSetConfigurationResponse:
-      properties:
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
-          type: integer
-        Updated:
-          type: boolean
-      type: object
-    SearchRequest:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
       properties:
         AllowStale:
           type: boolean
@@ -3644,44 +3087,7 @@ components:
             type: boolean
           type: object
       type: object
-<<<<<<< HEAD
     GaugeValue:
-=======
-    ServerHealth:
-      properties:
-        Address:
-          type: string
-        Healthy:
-          type: boolean
-        ID:
-          type: string
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        LastTerm:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        Leader:
-          type: boolean
-        Name:
-          type: string
-        SerfStatus:
-          type: string
-        StableSince:
-          format: date-time
-          type: string
-        Version:
-          type: string
-        Voter:
-          type: boolean
-      type: object
-    Service:
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
       properties:
         Labels:
           additionalProperties:
@@ -3700,22 +3106,7 @@ components:
         ReadOnly:
           type: boolean
       type: object
-<<<<<<< HEAD
     Job:
-=======
-    PreemptionConfig:
-      properties:
-        BatchSchedulerEnabled:
-          type: boolean
-        ServiceSchedulerEnabled:
-          type: boolean
-        SysBatchSchedulerEnabled:
-          type: boolean
-        SystemSchedulerEnabled:
-          type: boolean
-      type: object
-    QuotaLimit:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       properties:
         Affinities:
           items:
@@ -3747,7 +3138,6 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
-<<<<<<< HEAD
         Meta:
           additionalProperties:
             type: string
@@ -3755,38 +3145,6 @@ components:
         Migrate:
           $ref: '#/components/schemas/MigrateStrategy'
         ModifyIndex:
-=======
-        Name:
-          type: string
-      type: object
-    Quotas: {}
-    RaftServer:
-      properties:
-        Address:
-          type: string
-        ID:
-          type: string
-        Leader:
-          type: boolean
-        Node:
-          type: string
-        RaftProtocol:
-          type: string
-        Voter:
-          type: boolean
-      type: object
-    RequestedDevice:
-      properties:
-        Affinities:
-          items:
-            $ref: '#/components/schemas/Affinity'
-          type: array
-        Constraints:
-          items:
-            $ref: '#/components/schemas/Constraint'
-          type: array
-        Count:
->>>>>>> 2fdd42e (updates to generator/operator.go)
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
@@ -4009,59 +3367,7 @@ components:
         SecretID:
           type: string
       type: object
-<<<<<<< HEAD
     JobPlanResponse:
-=======
-    SchedulerAlgorithm:
-      type: string
-    SchedulerConfiguration:
-      properties:
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        MemoryOversubscriptionEnabled:
-          type: boolean
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        PreemptionConfig:
-          $ref: '#/components/schemas/PreemptionConfig'
-        SchedulerAlgorithm:
-          type: string
-      type: object
-    SchedulerConfigurationResponse:
-      properties:
-        KnownLeader:
-          type: boolean
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
-          type: integer
-        SchedulerConfig:
-          $ref: '#/components/schemas/SchedulerConfiguration'
-      type: object
-    SchedulerSetConfigurationResponse:
-      properties:
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        RequestTime:
-          format: int64
-          type: integer
-        Updated:
-          type: boolean
-      type: object
-    SearchRequest:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       properties:
         Annotations:
           $ref: '#/components/schemas/PlanAnnotations'
@@ -4133,44 +3439,7 @@ components:
         Warnings:
           type: string
       type: object
-<<<<<<< HEAD
     JobRevertRequest:
-=======
-    ServerHealth:
-      properties:
-        Address:
-          type: string
-        Healthy:
-          type: boolean
-        ID:
-          type: string
-        LastContact:
-          format: int64
-          type: integer
-        LastIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        LastTerm:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        Leader:
-          type: boolean
-        Name:
-          type: string
-        SerfStatus:
-          type: string
-        StableSince:
-          format: date-time
-          type: string
-        Version:
-          type: string
-        Voter:
-          type: boolean
-      type: object
-    Service:
->>>>>>> 2fdd42e (updates to generator/operator.go)
       properties:
         ConsulToken:
           type: string
@@ -4809,6 +4078,17 @@ components:
         OneTimeSecretID:
           type: string
       type: object
+    OperatorHealthReply:
+      properties:
+        FailureTolerance:
+          type: integer
+        Healthy:
+          type: boolean
+        Servers:
+          items:
+            $ref: '#/components/schemas/ServerHealth'
+          type: array
+      type: object
     ParameterizedJobConfig:
       properties:
         MetaOptional:
@@ -4891,6 +4171,17 @@ components:
         Value:
           type: integer
       type: object
+    PreemptionConfig:
+      properties:
+        BatchSchedulerEnabled:
+          type: boolean
+        ServiceSchedulerEnabled:
+          type: boolean
+        SysBatchSchedulerEnabled:
+          type: boolean
+        SystemSchedulerEnabled:
+          type: boolean
+      type: object
     QuotaLimit:
       properties:
         Hash:
@@ -4921,6 +4212,21 @@ components:
           type: string
       type: object
     Quotas: {}
+    RaftServer:
+      properties:
+        Address:
+          type: string
+        ID:
+          type: string
+        Leader:
+          type: boolean
+        Node:
+          type: string
+        RaftProtocol:
+          type: string
+        Voter:
+          type: boolean
+      type: object
     RequestedDevice:
       properties:
         Affinities:
@@ -4948,7 +4254,6 @@ components:
           format: int64
           type: integer
       type: object
-<<<<<<< HEAD
     ReschedulePolicy:
       properties:
         Attempts:
@@ -5143,6 +4448,54 @@ components:
             type: string
           type: object
       type: object
+    SchedulerAlgorithm:
+      type: string
+    SchedulerConfiguration:
+      properties:
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        MemoryOversubscriptionEnabled:
+          type: boolean
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        PreemptionConfig:
+          $ref: '#/components/schemas/PreemptionConfig'
+        SchedulerAlgorithm:
+          type: string
+      type: object
+    SchedulerConfigurationResponse:
+      properties:
+        KnownLeader:
+          type: boolean
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        SchedulerConfig:
+          $ref: '#/components/schemas/SchedulerConfiguration'
+      type: object
+    SchedulerSetConfigurationResponse:
+      properties:
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        RequestTime:
+          format: int64
+          type: integer
+        Updated:
+          type: boolean
+      type: object
     SearchRequest:
       properties:
         AllowStale:
@@ -5198,6 +4551,39 @@ components:
           additionalProperties:
             type: boolean
           type: object
+      type: object
+    ServerHealth:
+      properties:
+        Address:
+          type: string
+        Healthy:
+          type: boolean
+        ID:
+          type: string
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        LastTerm:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Leader:
+          type: boolean
+        Name:
+          type: string
+        SerfStatus:
+          type: string
+        StableSince:
+          format: date-time
+          type: string
+        Version:
+          type: string
+        Voter:
+          type: boolean
       type: object
     Service:
       properties:
@@ -5789,8 +5175,6 @@ components:
         Type:
           type: string
       type: object
-=======
->>>>>>> 2fdd42e (updates to generator/operator.go)
     float32:
       format: float
       type: number
@@ -5809,23 +5193,15 @@ components:
     int64:
       format: int64
       type: integer
-<<<<<<< HEAD
-<<<<<<< HEAD
+    uint:
+      minimum: 0
+      type: integer
     uint8:
       maximum: 255
       minimum: 0
       type: integer
     uint16:
       maximum: 65535
-=======
-=======
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
-    uint:
-      minimum: 0
-      type: integer
-    uint8:
-      maximum: 255
->>>>>>> 2fdd42e (updates to generator/operator.go)
       minimum: 0
       type: integer
     uint64:
@@ -7234,15 +6610,9 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Namespaces
-<<<<<<< HEAD
   /node/{nodeId}:
     get:
       operationId: GetNode
-=======
-  /operator/autopilot/configuration:
-    get:
-      operationId: GetOperatorAutopilotConfiguration
->>>>>>> 2fdd42e (updates to generator/operator.go)
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -7250,8 +6620,6 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-<<<<<<< HEAD
-<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -7259,17 +6627,6 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetNodeResponse'
-=======
-      - $ref: '#/components/parameters/NextTokenHeader'
-=======
-      - $ref: '#/components/parameters/NomadTokenHeader'
->>>>>>> 4825049 (rebase & regenerated clients)
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetOperatorAutopilotConfigurationResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7281,45 +6638,10 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
-<<<<<<< HEAD
       - Nodes
   /node/{nodeId}/allocations:
     get:
       operationId: GetNodeAllocations
-=======
-      - Operator
-    put:
-      operationId: PutOperatorAutopilotConfiguration
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AutopilotConfiguration'
-        required: true
-      responses:
-        "200":
-          $ref: '#/components/responses/PutOperatorAutopilotConfigurationResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Operator
-  /operator/autopilot/health:
-    get:
-      operationId: GetOperatorAutopilotHealth
->>>>>>> 2fdd42e (updates to generator/operator.go)
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -7327,8 +6649,6 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-<<<<<<< HEAD
-<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -7336,17 +6656,6 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetNodeAllocationsResponse'
-=======
-      - $ref: '#/components/parameters/NextTokenHeader'
-=======
-      - $ref: '#/components/parameters/NomadTokenHeader'
->>>>>>> 4825049 (rebase & regenerated clients)
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetOperatorAutopilotHealthResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7358,7 +6667,6 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
-<<<<<<< HEAD
       - Nodes
   /node/{nodeId}/drain:
     post:
@@ -7447,20 +6755,6 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/NodePurgeResponse'
-=======
-      - Operator
-  /operator/raft/:
-    delete:
-      operationId: DeleteOperatorRaft
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/DeleteOperatorRaftResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7472,16 +6766,10 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
-<<<<<<< HEAD
       - Nodes
   /nodes:
     get:
       operationId: GetNodes
-=======
-      - Operator
-    get:
-      operationId: GetOperatorRaft
->>>>>>> 2fdd42e (updates to generator/operator.go)
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -7489,8 +6777,6 @@ paths:
       - $ref: '#/components/parameters/WaitParam'
       - $ref: '#/components/parameters/StaleParam'
       - $ref: '#/components/parameters/PrefixParam'
-<<<<<<< HEAD
-<<<<<<< HEAD
       - $ref: '#/components/parameters/NomadTokenHeader'
       - $ref: '#/components/parameters/PerPageParam'
       - $ref: '#/components/parameters/NextTokenParam'
@@ -7498,17 +6784,6 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/GetNodesResponse'
-=======
-      - $ref: '#/components/parameters/NextTokenHeader'
-=======
-      - $ref: '#/components/parameters/NomadTokenHeader'
->>>>>>> 4825049 (rebase & regenerated clients)
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetOperatorRaftResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":
@@ -7520,111 +6795,7 @@ paths:
       security:
       - X-Nomad-Token: []
       tags:
-<<<<<<< HEAD
       - Nodes
-  /plugin/csi/{pluginID}:
-    get:
-      operationId: GetPluginCSI
-=======
-      - Operator
-  /operator/scheduler/configuration:
-    get:
-      operationId: GetOperatorSchedulerConfiguration
->>>>>>> 2fdd42e (updates to generator/operator.go)
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/IndexHeader'
-      - $ref: '#/components/parameters/WaitParam'
-      - $ref: '#/components/parameters/StaleParam'
-      - $ref: '#/components/parameters/PrefixParam'
-<<<<<<< HEAD
-<<<<<<< HEAD
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      - $ref: '#/components/parameters/PluginIDParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetPluginCSIResponse'
-=======
-      - $ref: '#/components/parameters/NextTokenHeader'
-=======
-      - $ref: '#/components/parameters/NomadTokenHeader'
->>>>>>> 4825049 (rebase & regenerated clients)
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetOperatorSchedulerConfigurationResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-<<<<<<< HEAD
-      - Plugins
-  /plugins:
-    get:
-      operationId: GetPlugins
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/IndexHeader'
-      - $ref: '#/components/parameters/WaitParam'
-      - $ref: '#/components/parameters/StaleParam'
-      - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetPluginsResponse'
-=======
-      - Operator
-    post:
-      operationId: PostOperatorSchedulerConfiguration
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SchedulerConfiguration'
-        required: true
-      responses:
-        "200":
-          $ref: '#/components/responses/PostOperatorSchedulerConfigurationResponse'
->>>>>>> 2fdd42e (updates to generator/operator.go)
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-<<<<<<< HEAD
-<<<<<<< HEAD
-      - Plugins
-=======
-      - Operator
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-      - Namespaces
   /operator/autopilot/configuration:
     get:
       operationId: GetOperatorAutopilotConfiguration
@@ -7815,7 +6986,63 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Operator
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
+  /plugin/csi/{pluginID}:
+    get:
+      operationId: GetPluginCSI
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/PluginIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetPluginCSIResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
+  /plugins:
+    get:
+      operationId: GetPlugins
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetPluginsResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Plugins
   /quota:
     post:
       operationId: CreateQuotaSpec

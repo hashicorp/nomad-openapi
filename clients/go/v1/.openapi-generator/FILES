@@ -9,16 +9,9 @@ api_evaluations.go
 api_jobs.go
 api_metrics.go
 api_namespaces.go
-<<<<<<< HEAD
-<<<<<<< HEAD
 api_nodes.go
+api_operator.go
 api_plugins.go
-=======
-api_operator.go
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-api_operator.go
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 api_regions.go
 api_scaling.go
 api_search.go
@@ -43,17 +36,10 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
-<<<<<<< HEAD
-<<<<<<< HEAD
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
-=======
-docs/AutopilotConfiguration.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-docs/AutopilotConfiguration.md
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -171,18 +157,10 @@ docs/NodeUpdateDrainRequest.md
 docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
-<<<<<<< HEAD
-<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
-=======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-docs/OperatorApi.md
-docs/OperatorHealthReply.md
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -254,15 +232,8 @@ model_allocated_task_resources.go
 model_allocation.go
 model_allocation_list_stub.go
 model_allocation_metric.go
-<<<<<<< HEAD
-<<<<<<< HEAD
 model_attribute.go
-=======
 model_autopilot_configuration.go
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-model_autopilot_configuration.go
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 model_check_restart.go
 model_constraint.go
 model_consul.go
@@ -375,16 +346,9 @@ model_node_score_meta.go
 model_node_update_drain_request.go
 model_node_update_eligibility_request.go
 model_object_diff.go
-<<<<<<< HEAD
-<<<<<<< HEAD
 model_one_time_token.go
 model_one_time_token_exchange_request.go
-=======
 model_operator_health_reply.go
->>>>>>> 2fdd42e (updates to generator/operator.go)
-=======
-model_operator_health_reply.go
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 model_parameterized_job_config.go
 model_periodic_config.go
 model_periodic_force_response.go

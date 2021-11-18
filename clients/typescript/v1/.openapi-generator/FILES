@@ -9,6 +9,7 @@ apis/JobsApi.ts
 apis/MetricsApi.ts
 apis/NamespacesApi.ts
 apis/NodesApi.ts
+apis/OperatorApi.ts
 apis/PluginsApi.ts
 apis/RegionsApi.ts
 apis/ScalingApi.ts
@@ -39,6 +40,7 @@ models/Allocation.ts
 models/AllocationListStub.ts
 models/AllocationMetric.ts
 models/Attribute.ts
+models/AutopilotConfiguration.ts
 models/CSIControllerInfo.ts
 models/CSIInfo.ts
 models/CSIMountOptions.ts
@@ -154,6 +156,7 @@ models/ObjectDiff.ts
 models/ObjectSerializer.ts
 models/OneTimeToken.ts
 models/OneTimeTokenExchangeRequest.ts
+models/OperatorHealthReply.ts
 models/ParameterizedJobConfig.ts
 models/PeriodicConfig.ts
 models/PeriodicForceResponse.ts
@@ -161,8 +164,10 @@ models/PlanAnnotations.ts
 models/PointValue.ts
 models/Port.ts
 models/PortMapping.ts
+models/PreemptionConfig.ts
 models/QuotaLimit.ts
 models/QuotaSpec.ts
+models/RaftServer.ts
 models/RequestedDevice.ts
 models/RescheduleEvent.ts
 models/ReschedulePolicy.ts
@@ -174,8 +179,12 @@ models/ScalingEvent.ts
 models/ScalingPolicy.ts
 models/ScalingPolicyListStub.ts
 models/ScalingRequest.ts
+models/SchedulerConfiguration.ts
+models/SchedulerConfigurationResponse.ts
+models/SchedulerSetConfigurationResponse.ts
 models/SearchRequest.ts
 models/SearchResponse.ts
+models/ServerHealth.ts
 models/Service.ts
 models/ServiceCheck.ts
 models/SidecarTask.ts

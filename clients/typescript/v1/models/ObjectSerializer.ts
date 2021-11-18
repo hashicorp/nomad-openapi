@@ -14,6 +14,7 @@ export * from './Allocation';
 export * from './AllocationListStub';
 export * from './AllocationMetric';
 export * from './Attribute';
+export * from './AutopilotConfiguration';
 export * from './CSIControllerInfo';
 export * from './CSIInfo';
 export * from './CSIMountOptions';
@@ -128,6 +129,7 @@ export * from './NodeUpdateEligibilityRequest';
 export * from './ObjectDiff';
 export * from './OneTimeToken';
 export * from './OneTimeTokenExchangeRequest';
+export * from './OperatorHealthReply';
 export * from './ParameterizedJobConfig';
 export * from './PeriodicConfig';
 export * from './PeriodicForceResponse';
@@ -135,8 +137,10 @@ export * from './PlanAnnotations';
 export * from './PointValue';
 export * from './Port';
 export * from './PortMapping';
+export * from './PreemptionConfig';
 export * from './QuotaLimit';
 export * from './QuotaSpec';
+export * from './RaftServer';
 export * from './RequestedDevice';
 export * from './RescheduleEvent';
 export * from './ReschedulePolicy';
@@ -148,8 +152,12 @@ export * from './ScalingEvent';
 export * from './ScalingPolicy';
 export * from './ScalingPolicyListStub';
 export * from './ScalingRequest';
+export * from './SchedulerConfiguration';
+export * from './SchedulerConfigurationResponse';
+export * from './SchedulerSetConfigurationResponse';
 export * from './SearchRequest';
 export * from './SearchResponse';
+export * from './ServerHealth';
 export * from './Service';
 export * from './ServiceCheck';
 export * from './SidecarTask';
@@ -189,6 +197,7 @@ import { Allocation } from './Allocation';
 import { AllocationListStub } from './AllocationListStub';
 import { AllocationMetric } from './AllocationMetric';
 import { Attribute } from './Attribute';
+import { AutopilotConfiguration } from './AutopilotConfiguration';
 import { CSIControllerInfo } from './CSIControllerInfo';
 import { CSIInfo } from './CSIInfo';
 import { CSIMountOptions } from './CSIMountOptions';
@@ -303,6 +312,7 @@ import { NodeUpdateEligibilityRequest } from './NodeUpdateEligibilityRequest';
 import { ObjectDiff } from './ObjectDiff';
 import { OneTimeToken } from './OneTimeToken';
 import { OneTimeTokenExchangeRequest } from './OneTimeTokenExchangeRequest';
+import { OperatorHealthReply } from './OperatorHealthReply';
 import { ParameterizedJobConfig } from './ParameterizedJobConfig';
 import { PeriodicConfig } from './PeriodicConfig';
 import { PeriodicForceResponse } from './PeriodicForceResponse';
@@ -310,8 +320,10 @@ import { PlanAnnotations } from './PlanAnnotations';
 import { PointValue } from './PointValue';
 import { Port } from './Port';
 import { PortMapping } from './PortMapping';
+import { PreemptionConfig } from './PreemptionConfig';
 import { QuotaLimit } from './QuotaLimit';
 import { QuotaSpec } from './QuotaSpec';
+import { RaftServer } from './RaftServer';
 import { RequestedDevice } from './RequestedDevice';
 import { RescheduleEvent } from './RescheduleEvent';
 import { ReschedulePolicy } from './ReschedulePolicy';
@@ -323,8 +335,12 @@ import { ScalingEvent } from './ScalingEvent';
 import { ScalingPolicy } from './ScalingPolicy';
 import { ScalingPolicyListStub } from './ScalingPolicyListStub';
 import { ScalingRequest } from './ScalingRequest';
+import { SchedulerConfiguration } from './SchedulerConfiguration';
+import { SchedulerConfigurationResponse } from './SchedulerConfigurationResponse';
+import { SchedulerSetConfigurationResponse } from './SchedulerSetConfigurationResponse';
 import { SearchRequest } from './SearchRequest';
 import { SearchResponse } from './SearchResponse';
+import { ServerHealth } from './ServerHealth';
 import { Service } from './Service';
 import { ServiceCheck } from './ServiceCheck';
 import { SidecarTask } from './SidecarTask';
@@ -386,6 +402,7 @@ let typeMap: {[index: string]: any} = {
     "AllocationListStub": AllocationListStub,
     "AllocationMetric": AllocationMetric,
     "Attribute": Attribute,
+    "AutopilotConfiguration": AutopilotConfiguration,
     "CSIControllerInfo": CSIControllerInfo,
     "CSIInfo": CSIInfo,
     "CSIMountOptions": CSIMountOptions,
@@ -500,6 +517,7 @@ let typeMap: {[index: string]: any} = {
     "ObjectDiff": ObjectDiff,
     "OneTimeToken": OneTimeToken,
     "OneTimeTokenExchangeRequest": OneTimeTokenExchangeRequest,
+    "OperatorHealthReply": OperatorHealthReply,
     "ParameterizedJobConfig": ParameterizedJobConfig,
     "PeriodicConfig": PeriodicConfig,
     "PeriodicForceResponse": PeriodicForceResponse,
@@ -507,8 +525,10 @@ let typeMap: {[index: string]: any} = {
     "PointValue": PointValue,
     "Port": Port,
     "PortMapping": PortMapping,
+    "PreemptionConfig": PreemptionConfig,
     "QuotaLimit": QuotaLimit,
     "QuotaSpec": QuotaSpec,
+    "RaftServer": RaftServer,
     "RequestedDevice": RequestedDevice,
     "RescheduleEvent": RescheduleEvent,
     "ReschedulePolicy": ReschedulePolicy,
@@ -520,8 +540,12 @@ let typeMap: {[index: string]: any} = {
     "ScalingPolicy": ScalingPolicy,
     "ScalingPolicyListStub": ScalingPolicyListStub,
     "ScalingRequest": ScalingRequest,
+    "SchedulerConfiguration": SchedulerConfiguration,
+    "SchedulerConfigurationResponse": SchedulerConfigurationResponse,
+    "SchedulerSetConfigurationResponse": SchedulerSetConfigurationResponse,
     "SearchRequest": SearchRequest,
     "SearchResponse": SearchResponse,
+    "ServerHealth": ServerHealth,
     "Service": Service,
     "ServiceCheck": ServiceCheck,
     "SidecarTask": SidecarTask,

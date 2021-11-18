@@ -24,17 +24,10 @@ from openapi_client.model.allocated_task_resources import AllocatedTaskResources
 from openapi_client.model.allocation import Allocation
 from openapi_client.model.allocation_list_stub import AllocationListStub
 from openapi_client.model.allocation_metric import AllocationMetric
-<<<<<<< HEAD
-<<<<<<< HEAD
 from openapi_client.model.attribute import Attribute
+from openapi_client.model.autopilot_configuration import AutopilotConfiguration
 from openapi_client.model.csi_controller_info import CSIControllerInfo
 from openapi_client.model.csi_info import CSIInfo
-=======
-from openapi_client.model.autopilot_configuration import AutopilotConfiguration
->>>>>>> 4825049 (rebase & regenerated clients)
-=======
-from openapi_client.model.autopilot_configuration import AutopilotConfiguration
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 from openapi_client.model.csi_mount_options import CSIMountOptions
 from openapi_client.model.csi_node_info import CSINodeInfo
 from openapi_client.model.csi_plugin import CSIPlugin
@@ -147,16 +140,9 @@ from openapi_client.model.node_score_meta import NodeScoreMeta
 from openapi_client.model.node_update_drain_request import NodeUpdateDrainRequest
 from openapi_client.model.node_update_eligibility_request import NodeUpdateEligibilityRequest
 from openapi_client.model.object_diff import ObjectDiff
-<<<<<<< HEAD
-<<<<<<< HEAD
 from openapi_client.model.one_time_token import OneTimeToken
 from openapi_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
-=======
 from openapi_client.model.operator_health_reply import OperatorHealthReply
->>>>>>> 4825049 (rebase & regenerated clients)
-=======
-from openapi_client.model.operator_health_reply import OperatorHealthReply
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 from openapi_client.model.parameterized_job_config import ParameterizedJobConfig
 from openapi_client.model.periodic_config import PeriodicConfig
 from openapi_client.model.periodic_force_response import PeriodicForceResponse
@@ -203,15 +189,8 @@ from openapi_client.model.task_handle import TaskHandle
 from openapi_client.model.task_lifecycle import TaskLifecycle
 from openapi_client.model.task_state import TaskState
 from openapi_client.model.template import Template
-<<<<<<< HEAD
-<<<<<<< HEAD
+from openapi_client.model.uint import Uint
 from openapi_client.model.uint16 import Uint16
-=======
-from openapi_client.model.uint import Uint
->>>>>>> 4825049 (rebase & regenerated clients)
-=======
-from openapi_client.model.uint import Uint
->>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 from openapi_client.model.uint64 import Uint64
 from openapi_client.model.uint8 import Uint8
 from openapi_client.model.update_strategy import UpdateStrategy
