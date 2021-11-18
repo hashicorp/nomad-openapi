@@ -70,11 +70,15 @@ pub mod jobs_api;
 pub mod metrics_api;
 pub mod namespaces_api;
 <<<<<<< HEAD
+<<<<<<< HEAD
 pub mod nodes_api;
 pub mod plugins_api;
 =======
 pub mod operator_api;
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+pub mod operator_api;
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 pub mod regions_api;
 pub mod scaling_api;
 pub mod search_api;

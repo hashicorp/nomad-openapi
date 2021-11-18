@@ -29,12 +29,16 @@ import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Attribute from './model/Attribute';
 import CSIControllerInfo from './model/CSIControllerInfo';
 import CSIInfo from './model/CSIInfo';
 =======
 import AutopilotConfiguration from './model/AutopilotConfiguration';
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+import AutopilotConfiguration from './model/AutopilotConfiguration';
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 import CSIMountOptions from './model/CSIMountOptions';
 import CSINodeInfo from './model/CSINodeInfo';
 import CSIPlugin from './model/CSIPlugin';
@@ -146,11 +150,15 @@ import NodeUpdateDrainRequest from './model/NodeUpdateDrainRequest';
 import NodeUpdateEligibilityRequest from './model/NodeUpdateEligibilityRequest';
 import ObjectDiff from './model/ObjectDiff';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import OneTimeToken from './model/OneTimeToken';
 import OneTimeTokenExchangeRequest from './model/OneTimeTokenExchangeRequest';
 =======
 import OperatorHealthReply from './model/OperatorHealthReply';
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+import OperatorHealthReply from './model/OperatorHealthReply';
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
 import PeriodicForceResponse from './model/PeriodicForceResponse';
@@ -210,11 +218,15 @@ import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import NodesApi from './api/NodesApi';
 import PluginsApi from './api/PluginsApi';
 =======
 import OperatorApi from './api/OperatorApi';
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+import OperatorApi from './api/OperatorApi';
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
@@ -352,6 +364,7 @@ export {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
      * The Attribute model constructor.
      * @property {module:model/Attribute}
      */
@@ -369,11 +382,16 @@ export {
      */
     CSIInfo,
 =======
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
      * The AutopilotConfiguration model constructor.
      * @property {module:model/AutopilotConfiguration}
      */
     AutopilotConfiguration,
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 
     /**
      * The CSIMountOptions model constructor.
@@ -1037,6 +1055,7 @@ export {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
      * The OneTimeToken model constructor.
      * @property {module:model/OneTimeToken}
      */
@@ -1048,11 +1067,16 @@ export {
      */
     OneTimeTokenExchangeRequest,
 =======
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
      * The OperatorHealthReply model constructor.
      * @property {module:model/OperatorHealthReply}
      */
     OperatorHealthReply,
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 
     /**
      * The ParameterizedJobConfig model constructor.
@@ -1404,6 +1428,7 @@ export {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
     * The NodesApi service constructor.
     * @property {module:api/NodesApi}
     */
@@ -1415,11 +1440,16 @@ export {
     */
     PluginsApi,
 =======
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
     * The OperatorApi service constructor.
     * @property {module:api/OperatorApi}
     */
     OperatorApi,
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 
     /**
     * The RegionsApi service constructor.

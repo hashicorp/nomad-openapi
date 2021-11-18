@@ -21,12 +21,16 @@ docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/Attribute.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
 =======
 docs/AutopilotConfiguration.md
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+docs/AutopilotConfiguration.md
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -145,12 +149,17 @@ docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
 =======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -237,11 +246,15 @@ src/main/java/io/nomadproject/client/api/JobsApi.java
 src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/main/java/io/nomadproject/client/api/NodesApi.java
 src/main/java/io/nomadproject/client/api/PluginsApi.java
 =======
 src/main/java/io/nomadproject/client/api/OperatorApi.java
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/main/java/io/nomadproject/client/api/OperatorApi.java
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
@@ -267,12 +280,16 @@ src/main/java/io/nomadproject/client/models/Allocation.java
 src/main/java/io/nomadproject/client/models/AllocationListStub.java
 src/main/java/io/nomadproject/client/models/AllocationMetric.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/main/java/io/nomadproject/client/models/Attribute.java
 src/main/java/io/nomadproject/client/models/CSIControllerInfo.java
 src/main/java/io/nomadproject/client/models/CSIInfo.java
 =======
 src/main/java/io/nomadproject/client/models/AutopilotConfiguration.java
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/main/java/io/nomadproject/client/models/AutopilotConfiguration.java
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/main/java/io/nomadproject/client/models/CSIMountOptions.java
 src/main/java/io/nomadproject/client/models/CSINodeInfo.java
 src/main/java/io/nomadproject/client/models/CSIPlugin.java
@@ -384,11 +401,15 @@ src/main/java/io/nomadproject/client/models/NodeUpdateDrainRequest.java
 src/main/java/io/nomadproject/client/models/NodeUpdateEligibilityRequest.java
 src/main/java/io/nomadproject/client/models/ObjectDiff.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/main/java/io/nomadproject/client/models/OneTimeToken.java
 src/main/java/io/nomadproject/client/models/OneTimeTokenExchangeRequest.java
 =======
 src/main/java/io/nomadproject/client/models/OperatorHealthReply.java
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/main/java/io/nomadproject/client/models/OperatorHealthReply.java
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/main/java/io/nomadproject/client/models/ParameterizedJobConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicForceResponse.java
@@ -439,6 +460,7 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 src/test/java/io/nomadproject/client/api/AclApiTest.java
@@ -635,6 +657,10 @@ src/test/java/io/nomadproject/client/api/SystemApiTest.java
 >>>>>>> 4825049 (rebase & regenerated clients)
 src/test/java/io/nomadproject/client/api/OperatorApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
+=======
+src/test/java/io/nomadproject/client/api/OperatorApiTest.java
+src/test/java/io/nomadproject/client/api/SystemApiTest.java
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/test/java/io/nomadproject/client/models/AutopilotConfigurationTest.java
 src/test/java/io/nomadproject/client/models/OperatorHealthReplyTest.java
 src/test/java/io/nomadproject/client/models/PreemptionConfigTest.java
@@ -644,7 +670,10 @@ src/test/java/io/nomadproject/client/models/SchedulerConfigurationTest.java
 src/test/java/io/nomadproject/client/models/SchedulerSetConfigurationResponseTest.java
 src/test/java/io/nomadproject/client/models/ServerHealthTest.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
 =======
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46

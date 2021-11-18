@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **GET** /namespaces | 
 *NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **POST** /namespace/{namespaceName} | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *NodesApi* | [**get_node**](docs/NodesApi.md#get_node) | **GET** /node/{nodeId} | 
 *NodesApi* | [**get_node_allocations**](docs/NodesApi.md#get_node_allocations) | **GET** /node/{nodeId}/allocations | 
 *NodesApi* | [**get_nodes**](docs/NodesApi.md#get_nodes) | **GET** /nodes | 
@@ -162,6 +163,8 @@ Class | Method | HTTP request | Description
 *PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
 =======
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 *OperatorApi* | [**delete_operator_raft**](docs/OperatorApi.md#delete_operator_raft) | **DELETE** /operator/raft/ | 
 *OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
 *OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
@@ -169,7 +172,10 @@ Class | Method | HTTP request | Description
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
 *OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
+<<<<<<< HEAD
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
 *ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **GET** /scaling/policies | 
 *ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **GET** /scaling/policy/{policyID} | 
@@ -208,12 +214,16 @@ Class | Method | HTTP request | Description
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
 <<<<<<< HEAD
+<<<<<<< HEAD
  - [Attribute](docs/Attribute.md)
  - [CSIControllerInfo](docs/CSIControllerInfo.md)
  - [CSIInfo](docs/CSIInfo.md)
 =======
  - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
  - [CSIMountOptions](docs/CSIMountOptions.md)
  - [CSINodeInfo](docs/CSINodeInfo.md)
  - [CSIPlugin](docs/CSIPlugin.md)
@@ -327,11 +337,15 @@ Class | Method | HTTP request | Description
  - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
 <<<<<<< HEAD
+<<<<<<< HEAD
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
 =======
  - [OperatorHealthReply](docs/OperatorHealthReply.md)
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -379,10 +393,14 @@ Class | Method | HTTP request | Description
  - [TaskState](docs/TaskState.md)
  - [Template](docs/Template.md)
 <<<<<<< HEAD
+<<<<<<< HEAD
  - [Uint16](docs/Uint16.md)
 =======
  - [Uint](docs/Uint.md)
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+ - [Uint](docs/Uint.md)
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
  - [Uint64](docs/Uint64.md)
  - [Uint8](docs/Uint8.md)
  - [UpdateStrategy](docs/UpdateStrategy.md)

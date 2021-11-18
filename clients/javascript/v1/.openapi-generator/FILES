@@ -19,12 +19,16 @@ docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/Attribute.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
 =======
 docs/AutopilotConfiguration.md
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+docs/AutopilotConfiguration.md
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -143,12 +147,17 @@ docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
 <<<<<<< HEAD
+<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
 =======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -217,11 +226,15 @@ src/api/JobsApi.js
 src/api/MetricsApi.js
 src/api/NamespacesApi.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/api/NodesApi.js
 src/api/PluginsApi.js
 =======
 src/api/OperatorApi.js
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/api/OperatorApi.js
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/api/RegionsApi.js
 src/api/ScalingApi.js
 src/api/SearchApi.js
@@ -244,12 +257,16 @@ src/model/Allocation.js
 src/model/AllocationListStub.js
 src/model/AllocationMetric.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/model/Attribute.js
 src/model/CSIControllerInfo.js
 src/model/CSIInfo.js
 =======
 src/model/AutopilotConfiguration.js
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/model/AutopilotConfiguration.js
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/model/CSIMountOptions.js
 src/model/CSINodeInfo.js
 src/model/CSIPlugin.js
@@ -361,11 +378,15 @@ src/model/NodeUpdateDrainRequest.js
 src/model/NodeUpdateEligibilityRequest.js
 src/model/ObjectDiff.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/model/OneTimeToken.js
 src/model/OneTimeTokenExchangeRequest.js
 =======
 src/model/OperatorHealthReply.js
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+src/model/OperatorHealthReply.js
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 src/model/ParameterizedJobConfig.js
 src/model/PeriodicConfig.js
 src/model/PeriodicForceResponse.js
@@ -418,6 +439,7 @@ src/model/VolumeMount.js
 src/model/VolumeRequest.js
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/PluginsApi.spec.js
@@ -444,6 +466,10 @@ test/api/SystemApi.spec.js
 >>>>>>> 4825049 (rebase & regenerated clients)
 test/api/OperatorApi.spec.js
 test/api/SystemApi.spec.js
+=======
+test/api/OperatorApi.spec.js
+test/api/SystemApi.spec.js
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 test/model/AutopilotConfiguration.spec.js
 test/model/OperatorHealthReply.spec.js
 test/model/PreemptionConfig.spec.js
@@ -453,7 +479,10 @@ test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 685e8ca (updates to generator/operator.go)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
 =======
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46

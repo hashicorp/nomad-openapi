@@ -13,11 +13,15 @@ pub struct APIClient {
     metrics_api: Box<dyn crate::apis::MetricsApi>,
     namespaces_api: Box<dyn crate::apis::NamespacesApi>,
 <<<<<<< HEAD
+<<<<<<< HEAD
     nodes_api: Box<dyn crate::apis::NodesApi>,
     plugins_api: Box<dyn crate::apis::PluginsApi>,
 =======
     operator_api: Box<dyn crate::apis::OperatorApi>,
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+    operator_api: Box<dyn crate::apis::OperatorApi>,
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
@@ -39,11 +43,15 @@ impl APIClient {
             metrics_api: Box::new(crate::apis::MetricsApiClient::new(rc.clone())),
             namespaces_api: Box::new(crate::apis::NamespacesApiClient::new(rc.clone())),
 <<<<<<< HEAD
+<<<<<<< HEAD
             nodes_api: Box::new(crate::apis::NodesApiClient::new(rc.clone())),
             plugins_api: Box::new(crate::apis::PluginsApiClient::new(rc.clone())),
 =======
             operator_api: Box::new(crate::apis::OperatorApiClient::new(rc.clone())),
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+            operator_api: Box::new(crate::apis::OperatorApiClient::new(rc.clone())),
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
@@ -85,6 +93,7 @@ impl APIClient {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     pub fn nodes_api(&self) -> &dyn crate::apis::NodesApi{
         self.nodes_api.as_ref()
     }
@@ -95,6 +104,10 @@ impl APIClient {
     pub fn operator_api(&self) -> &dyn crate::apis::OperatorApi{
         self.operator_api.as_ref()
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+    pub fn operator_api(&self) -> &dyn crate::apis::OperatorApi{
+        self.operator_api.as_ref()
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
     }
 
     pub fn regions_api(&self) -> &dyn crate::apis::RegionsApi{

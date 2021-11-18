@@ -189,6 +189,7 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *nomad-client.NodesApi* | [**getNode**](docs/NodesApi.md#getNode) | **GET** /node/{nodeId} | 
 *nomad-client.NodesApi* | [**getNodeAllocations**](docs/NodesApi.md#getNodeAllocations) | **GET** /node/{nodeId}/allocations | 
 *nomad-client.NodesApi* | [**getNodes**](docs/NodesApi.md#getNodes) | **GET** /nodes | 
@@ -198,6 +199,8 @@ Class | Method | HTTP request | Description
 *nomad-client.PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
 *nomad-client.PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
 =======
+=======
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 *nomad-client.OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
 *nomad-client.OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
 *nomad-client.OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
@@ -205,10 +208,14 @@ Class | Method | HTTP request | Description
 *nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 2fdd42e (updates to generator/operator.go)
 =======
 *nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
 >>>>>>> 4825049 (rebase & regenerated clients)
+=======
+*nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
 *nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
@@ -247,12 +254,16 @@ Class | Method | HTTP request | Description
  - [nomad-client.AllocationListStub](docs/AllocationListStub.md)
  - [nomad-client.AllocationMetric](docs/AllocationMetric.md)
 <<<<<<< HEAD
+<<<<<<< HEAD
  - [nomad-client.Attribute](docs/Attribute.md)
  - [nomad-client.CSIControllerInfo](docs/CSIControllerInfo.md)
  - [nomad-client.CSIInfo](docs/CSIInfo.md)
 =======
  - [nomad-client.AutopilotConfiguration](docs/AutopilotConfiguration.md)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+ - [nomad-client.AutopilotConfiguration](docs/AutopilotConfiguration.md)
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
  - [nomad-client.CSIMountOptions](docs/CSIMountOptions.md)
  - [nomad-client.CSINodeInfo](docs/CSINodeInfo.md)
  - [nomad-client.CSIPlugin](docs/CSIPlugin.md)
@@ -364,11 +375,15 @@ Class | Method | HTTP request | Description
  - [nomad-client.NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [nomad-client.ObjectDiff](docs/ObjectDiff.md)
 <<<<<<< HEAD
+<<<<<<< HEAD
  - [nomad-client.OneTimeToken](docs/OneTimeToken.md)
  - [nomad-client.OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
 =======
  - [nomad-client.OperatorHealthReply](docs/OperatorHealthReply.md)
 >>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+ - [nomad-client.OperatorHealthReply](docs/OperatorHealthReply.md)
+>>>>>>> 4825049f87bd05f944cf6444d16c4a85fed43b46
  - [nomad-client.ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [nomad-client.PeriodicConfig](docs/PeriodicConfig.md)
  - [nomad-client.PeriodicForceResponse](docs/PeriodicForceResponse.md)
