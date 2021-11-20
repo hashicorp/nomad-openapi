@@ -1,9 +1,21 @@
 VERSION=v5.2.0
 DOCKER_IMAGE="openapitools/openapi-generator-cli:$(VERSION)"
+THIS_OS := $(shell uname | cut -d- -f1)
+
+CGO_ENABLED = 1
+CGO_CFLAGS ?=
+SDKROOT ?=
+
+ifeq (Darwin,$(THIS_OS))
+spec: CGO_ENABLED = 0
+CGO_CFLAGS=-Wno-undef-prefix
+endif
 
 .PHONY: spec
+spec: CC ?= $(shell go env CC)
+spec: GOOS=$(shell go env GOOS)
 spec:
-	(cd generator && GOOS=$(shell go env GOOS) go build -o bin/generator && ./bin/generator ../v1/openapi.yaml)
+	(cd generator && CGO_ENABLED=$(CGO_ENABLED) GOOS=$(GOOS) CC=$(CC) CGO_CFLAGS=$(CGO_CFLAGS) go build -o bin/generator && ./bin/generator ../v1/openapi.yaml)
 
 .PHONY: test
 test:
