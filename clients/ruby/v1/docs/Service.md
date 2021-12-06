@@ -1,25 +1,44 @@
-# Service
-
+# NomadClient::Service
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**address_mode** | **str** |  | [optional] 
-**canary_meta** | **{str: (str,)}** |  | [optional] 
-**canary_tags** | **[str]** |  | [optional] 
-**check_restart** | [**CheckRestart**](CheckRestart.md) |  | [optional] 
-**checks** | [**[ServiceCheck]**](ServiceCheck.md) |  | [optional] 
-**connect** | [**ConsulConnect**](ConsulConnect.md) |  | [optional] 
-**enable_tag_override** | **bool** |  | [optional] 
-**id** | **str** |  | [optional] 
-**meta** | **{str: (str,)}** |  | [optional] 
-**name** | **str** |  | [optional] 
-**on_update** | **str** |  | [optional] 
-**port_label** | **str** |  | [optional] 
-**tags** | **[str]** |  | [optional] 
-**task_name** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **address_mode** | **String** |  | [optional] |
+| **canary_meta** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **canary_tags** | **Array&lt;String&gt;** |  | [optional] |
+| **check_restart** | [**CheckRestart**](CheckRestart.md) |  | [optional] |
+| **checks** | [**Array&lt;ServiceCheck&gt;**](ServiceCheck.md) |  | [optional] |
+| **connect** | [**ConsulConnect**](ConsulConnect.md) |  | [optional] |
+| **enable_tag_override** | **Boolean** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **meta** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **on_update** | **String** |  | [optional] |
+| **port_label** | **String** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** |  | [optional] |
+| **task_name** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::Service.new(
+  address_mode: null,
+  canary_meta: null,
+  canary_tags: null,
+  check_restart: null,
+  checks: null,
+  connect: null,
+  enable_tag_override: null,
+  id: null,
+  meta: null,
+  name: null,
+  on_update: null,
+  port_label: null,
+  tags: null,
+  task_name: null
+)
+```
 

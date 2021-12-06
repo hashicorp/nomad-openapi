@@ -1,15 +1,24 @@
-# ConsulExposePath
-
+# NomadClient::ConsulExposePath
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**listener_port** | **str** |  | [optional] 
-**local_path_port** | **int** |  | [optional] 
-**path** | **str** |  | [optional] 
-**protocol** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **listener_port** | **String** |  | [optional] |
+| **local_path_port** | **Integer** |  | [optional] |
+| **path** | **String** |  | [optional] |
+| **protocol** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ConsulExposePath.new(
+  listener_port: null,
+  local_path_port: null,
+  path: null,
+  protocol: null
+)
+```
 

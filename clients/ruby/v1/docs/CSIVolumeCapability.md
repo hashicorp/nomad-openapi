@@ -1,13 +1,20 @@
-# CSIVolumeCapability
-
+# NomadClient::CSIVolumeCapability
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**access_mode** | **str** |  | [optional] 
-**attachment_mode** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **access_mode** | **String** |  | [optional] |
+| **attachment_mode** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIVolumeCapability.new(
+  access_mode: null,
+  attachment_mode: null
+)
+```
 

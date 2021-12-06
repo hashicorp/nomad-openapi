@@ -1,22 +1,38 @@
-# SearchRequest
-
+# NomadClient::SearchRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**allow_stale** | **bool** |  | [optional] 
-**auth_token** | **str** |  | [optional] 
-**context** | **str** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**next_token** | **str** |  | [optional] 
-**params** | **{str: (str,)}** |  | [optional] 
-**per_page** | **int** |  | [optional] 
-**prefix** | **str** |  | [optional] 
-**region** | **str** |  | [optional] 
-**wait_index** | **int** |  | [optional] 
-**wait_time** | **int** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **allow_stale** | **Boolean** |  | [optional] |
+| **auth_token** | **String** |  | [optional] |
+| **context** | **String** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **next_token** | **String** |  | [optional] |
+| **params** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **per_page** | **Integer** |  | [optional] |
+| **prefix** | **String** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **wait_index** | **Integer** |  | [optional] |
+| **wait_time** | **Integer** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::SearchRequest.new(
+  allow_stale: null,
+  auth_token: null,
+  context: null,
+  namespace: null,
+  next_token: null,
+  params: null,
+  per_page: null,
+  prefix: null,
+  region: null,
+  wait_index: null,
+  wait_time: null
+)
+```
 

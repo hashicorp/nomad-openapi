@@ -1,21 +1,36 @@
-# DeploymentState
-
+# NomadClient::DeploymentState
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**auto_revert** | **bool** |  | [optional] 
-**desired_canaries** | **int** |  | [optional] 
-**desired_total** | **int** |  | [optional] 
-**healthy_allocs** | **int** |  | [optional] 
-**placed_allocs** | **int** |  | [optional] 
-**placed_canaries** | **[str]** |  | [optional] 
-**progress_deadline** | **int** |  | [optional] 
-**promoted** | **bool** |  | [optional] 
-**require_progress_by** | **datetime** |  | [optional] 
-**unhealthy_allocs** | **int** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_revert** | **Boolean** |  | [optional] |
+| **desired_canaries** | **Integer** |  | [optional] |
+| **desired_total** | **Integer** |  | [optional] |
+| **healthy_allocs** | **Integer** |  | [optional] |
+| **placed_allocs** | **Integer** |  | [optional] |
+| **placed_canaries** | **Array&lt;String&gt;** |  | [optional] |
+| **progress_deadline** | **Integer** |  | [optional] |
+| **promoted** | **Boolean** |  | [optional] |
+| **require_progress_by** | **Time** |  | [optional] |
+| **unhealthy_allocs** | **Integer** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::DeploymentState.new(
+  auto_revert: null,
+  desired_canaries: null,
+  desired_total: null,
+  healthy_allocs: null,
+  placed_allocs: null,
+  placed_canaries: null,
+  progress_deadline: null,
+  promoted: null,
+  require_progress_by: null,
+  unhealthy_allocs: null
+)
+```
 

@@ -1,16 +1,26 @@
-# NodeDeviceResource
-
+# NomadClient::NodeDeviceResource
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**attributes** | [**{str: (Attribute,)}**](Attribute.md) |  | [optional] 
-**instances** | [**[NodeDevice]**](NodeDevice.md) |  | [optional] 
-**name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**vendor** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attributes** | [**Hash&lt;String, Attribute&gt;**](Attribute.md) |  | [optional] |
+| **instances** | [**Array&lt;NodeDevice&gt;**](NodeDevice.md) |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
+| **vendor** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::NodeDeviceResource.new(
+  attributes: null,
+  instances: null,
+  name: null,
+  type: null,
+  vendor: null
+)
+```
 

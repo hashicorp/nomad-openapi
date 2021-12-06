@@ -1,24 +1,42 @@
-# CSIPlugin
-
+# NomadClient::CSIPlugin
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**allocations** | [**[AllocationListStub]**](AllocationListStub.md) |  | [optional] 
-**controller_required** | **bool** |  | [optional] 
-**controllers** | [**{str: (CSIInfo,)}**](CSIInfo.md) |  | [optional] 
-**controllers_expected** | **int** |  | [optional] 
-**controllers_healthy** | **int** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**id** | **str** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**nodes** | [**{str: (CSIInfo,)}**](CSIInfo.md) |  | [optional] 
-**nodes_expected** | **int** |  | [optional] 
-**nodes_healthy** | **int** |  | [optional] 
-**provider** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **allocations** | [**Array&lt;AllocationListStub&gt;**](AllocationListStub.md) |  | [optional] |
+| **controller_required** | **Boolean** |  | [optional] |
+| **controllers** | [**Hash&lt;String, CSIInfo&gt;**](CSIInfo.md) |  | [optional] |
+| **controllers_expected** | **Integer** |  | [optional] |
+| **controllers_healthy** | **Integer** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **nodes** | [**Hash&lt;String, CSIInfo&gt;**](CSIInfo.md) |  | [optional] |
+| **nodes_expected** | **Integer** |  | [optional] |
+| **nodes_healthy** | **Integer** |  | [optional] |
+| **provider** | **String** |  | [optional] |
+| **version** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIPlugin.new(
+  allocations: null,
+  controller_required: null,
+  controllers: null,
+  controllers_expected: null,
+  controllers_healthy: null,
+  create_index: null,
+  id: null,
+  modify_index: null,
+  nodes: null,
+  nodes_expected: null,
+  nodes_healthy: null,
+  provider: null,
+  version: null
+)
+```
 

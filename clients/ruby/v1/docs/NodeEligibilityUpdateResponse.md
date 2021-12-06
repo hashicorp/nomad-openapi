@@ -1,16 +1,26 @@
-# NodeEligibilityUpdateResponse
-
+# NomadClient::NodeEligibilityUpdateResponse
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**eval_create_index** | **int** |  | [optional] 
-**eval_ids** | **[str]** |  | [optional] 
-**last_index** | **int** |  | [optional] 
-**node_modify_index** | **int** |  | [optional] 
-**request_time** | **int** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **eval_create_index** | **Integer** |  | [optional] |
+| **eval_ids** | **Array&lt;String&gt;** |  | [optional] |
+| **last_index** | **Integer** |  | [optional] |
+| **node_modify_index** | **Integer** |  | [optional] |
+| **request_time** | **Integer** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::NodeEligibilityUpdateResponse.new(
+  eval_create_index: null,
+  eval_ids: null,
+  last_index: null,
+  node_modify_index: null,
+  request_time: null
+)
+```
 

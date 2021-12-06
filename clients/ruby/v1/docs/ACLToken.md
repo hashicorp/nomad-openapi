@@ -1,20 +1,34 @@
-# ACLToken
-
+# NomadClient::ACLToken
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**accessor_id** | **str** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**create_time** | **datetime** |  | [optional] 
-**_global** | **bool** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**policies** | **[str]** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **accessor_id** | **String** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **create_time** | **Time** |  | [optional] |
+| **global** | **Boolean** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **policies** | **Array&lt;String&gt;** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ACLToken.new(
+  accessor_id: null,
+  create_index: null,
+  create_time: null,
+  global: null,
+  modify_index: null,
+  name: null,
+  policies: null,
+  secret_id: null,
+  type: null
+)
+```
 

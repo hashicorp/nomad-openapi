@@ -1,14 +1,22 @@
-# CheckRestart
-
+# NomadClient::CheckRestart
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**grace** | **int** |  | [optional] 
-**ignore_warnings** | **bool** |  | [optional] 
-**limit** | **int** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **grace** | **Integer** |  | [optional] |
+| **ignore_warnings** | **Boolean** |  | [optional] |
+| **limit** | **Integer** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CheckRestart.new(
+  grace: null,
+  ignore_warnings: null,
+  limit: null
+)
+```
 

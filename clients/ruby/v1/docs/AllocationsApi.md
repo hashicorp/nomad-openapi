@@ -1,88 +1,92 @@
-# openapi_client.AllocationsApi
+# NomadClient::AllocationsApi
 
 All URIs are relative to *https://127.0.0.1:4646/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**get_allocations**](AllocationsApi.md#get_allocations) | **GET** /allocations | 
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**get_allocations**](AllocationsApi.md#get_allocations) | **GET** /allocations |  |
 
 
-# **get_allocations**
-> [AllocationListStub] get_allocations()
+## get_allocations
+
+> <Array<AllocationListStub>> get_allocations(opts)
 
 
 
-### Example
+### Examples
 
-* Api Key Authentication (X-Nomad-Token):
-```python
-import time
-import openapi_client
-from openapi_client.api import allocations_api
-from openapi_client.model.allocation_list_stub import AllocationListStub
-from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
-)
+```ruby
+require 'time'
+require 'nomad_client'
+# setup authorization
+NomadClient.configure do |config|
+  # Configure API key authorization: X-Nomad-Token
+  config.api_key['X-Nomad-Token'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Nomad-Token'] = 'Bearer'
+end
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+api_instance = NomadClient::AllocationsApi.new
+opts = {
+  region: 'region_example', # String | Filters results based on the specified region.
+  namespace: 'namespace_example', # String | Filters results based on the specified namespace.
+  index: 56, # Integer | If set, wait until query exceeds given index. Must be provided with WaitParam.
+  wait: 'wait_example', # String | Provided with IndexParam to wait for change.
+  stale: 'stale_example', # String | If present, results will include stale reads.
+  prefix: 'prefix_example', # String | Constrains results to jobs that start with the defined prefix
+  x_nomad_token: 'x_nomad_token_example', # String | A Nomad ACL token.
+  per_page: 56, # Integer | Maximum number of results to return.
+  next_token: 'next_token_example', # String | Indicates where to start paging for queries that support pagination.
+  resources: true, # Boolean | Flag indicating whether to include resources in response.
+  task_states: true # Boolean | Flag indicating whether to include task states in response.
+}
 
-# Configure API key authorization: X-Nomad-Token
-configuration.api_key['X-Nomad-Token'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Nomad-Token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = allocations_api.AllocationsApi(api_client)
-    region = "region_example" # str | Filters results based on the specified region. (optional)
-    namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
-    index = 1 # int | If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
-    wait = "wait_example" # str | Provided with IndexParam to wait for change. (optional)
-    stale = "stale_example" # str | If present, results will include stale reads. (optional)
-    prefix = "prefix_example" # str | Constrains results to jobs that start with the defined prefix (optional)
-    x_nomad_token = "X-Nomad-Token_example" # str | A Nomad ACL token. (optional)
-    per_page = 1 # int | Maximum number of results to return. (optional)
-    next_token = "next_token_example" # str | Indicates where to start paging for queries that support pagination. (optional)
-    resources = True # bool | Flag indicating whether to include resources in response. (optional)
-    task_states = True # bool | Flag indicating whether to include task states in response. (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_allocations(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token, resources=resources, task_states=task_states)
-        pprint(api_response)
-    except openapi_client.ApiException as e:
-        print("Exception when calling AllocationsApi->get_allocations: %s\n" % e)
+begin
+  
+  result = api_instance.get_allocations(opts)
+  p result
+rescue NomadClient::ApiError => e
+  puts "Error when calling AllocationsApi->get_allocations: #{e}"
+end
 ```
 
+#### Using the get_allocations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<AllocationListStub>>, Integer, Hash)> get_allocations_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_allocations_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<AllocationListStub>>
+rescue NomadClient::ApiError => e
+  puts "Error when calling AllocationsApi->get_allocations_with_http_info: #{e}"
+end
+```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region** | **str**| Filters results based on the specified region. | [optional]
- **namespace** | **str**| Filters results based on the specified namespace. | [optional]
- **index** | **int**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
- **wait** | **str**| Provided with IndexParam to wait for change. | [optional]
- **stale** | **str**| If present, results will include stale reads. | [optional]
- **prefix** | **str**| Constrains results to jobs that start with the defined prefix | [optional]
- **x_nomad_token** | **str**| A Nomad ACL token. | [optional]
- **per_page** | **int**| Maximum number of results to return. | [optional]
- **next_token** | **str**| Indicates where to start paging for queries that support pagination. | [optional]
- **resources** | **bool**| Flag indicating whether to include resources in response. | [optional]
- **task_states** | **bool**| Flag indicating whether to include task states in response. | [optional]
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **region** | **String** | Filters results based on the specified region. | [optional] |
+| **namespace** | **String** | Filters results based on the specified namespace. | [optional] |
+| **index** | **Integer** | If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] |
+| **wait** | **String** | Provided with IndexParam to wait for change. | [optional] |
+| **stale** | **String** | If present, results will include stale reads. | [optional] |
+| **prefix** | **String** | Constrains results to jobs that start with the defined prefix | [optional] |
+| **x_nomad_token** | **String** | A Nomad ACL token. | [optional] |
+| **per_page** | **Integer** | Maximum number of results to return. | [optional] |
+| **next_token** | **String** | Indicates where to start paging for queries that support pagination. | [optional] |
+| **resources** | **Boolean** | Flag indicating whether to include resources in response. | [optional] |
+| **task_states** | **Boolean** | Flag indicating whether to include task states in response. | [optional] |
 
 ### Return type
 
-[**[AllocationListStub]**](AllocationListStub.md)
+[**Array&lt;AllocationListStub&gt;**](AllocationListStub.md)
 
 ### Authorization
 
@@ -90,18 +94,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

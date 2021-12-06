@@ -1,13 +1,11 @@
-# ref: https://docs.travis-ci.com/user/languages/python
-language: python
-python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
-  - "3.9"
-# command to install dependencies
-install:
-  - "pip install -r requirements.txt"
-  - "pip install -r test-requirements.txt"
-# command to run tests
-script: pytest --cov=openapi_client
+language: ruby
+cache: bundler
+rvm:
+  - 2.3
+  - 2.4
+  - 2.5
+script:
+  - bundle install --path vendor/bundle
+  - bundle exec rspec
+  - gem build nomad_client.gemspec
+  - gem install ./nomad_client-1.0.0.gem

@@ -1,21 +1,36 @@
-# ScalingPolicy
-
+# NomadClient::ScalingPolicy
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**create_index** | **int** |  | [optional] 
-**enabled** | **bool** |  | [optional] 
-**id** | **str** |  | [optional] 
-**max** | **int** |  | [optional] 
-**min** | **int** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**policy** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
-**target** | **{str: (str,)}** |  | [optional] 
-**type** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_index** | **Integer** |  | [optional] |
+| **enabled** | **Boolean** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **max** | **Integer** |  | [optional] |
+| **min** | **Integer** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **policy** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **target** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **type** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ScalingPolicy.new(
+  create_index: null,
+  enabled: null,
+  id: null,
+  max: null,
+  min: null,
+  modify_index: null,
+  namespace: null,
+  policy: null,
+  target: null,
+  type: null
+)
+```
 
