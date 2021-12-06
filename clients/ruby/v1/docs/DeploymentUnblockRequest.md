@@ -1,15 +1,24 @@
-# DeploymentUnblockRequest
-
+# NomadClient::DeploymentUnblockRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**deployment_id** | **str** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**region** | **str** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deployment_id** | **String** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::DeploymentUnblockRequest.new(
+  deployment_id: null,
+  namespace: null,
+  region: null,
+  secret_id: null
+)
+```
 

@@ -1,16 +1,26 @@
-# FieldDiff
-
+# NomadClient::FieldDiff
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**annotations** | **[str]** |  | [optional] 
-**name** | **str** |  | [optional] 
-**new** | **str** |  | [optional] 
-**old** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **annotations** | **Array&lt;String&gt;** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **new** | **String** |  | [optional] |
+| **old** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::FieldDiff.new(
+  annotations: null,
+  name: null,
+  new: null,
+  old: null,
+  type: null
+)
+```
 

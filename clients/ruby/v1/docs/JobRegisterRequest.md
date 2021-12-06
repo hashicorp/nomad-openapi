@@ -1,19 +1,32 @@
-# JobRegisterRequest
-
+# NomadClient::JobRegisterRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**enforce_index** | **bool** |  | [optional] 
-**job** | [**Job**](Job.md) |  | [optional] 
-**job_modify_index** | **int** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**policy_override** | **bool** |  | [optional] 
-**preserve_counts** | **bool** |  | [optional] 
-**region** | **str** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enforce_index** | **Boolean** |  | [optional] |
+| **job** | [**Job**](Job.md) |  | [optional] |
+| **job_modify_index** | **Integer** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **policy_override** | **Boolean** |  | [optional] |
+| **preserve_counts** | **Boolean** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::JobRegisterRequest.new(
+  enforce_index: null,
+  job: null,
+  job_modify_index: null,
+  namespace: null,
+  policy_override: null,
+  preserve_counts: null,
+  region: null,
+  secret_id: null
+)
+```
 

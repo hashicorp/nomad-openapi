@@ -1,17 +1,28 @@
-# DeploymentAllocHealthRequest
-
+# NomadClient::DeploymentAllocHealthRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**deployment_id** | **str** |  | [optional] 
-**healthy_allocation_ids** | **[str]** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**region** | **str** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**unhealthy_allocation_ids** | **[str]** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deployment_id** | **String** |  | [optional] |
+| **healthy_allocation_ids** | **Array&lt;String&gt;** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
+| **unhealthy_allocation_ids** | **Array&lt;String&gt;** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::DeploymentAllocHealthRequest.new(
+  deployment_id: null,
+  healthy_allocation_ids: null,
+  namespace: null,
+  region: null,
+  secret_id: null,
+  unhealthy_allocation_ids: null
+)
+```
 

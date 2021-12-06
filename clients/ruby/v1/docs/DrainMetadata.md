@@ -1,16 +1,26 @@
-# DrainMetadata
-
+# NomadClient::DrainMetadata
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**accessor_id** | **str** |  | [optional] 
-**meta** | **{str: (str,)}** |  | [optional] 
-**started_at** | **datetime** |  | [optional] 
-**status** | **str** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **accessor_id** | **String** |  | [optional] |
+| **meta** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **started_at** | **Time** |  | [optional] |
+| **status** | **String** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::DrainMetadata.new(
+  accessor_id: null,
+  meta: null,
+  started_at: null,
+  status: null,
+  updated_at: null
+)
+```
 

@@ -1,20 +1,34 @@
-# ScalingRequest
-
+# NomadClient::ScalingRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**count** | **int** |  | [optional] 
-**error** | **bool** |  | [optional] 
-**message** | **str** |  | [optional] 
-**meta** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**policy_override** | **bool** |  | [optional] 
-**region** | **str** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**target** | **{str: (str,)}** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **count** | **Integer** |  | [optional] |
+| **error** | **Boolean** |  | [optional] |
+| **message** | **String** |  | [optional] |
+| **meta** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **policy_override** | **Boolean** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
+| **target** | **Hash&lt;String, String&gt;** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ScalingRequest.new(
+  count: null,
+  error: null,
+  message: null,
+  meta: null,
+  namespace: null,
+  policy_override: null,
+  region: null,
+  secret_id: null,
+  target: null
+)
+```
 

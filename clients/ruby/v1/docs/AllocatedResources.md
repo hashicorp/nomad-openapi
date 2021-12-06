@@ -1,13 +1,20 @@
-# AllocatedResources
-
+# NomadClient::AllocatedResources
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**shared** | [**AllocatedSharedResources**](AllocatedSharedResources.md) |  | [optional] 
-**tasks** | [**{str: (AllocatedTaskResources,)}**](AllocatedTaskResources.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **shared** | [**AllocatedSharedResources**](AllocatedSharedResources.md) |  | [optional] |
+| **tasks** | [**Hash&lt;String, AllocatedTaskResources&gt;**](AllocatedTaskResources.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::AllocatedResources.new(
+  shared: null,
+  tasks: null
+)
+```
 

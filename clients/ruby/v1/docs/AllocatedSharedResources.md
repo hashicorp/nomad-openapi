@@ -1,14 +1,22 @@
-# AllocatedSharedResources
-
+# NomadClient::AllocatedSharedResources
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**disk_mb** | **int** |  | [optional] 
-**networks** | [**[NetworkResource]**](NetworkResource.md) |  | [optional] 
-**ports** | [**[PortMapping]**](PortMapping.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **disk_mb** | **Integer** |  | [optional] |
+| **networks** | [**Array&lt;NetworkResource&gt;**](NetworkResource.md) |  | [optional] |
+| **ports** | [**Array&lt;PortMapping&gt;**](PortMapping.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::AllocatedSharedResources.new(
+  disk_mb: null,
+  networks: null,
+  ports: null
+)
+```
 

@@ -1,16 +1,26 @@
-# ConsulLinkedService
-
+# NomadClient::ConsulLinkedService
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ca_file** | **str** |  | [optional] 
-**cert_file** | **str** |  | [optional] 
-**key_file** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**sni** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ca_file** | **String** |  | [optional] |
+| **cert_file** | **String** |  | [optional] |
+| **key_file** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **sni** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ConsulLinkedService.new(
+  ca_file: null,
+  cert_file: null,
+  key_file: null,
+  name: null,
+  sni: null
+)
+```
 

@@ -1,15 +1,24 @@
-# NodeDevice
-
+# NomadClient::NodeDevice
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**health_description** | **str** |  | [optional] 
-**healthy** | **bool** |  | [optional] 
-**id** | **str** |  | [optional] 
-**locality** | [**NodeDeviceLocality**](NodeDeviceLocality.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **health_description** | **String** |  | [optional] |
+| **healthy** | **Boolean** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **locality** | [**NodeDeviceLocality**](NodeDeviceLocality.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::NodeDevice.new(
+  health_description: null,
+  healthy: null,
+  id: null,
+  locality: null
+)
+```
 

@@ -1,15 +1,24 @@
-# CSIVolumeRegisterRequest
-
+# NomadClient::CSIVolumeRegisterRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**namespace** | **str** |  | [optional] 
-**region** | **str** |  | [optional] 
-**secret_id** | **str** |  | [optional] 
-**volumes** | [**[CSIVolume]**](CSIVolume.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **namespace** | **String** |  | [optional] |
+| **region** | **String** |  | [optional] |
+| **secret_id** | **String** |  | [optional] |
+| **volumes** | [**Array&lt;CSIVolume&gt;**](CSIVolume.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIVolumeRegisterRequest.new(
+  namespace: null,
+  region: null,
+  secret_id: null,
+  volumes: null
+)
+```
 

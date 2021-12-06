@@ -1,20 +1,34 @@
-# CSIPluginListStub
-
+# NomadClient::CSIPluginListStub
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**controller_required** | **bool** |  | [optional] 
-**controllers_expected** | **int** |  | [optional] 
-**controllers_healthy** | **int** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**id** | **str** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**nodes_expected** | **int** |  | [optional] 
-**nodes_healthy** | **int** |  | [optional] 
-**provider** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **controller_required** | **Boolean** |  | [optional] |
+| **controllers_expected** | **Integer** |  | [optional] |
+| **controllers_healthy** | **Integer** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **nodes_expected** | **Integer** |  | [optional] |
+| **nodes_healthy** | **Integer** |  | [optional] |
+| **provider** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIPluginListStub.new(
+  controller_required: null,
+  controllers_expected: null,
+  controllers_healthy: null,
+  create_index: null,
+  id: null,
+  modify_index: null,
+  nodes_expected: null,
+  nodes_healthy: null,
+  provider: null
+)
+```
 
