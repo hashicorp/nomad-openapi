@@ -1,36 +1,66 @@
-# TaskEvent
-
+# NomadClient::TaskEvent
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**details** | **{str: (str,)}** |  | [optional] 
-**disk_limit** | **int** |  | [optional] 
-**disk_size** | **int** |  | [optional] 
-**display_message** | **str** |  | [optional] 
-**download_error** | **str** |  | [optional] 
-**driver_error** | **str** |  | [optional] 
-**driver_message** | **str** |  | [optional] 
-**exit_code** | **int** |  | [optional] 
-**failed_sibling** | **str** |  | [optional] 
-**fails_task** | **bool** |  | [optional] 
-**generic_source** | **str** |  | [optional] 
-**kill_error** | **str** |  | [optional] 
-**kill_reason** | **str** |  | [optional] 
-**kill_timeout** | **int** |  | [optional] 
-**message** | **str** |  | [optional] 
-**restart_reason** | **str** |  | [optional] 
-**setup_error** | **str** |  | [optional] 
-**signal** | **int** |  | [optional] 
-**start_delay** | **int** |  | [optional] 
-**task_signal** | **str** |  | [optional] 
-**task_signal_reason** | **str** |  | [optional] 
-**time** | **int** |  | [optional] 
-**type** | **str** |  | [optional] 
-**validation_error** | **str** |  | [optional] 
-**vault_error** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **details** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **disk_limit** | **Integer** |  | [optional] |
+| **disk_size** | **Integer** |  | [optional] |
+| **display_message** | **String** |  | [optional] |
+| **download_error** | **String** |  | [optional] |
+| **driver_error** | **String** |  | [optional] |
+| **driver_message** | **String** |  | [optional] |
+| **exit_code** | **Integer** |  | [optional] |
+| **failed_sibling** | **String** |  | [optional] |
+| **fails_task** | **Boolean** |  | [optional] |
+| **generic_source** | **String** |  | [optional] |
+| **kill_error** | **String** |  | [optional] |
+| **kill_reason** | **String** |  | [optional] |
+| **kill_timeout** | **Integer** |  | [optional] |
+| **message** | **String** |  | [optional] |
+| **restart_reason** | **String** |  | [optional] |
+| **setup_error** | **String** |  | [optional] |
+| **signal** | **Integer** |  | [optional] |
+| **start_delay** | **Integer** |  | [optional] |
+| **task_signal** | **String** |  | [optional] |
+| **task_signal_reason** | **String** |  | [optional] |
+| **time** | **Integer** |  | [optional] |
+| **type** | **String** |  | [optional] |
+| **validation_error** | **String** |  | [optional] |
+| **vault_error** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::TaskEvent.new(
+  details: null,
+  disk_limit: null,
+  disk_size: null,
+  display_message: null,
+  download_error: null,
+  driver_error: null,
+  driver_message: null,
+  exit_code: null,
+  failed_sibling: null,
+  fails_task: null,
+  generic_source: null,
+  kill_error: null,
+  kill_reason: null,
+  kill_timeout: null,
+  message: null,
+  restart_reason: null,
+  setup_error: null,
+  signal: null,
+  start_delay: null,
+  task_signal: null,
+  task_signal_reason: null,
+  time: null,
+  type: null,
+  validation_error: null,
+  vault_error: null
+)
+```
 

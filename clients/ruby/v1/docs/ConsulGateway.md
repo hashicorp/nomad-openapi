@@ -1,15 +1,24 @@
-# ConsulGateway
-
+# NomadClient::ConsulGateway
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ingress** | [**ConsulIngressConfigEntry**](ConsulIngressConfigEntry.md) |  | [optional] 
-**mesh** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
-**proxy** | [**ConsulGatewayProxy**](ConsulGatewayProxy.md) |  | [optional] 
-**terminating** | [**ConsulTerminatingConfigEntry**](ConsulTerminatingConfigEntry.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ingress** | [**ConsulIngressConfigEntry**](ConsulIngressConfigEntry.md) |  | [optional] |
+| **mesh** | [**AnyType**](.md) |  | [optional] |
+| **proxy** | [**ConsulGatewayProxy**](ConsulGatewayProxy.md) |  | [optional] |
+| **terminating** | [**ConsulTerminatingConfigEntry**](ConsulTerminatingConfigEntry.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::ConsulGateway.new(
+  ingress: null,
+  mesh: null,
+  proxy: null,
+  terminating: null
+)
+```
 

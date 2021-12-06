@@ -1,29 +1,52 @@
-# CSIVolumeListStub
-
+# NomadClient::CSIVolumeListStub
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**access_mode** | **str** |  | [optional] 
-**attachment_mode** | **str** |  | [optional] 
-**controller_required** | **bool** |  | [optional] 
-**controllers_expected** | **int** |  | [optional] 
-**controllers_healthy** | **int** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**external_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**nodes_expected** | **int** |  | [optional] 
-**nodes_healthy** | **int** |  | [optional] 
-**plugin_id** | **str** |  | [optional] 
-**provider** | **str** |  | [optional] 
-**resource_exhausted** | **datetime** |  | [optional] 
-**schedulable** | **bool** |  | [optional] 
-**topologies** | [**[CSITopology]**](CSITopology.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **access_mode** | **String** |  | [optional] |
+| **attachment_mode** | **String** |  | [optional] |
+| **controller_required** | **Boolean** |  | [optional] |
+| **controllers_expected** | **Integer** |  | [optional] |
+| **controllers_healthy** | **Integer** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **external_id** | **String** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **nodes_expected** | **Integer** |  | [optional] |
+| **nodes_healthy** | **Integer** |  | [optional] |
+| **plugin_id** | **String** |  | [optional] |
+| **provider** | **String** |  | [optional] |
+| **resource_exhausted** | **Time** |  | [optional] |
+| **schedulable** | **Boolean** |  | [optional] |
+| **topologies** | [**Array&lt;CSITopology&gt;**](CSITopology.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIVolumeListStub.new(
+  access_mode: null,
+  attachment_mode: null,
+  controller_required: null,
+  controllers_expected: null,
+  controllers_healthy: null,
+  create_index: null,
+  external_id: null,
+  id: null,
+  modify_index: null,
+  name: null,
+  namespace: null,
+  nodes_expected: null,
+  nodes_healthy: null,
+  plugin_id: null,
+  provider: null,
+  resource_exhausted: null,
+  schedulable: null,
+  topologies: null
+)
+```
 

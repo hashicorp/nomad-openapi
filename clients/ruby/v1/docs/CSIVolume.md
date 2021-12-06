@@ -1,43 +1,80 @@
-# CSIVolume
-
+# NomadClient::CSIVolume
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**access_mode** | **str** |  | [optional] 
-**allocations** | [**[AllocationListStub]**](AllocationListStub.md) |  | [optional] 
-**attachment_mode** | **str** |  | [optional] 
-**capacity** | **int** |  | [optional] 
-**clone_id** | **str** |  | [optional] 
-**context** | **{str: (str,)}** |  | [optional] 
-**controller_required** | **bool** |  | [optional] 
-**controllers_expected** | **int** |  | [optional] 
-**controllers_healthy** | **int** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**external_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**mount_options** | [**CSIMountOptions**](CSIMountOptions.md) |  | [optional] 
-**name** | **str** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**nodes_expected** | **int** |  | [optional] 
-**nodes_healthy** | **int** |  | [optional] 
-**parameters** | **{str: (str,)}** |  | [optional] 
-**plugin_id** | **str** |  | [optional] 
-**provider** | **str** |  | [optional] 
-**provider_version** | **str** |  | [optional] 
-**read_allocs** | [**{str: (Allocation,)}**](Allocation.md) |  | [optional] 
-**requested_capabilities** | [**[CSIVolumeCapability]**](CSIVolumeCapability.md) |  | [optional] 
-**requested_capacity_max** | **int** |  | [optional] 
-**requested_capacity_min** | **int** |  | [optional] 
-**resource_exhausted** | **datetime** |  | [optional] 
-**schedulable** | **bool** |  | [optional] 
-**secrets** | [**CSISecrets**](CSISecrets.md) |  | [optional] 
-**snapshot_id** | **str** |  | [optional] 
-**topologies** | [**[CSITopology]**](CSITopology.md) |  | [optional] 
-**write_allocs** | [**{str: (Allocation,)}**](Allocation.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **access_mode** | **String** |  | [optional] |
+| **allocations** | [**Array&lt;AllocationListStub&gt;**](AllocationListStub.md) |  | [optional] |
+| **attachment_mode** | **String** |  | [optional] |
+| **capacity** | **Integer** |  | [optional] |
+| **clone_id** | **String** |  | [optional] |
+| **context** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **controller_required** | **Boolean** |  | [optional] |
+| **controllers_expected** | **Integer** |  | [optional] |
+| **controllers_healthy** | **Integer** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **external_id** | **String** |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **mount_options** | [**CSIMountOptions**](CSIMountOptions.md) |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **nodes_expected** | **Integer** |  | [optional] |
+| **nodes_healthy** | **Integer** |  | [optional] |
+| **parameters** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **plugin_id** | **String** |  | [optional] |
+| **provider** | **String** |  | [optional] |
+| **provider_version** | **String** |  | [optional] |
+| **read_allocs** | [**Hash&lt;String, Allocation&gt;**](Allocation.md) |  | [optional] |
+| **requested_capabilities** | [**Array&lt;CSIVolumeCapability&gt;**](CSIVolumeCapability.md) |  | [optional] |
+| **requested_capacity_max** | **Integer** |  | [optional] |
+| **requested_capacity_min** | **Integer** |  | [optional] |
+| **resource_exhausted** | **Time** |  | [optional] |
+| **schedulable** | **Boolean** |  | [optional] |
+| **secrets** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **snapshot_id** | **String** |  | [optional] |
+| **topologies** | [**Array&lt;CSITopology&gt;**](CSITopology.md) |  | [optional] |
+| **write_allocs** | [**Hash&lt;String, Allocation&gt;**](Allocation.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::CSIVolume.new(
+  access_mode: null,
+  allocations: null,
+  attachment_mode: null,
+  capacity: null,
+  clone_id: null,
+  context: null,
+  controller_required: null,
+  controllers_expected: null,
+  controllers_healthy: null,
+  create_index: null,
+  external_id: null,
+  id: null,
+  modify_index: null,
+  mount_options: null,
+  name: null,
+  namespace: null,
+  nodes_expected: null,
+  nodes_healthy: null,
+  parameters: null,
+  plugin_id: null,
+  provider: null,
+  provider_version: null,
+  read_allocs: null,
+  requested_capabilities: null,
+  requested_capacity_max: null,
+  requested_capacity_min: null,
+  resource_exhausted: null,
+  schedulable: null,
+  secrets: null,
+  snapshot_id: null,
+  topologies: null,
+  write_allocs: null
+)
+```
 

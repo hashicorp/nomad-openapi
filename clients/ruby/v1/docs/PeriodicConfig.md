@@ -1,16 +1,26 @@
-# PeriodicConfig
-
+# NomadClient::PeriodicConfig
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**enabled** | **bool** |  | [optional] 
-**prohibit_overlap** | **bool** |  | [optional] 
-**spec** | **str** |  | [optional] 
-**spec_type** | **str** |  | [optional] 
-**time_zone** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enabled** | **Boolean** |  | [optional] |
+| **prohibit_overlap** | **Boolean** |  | [optional] |
+| **spec** | **String** |  | [optional] |
+| **spec_type** | **String** |  | [optional] |
+| **time_zone** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::PeriodicConfig.new(
+  enabled: null,
+  prohibit_overlap: null,
+  spec: null,
+  spec_type: null,
+  time_zone: null
+)
+```
 

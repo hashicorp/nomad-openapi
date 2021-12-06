@@ -1,16 +1,26 @@
-# NodeEvent
-
+# NomadClient::NodeEvent
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**create_index** | **int** |  | [optional] 
-**details** | **{str: (str,)}** |  | [optional] 
-**message** | **str** |  | [optional] 
-**subsystem** | **str** |  | [optional] 
-**timestamp** | **datetime** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_index** | **Integer** |  | [optional] |
+| **details** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **message** | **String** |  | [optional] |
+| **subsystem** | **String** |  | [optional] |
+| **timestamp** | **Time** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::NodeEvent.new(
+  create_index: null,
+  details: null,
+  message: null,
+  subsystem: null,
+  timestamp: null
+)
+```
 

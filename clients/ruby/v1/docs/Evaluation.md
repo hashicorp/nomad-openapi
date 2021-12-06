@@ -1,39 +1,72 @@
-# Evaluation
-
+# NomadClient::Evaluation
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**annotate_plan** | **bool** |  | [optional] 
-**blocked_eval** | **str** |  | [optional] 
-**class_eligibility** | **{str: (bool,)}** |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**create_time** | **int** |  | [optional] 
-**deployment_id** | **str** |  | [optional] 
-**escaped_computed_class** | **bool** |  | [optional] 
-**failed_tg_allocs** | [**{str: (AllocationMetric,)}**](AllocationMetric.md) |  | [optional] 
-**id** | **str** |  | [optional] 
-**job_id** | **str** |  | [optional] 
-**job_modify_index** | **int** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**modify_time** | **int** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**next_eval** | **str** |  | [optional] 
-**node_id** | **str** |  | [optional] 
-**node_modify_index** | **int** |  | [optional] 
-**previous_eval** | **str** |  | [optional] 
-**priority** | **int** |  | [optional] 
-**queued_allocations** | **{str: (int,)}** |  | [optional] 
-**quota_limit_reached** | **str** |  | [optional] 
-**snapshot_index** | **int** |  | [optional] 
-**status** | **str** |  | [optional] 
-**status_description** | **str** |  | [optional] 
-**triggered_by** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**wait** | **int** |  | [optional] 
-**wait_until** | **datetime** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **annotate_plan** | **Boolean** |  | [optional] |
+| **blocked_eval** | **String** |  | [optional] |
+| **class_eligibility** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **create_time** | **Integer** |  | [optional] |
+| **deployment_id** | **String** |  | [optional] |
+| **escaped_computed_class** | **Boolean** |  | [optional] |
+| **failed_tg_allocs** | [**Hash&lt;String, AllocationMetric&gt;**](AllocationMetric.md) |  | [optional] |
+| **id** | **String** |  | [optional] |
+| **job_id** | **String** |  | [optional] |
+| **job_modify_index** | **Integer** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **modify_time** | **Integer** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **next_eval** | **String** |  | [optional] |
+| **node_id** | **String** |  | [optional] |
+| **node_modify_index** | **Integer** |  | [optional] |
+| **previous_eval** | **String** |  | [optional] |
+| **priority** | **Integer** |  | [optional] |
+| **queued_allocations** | **Hash&lt;String, Integer&gt;** |  | [optional] |
+| **quota_limit_reached** | **String** |  | [optional] |
+| **snapshot_index** | **Integer** |  | [optional] |
+| **status** | **String** |  | [optional] |
+| **status_description** | **String** |  | [optional] |
+| **triggered_by** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
+| **wait** | **Integer** |  | [optional] |
+| **wait_until** | **Time** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::Evaluation.new(
+  annotate_plan: null,
+  blocked_eval: null,
+  class_eligibility: null,
+  create_index: null,
+  create_time: null,
+  deployment_id: null,
+  escaped_computed_class: null,
+  failed_tg_allocs: null,
+  id: null,
+  job_id: null,
+  job_modify_index: null,
+  modify_index: null,
+  modify_time: null,
+  namespace: null,
+  next_eval: null,
+  node_id: null,
+  node_modify_index: null,
+  previous_eval: null,
+  priority: null,
+  queued_allocations: null,
+  quota_limit_reached: null,
+  snapshot_index: null,
+  status: null,
+  status_description: null,
+  triggered_by: null,
+  type: null,
+  wait: null,
+  wait_until: null
+)
+```
 

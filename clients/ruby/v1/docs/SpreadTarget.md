@@ -1,13 +1,20 @@
-# SpreadTarget
-
+# NomadClient::SpreadTarget
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**percent** | **int** |  | [optional] 
-**value** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **percent** | **Integer** |  | [optional] |
+| **value** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::SpreadTarget.new(
+  percent: null,
+  value: null
+)
+```
 

@@ -1,5 +1,5 @@
 # File is used by the openapi-generator cli to generate a javascript client.
-generatorName: python
+generatorName: ruby
 gitUserId: hashicorp
 gitRepoId: nomad-openapi/clients/ruby/v1
 inputSpec: /local/v1/openapi.yaml

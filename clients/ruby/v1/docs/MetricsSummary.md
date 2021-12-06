@@ -1,16 +1,26 @@
-# MetricsSummary
-
+# NomadClient::MetricsSummary
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**counters** | [**[SampledValue]**](SampledValue.md) |  | [optional] 
-**gauges** | [**[GaugeValue]**](GaugeValue.md) |  | [optional] 
-**points** | [**[PointValue]**](PointValue.md) |  | [optional] 
-**samples** | [**[SampledValue]**](SampledValue.md) |  | [optional] 
-**timestamp** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **counters** | [**Array&lt;SampledValue&gt;**](SampledValue.md) |  | [optional] |
+| **gauges** | [**Array&lt;GaugeValue&gt;**](GaugeValue.md) |  | [optional] |
+| **points** | [**Array&lt;PointValue&gt;**](PointValue.md) |  | [optional] |
+| **samples** | [**Array&lt;SampledValue&gt;**](SampledValue.md) |  | [optional] |
+| **timestamp** | **String** |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::MetricsSummary.new(
+  counters: null,
+  gauges: null,
+  points: null,
+  samples: null,
+  timestamp: null
+)
+```
 

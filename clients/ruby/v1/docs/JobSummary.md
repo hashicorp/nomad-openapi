@@ -1,17 +1,28 @@
-# JobSummary
-
+# NomadClient::JobSummary
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**children** | [**JobChildrenSummary**](JobChildrenSummary.md) |  | [optional] 
-**create_index** | **int** |  | [optional] 
-**job_id** | **str** |  | [optional] 
-**modify_index** | **int** |  | [optional] 
-**namespace** | **str** |  | [optional] 
-**summary** | [**{str: (TaskGroupSummary,)}**](TaskGroupSummary.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **children** | [**JobChildrenSummary**](JobChildrenSummary.md) |  | [optional] |
+| **create_index** | **Integer** |  | [optional] |
+| **job_id** | **String** |  | [optional] |
+| **modify_index** | **Integer** |  | [optional] |
+| **namespace** | **String** |  | [optional] |
+| **summary** | [**Hash&lt;String, TaskGroupSummary&gt;**](TaskGroupSummary.md) |  | [optional] |
 
+## Example
+
+```ruby
+require 'nomad_client'
+
+instance = NomadClient::JobSummary.new(
+  children: null,
+  create_index: null,
+  job_id: null,
+  modify_index: null,
+  namespace: null,
+  summary: null
+)
+```
 
