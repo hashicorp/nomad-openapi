@@ -77,12 +77,8 @@ type APIClient struct {
 	SearchApi *SearchApiService
 
 	StatusApi *StatusApiService
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 
 	SystemApi *SystemApiService
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 
 	VolumesApi *VolumesApiService
 }
@@ -117,11 +113,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ScalingApi = (*ScalingApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)
 	c.StatusApi = (*StatusApiService)(&c.common)
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 	c.SystemApi = (*SystemApiService)(&c.common)
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 	c.VolumesApi = (*VolumesApiService)(&c.common)
 
 	return c

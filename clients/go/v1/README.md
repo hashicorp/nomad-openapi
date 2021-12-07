@@ -149,12 +149,8 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**GetSearch**](docs/SearchApi.md#getsearch) | **Post** /search | 
 *StatusApi* | [**GetStatusLeader**](docs/StatusApi.md#getstatusleader) | **Get** /status/leader | 
 *StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 *SystemApi* | [**PutSystemGC**](docs/SystemApi.md#putsystemgc) | **Put** /system/gc | 
 *SystemApi* | [**PutSystemReconcileSummaries**](docs/SystemApi.md#putsystemreconcilesummaries) | **Put** /system/reconcile/summaries | 
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**DeleteSnapshot**](docs/VolumesApi.md#deletesnapshot) | **Delete** /volumes/snapshot | 
 *VolumesApi* | [**DeleteVolumeRegistration**](docs/VolumesApi.md#deletevolumeregistration) | **Delete** /volume/csi/{volumeId} | 

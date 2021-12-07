@@ -18,11 +18,7 @@ pub struct APIClient {
     scaling_api: Box<dyn crate::apis::ScalingApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
     status_api: Box<dyn crate::apis::StatusApi>,
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
     system_api: Box<dyn crate::apis::SystemApi>,
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
     volumes_api: Box<dyn crate::apis::VolumesApi>,
 }
 
@@ -45,14 +41,7 @@ impl APIClient {
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
             status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
->>>>>>> 8d74053 (updated generator/status.go)
-=======
             system_api: Box::new(crate::apis::SystemApiClient::new(rc.clone())),
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
             volumes_api: Box::new(crate::apis::VolumesApiClient::new(rc.clone())),
         }
     }
@@ -111,14 +100,10 @@ impl APIClient {
 
     pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
         self.status_api.as_ref()
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
     }
 
     pub fn system_api(&self) -> &dyn crate::apis::SystemApi{
         self.system_api.as_ref()
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
     }
 
     pub fn volumes_api(&self) -> &dyn crate::apis::VolumesApi{

@@ -172,11 +172,7 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 docs/StatusApi.md
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 docs/SystemApi.md
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -212,11 +208,7 @@ src/api/RegionsApi.js
 src/api/ScalingApi.js
 src/api/SearchApi.js
 src/api/StatusApi.js
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 src/api/SystemApi.js
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 src/api/VolumesApi.js
 src/index.js
 src/model/ACLPolicy.js
@@ -412,12 +404,3 @@ test/model/DeploymentUpdateResponse.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/ScalingPolicyListStub.spec.js
-<<<<<<< HEAD
-=======
-test/api/StatusApi.spec.js
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-test/api/StatusApi.spec.js
->>>>>>> 8d74053 (updated generator/status.go)
-=======
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)

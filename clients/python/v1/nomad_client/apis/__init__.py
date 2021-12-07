@@ -28,9 +28,5 @@ from nomad_client.api.regions_api import RegionsApi
 from nomad_client.api.scaling_api import ScalingApi
 from nomad_client.api.search_api import SearchApi
 from nomad_client.api.status_api import StatusApi
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 from nomad_client.api.system_api import SystemApi
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 from nomad_client.api.volumes_api import VolumesApi

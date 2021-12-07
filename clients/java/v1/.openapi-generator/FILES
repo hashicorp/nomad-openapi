@@ -174,11 +174,7 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 docs/StatusApi.md
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 docs/SystemApi.md
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
@@ -232,11 +228,7 @@ src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
 src/main/java/io/nomadproject/client/api/StatusApi.java
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 src/main/java/io/nomadproject/client/api/SystemApi.java
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
@@ -603,12 +595,3 @@ src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
-<<<<<<< HEAD
-=======
-src/test/java/io/nomadproject/client/api/StatusApiTest.java
->>>>>>> 8d74053 (updated generator/status.go)
-=======
-src/test/java/io/nomadproject/client/api/StatusApiTest.java
->>>>>>> 8d74053 (updated generator/status.go)
-=======
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)

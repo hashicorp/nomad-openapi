@@ -15,11 +15,7 @@ api_regions.go
 api_scaling.go
 api_search.go
 api_status.go
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 api_system.go
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 api_volumes.go
 client.go
 configuration.go
@@ -194,11 +190,7 @@ docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
 docs/StatusApi.md
-<<<<<<< HEAD
->>>>>>> 8d74053 (updated generator/status.go)
-=======
 docs/SystemApi.md
->>>>>>> e3fb144 (added v1/status.go and v1/status_test.go, tests passing)
 docs/Task.md
 docs/TaskArtifact.md
 docs/TaskCSIPluginConfig.md
