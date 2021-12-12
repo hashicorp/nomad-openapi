@@ -15,7 +15,7 @@ _generated_ in a number of programming languages.
 ## Quick start
 
 The latest version of the OpenAPI specification for the Version 1 Nomad HTTP API
-can be found in this repository at [api/v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/api/v1/openapi.yaml).
+can be found in this repository at [v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/v1/openapi.yaml).
 This file _is itself a generated file_ and _should not be edited directly_. You can
 use this file to generate a client for the Nomad HTTP API in the language of your
 choice.
