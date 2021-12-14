@@ -87,10 +87,10 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **POST** /node/{nodeId}/drain | 
 *NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **POST** /node/{nodeId}/eligibility | 
 *NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **POST** /node/{nodeId}/purge | 
-*OperatorApi* | [**delete_operator_raft**](docs/OperatorApi.md#delete_operator_raft) | **DELETE** /operator/raft/ | 
+*OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
 *OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
 *OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
-*OperatorApi* | [**get_operator_raft**](docs/OperatorApi.md#get_operator_raft) | **GET** /operator/raft/ | 
+*OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
 *OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 

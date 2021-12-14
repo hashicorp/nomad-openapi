@@ -60,7 +60,7 @@ public class OperatorApi {
     }
 
     /**
-     * Build call for deleteOperatorRaft
+     * Build call for deleteOperatorRaftPeer
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
@@ -78,11 +78,11 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteOperatorRaftCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteOperatorRaftPeerCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/operator/raft/";
+        String localVarPath = "/operator/raft/peer";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -125,10 +125,10 @@ public class OperatorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteOperatorRaftValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteOperatorRaftPeerValidateBeforeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = deleteOperatorRaftCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = deleteOperatorRaftPeerCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         return localVarCall;
 
     }
@@ -151,8 +151,8 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteOperatorRaft(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        deleteOperatorRaftWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
+    public void deleteOperatorRaftPeer(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        deleteOperatorRaftPeerWithHttpInfo(region, namespace, xNomadToken, idempotencyToken);
     }
 
     /**
@@ -174,8 +174,8 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteOperatorRaftWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        okhttp3.Call localVarCall = deleteOperatorRaftValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
+    public ApiResponse<Void> deleteOperatorRaftPeerWithHttpInfo(String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        okhttp3.Call localVarCall = deleteOperatorRaftPeerValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -199,9 +199,9 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteOperatorRaftAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteOperatorRaftPeerAsync(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteOperatorRaftValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
+        okhttp3.Call localVarCall = deleteOperatorRaftPeerValidateBeforeCall(region, namespace, xNomadToken, idempotencyToken, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -586,7 +586,7 @@ public class OperatorApi {
         return localVarCall;
     }
     /**
-     * Build call for getOperatorRaft
+     * Build call for getOperatorRaftConfiguration
      * @param region Filters results based on the specified region. (optional)
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
@@ -609,11 +609,11 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOperatorRaftCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOperatorRaftConfigurationCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/operator/raft/";
+        String localVarPath = "/operator/raft/configuration";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -676,10 +676,10 @@ public class OperatorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOperatorRaftValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOperatorRaftConfigurationValidateBeforeCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getOperatorRaftCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        okhttp3.Call localVarCall = getOperatorRaftConfigurationCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
         return localVarCall;
 
     }
@@ -708,8 +708,8 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<RaftServer> getOperatorRaft(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
-        ApiResponse<List<RaftServer>> localVarResp = getOperatorRaftWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+    public List<RaftServer> getOperatorRaftConfiguration(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<List<RaftServer>> localVarResp = getOperatorRaftConfigurationWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         return localVarResp.getData();
     }
 
@@ -737,8 +737,8 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<RaftServer>> getOperatorRaftWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
-        okhttp3.Call localVarCall = getOperatorRaftValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+    public ApiResponse<List<RaftServer>> getOperatorRaftConfigurationWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getOperatorRaftConfigurationValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
         Type localVarReturnType = new TypeToken<List<RaftServer>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -768,9 +768,9 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOperatorRaftAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<RaftServer>> _callback) throws ApiException {
+    public okhttp3.Call getOperatorRaftConfigurationAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<RaftServer>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getOperatorRaftValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        okhttp3.Call localVarCall = getOperatorRaftConfigurationValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
         Type localVarReturnType = new TypeToken<List<RaftServer>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

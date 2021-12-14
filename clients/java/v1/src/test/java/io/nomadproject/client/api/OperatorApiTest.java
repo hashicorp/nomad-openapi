@@ -46,12 +46,12 @@ public class OperatorApiTest {
      *          if the Api call fails
      */
     @Test
-    public void deleteOperatorRaftTest() throws ApiException {
+    public void deleteOperatorRaftPeerTest() throws ApiException {
         String region = null;
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken);
+        api.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }
@@ -113,7 +113,7 @@ public class OperatorApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getOperatorRaftTest() throws ApiException {
+    public void getOperatorRaftConfigurationTest() throws ApiException {
         String region = null;
         String namespace = null;
         Integer index = null;
@@ -123,7 +123,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<RaftServer> response = api.getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        List<RaftServer> response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 
         // TODO: test validations
     }

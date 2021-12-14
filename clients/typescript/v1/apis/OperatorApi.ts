@@ -24,7 +24,7 @@ export class OperatorApiRequestFactory extends BaseAPIRequestFactory {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public async deleteOperatorRaft(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteOperatorRaftPeer(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -32,7 +32,7 @@ export class OperatorApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/operator/raft/';
+        const localVarPath = '/operator/raft/peer';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
@@ -222,7 +222,7 @@ export class OperatorApiRequestFactory extends BaseAPIRequestFactory {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public async getOperatorRaft(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -235,7 +235,7 @@ export class OperatorApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/operator/raft/';
+        const localVarPath = '/operator/raft/configuration';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -493,10 +493,10 @@ export class OperatorApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteOperatorRaft
+     * @params response Response returned by the server for a request to deleteOperatorRaftPeer
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteOperatorRaft(response: ResponseContext): Promise<void > {
+     public async deleteOperatorRaftPeer(response: ResponseContext): Promise<void > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return;
@@ -615,10 +615,10 @@ export class OperatorApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getOperatorRaft
+     * @params response Response returned by the server for a request to getOperatorRaftConfiguration
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getOperatorRaft(response: ResponseContext): Promise<Array<RaftServer> > {
+     public async getOperatorRaftConfiguration(response: ResponseContext): Promise<Array<RaftServer> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Array<RaftServer> = ObjectSerializer.deserialize(

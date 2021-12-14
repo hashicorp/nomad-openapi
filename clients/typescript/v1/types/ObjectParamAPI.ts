@@ -3730,29 +3730,29 @@ export class ObjectNodesApi {
 import { ObservableOperatorApi } from "./ObservableAPI";
 import { OperatorApiRequestFactory, OperatorApiResponseProcessor} from "../apis/OperatorApi";
 
-export interface OperatorApiDeleteOperatorRaftRequest {
+export interface OperatorApiDeleteOperatorRaftPeerRequest {
     /**
      * Filters results based on the specified region.
      * @type string
-     * @memberof OperatorApideleteOperatorRaft
+     * @memberof OperatorApideleteOperatorRaftPeer
      */
     region?: string
     /**
      * Filters results based on the specified namespace.
      * @type string
-     * @memberof OperatorApideleteOperatorRaft
+     * @memberof OperatorApideleteOperatorRaftPeer
      */
     namespace?: string
     /**
      * A Nomad ACL token.
      * @type string
-     * @memberof OperatorApideleteOperatorRaft
+     * @memberof OperatorApideleteOperatorRaftPeer
      */
     xNomadToken?: string
     /**
      * Can be used to ensure operations are only run once.
      * @type string
-     * @memberof OperatorApideleteOperatorRaft
+     * @memberof OperatorApideleteOperatorRaftPeer
      */
     idempotencyToken?: string
 }
@@ -3871,59 +3871,59 @@ export interface OperatorApiGetOperatorAutopilotHealthRequest {
     nextToken?: string
 }
 
-export interface OperatorApiGetOperatorRaftRequest {
+export interface OperatorApiGetOperatorRaftConfigurationRequest {
     /**
      * Filters results based on the specified region.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     region?: string
     /**
      * Filters results based on the specified namespace.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     namespace?: string
     /**
      * If set, wait until query exceeds given index. Must be provided with WaitParam.
      * @type number
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     index?: number
     /**
      * Provided with IndexParam to wait for change.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     wait?: string
     /**
      * If present, results will include stale reads.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     stale?: string
     /**
      * Constrains results to jobs that start with the defined prefix
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     prefix?: string
     /**
      * A Nomad ACL token.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     xNomadToken?: string
     /**
      * Maximum number of results to return.
      * @type number
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     perPage?: number
     /**
      * Indicates where to start paging for queries that support pagination.
      * @type string
-     * @memberof OperatorApigetOperatorRaft
+     * @memberof OperatorApigetOperatorRaftConfiguration
      */
     nextToken?: string
 }
@@ -4061,8 +4061,8 @@ export class ObjectOperatorApi {
     /**
      * @param param the request object
      */
-    public deleteOperatorRaft(param: OperatorApiDeleteOperatorRaftRequest, options?: Configuration): Promise<void> {
-        return this.api.deleteOperatorRaft(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    public deleteOperatorRaftPeer(param: OperatorApiDeleteOperatorRaftPeerRequest, options?: Configuration): Promise<void> {
+        return this.api.deleteOperatorRaftPeer(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
     /**
@@ -4082,8 +4082,8 @@ export class ObjectOperatorApi {
     /**
      * @param param the request object
      */
-    public getOperatorRaft(param: OperatorApiGetOperatorRaftRequest, options?: Configuration): Promise<Array<RaftServer>> {
-        return this.api.getOperatorRaft(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest, options?: Configuration): Promise<Array<RaftServer>> {
+        return this.api.getOperatorRaftConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**

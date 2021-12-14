@@ -194,10 +194,10 @@ Class | Method | HTTP request | Description
 *nomad-client.NodesApi* | [**updateNodeDrain**](docs/NodesApi.md#updateNodeDrain) | **POST** /node/{nodeId}/drain | 
 *nomad-client.NodesApi* | [**updateNodeEligibility**](docs/NodesApi.md#updateNodeEligibility) | **POST** /node/{nodeId}/eligibility | 
 *nomad-client.NodesApi* | [**updateNodePurge**](docs/NodesApi.md#updateNodePurge) | **POST** /node/{nodeId}/purge | 
-*nomad-client.OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
+*nomad-client.OperatorApi* | [**deleteOperatorRaftPeer**](docs/OperatorApi.md#deleteOperatorRaftPeer) | **DELETE** /operator/raft/peer | 
 *nomad-client.OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
 *nomad-client.OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
-*nomad-client.OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
+*nomad-client.OperatorApi* | [**getOperatorRaftConfiguration**](docs/OperatorApi.md#getOperatorRaftConfiguration) | **GET** /operator/raft/configuration | 
 *nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 

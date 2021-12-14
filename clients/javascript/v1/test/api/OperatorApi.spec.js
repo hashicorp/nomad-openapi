@@ -48,10 +48,10 @@
   }
 
   describe('OperatorApi', function() {
-    describe('deleteOperatorRaft', function() {
-      it('should call deleteOperatorRaft successfully', function(done) {
-        //uncomment below and update the code to test deleteOperatorRaft
-        //instance.deleteOperatorRaft(function(error) {
+    describe('deleteOperatorRaftPeer', function() {
+      it('should call deleteOperatorRaftPeer successfully', function(done) {
+        //uncomment below and update the code to test deleteOperatorRaftPeer
+        //instance.deleteOperatorRaftPeer(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -78,10 +78,10 @@
         done();
       });
     });
-    describe('getOperatorRaft', function() {
-      it('should call getOperatorRaft successfully', function(done) {
-        //uncomment below and update the code to test getOperatorRaft
-        //instance.getOperatorRaft(function(error) {
+    describe('getOperatorRaftConfiguration', function() {
+      it('should call getOperatorRaftConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getOperatorRaftConfiguration
+        //instance.getOperatorRaftConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

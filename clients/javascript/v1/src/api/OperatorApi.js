@@ -40,8 +40,8 @@ export default class OperatorApi {
 
 
     /**
-     * Callback function to receive the result of the deleteOperatorRaft operation.
-     * @callback module:api/OperatorApi~deleteOperatorRaftCallback
+     * Callback function to receive the result of the deleteOperatorRaftPeer operation.
+     * @callback module:api/OperatorApi~deleteOperatorRaftPeerCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -53,9 +53,9 @@ export default class OperatorApi {
      * @param {String} opts.namespace Filters results based on the specified namespace.
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
-     * @param {module:api/OperatorApi~deleteOperatorRaftCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OperatorApi~deleteOperatorRaftPeerCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteOperatorRaft(opts, callback) {
+    deleteOperatorRaftPeer(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -77,7 +77,7 @@ export default class OperatorApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/operator/raft/', 'DELETE',
+        '/operator/raft/peer', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -194,8 +194,8 @@ export default class OperatorApi {
     }
 
     /**
-     * Callback function to receive the result of the getOperatorRaft operation.
-     * @callback module:api/OperatorApi~getOperatorRaftCallback
+     * Callback function to receive the result of the getOperatorRaftConfiguration operation.
+     * @callback module:api/OperatorApi~getOperatorRaftConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {Array.<module:model/RaftServer>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -212,10 +212,10 @@ export default class OperatorApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
-     * @param {module:api/OperatorApi~getOperatorRaftCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OperatorApi~getOperatorRaftConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/RaftServer>}
      */
-    getOperatorRaft(opts, callback) {
+    getOperatorRaftConfiguration(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -242,7 +242,7 @@ export default class OperatorApi {
       let accepts = ['application/json'];
       let returnType = [RaftServer];
       return this.apiClient.callApi(
-        '/operator/raft/', 'GET',
+        '/operator/raft/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

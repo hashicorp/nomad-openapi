@@ -27,7 +27,7 @@ var (
 // OperatorApiService OperatorApi service
 type OperatorApiService service
 
-type ApiDeleteOperatorRaftRequest struct {
+type ApiDeleteOperatorRaftPeerRequest struct {
 	ctx _context.Context
 	ApiService *OperatorApiService
 	region *string
@@ -36,34 +36,34 @@ type ApiDeleteOperatorRaftRequest struct {
 	idempotencyToken *string
 }
 
-func (r ApiDeleteOperatorRaftRequest) Region(region string) ApiDeleteOperatorRaftRequest {
+func (r ApiDeleteOperatorRaftPeerRequest) Region(region string) ApiDeleteOperatorRaftPeerRequest {
 	r.region = &region
 	return r
 }
-func (r ApiDeleteOperatorRaftRequest) Namespace(namespace string) ApiDeleteOperatorRaftRequest {
+func (r ApiDeleteOperatorRaftPeerRequest) Namespace(namespace string) ApiDeleteOperatorRaftPeerRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiDeleteOperatorRaftRequest) XNomadToken(xNomadToken string) ApiDeleteOperatorRaftRequest {
+func (r ApiDeleteOperatorRaftPeerRequest) XNomadToken(xNomadToken string) ApiDeleteOperatorRaftPeerRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiDeleteOperatorRaftRequest) IdempotencyToken(idempotencyToken string) ApiDeleteOperatorRaftRequest {
+func (r ApiDeleteOperatorRaftPeerRequest) IdempotencyToken(idempotencyToken string) ApiDeleteOperatorRaftPeerRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
 
-func (r ApiDeleteOperatorRaftRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.DeleteOperatorRaftExecute(r)
+func (r ApiDeleteOperatorRaftPeerRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteOperatorRaftPeerExecute(r)
 }
 
 /*
- * DeleteOperatorRaft Method for DeleteOperatorRaft
+ * DeleteOperatorRaftPeer Method for DeleteOperatorRaftPeer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiDeleteOperatorRaftRequest
+ * @return ApiDeleteOperatorRaftPeerRequest
  */
-func (a *OperatorApiService) DeleteOperatorRaft(ctx _context.Context) ApiDeleteOperatorRaftRequest {
-	return ApiDeleteOperatorRaftRequest{
+func (a *OperatorApiService) DeleteOperatorRaftPeer(ctx _context.Context) ApiDeleteOperatorRaftPeerRequest {
+	return ApiDeleteOperatorRaftPeerRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -72,7 +72,7 @@ func (a *OperatorApiService) DeleteOperatorRaft(ctx _context.Context) ApiDeleteO
 /*
  * Execute executes the request
  */
-func (a *OperatorApiService) DeleteOperatorRaftExecute(r ApiDeleteOperatorRaftRequest) (*_nethttp.Response, error) {
+func (a *OperatorApiService) DeleteOperatorRaftPeerExecute(r ApiDeleteOperatorRaftPeerRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -81,12 +81,12 @@ func (a *OperatorApiService) DeleteOperatorRaftExecute(r ApiDeleteOperatorRaftRe
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.DeleteOperatorRaft")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.DeleteOperatorRaftPeer")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/operator/raft/"
+	localVarPath := localBasePath + "/operator/raft/peer"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -537,7 +537,7 @@ func (a *OperatorApiService) GetOperatorAutopilotHealthExecute(r ApiGetOperatorA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOperatorRaftRequest struct {
+type ApiGetOperatorRaftConfigurationRequest struct {
 	ctx _context.Context
 	ApiService *OperatorApiService
 	region *string
@@ -551,54 +551,54 @@ type ApiGetOperatorRaftRequest struct {
 	nextToken *string
 }
 
-func (r ApiGetOperatorRaftRequest) Region(region string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Region(region string) ApiGetOperatorRaftConfigurationRequest {
 	r.region = &region
 	return r
 }
-func (r ApiGetOperatorRaftRequest) Namespace(namespace string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Namespace(namespace string) ApiGetOperatorRaftConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-func (r ApiGetOperatorRaftRequest) Index(index int32) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Index(index int32) ApiGetOperatorRaftConfigurationRequest {
 	r.index = &index
 	return r
 }
-func (r ApiGetOperatorRaftRequest) Wait(wait string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Wait(wait string) ApiGetOperatorRaftConfigurationRequest {
 	r.wait = &wait
 	return r
 }
-func (r ApiGetOperatorRaftRequest) Stale(stale string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Stale(stale string) ApiGetOperatorRaftConfigurationRequest {
 	r.stale = &stale
 	return r
 }
-func (r ApiGetOperatorRaftRequest) Prefix(prefix string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) Prefix(prefix string) ApiGetOperatorRaftConfigurationRequest {
 	r.prefix = &prefix
 	return r
 }
-func (r ApiGetOperatorRaftRequest) XNomadToken(xNomadToken string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) XNomadToken(xNomadToken string) ApiGetOperatorRaftConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-func (r ApiGetOperatorRaftRequest) PerPage(perPage int32) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) PerPage(perPage int32) ApiGetOperatorRaftConfigurationRequest {
 	r.perPage = &perPage
 	return r
 }
-func (r ApiGetOperatorRaftRequest) NextToken(nextToken string) ApiGetOperatorRaftRequest {
+func (r ApiGetOperatorRaftConfigurationRequest) NextToken(nextToken string) ApiGetOperatorRaftConfigurationRequest {
 	r.nextToken = &nextToken
 	return r
 }
 
-func (r ApiGetOperatorRaftRequest) Execute() ([]RaftServer, *_nethttp.Response, error) {
-	return r.ApiService.GetOperatorRaftExecute(r)
+func (r ApiGetOperatorRaftConfigurationRequest) Execute() ([]RaftServer, *_nethttp.Response, error) {
+	return r.ApiService.GetOperatorRaftConfigurationExecute(r)
 }
 
 /*
- * GetOperatorRaft Method for GetOperatorRaft
+ * GetOperatorRaftConfiguration Method for GetOperatorRaftConfiguration
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetOperatorRaftRequest
+ * @return ApiGetOperatorRaftConfigurationRequest
  */
-func (a *OperatorApiService) GetOperatorRaft(ctx _context.Context) ApiGetOperatorRaftRequest {
-	return ApiGetOperatorRaftRequest{
+func (a *OperatorApiService) GetOperatorRaftConfiguration(ctx _context.Context) ApiGetOperatorRaftConfigurationRequest {
+	return ApiGetOperatorRaftConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -608,7 +608,7 @@ func (a *OperatorApiService) GetOperatorRaft(ctx _context.Context) ApiGetOperato
  * Execute executes the request
  * @return []RaftServer
  */
-func (a *OperatorApiService) GetOperatorRaftExecute(r ApiGetOperatorRaftRequest) ([]RaftServer, *_nethttp.Response, error) {
+func (a *OperatorApiService) GetOperatorRaftConfigurationExecute(r ApiGetOperatorRaftConfigurationRequest) ([]RaftServer, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -618,12 +618,12 @@ func (a *OperatorApiService) GetOperatorRaftExecute(r ApiGetOperatorRaftRequest)
 		localVarReturnValue  []RaftServer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.GetOperatorRaft")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.GetOperatorRaftConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/operator/raft/"
+	localVarPath := localBasePath + "/operator/raft/configuration"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

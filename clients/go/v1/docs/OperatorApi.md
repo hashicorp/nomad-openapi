@@ -4,19 +4,19 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteOperatorRaft**](OperatorApi.md#DeleteOperatorRaft) | **Delete** /operator/raft/ | 
+[**DeleteOperatorRaftPeer**](OperatorApi.md#DeleteOperatorRaftPeer) | **Delete** /operator/raft/peer | 
 [**GetOperatorAutopilotConfiguration**](OperatorApi.md#GetOperatorAutopilotConfiguration) | **Get** /operator/autopilot/configuration | 
 [**GetOperatorAutopilotHealth**](OperatorApi.md#GetOperatorAutopilotHealth) | **Get** /operator/autopilot/health | 
-[**GetOperatorRaft**](OperatorApi.md#GetOperatorRaft) | **Get** /operator/raft/ | 
+[**GetOperatorRaftConfiguration**](OperatorApi.md#GetOperatorRaftConfiguration) | **Get** /operator/raft/configuration | 
 [**GetOperatorSchedulerConfiguration**](OperatorApi.md#GetOperatorSchedulerConfiguration) | **Get** /operator/scheduler/configuration | 
 [**PostOperatorSchedulerConfiguration**](OperatorApi.md#PostOperatorSchedulerConfiguration) | **Post** /operator/scheduler/configuration | 
 [**PutOperatorAutopilotConfiguration**](OperatorApi.md#PutOperatorAutopilotConfiguration) | **Put** /operator/autopilot/configuration | 
 
 
 
-## DeleteOperatorRaft
+## DeleteOperatorRaftPeer
 
-> DeleteOperatorRaft(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+> DeleteOperatorRaftPeer(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 
 
 
@@ -40,9 +40,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OperatorApi.DeleteOperatorRaft(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    resp, r, err := api_client.OperatorApi.DeleteOperatorRaftPeer(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.DeleteOperatorRaft``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.DeleteOperatorRaftPeer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -54,7 +54,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteOperatorRaftRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOperatorRaftPeerRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -242,9 +242,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOperatorRaft
+## GetOperatorRaftConfiguration
 
-> []RaftServer GetOperatorRaft(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> []RaftServer GetOperatorRaftConfiguration(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
 
 
 
@@ -273,13 +273,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OperatorApi.GetOperatorRaft(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    resp, r, err := api_client.OperatorApi.GetOperatorRaftConfiguration(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.GetOperatorRaft``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.GetOperatorRaftConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOperatorRaft`: []RaftServer
-    fmt.Fprintf(os.Stdout, "Response from `OperatorApi.GetOperatorRaft`: %v\n", resp)
+    // response from `GetOperatorRaftConfiguration`: []RaftServer
+    fmt.Fprintf(os.Stdout, "Response from `OperatorApi.GetOperatorRaftConfiguration`: %v\n", resp)
 }
 ```
 
@@ -289,7 +289,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOperatorRaftRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOperatorRaftConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

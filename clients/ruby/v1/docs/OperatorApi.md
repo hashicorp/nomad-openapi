@@ -4,17 +4,17 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_operator_raft**](OperatorApi.md#delete_operator_raft) | **DELETE** /operator/raft/ | 
+[**delete_operator_raft_peer**](OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
 [**get_operator_autopilot_configuration**](OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
 [**get_operator_autopilot_health**](OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
-[**get_operator_raft**](OperatorApi.md#get_operator_raft) | **GET** /operator/raft/ | 
+[**get_operator_raft_configuration**](OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
 [**get_operator_scheduler_configuration**](OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 [**post_operator_scheduler_configuration**](OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
 [**put_operator_autopilot_configuration**](OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
 
 
-# **delete_operator_raft**
-> delete_operator_raft()
+# **delete_operator_raft_peer**
+> delete_operator_raft_peer()
 
 
 
@@ -55,9 +55,9 @@ with openapi_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_instance.delete_operator_raft(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
+        api_instance.delete_operator_raft_peer(region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
     except openapi_client.ApiException as e:
-        print("Exception when calling OperatorApi->delete_operator_raft: %s\n" % e)
+        print("Exception when calling OperatorApi->delete_operator_raft_peer: %s\n" % e)
 ```
 
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_operator_raft**
-> [RaftServer] get_operator_raft()
+# **get_operator_raft_configuration**
+> [RaftServer] get_operator_raft_configuration()
 
 
 
@@ -331,10 +331,10 @@ with openapi_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.get_operator_raft(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token)
+        api_response = api_instance.get_operator_raft_configuration(region=region, namespace=namespace, index=index, wait=wait, stale=stale, prefix=prefix, x_nomad_token=x_nomad_token, per_page=per_page, next_token=next_token)
         pprint(api_response)
     except openapi_client.ApiException as e:
-        print("Exception when calling OperatorApi->get_operator_raft: %s\n" % e)
+        print("Exception when calling OperatorApi->get_operator_raft_configuration: %s\n" % e)
 ```
 
 

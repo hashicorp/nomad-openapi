@@ -1278,8 +1278,8 @@ export class PromiseOperatorApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public deleteOperatorRaft(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken, _options);
+    public deleteOperatorRaftPeer(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }
 
@@ -1326,8 +1326,8 @@ export class PromiseOperatorApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getOperatorRaft(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<RaftServer>> {
-        const result = this.api.getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<RaftServer>> {
+        const result = this.api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
         return result.toPromise();
     }
 

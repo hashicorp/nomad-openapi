@@ -140,10 +140,10 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**UpdateNodeDrain**](docs/NodesApi.md#updatenodedrain) | **Post** /node/{nodeId}/drain | 
 *NodesApi* | [**UpdateNodeEligibility**](docs/NodesApi.md#updatenodeeligibility) | **Post** /node/{nodeId}/eligibility | 
 *NodesApi* | [**UpdateNodePurge**](docs/NodesApi.md#updatenodepurge) | **Post** /node/{nodeId}/purge | 
-*OperatorApi* | [**DeleteOperatorRaft**](docs/OperatorApi.md#deleteoperatorraft) | **Delete** /operator/raft/ | 
+*OperatorApi* | [**DeleteOperatorRaftPeer**](docs/OperatorApi.md#deleteoperatorraftpeer) | **Delete** /operator/raft/peer | 
 *OperatorApi* | [**GetOperatorAutopilotConfiguration**](docs/OperatorApi.md#getoperatorautopilotconfiguration) | **Get** /operator/autopilot/configuration | 
 *OperatorApi* | [**GetOperatorAutopilotHealth**](docs/OperatorApi.md#getoperatorautopilothealth) | **Get** /operator/autopilot/health | 
-*OperatorApi* | [**GetOperatorRaft**](docs/OperatorApi.md#getoperatorraft) | **Get** /operator/raft/ | 
+*OperatorApi* | [**GetOperatorRaftConfiguration**](docs/OperatorApi.md#getoperatorraftconfiguration) | **Get** /operator/raft/configuration | 
 *OperatorApi* | [**GetOperatorSchedulerConfiguration**](docs/OperatorApi.md#getoperatorschedulerconfiguration) | **Get** /operator/scheduler/configuration | 
 *OperatorApi* | [**PostOperatorSchedulerConfiguration**](docs/OperatorApi.md#postoperatorschedulerconfiguration) | **Post** /operator/scheduler/configuration | 
 *OperatorApi* | [**PutOperatorAutopilotConfiguration**](docs/OperatorApi.md#putoperatorautopilotconfiguration) | **Put** /operator/autopilot/configuration | 

@@ -4,19 +4,19 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_operator_raft**](OperatorApi.md#delete_operator_raft) | **Delete** /operator/raft/ | 
+[**delete_operator_raft_peer**](OperatorApi.md#delete_operator_raft_peer) | **Delete** /operator/raft/peer | 
 [**get_operator_autopilot_configuration**](OperatorApi.md#get_operator_autopilot_configuration) | **Get** /operator/autopilot/configuration | 
 [**get_operator_autopilot_health**](OperatorApi.md#get_operator_autopilot_health) | **Get** /operator/autopilot/health | 
-[**get_operator_raft**](OperatorApi.md#get_operator_raft) | **Get** /operator/raft/ | 
+[**get_operator_raft_configuration**](OperatorApi.md#get_operator_raft_configuration) | **Get** /operator/raft/configuration | 
 [**get_operator_scheduler_configuration**](OperatorApi.md#get_operator_scheduler_configuration) | **Get** /operator/scheduler/configuration | 
 [**post_operator_scheduler_configuration**](OperatorApi.md#post_operator_scheduler_configuration) | **Post** /operator/scheduler/configuration | 
 [**put_operator_autopilot_configuration**](OperatorApi.md#put_operator_autopilot_configuration) | **Put** /operator/autopilot/configuration | 
 
 
 
-## delete_operator_raft
+## delete_operator_raft_peer
 
-> delete_operator_raft(region, namespace, x_nomad_token, idempotency_token)
+> delete_operator_raft_peer(region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters
@@ -117,9 +117,9 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_operator_raft
+## get_operator_raft_configuration
 
-> Vec<crate::models::RaftServer> get_operator_raft(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
+> Vec<crate::models::RaftServer> get_operator_raft_configuration(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
 
 
 ### Parameters

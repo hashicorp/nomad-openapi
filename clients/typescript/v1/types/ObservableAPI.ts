@@ -2141,8 +2141,8 @@ export class ObservableOperatorApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public deleteOperatorRaft(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
-        const requestContextPromise = this.requestFactory.deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken, _options);
+    public deleteOperatorRaftPeer(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -2156,7 +2156,7 @@ export class ObservableOperatorApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOperatorRaft(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOperatorRaftPeer(rsp)));
             }));
     }
  
@@ -2231,8 +2231,8 @@ export class ObservableOperatorApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getOperatorRaft(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<RaftServer>> {
-        const requestContextPromise = this.requestFactory.getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<RaftServer>> {
+        const requestContextPromise = this.requestFactory.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -2246,7 +2246,7 @@ export class ObservableOperatorApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorRaft(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorRaftConfiguration(rsp)));
             }));
     }
  

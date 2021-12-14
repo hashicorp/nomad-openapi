@@ -24,8 +24,8 @@ class TestOperatorApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_delete_operator_raft(self):
-        """Test case for delete_operator_raft
+    def test_delete_operator_raft_peer(self):
+        """Test case for delete_operator_raft_peer
 
         """
         pass
@@ -42,8 +42,8 @@ class TestOperatorApi(unittest.TestCase):
         """
         pass
 
-    def test_get_operator_raft(self):
-        """Test case for get_operator_raft
+    def test_get_operator_raft_configuration(self):
+        """Test case for get_operator_raft_configuration
 
         """
         pass

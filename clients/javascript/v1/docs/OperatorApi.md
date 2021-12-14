@@ -4,19 +4,19 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteOperatorRaft**](OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
+[**deleteOperatorRaftPeer**](OperatorApi.md#deleteOperatorRaftPeer) | **DELETE** /operator/raft/peer | 
 [**getOperatorAutopilotConfiguration**](OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
 [**getOperatorAutopilotHealth**](OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
-[**getOperatorRaft**](OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
+[**getOperatorRaftConfiguration**](OperatorApi.md#getOperatorRaftConfiguration) | **GET** /operator/raft/configuration | 
 [**getOperatorSchedulerConfiguration**](OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 [**postOperatorSchedulerConfiguration**](OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 [**putOperatorAutopilotConfiguration**](OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
 
 
 
-## deleteOperatorRaft
+## deleteOperatorRaftPeer
 
-> deleteOperatorRaft(opts)
+> deleteOperatorRaftPeer(opts)
 
 
 
@@ -38,7 +38,7 @@ let opts = {
   'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
   'idempotencyToken': "idempotencyToken_example" // String | Can be used to ensure operations are only run once.
 };
-apiInstance.deleteOperatorRaft(opts, (error, data, response) => {
+apiInstance.deleteOperatorRaftPeer(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -205,9 +205,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## getOperatorRaft
+## getOperatorRaftConfiguration
 
-> [RaftServer] getOperatorRaft(opts)
+> [RaftServer] getOperatorRaftConfiguration(opts)
 
 
 
@@ -234,7 +234,7 @@ let opts = {
   'perPage': 56, // Number | Maximum number of results to return.
   'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
 };
-apiInstance.getOperatorRaft(opts, (error, data, response) => {
+apiInstance.getOperatorRaftConfiguration(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

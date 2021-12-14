@@ -447,7 +447,7 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-    DeleteOperatorRaftResponse:
+    DeleteOperatorRaftPeerResponse:
       description: ""
     DeleteSnapshotResponse:
       description: ""
@@ -1058,7 +1058,7 @@ components:
           schema:
             $ref: '#/components/schemas/OperatorHealthReply'
       description: ""
-    GetOperatorRaftResponse:
+    GetOperatorRaftConfigurationResponse:
       content:
         application/json:
           schema:
@@ -6880,31 +6880,9 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Operator
-  /operator/raft/:
-    delete:
-      operationId: DeleteOperatorRaft
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/DeleteOperatorRaftResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Operator
+  /operator/raft/configuration:
     get:
-      operationId: GetOperatorRaft
+      operationId: GetOperatorRaftConfiguration
       parameters:
       - $ref: '#/components/parameters/RegionParam'
       - $ref: '#/components/parameters/NamespaceParam'
@@ -6917,7 +6895,30 @@ paths:
       - $ref: '#/components/parameters/NextTokenParam'
       responses:
         "200":
-          $ref: '#/components/responses/GetOperatorRaftResponse'
+          $ref: '#/components/responses/GetOperatorRaftConfigurationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/raft/peer:
+    delete:
+      operationId: DeleteOperatorRaftPeer
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/DeleteOperatorRaftPeerResponse'
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

@@ -4,18 +4,18 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteOperatorRaft**](OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
+[**deleteOperatorRaftPeer**](OperatorApi.md#deleteOperatorRaftPeer) | **DELETE** /operator/raft/peer | 
 [**getOperatorAutopilotConfiguration**](OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
 [**getOperatorAutopilotHealth**](OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
-[**getOperatorRaft**](OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
+[**getOperatorRaftConfiguration**](OperatorApi.md#getOperatorRaftConfiguration) | **GET** /operator/raft/configuration | 
 [**getOperatorSchedulerConfiguration**](OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 [**postOperatorSchedulerConfiguration**](OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
 [**putOperatorAutopilotConfiguration**](OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
 
 
-<a name="deleteOperatorRaft"></a>
-# **deleteOperatorRaft**
-> deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken)
+<a name="deleteOperatorRaftPeer"></a>
+# **deleteOperatorRaftPeer**
+> deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken)
 
 
 
@@ -46,9 +46,9 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      apiInstance.deleteOperatorRaft(region, namespace, xNomadToken, idempotencyToken);
+      apiInstance.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OperatorApi#deleteOperatorRaft");
+      System.err.println("Exception when calling OperatorApi#deleteOperatorRaftPeer");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -263,9 +263,9 @@ Name | Type | Description  | Notes
 **405** | Method not allowed |  -  |
 **500** | Internal server error |  -  |
 
-<a name="getOperatorRaft"></a>
-# **getOperatorRaft**
-> List&lt;RaftServer&gt; getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+<a name="getOperatorRaftConfiguration"></a>
+# **getOperatorRaftConfiguration**
+> List&lt;RaftServer&gt; getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
 
 
 
@@ -301,10 +301,10 @@ public class Example {
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
     try {
-      List<RaftServer> result = apiInstance.getOperatorRaft(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+      List<RaftServer> result = apiInstance.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OperatorApi#getOperatorRaft");
+      System.err.println("Exception when calling OperatorApi#getOperatorRaftConfiguration");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

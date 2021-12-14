@@ -42,16 +42,16 @@ class OperatorApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-        def __delete_operator_raft(
+        def __delete_operator_raft_peer(
             self,
             **kwargs
         ):
-            """delete_operator_raft  # noqa: E501
+            """delete_operator_raft_peer  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.delete_operator_raft(async_req=True)
+            >>> thread = api.delete_operator_raft_peer(async_req=True)
             >>> result = thread.get()
 
 
@@ -106,14 +106,14 @@ class OperatorApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             return self.call_with_http_info(**kwargs)
 
-        self.delete_operator_raft = _Endpoint(
+        self.delete_operator_raft_peer = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
                     'X-Nomad-Token'
                 ],
-                'endpoint_path': '/operator/raft/',
-                'operation_id': 'delete_operator_raft',
+                'endpoint_path': '/operator/raft/peer',
+                'operation_id': 'delete_operator_raft_peer',
                 'http_method': 'DELETE',
                 'servers': None,
             },
@@ -167,7 +167,7 @@ class OperatorApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__delete_operator_raft
+            callable=__delete_operator_raft_peer
         )
 
         def __get_operator_autopilot_configuration(
@@ -490,16 +490,16 @@ class OperatorApi(object):
             callable=__get_operator_autopilot_health
         )
 
-        def __get_operator_raft(
+        def __get_operator_raft_configuration(
             self,
             **kwargs
         ):
-            """get_operator_raft  # noqa: E501
+            """get_operator_raft_configuration  # noqa: E501
 
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_operator_raft(async_req=True)
+            >>> thread = api.get_operator_raft_configuration(async_req=True)
             >>> result = thread.get()
 
 
@@ -559,14 +559,14 @@ class OperatorApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             return self.call_with_http_info(**kwargs)
 
-        self.get_operator_raft = _Endpoint(
+        self.get_operator_raft_configuration = _Endpoint(
             settings={
                 'response_type': ([RaftServer],),
                 'auth': [
                     'X-Nomad-Token'
                 ],
-                'endpoint_path': '/operator/raft/',
-                'operation_id': 'get_operator_raft',
+                'endpoint_path': '/operator/raft/configuration',
+                'operation_id': 'get_operator_raft_configuration',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -647,7 +647,7 @@ class OperatorApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_operator_raft
+            callable=__get_operator_raft_configuration
         )
 
         def __get_operator_scheduler_configuration(

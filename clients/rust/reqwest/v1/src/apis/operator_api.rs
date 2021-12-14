@@ -15,10 +15,10 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `delete_operator_raft`
+/// struct for typed errors of method `delete_operator_raft_peer`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum DeleteOperatorRaftError {
+pub enum DeleteOperatorRaftPeerError {
     Status400(),
     Status403(),
     Status405(),
@@ -48,10 +48,10 @@ pub enum GetOperatorAutopilotHealthError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_operator_raft`
+/// struct for typed errors of method `get_operator_raft_configuration`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetOperatorRaftError {
+pub enum GetOperatorRaftConfigurationError {
     Status400(),
     Status403(),
     Status405(),
@@ -93,11 +93,11 @@ pub enum PutOperatorAutopilotConfigurationError {
 }
 
 
-pub async fn delete_operator_raft(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteOperatorRaftError>> {
+pub async fn delete_operator_raft_peer(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteOperatorRaftPeerError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/raft/", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/raft/peer", configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -133,7 +133,7 @@ pub async fn delete_operator_raft(configuration: &configuration::Configuration, 
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<DeleteOperatorRaftError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<DeleteOperatorRaftPeerError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
@@ -261,11 +261,11 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
     }
 }
 
-pub async fn get_operator_raft(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::RaftServer>, Error<GetOperatorRaftError>> {
+pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::RaftServer>, Error<GetOperatorRaftConfigurationError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/raft/", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/raft/configuration", configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -316,7 +316,7 @@ pub async fn get_operator_raft(configuration: &configuration::Configuration, reg
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<GetOperatorRaftError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<GetOperatorRaftConfigurationError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

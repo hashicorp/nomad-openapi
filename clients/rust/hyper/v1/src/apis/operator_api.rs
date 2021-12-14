@@ -33,18 +33,18 @@ impl<C: hyper::client::Connect> OperatorApiClient<C> {
 }
 
 pub trait OperatorApi {
-    fn delete_operator_raft(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
     fn get_operator_autopilot_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AutopilotConfiguration, Error = Error<serde_json::Value>>>;
     fn get_operator_autopilot_health(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::OperatorHealthReply, Error = Error<serde_json::Value>>>;
-    fn get_operator_raft(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::RaftServer>, Error = Error<serde_json::Value>>>;
+    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::RaftServer>, Error = Error<serde_json::Value>>>;
     fn get_operator_scheduler_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerConfigurationResponse, Error = Error<serde_json::Value>>>;
     fn post_operator_scheduler_configuration(&self, scheduler_configuration: crate::models::SchedulerConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerSetConfigurationResponse, Error = Error<serde_json::Value>>>;
     fn put_operator_autopilot_configuration(&self, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
 }
 
 impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
-    fn delete_operator_raft(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/operator/raft/".to_string())
+    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/operator/raft/peer".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -146,8 +146,8 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_operator_raft(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::RaftServer>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/raft/".to_string())
+    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::RaftServer>, Error = Error<serde_json::Value>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/raft/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
