@@ -18,6 +18,7 @@ import { Allocation } from '../models/Allocation';
 import { AllocationListStub } from '../models/AllocationListStub';
 import { AllocationMetric } from '../models/AllocationMetric';
 import { Attribute } from '../models/Attribute';
+import { AutopilotConfiguration } from '../models/AutopilotConfiguration';
 import { CSIControllerInfo } from '../models/CSIControllerInfo';
 import { CSIInfo } from '../models/CSIInfo';
 import { CSIMountOptions } from '../models/CSIMountOptions';
@@ -132,6 +133,7 @@ import { NodeUpdateEligibilityRequest } from '../models/NodeUpdateEligibilityReq
 import { ObjectDiff } from '../models/ObjectDiff';
 import { OneTimeToken } from '../models/OneTimeToken';
 import { OneTimeTokenExchangeRequest } from '../models/OneTimeTokenExchangeRequest';
+import { OperatorHealthReply } from '../models/OperatorHealthReply';
 import { ParameterizedJobConfig } from '../models/ParameterizedJobConfig';
 import { PeriodicConfig } from '../models/PeriodicConfig';
 import { PeriodicForceResponse } from '../models/PeriodicForceResponse';
@@ -139,8 +141,10 @@ import { PlanAnnotations } from '../models/PlanAnnotations';
 import { PointValue } from '../models/PointValue';
 import { Port } from '../models/Port';
 import { PortMapping } from '../models/PortMapping';
+import { PreemptionConfig } from '../models/PreemptionConfig';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
+import { RaftServer } from '../models/RaftServer';
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
 import { ReschedulePolicy } from '../models/ReschedulePolicy';
@@ -152,8 +156,12 @@ import { ScalingEvent } from '../models/ScalingEvent';
 import { ScalingPolicy } from '../models/ScalingPolicy';
 import { ScalingPolicyListStub } from '../models/ScalingPolicyListStub';
 import { ScalingRequest } from '../models/ScalingRequest';
+import { SchedulerConfiguration } from '../models/SchedulerConfiguration';
+import { SchedulerConfigurationResponse } from '../models/SchedulerConfigurationResponse';
+import { SchedulerSetConfigurationResponse } from '../models/SchedulerSetConfigurationResponse';
 import { SearchRequest } from '../models/SearchRequest';
 import { SearchResponse } from '../models/SearchResponse';
+import { ServerHealth } from '../models/ServerHealth';
 import { Service } from '../models/Service';
 import { ServiceCheck } from '../models/ServiceCheck';
 import { SidecarTask } from '../models/SidecarTask';
@@ -1250,8 +1258,6 @@ export class PromiseNodesApi {
 
 
 
-<<<<<<< HEAD
-=======
 import { ObservableOperatorApi } from './ObservableAPI';
 
 import { OperatorApiRequestFactory, OperatorApiResponseProcessor} from "../apis/OperatorApi";
@@ -1370,7 +1376,6 @@ export class PromiseOperatorApi {
 
 
 
->>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 import { ObservablePluginsApi } from './ObservableAPI';
 
 import { PluginsApiRequestFactory, PluginsApiResponseProcessor} from "../apis/PluginsApi";

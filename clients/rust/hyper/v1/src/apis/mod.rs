@@ -67,15 +67,12 @@ mod metrics_api;
 pub use self::metrics_api::{ MetricsApi, MetricsApiClient };
 mod namespaces_api;
 pub use self::namespaces_api::{ NamespacesApi, NamespacesApiClient };
-<<<<<<< HEAD
 mod nodes_api;
 pub use self::nodes_api::{ NodesApi, NodesApiClient };
-mod plugins_api;
-pub use self::plugins_api::{ PluginsApi, PluginsApiClient };
-=======
 mod operator_api;
 pub use self::operator_api::{ OperatorApi, OperatorApiClient };
->>>>>>> 2fdd42e (updates to generator/operator.go)
+mod plugins_api;
+pub use self::plugins_api::{ PluginsApi, PluginsApiClient };
 mod regions_api;
 pub use self::regions_api::{ RegionsApi, RegionsApiClient };
 mod scaling_api;

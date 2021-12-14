@@ -66,13 +66,11 @@ type APIClient struct {
 
 	NamespacesApi *NamespacesApiService
 
-<<<<<<< HEAD
 	NodesApi *NodesApiService
 
-	PluginsApi *PluginsApiService
-=======
 	OperatorApi *OperatorApiService
->>>>>>> 2fdd42e (updates to generator/operator.go)
+
+	PluginsApi *PluginsApiService
 
 	RegionsApi *RegionsApiService
 
@@ -109,12 +107,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobsApi = (*JobsApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
-<<<<<<< HEAD
 	c.NodesApi = (*NodesApiService)(&c.common)
-	c.PluginsApi = (*PluginsApiService)(&c.common)
-=======
 	c.OperatorApi = (*OperatorApiService)(&c.common)
->>>>>>> 2fdd42e (updates to generator/operator.go)
+	c.PluginsApi = (*PluginsApiService)(&c.common)
 	c.RegionsApi = (*RegionsApiService)(&c.common)
 	c.ScalingApi = (*ScalingApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)

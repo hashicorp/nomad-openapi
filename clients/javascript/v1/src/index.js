@@ -28,13 +28,10 @@ import AllocatedTaskResources from './model/AllocatedTaskResources';
 import Allocation from './model/Allocation';
 import AllocationListStub from './model/AllocationListStub';
 import AllocationMetric from './model/AllocationMetric';
-<<<<<<< HEAD
 import Attribute from './model/Attribute';
+import AutopilotConfiguration from './model/AutopilotConfiguration';
 import CSIControllerInfo from './model/CSIControllerInfo';
 import CSIInfo from './model/CSIInfo';
-=======
-import AutopilotConfiguration from './model/AutopilotConfiguration';
->>>>>>> 2fdd42e (updates to generator/operator.go)
 import CSIMountOptions from './model/CSIMountOptions';
 import CSINodeInfo from './model/CSINodeInfo';
 import CSIPlugin from './model/CSIPlugin';
@@ -145,12 +142,9 @@ import NodeScoreMeta from './model/NodeScoreMeta';
 import NodeUpdateDrainRequest from './model/NodeUpdateDrainRequest';
 import NodeUpdateEligibilityRequest from './model/NodeUpdateEligibilityRequest';
 import ObjectDiff from './model/ObjectDiff';
-<<<<<<< HEAD
 import OneTimeToken from './model/OneTimeToken';
 import OneTimeTokenExchangeRequest from './model/OneTimeTokenExchangeRequest';
-=======
 import OperatorHealthReply from './model/OperatorHealthReply';
->>>>>>> 2fdd42e (updates to generator/operator.go)
 import ParameterizedJobConfig from './model/ParameterizedJobConfig';
 import PeriodicConfig from './model/PeriodicConfig';
 import PeriodicForceResponse from './model/PeriodicForceResponse';
@@ -209,12 +203,9 @@ import EvaluationsApi from './api/EvaluationsApi';
 import JobsApi from './api/JobsApi';
 import MetricsApi from './api/MetricsApi';
 import NamespacesApi from './api/NamespacesApi';
-<<<<<<< HEAD
 import NodesApi from './api/NodesApi';
-import PluginsApi from './api/PluginsApi';
-=======
 import OperatorApi from './api/OperatorApi';
->>>>>>> 2fdd42e (updates to generator/operator.go)
+import PluginsApi from './api/PluginsApi';
 import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
@@ -351,11 +342,16 @@ export {
     AllocationMetric,
 
     /**
-<<<<<<< HEAD
      * The Attribute model constructor.
      * @property {module:model/Attribute}
      */
     Attribute,
+
+    /**
+     * The AutopilotConfiguration model constructor.
+     * @property {module:model/AutopilotConfiguration}
+     */
+    AutopilotConfiguration,
 
     /**
      * The CSIControllerInfo model constructor.
@@ -368,12 +364,6 @@ export {
      * @property {module:model/CSIInfo}
      */
     CSIInfo,
-=======
-     * The AutopilotConfiguration model constructor.
-     * @property {module:model/AutopilotConfiguration}
-     */
-    AutopilotConfiguration,
->>>>>>> 2fdd42e (updates to generator/operator.go)
 
     /**
      * The CSIMountOptions model constructor.
@@ -1036,7 +1026,6 @@ export {
     ObjectDiff,
 
     /**
-<<<<<<< HEAD
      * The OneTimeToken model constructor.
      * @property {module:model/OneTimeToken}
      */
@@ -1047,12 +1036,12 @@ export {
      * @property {module:model/OneTimeTokenExchangeRequest}
      */
     OneTimeTokenExchangeRequest,
-=======
+
+    /**
      * The OperatorHealthReply model constructor.
      * @property {module:model/OperatorHealthReply}
      */
     OperatorHealthReply,
->>>>>>> 2fdd42e (updates to generator/operator.go)
 
     /**
      * The ParameterizedJobConfig model constructor.
@@ -1403,23 +1392,22 @@ export {
     NamespacesApi,
 
     /**
-<<<<<<< HEAD
     * The NodesApi service constructor.
     * @property {module:api/NodesApi}
     */
     NodesApi,
 
     /**
-    * The PluginsApi service constructor.
-    * @property {module:api/PluginsApi}
-    */
-    PluginsApi,
-=======
     * The OperatorApi service constructor.
     * @property {module:api/OperatorApi}
     */
     OperatorApi,
->>>>>>> 2fdd42e (updates to generator/operator.go)
+
+    /**
+    * The PluginsApi service constructor.
+    * @property {module:api/PluginsApi}
+    */
+    PluginsApi,
 
     /**
     * The RegionsApi service constructor.

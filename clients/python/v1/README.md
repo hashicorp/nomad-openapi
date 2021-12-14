@@ -152,27 +152,21 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**get_namespace**](docs/NamespacesApi.md#get_namespace) | **GET** /namespace/{namespaceName} | 
 *NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **GET** /namespaces | 
 *NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **POST** /namespace/{namespaceName} | 
-<<<<<<< HEAD
 *NodesApi* | [**get_node**](docs/NodesApi.md#get_node) | **GET** /node/{nodeId} | 
 *NodesApi* | [**get_node_allocations**](docs/NodesApi.md#get_node_allocations) | **GET** /node/{nodeId}/allocations | 
 *NodesApi* | [**get_nodes**](docs/NodesApi.md#get_nodes) | **GET** /nodes | 
 *NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **POST** /node/{nodeId}/drain | 
 *NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **POST** /node/{nodeId}/eligibility | 
 *NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **POST** /node/{nodeId}/purge | 
-<<<<<<< HEAD
-*PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
-*PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
-=======
-*OperatorApi* | [**delete_operator_raft**](docs/OperatorApi.md#delete_operator_raft) | **DELETE** /operator/raft/ | 
-=======
 *OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
->>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 *OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
 *OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
 *OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
->>>>>>> 2fdd42e (updates to generator/operator.go)
+*OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
+*PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
+*PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
 *ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **GET** /scaling/policies | 
 *ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **GET** /scaling/policy/{policyID} | 
@@ -210,13 +204,10 @@ Class | Method | HTTP request | Description
  - [Allocation](docs/Allocation.md)
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
-<<<<<<< HEAD
  - [Attribute](docs/Attribute.md)
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [CSIControllerInfo](docs/CSIControllerInfo.md)
  - [CSIInfo](docs/CSIInfo.md)
-=======
- - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
->>>>>>> 2fdd42e (updates to generator/operator.go)
  - [CSIMountOptions](docs/CSIMountOptions.md)
  - [CSINodeInfo](docs/CSINodeInfo.md)
  - [CSIPlugin](docs/CSIPlugin.md)
@@ -329,12 +320,9 @@ Class | Method | HTTP request | Description
  - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
  - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [ObjectDiff](docs/ObjectDiff.md)
-<<<<<<< HEAD
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
-=======
  - [OperatorHealthReply](docs/OperatorHealthReply.md)
->>>>>>> 2fdd42e (updates to generator/operator.go)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -381,11 +369,8 @@ Class | Method | HTTP request | Description
  - [TaskLifecycle](docs/TaskLifecycle.md)
  - [TaskState](docs/TaskState.md)
  - [Template](docs/Template.md)
-<<<<<<< HEAD
- - [Uint16](docs/Uint16.md)
-=======
  - [Uint](docs/Uint.md)
->>>>>>> 2fdd42e (updates to generator/operator.go)
+ - [Uint16](docs/Uint16.md)
  - [Uint64](docs/Uint64.md)
  - [Uint8](docs/Uint8.md)
  - [UpdateStrategy](docs/UpdateStrategy.md)
