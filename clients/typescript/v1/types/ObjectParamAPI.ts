@@ -3719,6 +3719,391 @@ export class ObjectNodesApi {
 
 }
 
+<<<<<<< HEAD
+=======
+import { ObservableOperatorApi } from "./ObservableAPI";
+import { OperatorApiRequestFactory, OperatorApiResponseProcessor} from "../apis/OperatorApi";
+
+export interface OperatorApiDeleteOperatorRaftPeerRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApideleteOperatorRaftPeer
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApideleteOperatorRaftPeer
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApideleteOperatorRaftPeer
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof OperatorApideleteOperatorRaftPeer
+     */
+    idempotencyToken?: string
+}
+
+export interface OperatorApiGetOperatorAutopilotConfigurationRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotConfiguration
+     */
+    nextToken?: string
+}
+
+export interface OperatorApiGetOperatorAutopilotHealthRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof OperatorApigetOperatorAutopilotHealth
+     */
+    nextToken?: string
+}
+
+export interface OperatorApiGetOperatorRaftConfigurationRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof OperatorApigetOperatorRaftConfiguration
+     */
+    nextToken?: string
+}
+
+export interface OperatorApiGetOperatorSchedulerConfigurationRequest {
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof OperatorApigetOperatorSchedulerConfiguration
+     */
+    nextToken?: string
+}
+
+export interface OperatorApiPostOperatorSchedulerConfigurationRequest {
+    /**
+     * 
+     * @type SchedulerConfiguration
+     * @memberof OperatorApipostOperatorSchedulerConfiguration
+     */
+    schedulerConfiguration: SchedulerConfiguration
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApipostOperatorSchedulerConfiguration
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApipostOperatorSchedulerConfiguration
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApipostOperatorSchedulerConfiguration
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof OperatorApipostOperatorSchedulerConfiguration
+     */
+    idempotencyToken?: string
+}
+
+export interface OperatorApiPutOperatorAutopilotConfigurationRequest {
+    /**
+     * 
+     * @type AutopilotConfiguration
+     * @memberof OperatorApiputOperatorAutopilotConfiguration
+     */
+    autopilotConfiguration: AutopilotConfiguration
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof OperatorApiputOperatorAutopilotConfiguration
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof OperatorApiputOperatorAutopilotConfiguration
+     */
+    namespace?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof OperatorApiputOperatorAutopilotConfiguration
+     */
+    xNomadToken?: string
+    /**
+     * Can be used to ensure operations are only run once.
+     * @type string
+     * @memberof OperatorApiputOperatorAutopilotConfiguration
+     */
+    idempotencyToken?: string
+}
+
+export class ObjectOperatorApi {
+    private api: ObservableOperatorApi
+
+    public constructor(configuration: Configuration, requestFactory?: OperatorApiRequestFactory, responseProcessor?: OperatorApiResponseProcessor) {
+        this.api = new ObservableOperatorApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public deleteOperatorRaftPeer(param: OperatorApiDeleteOperatorRaftPeerRequest, options?: Configuration): Promise<void> {
+        return this.api.deleteOperatorRaftPeer(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getOperatorAutopilotConfiguration(param: OperatorApiGetOperatorAutopilotConfigurationRequest, options?: Configuration): Promise<AutopilotConfiguration> {
+        return this.api.getOperatorAutopilotConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getOperatorAutopilotHealth(param: OperatorApiGetOperatorAutopilotHealthRequest, options?: Configuration): Promise<OperatorHealthReply> {
+        return this.api.getOperatorAutopilotHealth(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest, options?: Configuration): Promise<Array<RaftServer>> {
+        return this.api.getOperatorRaftConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getOperatorSchedulerConfiguration(param: OperatorApiGetOperatorSchedulerConfigurationRequest, options?: Configuration): Promise<SchedulerConfigurationResponse> {
+        return this.api.getOperatorSchedulerConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postOperatorSchedulerConfiguration(param: OperatorApiPostOperatorSchedulerConfigurationRequest, options?: Configuration): Promise<SchedulerSetConfigurationResponse> {
+        return this.api.postOperatorSchedulerConfiguration(param.schedulerConfiguration, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public putOperatorAutopilotConfiguration(param: OperatorApiPutOperatorAutopilotConfigurationRequest, options?: Configuration): Promise<void> {
+        return this.api.putOperatorAutopilotConfiguration(param.autopilotConfiguration, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
+    }
+
+}
+
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 import { ObservablePluginsApi } from "./ObservableAPI";
 import { PluginsApiRequestFactory, PluginsApiResponseProcessor} from "../apis/PluginsApi";
 

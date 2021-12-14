@@ -435,6 +435,11 @@ components:
           description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
+<<<<<<< HEAD
+=======
+    DeleteOperatorRaftPeerResponse:
+      description: ""
+>>>>>>> a5079de (added a few tests, missing snapshot request/restore)
     DeleteSnapshotResponse:
       description: ""
       headers:
@@ -1032,6 +1037,48 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+<<<<<<< HEAD
+=======
+    GetOperatorAutopilotConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AutopilotConfiguration'
+      description: ""
+    GetOperatorAutopilotHealthResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperatorHealthReply'
+      description: ""
+    GetOperatorRaftConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/RaftServer'
+            type: array
+      description: ""
+    GetOperatorSchedulerConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchedulerConfigurationResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by the leader node.
+          schema:
+            type: integer
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
     GetPluginCSIResponse:
       content:
         application/json:
@@ -6607,7 +6654,73 @@ paths:
       - $ref: '#/components/parameters/PluginIDParam'
       responses:
         "200":
+<<<<<<< HEAD
           $ref: '#/components/responses/GetPluginCSIResponse'
+<<<<<<< HEAD
+=======
+=======
+      - $ref: '#/components/parameters/NextTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetOperatorSchedulerConfigurationResponse'
+>>>>>>> 2fdd42e (updates to generator/operator.go)
+=======
+          $ref: '#/components/responses/GetOperatorAutopilotHealthResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/raft/configuration:
+    get:
+      operationId: GetOperatorRaftConfiguration
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetOperatorRaftConfigurationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Operator
+  /operator/raft/peer:
+    delete:
+      operationId: DeleteOperatorRaftPeer
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/IdempotencyTokenParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/DeleteOperatorRaftPeerResponse'
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
+>>>>>>> a5079de (added a few tests, missing snapshot request/restore)
         "400":
           $ref: '#/components/responses/BadRequestResponse'
         "403":

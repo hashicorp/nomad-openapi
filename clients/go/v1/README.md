@@ -140,8 +140,23 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**UpdateNodeDrain**](docs/NodesApi.md#updatenodedrain) | **Post** /node/{nodeId}/drain | 
 *NodesApi* | [**UpdateNodeEligibility**](docs/NodesApi.md#updatenodeeligibility) | **Post** /node/{nodeId}/eligibility | 
 *NodesApi* | [**UpdateNodePurge**](docs/NodesApi.md#updatenodepurge) | **Post** /node/{nodeId}/purge | 
+<<<<<<< HEAD
 *PluginsApi* | [**GetPluginCSI**](docs/PluginsApi.md#getplugincsi) | **Get** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**GetPlugins**](docs/PluginsApi.md#getplugins) | **Get** /plugins | 
+<<<<<<< HEAD
+=======
+=======
+*OperatorApi* | [**DeleteOperatorRaft**](docs/OperatorApi.md#deleteoperatorraft) | **Delete** /operator/raft/ | 
+=======
+*OperatorApi* | [**DeleteOperatorRaftPeer**](docs/OperatorApi.md#deleteoperatorraftpeer) | **Delete** /operator/raft/peer | 
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
+*OperatorApi* | [**GetOperatorAutopilotConfiguration**](docs/OperatorApi.md#getoperatorautopilotconfiguration) | **Get** /operator/autopilot/configuration | 
+*OperatorApi* | [**GetOperatorAutopilotHealth**](docs/OperatorApi.md#getoperatorautopilothealth) | **Get** /operator/autopilot/health | 
+*OperatorApi* | [**GetOperatorRaftConfiguration**](docs/OperatorApi.md#getoperatorraftconfiguration) | **Get** /operator/raft/configuration | 
+*OperatorApi* | [**GetOperatorSchedulerConfiguration**](docs/OperatorApi.md#getoperatorschedulerconfiguration) | **Get** /operator/scheduler/configuration | 
+*OperatorApi* | [**PostOperatorSchedulerConfiguration**](docs/OperatorApi.md#postoperatorschedulerconfiguration) | **Post** /operator/scheduler/configuration | 
+>>>>>>> 2fdd42e (updates to generator/operator.go)
+>>>>>>> a5079de (added a few tests, missing snapshot request/restore)
 *RegionsApi* | [**GetRegions**](docs/RegionsApi.md#getregions) | **Get** /regions | 
 *ScalingApi* | [**GetScalingPolicies**](docs/ScalingApi.md#getscalingpolicies) | **Get** /scaling/policies | 
 *ScalingApi* | [**GetScalingPolicy**](docs/ScalingApi.md#getscalingpolicy) | **Get** /scaling/policy/{policyID} | 
