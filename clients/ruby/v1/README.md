@@ -87,6 +87,7 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+<<<<<<< HEAD
 *NomadClient::ACLApi* | [**delete_acl_policy**](docs/ACLApi.md#delete_acl_policy) | **DELETE** /acl/policy/{policyName} | 
 *NomadClient::ACLApi* | [**delete_acl_token**](docs/ACLApi.md#delete_acl_token) | **DELETE** /acl/token/{tokenAccessor} | 
 *NomadClient::ACLApi* | [**get_acl_policies**](docs/ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
@@ -354,6 +355,295 @@ Class | Method | HTTP request | Description
 
 ### X-Nomad-Token
 
+=======
+*ACLApi* | [**delete_acl_policy**](docs/ACLApi.md#delete_acl_policy) | **DELETE** /acl/policy/{policyName} | 
+*ACLApi* | [**delete_acl_token**](docs/ACLApi.md#delete_acl_token) | **DELETE** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**get_acl_policies**](docs/ACLApi.md#get_acl_policies) | **GET** /acl/policies | 
+*ACLApi* | [**get_acl_policy**](docs/ACLApi.md#get_acl_policy) | **GET** /acl/policy/{policyName} | 
+*ACLApi* | [**get_acl_token**](docs/ACLApi.md#get_acl_token) | **GET** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**get_acl_token_self**](docs/ACLApi.md#get_acl_token_self) | **GET** /acl/token | 
+*ACLApi* | [**get_acl_tokens**](docs/ACLApi.md#get_acl_tokens) | **GET** /acl/tokens | 
+*ACLApi* | [**post_acl_bootstrap**](docs/ACLApi.md#post_acl_bootstrap) | **POST** /acl/bootstrap | 
+*ACLApi* | [**post_acl_policy**](docs/ACLApi.md#post_acl_policy) | **POST** /acl/policy/{policyName} | 
+*ACLApi* | [**post_acl_token**](docs/ACLApi.md#post_acl_token) | **POST** /acl/token/{tokenAccessor} | 
+*ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **POST** /acl/token/onetime | 
+*ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **POST** /acl/token/onetime/exchange | 
+*AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
+*DeploymentsApi* | [**get_deployment**](docs/DeploymentsApi.md#get_deployment) | **GET** /deployment/{deploymentID} | 
+*DeploymentsApi* | [**get_deployment_allocations**](docs/DeploymentsApi.md#get_deployment_allocations) | **GET** /deployment/allocations/{deploymentID} | 
+*DeploymentsApi* | [**get_deployments**](docs/DeploymentsApi.md#get_deployments) | **GET** /deployments | 
+*DeploymentsApi* | [**post_deployment_allocation_health**](docs/DeploymentsApi.md#post_deployment_allocation_health) | **POST** /deployment/allocation-health/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_fail**](docs/DeploymentsApi.md#post_deployment_fail) | **POST** /deployment/fail/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_pause**](docs/DeploymentsApi.md#post_deployment_pause) | **POST** /deployment/pause/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_promote**](docs/DeploymentsApi.md#post_deployment_promote) | **POST** /deployment/promote/{deploymentID} | 
+*DeploymentsApi* | [**post_deployment_unblock**](docs/DeploymentsApi.md#post_deployment_unblock) | **POST** /deployment/unblock/{deploymentID} | 
+*EnterpriseApi* | [**create_quota_spec**](docs/EnterpriseApi.md#create_quota_spec) | **POST** /quota | 
+*EnterpriseApi* | [**delete_quota_spec**](docs/EnterpriseApi.md#delete_quota_spec) | **DELETE** /quota/{specName} | 
+*EnterpriseApi* | [**get_quota_spec**](docs/EnterpriseApi.md#get_quota_spec) | **GET** /quota/{specName} | 
+*EnterpriseApi* | [**get_quotas**](docs/EnterpriseApi.md#get_quotas) | **GET** /quotas | 
+*EnterpriseApi* | [**post_quota_spec**](docs/EnterpriseApi.md#post_quota_spec) | **POST** /quota/{specName} | 
+*EvaluationsApi* | [**get_evaluation**](docs/EvaluationsApi.md#get_evaluation) | **GET** /evaluation/{evalID} | 
+*EvaluationsApi* | [**get_evaluation_allocations**](docs/EvaluationsApi.md#get_evaluation_allocations) | **GET** /evaluation/{evalID}/allocations | 
+*EvaluationsApi* | [**get_evaluations**](docs/EvaluationsApi.md#get_evaluations) | **GET** /evaluations | 
+*JobsApi* | [**delete_job**](docs/JobsApi.md#delete_job) | **DELETE** /job/{jobName} | 
+*JobsApi* | [**get_job**](docs/JobsApi.md#get_job) | **GET** /job/{jobName} | 
+*JobsApi* | [**get_job_allocations**](docs/JobsApi.md#get_job_allocations) | **GET** /job/{jobName}/allocations | 
+*JobsApi* | [**get_job_deployment**](docs/JobsApi.md#get_job_deployment) | **GET** /job/{jobName}/deployment | 
+*JobsApi* | [**get_job_deployments**](docs/JobsApi.md#get_job_deployments) | **GET** /job/{jobName}/deployments | 
+*JobsApi* | [**get_job_evaluations**](docs/JobsApi.md#get_job_evaluations) | **GET** /job/{jobName}/evaluations | 
+*JobsApi* | [**get_job_scale_status**](docs/JobsApi.md#get_job_scale_status) | **GET** /job/{jobName}/scale | 
+*JobsApi* | [**get_job_summary**](docs/JobsApi.md#get_job_summary) | **GET** /job/{jobName}/summary | 
+*JobsApi* | [**get_job_versions**](docs/JobsApi.md#get_job_versions) | **GET** /job/{jobName}/versions | 
+*JobsApi* | [**get_jobs**](docs/JobsApi.md#get_jobs) | **GET** /jobs | 
+*JobsApi* | [**post_job**](docs/JobsApi.md#post_job) | **POST** /job/{jobName} | 
+*JobsApi* | [**post_job_dispatch**](docs/JobsApi.md#post_job_dispatch) | **POST** /job/{jobName}/dispatch | 
+*JobsApi* | [**post_job_evaluate**](docs/JobsApi.md#post_job_evaluate) | **POST** /job/{jobName}/evaluate | 
+*JobsApi* | [**post_job_parse**](docs/JobsApi.md#post_job_parse) | **POST** /jobs/parse | 
+*JobsApi* | [**post_job_periodic_force**](docs/JobsApi.md#post_job_periodic_force) | **POST** /job/{jobName}/periodic/force | 
+*JobsApi* | [**post_job_plan**](docs/JobsApi.md#post_job_plan) | **POST** /job/{jobName}/plan | 
+*JobsApi* | [**post_job_revert**](docs/JobsApi.md#post_job_revert) | **POST** /job/{jobName}/revert | 
+*JobsApi* | [**post_job_scaling_request**](docs/JobsApi.md#post_job_scaling_request) | **POST** /job/{jobName}/scale | 
+*JobsApi* | [**post_job_stability**](docs/JobsApi.md#post_job_stability) | **POST** /job/{jobName}/stable | 
+*JobsApi* | [**post_job_validate_request**](docs/JobsApi.md#post_job_validate_request) | **POST** /validate/job | 
+*JobsApi* | [**register_job**](docs/JobsApi.md#register_job) | **POST** /jobs | 
+*MetricsApi* | [**get_metrics_summary**](docs/MetricsApi.md#get_metrics_summary) | **GET** /metrics | 
+*NamespacesApi* | [**create_namespace**](docs/NamespacesApi.md#create_namespace) | **POST** /namespace | 
+*NamespacesApi* | [**delete_namespace**](docs/NamespacesApi.md#delete_namespace) | **DELETE** /namespace/{namespaceName} | 
+*NamespacesApi* | [**get_namespace**](docs/NamespacesApi.md#get_namespace) | **GET** /namespace/{namespaceName} | 
+*NamespacesApi* | [**get_namespaces**](docs/NamespacesApi.md#get_namespaces) | **GET** /namespaces | 
+*NamespacesApi* | [**post_namespace**](docs/NamespacesApi.md#post_namespace) | **POST** /namespace/{namespaceName} | 
+*NodesApi* | [**get_node**](docs/NodesApi.md#get_node) | **GET** /node/{nodeId} | 
+*NodesApi* | [**get_node_allocations**](docs/NodesApi.md#get_node_allocations) | **GET** /node/{nodeId}/allocations | 
+*NodesApi* | [**get_nodes**](docs/NodesApi.md#get_nodes) | **GET** /nodes | 
+*NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **POST** /node/{nodeId}/drain | 
+*NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **POST** /node/{nodeId}/eligibility | 
+*NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **POST** /node/{nodeId}/purge | 
+*OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
+*OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
+*OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
+*OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
+*OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
+*OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
+*OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
+*PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
+*PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
+*RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
+*ScalingApi* | [**get_scaling_policies**](docs/ScalingApi.md#get_scaling_policies) | **GET** /scaling/policies | 
+*ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **GET** /scaling/policy/{policyID} | 
+*SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
+*SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 
+*SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
+*SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
+*VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 
+*VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **DELETE** /volumes/snapshot | 
+*VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **DELETE** /volume/csi/{volumeId} | 
+*VolumesApi* | [**detach_or_delete_volume**](docs/VolumesApi.md#detach_or_delete_volume) | **DELETE** /volume/csi/{volumeId}/{action} | 
+*VolumesApi* | [**get_external_volumes**](docs/VolumesApi.md#get_external_volumes) | **GET** /volumes/external | 
+*VolumesApi* | [**get_snapshots**](docs/VolumesApi.md#get_snapshots) | **GET** /volumes/snapshot | 
+*VolumesApi* | [**get_volume**](docs/VolumesApi.md#get_volume) | **GET** /volume/csi/{volumeId} | 
+*VolumesApi* | [**get_volumes**](docs/VolumesApi.md#get_volumes) | **GET** /volumes | 
+*VolumesApi* | [**post_snapshot**](docs/VolumesApi.md#post_snapshot) | **POST** /volumes/snapshot | 
+*VolumesApi* | [**post_volume**](docs/VolumesApi.md#post_volume) | **POST** /volumes | 
+*VolumesApi* | [**post_volume_registration**](docs/VolumesApi.md#post_volume_registration) | **POST** /volume/csi/{volumeId} | 
+
+
+## Documentation For Models
+
+ - [ACLPolicy](docs/ACLPolicy.md)
+ - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
+ - [ACLToken](docs/ACLToken.md)
+ - [ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [Affinity](docs/Affinity.md)
+ - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
+ - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
+ - [AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
+ - [AllocatedResources](docs/AllocatedResources.md)
+ - [AllocatedSharedResources](docs/AllocatedSharedResources.md)
+ - [AllocatedTaskResources](docs/AllocatedTaskResources.md)
+ - [Allocation](docs/Allocation.md)
+ - [AllocationListStub](docs/AllocationListStub.md)
+ - [AllocationMetric](docs/AllocationMetric.md)
+ - [Attribute](docs/Attribute.md)
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
+ - [CSIControllerInfo](docs/CSIControllerInfo.md)
+ - [CSIInfo](docs/CSIInfo.md)
+ - [CSIMountOptions](docs/CSIMountOptions.md)
+ - [CSINodeInfo](docs/CSINodeInfo.md)
+ - [CSIPlugin](docs/CSIPlugin.md)
+ - [CSIPluginListStub](docs/CSIPluginListStub.md)
+ - [CSISecrets](docs/CSISecrets.md)
+ - [CSISnapshot](docs/CSISnapshot.md)
+ - [CSISnapshotCreateRequest](docs/CSISnapshotCreateRequest.md)
+ - [CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)
+ - [CSISnapshotListResponse](docs/CSISnapshotListResponse.md)
+ - [CSITopology](docs/CSITopology.md)
+ - [CSIVolume](docs/CSIVolume.md)
+ - [CSIVolumeCapability](docs/CSIVolumeCapability.md)
+ - [CSIVolumeCreateRequest](docs/CSIVolumeCreateRequest.md)
+ - [CSIVolumeExternalStub](docs/CSIVolumeExternalStub.md)
+ - [CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
+ - [CSIVolumeListStub](docs/CSIVolumeListStub.md)
+ - [CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [CheckRestart](docs/CheckRestart.md)
+ - [Constraint](docs/Constraint.md)
+ - [Consul](docs/Consul.md)
+ - [ConsulConnect](docs/ConsulConnect.md)
+ - [ConsulExposeConfig](docs/ConsulExposeConfig.md)
+ - [ConsulExposePath](docs/ConsulExposePath.md)
+ - [ConsulGateway](docs/ConsulGateway.md)
+ - [ConsulGatewayBindAddress](docs/ConsulGatewayBindAddress.md)
+ - [ConsulGatewayProxy](docs/ConsulGatewayProxy.md)
+ - [ConsulGatewayTLSConfig](docs/ConsulGatewayTLSConfig.md)
+ - [ConsulIngressConfigEntry](docs/ConsulIngressConfigEntry.md)
+ - [ConsulIngressListener](docs/ConsulIngressListener.md)
+ - [ConsulIngressService](docs/ConsulIngressService.md)
+ - [ConsulLinkedService](docs/ConsulLinkedService.md)
+ - [ConsulMeshGateway](docs/ConsulMeshGateway.md)
+ - [ConsulProxy](docs/ConsulProxy.md)
+ - [ConsulSidecarService](docs/ConsulSidecarService.md)
+ - [ConsulTerminatingConfigEntry](docs/ConsulTerminatingConfigEntry.md)
+ - [ConsulUpstream](docs/ConsulUpstream.md)
+ - [DNSConfig](docs/DNSConfig.md)
+ - [Deployment](docs/Deployment.md)
+ - [DeploymentAllocHealthRequest](docs/DeploymentAllocHealthRequest.md)
+ - [DeploymentPauseRequest](docs/DeploymentPauseRequest.md)
+ - [DeploymentPromoteRequest](docs/DeploymentPromoteRequest.md)
+ - [DeploymentState](docs/DeploymentState.md)
+ - [DeploymentUnblockRequest](docs/DeploymentUnblockRequest.md)
+ - [DeploymentUpdateResponse](docs/DeploymentUpdateResponse.md)
+ - [DesiredTransition](docs/DesiredTransition.md)
+ - [DesiredUpdates](docs/DesiredUpdates.md)
+ - [DispatchPayloadConfig](docs/DispatchPayloadConfig.md)
+ - [DrainMetadata](docs/DrainMetadata.md)
+ - [DrainSpec](docs/DrainSpec.md)
+ - [DrainStrategy](docs/DrainStrategy.md)
+ - [DriverInfo](docs/DriverInfo.md)
+ - [EphemeralDisk](docs/EphemeralDisk.md)
+ - [EvalOptions](docs/EvalOptions.md)
+ - [Evaluation](docs/Evaluation.md)
+ - [FieldDiff](docs/FieldDiff.md)
+ - [FuzzyMatch](docs/FuzzyMatch.md)
+ - [FuzzySearchRequest](docs/FuzzySearchRequest.md)
+ - [FuzzySearchResponse](docs/FuzzySearchResponse.md)
+ - [GaugeValue](docs/GaugeValue.md)
+ - [HostVolumeInfo](docs/HostVolumeInfo.md)
+ - [Int8](docs/Int8.md)
+ - [Job](docs/Job.md)
+ - [JobChildrenSummary](docs/JobChildrenSummary.md)
+ - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
+ - [JobDiff](docs/JobDiff.md)
+ - [JobDispatchRequest](docs/JobDispatchRequest.md)
+ - [JobDispatchResponse](docs/JobDispatchResponse.md)
+ - [JobEvaluateRequest](docs/JobEvaluateRequest.md)
+ - [JobListStub](docs/JobListStub.md)
+ - [JobPlanRequest](docs/JobPlanRequest.md)
+ - [JobPlanResponse](docs/JobPlanResponse.md)
+ - [JobRegisterRequest](docs/JobRegisterRequest.md)
+ - [JobRegisterResponse](docs/JobRegisterResponse.md)
+ - [JobRevertRequest](docs/JobRevertRequest.md)
+ - [JobScaleStatusResponse](docs/JobScaleStatusResponse.md)
+ - [JobStabilityRequest](docs/JobStabilityRequest.md)
+ - [JobStabilityResponse](docs/JobStabilityResponse.md)
+ - [JobSummary](docs/JobSummary.md)
+ - [JobValidateRequest](docs/JobValidateRequest.md)
+ - [JobValidateResponse](docs/JobValidateResponse.md)
+ - [JobVersionsResponse](docs/JobVersionsResponse.md)
+ - [JobsParseRequest](docs/JobsParseRequest.md)
+ - [LogConfig](docs/LogConfig.md)
+ - [MetricsSummary](docs/MetricsSummary.md)
+ - [MigrateStrategy](docs/MigrateStrategy.md)
+ - [Multiregion](docs/Multiregion.md)
+ - [MultiregionRegion](docs/MultiregionRegion.md)
+ - [MultiregionStrategy](docs/MultiregionStrategy.md)
+ - [Namespace](docs/Namespace.md)
+ - [NetworkResource](docs/NetworkResource.md)
+ - [Node](docs/Node.md)
+ - [NodeCpuResources](docs/NodeCpuResources.md)
+ - [NodeDevice](docs/NodeDevice.md)
+ - [NodeDeviceLocality](docs/NodeDeviceLocality.md)
+ - [NodeDeviceResource](docs/NodeDeviceResource.md)
+ - [NodeDiskResources](docs/NodeDiskResources.md)
+ - [NodeDrainUpdateResponse](docs/NodeDrainUpdateResponse.md)
+ - [NodeEligibilityUpdateResponse](docs/NodeEligibilityUpdateResponse.md)
+ - [NodeEvent](docs/NodeEvent.md)
+ - [NodeListStub](docs/NodeListStub.md)
+ - [NodeMemoryResources](docs/NodeMemoryResources.md)
+ - [NodePurgeResponse](docs/NodePurgeResponse.md)
+ - [NodeReservedCpuResources](docs/NodeReservedCpuResources.md)
+ - [NodeReservedDiskResources](docs/NodeReservedDiskResources.md)
+ - [NodeReservedMemoryResources](docs/NodeReservedMemoryResources.md)
+ - [NodeReservedNetworkResources](docs/NodeReservedNetworkResources.md)
+ - [NodeReservedResources](docs/NodeReservedResources.md)
+ - [NodeResources](docs/NodeResources.md)
+ - [NodeScoreMeta](docs/NodeScoreMeta.md)
+ - [NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
+ - [NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
+ - [ObjectDiff](docs/ObjectDiff.md)
+ - [OneTimeToken](docs/OneTimeToken.md)
+ - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
+ - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
+ - [PeriodicConfig](docs/PeriodicConfig.md)
+ - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
+ - [PlanAnnotations](docs/PlanAnnotations.md)
+ - [PointValue](docs/PointValue.md)
+ - [Port](docs/Port.md)
+ - [PortMapping](docs/PortMapping.md)
+ - [PreemptionConfig](docs/PreemptionConfig.md)
+ - [QuotaLimit](docs/QuotaLimit.md)
+ - [QuotaSpec](docs/QuotaSpec.md)
+ - [RaftServer](docs/RaftServer.md)
+ - [RequestedDevice](docs/RequestedDevice.md)
+ - [RescheduleEvent](docs/RescheduleEvent.md)
+ - [ReschedulePolicy](docs/ReschedulePolicy.md)
+ - [RescheduleTracker](docs/RescheduleTracker.md)
+ - [Resources](docs/Resources.md)
+ - [RestartPolicy](docs/RestartPolicy.md)
+ - [SampledValue](docs/SampledValue.md)
+ - [ScalingEvent](docs/ScalingEvent.md)
+ - [ScalingPolicy](docs/ScalingPolicy.md)
+ - [ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
+ - [ScalingRequest](docs/ScalingRequest.md)
+ - [SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
+ - [SearchRequest](docs/SearchRequest.md)
+ - [SearchResponse](docs/SearchResponse.md)
+ - [ServerHealth](docs/ServerHealth.md)
+ - [Service](docs/Service.md)
+ - [ServiceCheck](docs/ServiceCheck.md)
+ - [SidecarTask](docs/SidecarTask.md)
+ - [Spread](docs/Spread.md)
+ - [SpreadTarget](docs/SpreadTarget.md)
+ - [Task](docs/Task.md)
+ - [TaskArtifact](docs/TaskArtifact.md)
+ - [TaskCSIPluginConfig](docs/TaskCSIPluginConfig.md)
+ - [TaskDiff](docs/TaskDiff.md)
+ - [TaskEvent](docs/TaskEvent.md)
+ - [TaskGroup](docs/TaskGroup.md)
+ - [TaskGroupDiff](docs/TaskGroupDiff.md)
+ - [TaskGroupScaleStatus](docs/TaskGroupScaleStatus.md)
+ - [TaskGroupSummary](docs/TaskGroupSummary.md)
+ - [TaskHandle](docs/TaskHandle.md)
+ - [TaskLifecycle](docs/TaskLifecycle.md)
+ - [TaskState](docs/TaskState.md)
+ - [Template](docs/Template.md)
+ - [Uint](docs/Uint.md)
+ - [Uint16](docs/Uint16.md)
+ - [Uint64](docs/Uint64.md)
+ - [Uint8](docs/Uint8.md)
+ - [UpdateStrategy](docs/UpdateStrategy.md)
+ - [Vault](docs/Vault.md)
+ - [VolumeMount](docs/VolumeMount.md)
+ - [VolumeRequest](docs/VolumeRequest.md)
+
+
+## Documentation For Authorization
+
+
+## X-Nomad-Token
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 
 - **Type**: API key
 - **API key parameter name**: X-Nomad-Token

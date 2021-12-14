@@ -159,13 +159,17 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **POST** /node/{nodeId}/drain | 
 *NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **POST** /node/{nodeId}/eligibility | 
 *NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **POST** /node/{nodeId}/purge | 
+<<<<<<< HEAD
 *PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
 =======
 *OperatorApi* | [**delete_operator_raft**](docs/OperatorApi.md#delete_operator_raft) | **DELETE** /operator/raft/ | 
+=======
+*OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
+>>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 *OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
 *OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
-*OperatorApi* | [**get_operator_raft**](docs/OperatorApi.md#get_operator_raft) | **GET** /operator/raft/ | 
+*OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
 *OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
 *OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
 >>>>>>> 2fdd42e (updates to generator/operator.go)

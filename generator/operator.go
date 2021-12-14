@@ -6,8 +6,6 @@ import (
 	"github.com/hashicorp/nomad/api"
 )
 
-var AutopilotSetConfiguration bool
-
 func (v *v1api) getOperatorPaths() []*apiPath {
 	tags := []string{"Operator"}
 
@@ -17,34 +15,37 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 		// QUESTION: should this be under the enterprise-api instead...?
 		//s.mux.HandleFunc("/v1/operator/raft/", s.wrap(s.OperatorRequest))
 		{
-			Template: "/operator/raft/",
+			Template: "/operator/raft/configuration",
 			Operations: []*operation{
-				//configuration
 				newOperation(http.MethodGet,
 					httpServer.OperatorRequest,
 					tags,
-					"GetOperatorRaft",
+					"GetOperatorRaftConfiguration",
 					nil,
 					defaultQueryOpts,
 					newResponseConfig(200,
 						arraySchema,
 						api.RaftServer{},
 						nil,
-						"GetOperatorRaftResponse",
+						"GetOperatorRaftConfigurationResponse",
 					),
 				),
-				//peer
+			},
+		},
+		{
+			Template: "/operator/raft/peer",
+			Operations: []*operation{
 				newOperation(http.MethodDelete,
 					httpServer.OperatorRequest,
 					tags,
-					"DeleteOperatorRaft",
+					"DeleteOperatorRaftPeer",
 					nil,
 					defaultWriteOpts,
 					newResponseConfig(200,
 						nilSchema,
 						nil,
 						nil,
-						"DeleteOperatorRaftResponse",
+						"DeleteOperatorRaftPeerResponse",
 					),
 				),
 			},
@@ -75,7 +76,7 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultWriteOpts,
 					newResponseConfig(200,
 						boolSchema,
-						AutopilotSetConfiguration, // ??
+						true, // any bool here will work?
 						nil,
 						"PutOperatorAutopilotConfigurationResponse",
 					),
@@ -102,6 +103,7 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/operator/snapshot", s.wrap(s.SnapshotRequest))
+		// NOTE: I don't know how to handle the snapshots :(
 		/* {
 		    Template: "/operator/snapshot",
 		    Operations: []*operation{
