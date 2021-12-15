@@ -473,6 +473,7 @@ components:
             items:
               $ref: '#/components/schemas/ACLPolicyListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -551,6 +552,7 @@ components:
             items:
               $ref: '#/components/schemas/ACLTokenListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -572,6 +574,7 @@ components:
             items:
               $ref: '#/components/schemas/AllocationListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -593,6 +596,7 @@ components:
             items:
               $ref: '#/components/schemas/AllocationListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -633,6 +637,7 @@ components:
             items:
               $ref: '#/components/schemas/Deployment'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -654,6 +659,7 @@ components:
             items:
               $ref: '#/components/schemas/AllocationListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -694,6 +700,7 @@ components:
             items:
               $ref: '#/components/schemas/Evaluation'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -753,6 +760,7 @@ components:
             items:
               $ref: '#/components/schemas/AllocationListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -793,6 +801,7 @@ components:
             items:
               $ref: '#/components/schemas/Deployment'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -814,6 +823,7 @@ components:
             items:
               $ref: '#/components/schemas/Evaluation'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -911,6 +921,7 @@ components:
             items:
               $ref: '#/components/schemas/JobListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -957,6 +968,7 @@ components:
             items:
               $ref: '#/components/schemas/Namespace'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -978,6 +990,7 @@ components:
             items:
               $ref: '#/components/schemas/AllocationListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1018,6 +1031,7 @@ components:
             items:
               $ref: '#/components/schemas/NodeListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1039,6 +1053,7 @@ components:
             items:
               $ref: '#/components/schemas/CSIPlugin'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1060,6 +1075,7 @@ components:
             items:
               $ref: '#/components/schemas/CSIPluginListStub'
             type: array
+            nullable: true
       description: ""
     GetQuotaSpecResponse:
       content:
@@ -1086,6 +1102,7 @@ components:
           schema:
             items: {}
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1107,6 +1124,7 @@ components:
             items:
               type: string
             type: array
+            nullable: true
       description: ""
     GetScalingPoliciesResponse:
       content:
@@ -1115,6 +1133,7 @@ components:
             items:
               $ref: '#/components/schemas/ScalingPolicyListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1212,6 +1231,7 @@ components:
             items:
               $ref: '#/components/schemas/CSIVolumeListStub'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1270,6 +1290,7 @@ components:
             items:
               $ref: '#/components/schemas/ACLToken'
             type: array
+            nullable: true
       description: ""
       headers:
         X-Nomad-Index:
@@ -1549,6 +1570,7 @@ components:
         Rules:
           type: string
       type: object
+      nullable: true
     ACLPolicyListStub:
       properties:
         CreateIndex:
@@ -1564,6 +1586,7 @@ components:
         Name:
           type: string
       type: object
+      nullable: true
     ACLToken:
       properties:
         AccessorID:
@@ -1575,6 +1598,7 @@ components:
         CreateTime:
           format: date-time
           type: string
+          nullable: true
         Global:
           type: boolean
         ModifyIndex:
@@ -1587,11 +1611,13 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         SecretID:
           type: string
         Type:
           type: string
       type: object
+      nullable: true
     ACLTokenListStub:
       properties:
         AccessorID:
@@ -1603,6 +1629,7 @@ components:
         CreateTime:
           format: date-time
           type: string
+          nullable: true
         Global:
           type: boolean
         ModifyIndex:
@@ -1615,9 +1642,11 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     Affinity:
       properties:
         LTarget:
@@ -1631,6 +1660,7 @@ components:
           minimum: -128
           type: integer
       type: object
+      nullable: true
     AllocDeploymentStatus:
       properties:
         Canary:
@@ -1644,19 +1674,23 @@ components:
         Timestamp:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     AllocatedCpuResources:
       properties:
         CpuShares:
           format: int64
           type: integer
       type: object
+      nullable: true
     AllocatedDeviceResource:
       properties:
         DeviceIDs:
           items:
             type: string
           type: array
+          nullable: true
         Name:
           type: string
         Type:
@@ -1664,6 +1698,7 @@ components:
         Vendor:
           type: string
       type: object
+      nullable: true
     AllocatedMemoryResources:
       properties:
         MemoryMB:
@@ -1673,6 +1708,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     AllocatedResources:
       properties:
         Shared:
@@ -1681,7 +1717,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/AllocatedTaskResources'
           type: object
+          nullable: true
       type: object
+      nullable: true
     AllocatedSharedResources:
       properties:
         DiskMB:
@@ -1691,11 +1729,14 @@ components:
           items:
             $ref: '#/components/schemas/NetworkResource'
           type: array
+          nullable: true
         Ports:
           items:
             $ref: '#/components/schemas/PortMapping'
           type: array
+          nullable: true
       type: object
+      nullable: true
     AllocatedTaskResources:
       properties:
         Cpu:
@@ -1704,13 +1745,16 @@ components:
           items:
             $ref: '#/components/schemas/AllocatedDeviceResource'
           type: array
+          nullable: true
         Memory:
           $ref: '#/components/schemas/AllocatedMemoryResources'
         Networks:
           items:
             $ref: '#/components/schemas/NetworkResource'
           type: array
+          nullable: true
       type: object
+      nullable: true
     Allocation:
       properties:
         AllocModifyIndex:
@@ -1773,6 +1817,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         PreemptedByAllocation:
           type: string
         PreviousAllocation:
@@ -1785,17 +1830,21 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         TaskGroup:
           type: string
         TaskResources:
           additionalProperties:
             $ref: '#/components/schemas/Resources'
           type: object
+          nullable: true
         TaskStates:
           additionalProperties:
             $ref: '#/components/schemas/TaskState'
           type: object
+          nullable: true
       type: object
+      nullable: true
     AllocationListStub:
       properties:
         AllocatedResources:
@@ -1850,6 +1899,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         PreemptedByAllocation:
           type: string
         RescheduleTracker:
@@ -1860,7 +1910,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/TaskState'
           type: object
+          nullable: true
       type: object
+      nullable: true
     AllocationMetric:
       properties:
         AllocationTime:
@@ -1870,24 +1922,29 @@ components:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         ClassFiltered:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         CoalescedFailures:
           type: integer
         ConstraintFiltered:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         DimensionExhausted:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         NodesAvailable:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         NodesEvaluated:
           type: integer
         NodesExhausted:
@@ -1898,20 +1955,25 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         ResourcesExhausted:
           additionalProperties:
             $ref: '#/components/schemas/Resources'
           type: object
+          nullable: true
         ScoreMetaData:
           items:
             $ref: '#/components/schemas/NodeScoreMeta'
           type: array
+          nullable: true
         Scores:
           additionalProperties:
             format: double
             type: number
           type: object
+          nullable: true
       type: object
+      nullable: true
     Attribute:
       properties:
         Bool:
@@ -1927,6 +1989,7 @@ components:
         Unit:
           type: string
       type: object
+      nullable: true
     CSIControllerInfo:
       properties:
         SupportsAttachDetach:
@@ -1938,6 +2001,7 @@ components:
         SupportsReadOnlyAttach:
           type: boolean
       type: object
+      nullable: true
     CSIInfo:
       properties:
         AllocID:
@@ -1959,7 +2023,9 @@ components:
         UpdateTime:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     CSIMountOptions:
       properties:
         FSType:
@@ -1968,7 +2034,9 @@ components:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSINodeInfo:
       properties:
         AccessibleTopology:
@@ -1981,18 +2049,21 @@ components:
         RequiresNodeStageVolume:
           type: boolean
       type: object
+      nullable: true
     CSIPlugin:
       properties:
         Allocations:
           items:
             $ref: '#/components/schemas/AllocationListStub'
           type: array
+          nullable: true
         ControllerRequired:
           type: boolean
         Controllers:
           additionalProperties:
             $ref: '#/components/schemas/CSIInfo'
           type: object
+          nullable: true
         ControllersExpected:
           type: integer
         ControllersHealthy:
@@ -2011,6 +2082,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/CSIInfo'
           type: object
+          nullable: true
         NodesExpected:
           type: integer
         NodesHealthy:
@@ -2020,6 +2092,7 @@ components:
         Version:
           type: string
       type: object
+      nullable: true
     CSIPluginListStub:
       properties:
         ControllerRequired:
@@ -2045,12 +2118,14 @@ components:
         Provider:
           type: string
       type: object
+      nullable: true
     CSIPluginType:
       type: string
     CSISecrets:
       additionalProperties:
         type: string
       type: object
+      nullable: true
     CSISnapshot:
       properties:
         CreateTime:
@@ -2068,6 +2143,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         PluginID:
           type: string
         Secrets:
@@ -2078,6 +2154,7 @@ components:
         SourceVolumeID:
           type: string
       type: object
+      nullable: true
     CSISnapshotCreateRequest:
       properties:
         Namespace:
@@ -2090,7 +2167,9 @@ components:
           items:
             $ref: '#/components/schemas/CSISnapshot'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSISnapshotCreateResponse:
       properties:
         KnownLeader:
@@ -2109,7 +2188,9 @@ components:
           items:
             $ref: '#/components/schemas/CSISnapshot'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSISnapshotListResponse:
       properties:
         KnownLeader:
@@ -2130,14 +2211,18 @@ components:
           items:
             $ref: '#/components/schemas/CSISnapshot'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSITopology:
       properties:
         Segments:
           additionalProperties:
             type: string
           type: object
+          nullable: true
       type: object
+      nullable: true
     CSIVolume:
       properties:
         AccessMode:
@@ -2146,6 +2231,7 @@ components:
           items:
             $ref: '#/components/schemas/AllocationListStub'
           type: array
+          nullable: true
         AttachmentMode:
           type: string
         Capacity:
@@ -2157,6 +2243,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         ControllerRequired:
           type: boolean
         ControllersExpected:
@@ -2189,6 +2276,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         PluginID:
           type: string
         Provider:
@@ -2199,10 +2287,12 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/Allocation'
           type: object
+          nullable: true
         RequestedCapabilities:
           items:
             $ref: '#/components/schemas/CSIVolumeCapability'
           type: array
+          nullable: true
         RequestedCapacityMax:
           format: int64
           type: integer
@@ -2212,6 +2302,7 @@ components:
         ResourceExhausted:
           format: date-time
           type: string
+          nullable: true
         Schedulable:
           type: boolean
         Secrets:
@@ -2222,11 +2313,14 @@ components:
           items:
             $ref: '#/components/schemas/CSITopology'
           type: array
+          nullable: true
         WriteAllocs:
           additionalProperties:
             $ref: '#/components/schemas/Allocation'
           type: object
+          nullable: true
       type: object
+      nullable: true
     CSIVolumeAccessMode:
       type: string
     CSIVolumeAttachmentMode:
@@ -2238,6 +2332,7 @@ components:
         AttachmentMode:
           type: string
       type: object
+      nullable: true
     CSIVolumeCreateRequest:
       properties:
         Namespace:
@@ -2250,7 +2345,9 @@ components:
           items:
             $ref: '#/components/schemas/CSIVolume'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSIVolumeExternalStub:
       properties:
         CapacityBytes:
@@ -2266,6 +2363,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         SnapshotID:
           type: string
         Status:
@@ -2274,7 +2372,9 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
       type: object
+      nullable: true
     CSIVolumeListExternalResponse:
       properties:
         NextToken:
@@ -2283,7 +2383,9 @@ components:
           items:
             $ref: '#/components/schemas/CSIVolumeExternalStub'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSIVolumeListStub:
       properties:
         AccessMode:
@@ -2323,13 +2425,16 @@ components:
         ResourceExhausted:
           format: date-time
           type: string
+          nullable: true
         Schedulable:
           type: boolean
         Topologies:
           items:
             $ref: '#/components/schemas/CSITopology'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CSIVolumeRegisterRequest:
       properties:
         Namespace:
@@ -2342,7 +2447,9 @@ components:
           items:
             $ref: '#/components/schemas/CSIVolume'
           type: array
+          nullable: true
       type: object
+      nullable: true
     CheckRestart:
       properties:
         Grace:
@@ -2353,6 +2460,7 @@ components:
         Limit:
           type: integer
       type: object
+      nullable: true
     Constraint:
       properties:
         LTarget:
@@ -2362,11 +2470,13 @@ components:
         RTarget:
           type: string
       type: object
+      nullable: true
     Consul:
       properties:
         Namespace:
           type: string
       type: object
+      nullable: true
     ConsulConnect:
       properties:
         Gateway:
@@ -2378,13 +2488,16 @@ components:
         SidecarTask:
           $ref: '#/components/schemas/SidecarTask'
       type: object
+      nullable: true
     ConsulExposeConfig:
       properties:
         Path:
           items:
             $ref: '#/components/schemas/ConsulExposePath'
           type: array
+          nullable: true
       type: object
+      nullable: true
     ConsulExposePath:
       properties:
         ListenerPort:
@@ -2396,6 +2509,7 @@ components:
         Protocol:
           type: string
       type: object
+      nullable: true
     ConsulGateway:
       properties:
         Ingress:
@@ -2406,6 +2520,7 @@ components:
         Terminating:
           $ref: '#/components/schemas/ConsulTerminatingConfigEntry'
       type: object
+      nullable: true
     ConsulGatewayBindAddress:
       properties:
         Address:
@@ -2415,11 +2530,13 @@ components:
         Port:
           type: integer
       type: object
+      nullable: true
     ConsulGatewayProxy:
       properties:
         Config:
           additionalProperties: {}
           type: object
+          nullable: true
         ConnectTimeout:
           format: int64
           type: integer
@@ -2429,25 +2546,30 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/ConsulGatewayBindAddress'
           type: object
+          nullable: true
         EnvoyGatewayBindTaggedAddresses:
           type: boolean
         EnvoyGatewayNoDefaultBind:
           type: boolean
       type: object
+      nullable: true
     ConsulGatewayTLSConfig:
       properties:
         Enabled:
           type: boolean
       type: object
+      nullable: true
     ConsulIngressConfigEntry:
       properties:
         Listeners:
           items:
             $ref: '#/components/schemas/ConsulIngressListener'
           type: array
+          nullable: true
         TLS:
           $ref: '#/components/schemas/ConsulGatewayTLSConfig'
       type: object
+      nullable: true
     ConsulIngressListener:
       properties:
         Port:
@@ -2458,16 +2580,20 @@ components:
           items:
             $ref: '#/components/schemas/ConsulIngressService'
           type: array
+          nullable: true
       type: object
+      nullable: true
     ConsulIngressService:
       properties:
         Hosts:
           items:
             type: string
           type: array
+          nullable: true
         Name:
           type: string
       type: object
+      nullable: true
     ConsulLinkedService:
       properties:
         CAFile:
@@ -2481,17 +2607,20 @@ components:
         SNI:
           type: string
       type: object
+      nullable: true
     ConsulMeshConfigEntry: {}
     ConsulMeshGateway:
       properties:
         Mode:
           type: string
       type: object
+      nullable: true
     ConsulProxy:
       properties:
         Config:
           additionalProperties: {}
           type: object
+          nullable: true
         ExposeConfig:
           $ref: '#/components/schemas/ConsulExposeConfig'
         LocalServiceAddress:
@@ -2502,7 +2631,9 @@ components:
           items:
             $ref: '#/components/schemas/ConsulUpstream'
           type: array
+          nullable: true
       type: object
+      nullable: true
     ConsulSidecarService:
       properties:
         DisableDefaultTCPCheck:
@@ -2515,14 +2646,18 @@ components:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     ConsulTerminatingConfigEntry:
       properties:
         Services:
           items:
             $ref: '#/components/schemas/ConsulLinkedService'
           type: array
+          nullable: true
       type: object
+      nullable: true
     ConsulUpstream:
       properties:
         Datacenter:
@@ -2536,6 +2671,7 @@ components:
         MeshGateway:
           $ref: '#/components/schemas/ConsulMeshGateway'
       type: object
+      nullable: true
     Context:
       type: string
     DNSConfig:
@@ -2544,15 +2680,19 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Searches:
           items:
             type: string
           type: array
+          nullable: true
         Servers:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     Deployment:
       properties:
         CreateIndex:
@@ -2595,7 +2735,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/DeploymentState'
           type: object
+          nullable: true
       type: object
+      nullable: true
     DeploymentAllocHealthRequest:
       properties:
         DeploymentID:
@@ -2604,6 +2746,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Namespace:
           type: string
         Region:
@@ -2614,7 +2757,9 @@ components:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     DeploymentPauseRequest:
       properties:
         DeploymentID:
@@ -2628,6 +2773,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     DeploymentPromoteRequest:
       properties:
         All:
@@ -2638,6 +2784,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Namespace:
           type: string
         Region:
@@ -2645,6 +2792,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     DeploymentState:
       properties:
         AutoRevert:
@@ -2661,6 +2809,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         ProgressDeadline:
           format: int64
           type: integer
@@ -2669,9 +2818,11 @@ components:
         RequireProgressBy:
           format: date-time
           type: string
+          nullable: true
         UnhealthyAllocs:
           type: integer
       type: object
+      nullable: true
     DeploymentUnblockRequest:
       properties:
         DeploymentID:
@@ -2683,6 +2834,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     DeploymentUpdateResponse:
       properties:
         DeploymentModifyIndex:
@@ -2707,6 +2859,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     DesiredTransition:
       properties:
         Migrate:
@@ -2714,6 +2867,7 @@ components:
         Reschedule:
           type: boolean
       type: object
+      nullable: true
     DesiredUpdates:
       properties:
         Canary:
@@ -2749,11 +2903,13 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     DispatchPayloadConfig:
       properties:
         File:
           type: string
       type: object
+      nullable: true
     DrainMetadata:
       properties:
         AccessorID:
@@ -2762,15 +2918,19 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         StartedAt:
           format: date-time
           type: string
+          nullable: true
         Status:
           type: string
         UpdatedAt:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     DrainSpec:
       properties:
         Deadline:
@@ -2779,6 +2939,7 @@ components:
         IgnoreSystemJobs:
           type: boolean
       type: object
+      nullable: true
     DrainStatus:
       type: string
     DrainStrategy:
@@ -2789,18 +2950,22 @@ components:
         ForceDeadline:
           format: date-time
           type: string
+          nullable: true
         IgnoreSystemJobs:
           type: boolean
         StartedAt:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     DriverInfo:
       properties:
         Attributes:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Detected:
           type: boolean
         HealthDescription:
@@ -2810,7 +2975,9 @@ components:
         UpdateTime:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     Duration:
       format: int64
       type: integer
@@ -2823,11 +2990,13 @@ components:
         Sticky:
           type: boolean
       type: object
+      nullable: true
     EvalOptions:
       properties:
         ForceReschedule:
           type: boolean
       type: object
+      nullable: true
     Evaluation:
       properties:
         AnnotatePlan:
@@ -2838,6 +3007,7 @@ components:
           additionalProperties:
             type: boolean
           type: object
+          nullable: true
         CreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -2853,6 +3023,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/AllocationMetric'
           type: object
+          nullable: true
         ID:
           type: string
         JobID:
@@ -2886,6 +3057,7 @@ components:
           additionalProperties:
             type: integer
           type: object
+          nullable: true
         QuotaLimitReached:
           type: string
         SnapshotIndex:
@@ -2906,13 +3078,16 @@ components:
         WaitUntil:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     FieldDiff:
       properties:
         Annotations:
           items:
             type: string
           type: array
+          nullable: true
         Name:
           type: string
         New:
@@ -2922,6 +3097,7 @@ components:
         Type:
           type: string
       type: object
+      nullable: true
     FuzzyMatch:
       properties:
         ID:
@@ -2930,7 +3106,9 @@ components:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     FuzzySearchRequest:
       properties:
         AllowStale:
@@ -2947,6 +3125,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         PerPage:
           format: int32
           type: integer
@@ -2964,6 +3143,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     FuzzySearchResponse:
       properties:
         KnownLeader:
@@ -2980,7 +3160,9 @@ components:
             items:
               $ref: '#/components/schemas/FuzzyMatch'
             type: array
+            nullable: true
           type: object
+          nullable: true
         RequestTime:
           format: int64
           type: integer
@@ -2988,19 +3170,23 @@ components:
           additionalProperties:
             type: boolean
           type: object
+          nullable: true
       type: object
+      nullable: true
     GaugeValue:
       properties:
         Labels:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Name:
           type: string
         Value:
           format: float
           type: number
       type: object
+      nullable: true
     HostVolumeInfo:
       properties:
         Path:
@@ -3008,18 +3194,21 @@ components:
         ReadOnly:
           type: boolean
       type: object
+      nullable: true
     Job:
       properties:
         Affinities:
           items:
             $ref: '#/components/schemas/Affinity'
           type: array
+          nullable: true
         AllAtOnce:
           type: boolean
         Constraints:
           items:
             $ref: '#/components/schemas/Constraint'
           type: array
+          nullable: true
         ConsulNamespace:
           type: string
         ConsulToken:
@@ -3032,6 +3221,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Dispatched:
           type: boolean
         ID:
@@ -3044,6 +3234,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Migrate:
           $ref: '#/components/schemas/MigrateStrategy'
         ModifyIndex:
@@ -3077,6 +3268,7 @@ components:
           items:
             $ref: '#/components/schemas/Spread'
           type: array
+          nullable: true
         Stable:
           type: boolean
         Status:
@@ -3092,6 +3284,7 @@ components:
           items:
             $ref: '#/components/schemas/TaskGroup'
           type: array
+          nullable: true
         Type:
           type: string
         Update:
@@ -3105,6 +3298,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     JobChildrenSummary:
       properties:
         Dead:
@@ -3117,6 +3311,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     JobDeregisterResponse:
       properties:
         EvalCreateIndex:
@@ -3142,25 +3337,30 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     JobDiff:
       properties:
         Fields:
           items:
             $ref: '#/components/schemas/FieldDiff'
           type: array
+          nullable: true
         ID:
           type: string
         Objects:
           items:
             $ref: '#/components/schemas/ObjectDiff'
           type: array
+          nullable: true
         TaskGroups:
           items:
             $ref: '#/components/schemas/TaskGroupDiff'
           type: array
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     JobDispatchRequest:
       properties:
         JobID:
@@ -3169,10 +3369,12 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Payload:
           format: byte
           type: string
       type: object
+      nullable: true
     JobDispatchResponse:
       properties:
         DispatchedJobID:
@@ -3195,6 +3397,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     JobEvaluateRequest:
       properties:
         EvalOptions:
@@ -3208,6 +3411,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     JobListStub:
       properties:
         CreateIndex:
@@ -3218,6 +3422,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         ID:
           type: string
         JobModifyIndex:
@@ -3254,6 +3459,7 @@ components:
         Type:
           type: string
       type: object
+      nullable: true
     JobPlanRequest:
       properties:
         Diff:
@@ -3269,6 +3475,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     JobPlanResponse:
       properties:
         Annotations:
@@ -3277,12 +3484,14 @@ components:
           items:
             $ref: '#/components/schemas/Evaluation'
           type: array
+          nullable: true
         Diff:
           $ref: '#/components/schemas/JobDiff'
         FailedTGAllocs:
           additionalProperties:
             $ref: '#/components/schemas/AllocationMetric'
           type: object
+          nullable: true
         JobModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3290,9 +3499,11 @@ components:
         NextPeriodicLaunch:
           format: date-time
           type: string
+          nullable: true
         Warnings:
           type: string
       type: object
+      nullable: true
     JobRegisterRequest:
       properties:
         EnforceIndex:
@@ -3314,6 +3525,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     JobRegisterResponse:
       properties:
         EvalCreateIndex:
@@ -3341,6 +3553,7 @@ components:
         Warnings:
           type: string
       type: object
+      nullable: true
     JobRevertRequest:
       properties:
         ConsulToken:
@@ -3364,6 +3577,7 @@ components:
         VaultToken:
           type: string
       type: object
+      nullable: true
     JobScaleStatusResponse:
       properties:
         JobCreateIndex:
@@ -3384,7 +3598,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/TaskGroupScaleStatus'
           type: object
+          nullable: true
       type: object
+      nullable: true
     JobStabilityRequest:
       properties:
         JobID:
@@ -3402,6 +3618,7 @@ components:
         Stable:
           type: boolean
       type: object
+      nullable: true
     JobStabilityResponse:
       properties:
         Index:
@@ -3409,6 +3626,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     JobSummary:
       properties:
         Children:
@@ -3429,7 +3647,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/TaskGroupSummary'
           type: object
+          nullable: true
       type: object
+      nullable: true
     JobValidateRequest:
       properties:
         Job:
@@ -3441,6 +3661,7 @@ components:
         SecretID:
           type: string
       type: object
+      nullable: true
     JobValidateResponse:
       properties:
         DriverConfigValidated:
@@ -3451,15 +3672,18 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Warnings:
           type: string
       type: object
+      nullable: true
     JobVersionsResponse:
       properties:
         Diffs:
           items:
             $ref: '#/components/schemas/JobDiff'
           type: array
+          nullable: true
         KnownLeader:
           type: boolean
         LastContact:
@@ -3476,7 +3700,9 @@ components:
           items:
             $ref: '#/components/schemas/Job'
           type: array
+          nullable: true
       type: object
+      nullable: true
     JobsParseRequest:
       properties:
         Canonicalize:
@@ -3486,6 +3712,7 @@ components:
         hclv1:
           type: boolean
       type: object
+      nullable: true
     LogConfig:
       properties:
         MaxFileSizeMB:
@@ -3493,27 +3720,33 @@ components:
         MaxFiles:
           type: integer
       type: object
+      nullable: true
     MetricsSummary:
       properties:
         Counters:
           items:
             $ref: '#/components/schemas/SampledValue'
           type: array
+          nullable: true
         Gauges:
           items:
             $ref: '#/components/schemas/GaugeValue'
           type: array
+          nullable: true
         Points:
           items:
             $ref: '#/components/schemas/PointValue'
           type: array
+          nullable: true
         Samples:
           items:
             $ref: '#/components/schemas/SampledValue'
           type: array
+          nullable: true
         Timestamp:
           type: string
       type: object
+      nullable: true
     MigrateStrategy:
       properties:
         HealthCheck:
@@ -3527,15 +3760,18 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     Multiregion:
       properties:
         Regions:
           items:
             $ref: '#/components/schemas/MultiregionRegion'
           type: array
+          nullable: true
         Strategy:
           $ref: '#/components/schemas/MultiregionStrategy'
       type: object
+      nullable: true
     MultiregionRegion:
       properties:
         Count:
@@ -3544,13 +3780,16 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Meta:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Name:
           type: string
       type: object
+      nullable: true
     MultiregionStrategy:
       properties:
         MaxParallel:
@@ -3558,6 +3797,7 @@ components:
         OnFailure:
           type: string
       type: object
+      nullable: true
     Namespace:
       properties:
         CreateIndex:
@@ -3575,6 +3815,7 @@ components:
         Quota:
           type: string
       type: object
+      nullable: true
     NetworkResource:
       properties:
         CIDR:
@@ -3587,6 +3828,7 @@ components:
           items:
             $ref: '#/components/schemas/Port'
           type: array
+          nullable: true
         IP:
           type: string
         MBits:
@@ -3597,21 +3839,26 @@ components:
           items:
             $ref: '#/components/schemas/Port'
           type: array
+          nullable: true
       type: object
+      nullable: true
     Node:
       properties:
         Attributes:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         CSIControllerPlugins:
           additionalProperties:
             $ref: '#/components/schemas/CSIInfo'
           type: object
+          nullable: true
         CSINodePlugins:
           additionalProperties:
             $ref: '#/components/schemas/CSIInfo'
           type: object
+          nullable: true
         CreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3626,16 +3873,19 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/DriverInfo'
           type: object
+          nullable: true
         Events:
           items:
             $ref: '#/components/schemas/NodeEvent'
           type: array
+          nullable: true
         HTTPAddr:
           type: string
         HostVolumes:
           additionalProperties:
             $ref: '#/components/schemas/HostVolumeInfo'
           type: object
+          nullable: true
         ID:
           type: string
         LastDrain:
@@ -3644,10 +3894,12 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Meta:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         ModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3676,6 +3928,7 @@ components:
         TLSEnabled:
           type: boolean
       type: object
+      nullable: true
     NodeCpuResources:
       properties:
         CpuShares:
@@ -3687,11 +3940,13 @@ components:
             minimum: 0
             type: integer
           type: array
+          nullable: true
         TotalCpuCores:
           maximum: 65535
           minimum: 0
           type: integer
       type: object
+      nullable: true
     NodeDevice:
       properties:
         HealthDescription:
@@ -3703,21 +3958,25 @@ components:
         Locality:
           $ref: '#/components/schemas/NodeDeviceLocality'
       type: object
+      nullable: true
     NodeDeviceLocality:
       properties:
         PciBusID:
           type: string
       type: object
+      nullable: true
     NodeDeviceResource:
       properties:
         Attributes:
           additionalProperties:
             $ref: '#/components/schemas/Attribute'
           type: object
+          nullable: true
         Instances:
           items:
             $ref: '#/components/schemas/NodeDevice'
           type: array
+          nullable: true
         Name:
           type: string
         Type:
@@ -3725,12 +3984,14 @@ components:
         Vendor:
           type: string
       type: object
+      nullable: true
     NodeDiskResources:
       properties:
         DiskMB:
           format: int64
           type: integer
       type: object
+      nullable: true
     NodeDrainUpdateResponse:
       properties:
         EvalCreateIndex:
@@ -3741,6 +4002,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         LastIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3753,6 +4015,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     NodeEligibilityUpdateResponse:
       properties:
         EvalCreateIndex:
@@ -3763,6 +4026,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         LastIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3775,6 +4039,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     NodeEvent:
       properties:
         CreateIndex:
@@ -3785,6 +4050,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Message:
           type: string
         Subsystem:
@@ -3792,7 +4058,9 @@ components:
         Timestamp:
           format: date-time
           type: string
+          nullable: true
       type: object
+      nullable: true
     NodeListStub:
       properties:
         Address:
@@ -3809,6 +4077,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/DriverInfo'
           type: object
+          nullable: true
         ID:
           type: string
         LastDrain:
@@ -3834,12 +4103,14 @@ components:
         Version:
           type: string
       type: object
+      nullable: true
     NodeMemoryResources:
       properties:
         MemoryMB:
           format: int64
           type: integer
       type: object
+      nullable: true
     NodePurgeResponse:
       properties:
         EvalCreateIndex:
@@ -3850,11 +4121,13 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         NodeModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
       type: object
+      nullable: true
     NodeReservedCpuResources:
       properties:
         CpuShares:
@@ -3862,6 +4135,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     NodeReservedDiskResources:
       properties:
         DiskMB:
@@ -3869,6 +4143,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     NodeReservedMemoryResources:
       properties:
         MemoryMB:
@@ -3876,11 +4151,13 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     NodeReservedNetworkResources:
       properties:
         ReservedHostPorts:
           type: string
       type: object
+      nullable: true
     NodeReservedResources:
       properties:
         Cpu:
@@ -3892,6 +4169,7 @@ components:
         Networks:
           $ref: '#/components/schemas/NodeReservedNetworkResources'
       type: object
+      nullable: true
     NodeResources:
       properties:
         Cpu:
@@ -3900,6 +4178,7 @@ components:
           items:
             $ref: '#/components/schemas/NodeDeviceResource'
           type: array
+          nullable: true
         Disk:
           $ref: '#/components/schemas/NodeDiskResources'
         Memory:
@@ -3908,7 +4187,9 @@ components:
           items:
             $ref: '#/components/schemas/NetworkResource'
           type: array
+          nullable: true
       type: object
+      nullable: true
     NodeScoreMeta:
       properties:
         NodeID:
@@ -3921,7 +4202,9 @@ components:
             format: double
             type: number
           type: object
+          nullable: true
       type: object
+      nullable: true
     NodeUpdateDrainRequest:
       properties:
         DrainSpec:
@@ -3932,9 +4215,11 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         NodeID:
           type: string
       type: object
+      nullable: true
     NodeUpdateEligibilityRequest:
       properties:
         Eligibility:
@@ -3942,21 +4227,25 @@ components:
         NodeID:
           type: string
       type: object
+      nullable: true
     ObjectDiff:
       properties:
         Fields:
           items:
             $ref: '#/components/schemas/FieldDiff'
           type: array
+          nullable: true
         Name:
           type: string
         Objects:
           items:
             $ref: '#/components/schemas/ObjectDiff'
           type: array
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     OneTimeToken:
       properties:
         AccessorID:
@@ -3968,6 +4257,7 @@ components:
         ExpiresAt:
           format: date-time
           type: string
+          nullable: true
         ModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3975,24 +4265,29 @@ components:
         OneTimeSecretID:
           type: string
       type: object
+      nullable: true
     OneTimeTokenExchangeRequest:
       properties:
         OneTimeSecretID:
           type: string
       type: object
+      nullable: true
     ParameterizedJobConfig:
       properties:
         MetaOptional:
           items:
             type: string
           type: array
+          nullable: true
         MetaRequired:
           items:
             type: string
           type: array
+          nullable: true
         Payload:
           type: string
       type: object
+      nullable: true
     PeriodicConfig:
       properties:
         Enabled:
@@ -4006,6 +4301,7 @@ components:
         TimeZone:
           type: string
       type: object
+      nullable: true
     PeriodicForceResponse:
       properties:
         EvalCreateIndex:
@@ -4019,17 +4315,21 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     PlanAnnotations:
       properties:
         DesiredTGUpdates:
           additionalProperties:
             $ref: '#/components/schemas/DesiredUpdates'
           type: object
+          nullable: true
         PreemptedAllocs:
           items:
             $ref: '#/components/schemas/AllocationListStub'
           type: array
+          nullable: true
       type: object
+      nullable: true
     PointValue:
       properties:
         Name:
@@ -4039,7 +4339,9 @@ components:
             format: float
             type: number
           type: array
+          nullable: true
       type: object
+      nullable: true
     Port:
       properties:
         HostNetwork:
@@ -4051,6 +4353,7 @@ components:
         Value:
           type: integer
       type: object
+      nullable: true
     PortMapping:
       properties:
         HostIP:
@@ -4062,6 +4365,7 @@ components:
         Value:
           type: integer
       type: object
+      nullable: true
     QuotaLimit:
       properties:
         Hash:
@@ -4072,6 +4376,7 @@ components:
         RegionLimit:
           $ref: '#/components/schemas/Resources'
       type: object
+      nullable: true
     QuotaSpec:
       properties:
         CreateIndex:
@@ -4084,6 +4389,7 @@ components:
           items:
             $ref: '#/components/schemas/QuotaLimit'
           type: array
+          nullable: true
         ModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -4091,6 +4397,7 @@ components:
         Name:
           type: string
       type: object
+      nullable: true
     Quotas: {}
     RequestedDevice:
       properties:
@@ -4098,10 +4405,12 @@ components:
           items:
             $ref: '#/components/schemas/Affinity'
           type: array
+          nullable: true
         Constraints:
           items:
             $ref: '#/components/schemas/Constraint'
           type: array
+          nullable: true
         Count:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -4109,6 +4418,7 @@ components:
         Name:
           type: string
       type: object
+      nullable: true
     RescheduleEvent:
       properties:
         PrevAllocID:
@@ -4119,6 +4429,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     ReschedulePolicy:
       properties:
         Attempts:
@@ -4137,13 +4448,16 @@ components:
         Unlimited:
           type: boolean
       type: object
+      nullable: true
     RescheduleTracker:
       properties:
         Events:
           items:
             $ref: '#/components/schemas/RescheduleEvent'
           type: array
+          nullable: true
       type: object
+      nullable: true
     Resources:
       properties:
         CPU:
@@ -4154,6 +4468,7 @@ components:
           items:
             $ref: '#/components/schemas/RequestedDevice'
           type: array
+          nullable: true
         DiskMB:
           type: integer
         IOPS:
@@ -4166,7 +4481,9 @@ components:
           items:
             $ref: '#/components/schemas/NetworkResource'
           type: array
+          nullable: true
       type: object
+      nullable: true
     RestartPolicy:
       properties:
         Attempts:
@@ -4180,6 +4497,7 @@ components:
         Mode:
           type: string
       type: object
+      nullable: true
     SampledValue:
       properties:
         Count:
@@ -4188,6 +4506,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Max:
           format: double
           type: number
@@ -4209,6 +4528,7 @@ components:
           format: double
           type: number
       type: object
+      nullable: true
     ScalingEvent:
       properties:
         Count:
@@ -4227,6 +4547,7 @@ components:
         Meta:
           additionalProperties: {}
           type: object
+          nullable: true
         PreviousCount:
           format: int64
           type: integer
@@ -4235,6 +4556,7 @@ components:
           minimum: 0
           type: integer
       type: object
+      nullable: true
     ScalingPolicy:
       properties:
         CreateIndex:
@@ -4260,13 +4582,16 @@ components:
         Policy:
           additionalProperties: {}
           type: object
+          nullable: true
         Target:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     ScalingPolicyListStub:
       properties:
         CreateIndex:
@@ -4285,9 +4610,11 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     ScalingRequest:
       properties:
         Count:
@@ -4300,6 +4627,7 @@ components:
         Meta:
           additionalProperties: {}
           type: object
+          nullable: true
         Namespace:
           type: string
         PolicyOverride:
@@ -4312,7 +4640,9 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
       type: object
+      nullable: true
     SearchRequest:
       properties:
         AllowStale:
@@ -4329,6 +4659,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         PerPage:
           format: int32
           type: integer
@@ -4344,6 +4675,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     SearchResponse:
       properties:
         KnownLeader:
@@ -4360,7 +4692,9 @@ components:
             items:
               type: string
             type: array
+            nullable: true
           type: object
+          nullable: true
         RequestTime:
           format: int64
           type: integer
@@ -4368,7 +4702,9 @@ components:
           additionalProperties:
             type: boolean
           type: object
+          nullable: true
       type: object
+      nullable: true
     Service:
       properties:
         AddressMode:
@@ -4377,16 +4713,19 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         CanaryTags:
           items:
             type: string
           type: array
+          nullable: true
         CheckRestart:
           $ref: '#/components/schemas/CheckRestart'
         Checks:
           items:
             $ref: '#/components/schemas/ServiceCheck'
           type: array
+          nullable: true
         Connect:
           $ref: '#/components/schemas/ConsulConnect'
         EnableTagOverride:
@@ -4397,6 +4736,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Name:
           type: string
         OnUpdate:
@@ -4407,9 +4747,11 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         TaskName:
           type: string
       type: object
+      nullable: true
     ServiceCheck:
       properties:
         AddressMode:
@@ -4418,6 +4760,7 @@ components:
           items:
             type: string
           type: array
+          nullable: true
         Body:
           type: string
         CheckRestart:
@@ -4437,7 +4780,9 @@ components:
             items:
               type: string
             type: array
+            nullable: true
           type: object
+          nullable: true
         Id:
           type: string
         InitialStatus:
@@ -4469,17 +4814,20 @@ components:
         Type:
           type: string
       type: object
+      nullable: true
     SidecarTask:
       properties:
         Config:
           additionalProperties: {}
           type: object
+          nullable: true
         Driver:
           type: string
         Env:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         KillSignal:
           type: string
         KillTimeout:
@@ -4491,6 +4839,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Name:
           type: string
         Resources:
@@ -4501,6 +4850,7 @@ components:
         User:
           type: string
       type: object
+      nullable: true
     Spread:
       properties:
         Attribute:
@@ -4509,11 +4859,13 @@ components:
           items:
             $ref: '#/components/schemas/SpreadTarget'
           type: array
+          nullable: true
         Weight:
           maximum: 127
           minimum: -128
           type: integer
       type: object
+      nullable: true
     SpreadTarget:
       properties:
         Percent:
@@ -4523,25 +4875,30 @@ components:
         Value:
           type: string
       type: object
+      nullable: true
     Task:
       properties:
         Affinities:
           items:
             $ref: '#/components/schemas/Affinity'
           type: array
+          nullable: true
         Artifacts:
           items:
             $ref: '#/components/schemas/TaskArtifact'
           type: array
+          nullable: true
         CSIPluginConfig:
           $ref: '#/components/schemas/TaskCSIPluginConfig'
         Config:
           additionalProperties: {}
           type: object
+          nullable: true
         Constraints:
           items:
             $ref: '#/components/schemas/Constraint'
           type: array
+          nullable: true
         DispatchPayload:
           $ref: '#/components/schemas/DispatchPayloadConfig'
         Driver:
@@ -4550,6 +4907,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         KillSignal:
           type: string
         KillTimeout:
@@ -4567,6 +4925,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Name:
           type: string
         Resources:
@@ -4577,10 +4936,12 @@ components:
           items:
             $ref: '#/components/schemas/ScalingPolicy'
           type: array
+          nullable: true
         Services:
           items:
             $ref: '#/components/schemas/Service'
           type: array
+          nullable: true
         ShutdownDelay:
           format: int64
           type: integer
@@ -4588,6 +4949,7 @@ components:
           items:
             $ref: '#/components/schemas/Template'
           type: array
+          nullable: true
         User:
           type: string
         Vault:
@@ -4596,24 +4958,29 @@ components:
           items:
             $ref: '#/components/schemas/VolumeMount'
           type: array
+          nullable: true
       type: object
+      nullable: true
     TaskArtifact:
       properties:
         GetterHeaders:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         GetterMode:
           type: string
         GetterOptions:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         GetterSource:
           type: string
         RelativeDest:
           type: string
       type: object
+      nullable: true
     TaskCSIPluginConfig:
       properties:
         ID:
@@ -4623,31 +4990,37 @@ components:
         Type:
           type: string
       type: object
+      nullable: true
     TaskDiff:
       properties:
         Annotations:
           items:
             type: string
           type: array
+          nullable: true
         Fields:
           items:
             $ref: '#/components/schemas/FieldDiff'
           type: array
+          nullable: true
         Name:
           type: string
         Objects:
           items:
             $ref: '#/components/schemas/ObjectDiff'
           type: array
+          nullable: true
         Type:
           type: string
       type: object
+      nullable: true
     TaskEvent:
       properties:
         Details:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         DiskLimit:
           format: int64
           type: integer
@@ -4702,16 +5075,19 @@ components:
         VaultError:
           type: string
       type: object
+      nullable: true
     TaskGroup:
       properties:
         Affinities:
           items:
             $ref: '#/components/schemas/Affinity'
           type: array
+          nullable: true
         Constraints:
           items:
             $ref: '#/components/schemas/Constraint'
           type: array
+          nullable: true
         Consul:
           $ref: '#/components/schemas/Consul'
         Count:
@@ -4722,6 +5098,7 @@ components:
           additionalProperties:
             type: string
           type: object
+          nullable: true
         Migrate:
           $ref: '#/components/schemas/MigrateStrategy'
         Name:
@@ -4730,6 +5107,7 @@ components:
           items:
             $ref: '#/components/schemas/NetworkResource'
           type: array
+          nullable: true
         ReschedulePolicy:
           $ref: '#/components/schemas/ReschedulePolicy'
         RestartPolicy:
@@ -4740,6 +5118,7 @@ components:
           items:
             $ref: '#/components/schemas/Service'
           type: array
+          nullable: true
         ShutdownDelay:
           format: int64
           type: integer
@@ -4747,6 +5126,7 @@ components:
           items:
             $ref: '#/components/schemas/Spread'
           type: array
+          nullable: true
         StopAfterClientDisconnect:
           format: int64
           type: integer
@@ -4754,29 +5134,35 @@ components:
           items:
             $ref: '#/components/schemas/Task'
           type: array
+          nullable: true
         Update:
           $ref: '#/components/schemas/UpdateStrategy'
         Volumes:
           additionalProperties:
             $ref: '#/components/schemas/VolumeRequest'
           type: object
+          nullable: true
       type: object
+      nullable: true
     TaskGroupDiff:
       properties:
         Fields:
           items:
             $ref: '#/components/schemas/FieldDiff'
           type: array
+          nullable: true
         Name:
           type: string
         Objects:
           items:
             $ref: '#/components/schemas/ObjectDiff'
           type: array
+          nullable: true
         Tasks:
           items:
             $ref: '#/components/schemas/TaskDiff'
           type: array
+          nullable: true
         Type:
           type: string
         Updates:
@@ -4785,7 +5171,9 @@ components:
             minimum: 0
             type: integer
           type: object
+          nullable: true
       type: object
+      nullable: true
     TaskGroupScaleStatus:
       properties:
         Desired:
@@ -4794,6 +5182,7 @@ components:
           items:
             $ref: '#/components/schemas/ScalingEvent'
           type: array
+          nullable: true
         Healthy:
           type: integer
         Placed:
@@ -4803,6 +5192,7 @@ components:
         Unhealthy:
           type: integer
       type: object
+      nullable: true
     TaskGroupSummary:
       properties:
         Complete:
@@ -4818,6 +5208,7 @@ components:
         Starting:
           type: integer
       type: object
+      nullable: true
     TaskHandle:
       properties:
         DriverState:
@@ -4826,6 +5217,7 @@ components:
         Version:
           type: integer
       type: object
+      nullable: true
     TaskLifecycle:
       properties:
         Hook:
@@ -4833,20 +5225,24 @@ components:
         Sidecar:
           type: boolean
       type: object
+      nullable: true
     TaskState:
       properties:
         Events:
           items:
             $ref: '#/components/schemas/TaskEvent'
           type: array
+          nullable: true
         Failed:
           type: boolean
         FinishedAt:
           format: date-time
           type: string
+          nullable: true
         LastRestart:
           format: date-time
           type: string
+          nullable: true
         Restarts:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -4854,11 +5250,13 @@ components:
         StartedAt:
           format: date-time
           type: string
+          nullable: true
         State:
           type: string
         TaskHandle:
           $ref: '#/components/schemas/TaskHandle'
       type: object
+      nullable: true
     Template:
       properties:
         ChangeMode:
@@ -4886,9 +5284,11 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     Time:
       format: date-time
       type: string
+      nullable: true
     UpdateStrategy:
       properties:
         AutoPromote:
@@ -4914,6 +5314,7 @@ components:
           format: int64
           type: integer
       type: object
+      nullable: true
     Vault:
       properties:
         ChangeMode:
@@ -4928,7 +5329,9 @@ components:
           items:
             type: string
           type: array
+          nullable: true
       type: object
+      nullable: true
     VolumeMount:
       properties:
         Destination:
@@ -4940,6 +5343,7 @@ components:
         Volume:
           type: string
       type: object
+      nullable: true
     VolumeRequest:
       properties:
         AccessMode:
@@ -4959,6 +5363,7 @@ components:
         Type:
           type: string
       type: object
+      nullable: true
     float32:
       format: float
       type: number
