@@ -74,6 +74,7 @@ pub mod plugins_api;
 pub mod regions_api;
 pub mod scaling_api;
 pub mod search_api;
+pub mod status_api;
 pub mod system_api;
 pub mod volumes_api;
 

@@ -17,6 +17,7 @@ pub struct APIClient {
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
+    status_api: Box<dyn crate::apis::StatusApi>,
     system_api: Box<dyn crate::apis::SystemApi>,
     volumes_api: Box<dyn crate::apis::VolumesApi>,
 }
@@ -39,6 +40,7 @@ impl APIClient {
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
+            status_api: Box::new(crate::apis::StatusApiClient::new(rc.clone())),
             system_api: Box::new(crate::apis::SystemApiClient::new(rc.clone())),
             volumes_api: Box::new(crate::apis::VolumesApiClient::new(rc.clone())),
         }
@@ -94,6 +96,10 @@ impl APIClient {
 
     pub fn search_api(&self) -> &dyn crate::apis::SearchApi{
         self.search_api.as_ref()
+    }
+
+    pub fn status_api(&self) -> &dyn crate::apis::StatusApi{
+        self.status_api.as_ref()
     }
 
     pub fn system_api(&self) -> &dyn crate::apis::SystemApi{

@@ -156,6 +156,8 @@ Class | Method | HTTP request | Description
 *NomadClient::ScalingApi* | [**get_scaling_policy**](docs/ScalingApi.md#get_scaling_policy) | **GET** /scaling/policy/{policyID} | 
 *NomadClient::SearchApi* | [**get_fuzzy_search**](docs/SearchApi.md#get_fuzzy_search) | **POST** /search/fuzzy | 
 *NomadClient::SearchApi* | [**get_search**](docs/SearchApi.md#get_search) | **POST** /search | 
+*NomadClient::StatusApi* | [**get_status_leader**](docs/StatusApi.md#get_status_leader) | **GET** /status/leader | 
+*NomadClient::StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
 *NomadClient::SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
 *NomadClient::SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
 *NomadClient::VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 

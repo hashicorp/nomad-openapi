@@ -172,6 +172,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/SystemApi.md
 docs/Task.md
 docs/TaskArtifact.md
@@ -209,6 +210,7 @@ nomad_client/api/plugins_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
+nomad_client/api/status_api.py
 nomad_client/api/system_api.py
 nomad_client/api/volumes_api.py
 nomad_client/api_client.py
@@ -420,5 +422,6 @@ test/test_one_time_token_exchange_request.py
 test/test_plugins_api.py
 test/test_scaling_api.py
 test/test_scaling_policy_list_stub.py
+test/test_status_api.py
 test/test_system_api.py
 tox.ini

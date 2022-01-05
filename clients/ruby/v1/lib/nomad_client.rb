@@ -206,6 +206,7 @@ require 'nomad_client/api/plugins_api'
 require 'nomad_client/api/regions_api'
 require 'nomad_client/api/scaling_api'
 require 'nomad_client/api/search_api'
+require 'nomad_client/api/status_api'
 require 'nomad_client/api/system_api'
 require 'nomad_client/api/volumes_api'
 

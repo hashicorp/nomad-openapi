@@ -14,6 +14,7 @@ api_plugins.go
 api_regions.go
 api_scaling.go
 api_search.go
+api_status.go
 api_system.go
 api_volumes.go
 client.go
@@ -188,6 +189,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/SystemApi.md
 docs/Task.md
 docs/TaskArtifact.md

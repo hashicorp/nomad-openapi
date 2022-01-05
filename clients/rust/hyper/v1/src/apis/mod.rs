@@ -77,6 +77,8 @@ mod scaling_api;
 pub use self::scaling_api::{ ScalingApi, ScalingApiClient };
 mod search_api;
 pub use self::search_api::{ SearchApi, SearchApiClient };
+mod status_api;
+pub use self::status_api::{ StatusApi, StatusApiClient };
 mod system_api;
 pub use self::system_api::{ SystemApi, SystemApiClient };
 mod volumes_api;

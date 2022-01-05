@@ -200,6 +200,7 @@ import PluginsApi from './api/PluginsApi';
 import RegionsApi from './api/RegionsApi';
 import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
+import StatusApi from './api/StatusApi';
 import SystemApi from './api/SystemApi';
 import VolumesApi from './api/VolumesApi';
 
@@ -1363,6 +1364,12 @@ export {
     * @property {module:api/SearchApi}
     */
     SearchApi,
+
+    /**
+    * The StatusApi service constructor.
+    * @property {module:api/StatusApi}
+    */
+    StatusApi,
 
     /**
     * The SystemApi service constructor.

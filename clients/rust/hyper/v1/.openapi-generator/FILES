@@ -171,6 +171,7 @@ docs/ServiceCheck.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
+docs/StatusApi.md
 docs/SystemApi.md
 docs/Task.md
 docs/TaskArtifact.md
@@ -207,6 +208,7 @@ src/apis/regions_api.rs
 src/apis/request.rs
 src/apis/scaling_api.rs
 src/apis/search_api.rs
+src/apis/status_api.rs
 src/apis/system_api.rs
 src/apis/volumes_api.rs
 src/lib.rs
