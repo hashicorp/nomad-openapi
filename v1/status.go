@@ -18,7 +18,7 @@ func (s *Status) StatusApi() *client.StatusApiService {
 	return s.client.apiClient.StatusApi
 }
 
-func (s *Status) Leader(ctx context.Context) (*string, error) {
+func (s *Status) Leader(ctx context.Context) (*string, OpenAPIError) {
 	request := s.StatusApi().GetStatusLeader(s.client.Ctx)
 	result, err := s.client.ExecRequest(ctx, request)
 	if err != nil {
@@ -29,7 +29,7 @@ func (s *Status) Leader(ctx context.Context) (*string, error) {
 	return &final, nil
 }
 
-func (s *Status) Peers(ctx context.Context) (*[]string, error) {
+func (s *Status) Peers(ctx context.Context) (*[]string, OpenAPIError) {
 	request := s.StatusApi().GetStatusPeers(s.client.Ctx)
 	result, err := s.client.ExecRequest(ctx, request)
 	if err != nil {
