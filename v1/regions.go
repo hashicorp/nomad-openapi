@@ -19,7 +19,7 @@ func (r *Regions) RegionsApi() *client.RegionsApiService {
 	return r.client.apiClient.RegionsApi
 }
 
-func (r *Regions) GetRegions(ctx context.Context) (*[]string, error) {
+func (r *Regions) GetRegions(ctx context.Context) (*[]string, OpenAPIError) {
 	request := r.RegionsApi().GetRegions(r.client.Ctx)
 
 	result, err := r.client.ExecRequest(ctx, request)

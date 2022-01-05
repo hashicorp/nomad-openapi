@@ -22,6 +22,40 @@ type Client struct {
 	apiClient *client.APIClient
 }
 
+// OpenAPIError is the interface defined by the generated client.GenericOpenAPIError.
+// This interface allows us to return that type natively from generated code, but
+// also to create new instances of custom types that conform to that interface so
+// that we can return errors from generated code and user code with a consistent
+// interface.
+type OpenAPIError interface {
+	Body() []byte
+	Error() string
+	Model() interface{}
+}
+
+// APIError Provides access to the body, error and model on returned errors.
+// It exists to encapsulate, enhance, and extend the client.GenericOpenAPIError.
+type APIError struct {
+	body  []byte
+	error string
+	model interface{}
+}
+
+// Error returns non-empty string if there was an error.
+func (e APIError) Error() string {
+	return e.error
+}
+
+// Body returns the raw bytes of the response
+func (e APIError) Body() []byte {
+	return e.body
+}
+
+// Model returns the unpacked model of the error
+func (e APIError) Model() interface{} {
+	return e.model
+}
+
 func NewClient() (*Client, error) {
 	nomadAddr := os.Getenv("NOMAD_ADDR")
 	configuration := client.NewConfiguration()
@@ -136,12 +170,13 @@ func tlsConfigFromEnv() (*tls.Config, error) {
 }
 
 // ExecQuery executes a request that returns query metadata.
-func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{}, *QueryMeta, error) {
+func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{}, *QueryMeta, *APIError) {
 	typeOf := reflect.TypeOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, nil, errors.New("execQuery failed: no Execute method on interface")
+		return nil, nil, &APIError{
+			error: "execQuery failed: no Execute method on interface"}
 	}
 
 	request = c.setQueryOptions(ctx, request)
@@ -150,7 +185,9 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, nil, values[2].Interface().(error)
+		return nil, nil, &APIError{
+			error: values[2].Interface().(error).Error(),
+		}
 	}
 
 	result := values[0].Interface()
@@ -158,19 +195,19 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 
 	meta, err := parseQueryMeta(response)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, &APIError{error: err.Error()}
 	}
 
 	return result, meta, nil
 }
 
 // ExecWrite executes a request that returns write metadata.
-func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{}, *WriteMeta, error) {
+func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{}, *WriteMeta, *APIError) {
 	typeOf := reflect.TypeOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, nil, errors.New("ExecWrite failed: no Execute method on interface")
+		return nil, nil, &APIError{error: "ExecWrite failed: no Execute method on interface"}
 	}
 
 	request = c.setWriteOptions(ctx, request)
@@ -179,7 +216,9 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, nil, values[2].Interface().(error)
+		return nil, nil, &APIError{
+			error: values[2].Interface().(error).Error(),
+		}
 	}
 
 	result := values[0].Interface()
@@ -187,19 +226,19 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 
 	meta, err := parseWriteMeta(response)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, &APIError{error: err.Error()}
 	}
 
 	return result, meta, nil
 }
 
 // ExecNoResponseWrite executes a request that returns write metadata, but no model.
-func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (*WriteMeta, error) {
+func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (*WriteMeta, *APIError) {
 	typeOf := reflect.TypeOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, errors.New("ExecNoResponseWrite failed: no Execute method on interface")
+		return nil, &APIError{error: "ExecNoResponseWrite failed: no Execute method on interface"}
 	}
 
 	request = c.setWriteOptions(ctx, request)
@@ -208,32 +247,36 @@ func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
-		return nil, values[1].Interface().(error)
+		return nil, &APIError{
+			error: values[1].Interface().(error).Error(),
+		}
 	}
 
 	response := values[0].Interface().(*http.Response)
 
 	meta, err := parseWriteMeta(response)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	return meta, nil
 }
 
 // ExecRequest executes a client operation that does not return query or write metadata.
-func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{}, error) {
+func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{}, *APIError) {
 	typeOf := reflect.TypeOf(request)
 	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, errors.New("ExecRequest failed: no Execute method on interface")
+		return nil, &APIError{error: "ExecRequest failed: no Execute method on interface"}
 	}
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, values[2].Interface().(error)
+		return nil, &APIError{
+			error: values[2].Interface().(error).Error(),
+		}
 	}
 
 	result := values[0].Interface()
@@ -242,18 +285,18 @@ func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{
 }
 
 // ExecNoResponseRequest executes a client operation that does not return a model, query or write metadata.
-func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) error {
+func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) *APIError {
 	typeOf := reflect.TypeOf(request)
 	valueOf := reflect.ValueOf(request)
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return errors.New("ExecNoResponseRequest failed: no Execute method on interface")
+		return &APIError{error: "ExecNoResponseRequest failed: no Execute method on interface"}
 	}
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[1].IsNil() {
-		return values[1].Interface().(error)
+		return &APIError{error: values[1].Interface().(error).Error()}
 	}
 
 	return nil

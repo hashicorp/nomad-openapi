@@ -2,7 +2,6 @@ package v1
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"time"
 
@@ -23,7 +22,7 @@ func (j *Jobs) JobsApi() *client.JobsApiService {
 	return j.client.apiClient.JobsApi
 }
 
-func (j *Jobs) Allocations(ctx context.Context, jobName string, all bool) (*[]client.AllocationListStub, *QueryMeta, error) {
+func (j *Jobs) Allocations(ctx context.Context, jobName string, all bool) (*[]client.AllocationListStub, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -40,7 +39,7 @@ func (j *Jobs) Allocations(ctx context.Context, jobName string, all bool) (*[]cl
 	return &final, meta, nil
 }
 
-func (j *Jobs) Delete(ctx context.Context, jobName string, purge, global bool) (*client.JobDeregisterResponse, *WriteMeta, error) {
+func (j *Jobs) Delete(ctx context.Context, jobName string, purge, global bool) (*client.JobDeregisterResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -57,7 +56,7 @@ func (j *Jobs) Delete(ctx context.Context, jobName string, purge, global bool) (
 	return &final, meta, nil
 }
 
-func (j *Jobs) Deployment(ctx context.Context, jobName string) (*client.Deployment, *QueryMeta, error) {
+func (j *Jobs) Deployment(ctx context.Context, jobName string) (*client.Deployment, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -73,7 +72,7 @@ func (j *Jobs) Deployment(ctx context.Context, jobName string) (*client.Deployme
 	return &final, meta, nil
 }
 
-func (j *Jobs) Deployments(ctx context.Context, jobName string) (*[]client.Deployment, *QueryMeta, error) {
+func (j *Jobs) Deployments(ctx context.Context, jobName string) (*[]client.Deployment, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -88,7 +87,7 @@ func (j *Jobs) Deployments(ctx context.Context, jobName string) (*[]client.Deplo
 	return &final, meta, nil
 }
 
-func (j *Jobs) Dispatch(ctx context.Context, jobName string, payload string, meta map[string]string) (*client.JobDispatchResponse, *WriteMeta, error) {
+func (j *Jobs) Dispatch(ctx context.Context, jobName string, payload string, meta map[string]string) (*client.JobDispatchResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -111,14 +110,14 @@ func (j *Jobs) Dispatch(ctx context.Context, jobName string, payload string, met
 	return &final, writeMeta, nil
 }
 
-func (j *Jobs) EnforceRegister(ctx context.Context, job *client.Job, modifyIndex uint64) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) EnforceRegister(ctx context.Context, job *client.Job, modifyIndex uint64) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	return j.Register(ctx, job, &RegisterOpts{
 		EnforceIndex: true,
 		ModifyIndex:  modifyIndex,
 	})
 }
 
-func (j *Jobs) Evaluate(ctx context.Context, jobName string, forceReschedule bool) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Evaluate(ctx context.Context, jobName string, forceReschedule bool) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -142,7 +141,7 @@ func (j *Jobs) Evaluate(ctx context.Context, jobName string, forceReschedule boo
 	return &final, meta, nil
 }
 
-func (j *Jobs) GetJob(ctx context.Context, jobName string) (*client.Job, *QueryMeta, error) {
+func (j *Jobs) GetJob(ctx context.Context, jobName string) (*client.Job, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -158,7 +157,7 @@ func (j *Jobs) GetJob(ctx context.Context, jobName string) (*client.Job, *QueryM
 	return &final, meta, nil
 }
 
-func (j *Jobs) GetJobs(ctx context.Context) (*[]client.JobListStub, *QueryMeta, error) {
+func (j *Jobs) GetJobs(ctx context.Context) (*[]client.JobListStub, *QueryMeta, OpenAPIError) {
 	request := j.JobsApi().GetJobs(j.client.Ctx)
 
 	result, meta, err := j.client.ExecQuery(ctx, request)
@@ -170,9 +169,9 @@ func (j *Jobs) GetJobs(ctx context.Context) (*[]client.JobListStub, *QueryMeta, 
 	return &final, meta, nil
 }
 
-func (j *Jobs) Parse(ctx context.Context, hcl string, canonicalize, hclV1 bool) (*client.Job, error) {
+func (j *Jobs) Parse(ctx context.Context, hcl string, canonicalize, hclV1 bool) (*client.Job, OpenAPIError) {
 	if hcl == "" {
-		return nil, errors.New("job hcl not set")
+		return nil, &APIError{error: "job hcl not set"}
 	}
 
 	request := j.JobsApi().PostJobParse(j.client.Ctx)
@@ -198,7 +197,7 @@ type PlanOpts struct {
 	PolicyOverride bool
 }
 
-func (j *Jobs) PeriodicForce(ctx context.Context, jobName string) (*client.PeriodicForceResponse, *WriteMeta, error) {
+func (j *Jobs) PeriodicForce(ctx context.Context, jobName string) (*client.PeriodicForceResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -214,11 +213,11 @@ func (j *Jobs) PeriodicForce(ctx context.Context, jobName string) (*client.Perio
 	return &final, meta, nil
 }
 
-func (j *Jobs) Plan(ctx context.Context, job *client.Job, diff bool) (*client.JobPlanResponse, *WriteMeta, error) {
+func (j *Jobs) Plan(ctx context.Context, job *client.Job, diff bool) (*client.JobPlanResponse, *WriteMeta, OpenAPIError) {
 	return j.PlanOpts(ctx, job, &PlanOpts{Diff: diff})
 }
 
-func (j *Jobs) PlanOpts(ctx context.Context, job *client.Job, opts *PlanOpts) (*client.JobPlanResponse, *WriteMeta, error) {
+func (j *Jobs) PlanOpts(ctx context.Context, job *client.Job, opts *PlanOpts) (*client.JobPlanResponse, *WriteMeta, OpenAPIError) {
 	requestBody := *client.NewJobPlanRequest()
 	requestBody.SetJob(*job)
 	if opts != nil {
@@ -238,7 +237,7 @@ func (j *Jobs) PlanOpts(ctx context.Context, job *client.Job, opts *PlanOpts) (*
 	return &final, meta, nil
 }
 
-func (j *Jobs) Post(ctx context.Context, job *client.Job) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Post(ctx context.Context, job *client.Job) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	return j.Register(ctx, job, nil)
 }
 
@@ -249,9 +248,9 @@ type RegisterOpts struct {
 	PreserveCounts bool
 }
 
-func (j *Jobs) Register(ctx context.Context, job *client.Job, registerOpts *RegisterOpts) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Register(ctx context.Context, job *client.Job, registerOpts *RegisterOpts) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	if job == nil {
-		return nil, nil, fmt.Errorf("must pass non-nil job")
+		return nil, nil, &APIError{error: "must pass non-nil job"}
 	}
 
 	request := j.JobsApi().RegisterJob(j.client.Ctx)
@@ -279,7 +278,7 @@ func (j *Jobs) Register(ctx context.Context, job *client.Job, registerOpts *Regi
 	return &final, meta, nil
 }
 
-func (j *Jobs) Revert(ctx context.Context, jobName string, versionNumber, enforcePriorVersion int32, consulToken, vaultToken string) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Revert(ctx context.Context, jobName string, versionNumber, enforcePriorVersion int32, consulToken, vaultToken string) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -313,7 +312,7 @@ func (j *Jobs) Revert(ctx context.Context, jobName string, versionNumber, enforc
 	return &final, meta, nil
 }
 
-func (j *Jobs) Scale(ctx context.Context, jobName string, count int64, msg string, target map[string]string) (*client.JobRegisterResponse, *WriteMeta, error) {
+func (j *Jobs) Scale(ctx context.Context, jobName string, count int64, msg string, target map[string]string) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -336,7 +335,7 @@ func (j *Jobs) Scale(ctx context.Context, jobName string, count int64, msg strin
 	return &final, meta, nil
 }
 
-func (j *Jobs) ScaleStatus(ctx context.Context, jobName string) (*client.JobScaleStatusResponse, *QueryMeta, error) {
+func (j *Jobs) ScaleStatus(ctx context.Context, jobName string) (*client.JobScaleStatusResponse, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -352,7 +351,7 @@ func (j *Jobs) ScaleStatus(ctx context.Context, jobName string) (*client.JobScal
 	return &final, meta, nil
 }
 
-func (j *Jobs) Stability(ctx context.Context, jobName string, versionNumber int32, stable bool) (*client.JobStabilityResponse, *WriteMeta, error) {
+func (j *Jobs) Stability(ctx context.Context, jobName string, versionNumber int32, stable bool) (*client.JobStabilityResponse, *WriteMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -375,7 +374,7 @@ func (j *Jobs) Stability(ctx context.Context, jobName string, versionNumber int3
 	return &final, meta, nil
 }
 
-func (j *Jobs) Summary(ctx context.Context, jobName string) (*client.JobSummary, *QueryMeta, error) {
+func (j *Jobs) Summary(ctx context.Context, jobName string) (*client.JobSummary, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -391,7 +390,7 @@ func (j *Jobs) Summary(ctx context.Context, jobName string) (*client.JobSummary,
 	return &final, meta, nil
 }
 
-func (j *Jobs) Versions(ctx context.Context, jobName string, withDiffs bool) (*client.JobVersionsResponse, *QueryMeta, error) {
+func (j *Jobs) Versions(ctx context.Context, jobName string, withDiffs bool) (*client.JobVersionsResponse, *QueryMeta, OpenAPIError) {
 	if jobName == "" {
 		return nil, nil, jobNameErr
 	}
@@ -448,4 +447,4 @@ func (j *Jobs) Next(p *client.PeriodicConfig, fromTime time.Time) (time.Time, er
 	return time.Time{}, nil
 }
 
-var jobNameErr = errors.New("jobName must be specified")
+var jobNameErr = &APIError{error: "jobName must be specified"}

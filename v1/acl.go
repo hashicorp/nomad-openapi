@@ -2,7 +2,6 @@ package v1
 
 import (
 	"context"
-	"errors"
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
@@ -20,7 +19,7 @@ func (a *ACL) ACLApi() *client.ACLApiService {
 }
 
 // returns arraySchema
-func (a *ACL) Policies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, error) {
+func (a *ACL) Policies(ctx context.Context) (*[]client.ACLPolicyListStub, *QueryMeta, OpenAPIError) {
 	request := a.ACLApi().GetACLPolicies(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -33,9 +32,9 @@ func (a *ACL) Policies(ctx context.Context) (*[]client.ACLPolicyListStub, *Query
 
 // returns objectSchema
 // pass in policy name, no payload
-func (a *ACL) GetPolicy(ctx context.Context, policyName string) (*client.ACLPolicy, *QueryMeta, error) {
+func (a *ACL) GetPolicy(ctx context.Context, policyName string) (*client.ACLPolicy, *QueryMeta, OpenAPIError) {
 	if policyName == "" {
-		return nil, nil, errors.New("policy name is required")
+		return nil, nil, &APIError{error: "policy name is required"}
 	}
 
 	request := a.ACLApi().GetACLPolicy(a.client.Ctx, policyName)
@@ -51,9 +50,9 @@ func (a *ACL) GetPolicy(ctx context.Context, policyName string) (*client.ACLPoli
 // returns nilSchema
 // pass in policy name WITH payload
 // can't use "Save", because there's an ACL "Save" for tokens as well
-func (a *ACL) SavePolicy(ctx context.Context, policy *client.ACLPolicy) (*WriteMeta, error) {
+func (a *ACL) SavePolicy(ctx context.Context, policy *client.ACLPolicy) (*WriteMeta, OpenAPIError) {
 	if *policy.Name == "" {
-		return nil, errors.New("policy name is required")
+		return nil, &APIError{error: "policy name is required"}
 	}
 
 	// appending payload?  something that's taken care of by appendParams so I don't have to worry about it?
@@ -68,9 +67,9 @@ func (a *ACL) SavePolicy(ctx context.Context, policy *client.ACLPolicy) (*WriteM
 
 // pass in name, no payload
 // can't use "Delete", because there's an ACL "Delete" for tokens as well
-func (a *ACL) DeletePolicy(ctx context.Context, policyName string) (*WriteMeta, error) {
+func (a *ACL) DeletePolicy(ctx context.Context, policyName string) (*WriteMeta, OpenAPIError) {
 	if policyName == "" {
-		return nil, errors.New("policy name is required")
+		return nil, &APIError{error: "policy name is required"}
 	}
 
 	request := a.ACLApi().DeleteACLPolicy(a.client.Ctx, policyName)
@@ -82,7 +81,7 @@ func (a *ACL) DeletePolicy(ctx context.Context, policyName string) (*WriteMeta, 
 	return meta, nil
 }
 
-func (a *ACL) OnetimeToken(ctx context.Context) (*client.OneTimeToken, *WriteMeta, error) {
+func (a *ACL) OnetimeToken(ctx context.Context) (*client.OneTimeToken, *WriteMeta, OpenAPIError) {
 	request := a.ACLApi().PostACLTokenOnetime(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -93,7 +92,7 @@ func (a *ACL) OnetimeToken(ctx context.Context) (*client.OneTimeToken, *WriteMet
 	return &final, meta, nil
 }
 
-func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
+func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, OpenAPIError) {
 	request := a.ACLApi().PostACLTokenOnetimeExchange(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -104,7 +103,7 @@ func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, error
 	return &final, meta, nil
 }
 
-func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, error) {
+func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, OpenAPIError) {
 	request := a.ACLApi().PostACLBootstrap(a.client.Ctx)
 	result, meta, err := a.client.ExecWrite(ctx, request)
 	if err != nil {
@@ -115,7 +114,7 @@ func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, erro
 	return &final, meta, nil
 }
 
-func (a *ACL) Tokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, error) {
+func (a *ACL) Tokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, OpenAPIError) {
 	request := a.ACLApi().GetACLTokens(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -126,7 +125,7 @@ func (a *ACL) Tokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMet
 	return &final, meta, nil
 }
 
-func (a *ACL) Self(ctx context.Context) (*client.ACLToken, *QueryMeta, error) {
+func (a *ACL) Self(ctx context.Context) (*client.ACLToken, *QueryMeta, OpenAPIError) {
 	request := a.ACLApi().GetACLTokenSelf(a.client.Ctx)
 	result, meta, err := a.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -137,9 +136,9 @@ func (a *ACL) Self(ctx context.Context) (*client.ACLToken, *QueryMeta, error) {
 	return &final, meta, nil
 }
 
-func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *QueryMeta, error) {
+func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *QueryMeta, OpenAPIError) {
 	if tokenAccessor == "" {
-		return nil, nil, errors.New("token accessor id is required")
+		return nil, nil, &APIError{error: "token accessor id is required"}
 	}
 
 	request := a.ACLApi().GetACLToken(a.client.Ctx, tokenAccessor)
@@ -152,9 +151,9 @@ func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLTo
 	return &final, meta, nil
 }
 
-func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.ACLToken, *WriteMeta, error) {
+func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.ACLToken, *WriteMeta, OpenAPIError) {
 	if *token.AccessorID == "" {
-		return nil, nil, errors.New("token accessor id is required")
+		return nil, nil, &APIError{error: "token accessor id is required"}
 	}
 
 	request := a.ACLApi().PostACLToken(a.client.Ctx, *token.AccessorID)
@@ -167,9 +166,9 @@ func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.AC
 	return &final, meta, nil
 }
 
-func (a *ACL) DeleteToken(ctx context.Context, tokenAccessor string) (*WriteMeta, error) {
+func (a *ACL) DeleteToken(ctx context.Context, tokenAccessor string) (*WriteMeta, OpenAPIError) {
 	if tokenAccessor == "" {
-		return nil, errors.New("token accessor id is required")
+		return nil, &APIError{error: "token accessor id is required"}
 	}
 
 	request := a.ACLApi().DeleteACLToken(a.client.Ctx, tokenAccessor)

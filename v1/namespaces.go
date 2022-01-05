@@ -2,7 +2,6 @@ package v1
 
 import (
 	"context"
-	"errors"
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
@@ -19,9 +18,9 @@ func (n *Namespaces) NamespacesApi() *client.NamespacesApiService {
 	return n.client.apiClient.NamespacesApi
 }
 
-func (n *Namespaces) DeleteNamespace(ctx context.Context, name string) (*WriteMeta, error) {
+func (n *Namespaces) DeleteNamespace(ctx context.Context, name string) (*WriteMeta, OpenAPIError) {
 	if name == "" {
-		return nil, errors.New("namespace name is required")
+		return nil, &APIError{error: "namespace name is required"}
 	}
 	request := n.NamespacesApi().DeleteNamespace(n.client.Ctx, name)
 
@@ -33,9 +32,9 @@ func (n *Namespaces) DeleteNamespace(ctx context.Context, name string) (*WriteMe
 	return meta, nil
 }
 
-func (n *Namespaces) GetNamespace(ctx context.Context, name string) (*client.Namespace, *QueryMeta, error) {
+func (n *Namespaces) GetNamespace(ctx context.Context, name string) (*client.Namespace, *QueryMeta, OpenAPIError) {
 	if name == "" {
-		return nil, nil, errors.New("namespace name is required")
+		return nil, nil, &APIError{error: "namespace name is required"}
 	}
 
 	request := n.NamespacesApi().GetNamespace(n.client.Ctx, name)
@@ -47,7 +46,8 @@ func (n *Namespaces) GetNamespace(ctx context.Context, name string) (*client.Nam
 	final := result.(client.Namespace)
 	return &final, meta, nil
 }
-func (n *Namespaces) GetNamespaces(ctx context.Context) (*[]client.Namespace, *QueryMeta, error) {
+
+func (n *Namespaces) GetNamespaces(ctx context.Context) (*[]client.Namespace, *QueryMeta, OpenAPIError) {
 	request := n.NamespacesApi().GetNamespaces(n.client.Ctx)
 	result, meta, err := n.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -58,10 +58,11 @@ func (n *Namespaces) GetNamespaces(ctx context.Context) (*[]client.Namespace, *Q
 	return &final, meta, nil
 }
 
-func (n *Namespaces) PostNamespace(ctx context.Context, namespace *client.Namespace) (*WriteMeta, error) {
+func (n *Namespaces) PostNamespace(ctx context.Context, namespace *client.Namespace) (*WriteMeta, OpenAPIError) {
 	if namespace == nil {
-		return nil, errors.New("namespace is required")
+		return nil, &APIError{error: "namespace is required"}
 	}
+
 	request := n.NamespacesApi().PostNamespace(n.client.Ctx, *namespace.Name)
 
 	request = request.Namespace2(*namespace)

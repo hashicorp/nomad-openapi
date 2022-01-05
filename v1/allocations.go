@@ -19,7 +19,7 @@ func (a *Allocations) AllocationsApi() *client.AllocationsApiService {
 	return a.client.apiClient.AllocationsApi
 }
 
-func (a *Allocations) GetAllocations(ctx context.Context) (*[]client.AllocationListStub, *QueryMeta, error) {
+func (a *Allocations) GetAllocations(ctx context.Context) (*[]client.AllocationListStub, *QueryMeta, OpenAPIError) {
 	request := a.AllocationsApi().GetAllocations(a.client.Ctx)
 
 	result, meta, err := a.client.ExecQuery(ctx, request)
