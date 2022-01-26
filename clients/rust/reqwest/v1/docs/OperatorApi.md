@@ -119,7 +119,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_operator_raft_configuration
 
-> Vec<crate::models::RaftServer> get_operator_raft_configuration(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
+> Vec<crate::models::RaftConfigurationResponse> get_operator_raft_configuration(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
 
 
 ### Parameters
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::RaftServer>**](RaftServer.md)
+[**Vec<crate::models::RaftConfigurationResponse>**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Required | Notes
 
 ## put_operator_autopilot_configuration
 
-> put_operator_autopilot_configuration(autopilot_configuration, region, namespace, x_nomad_token, idempotency_token)
+> bool put_operator_autopilot_configuration(autopilot_configuration, region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters
@@ -239,7 +239,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+**bool**
 
 ### Authorization
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

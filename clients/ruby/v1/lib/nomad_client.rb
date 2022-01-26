@@ -156,6 +156,11 @@ require 'nomad_client/models/port'
 require 'nomad_client/models/port_mapping'
 require 'nomad_client/models/quota_limit'
 require 'nomad_client/models/quota_spec'
+<<<<<<< HEAD
+=======
+require 'nomad_client/models/raft_configuration_response'
+require 'nomad_client/models/raft_server'
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 require 'nomad_client/models/requested_device'
 require 'nomad_client/models/reschedule_event'
 require 'nomad_client/models/reschedule_policy'

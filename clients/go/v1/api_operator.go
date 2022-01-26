@@ -588,7 +588,7 @@ func (r ApiGetOperatorRaftConfigurationRequest) NextToken(nextToken string) ApiG
 	return r
 }
 
-func (r ApiGetOperatorRaftConfigurationRequest) Execute() ([]RaftServer, *_nethttp.Response, error) {
+func (r ApiGetOperatorRaftConfigurationRequest) Execute() ([]RaftConfigurationResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOperatorRaftConfigurationExecute(r)
 }
 
@@ -606,16 +606,16 @@ func (a *OperatorApiService) GetOperatorRaftConfiguration(ctx _context.Context) 
 
 /*
  * Execute executes the request
- * @return []RaftServer
+ * @return []RaftConfigurationResponse
  */
-func (a *OperatorApiService) GetOperatorRaftConfigurationExecute(r ApiGetOperatorRaftConfigurationRequest) ([]RaftServer, *_nethttp.Response, error) {
+func (a *OperatorApiService) GetOperatorRaftConfigurationExecute(r ApiGetOperatorRaftConfigurationRequest) ([]RaftConfigurationResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []RaftServer
+		localVarReturnValue  []RaftConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.GetOperatorRaftConfiguration")
@@ -1099,7 +1099,7 @@ func (r ApiPutOperatorAutopilotConfigurationRequest) IdempotencyToken(idempotenc
 	return r
 }
 
-func (r ApiPutOperatorAutopilotConfigurationRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPutOperatorAutopilotConfigurationRequest) Execute() (bool, *_nethttp.Response, error) {
 	return r.ApiService.PutOperatorAutopilotConfigurationExecute(r)
 }
 
@@ -1117,19 +1117,21 @@ func (a *OperatorApiService) PutOperatorAutopilotConfiguration(ctx _context.Cont
 
 /*
  * Execute executes the request
+ * @return bool
  */
-func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOperatorAutopilotConfigurationRequest) (*_nethttp.Response, error) {
+func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOperatorAutopilotConfigurationRequest) (bool, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  bool
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.PutOperatorAutopilotConfiguration")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/operator/autopilot/configuration"
@@ -1138,7 +1140,7 @@ func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOp
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 	if r.autopilotConfiguration == nil {
-		return nil, reportError("autopilotConfiguration is required and must be specified")
+		return localVarReturnValue, nil, reportError("autopilotConfiguration is required and must be specified")
 	}
 
 	if r.region != nil {
@@ -1160,7 +1162,7 @@ func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1188,19 +1190,19 @@ func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOp
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1208,8 +1210,17 @@ func (a *OperatorApiService) PutOperatorAutopilotConfigurationExecute(r ApiPutOp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

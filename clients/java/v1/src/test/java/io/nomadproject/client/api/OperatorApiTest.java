@@ -16,7 +16,7 @@ package io.nomadproject.client.api;
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.AutopilotConfiguration;
 import io.nomadproject.client.models.OperatorHealthReply;
-import io.nomadproject.client.models.RaftServer;
+import io.nomadproject.client.models.RaftConfigurationResponse;
 import io.nomadproject.client.models.SchedulerConfiguration;
 import io.nomadproject.client.models.SchedulerConfigurationResponse;
 import io.nomadproject.client.models.SchedulerSetConfigurationResponse;
@@ -123,7 +123,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<RaftServer> response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        List<RaftConfigurationResponse> response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
 
         // TODO: test validations
     }
@@ -187,7 +187,7 @@ public class OperatorApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
+        Boolean response = api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }

@@ -164,6 +164,11 @@ models/Port.ts
 models/PortMapping.ts
 models/QuotaLimit.ts
 models/QuotaSpec.ts
+<<<<<<< HEAD
+=======
+models/RaftConfigurationResponse.ts
+models/RaftServer.ts
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 models/RequestedDevice.ts
 models/RescheduleEvent.ts
 models/ReschedulePolicy.ts

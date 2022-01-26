@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/nomad/api"
+	"github.com/hashicorp/nomad/nomad/structs"
 )
 
 var AutopilotSetConfiguration bool
@@ -28,7 +29,9 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultQueryOpts,
 					newResponseConfig(200,
 						arraySchema,
-						api.RaftServer{},
+						structs.RaftConfigurationResponse{},
+						// did not fix :(
+						//api.RaftServer{},
 						nil,
 						"GetOperatorRaftResponse",
 					),
@@ -61,7 +64,8 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultQueryOpts,
 					newResponseConfig(200,
 						objectSchema,
-						api.AutopilotConfiguration{},
+						//api.AutopilotConfiguration{},
+						AutopilotConfiguration{},
 						nil,
 						"GetOperatorAutopilotConfigurationResponse",
 					),
@@ -74,8 +78,9 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					newRequestBody(objectSchema, api.AutopilotConfiguration{}),
 					defaultWriteOpts,
 					newResponseConfig(200,
-						boolSchema,
-						AutopilotSetConfiguration, // ??
+						//boolSchema,	// with boolSchema,
+						objectSchema,
+						true, // any bool here will work?
 						nil,
 						"PutOperatorAutopilotConfigurationResponse",
 					),
@@ -167,4 +172,27 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 			},
 		},
 	}
+}
+
+// NOTE: temp work around to override the LastContactThreshold and ServerStabilizationTime types of time.Duration
+type AutopilotConfiguration struct {
+	CleanupDeadServers bool
+
+	// LastContactThreshold is the limit on the amount of time a server can go
+	// without leader contact before being considered unhealthy.
+	LastContactThreshold string
+
+	MaxTrailingLogs uint64
+	MinQuorum       uint
+
+	// ServerStabilizationTime is the minimum amount of time a server must be
+	// in a stable, healthy state before it can be added to the cluster. Only
+	// applicable with Raft protocol version 3 or higher.
+	ServerStabilizationTime string
+
+	EnableRedundancyZones   bool
+	DisableUpgradeMigration bool
+	EnableCustomUpgrades    bool
+	CreateIndex             uint64
+	ModifyIndex             uint64
 }

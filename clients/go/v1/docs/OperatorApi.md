@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## GetOperatorRaftConfiguration
 
-> []RaftServer GetOperatorRaftConfiguration(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> []RaftConfigurationResponse GetOperatorRaftConfiguration(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
 
 
 
@@ -278,7 +278,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.GetOperatorRaftConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOperatorRaftConfiguration`: []RaftServer
+    // response from `GetOperatorRaftConfiguration`: []RaftConfigurationResponse
     fmt.Fprintf(os.Stdout, "Response from `OperatorApi.GetOperatorRaftConfiguration`: %v\n", resp)
 }
 ```
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RaftServer**](RaftServer.md)
+[**[]RaftConfigurationResponse**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 
 ## PutOperatorAutopilotConfiguration
 
-> PutOperatorAutopilotConfiguration(ctx).AutopilotConfiguration(autopilotConfiguration).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+> bool PutOperatorAutopilotConfiguration(ctx).AutopilotConfiguration(autopilotConfiguration).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 
 
 
@@ -506,6 +506,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.PutOperatorAutopilotConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `PutOperatorAutopilotConfiguration`: bool
+    fmt.Fprintf(os.Stdout, "Response from `OperatorApi.PutOperatorAutopilotConfiguration`: %v\n", resp)
 }
 ```
 
@@ -528,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**bool**
 
 ### Authorization
 
@@ -537,7 +539,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -1118,7 +1118,7 @@ components:
         application/json:
           schema:
             items:
-              $ref: '#/components/schemas/RaftServer'
+              $ref: '#/components/schemas/RaftConfigurationResponse'
             type: array
       description: ""
     GetOperatorSchedulerConfigurationResponse:
@@ -1658,6 +1658,15 @@ components:
           description: The time in milliseconds that a server was last contacted by the leader node.
           schema:
             type: integer
+<<<<<<< HEAD
+=======
+    PutOperatorAutopilotConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            type: boolean
+      description: ""
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
     PutSystemGCResponse:
       description: ""
     PutSystemReconcileSummariesResponse:
@@ -2170,6 +2179,39 @@ components:
         Unit:
           type: string
       type: object
+<<<<<<< HEAD
+=======
+    AutopilotConfiguration:
+      properties:
+        CleanupDeadServers:
+          type: boolean
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        DisableUpgradeMigration:
+          type: boolean
+        EnableCustomUpgrades:
+          type: boolean
+        EnableRedundancyZones:
+          type: boolean
+        LastContactThreshold:
+          type: string
+        MaxTrailingLogs:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        MinQuorum:
+          minimum: 0
+          type: integer
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ServerStabilizationTime:
+          type: string
+      type: object
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
     CSIControllerInfo:
       properties:
         SupportsAttachDetach:
@@ -4487,6 +4529,35 @@ components:
           type: string
       type: object
     Quotas: {}
+<<<<<<< HEAD
+=======
+    RaftConfigurationResponse:
+      properties:
+        Index:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Servers:
+          items:
+            $ref: '#/components/schemas/RaftServer'
+          type: array
+      type: object
+    RaftServer:
+      properties:
+        Address:
+          type: string
+        ID:
+          type: string
+        Leader:
+          type: boolean
+        Node:
+          type: string
+        RaftProtocol:
+          type: string
+        Voter:
+          type: boolean
+      type: object
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
     RequestedDevice:
       properties:
         Affinities:
@@ -4765,6 +4836,46 @@ components:
             type: boolean
           type: object
       type: object
+<<<<<<< HEAD
+=======
+    ServerAddress:
+      type: string
+    ServerHealth:
+      properties:
+        Address:
+          type: string
+        Healthy:
+          type: boolean
+        ID:
+          type: string
+        LastContact:
+          format: int64
+          type: integer
+        LastIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        LastTerm:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Leader:
+          type: boolean
+        Name:
+          type: string
+        SerfStatus:
+          type: string
+        StableSince:
+          format: date-time
+          type: string
+        Version:
+          type: string
+        Voter:
+          type: boolean
+      type: object
+    ServerID:
+      type: string
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
     Service:
       properties:
         AddressMode:

@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ## getOperatorRaftConfiguration
 
-> [RaftServer] getOperatorRaftConfiguration(opts)
+> [RaftConfigurationResponse] getOperatorRaftConfiguration(opts)
 
 
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[RaftServer]**](RaftServer.md)
+[**[RaftConfigurationResponse]**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ## putOperatorAutopilotConfiguration
 
-> putOperatorAutopilotConfiguration(autopilotConfiguration, opts)
+> Boolean putOperatorAutopilotConfiguration(autopilotConfiguration, opts)
 
 
 
@@ -427,7 +427,7 @@ apiInstance.putOperatorAutopilotConfiguration(autopilotConfiguration, opts, (err
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Boolean**
 
 ### Authorization
 
@@ -454,5 +454,5 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

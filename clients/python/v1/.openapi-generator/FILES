@@ -161,6 +161,7 @@ docs/PortMapping.md
 docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftConfigurationResponse.md
 docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
@@ -391,6 +392,7 @@ nomad_client/model/port_mapping.py
 nomad_client/model/preemption_config.py
 nomad_client/model/quota_limit.py
 nomad_client/model/quota_spec.py
+nomad_client/model/raft_configuration_response.py
 nomad_client/model/raft_server.py
 nomad_client/model/requested_device.py
 nomad_client/model/reschedule_event.py
@@ -477,6 +479,7 @@ test/test_autopilot_configuration.py
 test/test_operator_api.py
 test/test_operator_health_reply.py
 test/test_preemption_config.py
+test/test_raft_configuration_response.py
 test/test_raft_server.py
 test/test_scheduler_configuration.py
 test/test_scheduler_configuration_response.py

@@ -8,7 +8,7 @@ import {isCodeInRange} from '../util';
 
 import { AutopilotConfiguration } from '../models/AutopilotConfiguration';
 import { OperatorHealthReply } from '../models/OperatorHealthReply';
-import { RaftServer } from '../models/RaftServer';
+import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
 import { SchedulerConfiguration } from '../models/SchedulerConfiguration';
 import { SchedulerConfigurationResponse } from '../models/SchedulerConfigurationResponse';
 import { SchedulerSetConfigurationResponse } from '../models/SchedulerSetConfigurationResponse';
@@ -618,13 +618,13 @@ export class OperatorApiResponseProcessor {
      * @params response Response returned by the server for a request to getOperatorRaftConfiguration
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getOperatorRaftConfiguration(response: ResponseContext): Promise<Array<RaftServer> > {
+     public async getOperatorRaftConfiguration(response: ResponseContext): Promise<Array<RaftConfigurationResponse> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<RaftServer> = ObjectSerializer.deserialize(
+            const body: Array<RaftConfigurationResponse> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<RaftServer>", ""
-            ) as Array<RaftServer>;
+                "Array<RaftConfigurationResponse>", ""
+            ) as Array<RaftConfigurationResponse>;
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -642,10 +642,10 @@ export class OperatorApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<RaftServer> = ObjectSerializer.deserialize(
+            const body: Array<RaftConfigurationResponse> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<RaftServer>", ""
-            ) as Array<RaftServer>;
+                "Array<RaftConfigurationResponse>", ""
+            ) as Array<RaftConfigurationResponse>;
             return body;
         }
 
@@ -744,10 +744,14 @@ export class OperatorApiResponseProcessor {
      * @params response Response returned by the server for a request to putOperatorAutopilotConfiguration
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async putOperatorAutopilotConfiguration(response: ResponseContext): Promise<void > {
+     public async putOperatorAutopilotConfiguration(response: ResponseContext): Promise<boolean > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return;
+            const body: boolean = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "boolean", ""
+            ) as boolean;
+            return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<string>(response.httpStatusCode, "Bad request");
@@ -764,10 +768,10 @@ export class OperatorApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: boolean = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "boolean", ""
+            ) as boolean;
             return body;
         }
 

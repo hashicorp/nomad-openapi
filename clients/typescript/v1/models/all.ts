@@ -137,6 +137,11 @@ export * from './Port'
 export * from './PortMapping'
 export * from './QuotaLimit'
 export * from './QuotaSpec'
+<<<<<<< HEAD
+=======
+export * from './RaftConfigurationResponse'
+export * from './RaftServer'
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 export * from './RequestedDevice'
 export * from './RescheduleEvent'
 export * from './ReschedulePolicy'

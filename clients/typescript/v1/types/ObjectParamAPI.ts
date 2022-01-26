@@ -141,6 +141,11 @@ import { Port } from '../models/Port';
 import { PortMapping } from '../models/PortMapping';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
+<<<<<<< HEAD
+=======
+import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
+import { RaftServer } from '../models/RaftServer';
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
 import { ReschedulePolicy } from '../models/ReschedulePolicy';
@@ -4076,7 +4081,7 @@ export class ObjectOperatorApi {
     /**
      * @param param the request object
      */
-    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest, options?: Configuration): Promise<Array<RaftServer>> {
+    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest, options?: Configuration): Promise<Array<RaftConfigurationResponse>> {
         return this.api.getOperatorRaftConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -4097,7 +4102,7 @@ export class ObjectOperatorApi {
     /**
      * @param param the request object
      */
-    public putOperatorAutopilotConfiguration(param: OperatorApiPutOperatorAutopilotConfigurationRequest, options?: Configuration): Promise<void> {
+    public putOperatorAutopilotConfiguration(param: OperatorApiPutOperatorAutopilotConfigurationRequest, options?: Configuration): Promise<boolean> {
         return this.api.putOperatorAutopilotConfiguration(param.autopilotConfiguration, param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 

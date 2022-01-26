@@ -315,6 +315,11 @@ Class | Method | HTTP request | Description
  - [NomadClient::PortMapping](docs/PortMapping.md)
  - [NomadClient::QuotaLimit](docs/QuotaLimit.md)
  - [NomadClient::QuotaSpec](docs/QuotaSpec.md)
+<<<<<<< HEAD
+=======
+ - [NomadClient::RaftConfigurationResponse](docs/RaftConfigurationResponse.md)
+ - [NomadClient::RaftServer](docs/RaftServer.md)
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
  - [NomadClient::RequestedDevice](docs/RequestedDevice.md)
  - [NomadClient::RescheduleEvent](docs/RescheduleEvent.md)
  - [NomadClient::ReschedulePolicy](docs/ReschedulePolicy.md)

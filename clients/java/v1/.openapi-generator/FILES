@@ -162,6 +162,7 @@ docs/PortMapping.md
 docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftConfigurationResponse.md
 docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
@@ -401,6 +402,7 @@ src/main/java/io/nomadproject/client/models/PortMapping.java
 src/main/java/io/nomadproject/client/models/PreemptionConfig.java
 src/main/java/io/nomadproject/client/models/QuotaLimit.java
 src/main/java/io/nomadproject/client/models/QuotaSpec.java
+src/main/java/io/nomadproject/client/models/RaftConfigurationResponse.java
 src/main/java/io/nomadproject/client/models/RaftServer.java
 src/main/java/io/nomadproject/client/models/RequestedDevice.java
 src/main/java/io/nomadproject/client/models/RescheduleEvent.java
@@ -594,6 +596,11 @@ src/test/java/io/nomadproject/client/models/PortMappingTest.java
 src/test/java/io/nomadproject/client/models/PortTest.java
 src/test/java/io/nomadproject/client/models/QuotaLimitTest.java
 src/test/java/io/nomadproject/client/models/QuotaSpecTest.java
+<<<<<<< HEAD
+=======
+src/test/java/io/nomadproject/client/models/RaftConfigurationResponseTest.java
+src/test/java/io/nomadproject/client/models/RaftServerTest.java
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 src/test/java/io/nomadproject/client/models/RequestedDeviceTest.java
 src/test/java/io/nomadproject/client/models/RescheduleEventTest.java
 src/test/java/io/nomadproject/client/models/ReschedulePolicyTest.java

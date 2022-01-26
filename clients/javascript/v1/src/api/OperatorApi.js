@@ -15,7 +15,7 @@
 import ApiClient from "../ApiClient";
 import AutopilotConfiguration from '../model/AutopilotConfiguration';
 import OperatorHealthReply from '../model/OperatorHealthReply';
-import RaftServer from '../model/RaftServer';
+import RaftConfigurationResponse from '../model/RaftConfigurationResponse';
 import SchedulerConfiguration from '../model/SchedulerConfiguration';
 import SchedulerConfigurationResponse from '../model/SchedulerConfigurationResponse';
 import SchedulerSetConfigurationResponse from '../model/SchedulerSetConfigurationResponse';
@@ -197,7 +197,7 @@ export default class OperatorApi {
      * Callback function to receive the result of the getOperatorRaftConfiguration operation.
      * @callback module:api/OperatorApi~getOperatorRaftConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/RaftServer>} data The data returned by the service call.
+     * @param {Array.<module:model/RaftConfigurationResponse>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -213,7 +213,7 @@ export default class OperatorApi {
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
      * @param {module:api/OperatorApi~getOperatorRaftConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/RaftServer>}
+     * data is of type: {@link Array.<module:model/RaftConfigurationResponse>}
      */
     getOperatorRaftConfiguration(opts, callback) {
       opts = opts || {};
@@ -240,7 +240,7 @@ export default class OperatorApi {
       let authNames = ['X-Nomad-Token'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [RaftServer];
+      let returnType = [RaftConfigurationResponse];
       return this.apiClient.callApi(
         '/operator/raft/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -357,7 +357,7 @@ export default class OperatorApi {
      * Callback function to receive the result of the putOperatorAutopilotConfiguration operation.
      * @callback module:api/OperatorApi~putOperatorAutopilotConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Boolean} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -369,6 +369,7 @@ export default class OperatorApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
      * @param {module:api/OperatorApi~putOperatorAutopilotConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Boolean}
      */
     putOperatorAutopilotConfiguration(autopilotConfiguration, opts, callback) {
       opts = opts || {};
@@ -393,8 +394,8 @@ export default class OperatorApi {
 
       let authNames = ['X-Nomad-Token'];
       let contentTypes = ['application/json'];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = 'Boolean';
       return this.apiClient.callApi(
         '/operator/autopilot/configuration', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,

@@ -137,6 +137,11 @@ export * from './Port';
 export * from './PortMapping';
 export * from './QuotaLimit';
 export * from './QuotaSpec';
+<<<<<<< HEAD
+=======
+export * from './RaftConfigurationResponse';
+export * from './RaftServer';
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 export * from './RequestedDevice';
 export * from './RescheduleEvent';
 export * from './ReschedulePolicy';
@@ -312,6 +317,11 @@ import { Port } from './Port';
 import { PortMapping } from './PortMapping';
 import { QuotaLimit } from './QuotaLimit';
 import { QuotaSpec } from './QuotaSpec';
+<<<<<<< HEAD
+=======
+import { RaftConfigurationResponse } from './RaftConfigurationResponse';
+import { RaftServer } from './RaftServer';
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 import { RequestedDevice } from './RequestedDevice';
 import { RescheduleEvent } from './RescheduleEvent';
 import { ReschedulePolicy } from './ReschedulePolicy';
@@ -509,6 +519,11 @@ let typeMap: {[index: string]: any} = {
     "PortMapping": PortMapping,
     "QuotaLimit": QuotaLimit,
     "QuotaSpec": QuotaSpec,
+<<<<<<< HEAD
+=======
+    "RaftConfigurationResponse": RaftConfigurationResponse,
+    "RaftServer": RaftServer,
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
     "RequestedDevice": RequestedDevice,
     "RescheduleEvent": RescheduleEvent,
     "ReschedulePolicy": ReschedulePolicy,

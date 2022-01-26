@@ -142,6 +142,11 @@ import { Port } from '../models/Port';
 import { PortMapping } from '../models/PortMapping';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
+<<<<<<< HEAD
+=======
+import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
+import { RaftServer } from '../models/RaftServer';
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
 import { ReschedulePolicy } from '../models/ReschedulePolicy';
@@ -2225,7 +2230,7 @@ export class ObservableOperatorApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<RaftServer>> {
+    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<RaftConfigurationResponse>> {
         const requestContextPromise = this.requestFactory.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
 
         // build promise chain
@@ -2307,7 +2312,7 @@ export class ObservableOperatorApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public putOperatorAutopilotConfiguration(autopilotConfiguration: AutopilotConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<void> {
+    public putOperatorAutopilotConfiguration(autopilotConfiguration: AutopilotConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<boolean> {
         const requestContextPromise = this.requestFactory.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken, _options);
 
         // build promise chain

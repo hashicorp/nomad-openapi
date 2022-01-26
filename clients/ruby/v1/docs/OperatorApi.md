@@ -268,6 +268,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
+<<<<<<< HEAD
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
@@ -337,6 +338,70 @@ with openapi_client.ApiClient(configuration) as api_client:
         print("Exception when calling OperatorApi->get_operator_raft_configuration: %s\n" % e)
 ```
 
+=======
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_operator_raft_configuration
+
+> <Array<RaftConfigurationResponse>> get_operator_raft_configuration(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'nomad_client'
+# setup authorization
+NomadClient.configure do |config|
+  # Configure API key authorization: X-Nomad-Token
+  config.api_key['X-Nomad-Token'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Nomad-Token'] = 'Bearer'
+end
+
+api_instance = NomadClient::OperatorApi.new
+opts = {
+  region: 'region_example', # String | Filters results based on the specified region.
+  namespace: 'namespace_example', # String | Filters results based on the specified namespace.
+  index: 56, # Integer | If set, wait until query exceeds given index. Must be provided with WaitParam.
+  wait: 'wait_example', # String | Provided with IndexParam to wait for change.
+  stale: 'stale_example', # String | If present, results will include stale reads.
+  prefix: 'prefix_example', # String | Constrains results to jobs that start with the defined prefix
+  x_nomad_token: 'x_nomad_token_example', # String | A Nomad ACL token.
+  per_page: 56, # Integer | Maximum number of results to return.
+  next_token: 'next_token_example' # String | Indicates where to start paging for queries that support pagination.
+}
+
+begin
+  
+  result = api_instance.get_operator_raft_configuration(opts)
+  p result
+rescue NomadClient::ApiError => e
+  puts "Error when calling OperatorApi->get_operator_raft_configuration: #{e}"
+end
+```
+
+#### Using the get_operator_raft_configuration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RaftConfigurationResponse>>, Integer, Hash)> get_operator_raft_configuration_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_operator_raft_configuration_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RaftConfigurationResponse>>
+rescue NomadClient::ApiError => e
+  puts "Error when calling OperatorApi->get_operator_raft_configuration_with_http_info: #{e}"
+end
+```
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 
 ### Parameters
 
@@ -354,7 +419,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+<<<<<<< HEAD
 [**[RaftServer]**](RaftServer.md)
+=======
+[**Array&lt;RaftConfigurationResponse&gt;**](RaftConfigurationResponse.md)
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 
 ### Authorization
 
@@ -561,6 +630,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
+<<<<<<< HEAD
  - **Content-Type**: application/json
  - **Accept**: application/json
 
@@ -642,6 +712,66 @@ with openapi_client.ApiClient(configuration) as api_client:
         print("Exception when calling OperatorApi->put_operator_autopilot_configuration: %s\n" % e)
 ```
 
+=======
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_operator_autopilot_configuration
+
+> Boolean put_operator_autopilot_configuration(autopilot_configuration, opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'nomad_client'
+# setup authorization
+NomadClient.configure do |config|
+  # Configure API key authorization: X-Nomad-Token
+  config.api_key['X-Nomad-Token'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['X-Nomad-Token'] = 'Bearer'
+end
+
+api_instance = NomadClient::OperatorApi.new
+autopilot_configuration = NomadClient::AutopilotConfiguration.new # AutopilotConfiguration | 
+opts = {
+  region: 'region_example', # String | Filters results based on the specified region.
+  namespace: 'namespace_example', # String | Filters results based on the specified namespace.
+  x_nomad_token: 'x_nomad_token_example', # String | A Nomad ACL token.
+  idempotency_token: 'idempotency_token_example' # String | Can be used to ensure operations are only run once.
+}
+
+begin
+  
+  result = api_instance.put_operator_autopilot_configuration(autopilot_configuration, opts)
+  p result
+rescue NomadClient::ApiError => e
+  puts "Error when calling OperatorApi->put_operator_autopilot_configuration: #{e}"
+end
+```
+
+#### Using the put_operator_autopilot_configuration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Boolean, Integer, Hash)> put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Boolean
+rescue NomadClient::ApiError => e
+  puts "Error when calling OperatorApi->put_operator_autopilot_configuration_with_http_info: #{e}"
+end
+```
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 
 ### Parameters
 
@@ -655,7 +785,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+<<<<<<< HEAD
 void (empty response body)
+=======
+**Boolean**
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 
 ### Authorization
 
@@ -663,6 +797,7 @@ void (empty response body)
 
 ### HTTP request headers
 
+<<<<<<< HEAD
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
@@ -677,4 +812,8 @@ void (empty response body)
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+=======
+- **Content-Type**: application/json
+- **Accept**: application/json
+>>>>>>> 730e030 (updated tests, TestPutAutopilotConfiguration and TestPostSchedulerConfiguration working)
 
