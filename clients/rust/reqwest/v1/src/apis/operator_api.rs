@@ -261,7 +261,7 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
     }
 }
 
-pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::RaftServer>, Error<GetOperatorRaftConfigurationError>> {
+pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::RaftConfigurationResponse>, Error<GetOperatorRaftConfigurationError>> {
 
     let local_var_client = &configuration.client;
 
@@ -430,7 +430,7 @@ pub async fn post_operator_scheduler_configuration(configuration: &configuration
     }
 }
 
-pub async fn put_operator_autopilot_configuration(configuration: &configuration::Configuration, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PutOperatorAutopilotConfigurationError>> {
+pub async fn put_operator_autopilot_configuration(configuration: &configuration::Configuration, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<bool, Error<PutOperatorAutopilotConfigurationError>> {
 
     let local_var_client = &configuration.client;
 
@@ -469,7 +469,7 @@ pub async fn put_operator_autopilot_configuration(configuration: &configuration:
     let local_var_content = local_var_resp.text().await?;
 
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        Ok(())
+        serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<PutOperatorAutopilotConfigurationError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };

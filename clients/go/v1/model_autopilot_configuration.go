@@ -22,11 +22,11 @@ type AutopilotConfiguration struct {
 	DisableUpgradeMigration *bool `json:"DisableUpgradeMigration,omitempty"`
 	EnableCustomUpgrades *bool `json:"EnableCustomUpgrades,omitempty"`
 	EnableRedundancyZones *bool `json:"EnableRedundancyZones,omitempty"`
-	LastContactThreshold *int64 `json:"LastContactThreshold,omitempty"`
+	LastContactThreshold *string `json:"LastContactThreshold,omitempty"`
 	MaxTrailingLogs *int32 `json:"MaxTrailingLogs,omitempty"`
 	MinQuorum *int32 `json:"MinQuorum,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
-	ServerStabilizationTime *int64 `json:"ServerStabilizationTime,omitempty"`
+	ServerStabilizationTime *string `json:"ServerStabilizationTime,omitempty"`
 }
 
 // NewAutopilotConfiguration instantiates a new AutopilotConfiguration object
@@ -207,9 +207,9 @@ func (o *AutopilotConfiguration) SetEnableRedundancyZones(v bool) {
 }
 
 // GetLastContactThreshold returns the LastContactThreshold field value if set, zero value otherwise.
-func (o *AutopilotConfiguration) GetLastContactThreshold() int64 {
+func (o *AutopilotConfiguration) GetLastContactThreshold() string {
 	if o == nil || o.LastContactThreshold == nil {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.LastContactThreshold
@@ -217,7 +217,7 @@ func (o *AutopilotConfiguration) GetLastContactThreshold() int64 {
 
 // GetLastContactThresholdOk returns a tuple with the LastContactThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AutopilotConfiguration) GetLastContactThresholdOk() (*int64, bool) {
+func (o *AutopilotConfiguration) GetLastContactThresholdOk() (*string, bool) {
 	if o == nil || o.LastContactThreshold == nil {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *AutopilotConfiguration) HasLastContactThreshold() bool {
 	return false
 }
 
-// SetLastContactThreshold gets a reference to the given int64 and assigns it to the LastContactThreshold field.
-func (o *AutopilotConfiguration) SetLastContactThreshold(v int64) {
+// SetLastContactThreshold gets a reference to the given string and assigns it to the LastContactThreshold field.
+func (o *AutopilotConfiguration) SetLastContactThreshold(v string) {
 	o.LastContactThreshold = &v
 }
 
@@ -335,9 +335,9 @@ func (o *AutopilotConfiguration) SetModifyIndex(v int32) {
 }
 
 // GetServerStabilizationTime returns the ServerStabilizationTime field value if set, zero value otherwise.
-func (o *AutopilotConfiguration) GetServerStabilizationTime() int64 {
+func (o *AutopilotConfiguration) GetServerStabilizationTime() string {
 	if o == nil || o.ServerStabilizationTime == nil {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.ServerStabilizationTime
@@ -345,7 +345,7 @@ func (o *AutopilotConfiguration) GetServerStabilizationTime() int64 {
 
 // GetServerStabilizationTimeOk returns a tuple with the ServerStabilizationTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AutopilotConfiguration) GetServerStabilizationTimeOk() (*int64, bool) {
+func (o *AutopilotConfiguration) GetServerStabilizationTimeOk() (*string, bool) {
 	if o == nil || o.ServerStabilizationTime == nil {
 		return nil, false
 	}
@@ -361,8 +361,8 @@ func (o *AutopilotConfiguration) HasServerStabilizationTime() bool {
 	return false
 }
 
-// SetServerStabilizationTime gets a reference to the given int64 and assigns it to the ServerStabilizationTime field.
-func (o *AutopilotConfiguration) SetServerStabilizationTime(v int64) {
+// SetServerStabilizationTime gets a reference to the given string and assigns it to the ServerStabilizationTime field.
+func (o *AutopilotConfiguration) SetServerStabilizationTime(v string) {
 	o.ServerStabilizationTime = &v
 }
 

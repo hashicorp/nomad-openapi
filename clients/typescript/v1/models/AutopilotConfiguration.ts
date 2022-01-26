@@ -18,11 +18,11 @@ export class AutopilotConfiguration {
     'disableUpgradeMigration'?: boolean;
     'enableCustomUpgrades'?: boolean;
     'enableRedundancyZones'?: boolean;
-    'lastContactThreshold'?: number;
+    'lastContactThreshold'?: string;
     'maxTrailingLogs'?: number;
     'minQuorum'?: number;
     'modifyIndex'?: number;
-    'serverStabilizationTime'?: number;
+    'serverStabilizationTime'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -60,8 +60,8 @@ export class AutopilotConfiguration {
         {
             "name": "lastContactThreshold",
             "baseName": "LastContactThreshold",
-            "type": "number",
-            "format": "int64"
+            "type": "string",
+            "format": ""
         },
         {
             "name": "maxTrailingLogs",
@@ -84,8 +84,8 @@ export class AutopilotConfiguration {
         {
             "name": "serverStabilizationTime",
             "baseName": "ServerStabilizationTime",
-            "type": "number",
-            "format": "int64"
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

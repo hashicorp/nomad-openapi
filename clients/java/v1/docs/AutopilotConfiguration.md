@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **disableUpgradeMigration** | **Boolean** |  |  [optional]
 **enableCustomUpgrades** | **Boolean** |  |  [optional]
 **enableRedundancyZones** | **Boolean** |  |  [optional]
-**lastContactThreshold** | **Long** |  |  [optional]
+**lastContactThreshold** | **String** |  |  [optional]
 **maxTrailingLogs** | **Integer** |  |  [optional]
 **minQuorum** | **Integer** |  |  [optional]
 **modifyIndex** | **Integer** |  |  [optional]
-**serverStabilizationTime** | **Long** |  |  [optional]
+**serverStabilizationTime** | **String** |  |  [optional]
 
 
 

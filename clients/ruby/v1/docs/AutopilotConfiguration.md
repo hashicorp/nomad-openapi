@@ -9,11 +9,11 @@
 | **disable_upgrade_migration** | **Boolean** |  | [optional] |
 | **enable_custom_upgrades** | **Boolean** |  | [optional] |
 | **enable_redundancy_zones** | **Boolean** |  | [optional] |
-| **last_contact_threshold** | **Integer** |  | [optional] |
+| **last_contact_threshold** | **String** |  | [optional] |
 | **max_trailing_logs** | **Integer** |  | [optional] |
 | **min_quorum** | **Integer** |  | [optional] |
 | **modify_index** | **Integer** |  | [optional] |
-| **server_stabilization_time** | **Integer** |  | [optional] |
+| **server_stabilization_time** | **String** |  | [optional] |
 
 ## Example
 

@@ -1063,7 +1063,7 @@ components:
         application/json:
           schema:
             items:
-              $ref: '#/components/schemas/RaftServer'
+              $ref: '#/components/schemas/RaftConfigurationResponse'
             type: array
       description: ""
     GetOperatorSchedulerConfigurationResponse:
@@ -1571,6 +1571,10 @@ components:
           schema:
             type: integer
     PutOperatorAutopilotConfigurationResponse:
+      content:
+        application/json:
+          schema:
+            type: boolean
       description: ""
     PutSystemGCResponse:
       description: ""
@@ -2008,8 +2012,7 @@ components:
         EnableRedundancyZones:
           type: boolean
         LastContactThreshold:
-          format: int64
-          type: integer
+          type: string
         MaxTrailingLogs:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -2022,8 +2025,7 @@ components:
           minimum: 0
           type: integer
         ServerStabilizationTime:
-          format: int64
-          type: integer
+          type: string
       type: object
     CSIControllerInfo:
       properties:
@@ -4212,6 +4214,17 @@ components:
           type: string
       type: object
     Quotas: {}
+    RaftConfigurationResponse:
+      properties:
+        Index:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Servers:
+          items:
+            $ref: '#/components/schemas/RaftServer'
+          type: array
+      type: object
     RaftServer:
       properties:
         Address:
@@ -4552,6 +4565,8 @@ components:
             type: boolean
           type: object
       type: object
+    ServerAddress:
+      type: string
     ServerHealth:
       properties:
         Address:
@@ -4585,6 +4600,8 @@ components:
         Voter:
           type: boolean
       type: object
+    ServerID:
+      type: string
     Service:
       properties:
         AddressMode:

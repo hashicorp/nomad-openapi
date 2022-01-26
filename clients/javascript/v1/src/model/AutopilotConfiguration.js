@@ -63,7 +63,7 @@ class AutopilotConfiguration {
                 obj['EnableRedundancyZones'] = ApiClient.convertToType(data['EnableRedundancyZones'], 'Boolean');
             }
             if (data.hasOwnProperty('LastContactThreshold')) {
-                obj['LastContactThreshold'] = ApiClient.convertToType(data['LastContactThreshold'], 'Number');
+                obj['LastContactThreshold'] = ApiClient.convertToType(data['LastContactThreshold'], 'String');
             }
             if (data.hasOwnProperty('MaxTrailingLogs')) {
                 obj['MaxTrailingLogs'] = ApiClient.convertToType(data['MaxTrailingLogs'], 'Number');
@@ -75,7 +75,7 @@ class AutopilotConfiguration {
                 obj['ModifyIndex'] = ApiClient.convertToType(data['ModifyIndex'], 'Number');
             }
             if (data.hasOwnProperty('ServerStabilizationTime')) {
-                obj['ServerStabilizationTime'] = ApiClient.convertToType(data['ServerStabilizationTime'], 'Number');
+                obj['ServerStabilizationTime'] = ApiClient.convertToType(data['ServerStabilizationTime'], 'String');
             }
         }
         return obj;
@@ -110,7 +110,7 @@ AutopilotConfiguration.prototype['EnableCustomUpgrades'] = undefined;
 AutopilotConfiguration.prototype['EnableRedundancyZones'] = undefined;
 
 /**
- * @member {Number} LastContactThreshold
+ * @member {String} LastContactThreshold
  */
 AutopilotConfiguration.prototype['LastContactThreshold'] = undefined;
 
@@ -130,7 +130,7 @@ AutopilotConfiguration.prototype['MinQuorum'] = undefined;
 AutopilotConfiguration.prototype['ModifyIndex'] = undefined;
 
 /**
- * @member {Number} ServerStabilizationTime
+ * @member {String} ServerStabilizationTime
  */
 AutopilotConfiguration.prototype['ServerStabilizationTime'] = undefined;
 

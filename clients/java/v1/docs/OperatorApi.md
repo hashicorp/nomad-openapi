@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 <a name="getOperatorRaftConfiguration"></a>
 # **getOperatorRaftConfiguration**
-> List&lt;RaftServer&gt; getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+> List&lt;RaftConfigurationResponse&gt; getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
 
 
 
@@ -301,7 +301,7 @@ public class Example {
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
     try {
-      List<RaftServer> result = apiInstance.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+      List<RaftConfigurationResponse> result = apiInstance.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OperatorApi#getOperatorRaftConfiguration");
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;RaftServer&gt;**](RaftServer.md)
+[**List&lt;RaftConfigurationResponse&gt;**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 <a name="putOperatorAutopilotConfiguration"></a>
 # **putOperatorAutopilotConfiguration**
-> putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken)
+> Boolean putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken)
 
 
 
@@ -550,7 +550,8 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      apiInstance.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
+      Boolean result = apiInstance.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OperatorApi#putOperatorAutopilotConfiguration");
       System.err.println("Status code: " + e.getCode());
@@ -574,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Boolean**
 
 ### Authorization
 
@@ -583,7 +584,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

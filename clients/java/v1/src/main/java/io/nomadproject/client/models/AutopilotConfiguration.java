@@ -51,7 +51,7 @@ public class AutopilotConfiguration {
 
   public static final String SERIALIZED_NAME_LAST_CONTACT_THRESHOLD = "LastContactThreshold";
   @SerializedName(SERIALIZED_NAME_LAST_CONTACT_THRESHOLD)
-  private Long lastContactThreshold;
+  private String lastContactThreshold;
 
   public static final String SERIALIZED_NAME_MAX_TRAILING_LOGS = "MaxTrailingLogs";
   @SerializedName(SERIALIZED_NAME_MAX_TRAILING_LOGS)
@@ -67,7 +67,7 @@ public class AutopilotConfiguration {
 
   public static final String SERIALIZED_NAME_SERVER_STABILIZATION_TIME = "ServerStabilizationTime";
   @SerializedName(SERIALIZED_NAME_SERVER_STABILIZATION_TIME)
-  private Long serverStabilizationTime;
+  private String serverStabilizationTime;
 
 
   public AutopilotConfiguration cleanupDeadServers(Boolean cleanupDeadServers) {
@@ -187,7 +187,7 @@ public class AutopilotConfiguration {
   }
 
 
-  public AutopilotConfiguration lastContactThreshold(Long lastContactThreshold) {
+  public AutopilotConfiguration lastContactThreshold(String lastContactThreshold) {
     
     this.lastContactThreshold = lastContactThreshold;
     return this;
@@ -200,12 +200,12 @@ public class AutopilotConfiguration {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Long getLastContactThreshold() {
+  public String getLastContactThreshold() {
     return lastContactThreshold;
   }
 
 
-  public void setLastContactThreshold(Long lastContactThreshold) {
+  public void setLastContactThreshold(String lastContactThreshold) {
     this.lastContactThreshold = lastContactThreshold;
   }
 
@@ -284,7 +284,7 @@ public class AutopilotConfiguration {
   }
 
 
-  public AutopilotConfiguration serverStabilizationTime(Long serverStabilizationTime) {
+  public AutopilotConfiguration serverStabilizationTime(String serverStabilizationTime) {
     
     this.serverStabilizationTime = serverStabilizationTime;
     return this;
@@ -297,12 +297,12 @@ public class AutopilotConfiguration {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Long getServerStabilizationTime() {
+  public String getServerStabilizationTime() {
     return serverStabilizationTime;
   }
 
 
-  public void setServerStabilizationTime(Long serverStabilizationTime) {
+  public void setServerStabilizationTime(String serverStabilizationTime) {
     this.serverStabilizationTime = serverStabilizationTime;
   }
 

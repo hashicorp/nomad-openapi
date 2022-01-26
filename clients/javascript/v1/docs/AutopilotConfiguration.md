@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **disableUpgradeMigration** | **Boolean** |  | [optional] 
 **enableCustomUpgrades** | **Boolean** |  | [optional] 
 **enableRedundancyZones** | **Boolean** |  | [optional] 
-**lastContactThreshold** | **Number** |  | [optional] 
+**lastContactThreshold** | **String** |  | [optional] 
 **maxTrailingLogs** | **Number** |  | [optional] 
 **minQuorum** | **Number** |  | [optional] 
 **modifyIndex** | **Number** |  | [optional] 
-**serverStabilizationTime** | **Number** |  | [optional] 
+**serverStabilizationTime** | **String** |  | [optional] 
 
 

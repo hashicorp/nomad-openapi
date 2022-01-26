@@ -252,7 +252,7 @@ module NomadClient
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [Integer] :per_page Maximum number of results to return.
     # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
-    # @return [Array<RaftServer>]
+    # @return [Array<RaftConfigurationResponse>]
     def get_operator_raft_configuration(opts = {})
       data, _status_code, _headers = get_operator_raft_configuration_with_http_info(opts)
       data
@@ -268,7 +268,7 @@ module NomadClient
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [Integer] :per_page Maximum number of results to return.
     # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
-    # @return [Array<(Array<RaftServer>, Integer, Hash)>] Array<RaftServer> data, response status code and response headers
+    # @return [Array<(Array<RaftConfigurationResponse>, Integer, Hash)>] Array<RaftConfigurationResponse> data, response status code and response headers
     def get_operator_raft_configuration_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OperatorApi.get_operator_raft_configuration ...'
@@ -300,7 +300,7 @@ module NomadClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<RaftServer>'
+      return_type = opts[:debug_return_type] || 'Array<RaftConfigurationResponse>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']
@@ -481,10 +481,10 @@ module NomadClient
     # @option opts [String] :namespace Filters results based on the specified namespace.
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [String] :idempotency_token Can be used to ensure operations are only run once.
-    # @return [nil]
+    # @return [Boolean]
     def put_operator_autopilot_configuration(autopilot_configuration, opts = {})
-      put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
-      nil
+      data, _status_code, _headers = put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
+      data
     end
 
     # @param autopilot_configuration [AutopilotConfiguration] 
@@ -493,7 +493,7 @@ module NomadClient
     # @option opts [String] :namespace Filters results based on the specified namespace.
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [String] :idempotency_token Can be used to ensure operations are only run once.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Boolean, Integer, Hash)>] Boolean data, response status code and response headers
     def put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OperatorApi.put_operator_autopilot_configuration ...'
@@ -513,6 +513,8 @@ module NomadClient
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       header_params[:'X-Nomad-Token'] = opts[:'x_nomad_token'] if !opts[:'x_nomad_token'].nil?
@@ -524,7 +526,7 @@ module NomadClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(autopilot_configuration)
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Boolean'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']

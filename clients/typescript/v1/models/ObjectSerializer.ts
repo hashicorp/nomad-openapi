@@ -140,6 +140,7 @@ export * from './PortMapping';
 export * from './PreemptionConfig';
 export * from './QuotaLimit';
 export * from './QuotaSpec';
+export * from './RaftConfigurationResponse';
 export * from './RaftServer';
 export * from './RequestedDevice';
 export * from './RescheduleEvent';
@@ -323,6 +324,7 @@ import { PortMapping } from './PortMapping';
 import { PreemptionConfig } from './PreemptionConfig';
 import { QuotaLimit } from './QuotaLimit';
 import { QuotaSpec } from './QuotaSpec';
+import { RaftConfigurationResponse } from './RaftConfigurationResponse';
 import { RaftServer } from './RaftServer';
 import { RequestedDevice } from './RequestedDevice';
 import { RescheduleEvent } from './RescheduleEvent';
@@ -528,6 +530,7 @@ let typeMap: {[index: string]: any} = {
     "PreemptionConfig": PreemptionConfig,
     "QuotaLimit": QuotaLimit,
     "QuotaSpec": QuotaSpec,
+    "RaftConfigurationResponse": RaftConfigurationResponse,
     "RaftServer": RaftServer,
     "RequestedDevice": RequestedDevice,
     "RescheduleEvent": RescheduleEvent,

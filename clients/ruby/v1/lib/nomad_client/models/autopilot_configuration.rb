@@ -64,11 +64,11 @@ module NomadClient
         :'disable_upgrade_migration' => :'Boolean',
         :'enable_custom_upgrades' => :'Boolean',
         :'enable_redundancy_zones' => :'Boolean',
-        :'last_contact_threshold' => :'Integer',
+        :'last_contact_threshold' => :'String',
         :'max_trailing_logs' => :'Integer',
         :'min_quorum' => :'Integer',
         :'modify_index' => :'Integer',
-        :'server_stabilization_time' => :'Integer'
+        :'server_stabilization_time' => :'String'
       }
     end
 

@@ -24,7 +24,7 @@ pub struct AutopilotConfiguration {
     #[serde(rename = "EnableRedundancyZones", skip_serializing_if = "Option::is_none")]
     pub enable_redundancy_zones: Option<bool>,
     #[serde(rename = "LastContactThreshold", skip_serializing_if = "Option::is_none")]
-    pub last_contact_threshold: Option<i64>,
+    pub last_contact_threshold: Option<String>,
     #[serde(rename = "MaxTrailingLogs", skip_serializing_if = "Option::is_none")]
     pub max_trailing_logs: Option<i32>,
     #[serde(rename = "MinQuorum", skip_serializing_if = "Option::is_none")]
@@ -32,7 +32,7 @@ pub struct AutopilotConfiguration {
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
     pub modify_index: Option<i32>,
     #[serde(rename = "ServerStabilizationTime", skip_serializing_if = "Option::is_none")]
-    pub server_stabilization_time: Option<i64>,
+    pub server_stabilization_time: Option<String>,
 }
 
 impl AutopilotConfiguration {

@@ -102,11 +102,11 @@ class AutopilotConfiguration(ModelNormal):
             'disable_upgrade_migration': (bool,),  # noqa: E501
             'enable_custom_upgrades': (bool,),  # noqa: E501
             'enable_redundancy_zones': (bool,),  # noqa: E501
-            'last_contact_threshold': (int,),  # noqa: E501
+            'last_contact_threshold': (str,),  # noqa: E501
             'max_trailing_logs': (int,),  # noqa: E501
             'min_quorum': (int,),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
-            'server_stabilization_time': (int,),  # noqa: E501
+            'server_stabilization_time': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -173,11 +173,11 @@ class AutopilotConfiguration(ModelNormal):
             disable_upgrade_migration (bool): [optional]  # noqa: E501
             enable_custom_upgrades (bool): [optional]  # noqa: E501
             enable_redundancy_zones (bool): [optional]  # noqa: E501
-            last_contact_threshold (int): [optional]  # noqa: E501
+            last_contact_threshold (str): [optional]  # noqa: E501
             max_trailing_logs (int): [optional]  # noqa: E501
             min_quorum (int): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
-            server_stabilization_time (int): [optional]  # noqa: E501
+            server_stabilization_time (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -264,11 +264,11 @@ class AutopilotConfiguration(ModelNormal):
             disable_upgrade_migration (bool): [optional]  # noqa: E501
             enable_custom_upgrades (bool): [optional]  # noqa: E501
             enable_redundancy_zones (bool): [optional]  # noqa: E501
-            last_contact_threshold (int): [optional]  # noqa: E501
+            last_contact_threshold (str): [optional]  # noqa: E501
             max_trailing_logs (int): [optional]  # noqa: E501
             min_quorum (int): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
-            server_stabilization_time (int): [optional]  # noqa: E501
+            server_stabilization_time (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_operator_raft_configuration**
-> [RaftServer] get_operator_raft_configuration()
+> [RaftConfigurationResponse] get_operator_raft_configuration()
 
 
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 import time
 import nomad_client
 from nomad_client.api import operator_api
-from nomad_client.model.raft_server import RaftServer
+from nomad_client.model.raft_configuration_response import RaftConfigurationResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[RaftServer]**](RaftServer.md)
+[**[RaftConfigurationResponse]**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_operator_autopilot_configuration**
-> put_operator_autopilot_configuration(autopilot_configuration)
+> bool put_operator_autopilot_configuration(autopilot_configuration)
 
 
 
@@ -617,11 +617,11 @@ with nomad_client.ApiClient(configuration) as api_client:
         disable_upgrade_migration=True,
         enable_custom_upgrades=True,
         enable_redundancy_zones=True,
-        last_contact_threshold=1,
+        last_contact_threshold="last_contact_threshold_example",
         max_trailing_logs=0,
         min_quorum=0,
         modify_index=0,
-        server_stabilization_time=1,
+        server_stabilization_time="server_stabilization_time_example",
     ) # AutopilotConfiguration | 
     region = "region_example" # str | Filters results based on the specified region. (optional)
     namespace = "namespace_example" # str | Filters results based on the specified namespace. (optional)
@@ -630,14 +630,16 @@ with nomad_client.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_instance.put_operator_autopilot_configuration(autopilot_configuration)
+        api_response = api_instance.put_operator_autopilot_configuration(autopilot_configuration)
+        pprint(api_response)
     except nomad_client.ApiException as e:
         print("Exception when calling OperatorApi->put_operator_autopilot_configuration: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_instance.put_operator_autopilot_configuration(autopilot_configuration, region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
+        api_response = api_instance.put_operator_autopilot_configuration(autopilot_configuration, region=region, namespace=namespace, x_nomad_token=x_nomad_token, idempotency_token=idempotency_token)
+        pprint(api_response)
     except nomad_client.ApiException as e:
         print("Exception when calling OperatorApi->put_operator_autopilot_configuration: %s\n" % e)
 ```
@@ -655,7 +657,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**bool**
 
 ### Authorization
 
@@ -664,7 +666,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

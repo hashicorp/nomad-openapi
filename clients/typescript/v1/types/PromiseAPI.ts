@@ -144,6 +144,7 @@ import { PortMapping } from '../models/PortMapping';
 import { PreemptionConfig } from '../models/PreemptionConfig';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
+import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
 import { RaftServer } from '../models/RaftServer';
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
@@ -1326,7 +1327,7 @@ export class PromiseOperatorApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<RaftServer>> {
+    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<RaftConfigurationResponse>> {
         const result = this.api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
         return result.toPromise();
     }
@@ -1366,7 +1367,7 @@ export class PromiseOperatorApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public putOperatorAutopilotConfiguration(autopilotConfiguration: AutopilotConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
+    public putOperatorAutopilotConfiguration(autopilotConfiguration: AutopilotConfiguration, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<boolean> {
         const result = this.api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }

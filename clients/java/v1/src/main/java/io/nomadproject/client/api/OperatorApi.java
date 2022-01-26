@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.nomadproject.client.models.AutopilotConfiguration;
 import io.nomadproject.client.models.OperatorHealthReply;
-import io.nomadproject.client.models.RaftServer;
+import io.nomadproject.client.models.RaftConfigurationResponse;
 import io.nomadproject.client.models.SchedulerConfiguration;
 import io.nomadproject.client.models.SchedulerConfigurationResponse;
 import io.nomadproject.client.models.SchedulerSetConfigurationResponse;
@@ -696,7 +696,7 @@ public class OperatorApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
-     * @return List&lt;RaftServer&gt;
+     * @return List&lt;RaftConfigurationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -708,8 +708,8 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public List<RaftServer> getOperatorRaftConfiguration(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
-        ApiResponse<List<RaftServer>> localVarResp = getOperatorRaftConfigurationWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+    public List<RaftConfigurationResponse> getOperatorRaftConfiguration(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<List<RaftConfigurationResponse>> localVarResp = getOperatorRaftConfigurationWithHttpInfo(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         return localVarResp.getData();
     }
 
@@ -725,7 +725,7 @@ public class OperatorApi {
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param perPage Maximum number of results to return. (optional)
      * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
-     * @return ApiResponse&lt;List&lt;RaftServer&gt;&gt;
+     * @return ApiResponse&lt;List&lt;RaftConfigurationResponse&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -737,9 +737,9 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<RaftServer>> getOperatorRaftConfigurationWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+    public ApiResponse<List<RaftConfigurationResponse>> getOperatorRaftConfigurationWithHttpInfo(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
         okhttp3.Call localVarCall = getOperatorRaftConfigurationValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
-        Type localVarReturnType = new TypeToken<List<RaftServer>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<RaftConfigurationResponse>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -768,10 +768,10 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOperatorRaftConfigurationAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<RaftServer>> _callback) throws ApiException {
+    public okhttp3.Call getOperatorRaftConfigurationAsync(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<RaftConfigurationResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getOperatorRaftConfigurationValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
-        Type localVarReturnType = new TypeToken<List<RaftServer>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<RaftConfigurationResponse>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1173,7 +1173,7 @@ public class OperatorApi {
         }
 
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1212,6 +1212,7 @@ public class OperatorApi {
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
+     * @return Boolean
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1223,8 +1224,9 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public void putOperatorAutopilotConfiguration(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
-        putOperatorAutopilotConfigurationWithHttpInfo(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
+    public Boolean putOperatorAutopilotConfiguration(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+        ApiResponse<Boolean> localVarResp = putOperatorAutopilotConfigurationWithHttpInfo(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
+        return localVarResp.getData();
     }
 
     /**
@@ -1235,7 +1237,7 @@ public class OperatorApi {
      * @param namespace Filters results based on the specified namespace. (optional)
      * @param xNomadToken A Nomad ACL token. (optional)
      * @param idempotencyToken Can be used to ensure operations are only run once. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Boolean&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1247,9 +1249,10 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> putOperatorAutopilotConfigurationWithHttpInfo(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
+    public ApiResponse<Boolean> putOperatorAutopilotConfigurationWithHttpInfo(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken) throws ApiException {
         okhttp3.Call localVarCall = putOperatorAutopilotConfigurationValidateBeforeCall(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1273,10 +1276,11 @@ public class OperatorApi {
         <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putOperatorAutopilotConfigurationAsync(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putOperatorAutopilotConfigurationAsync(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback<Boolean> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putOperatorAutopilotConfigurationValidateBeforeCall(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

@@ -18,7 +18,7 @@ func (o *Operator) OperatorApi() *client.OperatorApiService {
 	return o.client.apiClient.OperatorApi
 }
 
-func (o *Operator) Raft(ctx context.Context) (*[]client.RaftServer, error) {
+func (o *Operator) Raft(ctx context.Context) (*[]client.RaftConfigurationResponse, error) {
 	request := o.OperatorApi().GetOperatorRaftConfiguration(o.client.Ctx)
 
 	result, err := o.client.ExecRequest(ctx, request)
@@ -26,7 +26,7 @@ func (o *Operator) Raft(ctx context.Context) (*[]client.RaftServer, error) {
 		return nil, err
 	}
 
-	final := result.([]client.RaftServer)
+	final := result.([]client.RaftConfigurationResponse)
 	return &final, nil
 }
 
@@ -56,9 +56,9 @@ func (o *Operator) Autopilot(ctx context.Context) (*[]client.AutopilotConfigurat
 func (o *Operator) UpdateAutopilot(
 	ctx context.Context,
 	cleanupdeadservers bool,
-	lastcontactthreshold int64, // supposed to be string but struct says int64?
+	lastcontactthreshold string,
 	maxtrailinglogs int32,
-	serverstabilizationtime int64, // suppsoed to be string but struct says int64?
+	serverstabilizationtime string,
 	enableredundancyzones bool,
 	disableupgrademigration bool,
 	enablecustomupgrades bool,
@@ -78,6 +78,7 @@ func (o *Operator) UpdateAutopilot(
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
+	//request.Execute() // returns *http.Response, error, but where's the bool!?!?
 	result, err := o.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err

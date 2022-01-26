@@ -265,7 +265,7 @@ end
 
 ## get_operator_raft_configuration
 
-> <Array<RaftServer>> get_operator_raft_configuration(opts)
+> <Array<RaftConfigurationResponse>> get_operator_raft_configuration(opts)
 
 
 
@@ -308,7 +308,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<RaftServer>>, Integer, Hash)> get_operator_raft_configuration_with_http_info(opts)
+> <Array(<Array<RaftConfigurationResponse>>, Integer, Hash)> get_operator_raft_configuration_with_http_info(opts)
 
 ```ruby
 begin
@@ -316,7 +316,7 @@ begin
   data, status_code, headers = api_instance.get_operator_raft_configuration_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<RaftServer>>
+  p data # => <Array<RaftConfigurationResponse>>
 rescue NomadClient::ApiError => e
   puts "Error when calling OperatorApi->get_operator_raft_configuration_with_http_info: #{e}"
 end
@@ -338,7 +338,7 @@ end
 
 ### Return type
 
-[**Array&lt;RaftServer&gt;**](RaftServer.md)
+[**Array&lt;RaftConfigurationResponse&gt;**](RaftConfigurationResponse.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ end
 
 ## put_operator_autopilot_configuration
 
-> put_operator_autopilot_configuration(autopilot_configuration, opts)
+> Boolean put_operator_autopilot_configuration(autopilot_configuration, opts)
 
 
 
@@ -546,7 +546,8 @@ opts = {
 
 begin
   
-  api_instance.put_operator_autopilot_configuration(autopilot_configuration, opts)
+  result = api_instance.put_operator_autopilot_configuration(autopilot_configuration, opts)
+  p result
 rescue NomadClient::ApiError => e
   puts "Error when calling OperatorApi->put_operator_autopilot_configuration: #{e}"
 end
@@ -554,9 +555,9 @@ end
 
 #### Using the put_operator_autopilot_configuration_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
+> <Array(Boolean, Integer, Hash)> put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
 
 ```ruby
 begin
@@ -564,7 +565,7 @@ begin
   data, status_code, headers = api_instance.put_operator_autopilot_configuration_with_http_info(autopilot_configuration, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Boolean
 rescue NomadClient::ApiError => e
   puts "Error when calling OperatorApi->put_operator_autopilot_configuration_with_http_info: #{e}"
 end
@@ -582,7 +583,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Boolean**
 
 ### Authorization
 
@@ -591,5 +592,5 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 

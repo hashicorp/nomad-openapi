@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **DisableUpgradeMigration** | Pointer to **bool** |  | [optional] 
 **EnableCustomUpgrades** | Pointer to **bool** |  | [optional] 
 **EnableRedundancyZones** | Pointer to **bool** |  | [optional] 
-**LastContactThreshold** | Pointer to **int64** |  | [optional] 
+**LastContactThreshold** | Pointer to **string** |  | [optional] 
 **MaxTrailingLogs** | Pointer to **int32** |  | [optional] 
 **MinQuorum** | Pointer to **int32** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
-**ServerStabilizationTime** | Pointer to **int64** |  | [optional] 
+**ServerStabilizationTime** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -161,20 +161,20 @@ HasEnableRedundancyZones returns a boolean if a field has been set.
 
 ### GetLastContactThreshold
 
-`func (o *AutopilotConfiguration) GetLastContactThreshold() int64`
+`func (o *AutopilotConfiguration) GetLastContactThreshold() string`
 
 GetLastContactThreshold returns the LastContactThreshold field if non-nil, zero value otherwise.
 
 ### GetLastContactThresholdOk
 
-`func (o *AutopilotConfiguration) GetLastContactThresholdOk() (*int64, bool)`
+`func (o *AutopilotConfiguration) GetLastContactThresholdOk() (*string, bool)`
 
 GetLastContactThresholdOk returns a tuple with the LastContactThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastContactThreshold
 
-`func (o *AutopilotConfiguration) SetLastContactThreshold(v int64)`
+`func (o *AutopilotConfiguration) SetLastContactThreshold(v string)`
 
 SetLastContactThreshold sets LastContactThreshold field to given value.
 
@@ -261,20 +261,20 @@ HasModifyIndex returns a boolean if a field has been set.
 
 ### GetServerStabilizationTime
 
-`func (o *AutopilotConfiguration) GetServerStabilizationTime() int64`
+`func (o *AutopilotConfiguration) GetServerStabilizationTime() string`
 
 GetServerStabilizationTime returns the ServerStabilizationTime field if non-nil, zero value otherwise.
 
 ### GetServerStabilizationTimeOk
 
-`func (o *AutopilotConfiguration) GetServerStabilizationTimeOk() (*int64, bool)`
+`func (o *AutopilotConfiguration) GetServerStabilizationTimeOk() (*string, bool)`
 
 GetServerStabilizationTimeOk returns a tuple with the ServerStabilizationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerStabilizationTime
 
-`func (o *AutopilotConfiguration) SetServerStabilizationTime(v int64)`
+`func (o *AutopilotConfiguration) SetServerStabilizationTime(v string)`
 
 SetServerStabilizationTime sets ServerStabilizationTime field to given value.
 

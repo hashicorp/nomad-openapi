@@ -3,21 +3,27 @@ package v1
 import (
 	"testing"
 
+	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/stretchr/testify/require"
 )
 
-// ERROR: json: cannot unmarshal object into Go value of type []client.RaftServer
-// func TestGetOperatorRaftConfiguration(t *testing.T) {
-// 	httpTest(t, nil, func(s *agent.TestAgent) {
-// 		testClient, err := NewTestClient(s)
-// 		require.NoError(t, err)
+// boolToPtr returns the pointer to a boolean
+func boolToPtr(b bool) *bool {
+	return &b
+}
 
-// 		result, err := testClient.Operator().Raft(queryOpts.Ctx())
-// 		require.NoError(t, err)
-// 		require.NotNil(t, result)
-// 	})
-// }
+// ERROR: json: cannot unmarshal object into Go value of type []client.RaftServer
+func TestGetOperatorRaftConfiguration(t *testing.T) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
+
+		result, err := testClient.Operator().Raft(queryOpts.Ctx())
+		require.NoError(t, err)
+		require.NotNil(t, result)
+	})
+}
 
 func TestDeleteOperatorRaftPeer(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
@@ -40,18 +46,16 @@ func TestDeleteOperatorRaftPeer(t *testing.T) {
 // 	})
 // }
 
-// NOTE: payload has some values as string, but config says they should be int64...
-// https://www.nomadproject.io/api-docs/operator/autopilot#update-autopilot-configuration
-// func TestPutAutopilotConfiguration(t *testing.T) {
-// 	httpTest(t, nil, func(s *agent.TestAgent) {
-// 		testClient, err := NewTestClient(s)
-// 		require.NoError(t, err)
+func TestPutAutopilotConfiguration(t *testing.T) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
 
-// 		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), true, "200ms", 250, "10s", false, false, false)
-// 		require.NoError(t, err)
-// 		require.NotNil(t, result)
-// 	})
-// }
+		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), true, "200ms", 250, "10s", false, false, false)
+		require.NoError(t, err)
+		require.NotNil(t, result)
+	})
+}
 
 func TestGetAutopilotHealth(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
@@ -76,15 +80,21 @@ func TestGetSchedulerConfiguration(t *testing.T) {
 	})
 }
 
-// QUESTION: how do I pass in values for preemptionconfig?
-// func TestPostSchedulerConfiguration(t *testing.T) {
-// 	httpTest(t, nil, func(s *agent.TestAgent) {
-// 		testClient, err := NewTestClient(s)
-// 		require.NoError(t, err)
+func TestPostSchedulerConfiguration(t *testing.T) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
 
-// 		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), "spread", false, ??????????)
-// 		require.NoError(t, err)
-// 		require.NotNil(t, meta)
-// 		require.NotNil(t, result)
-// 	})
-// }
+		config := &client.PreemptionConfig{
+			BatchSchedulerEnabled:    boolToPtr(true),
+			ServiceSchedulerEnabled:  boolToPtr(true),
+			SysBatchSchedulerEnabled: boolToPtr(true),
+			SystemSchedulerEnabled:   boolToPtr(true),
+		}
+
+		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), "spread", false, config)
+		require.NoError(t, err)
+		require.NotNil(t, meta)
+		require.NotNil(t, result)
+	})
+}
