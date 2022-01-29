@@ -28,13 +28,10 @@ pub mod allocation_list_stub;
 pub use self::allocation_list_stub::AllocationListStub;
 pub mod allocation_metric;
 pub use self::allocation_metric::AllocationMetric;
-<<<<<<< HEAD
 pub mod attribute;
 pub use self::attribute::Attribute;
-=======
 pub mod autopilot_configuration;
 pub use self::autopilot_configuration::AutopilotConfiguration;
->>>>>>> 2fdd42e (updates to generator/operator.go)
 pub mod check_restart;
 pub use self::check_restart::CheckRestart;
 pub mod constraint;
@@ -259,15 +256,12 @@ pub mod node_update_eligibility_request;
 pub use self::node_update_eligibility_request::NodeUpdateEligibilityRequest;
 pub mod object_diff;
 pub use self::object_diff::ObjectDiff;
-<<<<<<< HEAD
 pub mod one_time_token;
 pub use self::one_time_token::OneTimeToken;
 pub mod one_time_token_exchange_request;
 pub use self::one_time_token_exchange_request::OneTimeTokenExchangeRequest;
-=======
 pub mod operator_health_reply;
 pub use self::operator_health_reply::OperatorHealthReply;
->>>>>>> 2fdd42e (updates to generator/operator.go)
 pub mod parameterized_job_config;
 pub use self::parameterized_job_config::ParameterizedJobConfig;
 pub mod periodic_config;

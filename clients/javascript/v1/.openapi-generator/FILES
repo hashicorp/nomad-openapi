@@ -18,13 +18,10 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
-<<<<<<< HEAD
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
-=======
-docs/AutopilotConfiguration.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -142,13 +139,10 @@ docs/NodeUpdateDrainRequest.md
 docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
-<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
-=======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -218,12 +212,9 @@ src/api/EvaluationsApi.js
 src/api/JobsApi.js
 src/api/MetricsApi.js
 src/api/NamespacesApi.js
-<<<<<<< HEAD
 src/api/NodesApi.js
-src/api/PluginsApi.js
-=======
 src/api/OperatorApi.js
->>>>>>> 2fdd42e (updates to generator/operator.go)
+src/api/PluginsApi.js
 src/api/RegionsApi.js
 src/api/ScalingApi.js
 src/api/SearchApi.js
@@ -246,13 +237,10 @@ src/model/AllocatedTaskResources.js
 src/model/Allocation.js
 src/model/AllocationListStub.js
 src/model/AllocationMetric.js
-<<<<<<< HEAD
 src/model/Attribute.js
+src/model/AutopilotConfiguration.js
 src/model/CSIControllerInfo.js
 src/model/CSIInfo.js
-=======
-src/model/AutopilotConfiguration.js
->>>>>>> 2fdd42e (updates to generator/operator.go)
 src/model/CSIMountOptions.js
 src/model/CSINodeInfo.js
 src/model/CSIPlugin.js
@@ -363,12 +351,9 @@ src/model/NodeScoreMeta.js
 src/model/NodeUpdateDrainRequest.js
 src/model/NodeUpdateEligibilityRequest.js
 src/model/ObjectDiff.js
-<<<<<<< HEAD
 src/model/OneTimeToken.js
 src/model/OneTimeTokenExchangeRequest.js
-=======
 src/model/OperatorHealthReply.js
->>>>>>> 2fdd42e (updates to generator/operator.go)
 src/model/ParameterizedJobConfig.js
 src/model/PeriodicConfig.js
 src/model/PeriodicForceResponse.js
@@ -420,13 +405,14 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
-<<<<<<< HEAD
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
+test/api/OperatorApi.spec.js
 test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js
 test/api/StatusApi.spec.js
 test/api/SystemApi.spec.js
+test/model/AutopilotConfiguration.spec.js
 test/model/CSIControllerInfo.spec.js
 test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
@@ -439,20 +425,12 @@ test/model/DeploymentUnblockRequest.spec.js
 test/model/DeploymentUpdateResponse.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
-test/model/ScalingPolicyListStub.spec.js
-=======
-<<<<<<< HEAD
-test/api/SystemApi.spec.js
-=======
-test/api/OperatorApi.spec.js
-test/model/AutopilotConfiguration.spec.js
 test/model/OperatorHealthReply.spec.js
 test/model/PreemptionConfig.spec.js
 test/model/RaftConfigurationResponse.spec.js
 test/model/RaftServer.spec.js
+test/model/ScalingPolicyListStub.spec.js
 test/model/SchedulerConfiguration.spec.js
 test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
->>>>>>> 685e8ca (updates to generator/operator.go)
->>>>>>> 2fdd42e (updates to generator/operator.go)

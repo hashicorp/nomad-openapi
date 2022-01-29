@@ -24,13 +24,10 @@ from nomad_client.model.allocated_task_resources import AllocatedTaskResources
 from nomad_client.model.allocation import Allocation
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from nomad_client.model.allocation_metric import AllocationMetric
-<<<<<<< HEAD
 from nomad_client.model.attribute import Attribute
+from nomad_client.model.autopilot_configuration import AutopilotConfiguration
 from nomad_client.model.csi_controller_info import CSIControllerInfo
 from nomad_client.model.csi_info import CSIInfo
-=======
-from nomad_client.model.autopilot_configuration import AutopilotConfiguration
->>>>>>> 2fdd42e (updates to generator/operator.go)
 from nomad_client.model.csi_mount_options import CSIMountOptions
 from nomad_client.model.csi_node_info import CSINodeInfo
 from nomad_client.model.csi_plugin import CSIPlugin
@@ -143,12 +140,9 @@ from nomad_client.model.node_score_meta import NodeScoreMeta
 from nomad_client.model.node_update_drain_request import NodeUpdateDrainRequest
 from nomad_client.model.node_update_eligibility_request import NodeUpdateEligibilityRequest
 from nomad_client.model.object_diff import ObjectDiff
-<<<<<<< HEAD
 from nomad_client.model.one_time_token import OneTimeToken
 from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
-=======
 from nomad_client.model.operator_health_reply import OperatorHealthReply
->>>>>>> 2fdd42e (updates to generator/operator.go)
 from nomad_client.model.parameterized_job_config import ParameterizedJobConfig
 from nomad_client.model.periodic_config import PeriodicConfig
 from nomad_client.model.periodic_force_response import PeriodicForceResponse
@@ -196,11 +190,8 @@ from nomad_client.model.task_handle import TaskHandle
 from nomad_client.model.task_lifecycle import TaskLifecycle
 from nomad_client.model.task_state import TaskState
 from nomad_client.model.template import Template
-<<<<<<< HEAD
-from nomad_client.model.uint16 import Uint16
-=======
 from nomad_client.model.uint import Uint
->>>>>>> 2fdd42e (updates to generator/operator.go)
+from nomad_client.model.uint16 import Uint16
 from nomad_client.model.uint64 import Uint64
 from nomad_client.model.uint8 import Uint8
 from nomad_client.model.update_strategy import UpdateStrategy

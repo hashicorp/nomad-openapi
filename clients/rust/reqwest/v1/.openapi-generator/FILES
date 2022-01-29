@@ -18,11 +18,8 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
-<<<<<<< HEAD
 docs/Attribute.md
-=======
 docs/AutopilotConfiguration.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -142,13 +139,10 @@ docs/NodeUpdateDrainRequest.md
 docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
-<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
-=======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -217,12 +211,9 @@ src/apis/jobs_api.rs
 src/apis/metrics_api.rs
 src/apis/mod.rs
 src/apis/namespaces_api.rs
-<<<<<<< HEAD
 src/apis/nodes_api.rs
-src/apis/plugins_api.rs
-=======
 src/apis/operator_api.rs
->>>>>>> 2fdd42e (updates to generator/operator.go)
+src/apis/plugins_api.rs
 src/apis/regions_api.rs
 src/apis/scaling_api.rs
 src/apis/search_api.rs
@@ -245,11 +236,8 @@ src/models/allocated_task_resources.rs
 src/models/allocation.rs
 src/models/allocation_list_stub.rs
 src/models/allocation_metric.rs
-<<<<<<< HEAD
 src/models/attribute.rs
-=======
 src/models/autopilot_configuration.rs
->>>>>>> 2fdd42e (updates to generator/operator.go)
 src/models/check_restart.rs
 src/models/constraint.rs
 src/models/consul.rs
@@ -363,12 +351,9 @@ src/models/node_score_meta.rs
 src/models/node_update_drain_request.rs
 src/models/node_update_eligibility_request.rs
 src/models/object_diff.rs
-<<<<<<< HEAD
 src/models/one_time_token.rs
 src/models/one_time_token_exchange_request.rs
-=======
 src/models/operator_health_reply.rs
->>>>>>> 2fdd42e (updates to generator/operator.go)
 src/models/parameterized_job_config.rs
 src/models/periodic_config.rs
 src/models/periodic_force_response.rs

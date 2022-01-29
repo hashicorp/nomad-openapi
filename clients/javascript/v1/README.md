@@ -188,41 +188,21 @@ Class | Method | HTTP request | Description
 *nomad-client.NamespacesApi* | [**getNamespace**](docs/NamespacesApi.md#getNamespace) | **GET** /namespace/{namespaceName} | 
 *nomad-client.NamespacesApi* | [**getNamespaces**](docs/NamespacesApi.md#getNamespaces) | **GET** /namespaces | 
 *nomad-client.NamespacesApi* | [**postNamespace**](docs/NamespacesApi.md#postNamespace) | **POST** /namespace/{namespaceName} | 
-<<<<<<< HEAD
 *nomad-client.NodesApi* | [**getNode**](docs/NodesApi.md#getNode) | **GET** /node/{nodeId} | 
 *nomad-client.NodesApi* | [**getNodeAllocations**](docs/NodesApi.md#getNodeAllocations) | **GET** /node/{nodeId}/allocations | 
 *nomad-client.NodesApi* | [**getNodes**](docs/NodesApi.md#getNodes) | **GET** /nodes | 
 *nomad-client.NodesApi* | [**updateNodeDrain**](docs/NodesApi.md#updateNodeDrain) | **POST** /node/{nodeId}/drain | 
 *nomad-client.NodesApi* | [**updateNodeEligibility**](docs/NodesApi.md#updateNodeEligibility) | **POST** /node/{nodeId}/eligibility | 
 *nomad-client.NodesApi* | [**updateNodePurge**](docs/NodesApi.md#updateNodePurge) | **POST** /node/{nodeId}/purge | 
-<<<<<<< HEAD
-*nomad-client.PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
-*nomad-client.PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-*nomad-client.OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
-=======
 *nomad-client.OperatorApi* | [**deleteOperatorRaftPeer**](docs/OperatorApi.md#deleteOperatorRaftPeer) | **DELETE** /operator/raft/peer | 
->>>>>>> ec8f030 (added a few tests, missing snapshot request/restore)
 *nomad-client.OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
 *nomad-client.OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
 *nomad-client.OperatorApi* | [**getOperatorRaftConfiguration**](docs/OperatorApi.md#getOperatorRaftConfiguration) | **GET** /operator/raft/configuration | 
 *nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
 *nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
->>>>>>> 2fdd42e (updates to generator/operator.go)
->>>>>>> a5079de (added a few tests, missing snapshot request/restore)
-=======
-=======
-*nomad-client.OperatorApi* | [**deleteOperatorRaft**](docs/OperatorApi.md#deleteOperatorRaft) | **DELETE** /operator/raft/ | 
-*nomad-client.OperatorApi* | [**getOperatorAutopilotConfiguration**](docs/OperatorApi.md#getOperatorAutopilotConfiguration) | **GET** /operator/autopilot/configuration | 
-*nomad-client.OperatorApi* | [**getOperatorAutopilotHealth**](docs/OperatorApi.md#getOperatorAutopilotHealth) | **GET** /operator/autopilot/health | 
-*nomad-client.OperatorApi* | [**getOperatorRaft**](docs/OperatorApi.md#getOperatorRaft) | **GET** /operator/raft/ | 
-*nomad-client.OperatorApi* | [**getOperatorSchedulerConfiguration**](docs/OperatorApi.md#getOperatorSchedulerConfiguration) | **GET** /operator/scheduler/configuration | 
-*nomad-client.OperatorApi* | [**postOperatorSchedulerConfiguration**](docs/OperatorApi.md#postOperatorSchedulerConfiguration) | **POST** /operator/scheduler/configuration | 
->>>>>>> 2fdd42e (updates to generator/operator.go)
->>>>>>> 3622eaf (updates to generator/operator.go)
+*nomad-client.OperatorApi* | [**putOperatorAutopilotConfiguration**](docs/OperatorApi.md#putOperatorAutopilotConfiguration) | **PUT** /operator/autopilot/configuration | 
+*nomad-client.PluginsApi* | [**getPluginCSI**](docs/PluginsApi.md#getPluginCSI) | **GET** /plugin/csi/{pluginID} | 
+*nomad-client.PluginsApi* | [**getPlugins**](docs/PluginsApi.md#getPlugins) | **GET** /plugins | 
 *nomad-client.RegionsApi* | [**getRegions**](docs/RegionsApi.md#getRegions) | **GET** /regions | 
 *nomad-client.ScalingApi* | [**getScalingPolicies**](docs/ScalingApi.md#getScalingPolicies) | **GET** /scaling/policies | 
 *nomad-client.ScalingApi* | [**getScalingPolicy**](docs/ScalingApi.md#getScalingPolicy) | **GET** /scaling/policy/{policyID} | 
@@ -262,13 +242,10 @@ Class | Method | HTTP request | Description
  - [nomad-client.Allocation](docs/Allocation.md)
  - [nomad-client.AllocationListStub](docs/AllocationListStub.md)
  - [nomad-client.AllocationMetric](docs/AllocationMetric.md)
-<<<<<<< HEAD
  - [nomad-client.Attribute](docs/Attribute.md)
+ - [nomad-client.AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [nomad-client.CSIControllerInfo](docs/CSIControllerInfo.md)
  - [nomad-client.CSIInfo](docs/CSIInfo.md)
-=======
- - [nomad-client.AutopilotConfiguration](docs/AutopilotConfiguration.md)
->>>>>>> 2fdd42e (updates to generator/operator.go)
  - [nomad-client.CSIMountOptions](docs/CSIMountOptions.md)
  - [nomad-client.CSINodeInfo](docs/CSINodeInfo.md)
  - [nomad-client.CSIPlugin](docs/CSIPlugin.md)
@@ -379,12 +356,9 @@ Class | Method | HTTP request | Description
  - [nomad-client.NodeUpdateDrainRequest](docs/NodeUpdateDrainRequest.md)
  - [nomad-client.NodeUpdateEligibilityRequest](docs/NodeUpdateEligibilityRequest.md)
  - [nomad-client.ObjectDiff](docs/ObjectDiff.md)
-<<<<<<< HEAD
  - [nomad-client.OneTimeToken](docs/OneTimeToken.md)
  - [nomad-client.OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
-=======
  - [nomad-client.OperatorHealthReply](docs/OperatorHealthReply.md)
->>>>>>> 2fdd42e (updates to generator/operator.go)
  - [nomad-client.ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [nomad-client.PeriodicConfig](docs/PeriodicConfig.md)
  - [nomad-client.PeriodicForceResponse](docs/PeriodicForceResponse.md)

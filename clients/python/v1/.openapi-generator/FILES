@@ -17,13 +17,10 @@ docs/Allocation.md
 docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
-<<<<<<< HEAD
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
-=======
-docs/AutopilotConfiguration.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/CSIMountOptions.md
 docs/CSINodeInfo.md
 docs/CSIPlugin.md
@@ -143,13 +140,10 @@ docs/NodeUpdateDrainRequest.md
 docs/NodeUpdateEligibilityRequest.md
 docs/NodesApi.md
 docs/ObjectDiff.md
-<<<<<<< HEAD
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
-=======
 docs/OperatorApi.md
 docs/OperatorHealthReply.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -203,11 +197,8 @@ docs/TaskHandle.md
 docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
-<<<<<<< HEAD
-docs/Uint16.md
-=======
 docs/Uint.md
->>>>>>> 2fdd42e (updates to generator/operator.go)
+docs/Uint16.md
 docs/Uint64.md
 docs/Uint8.md
 docs/UpdateStrategy.md
@@ -225,12 +216,9 @@ nomad_client/api/evaluations_api.py
 nomad_client/api/jobs_api.py
 nomad_client/api/metrics_api.py
 nomad_client/api/namespaces_api.py
-<<<<<<< HEAD
 nomad_client/api/nodes_api.py
-nomad_client/api/plugins_api.py
-=======
 nomad_client/api/operator_api.py
->>>>>>> 2fdd42e (updates to generator/operator.go)
+nomad_client/api/plugins_api.py
 nomad_client/api/regions_api.py
 nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
@@ -257,11 +245,8 @@ nomad_client/model/allocated_task_resources.py
 nomad_client/model/allocation.py
 nomad_client/model/allocation_list_stub.py
 nomad_client/model/allocation_metric.py
-<<<<<<< HEAD
 nomad_client/model/attribute.py
-=======
 nomad_client/model/autopilot_configuration.py
->>>>>>> 2fdd42e (updates to generator/operator.go)
 nomad_client/model/check_restart.py
 nomad_client/model/constraint.py
 nomad_client/model/consul.py
@@ -376,12 +361,9 @@ nomad_client/model/node_score_meta.py
 nomad_client/model/node_update_drain_request.py
 nomad_client/model/node_update_eligibility_request.py
 nomad_client/model/object_diff.py
-<<<<<<< HEAD
 nomad_client/model/one_time_token.py
 nomad_client/model/one_time_token_exchange_request.py
-=======
 nomad_client/model/operator_health_reply.py
->>>>>>> 2fdd42e (updates to generator/operator.go)
 nomad_client/model/parameterized_job_config.py
 nomad_client/model/periodic_config.py
 nomad_client/model/periodic_force_response.py
@@ -429,11 +411,8 @@ nomad_client/model/task_handle.py
 nomad_client/model/task_lifecycle.py
 nomad_client/model/task_state.py
 nomad_client/model/template.py
-<<<<<<< HEAD
-nomad_client/model/uint16.py
-=======
 nomad_client/model/uint.py
->>>>>>> 2fdd42e (updates to generator/operator.go)
+nomad_client/model/uint16.py
 nomad_client/model/uint64.py
 nomad_client/model/uint8.py
 nomad_client/model/update_strategy.py
@@ -448,7 +427,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-<<<<<<< HEAD
+test/test_autopilot_configuration.py
 test/test_csi_controller_info.py
 test/test_csi_info.py
 test/test_csi_node_info.py
@@ -463,28 +442,19 @@ test/test_deployments_api.py
 test/test_evaluations_api.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py
-test/test_plugins_api.py
-test/test_scaling_api.py
-test/test_scaling_policy_list_stub.py
-<<<<<<< HEAD
-test/test_status_api.py
-=======
-=======
-<<<<<<< HEAD
->>>>>>> 2fdd42e (updates to generator/operator.go)
->>>>>>> 3622eaf (updates to generator/operator.go)
-test/test_system_api.py
-=======
-test/test_autopilot_configuration.py
 test/test_operator_api.py
 test/test_operator_health_reply.py
+test/test_plugins_api.py
 test/test_preemption_config.py
 test/test_raft_configuration_response.py
 test/test_raft_server.py
+test/test_scaling_api.py
+test/test_scaling_policy_list_stub.py
 test/test_scheduler_configuration.py
 test/test_scheduler_configuration_response.py
 test/test_scheduler_set_configuration_response.py
 test/test_server_health.py
+test/test_status_api.py
+test/test_system_api.py
 test/test_uint.py
->>>>>>> 685e8ca (updates to generator/operator.go)
 tox.ini
