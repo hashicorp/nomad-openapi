@@ -41,7 +41,7 @@ func (o *Operator) Peer(ctx context.Context) error {
 	return nil
 }
 
-func (o *Operator) Autopilot(ctx context.Context) (*[]client.AutopilotConfiguration, error) {
+func (o *Operator) Autopilot(ctx context.Context) (*client.AutopilotConfiguration, error) {
 	request := o.OperatorApi().GetOperatorAutopilotConfiguration(o.client.Ctx)
 
 	result, err := o.client.ExecRequest(ctx, request)
@@ -49,7 +49,7 @@ func (o *Operator) Autopilot(ctx context.Context) (*[]client.AutopilotConfigurat
 		return nil, err
 	}
 
-	final := result.([]client.AutopilotConfiguration)
+	final := result.(client.AutopilotConfiguration)
 	return &final, nil
 }
 

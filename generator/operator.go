@@ -26,9 +26,10 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultQueryOpts,
 					newResponseConfig(200,
 						arraySchema,
+						// there's no:
+						//api.RaftConfigurationResponse{},
+						// only structs, which is incorrect:
 						structs.RaftConfigurationResponse{},
-						// did not fix :(
-						//api.RaftServer{},
 						nil,
 						"GetOperatorRaftConfigurationResponse",
 					),
@@ -65,7 +66,8 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					defaultQueryOpts,
 					newResponseConfig(200,
 						objectSchema,
-						//api.AutopilotConfiguration{},
+						// NOTE: return struct defined at the bottom and
+						// does not use api.AutopilotConfiguration{}
 						AutopilotConfiguration{},
 						nil,
 						"GetOperatorAutopilotConfigurationResponse",
@@ -176,7 +178,8 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 	}
 }
 
-// NOTE: temp work around to override the LastContactThreshold and ServerStabilizationTime types of time.Duration
+// NOTE: temp work around to override LastContactThreshold
+// and ServerStabilizationTime types of time.Duration
 type AutopilotConfiguration struct {
 	CleanupDeadServers bool
 

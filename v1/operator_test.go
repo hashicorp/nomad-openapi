@@ -35,16 +35,16 @@ func TestDeleteOperatorRaftPeer(t *testing.T) {
 	})
 }
 
-// func TestGetAutopilotConfiguration(t *testing.T) {
-// 	httpTest(t, nil, func(s *agent.TestAgent) {
-// 		testClient, err := NewTestClient(s)
-// 		require.NoError(t, err)
+func TestGetAutopilotConfiguration(t *testing.T) {
+	httpTest(t, nil, func(s *agent.TestAgent) {
+		testClient, err := NewTestClient(s)
+		require.NoError(t, err)
 
-// 		result, err := testClient.Operator().Autopilot(queryOpts.Ctx())
-// 		require.NoError(t, err)
-// 		require.NotNil(t, result)
-// 	})
-// }
+		result, err := testClient.Operator().Autopilot(queryOpts.Ctx())
+		require.NoError(t, err)
+		require.NotNil(t, result)
+	})
+}
 
 func TestPutAutopilotConfiguration(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
