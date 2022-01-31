@@ -157,7 +157,7 @@ docs/PortMapping.md
 docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
-docs/RaftConfigurationResponse.md
+docs/RaftConfiguration.md
 docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
@@ -367,7 +367,7 @@ lib/nomad_client/models/port_mapping.rb
 lib/nomad_client/models/preemption_config.rb
 lib/nomad_client/models/quota_limit.rb
 lib/nomad_client/models/quota_spec.rb
-lib/nomad_client/models/raft_configuration_response.rb
+lib/nomad_client/models/raft_configuration.rb
 lib/nomad_client/models/raft_server.rb
 lib/nomad_client/models/requested_device.rb
 lib/nomad_client/models/reschedule_event.rb
@@ -571,7 +571,7 @@ spec/models/port_spec.rb
 spec/models/preemption_config_spec.rb
 spec/models/quota_limit_spec.rb
 spec/models/quota_spec_spec.rb
-spec/models/raft_configuration_response_spec.rb
+spec/models/raft_configuration_spec.rb
 spec/models/raft_server_spec.rb
 spec/models/requested_device_spec.rb
 spec/models/reschedule_event_spec.rb

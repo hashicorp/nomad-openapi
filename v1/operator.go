@@ -18,7 +18,7 @@ func (o *Operator) OperatorApi() *client.OperatorApiService {
 	return o.client.apiClient.OperatorApi
 }
 
-func (o *Operator) Raft(ctx context.Context) (*[]client.RaftConfigurationResponse, error) {
+func (o *Operator) Raft(ctx context.Context) (*client.RaftConfiguration, error) {
 	request := o.OperatorApi().GetOperatorRaftConfiguration(o.client.Ctx)
 
 	result, err := o.client.ExecRequest(ctx, request)
@@ -26,7 +26,7 @@ func (o *Operator) Raft(ctx context.Context) (*[]client.RaftConfigurationRespons
 		return nil, err
 	}
 
-	final := result.([]client.RaftConfigurationResponse)
+	final := result.(client.RaftConfiguration)
 	return &final, nil
 }
 

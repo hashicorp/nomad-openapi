@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 <a name="getOperatorRaftConfiguration"></a>
 # **getOperatorRaftConfiguration**
-> List&lt;RaftConfigurationResponse&gt; getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
+> RaftConfiguration getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken)
 
 
 
@@ -301,7 +301,7 @@ public class Example {
     Integer perPage = 56; // Integer | Maximum number of results to return.
     String nextToken = "nextToken_example"; // String | Indicates where to start paging for queries that support pagination.
     try {
-      List<RaftConfigurationResponse> result = apiInstance.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+      RaftConfiguration result = apiInstance.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OperatorApi#getOperatorRaftConfiguration");
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;RaftConfigurationResponse&gt;**](RaftConfigurationResponse.md)
+[**RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

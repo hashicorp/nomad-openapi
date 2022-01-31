@@ -252,7 +252,7 @@ module NomadClient
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [Integer] :per_page Maximum number of results to return.
     # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
-    # @return [Array<RaftConfigurationResponse>]
+    # @return [RaftConfiguration]
     def get_operator_raft_configuration(opts = {})
       data, _status_code, _headers = get_operator_raft_configuration_with_http_info(opts)
       data
@@ -268,7 +268,7 @@ module NomadClient
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [Integer] :per_page Maximum number of results to return.
     # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
-    # @return [Array<(Array<RaftConfigurationResponse>, Integer, Hash)>] Array<RaftConfigurationResponse> data, response status code and response headers
+    # @return [Array<(RaftConfiguration, Integer, Hash)>] RaftConfiguration data, response status code and response headers
     def get_operator_raft_configuration_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OperatorApi.get_operator_raft_configuration ...'
@@ -300,7 +300,7 @@ module NomadClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<RaftConfigurationResponse>'
+      return_type = opts[:debug_return_type] || 'RaftConfiguration'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']

@@ -13,7 +13,6 @@ func boolToPtr(b bool) *bool {
 	return &b
 }
 
-// ERROR: json: cannot unmarshal object into Go value of type []client.RaftServer
 func TestGetOperatorRaftConfiguration(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)

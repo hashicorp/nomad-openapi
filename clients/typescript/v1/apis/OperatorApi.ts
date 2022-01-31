@@ -8,7 +8,7 @@ import {isCodeInRange} from '../util';
 
 import { AutopilotConfiguration } from '../models/AutopilotConfiguration';
 import { OperatorHealthReply } from '../models/OperatorHealthReply';
-import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
+import { RaftConfiguration } from '../models/RaftConfiguration';
 import { SchedulerConfiguration } from '../models/SchedulerConfiguration';
 import { SchedulerConfigurationResponse } from '../models/SchedulerConfigurationResponse';
 import { SchedulerSetConfigurationResponse } from '../models/SchedulerSetConfigurationResponse';
@@ -618,13 +618,13 @@ export class OperatorApiResponseProcessor {
      * @params response Response returned by the server for a request to getOperatorRaftConfiguration
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getOperatorRaftConfiguration(response: ResponseContext): Promise<Array<RaftConfigurationResponse> > {
+     public async getOperatorRaftConfiguration(response: ResponseContext): Promise<RaftConfiguration > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<RaftConfigurationResponse> = ObjectSerializer.deserialize(
+            const body: RaftConfiguration = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<RaftConfigurationResponse>", ""
-            ) as Array<RaftConfigurationResponse>;
+                "RaftConfiguration", ""
+            ) as RaftConfiguration;
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -642,10 +642,10 @@ export class OperatorApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<RaftConfigurationResponse> = ObjectSerializer.deserialize(
+            const body: RaftConfiguration = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<RaftConfigurationResponse>", ""
-            ) as Array<RaftConfigurationResponse>;
+                "RaftConfiguration", ""
+            ) as RaftConfiguration;
             return body;
         }
 

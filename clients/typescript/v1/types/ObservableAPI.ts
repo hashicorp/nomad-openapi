@@ -145,7 +145,7 @@ import { PortMapping } from '../models/PortMapping';
 import { PreemptionConfig } from '../models/PreemptionConfig';
 import { QuotaLimit } from '../models/QuotaLimit';
 import { QuotaSpec } from '../models/QuotaSpec';
-import { RaftConfigurationResponse } from '../models/RaftConfigurationResponse';
+import { RaftConfiguration } from '../models/RaftConfiguration';
 import { RaftServer } from '../models/RaftServer';
 import { RequestedDevice } from '../models/RequestedDevice';
 import { RescheduleEvent } from '../models/RescheduleEvent';
@@ -2232,7 +2232,7 @@ export class ObservableOperatorApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<RaftConfigurationResponse>> {
+    public getOperatorRaftConfiguration(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<RaftConfiguration> {
         const requestContextPromise = this.requestFactory.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
 
         // build promise chain

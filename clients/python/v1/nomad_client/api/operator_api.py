@@ -24,7 +24,7 @@ from nomad_client.model_utils import (  # noqa: F401
 )
 from nomad_client.model.autopilot_configuration import AutopilotConfiguration
 from nomad_client.model.operator_health_reply import OperatorHealthReply
-from nomad_client.model.raft_configuration_response import RaftConfigurationResponse
+from nomad_client.model.raft_configuration import RaftConfiguration
 from nomad_client.model.scheduler_configuration import SchedulerConfiguration
 from nomad_client.model.scheduler_configuration_response import SchedulerConfigurationResponse
 from nomad_client.model.scheduler_set_configuration_response import SchedulerSetConfigurationResponse
@@ -534,7 +534,7 @@ class OperatorApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [RaftConfigurationResponse]
+                RaftConfiguration
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -561,7 +561,7 @@ class OperatorApi(object):
 
         self.get_operator_raft_configuration = _Endpoint(
             settings={
-                'response_type': ([RaftConfigurationResponse],),
+                'response_type': (RaftConfiguration,),
                 'auth': [
                     'X-Nomad-Token'
                 ],

@@ -265,7 +265,7 @@ end
 
 ## get_operator_raft_configuration
 
-> <Array<RaftConfigurationResponse>> get_operator_raft_configuration(opts)
+> <RaftConfiguration> get_operator_raft_configuration(opts)
 
 
 
@@ -308,7 +308,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<RaftConfigurationResponse>>, Integer, Hash)> get_operator_raft_configuration_with_http_info(opts)
+> <Array(<RaftConfiguration>, Integer, Hash)> get_operator_raft_configuration_with_http_info(opts)
 
 ```ruby
 begin
@@ -316,7 +316,7 @@ begin
   data, status_code, headers = api_instance.get_operator_raft_configuration_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<RaftConfigurationResponse>>
+  p data # => <RaftConfiguration>
 rescue NomadClient::ApiError => e
   puts "Error when calling OperatorApi->get_operator_raft_configuration_with_http_info: #{e}"
 end
@@ -338,7 +338,7 @@ end
 
 ### Return type
 
-[**Array&lt;RaftConfigurationResponse&gt;**](RaftConfigurationResponse.md)
+[**RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

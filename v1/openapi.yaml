@@ -1062,9 +1062,7 @@ components:
       content:
         application/json:
           schema:
-            items:
-              $ref: '#/components/schemas/RaftConfigurationResponse'
-            type: array
+            $ref: '#/components/schemas/RaftConfiguration'
       description: ""
     GetOperatorSchedulerConfigurationResponse:
       content:
@@ -4228,7 +4226,7 @@ components:
           type: string
       type: object
     Quotas: {}
-    RaftConfigurationResponse:
+    RaftConfiguration:
       properties:
         Index:
           maximum: 1.8446744073709552e+19
@@ -4579,8 +4577,6 @@ components:
             type: boolean
           type: object
       type: object
-    ServerAddress:
-      type: string
     ServerHealth:
       properties:
         Address:
@@ -4614,8 +4610,6 @@ components:
         Voter:
           type: boolean
       type: object
-    ServerID:
-      type: string
     Service:
       properties:
         AddressMode:

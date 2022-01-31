@@ -168,7 +168,7 @@ models/PortMapping.ts
 models/PreemptionConfig.ts
 models/QuotaLimit.ts
 models/QuotaSpec.ts
-models/RaftConfigurationResponse.ts
+models/RaftConfiguration.ts
 models/RaftServer.ts
 models/RequestedDevice.ts
 models/RescheduleEvent.ts

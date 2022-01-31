@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/nomad/structs"
 )
 
 func (v *v1api) getOperatorPaths() []*apiPath {
@@ -25,11 +24,11 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					nil,
 					defaultQueryOpts,
 					newResponseConfig(200,
-						arraySchema,
-						// there's no:
-						//api.RaftConfigurationResponse{},
-						// only structs, which is incorrect:
-						structs.RaftConfigurationResponse{},
+						objectSchema,
+						// NOTE: it should be RaftConfigurationResponse
+						// however that doesn't exist and is likely due
+						// to a naming error
+						api.RaftConfiguration{},
 						nil,
 						"GetOperatorRaftConfigurationResponse",
 					),
@@ -81,9 +80,8 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 					newRequestBody(objectSchema, api.AutopilotConfiguration{}),
 					defaultWriteOpts,
 					newResponseConfig(200,
-						//boolSchema,	// with boolSchema,
-						objectSchema,
-						true, // any bool here will work?
+						boolSchema,
+						true,
 						nil,
 						"PutOperatorAutopilotConfigurationResponse",
 					),
@@ -110,7 +108,6 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/operator/snapshot", s.wrap(s.SnapshotRequest))
-		// NOTE: I don't know how to handle the snapshots :(
 		/* {
 		    Template: "/operator/snapshot",
 		    Operations: []*operation{

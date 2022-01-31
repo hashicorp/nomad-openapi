@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_operator_raft_configuration**
-> [RaftConfigurationResponse] get_operator_raft_configuration()
+> RaftConfiguration get_operator_raft_configuration()
 
 
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 import time
 import nomad_client
 from nomad_client.api import operator_api
-from nomad_client.model.raft_configuration_response import RaftConfigurationResponse
+from nomad_client.model.raft_configuration import RaftConfiguration
 from pprint import pprint
 # Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[RaftConfigurationResponse]**](RaftConfigurationResponse.md)
+[**RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

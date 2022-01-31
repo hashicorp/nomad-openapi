@@ -119,7 +119,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_operator_raft_configuration
 
-> Vec<crate::models::RaftConfigurationResponse> get_operator_raft_configuration(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
+> crate::models::RaftConfiguration get_operator_raft_configuration(region, namespace, index, wait, stale, prefix, x_nomad_token, per_page, next_token)
 
 
 ### Parameters
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::RaftConfigurationResponse>**](RaftConfigurationResponse.md)
+[**crate::models::RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

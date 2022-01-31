@@ -155,7 +155,7 @@ import PortMapping from './model/PortMapping';
 import PreemptionConfig from './model/PreemptionConfig';
 import QuotaLimit from './model/QuotaLimit';
 import QuotaSpec from './model/QuotaSpec';
-import RaftConfigurationResponse from './model/RaftConfigurationResponse';
+import RaftConfiguration from './model/RaftConfiguration';
 import RaftServer from './model/RaftServer';
 import RequestedDevice from './model/RequestedDevice';
 import RescheduleEvent from './model/RescheduleEvent';
@@ -1106,10 +1106,10 @@ export {
     QuotaSpec,
 
     /**
-     * The RaftConfigurationResponse model constructor.
-     * @property {module:model/RaftConfigurationResponse}
+     * The RaftConfiguration model constructor.
+     * @property {module:model/RaftConfiguration}
      */
-    RaftConfigurationResponse,
+    RaftConfiguration,
 
     /**
      * The RaftServer model constructor.

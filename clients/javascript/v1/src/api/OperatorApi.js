@@ -15,7 +15,7 @@
 import ApiClient from "../ApiClient";
 import AutopilotConfiguration from '../model/AutopilotConfiguration';
 import OperatorHealthReply from '../model/OperatorHealthReply';
-import RaftConfigurationResponse from '../model/RaftConfigurationResponse';
+import RaftConfiguration from '../model/RaftConfiguration';
 import SchedulerConfiguration from '../model/SchedulerConfiguration';
 import SchedulerConfigurationResponse from '../model/SchedulerConfigurationResponse';
 import SchedulerSetConfigurationResponse from '../model/SchedulerSetConfigurationResponse';
@@ -197,7 +197,7 @@ export default class OperatorApi {
      * Callback function to receive the result of the getOperatorRaftConfiguration operation.
      * @callback module:api/OperatorApi~getOperatorRaftConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/RaftConfigurationResponse>} data The data returned by the service call.
+     * @param {module:model/RaftConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -213,7 +213,7 @@ export default class OperatorApi {
      * @param {Number} opts.perPage Maximum number of results to return.
      * @param {String} opts.nextToken Indicates where to start paging for queries that support pagination.
      * @param {module:api/OperatorApi~getOperatorRaftConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/RaftConfigurationResponse>}
+     * data is of type: {@link module:model/RaftConfiguration}
      */
     getOperatorRaftConfiguration(opts, callback) {
       opts = opts || {};
@@ -240,7 +240,7 @@ export default class OperatorApi {
       let authNames = ['X-Nomad-Token'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [RaftConfigurationResponse];
+      let returnType = RaftConfiguration;
       return this.apiClient.callApi(
         '/operator/raft/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

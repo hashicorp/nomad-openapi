@@ -588,7 +588,7 @@ func (r ApiGetOperatorRaftConfigurationRequest) NextToken(nextToken string) ApiG
 	return r
 }
 
-func (r ApiGetOperatorRaftConfigurationRequest) Execute() ([]RaftConfigurationResponse, *_nethttp.Response, error) {
+func (r ApiGetOperatorRaftConfigurationRequest) Execute() (RaftConfiguration, *_nethttp.Response, error) {
 	return r.ApiService.GetOperatorRaftConfigurationExecute(r)
 }
 
@@ -606,16 +606,16 @@ func (a *OperatorApiService) GetOperatorRaftConfiguration(ctx _context.Context) 
 
 /*
  * Execute executes the request
- * @return []RaftConfigurationResponse
+ * @return RaftConfiguration
  */
-func (a *OperatorApiService) GetOperatorRaftConfigurationExecute(r ApiGetOperatorRaftConfigurationRequest) ([]RaftConfigurationResponse, *_nethttp.Response, error) {
+func (a *OperatorApiService) GetOperatorRaftConfigurationExecute(r ApiGetOperatorRaftConfigurationRequest) (RaftConfiguration, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []RaftConfigurationResponse
+		localVarReturnValue  RaftConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatorApiService.GetOperatorRaftConfiguration")

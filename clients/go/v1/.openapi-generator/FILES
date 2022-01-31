@@ -173,7 +173,7 @@ docs/PortMapping.md
 docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
-docs/RaftConfigurationResponse.md
+docs/RaftConfiguration.md
 docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
@@ -362,7 +362,7 @@ model_port_mapping.go
 model_preemption_config.go
 model_quota_limit.go
 model_quota_spec.go
-model_raft_configuration_response.go
+model_raft_configuration.go
 model_raft_server.go
 model_requested_device.go
 model_reschedule_event.go

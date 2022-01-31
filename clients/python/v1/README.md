@@ -335,7 +335,7 @@ Class | Method | HTTP request | Description
  - [PreemptionConfig](docs/PreemptionConfig.md)
  - [QuotaLimit](docs/QuotaLimit.md)
  - [QuotaSpec](docs/QuotaSpec.md)
- - [RaftConfigurationResponse](docs/RaftConfigurationResponse.md)
+ - [RaftConfiguration](docs/RaftConfiguration.md)
  - [RaftServer](docs/RaftServer.md)
  - [RequestedDevice](docs/RequestedDevice.md)
  - [RescheduleEvent](docs/RescheduleEvent.md)

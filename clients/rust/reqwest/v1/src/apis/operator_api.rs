@@ -261,7 +261,7 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
     }
 }
 
-pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::RaftConfigurationResponse>, Error<GetOperatorRaftConfigurationError>> {
+pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::RaftConfiguration, Error<GetOperatorRaftConfigurationError>> {
 
     let local_var_client = &configuration.client;
 

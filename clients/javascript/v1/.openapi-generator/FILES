@@ -154,7 +154,7 @@ docs/PortMapping.md
 docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
-docs/RaftConfigurationResponse.md
+docs/RaftConfiguration.md
 docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
@@ -364,7 +364,7 @@ src/model/PortMapping.js
 src/model/PreemptionConfig.js
 src/model/QuotaLimit.js
 src/model/QuotaSpec.js
-src/model/RaftConfigurationResponse.js
+src/model/RaftConfiguration.js
 src/model/RaftServer.js
 src/model/RequestedDevice.js
 src/model/RescheduleEvent.js
@@ -427,7 +427,7 @@ test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/OperatorHealthReply.spec.js
 test/model/PreemptionConfig.spec.js
-test/model/RaftConfigurationResponse.spec.js
+test/model/RaftConfiguration.spec.js
 test/model/RaftServer.spec.js
 test/model/ScalingPolicyListStub.spec.js
 test/model/SchedulerConfiguration.spec.js

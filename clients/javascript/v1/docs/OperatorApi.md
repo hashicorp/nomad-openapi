@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ## getOperatorRaftConfiguration
 
-> [RaftConfigurationResponse] getOperatorRaftConfiguration(opts)
+> RaftConfiguration getOperatorRaftConfiguration(opts)
 
 
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[RaftConfigurationResponse]**](RaftConfigurationResponse.md)
+[**RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

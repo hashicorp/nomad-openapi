@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## GetOperatorRaftConfiguration
 
-> []RaftConfigurationResponse GetOperatorRaftConfiguration(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+> RaftConfiguration GetOperatorRaftConfiguration(ctx).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
 
 
 
@@ -278,7 +278,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OperatorApi.GetOperatorRaftConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOperatorRaftConfiguration`: []RaftConfigurationResponse
+    // response from `GetOperatorRaftConfiguration`: RaftConfiguration
     fmt.Fprintf(os.Stdout, "Response from `OperatorApi.GetOperatorRaftConfiguration`: %v\n", resp)
 }
 ```
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RaftConfigurationResponse**](RaftConfigurationResponse.md)
+[**RaftConfiguration**](RaftConfiguration.md)
 
 ### Authorization
 

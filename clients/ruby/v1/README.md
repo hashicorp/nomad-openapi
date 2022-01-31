@@ -324,7 +324,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::PreemptionConfig](docs/PreemptionConfig.md)
  - [NomadClient::QuotaLimit](docs/QuotaLimit.md)
  - [NomadClient::QuotaSpec](docs/QuotaSpec.md)
- - [NomadClient::RaftConfigurationResponse](docs/RaftConfigurationResponse.md)
+ - [NomadClient::RaftConfiguration](docs/RaftConfiguration.md)
  - [NomadClient::RaftServer](docs/RaftServer.md)
  - [NomadClient::RequestedDevice](docs/RequestedDevice.md)
  - [NomadClient::RescheduleEvent](docs/RescheduleEvent.md)

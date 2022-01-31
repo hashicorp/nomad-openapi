@@ -153,7 +153,7 @@ from nomad_client.model.port_mapping import PortMapping
 from nomad_client.model.preemption_config import PreemptionConfig
 from nomad_client.model.quota_limit import QuotaLimit
 from nomad_client.model.quota_spec import QuotaSpec
-from nomad_client.model.raft_configuration_response import RaftConfigurationResponse
+from nomad_client.model.raft_configuration import RaftConfiguration
 from nomad_client.model.raft_server import RaftServer
 from nomad_client.model.requested_device import RequestedDevice
 from nomad_client.model.reschedule_event import RescheduleEvent
