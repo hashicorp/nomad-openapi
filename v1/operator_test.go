@@ -5,13 +5,9 @@ import (
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
+	helper "github.com/hashicorp/nomad/helper"
 	"github.com/stretchr/testify/require"
 )
-
-// boolToPtr returns the pointer to a boolean
-func boolToPtr(b bool) *bool {
-	return &b
-}
 
 func TestGetOperatorRaftConfiguration(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
@@ -85,10 +81,10 @@ func TestPostSchedulerConfiguration(t *testing.T) {
 		require.NoError(t, err)
 
 		config := &client.PreemptionConfig{
-			BatchSchedulerEnabled:    boolToPtr(true),
-			ServiceSchedulerEnabled:  boolToPtr(true),
-			SysBatchSchedulerEnabled: boolToPtr(true),
-			SystemSchedulerEnabled:   boolToPtr(true),
+			BatchSchedulerEnabled:    helper.BoolToPtr(true),
+			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
+			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
+			SystemSchedulerEnabled:   helper.BoolToPtr(true),
 		}
 
 		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), "spread", false, config)
