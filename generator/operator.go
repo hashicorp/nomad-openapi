@@ -12,7 +12,7 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 	return []*apiPath{
 		//s.mux.HandleFunc("/v1/operator/license", s.wrap(s.LicenseRequest))
 		// NOTE: there's no license endpoint
-		// QUESTION: should this be under the enterprise-api instead...?
+		// TODO: should probably go in the enterprise-api instead
 		//s.mux.HandleFunc("/v1/operator/raft/", s.wrap(s.OperatorRequest))
 		{
 			Template: "/operator/raft/configuration",
