@@ -108,37 +108,9 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 			},
 		},
 		//s.mux.HandleFunc("/v1/operator/snapshot", s.wrap(s.SnapshotRequest))
-		/* {
-		    Template: "/operator/snapshot",
-		    Operations: []*operation{
-		        newOperation(http.MethodGet,
-		            httpServer.SnapshotRequest,
-		            tags,
-		            "GetOperatorSnapshot",
-		            nil,
-		            defaultQueryOpts,
-		            newResponseConfig(200,
-		                nilSchema,
-		                nil,
-		                nil,
-		                "GetOperatorSnapshotResponse",
-		            ),
-		        ),
-		        newOperation(http.MethodPost,
-		            httpServer.SnapshotRequest,
-		            tags,
-		            "PostOperatorSnapshot",
-		            newRequestBody(objectSchema, api.TODORequest{}),
-		            defaultWriteOpts,
-		            newResponseConfig(200,
-		                nilSchema,
-		                nil,
-		                nil,
-		                "PostOperatorSnapshotResponse",
-		            ),
-		        ),
-		    },
-		}, */
+		// TODO: issue around streaming data in OpenAPI spec
+		//       https://github.com/OAI/OpenAPI-Specification/issues/1576
+		//       Will potentially look into using AsyncAPI to handle this in a future release
 		//s.mux.HandleFunc("/v1/operator/scheduler/configuration", s.wrap(s.OperatorSchedulerConfiguration))
 		{
 			Template: "/operator/scheduler/configuration",
