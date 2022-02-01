@@ -128,7 +128,6 @@ func (v *v1api) getOperatorPaths() []*apiPath {
 		            httpServer.SnapshotRequest,
 		            tags,
 		            "PostOperatorSnapshot",
-		            // ???
 		            newRequestBody(objectSchema, api.TODORequest{}),
 		            defaultWriteOpts,
 		            newResponseConfig(200,

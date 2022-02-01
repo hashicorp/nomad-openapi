@@ -5,7 +5,7 @@ import (
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
-	helper "github.com/hashicorp/nomad/helper"
+	"github.com/hashicorp/nomad/helper"
 	"github.com/stretchr/testify/require"
 )
 

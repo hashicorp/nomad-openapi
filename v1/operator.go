@@ -65,8 +65,6 @@ func (o *Operator) UpdateAutopilot(
 ) (*bool, error) {
 	request := o.OperatorApi().PutOperatorAutopilotConfiguration(o.client.Ctx)
 
-	// QUESTION: is there a better way to handle this?
-	// https://www.nomadproject.io/api-docs/operator/autopilot#update-autopilot-configuration
 	updateRequest := client.NewAutopilotConfiguration()
 	updateRequest.SetCleanupDeadServers(cleanupdeadservers)
 	updateRequest.SetLastContactThreshold(lastcontactthreshold)
@@ -78,7 +76,6 @@ func (o *Operator) UpdateAutopilot(
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
-	//request.Execute() // returns *http.Response, error, but where's the bool!?!?
 	result, err := o.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err
@@ -112,7 +109,7 @@ func (o *Operator) Scheduler(ctx context.Context) (*client.SchedulerConfiguratio
 	return &final, meta, nil
 }
 
-// NOTE: there's no RejectJobRegistration?
+// NOTE: there's no RejectJobRegistration
 func (o *Operator) UpdateScheduler(
 	ctx context.Context,
 	scheduleralgorithm string,
@@ -121,7 +118,6 @@ func (o *Operator) UpdateScheduler(
 ) (*client.SchedulerSetConfigurationResponse, *WriteMeta, error) {
 	request := o.OperatorApi().PostOperatorSchedulerConfiguration(o.client.Ctx)
 
-	// QUESTION: how do I pass in the premptionconfig?
 	updateRequest := client.NewSchedulerConfiguration()
 	updateRequest.SetSchedulerAlgorithm(scheduleralgorithm)
 	updateRequest.SetMemoryOversubscriptionEnabled(memoryoversubscriptionenabled)
