@@ -46,7 +46,17 @@ func TestPutAutopilotConfiguration(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), true, "200ms", 250, "10s", false, false, false)
+		autopilotOpts := &AutopilotConfiguration{
+			CleanupDeadServers:      true,
+			LastContactThreshold:    "200ms",
+			MaxTrailingLogs:         250,
+			ServerStabilizationTime: "10s",
+			EnableRedundancyZones:   false,
+			DisableUpgradeMigration: false,
+			EnableCustomUpgrades:    false,
+		}
+
+		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)
 		require.NoError(t, err)
 		require.NotNil(t, result)
 	})
@@ -80,14 +90,18 @@ func TestPostSchedulerConfiguration(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		config := &client.PreemptionConfig{
-			BatchSchedulerEnabled:    helper.BoolToPtr(true),
-			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
-			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
-			SystemSchedulerEnabled:   helper.BoolToPtr(true),
+		schedulerOpts := &client.SchedulerConfiguration{
+			SchedulerAlgorithm:            helper.StringToPtr("spread"),
+			MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
+			PreemptionConfig: &client.PreemptionConfig{
+				BatchSchedulerEnabled:    helper.BoolToPtr(true),
+				ServiceSchedulerEnabled:  helper.BoolToPtr(true),
+				SysBatchSchedulerEnabled: helper.BoolToPtr(true),
+				SystemSchedulerEnabled:   helper.BoolToPtr(true),
+			},
 		}
 
-		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), "spread", false, config)
+		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), schedulerOpts)
 		require.NoError(t, err)
 		require.NotNil(t, meta)
 		require.NotNil(t, result)

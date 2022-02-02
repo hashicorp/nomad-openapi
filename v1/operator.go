@@ -53,26 +53,27 @@ func (o *Operator) Autopilot(ctx context.Context) (*client.AutopilotConfiguratio
 	return &final, nil
 }
 
-func (o *Operator) UpdateAutopilot(
-	ctx context.Context,
-	cleanupdeadservers bool,
-	lastcontactthreshold string,
-	maxtrailinglogs int32,
-	serverstabilizationtime string,
-	enableredundancyzones bool,
-	disableupgrademigration bool,
-	enablecustomupgrades bool,
-) (*bool, error) {
+type AutopilotConfiguration struct {
+	CleanupDeadServers      bool
+	LastContactThreshold    string
+	MaxTrailingLogs         int32
+	ServerStabilizationTime string
+	EnableRedundancyZones   bool
+	DisableUpgradeMigration bool
+	EnableCustomUpgrades    bool
+}
+
+func (o *Operator) UpdateAutopilot(ctx context.Context, opts *AutopilotConfiguration) (*bool, error) {
 	request := o.OperatorApi().PutOperatorAutopilotConfiguration(o.client.Ctx)
 
 	updateRequest := client.NewAutopilotConfiguration()
-	updateRequest.SetCleanupDeadServers(cleanupdeadservers)
-	updateRequest.SetLastContactThreshold(lastcontactthreshold)
-	updateRequest.SetMaxTrailingLogs(maxtrailinglogs)
-	updateRequest.SetServerStabilizationTime(serverstabilizationtime)
-	updateRequest.SetEnableRedundancyZones(enableredundancyzones)
-	updateRequest.SetDisableUpgradeMigration(disableupgrademigration)
-	updateRequest.SetEnableCustomUpgrades(enablecustomupgrades)
+	updateRequest.SetCleanupDeadServers(opts.CleanupDeadServers)
+	updateRequest.SetLastContactThreshold(opts.LastContactThreshold)
+	updateRequest.SetMaxTrailingLogs(opts.MaxTrailingLogs)
+	updateRequest.SetServerStabilizationTime(opts.ServerStabilizationTime)
+	updateRequest.SetEnableRedundancyZones(opts.EnableRedundancyZones)
+	updateRequest.SetDisableUpgradeMigration(opts.DisableUpgradeMigration)
+	updateRequest.SetEnableCustomUpgrades(opts.EnableCustomUpgrades)
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
@@ -110,18 +111,13 @@ func (o *Operator) Scheduler(ctx context.Context) (*client.SchedulerConfiguratio
 }
 
 // NOTE: there's no RejectJobRegistration
-func (o *Operator) UpdateScheduler(
-	ctx context.Context,
-	scheduleralgorithm string,
-	memoryoversubscriptionenabled bool,
-	preemptionconfig *client.PreemptionConfig,
-) (*client.SchedulerSetConfigurationResponse, *WriteMeta, error) {
+func (o *Operator) UpdateScheduler(ctx context.Context, config *client.SchedulerConfiguration) (*client.SchedulerSetConfigurationResponse, *WriteMeta, error) {
 	request := o.OperatorApi().PostOperatorSchedulerConfiguration(o.client.Ctx)
 
 	updateRequest := client.NewSchedulerConfiguration()
-	updateRequest.SetSchedulerAlgorithm(scheduleralgorithm)
-	updateRequest.SetMemoryOversubscriptionEnabled(memoryoversubscriptionenabled)
-	updateRequest.SetPreemptionConfig(*preemptionconfig)
+	updateRequest.SetSchedulerAlgorithm(*config.SchedulerAlgorithm)
+	updateRequest.SetMemoryOversubscriptionEnabled(*config.MemoryOversubscriptionEnabled)
+	updateRequest.SetPreemptionConfig(*config.PreemptionConfig)
 
 	request = request.SchedulerConfiguration(*updateRequest)
 
