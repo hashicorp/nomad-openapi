@@ -9,6 +9,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// NOTE: this is temporary until Int32ToPtr gets added to nomad/helper
+func Int32ToPtr(i int32) *int32 {
+	return &i
+}
+
 func TestGetOperatorRaftConfiguration(t *testing.T) {
 	httpTest(t, nil, func(s *agent.TestAgent) {
 		testClient, err := NewTestClient(s)
@@ -46,14 +51,14 @@ func TestPutAutopilotConfiguration(t *testing.T) {
 		testClient, err := NewTestClient(s)
 		require.NoError(t, err)
 
-		autopilotOpts := &AutopilotConfiguration{
-			CleanupDeadServers:      true,
-			LastContactThreshold:    "200ms",
-			MaxTrailingLogs:         250,
-			ServerStabilizationTime: "10s",
-			EnableRedundancyZones:   false,
-			DisableUpgradeMigration: false,
-			EnableCustomUpgrades:    false,
+		autopilotOpts := &client.AutopilotConfiguration{
+			CleanupDeadServers:      helper.BoolToPtr(true),
+			LastContactThreshold:    helper.StringToPtr("200ms"),
+			MaxTrailingLogs:         Int32ToPtr(250),
+			ServerStabilizationTime: helper.StringToPtr("10s"),
+			EnableRedundancyZones:   helper.BoolToPtr(false),
+			DisableUpgradeMigration: helper.BoolToPtr(false),
+			EnableCustomUpgrades:    helper.BoolToPtr(false),
 		}
 
 		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)

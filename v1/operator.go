@@ -53,27 +53,17 @@ func (o *Operator) Autopilot(ctx context.Context) (*client.AutopilotConfiguratio
 	return &final, nil
 }
 
-type AutopilotConfiguration struct {
-	CleanupDeadServers      bool
-	LastContactThreshold    string
-	MaxTrailingLogs         int32
-	ServerStabilizationTime string
-	EnableRedundancyZones   bool
-	DisableUpgradeMigration bool
-	EnableCustomUpgrades    bool
-}
-
-func (o *Operator) UpdateAutopilot(ctx context.Context, opts *AutopilotConfiguration) (*bool, error) {
+func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.AutopilotConfiguration) (*bool, error) {
 	request := o.OperatorApi().PutOperatorAutopilotConfiguration(o.client.Ctx)
 
 	updateRequest := client.NewAutopilotConfiguration()
-	updateRequest.SetCleanupDeadServers(opts.CleanupDeadServers)
-	updateRequest.SetLastContactThreshold(opts.LastContactThreshold)
-	updateRequest.SetMaxTrailingLogs(opts.MaxTrailingLogs)
-	updateRequest.SetServerStabilizationTime(opts.ServerStabilizationTime)
-	updateRequest.SetEnableRedundancyZones(opts.EnableRedundancyZones)
-	updateRequest.SetDisableUpgradeMigration(opts.DisableUpgradeMigration)
-	updateRequest.SetEnableCustomUpgrades(opts.EnableCustomUpgrades)
+	updateRequest.SetCleanupDeadServers(*config.CleanupDeadServers)
+	updateRequest.SetLastContactThreshold(*config.LastContactThreshold)
+	updateRequest.SetMaxTrailingLogs(*config.MaxTrailingLogs)
+	updateRequest.SetServerStabilizationTime(*config.ServerStabilizationTime)
+	updateRequest.SetEnableRedundancyZones(*config.EnableRedundancyZones)
+	updateRequest.SetDisableUpgradeMigration(*config.DisableUpgradeMigration)
+	updateRequest.SetEnableCustomUpgrades(*config.EnableCustomUpgrades)
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
@@ -110,7 +100,7 @@ func (o *Operator) Scheduler(ctx context.Context) (*client.SchedulerConfiguratio
 	return &final, meta, nil
 }
 
-// NOTE: there's no RejectJobRegistration
+// TODO: update Nomad version to pick up new fields (i.e. RejectJobRegistration)
 func (o *Operator) UpdateScheduler(ctx context.Context, config *client.SchedulerConfiguration) (*client.SchedulerSetConfigurationResponse, *WriteMeta, error) {
 	request := o.OperatorApi().PostOperatorSchedulerConfiguration(o.client.Ctx)
 
