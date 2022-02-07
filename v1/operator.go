@@ -67,6 +67,7 @@ func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.Autopilot
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
+	// TODO: Add new helper method, since this endpoint supports WriteOpts, but doesn't return WriteMeta.
 	result, err := o.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err
@@ -79,6 +80,7 @@ func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.Autopilot
 func (o *Operator) AutopilotHealth(ctx context.Context) (*client.OperatorHealthReply, error) {
 	request := o.OperatorApi().GetOperatorAutopilotHealth(o.client.Ctx)
 
+	// TODO: This endpoint also needs a helper that takes QueryOpts but returns no QueryMeta.
 	result, err := o.client.ExecRequest(ctx, request)
 	if err != nil {
 		return nil, err
