@@ -21,6 +21,7 @@ docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
 docs/CSIMountOptions.md
@@ -142,6 +143,8 @@ docs/NodesApi.md
 docs/ObjectDiff.md
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -150,8 +153,11 @@ docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftConfiguration.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -165,9 +171,13 @@ docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -223,6 +233,7 @@ src/main/java/io/nomadproject/client/api/JobsApi.java
 src/main/java/io/nomadproject/client/api/MetricsApi.java
 src/main/java/io/nomadproject/client/api/NamespacesApi.java
 src/main/java/io/nomadproject/client/api/NodesApi.java
+src/main/java/io/nomadproject/client/api/OperatorApi.java
 src/main/java/io/nomadproject/client/api/PluginsApi.java
 src/main/java/io/nomadproject/client/api/RegionsApi.java
 src/main/java/io/nomadproject/client/api/ScalingApi.java
@@ -250,6 +261,7 @@ src/main/java/io/nomadproject/client/models/Allocation.java
 src/main/java/io/nomadproject/client/models/AllocationListStub.java
 src/main/java/io/nomadproject/client/models/AllocationMetric.java
 src/main/java/io/nomadproject/client/models/Attribute.java
+src/main/java/io/nomadproject/client/models/AutopilotConfiguration.java
 src/main/java/io/nomadproject/client/models/CSIControllerInfo.java
 src/main/java/io/nomadproject/client/models/CSIInfo.java
 src/main/java/io/nomadproject/client/models/CSIMountOptions.java
@@ -364,6 +376,7 @@ src/main/java/io/nomadproject/client/models/NodeUpdateEligibilityRequest.java
 src/main/java/io/nomadproject/client/models/ObjectDiff.java
 src/main/java/io/nomadproject/client/models/OneTimeToken.java
 src/main/java/io/nomadproject/client/models/OneTimeTokenExchangeRequest.java
+src/main/java/io/nomadproject/client/models/OperatorHealthReply.java
 src/main/java/io/nomadproject/client/models/ParameterizedJobConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicConfig.java
 src/main/java/io/nomadproject/client/models/PeriodicForceResponse.java
@@ -371,8 +384,11 @@ src/main/java/io/nomadproject/client/models/PlanAnnotations.java
 src/main/java/io/nomadproject/client/models/PointValue.java
 src/main/java/io/nomadproject/client/models/Port.java
 src/main/java/io/nomadproject/client/models/PortMapping.java
+src/main/java/io/nomadproject/client/models/PreemptionConfig.java
 src/main/java/io/nomadproject/client/models/QuotaLimit.java
 src/main/java/io/nomadproject/client/models/QuotaSpec.java
+src/main/java/io/nomadproject/client/models/RaftConfiguration.java
+src/main/java/io/nomadproject/client/models/RaftServer.java
 src/main/java/io/nomadproject/client/models/RequestedDevice.java
 src/main/java/io/nomadproject/client/models/RescheduleEvent.java
 src/main/java/io/nomadproject/client/models/ReschedulePolicy.java
@@ -384,8 +400,12 @@ src/main/java/io/nomadproject/client/models/ScalingEvent.java
 src/main/java/io/nomadproject/client/models/ScalingPolicy.java
 src/main/java/io/nomadproject/client/models/ScalingPolicyListStub.java
 src/main/java/io/nomadproject/client/models/ScalingRequest.java
+src/main/java/io/nomadproject/client/models/SchedulerConfiguration.java
+src/main/java/io/nomadproject/client/models/SchedulerConfigurationResponse.java
+src/main/java/io/nomadproject/client/models/SchedulerSetConfigurationResponse.java
 src/main/java/io/nomadproject/client/models/SearchRequest.java
 src/main/java/io/nomadproject/client/models/SearchResponse.java
+src/main/java/io/nomadproject/client/models/ServerHealth.java
 src/main/java/io/nomadproject/client/models/Service.java
 src/main/java/io/nomadproject/client/models/ServiceCheck.java
 src/main/java/io/nomadproject/client/models/SidecarTask.java
@@ -417,6 +437,7 @@ src/test/java/io/nomadproject/client/api/JobsApiTest.java
 src/test/java/io/nomadproject/client/api/MetricsApiTest.java
 src/test/java/io/nomadproject/client/api/NamespacesApiTest.java
 src/test/java/io/nomadproject/client/api/NodesApiTest.java
+src/test/java/io/nomadproject/client/api/OperatorApiTest.java
 src/test/java/io/nomadproject/client/api/PluginsApiTest.java
 src/test/java/io/nomadproject/client/api/RegionsApiTest.java
 src/test/java/io/nomadproject/client/api/ScalingApiTest.java
@@ -437,6 +458,7 @@ src/test/java/io/nomadproject/client/models/AllocationListStubTest.java
 src/test/java/io/nomadproject/client/models/AllocationMetricTest.java
 src/test/java/io/nomadproject/client/models/AllocationTest.java
 src/test/java/io/nomadproject/client/models/AttributeTest.java
+src/test/java/io/nomadproject/client/models/AutopilotConfigurationTest.java
 src/test/java/io/nomadproject/client/models/CSIControllerInfoTest.java
 src/test/java/io/nomadproject/client/models/CSIInfoTest.java
 src/test/java/io/nomadproject/client/models/CSIMountOptionsTest.java
@@ -551,6 +573,7 @@ src/test/java/io/nomadproject/client/models/NodeUpdateEligibilityRequestTest.jav
 src/test/java/io/nomadproject/client/models/ObjectDiffTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenExchangeRequestTest.java
 src/test/java/io/nomadproject/client/models/OneTimeTokenTest.java
+src/test/java/io/nomadproject/client/models/OperatorHealthReplyTest.java
 src/test/java/io/nomadproject/client/models/ParameterizedJobConfigTest.java
 src/test/java/io/nomadproject/client/models/PeriodicConfigTest.java
 src/test/java/io/nomadproject/client/models/PeriodicForceResponseTest.java
@@ -558,8 +581,11 @@ src/test/java/io/nomadproject/client/models/PlanAnnotationsTest.java
 src/test/java/io/nomadproject/client/models/PointValueTest.java
 src/test/java/io/nomadproject/client/models/PortMappingTest.java
 src/test/java/io/nomadproject/client/models/PortTest.java
+src/test/java/io/nomadproject/client/models/PreemptionConfigTest.java
 src/test/java/io/nomadproject/client/models/QuotaLimitTest.java
 src/test/java/io/nomadproject/client/models/QuotaSpecTest.java
+src/test/java/io/nomadproject/client/models/RaftConfigurationTest.java
+src/test/java/io/nomadproject/client/models/RaftServerTest.java
 src/test/java/io/nomadproject/client/models/RequestedDeviceTest.java
 src/test/java/io/nomadproject/client/models/RescheduleEventTest.java
 src/test/java/io/nomadproject/client/models/ReschedulePolicyTest.java
@@ -571,8 +597,12 @@ src/test/java/io/nomadproject/client/models/ScalingEventTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyListStubTest.java
 src/test/java/io/nomadproject/client/models/ScalingPolicyTest.java
 src/test/java/io/nomadproject/client/models/ScalingRequestTest.java
+src/test/java/io/nomadproject/client/models/SchedulerConfigurationResponseTest.java
+src/test/java/io/nomadproject/client/models/SchedulerConfigurationTest.java
+src/test/java/io/nomadproject/client/models/SchedulerSetConfigurationResponseTest.java
 src/test/java/io/nomadproject/client/models/SearchRequestTest.java
 src/test/java/io/nomadproject/client/models/SearchResponseTest.java
+src/test/java/io/nomadproject/client/models/ServerHealthTest.java
 src/test/java/io/nomadproject/client/models/ServiceCheckTest.java
 src/test/java/io/nomadproject/client/models/ServiceTest.java
 src/test/java/io/nomadproject/client/models/SidecarTaskTest.java

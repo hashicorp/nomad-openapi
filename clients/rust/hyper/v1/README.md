@@ -87,6 +87,13 @@ Class | Method | HTTP request | Description
 *NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **Post** /node/{nodeId}/drain | 
 *NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **Post** /node/{nodeId}/eligibility | 
 *NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **Post** /node/{nodeId}/purge | 
+*OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **Delete** /operator/raft/peer | 
+*OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **Get** /operator/autopilot/configuration | 
+*OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **Get** /operator/autopilot/health | 
+*OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **Get** /operator/raft/configuration | 
+*OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **Get** /operator/scheduler/configuration | 
+*OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **Post** /operator/scheduler/configuration | 
+*OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **Put** /operator/autopilot/configuration | 
 *PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **Get** /plugin/csi/{pluginID} | 
 *PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **Get** /plugins | 
 *RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **Get** /regions | 
@@ -129,6 +136,7 @@ Class | Method | HTTP request | Description
  - [AllocationListStub](docs/AllocationListStub.md)
  - [AllocationMetric](docs/AllocationMetric.md)
  - [Attribute](docs/Attribute.md)
+ - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -243,6 +251,7 @@ Class | Method | HTTP request | Description
  - [ObjectDiff](docs/ObjectDiff.md)
  - [OneTimeToken](docs/OneTimeToken.md)
  - [OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
+ - [OperatorHealthReply](docs/OperatorHealthReply.md)
  - [ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [PeriodicConfig](docs/PeriodicConfig.md)
  - [PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -250,8 +259,11 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [Port](docs/Port.md)
  - [PortMapping](docs/PortMapping.md)
+ - [PreemptionConfig](docs/PreemptionConfig.md)
  - [QuotaLimit](docs/QuotaLimit.md)
  - [QuotaSpec](docs/QuotaSpec.md)
+ - [RaftConfiguration](docs/RaftConfiguration.md)
+ - [RaftServer](docs/RaftServer.md)
  - [RequestedDevice](docs/RequestedDevice.md)
  - [RescheduleEvent](docs/RescheduleEvent.md)
  - [ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -263,8 +275,12 @@ Class | Method | HTTP request | Description
  - [ScalingPolicy](docs/ScalingPolicy.md)
  - [ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [ScalingRequest](docs/ScalingRequest.md)
+ - [SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [SearchRequest](docs/SearchRequest.md)
  - [SearchResponse](docs/SearchResponse.md)
+ - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
  - [SidecarTask](docs/SidecarTask.md)

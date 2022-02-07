@@ -22,6 +22,7 @@ docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
 docs/CSIMountOptions.md
@@ -143,6 +144,8 @@ docs/NodesApi.md
 docs/ObjectDiff.md
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -151,8 +154,11 @@ docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftConfiguration.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -166,9 +172,13 @@ docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -204,6 +214,7 @@ lib/nomad_client/api/jobs_api.rb
 lib/nomad_client/api/metrics_api.rb
 lib/nomad_client/api/namespaces_api.rb
 lib/nomad_client/api/nodes_api.rb
+lib/nomad_client/api/operator_api.rb
 lib/nomad_client/api/plugins_api.rb
 lib/nomad_client/api/regions_api.rb
 lib/nomad_client/api/scaling_api.rb
@@ -230,6 +241,7 @@ lib/nomad_client/models/allocation.rb
 lib/nomad_client/models/allocation_list_stub.rb
 lib/nomad_client/models/allocation_metric.rb
 lib/nomad_client/models/attribute.rb
+lib/nomad_client/models/autopilot_configuration.rb
 lib/nomad_client/models/check_restart.rb
 lib/nomad_client/models/constraint.rb
 lib/nomad_client/models/consul.rb
@@ -344,6 +356,7 @@ lib/nomad_client/models/node_update_eligibility_request.rb
 lib/nomad_client/models/object_diff.rb
 lib/nomad_client/models/one_time_token.rb
 lib/nomad_client/models/one_time_token_exchange_request.rb
+lib/nomad_client/models/operator_health_reply.rb
 lib/nomad_client/models/parameterized_job_config.rb
 lib/nomad_client/models/periodic_config.rb
 lib/nomad_client/models/periodic_force_response.rb
@@ -351,8 +364,11 @@ lib/nomad_client/models/plan_annotations.rb
 lib/nomad_client/models/point_value.rb
 lib/nomad_client/models/port.rb
 lib/nomad_client/models/port_mapping.rb
+lib/nomad_client/models/preemption_config.rb
 lib/nomad_client/models/quota_limit.rb
 lib/nomad_client/models/quota_spec.rb
+lib/nomad_client/models/raft_configuration.rb
+lib/nomad_client/models/raft_server.rb
 lib/nomad_client/models/requested_device.rb
 lib/nomad_client/models/reschedule_event.rb
 lib/nomad_client/models/reschedule_policy.rb
@@ -364,8 +380,12 @@ lib/nomad_client/models/scaling_event.rb
 lib/nomad_client/models/scaling_policy.rb
 lib/nomad_client/models/scaling_policy_list_stub.rb
 lib/nomad_client/models/scaling_request.rb
+lib/nomad_client/models/scheduler_configuration.rb
+lib/nomad_client/models/scheduler_configuration_response.rb
+lib/nomad_client/models/scheduler_set_configuration_response.rb
 lib/nomad_client/models/search_request.rb
 lib/nomad_client/models/search_response.rb
+lib/nomad_client/models/server_health.rb
 lib/nomad_client/models/service.rb
 lib/nomad_client/models/service_check.rb
 lib/nomad_client/models/sidecar_task.rb
@@ -399,6 +419,7 @@ spec/api/jobs_api_spec.rb
 spec/api/metrics_api_spec.rb
 spec/api/namespaces_api_spec.rb
 spec/api/nodes_api_spec.rb
+spec/api/operator_api_spec.rb
 spec/api/plugins_api_spec.rb
 spec/api/regions_api_spec.rb
 spec/api/scaling_api_spec.rb
@@ -424,6 +445,7 @@ spec/models/allocation_list_stub_spec.rb
 spec/models/allocation_metric_spec.rb
 spec/models/allocation_spec.rb
 spec/models/attribute_spec.rb
+spec/models/autopilot_configuration_spec.rb
 spec/models/check_restart_spec.rb
 spec/models/constraint_spec.rb
 spec/models/consul_connect_spec.rb
@@ -538,6 +560,7 @@ spec/models/node_update_eligibility_request_spec.rb
 spec/models/object_diff_spec.rb
 spec/models/one_time_token_exchange_request_spec.rb
 spec/models/one_time_token_spec.rb
+spec/models/operator_health_reply_spec.rb
 spec/models/parameterized_job_config_spec.rb
 spec/models/periodic_config_spec.rb
 spec/models/periodic_force_response_spec.rb
@@ -545,8 +568,11 @@ spec/models/plan_annotations_spec.rb
 spec/models/point_value_spec.rb
 spec/models/port_mapping_spec.rb
 spec/models/port_spec.rb
+spec/models/preemption_config_spec.rb
 spec/models/quota_limit_spec.rb
 spec/models/quota_spec_spec.rb
+spec/models/raft_configuration_spec.rb
+spec/models/raft_server_spec.rb
 spec/models/requested_device_spec.rb
 spec/models/reschedule_event_spec.rb
 spec/models/reschedule_policy_spec.rb
@@ -558,8 +584,12 @@ spec/models/scaling_event_spec.rb
 spec/models/scaling_policy_list_stub_spec.rb
 spec/models/scaling_policy_spec.rb
 spec/models/scaling_request_spec.rb
+spec/models/scheduler_configuration_response_spec.rb
+spec/models/scheduler_configuration_spec.rb
+spec/models/scheduler_set_configuration_response_spec.rb
 spec/models/search_request_spec.rb
 spec/models/search_response_spec.rb
+spec/models/server_health_spec.rb
 spec/models/service_check_spec.rb
 spec/models/service_spec.rb
 spec/models/sidecar_task_spec.rb

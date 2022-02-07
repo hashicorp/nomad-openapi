@@ -13,6 +13,7 @@ pub struct APIClient {
     metrics_api: Box<dyn crate::apis::MetricsApi>,
     namespaces_api: Box<dyn crate::apis::NamespacesApi>,
     nodes_api: Box<dyn crate::apis::NodesApi>,
+    operator_api: Box<dyn crate::apis::OperatorApi>,
     plugins_api: Box<dyn crate::apis::PluginsApi>,
     regions_api: Box<dyn crate::apis::RegionsApi>,
     scaling_api: Box<dyn crate::apis::ScalingApi>,
@@ -36,6 +37,7 @@ impl APIClient {
             metrics_api: Box::new(crate::apis::MetricsApiClient::new(rc.clone())),
             namespaces_api: Box::new(crate::apis::NamespacesApiClient::new(rc.clone())),
             nodes_api: Box::new(crate::apis::NodesApiClient::new(rc.clone())),
+            operator_api: Box::new(crate::apis::OperatorApiClient::new(rc.clone())),
             plugins_api: Box::new(crate::apis::PluginsApiClient::new(rc.clone())),
             regions_api: Box::new(crate::apis::RegionsApiClient::new(rc.clone())),
             scaling_api: Box::new(crate::apis::ScalingApiClient::new(rc.clone())),
@@ -80,6 +82,10 @@ impl APIClient {
 
     pub fn nodes_api(&self) -> &dyn crate::apis::NodesApi{
         self.nodes_api.as_ref()
+    }
+
+    pub fn operator_api(&self) -> &dyn crate::apis::OperatorApi{
+        self.operator_api.as_ref()
     }
 
     pub fn plugins_api(&self) -> &dyn crate::apis::PluginsApi{

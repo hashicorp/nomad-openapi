@@ -1,4 +1,5 @@
 .DS_Store
+.vscode
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -17,4 +18,3 @@
 
 generator/bin
 generator/*.yaml
-
