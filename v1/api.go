@@ -141,7 +141,7 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 
 	_, ok := typeOf.MethodByName("Execute")
 	if !ok {
-		return nil, nil, errors.New("execQuery failed: no Execute method on interface")
+		return nil, nil, errors.New("ExecQuery failed: no Execute method on interface")
 	}
 
 	request = c.setQueryOptions(ctx, request)
@@ -162,6 +162,29 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 	}
 
 	return result, meta, nil
+}
+
+// ExecNoMetaQuery executes a request accepts QueryOpts, but does not set index or query metadata.
+func (c *Client) ExecNoMetaQuery(ctx context.Context, request interface{}) (interface{}, error) {
+	typeOf := reflect.TypeOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecNoMetaQuery failed: no Execute method on interface")
+	}
+
+	request = c.setQueryOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+
+	return result, nil
 }
 
 // ExecWrite executes a request that returns write metadata.
@@ -219,6 +242,29 @@ func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (
 	}
 
 	return meta, nil
+}
+
+// ExecNoMetaWrite executes a request accepts WriteOpts, but does not set index or write metadata.
+func (c *Client) ExecNoMetaWrite(ctx context.Context, request interface{}) (interface{}, error) {
+	typeOf := reflect.TypeOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecNoMetaWrite failed: no Execute method on interface")
+	}
+
+	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+
+	return result, nil
 }
 
 // ExecRequest executes a client operation that does not return query or write metadata.
