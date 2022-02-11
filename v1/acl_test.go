@@ -12,10 +12,6 @@ func TestACLBootstrap(t *testing.T) {
 		c.NomadConfig.ACLEnabled = true
 	}
 	httpTest(t, enableACL, func(s *agent.TestAgent) {
-		// if os.Getenv("NOMAD_TOKEN") == "" {
-		// 	t.Skip()
-		// }
-
 		client, err := NewTestClient(s)
 		require.NoError(t, err)
 
