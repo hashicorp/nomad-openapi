@@ -158,7 +158,7 @@ describe 'ACLApi' do
   # @option opts [String] :namespace Filters results based on the specified namespace.
   # @option opts [String] :x_nomad_token A Nomad ACL token.
   # @option opts [String] :idempotency_token Can be used to ensure operations are only run once.
-  # @return [Array<ACLToken>]
+  # @return [ACLToken]
   describe 'post_acl_bootstrap test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

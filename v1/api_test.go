@@ -70,7 +70,7 @@ func TestSetWriteOptions(t *testing.T) {
 
 func TestTLS(t *testing.T) {
 	if os.Getenv("NOMAD_TOKEN") == "" {
-		return
+		t.Skip()
 	}
 
 	client, err := NewClient()

@@ -574,7 +574,7 @@ module NomadClient
     # @option opts [String] :namespace Filters results based on the specified namespace.
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [String] :idempotency_token Can be used to ensure operations are only run once.
-    # @return [Array<ACLToken>]
+    # @return [ACLToken]
     def post_acl_bootstrap(opts = {})
       data, _status_code, _headers = post_acl_bootstrap_with_http_info(opts)
       data
@@ -585,7 +585,7 @@ module NomadClient
     # @option opts [String] :namespace Filters results based on the specified namespace.
     # @option opts [String] :x_nomad_token A Nomad ACL token.
     # @option opts [String] :idempotency_token Can be used to ensure operations are only run once.
-    # @return [Array<(Array<ACLToken>, Integer, Hash)>] Array<ACLToken> data, response status code and response headers
+    # @return [Array<(ACLToken, Integer, Hash)>] ACLToken data, response status code and response headers
     def post_acl_bootstrap_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ACLApi.post_acl_bootstrap ...'
@@ -612,7 +612,7 @@ module NomadClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<ACLToken>'
+      return_type = opts[:debug_return_type] || 'ACLToken'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']

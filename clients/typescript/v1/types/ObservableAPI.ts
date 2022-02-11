@@ -413,7 +413,7 @@ export class ObservableACLApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<Array<ACLToken>> {
+    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Observable<ACLToken> {
         const requestContextPromise = this.requestFactory.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken, _options);
 
         // build promise chain

@@ -1114,13 +1114,13 @@ export class ACLApiResponseProcessor {
      * @params response Response returned by the server for a request to postACLBootstrap
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async postACLBootstrap(response: ResponseContext): Promise<Array<ACLToken> > {
+     public async postACLBootstrap(response: ResponseContext): Promise<ACLToken > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<ACLToken> = ObjectSerializer.deserialize(
+            const body: ACLToken = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<ACLToken>", ""
-            ) as Array<ACLToken>;
+                "ACLToken", ""
+            ) as ACLToken;
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1138,10 +1138,10 @@ export class ACLApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<ACLToken> = ObjectSerializer.deserialize(
+            const body: ACLToken = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<ACLToken>", ""
-            ) as Array<ACLToken>;
+                "ACLToken", ""
+            ) as ACLToken;
             return body;
         }
 

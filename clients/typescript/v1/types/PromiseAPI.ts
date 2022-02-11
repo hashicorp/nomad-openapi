@@ -311,7 +311,7 @@ export class PromiseACLApi {
      * @param xNomadToken A Nomad ACL token.
      * @param idempotencyToken Can be used to ensure operations are only run once.
      */
-    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<Array<ACLToken>> {
+    public postACLBootstrap(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<ACLToken> {
         const result = this.api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken, _options);
         return result.toPromise();
     }
