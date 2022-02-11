@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 ## PostACLBootstrap
 
-> []ACLToken PostACLBootstrap(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+> ACLToken PostACLBootstrap(ctx).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
 
 
 
@@ -610,7 +610,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLBootstrap``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostACLBootstrap`: []ACLToken
+    // response from `PostACLBootstrap`: ACLToken
     fmt.Fprintf(os.Stdout, "Response from `ACLApi.PostACLBootstrap`: %v\n", resp)
 }
 ```
@@ -633,7 +633,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ACLToken**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

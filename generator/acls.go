@@ -123,7 +123,7 @@ func (v *v1api) getACLPaths() []*apiPath {
 					nil,
 					defaultWriteOpts,
 					newResponseConfig(200,
-						arraySchema,
+						objectSchema,
 						api.ACLToken{},
 						defaultWriteMeta,
 						"PostACLBootstrapResponse",

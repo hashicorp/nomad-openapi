@@ -213,7 +213,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        List<ACLToken> response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
+        ACLToken response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
 
         // TODO: test validations
     }

@@ -615,7 +615,7 @@ Name | Type | Description  | Notes
 
 <a name="postACLBootstrap"></a>
 # **postACLBootstrap**
-> List&lt;ACLToken&gt; postACLBootstrap(region, namespace, xNomadToken, idempotencyToken)
+> ACLToken postACLBootstrap(region, namespace, xNomadToken, idempotencyToken)
 
 
 
@@ -646,7 +646,7 @@ public class Example {
     String xNomadToken = "xNomadToken_example"; // String | A Nomad ACL token.
     String idempotencyToken = "idempotencyToken_example"; // String | Can be used to ensure operations are only run once.
     try {
-      List<ACLToken> result = apiInstance.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
+      ACLToken result = apiInstance.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AclApi#postACLBootstrap");
@@ -670,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;ACLToken&gt;**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

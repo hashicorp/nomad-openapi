@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
 
 ## postACLBootstrap
 
-> [ACLToken] postACLBootstrap(opts)
+> ACLToken postACLBootstrap(opts)
 
 
 
@@ -521,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ACLToken]**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

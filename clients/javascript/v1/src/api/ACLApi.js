@@ -430,7 +430,7 @@ export default class ACLApi {
      * Callback function to receive the result of the postACLBootstrap operation.
      * @callback module:api/ACLApi~postACLBootstrapCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/ACLToken>} data The data returned by the service call.
+     * @param {module:model/ACLToken} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -441,7 +441,7 @@ export default class ACLApi {
      * @param {String} opts.xNomadToken A Nomad ACL token.
      * @param {String} opts.idempotencyToken Can be used to ensure operations are only run once.
      * @param {module:api/ACLApi~postACLBootstrapCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/ACLToken>}
+     * data is of type: {@link module:model/ACLToken}
      */
     postACLBootstrap(opts, callback) {
       opts = opts || {};
@@ -463,7 +463,7 @@ export default class ACLApi {
       let authNames = ['X-Nomad-Token'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [ACLToken];
+      let returnType = ACLToken;
       return this.apiClient.callApi(
         '/acl/bootstrap', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

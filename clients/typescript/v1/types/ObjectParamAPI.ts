@@ -776,7 +776,7 @@ export class ObjectACLApi {
     /**
      * @param param the request object
      */
-    public postACLBootstrap(param: ACLApiPostACLBootstrapRequest, options?: Configuration): Promise<Array<ACLToken>> {
+    public postACLBootstrap(param: ACLApiPostACLBootstrapRequest, options?: Configuration): Promise<ACLToken> {
         return this.api.postACLBootstrap(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 

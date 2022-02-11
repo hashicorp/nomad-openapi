@@ -1277,7 +1277,7 @@ func (r ApiPostACLBootstrapRequest) IdempotencyToken(idempotencyToken string) Ap
 	return r
 }
 
-func (r ApiPostACLBootstrapRequest) Execute() ([]ACLToken, *_nethttp.Response, error) {
+func (r ApiPostACLBootstrapRequest) Execute() (ACLToken, *_nethttp.Response, error) {
 	return r.ApiService.PostACLBootstrapExecute(r)
 }
 
@@ -1295,16 +1295,16 @@ func (a *ACLApiService) PostACLBootstrap(ctx _context.Context) ApiPostACLBootstr
 
 /*
  * Execute executes the request
- * @return []ACLToken
+ * @return ACLToken
  */
-func (a *ACLApiService) PostACLBootstrapExecute(r ApiPostACLBootstrapRequest) ([]ACLToken, *_nethttp.Response, error) {
+func (a *ACLApiService) PostACLBootstrapExecute(r ApiPostACLBootstrapRequest) (ACLToken, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []ACLToken
+		localVarReturnValue  ACLToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLApiService.PostACLBootstrap")
