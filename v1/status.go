@@ -21,8 +21,7 @@ func (s *Status) StatusApi() *client.StatusApiService {
 func (s *Status) Leader(ctx context.Context) (*string, error) {
 	request := s.StatusApi().GetStatusLeader(s.client.Ctx)
 
-	// TODO: This endpoint also needs a helper that takes QueryOpts but returns no QueryMeta.
-	result, err := s.client.ExecRequest(ctx, request)
+	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -34,8 +33,7 @@ func (s *Status) Leader(ctx context.Context) (*string, error) {
 func (s *Status) Peers(ctx context.Context) (*[]string, error) {
 	request := s.StatusApi().GetStatusPeers(s.client.Ctx)
 
-	// TODO: This endpoint also needs a helper that takes QueryOpts but returns no QueryMeta.
-	result, err := s.client.ExecRequest(ctx, request)
+	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}

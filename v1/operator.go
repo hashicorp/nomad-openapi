@@ -21,7 +21,7 @@ func (o *Operator) OperatorApi() *client.OperatorApiService {
 func (o *Operator) Raft(ctx context.Context) (*client.RaftConfiguration, error) {
 	request := o.OperatorApi().GetOperatorRaftConfiguration(o.client.Ctx)
 
-	result, err := o.client.ExecRequest(ctx, request)
+	result, err := o.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func (o *Operator) Peer(ctx context.Context) error {
 func (o *Operator) Autopilot(ctx context.Context) (*client.AutopilotConfiguration, error) {
 	request := o.OperatorApi().GetOperatorAutopilotConfiguration(o.client.Ctx)
 
-	result, err := o.client.ExecRequest(ctx, request)
+	result, err := o.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -67,8 +67,7 @@ func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.Autopilot
 
 	request = request.AutopilotConfiguration(*updateRequest)
 
-	// TODO: Add new helper method, since this endpoint supports WriteOpts, but doesn't return WriteMeta.
-	result, err := o.client.ExecRequest(ctx, request)
+	result, err := o.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -80,8 +79,7 @@ func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.Autopilot
 func (o *Operator) AutopilotHealth(ctx context.Context) (*client.OperatorHealthReply, error) {
 	request := o.OperatorApi().GetOperatorAutopilotHealth(o.client.Ctx)
 
-	// TODO: This endpoint also needs a helper that takes QueryOpts but returns no QueryMeta.
-	result, err := o.client.ExecRequest(ctx, request)
+	result, err := o.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}

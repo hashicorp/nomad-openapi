@@ -21,7 +21,7 @@ func (p *Plugins) PluginsApi() *client.PluginsApiService {
 
 func (p *Plugins) Get(ctx context.Context) (*[]client.CSIPluginListStub, error) {
 	request := p.PluginsApi().GetPlugins(p.client.Ctx)
-	result, err := p.client.ExecRequest(ctx, request)
+	result, err := p.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}
