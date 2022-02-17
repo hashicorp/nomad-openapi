@@ -7,15 +7,17 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestRegions_GetRegions(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
+func TestRegions(t *testing.T) {
+	httpTests(t, nil,
+		APITestCase{"GetRegions", testGetRegions},
+	)
+}
 
-		// Make the HTTP request
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testGetRegions(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		result, err := testClient.Regions().GetRegions(queryOpts.Ctx())
-		require.NoError(t, err)
-		require.Equal(t, []string{"global"}, *result)
-	})
+	result, err := testClient.Regions().GetRegions(queryOpts.Ctx())
+	require.NoError(t, err)
+	require.Equal(t, []string{"global"}, *result)
 }
