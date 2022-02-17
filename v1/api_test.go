@@ -63,7 +63,7 @@ func NewTestClient(testAgent *agent.TestAgent) (*Client, error) {
 
 func TestSetQueryOptions(t *testing.T) {
 	ctx := queryOpts.Ctx()
-	qCtx := ctx.Value("QueryOpts").(*QueryOpts)
+	qCtx := ctx.Value(contextKeyQueryOpts).(*QueryOpts)
 
 	require.Equal(t, qCtx.Region, queryOpts.Region)
 	require.Equal(t, qCtx.Namespace, queryOpts.Namespace)
@@ -78,7 +78,7 @@ func TestSetQueryOptions(t *testing.T) {
 
 func TestSetWriteOptions(t *testing.T) {
 	ctx := writeOpts.Ctx()
-	wCtx := ctx.Value("WriteOpts").(*WriteOpts)
+	wCtx := ctx.Value(contextKeyWriteOpts).(*WriteOpts)
 
 	require.Equal(t, wCtx.Region, writeOpts.Region)
 	require.Equal(t, wCtx.Namespace, writeOpts.Namespace)
