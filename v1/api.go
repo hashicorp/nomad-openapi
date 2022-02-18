@@ -18,8 +18,18 @@ import (
 )
 
 type Client struct {
-	Ctx       context.Context
-	apiClient *client.APIClient
+	Ctx           context.Context
+	apiClient     *client.APIClient
+	configuration *client.Configuration
+	address       string
+	region        string
+	token         string
+	caFile        string
+	certFile      string
+	keyFile       string
+	namespace     string
+	tlsSkipVerify bool
+	tlsServerName string
 }
 
 // OpenAPIError is the interface defined by the generated client.GenericOpenAPIError.
@@ -59,53 +69,145 @@ func (e APIError) Model() interface{} {
 func NewClient() (*Client, error) {
 	nomadAddr := os.Getenv("NOMAD_ADDR")
 	configuration := client.NewConfiguration()
+}
 
-	// Set to the dev agent default if empty
-	if nomadAddr == "" {
-		nomadAddr = "http://127.0.0.1:4646"
+type ClientOption func(*Client)
+
+
+// WithAddress
+func WithAddress(address string) func(*Client) {
+	return func(c *Client) {
+		c.address = address
+	}
+}
+
+func WithToken(token string) func(*Client) {
+	return func(c *Client) {
+		c.token = token
+	}
+}
+
+func WithTLSCerts(caFile, certFile, keyFile string) func(*Client) {
+	return func(c *Client) {
+		c.caFile = caFile
+		c.certFile = certFile
+		c.keyFile = keyFile
+	}
+}
+
+func WithClientCert(certFile, keyFile string) func(*Client) {
+	return func(c *Client) {
+		c.certFile = certFile
+		c.keyFile = keyFile
+	}
+}
+func WithCACert(caFile string) func(*Client) {
+	return func(c *Client) {
+		c.caFile = caFile
+	}
+}
+
+func WithDefaultRegion(region string) func(*Client) {
+	return func(c *Client) {
+		c.region = region
+	}
+}
+
+func WithDefaultNamespace(ns string) func(*Client) {
+	return func(c *Client) {
+		c.namespace = ns
+	}
+}
+
+func WithTLSServerName(n string) func(*Client) {
+	return func(c *Client) {
+		c.tlsServerName = n
+	}
+}
+
+func WithTLSSkipVerify() func(*Client) {
+	return func(c *Client) {
+		c.tlsSkipVerify = true
+	}
+}
+
+func NewClient(opts ...ClientOption) (*Client, error) {
+	c := &Client{
+		configuration: client.NewConfiguration(),
 	}
 
-	// Parse the URL so we can extract scheme and port
-	nomadURL, err := url.Parse(nomadAddr)
+	for _, option := range opts {
+		option(c)
+	}
+
+	err := c.configureAddress()
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Client{}
+	c.configureRegion()
+
+	c.configureAuth()
+
+	err = c.configureTLS()
+	if err != nil {
+		return nil, err
+	}
+
+	c.apiClient = client.NewAPIClient(c.configuration)
+
+	return c, nil
+}
+
+func (c *Client) configureAddress() error {
+	if c.address == "" {
+		c.address = os.Getenv(EnvNomadAddr)
+		// Set to the dev agent default if empty
+		if c.address == "" {
+			c.address = DefaultAddress
+		}
+	}
+
+	// Parse the URL so we can extract scheme and port
+	nomadURL, err := url.Parse(c.address)
+	if err != nil {
+		return err
+	}
 
 	c.Ctx = context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
 		"scheme":  nomadURL.Scheme,
 		"address": nomadURL.Hostname(),
 		"port":    nomadURL.Port(),
 	})
-
-	err = configureAuth(configuration)
-	if err != nil {
-		return nil, err
-	}
-
-	c.apiClient = client.NewAPIClient(configuration)
-
-	return c, nil
-}
-
-func configureAuth(configuration *client.Configuration) error {
-	nomadToken := os.Getenv("NOMAD_TOKEN")
-	// If environment has a NOMAD_TOKEN, set that in the header
-	if nomadToken != "" {
-		configuration.DefaultHeader["X-Nomad-Token"] = nomadToken
-	}
-
-	err := configureTLS(configuration)
-	if err != nil {
-		return err
-	}
 	return nil
 }
 
+func (c *Client) configureAuth() {
+	if c.token == "" {
+		// If token is unset on the client, attempt to fetch it from the env.
+		c.token = os.Getenv(EnvNomadToken)
+	}
+
+	if c.token != "" {
+		c.configuration.DefaultHeader["X-Nomad-Token"] = c.token
+	}
+}
+
+func (c *Client) configureRegion() {
+	if c.region == "" {
+		c.region = os.Getenv(EnvNomadRegion)
+		if c.region == "" {
+			c.region = GlobalRegion
+		}
+	}
+}
+
 // Configures TLS if the client environment contains TLS configuration settings.
-func configureTLS(configuration *client.Configuration) error {
-	tlsConfig, err := tlsConfigFromEnv()
+func (c *Client) configureTLS() error {
+	var err error
+
+	tlsConfig, err := c.makeTLSConfig()
+
 	if err != nil {
 		return err
 	}
@@ -117,11 +219,13 @@ func configureTLS(configuration *client.Configuration) error {
 
 	// throw error if the environment is configured for TLS, but the HTTPClient
 	// is already set.
-	if configuration.HTTPClient != nil {
+	if c.configuration.HTTPClient != nil {
 		return errors.New("client HTTPClient is already configured")
 	}
 
-	configuration.HTTPClient = &http.Client{
+	tlsConfig.InsecureSkipVerify = c.tlsSkipVerify
+
+	c.configuration.HTTPClient = &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: tlsConfig,
 		},
@@ -130,43 +234,72 @@ func configureTLS(configuration *client.Configuration) error {
 	return nil
 }
 
-func tlsConfigFromEnv() (*tls.Config, error) {
-	serverCertPath := os.Getenv("NOMAD_CACERT")
-	clientCertPath := os.Getenv("NOMAD_CLIENT_CERT")
-	clientKeyPath := os.Getenv("NOMAD_CLIENT_KEY")
+func (c *Client) makeTLSConfig() (*tls.Config, error) {
+	if c.caFile == "" {
+		c.caFile = os.Getenv(EnvNomadCACert)
+	}
+	if c.certFile == "" {
+		c.certFile = os.Getenv(EnvNomadClientCert)
+	}
+	if c.keyFile == "" {
+		c.keyFile = os.Getenv(EnvNomadClientKey)
+	}
 
 	// If environment is not configured for TLS, return
-	if serverCertPath == "" || clientCertPath == "" || clientKeyPath == "" {
+	if c.caFile == "" || c.certFile == "" || c.keyFile == "" {
 		return nil, nil
 	}
 
+	return c.tlsConfig()
+}
+
+func (c *Client) tlsConfig() (*tls.Config, error) {
 	cfg := &tls.Config{}
 
 	// Load the certificate authority certificate bytes
-	serverCertBytes, err := os.ReadFile(serverCertPath)
+	serverCABytes, err := os.ReadFile(c.caFile)
 	if err != nil {
-		return nil, fmt.Errorf("error reading NOMAD_CACERT: %v", err)
+		return nil, fmt.Errorf("error reading CA certificate: %w", err)
 	}
 
 	// Load a client certificate from the client settings
-	clientCert, err := tls.LoadX509KeyPair(clientCertPath, clientKeyPath)
+	clientCert, err := tls.LoadX509KeyPair(c.certFile, c.keyFile)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error loading key pair: %w", err)
 	}
 
 	// Set the root CA from the server cert
 	cfg.RootCAs = x509.NewCertPool()
-	cfg.RootCAs.AppendCertsFromPEM(serverCertBytes)
+	cfg.RootCAs.AppendCertsFromPEM(serverCABytes)
 	// Set the client certificate
 	cfg.Certificates = []tls.Certificate{clientCert}
 
-	cfg.ServerName = "server.global.nomad"
-	region := os.Getenv("NOMAD_REGION")
-	if region != "" {
-		cfg.ServerName = fmt.Sprintf("server.%s.nomad", region)
+	cfg.ServerName = fmt.Sprintf("server.%s.nomad", c.region)
+	if c.tlsServerName != "" {
+		cfg.ServerName = c.tlsServerName
 	}
 
 	return cfg, nil
+}
+
+// QueryOpts creates a new QueryOpts struct with defaults populated
+// from the current client configuration
+func (c *Client) QueryOpts() *QueryOpts {
+	return &QueryOpts{
+		Region:    c.region,
+		Namespace: c.namespace,
+		AuthToken: c.token,
+	}
+}
+
+// WriteOpts creates a new WriteOpts struct with defaults populated
+// from the current client configuration
+func (c *Client) WriteOpts() *WriteOpts {
+	return &WriteOpts{
+		Region:    c.region,
+		Namespace: c.namespace,
+		AuthToken: c.token,
+	}
 }
 
 // ExecQuery executes a request that returns query metadata.
@@ -199,6 +332,29 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 	}
 
 	return result, meta, nil
+}
+
+// ExecNoMetaQuery executes a request accepts QueryOpts, but does not set index or query metadata.
+func (c *Client) ExecNoMetaQuery(ctx context.Context, request interface{}) (interface{}, error) {
+	typeOf := reflect.TypeOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecNoMetaQuery failed: no Execute method on interface")
+	}
+
+	request = c.setQueryOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+
+	return result, nil
 }
 
 // ExecWrite executes a request that returns write metadata.
@@ -262,6 +418,29 @@ func (c *Client) ExecNoResponseWrite(ctx context.Context, request interface{}) (
 	return meta, nil
 }
 
+// ExecNoMetaWrite executes a request accepts WriteOpts, but does not set index or write metadata.
+func (c *Client) ExecNoMetaWrite(ctx context.Context, request interface{}) (interface{}, error) {
+	typeOf := reflect.TypeOf(request)
+
+	_, ok := typeOf.MethodByName("Execute")
+	if !ok {
+		return nil, errors.New("ExecNoMetaWrite failed: no Execute method on interface")
+	}
+
+	request = c.setWriteOptions(ctx, request)
+
+	valueOf := reflect.ValueOf(request)
+
+	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
+	if !values[2].IsNil() {
+		return nil, values[2].Interface().(error)
+	}
+
+	result := values[0].Interface()
+
+	return result, nil
+}
+
 // ExecRequest executes a client operation that does not return query or write metadata.
 func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{}, *APIError) {
 	typeOf := reflect.TypeOf(request)
@@ -305,7 +484,7 @@ func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) *
 // setQueryOptions is used to annotate the request with
 // additional query options
 func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interface{} {
-	opts, ok := ctx.Value("QueryOpts").(*QueryOpts)
+	opts, ok := ctx.Value(contextKeyQueryOpts).(*QueryOpts)
 	if !ok || opts == nil {
 		return iface
 	}
@@ -368,15 +547,15 @@ func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interfa
 	}
 
 	// TODO: Handle extra params
-	//if c.config.Params != nil {
-	//}
+	// if c.config.Params != nil {
+	// }
 
 	return iface
 }
 
 // setWriteOptions is used to annotate an openapi request with additional write options.
 func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interface{} {
-	opts, ok := ctx.Value("WriteOpts").(*WriteOpts)
+	opts, ok := ctx.Value(contextKeyWriteOpts).(*WriteOpts)
 	if !ok || opts == nil {
 		return iface
 	}
@@ -502,7 +681,7 @@ func (q *QueryOpts) WithAllowStale(allowStale bool) *QueryOpts {
 }
 
 func (q *QueryOpts) Ctx() context.Context {
-	return context.WithValue(context.Background(), "QueryOpts", q)
+	return context.WithValue(context.Background(), contextKeyQueryOpts, q)
 }
 
 // WriteOpts are used to parametrize a write operation
@@ -550,7 +729,7 @@ func (w *WriteOpts) WithIdempotencyToken(idempotencyToken string) *WriteOpts {
 }
 
 func (w *WriteOpts) Ctx() context.Context {
-	return context.WithValue(context.Background(), "WriteOpts", w)
+	return context.WithValue(context.Background(), contextKeyWriteOpts, w)
 }
 
 // QueryMeta is used to return metadata about a query
@@ -636,18 +815,19 @@ func parseWriteMeta(resp *http.Response) (*WriteMeta, error) {
 	return &WriteMeta{LastIndex: index}, nil
 }
 
-// durToMsec converts a duration to a millisecond specified string
-func durToMsec(dur time.Duration) string {
-	return fmt.Sprintf("%dms", dur/time.Millisecond)
-}
+// NOTE: this is currently deadcode. Commenting it out to keep the linter happy.
+// // durToMsec converts a duration to a millisecond specified string
+// func durToMsec(dur time.Duration) string {
+// 	return fmt.Sprintf("%dms", dur/time.Millisecond)
+// }
 
-func headerByKey(resp *http.Response, key string) (string, error) {
-	h := resp.Header.Get(key)
-	if len(h) == 0 {
-		return "", errors.New("key not found")
-	}
-	return h, nil
-}
+// func headerByKey(resp *http.Response, key string) (string, error) {
+// 	h := resp.Header.Get(key)
+// 	if len(h) == 0 {
+// 		return "", errors.New("key not found")
+// 	}
+// 	return h, nil
+// }
 
 const (
 	// JobTypeService indicates a long-running processes
@@ -661,6 +841,19 @@ const (
 
 	// PeriodicSpecCron is used for a cron spec.
 	PeriodicSpecCron = "cron"
+
+	// Constants for the Nomad environment variable names.
+	EnvNomadAddr       = "NOMAD_ADDR"
+	EnvNomadCACert     = "NOMAD_CACERT"
+	EnvNomadClientCert = "NOMAD_CLIENT_CERT"
+	EnvNomadClientKey  = "NOMAD_CLIENT_KEY"
+	EnvNomadNamespace  = "NOMAD_NAMESPACE"
+	EnvNomadRegion     = "NOMAD_REGION"
+	EnvNomadToken      = "NOMAD_TOKEN"
+
+	// DefaultAddress is the default address for a Nomad cluster. This is used
+	// when no address is provided to the client.
+	DefaultAddress = "http://127.0.0.1:4646"
 
 	// DefaultNamespace is the default namespace.
 	DefaultNamespace = "default"
@@ -708,6 +901,17 @@ const (
 
 	// IdempotencyTokenKey can be used to prevent hard coded string key accessor errors
 	IdempotencyTokenKey = "IdempotencyToken"
+)
+
+type contextKey string
+
+func (c contextKey) String() string {
+	return "nomad-openapi " + string(c)
+}
+
+var (
+	contextKeyQueryOpts = contextKey("QueryOpts")
+	contextKeyWriteOpts = contextKey("WriteOpts")
 )
 
 // cronParseNext is a helper that parses the next time for the given expression

@@ -68,6 +68,8 @@ type APIClient struct {
 
 	NodesApi *NodesApiService
 
+	OperatorApi *OperatorApiService
+
 	PluginsApi *PluginsApiService
 
 	RegionsApi *RegionsApiService
@@ -108,6 +110,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
 	c.NodesApi = (*NodesApiService)(&c.common)
+	c.OperatorApi = (*OperatorApiService)(&c.common)
 	c.PluginsApi = (*PluginsApiService)(&c.common)
 	c.RegionsApi = (*RegionsApiService)(&c.common)
 	c.ScalingApi = (*ScalingApiService)(&c.common)

@@ -10,22 +10,26 @@ import (
 )
 
 func TestMetrics(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		// make a separate HTTP request first, to ensure Nomad has written metrics
-		// and prevent a race condition
-		req, err := http.NewRequest("GET", "/v1/agent/self", nil)
-		require.NoError(t, err)
-		respW := httptest.NewRecorder()
-		s.Server.AgentSelfRequest(respW, req)
+	httpTests(t, nil,
+		APITestCase{"GetMetrics", testMetrics},
+	)
+}
 
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testMetrics(t *testing.T, s *agent.TestAgent) {
+	// make a separate HTTP request first, to ensure Nomad has written metrics
+	// and prevent a race condition
+	req, err := http.NewRequest("GET", "/v1/agent/self", nil)
+	require.NoError(t, err)
+	respW := httptest.NewRecorder()
+	_, _ = s.Server.AgentSelfRequest(respW, req)
 
-		// now make a metrics endpoint request, which should be already initialized
-		// and written to
-		result, err := testClient.Metrics().GetMetricsSummary(queryOpts.Ctx())
-		require.NoError(t, err)
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		require.NotEqual(t, 0, *result.Gauges)
-	})
+	// now make a metrics endpoint request, which should be already initialized
+	// and written to
+	result, err := testClient.Metrics().GetMetricsSummary(queryOpts.Ctx())
+	require.NoError(t, err)
+
+	require.NotEqual(t, 0, *result.Gauges)
 }

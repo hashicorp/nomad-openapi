@@ -615,7 +615,7 @@ end
 
 ## post_acl_bootstrap
 
-> <Array<ACLToken>> post_acl_bootstrap(opts)
+> <ACLToken> post_acl_bootstrap(opts)
 
 
 
@@ -653,7 +653,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<ACLToken>>, Integer, Hash)> post_acl_bootstrap_with_http_info(opts)
+> <Array(<ACLToken>, Integer, Hash)> post_acl_bootstrap_with_http_info(opts)
 
 ```ruby
 begin
@@ -661,7 +661,7 @@ begin
   data, status_code, headers = api_instance.post_acl_bootstrap_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<ACLToken>>
+  p data # => <ACLToken>
 rescue NomadClient::ApiError => e
   puts "Error when calling ACLApi->post_acl_bootstrap_with_http_info: #{e}"
 end
@@ -678,7 +678,7 @@ end
 
 ### Return type
 
-[**Array&lt;ACLToken&gt;**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

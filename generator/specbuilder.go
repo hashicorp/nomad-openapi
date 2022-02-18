@@ -263,6 +263,11 @@ func (b *specBuilder) getOrCreateResponses(configs []*responseConfig) (openapi3.
 							Value: schemaRef.Value,
 						},
 					}), []string{"application/json"})
+				default:
+					responseRef.Value.Content = openapi3.NewContentWithSchemaRef(&openapi3.SchemaRef{
+						Ref:   formatSchemaRefPath(schemaRef, cfg.Content.Model.Name()),
+						Value: schemaRef.Value,
+					}, []string{"application/json"})
 				}
 			}
 			// Now add to the global response map

@@ -267,7 +267,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_acl_bootstrap
 
-> Vec<crate::models::AclToken> post_acl_bootstrap(region, namespace, x_nomad_token, idempotency_token)
+> crate::models::AclToken post_acl_bootstrap(region, namespace, x_nomad_token, idempotency_token)
 
 
 ### Parameters
@@ -282,7 +282,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::AclToken>**](ACLToken.md)
+[**crate::models::AclToken**](ACLToken.md)
 
 ### Authorization
 

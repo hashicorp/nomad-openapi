@@ -149,6 +149,13 @@ Class | Method | HTTP request | Description
 *NomadClient::NodesApi* | [**update_node_drain**](docs/NodesApi.md#update_node_drain) | **POST** /node/{nodeId}/drain | 
 *NomadClient::NodesApi* | [**update_node_eligibility**](docs/NodesApi.md#update_node_eligibility) | **POST** /node/{nodeId}/eligibility | 
 *NomadClient::NodesApi* | [**update_node_purge**](docs/NodesApi.md#update_node_purge) | **POST** /node/{nodeId}/purge | 
+*NomadClient::OperatorApi* | [**delete_operator_raft_peer**](docs/OperatorApi.md#delete_operator_raft_peer) | **DELETE** /operator/raft/peer | 
+*NomadClient::OperatorApi* | [**get_operator_autopilot_configuration**](docs/OperatorApi.md#get_operator_autopilot_configuration) | **GET** /operator/autopilot/configuration | 
+*NomadClient::OperatorApi* | [**get_operator_autopilot_health**](docs/OperatorApi.md#get_operator_autopilot_health) | **GET** /operator/autopilot/health | 
+*NomadClient::OperatorApi* | [**get_operator_raft_configuration**](docs/OperatorApi.md#get_operator_raft_configuration) | **GET** /operator/raft/configuration | 
+*NomadClient::OperatorApi* | [**get_operator_scheduler_configuration**](docs/OperatorApi.md#get_operator_scheduler_configuration) | **GET** /operator/scheduler/configuration | 
+*NomadClient::OperatorApi* | [**post_operator_scheduler_configuration**](docs/OperatorApi.md#post_operator_scheduler_configuration) | **POST** /operator/scheduler/configuration | 
+*NomadClient::OperatorApi* | [**put_operator_autopilot_configuration**](docs/OperatorApi.md#put_operator_autopilot_configuration) | **PUT** /operator/autopilot/configuration | 
 *NomadClient::PluginsApi* | [**get_plugin_csi**](docs/PluginsApi.md#get_plugin_csi) | **GET** /plugin/csi/{pluginID} | 
 *NomadClient::PluginsApi* | [**get_plugins**](docs/PluginsApi.md#get_plugins) | **GET** /plugins | 
 *NomadClient::RegionsApi* | [**get_regions**](docs/RegionsApi.md#get_regions) | **GET** /regions | 
@@ -191,6 +198,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::AllocationListStub](docs/AllocationListStub.md)
  - [NomadClient::AllocationMetric](docs/AllocationMetric.md)
  - [NomadClient::Attribute](docs/Attribute.md)
+ - [NomadClient::AutopilotConfiguration](docs/AutopilotConfiguration.md)
  - [NomadClient::CSIControllerInfo](docs/CSIControllerInfo.md)
  - [NomadClient::CSIInfo](docs/CSIInfo.md)
  - [NomadClient::CSIMountOptions](docs/CSIMountOptions.md)
@@ -305,6 +313,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::ObjectDiff](docs/ObjectDiff.md)
  - [NomadClient::OneTimeToken](docs/OneTimeToken.md)
  - [NomadClient::OneTimeTokenExchangeRequest](docs/OneTimeTokenExchangeRequest.md)
+ - [NomadClient::OperatorHealthReply](docs/OperatorHealthReply.md)
  - [NomadClient::ParameterizedJobConfig](docs/ParameterizedJobConfig.md)
  - [NomadClient::PeriodicConfig](docs/PeriodicConfig.md)
  - [NomadClient::PeriodicForceResponse](docs/PeriodicForceResponse.md)
@@ -312,8 +321,11 @@ Class | Method | HTTP request | Description
  - [NomadClient::PointValue](docs/PointValue.md)
  - [NomadClient::Port](docs/Port.md)
  - [NomadClient::PortMapping](docs/PortMapping.md)
+ - [NomadClient::PreemptionConfig](docs/PreemptionConfig.md)
  - [NomadClient::QuotaLimit](docs/QuotaLimit.md)
  - [NomadClient::QuotaSpec](docs/QuotaSpec.md)
+ - [NomadClient::RaftConfiguration](docs/RaftConfiguration.md)
+ - [NomadClient::RaftServer](docs/RaftServer.md)
  - [NomadClient::RequestedDevice](docs/RequestedDevice.md)
  - [NomadClient::RescheduleEvent](docs/RescheduleEvent.md)
  - [NomadClient::ReschedulePolicy](docs/ReschedulePolicy.md)
@@ -325,8 +337,12 @@ Class | Method | HTTP request | Description
  - [NomadClient::ScalingPolicy](docs/ScalingPolicy.md)
  - [NomadClient::ScalingPolicyListStub](docs/ScalingPolicyListStub.md)
  - [NomadClient::ScalingRequest](docs/ScalingRequest.md)
+ - [NomadClient::SchedulerConfiguration](docs/SchedulerConfiguration.md)
+ - [NomadClient::SchedulerConfigurationResponse](docs/SchedulerConfigurationResponse.md)
+ - [NomadClient::SchedulerSetConfigurationResponse](docs/SchedulerSetConfigurationResponse.md)
  - [NomadClient::SearchRequest](docs/SearchRequest.md)
  - [NomadClient::SearchResponse](docs/SearchResponse.md)
+ - [NomadClient::ServerHealth](docs/ServerHealth.md)
  - [NomadClient::Service](docs/Service.md)
  - [NomadClient::ServiceCheck](docs/ServiceCheck.md)
  - [NomadClient::SidecarTask](docs/SidecarTask.md)

@@ -545,7 +545,7 @@ pub async fn get_acl_tokens(configuration: &configuration::Configuration, region
     }
 }
 
-pub async fn post_acl_bootstrap(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<Vec<crate::models::AclToken>, Error<PostAclBootstrapError>> {
+pub async fn post_acl_bootstrap(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclBootstrapError>> {
 
     let local_var_client = &configuration.client;
 

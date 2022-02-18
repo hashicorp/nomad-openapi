@@ -687,7 +687,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_acl_bootstrap**
-> [ACLToken] post_acl_bootstrap()
+> ACLToken post_acl_bootstrap()
 
 
 
@@ -747,7 +747,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ACLToken]**](ACLToken.md)
+[**ACLToken**](ACLToken.md)
 
 ### Authorization
 

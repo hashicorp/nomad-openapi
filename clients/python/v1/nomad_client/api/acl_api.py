@@ -1185,7 +1185,7 @@ class ACLApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [ACLToken]
+                ACLToken
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -1212,7 +1212,7 @@ class ACLApi(object):
 
         self.post_acl_bootstrap = _Endpoint(
             settings={
-                'response_type': ([ACLToken],),
+                'response_type': (ACLToken,),
                 'auth': [
                     'X-Nomad-Token'
                 ],

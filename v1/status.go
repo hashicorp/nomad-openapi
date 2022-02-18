@@ -20,7 +20,8 @@ func (s *Status) StatusApi() *client.StatusApiService {
 
 func (s *Status) Leader(ctx context.Context) (*string, OpenAPIError) {
 	request := s.StatusApi().GetStatusLeader(s.client.Ctx)
-	result, err := s.client.ExecRequest(ctx, request)
+
+	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}
@@ -31,7 +32,8 @@ func (s *Status) Leader(ctx context.Context) (*string, OpenAPIError) {
 
 func (s *Status) Peers(ctx context.Context) (*[]string, OpenAPIError) {
 	request := s.StatusApi().GetStatusPeers(s.client.Ctx)
-	result, err := s.client.ExecRequest(ctx, request)
+
+	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
 		return nil, err
 	}

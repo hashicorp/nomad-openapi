@@ -10,6 +10,7 @@ api_jobs.go
 api_metrics.go
 api_namespaces.go
 api_nodes.go
+api_operator.go
 api_plugins.go
 api_regions.go
 api_scaling.go
@@ -37,6 +38,7 @@ docs/AllocationListStub.md
 docs/AllocationMetric.md
 docs/AllocationsApi.md
 docs/Attribute.md
+docs/AutopilotConfiguration.md
 docs/CSIControllerInfo.md
 docs/CSIInfo.md
 docs/CSIMountOptions.md
@@ -158,6 +160,8 @@ docs/NodesApi.md
 docs/ObjectDiff.md
 docs/OneTimeToken.md
 docs/OneTimeTokenExchangeRequest.md
+docs/OperatorApi.md
+docs/OperatorHealthReply.md
 docs/ParameterizedJobConfig.md
 docs/PeriodicConfig.md
 docs/PeriodicForceResponse.md
@@ -166,8 +170,11 @@ docs/PluginsApi.md
 docs/PointValue.md
 docs/Port.md
 docs/PortMapping.md
+docs/PreemptionConfig.md
 docs/QuotaLimit.md
 docs/QuotaSpec.md
+docs/RaftConfiguration.md
+docs/RaftServer.md
 docs/RegionsApi.md
 docs/RequestedDevice.md
 docs/RescheduleEvent.md
@@ -181,9 +188,13 @@ docs/ScalingEvent.md
 docs/ScalingPolicy.md
 docs/ScalingPolicyListStub.md
 docs/ScalingRequest.md
+docs/SchedulerConfiguration.md
+docs/SchedulerConfigurationResponse.md
+docs/SchedulerSetConfigurationResponse.md
 docs/SearchApi.md
 docs/SearchRequest.md
 docs/SearchResponse.md
+docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
 docs/SidecarTask.md
@@ -225,6 +236,7 @@ model_allocation.go
 model_allocation_list_stub.go
 model_allocation_metric.go
 model_attribute.go
+model_autopilot_configuration.go
 model_check_restart.go
 model_constraint.go
 model_consul.go
@@ -339,6 +351,7 @@ model_node_update_eligibility_request.go
 model_object_diff.go
 model_one_time_token.go
 model_one_time_token_exchange_request.go
+model_operator_health_reply.go
 model_parameterized_job_config.go
 model_periodic_config.go
 model_periodic_force_response.go
@@ -346,8 +359,11 @@ model_plan_annotations.go
 model_point_value.go
 model_port.go
 model_port_mapping.go
+model_preemption_config.go
 model_quota_limit.go
 model_quota_spec.go
+model_raft_configuration.go
+model_raft_server.go
 model_requested_device.go
 model_reschedule_event.go
 model_reschedule_policy.go
@@ -359,8 +375,12 @@ model_scaling_event.go
 model_scaling_policy.go
 model_scaling_policy_list_stub.go
 model_scaling_request.go
+model_scheduler_configuration.go
+model_scheduler_configuration_response.go
+model_scheduler_set_configuration_response.go
 model_search_request.go
 model_search_response.go
+model_server_health.go
 model_service.go
 model_service_check.go
 model_sidecar_task.go
