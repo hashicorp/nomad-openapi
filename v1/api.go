@@ -18,60 +18,156 @@ import (
 )
 
 type Client struct {
-	Ctx       context.Context
-	apiClient *client.APIClient
+	Ctx           context.Context
+	apiClient     *client.APIClient
+	configuration *client.Configuration
+	address       string
+	region        string
+	token         string
+	caFile        string
+	certFile      string
+	keyFile       string
+	namespace     string
+	tlsSkipVerify bool
+	tlsServerName string
 }
 
-func NewClient() (*Client, error) {
-	nomadAddr := os.Getenv("NOMAD_ADDR")
-	configuration := client.NewConfiguration()
+type ClientOption func(*Client)
 
-	// Set to the dev agent default if empty
-	if nomadAddr == "" {
-		nomadAddr = "http://127.0.0.1:4646"
+// WithAddress
+func WithAddress(address string) func(*Client) {
+	return func(c *Client) {
+		c.address = address
+	}
+}
+
+func WithToken(token string) func(*Client) {
+	return func(c *Client) {
+		c.token = token
+	}
+}
+
+func WithTLSCerts(caFile, certFile, keyFile string) func(*Client) {
+	return func(c *Client) {
+		c.caFile = caFile
+		c.certFile = certFile
+		c.keyFile = keyFile
+	}
+}
+
+func WithClientCert(certFile, keyFile string) func(*Client) {
+	return func(c *Client) {
+		c.certFile = certFile
+		c.keyFile = keyFile
+	}
+}
+func WithCACert(caFile string) func(*Client) {
+	return func(c *Client) {
+		c.caFile = caFile
+	}
+}
+
+func WithDefaultRegion(region string) func(*Client) {
+	return func(c *Client) {
+		c.region = region
+	}
+}
+
+func WithDefaultNamespace(ns string) func(*Client) {
+	return func(c *Client) {
+		c.namespace = ns
+	}
+}
+
+func WithTLSServerName(n string) func(*Client) {
+	return func(c *Client) {
+		c.tlsServerName = n
+	}
+}
+
+func WithTLSSkipVerify() func(*Client) {
+	return func(c *Client) {
+		c.tlsSkipVerify = true
+	}
+}
+
+func NewClient(opts ...ClientOption) (*Client, error) {
+	c := &Client{
+		configuration: client.NewConfiguration(),
 	}
 
-	// Parse the URL so we can extract scheme and port
-	nomadURL, err := url.Parse(nomadAddr)
+	for _, option := range opts {
+		option(c)
+	}
+
+	err := c.configureAddress()
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Client{}
+	c.configureRegion()
+
+	c.configureAuth()
+
+	err = c.configureTLS()
+	if err != nil {
+		return nil, err
+	}
+
+	c.apiClient = client.NewAPIClient(c.configuration)
+
+	return c, nil
+}
+
+func (c *Client) configureAddress() error {
+	if c.address == "" {
+		c.address = os.Getenv(EnvNomadAddr)
+		// Set to the dev agent default if empty
+		if c.address == "" {
+			c.address = DefaultAddress
+		}
+	}
+
+	// Parse the URL so we can extract scheme and port
+	nomadURL, err := url.Parse(c.address)
+	if err != nil {
+		return err
+	}
 
 	c.Ctx = context.WithValue(context.Background(), client.ContextServerVariables, map[string]string{
 		"scheme":  nomadURL.Scheme,
 		"address": nomadURL.Hostname(),
 		"port":    nomadURL.Port(),
 	})
-
-	err = configureAuth(configuration)
-	if err != nil {
-		return nil, err
-	}
-
-	c.apiClient = client.NewAPIClient(configuration)
-
-	return c, nil
-}
-
-func configureAuth(configuration *client.Configuration) error {
-	nomadToken := os.Getenv("NOMAD_TOKEN")
-	// If environment has a NOMAD_TOKEN, set that in the header
-	if nomadToken != "" {
-		configuration.DefaultHeader["X-Nomad-Token"] = nomadToken
-	}
-
-	err := configureTLS(configuration)
-	if err != nil {
-		return err
-	}
 	return nil
 }
 
+func (c *Client) configureAuth() {
+	if c.token == "" {
+		// If token is unset on the client, attempt to fetch it from the env.
+		c.token = os.Getenv(EnvNomadToken)
+	}
+
+	if c.token != "" {
+		c.configuration.DefaultHeader["X-Nomad-Token"] = c.token
+	}
+}
+
+func (c *Client) configureRegion() {
+	if c.region == "" {
+		c.region = os.Getenv(EnvNomadRegion)
+		if c.region == "" {
+			c.region = GlobalRegion
+		}
+	}
+}
+
 // Configures TLS if the client environment contains TLS configuration settings.
-func configureTLS(configuration *client.Configuration) error {
-	tlsConfig, err := tlsConfigFromEnv()
+func (c *Client) configureTLS() error {
+	var err error
+
+	tlsConfig, err := c.makeTLSConfig()
+
 	if err != nil {
 		return err
 	}
@@ -83,11 +179,13 @@ func configureTLS(configuration *client.Configuration) error {
 
 	// throw error if the environment is configured for TLS, but the HTTPClient
 	// is already set.
-	if configuration.HTTPClient != nil {
+	if c.configuration.HTTPClient != nil {
 		return errors.New("client HTTPClient is already configured")
 	}
 
-	configuration.HTTPClient = &http.Client{
+	tlsConfig.InsecureSkipVerify = c.tlsSkipVerify
+
+	c.configuration.HTTPClient = &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: tlsConfig,
 		},
@@ -96,43 +194,72 @@ func configureTLS(configuration *client.Configuration) error {
 	return nil
 }
 
-func tlsConfigFromEnv() (*tls.Config, error) {
-	serverCertPath := os.Getenv("NOMAD_CACERT")
-	clientCertPath := os.Getenv("NOMAD_CLIENT_CERT")
-	clientKeyPath := os.Getenv("NOMAD_CLIENT_KEY")
+func (c *Client) makeTLSConfig() (*tls.Config, error) {
+	if c.caFile == "" {
+		c.caFile = os.Getenv(EnvNomadCACert)
+	}
+	if c.certFile == "" {
+		c.certFile = os.Getenv(EnvNomadClientCert)
+	}
+	if c.keyFile == "" {
+		c.keyFile = os.Getenv(EnvNomadClientKey)
+	}
 
 	// If environment is not configured for TLS, return
-	if serverCertPath == "" || clientCertPath == "" || clientKeyPath == "" {
+	if c.caFile == "" || c.certFile == "" || c.keyFile == "" {
 		return nil, nil
 	}
 
+	return c.tlsConfig()
+}
+
+func (c *Client) tlsConfig() (*tls.Config, error) {
 	cfg := &tls.Config{}
 
 	// Load the certificate authority certificate bytes
-	serverCertBytes, err := os.ReadFile(serverCertPath)
+	serverCABytes, err := os.ReadFile(c.caFile)
 	if err != nil {
-		return nil, fmt.Errorf("error reading NOMAD_CACERT: %v", err)
+		return nil, fmt.Errorf("error reading CA certificate: %w", err)
 	}
 
 	// Load a client certificate from the client settings
-	clientCert, err := tls.LoadX509KeyPair(clientCertPath, clientKeyPath)
+	clientCert, err := tls.LoadX509KeyPair(c.certFile, c.keyFile)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error loading key pair: %w", err)
 	}
 
 	// Set the root CA from the server cert
 	cfg.RootCAs = x509.NewCertPool()
-	cfg.RootCAs.AppendCertsFromPEM(serverCertBytes)
+	cfg.RootCAs.AppendCertsFromPEM(serverCABytes)
 	// Set the client certificate
 	cfg.Certificates = []tls.Certificate{clientCert}
 
-	cfg.ServerName = "server.global.nomad"
-	region := os.Getenv("NOMAD_REGION")
-	if region != "" {
-		cfg.ServerName = fmt.Sprintf("server.%s.nomad", region)
+	cfg.ServerName = fmt.Sprintf("server.%s.nomad", c.region)
+	if c.tlsServerName != "" {
+		cfg.ServerName = c.tlsServerName
 	}
 
 	return cfg, nil
+}
+
+// QueryOpts creates a new QueryOpts struct with defaults populated
+// from the current client configuration
+func (c *Client) QueryOpts() *QueryOpts {
+	return &QueryOpts{
+		Region:    c.region,
+		Namespace: c.namespace,
+		AuthToken: c.token,
+	}
+}
+
+// WriteOpts creates a new WriteOpts struct with defaults populated
+// from the current client configuration
+func (c *Client) WriteOpts() *WriteOpts {
+	return &WriteOpts{
+		Region:    c.region,
+		Namespace: c.namespace,
+		AuthToken: c.token,
+	}
 }
 
 // ExecQuery executes a request that returns query metadata.
@@ -371,8 +498,8 @@ func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interfa
 	}
 
 	// TODO: Handle extra params
-	//if c.config.Params != nil {
-	//}
+	// if c.config.Params != nil {
+	// }
 
 	return iface
 }
@@ -665,6 +792,19 @@ const (
 
 	// PeriodicSpecCron is used for a cron spec.
 	PeriodicSpecCron = "cron"
+
+	// Constants for the Nomad environment variable names.
+	EnvNomadAddr       = "NOMAD_ADDR"
+	EnvNomadCACert     = "NOMAD_CACERT"
+	EnvNomadClientCert = "NOMAD_CLIENT_CERT"
+	EnvNomadClientKey  = "NOMAD_CLIENT_KEY"
+	EnvNomadNamespace  = "NOMAD_NAMESPACE"
+	EnvNomadRegion     = "NOMAD_REGION"
+	EnvNomadToken      = "NOMAD_TOKEN"
+
+	// DefaultAddress is the default address for a Nomad cluster. This is used
+	// when no address is provided to the client.
+	DefaultAddress = "http://127.0.0.1:4646"
 
 	// DefaultNamespace is the default namespace.
 	DefaultNamespace = "default"

@@ -55,8 +55,8 @@ func httpTests(t *testing.T, cb func(c *agent.Config), tests ...APITestCase) {
 }
 
 func NewTestClient(testAgent *agent.TestAgent) (*Client, error) {
-	os.Setenv("NOMAD_ADDR", fmt.Sprintf("http://%s:%d", testAgent.Config.BindAddr, testAgent.Config.Ports.HTTP))
-	defer os.Setenv("NOMAD_ADDR", "http://127.0.0.1:4646")
+	os.Setenv(EnvNomadAddr, fmt.Sprintf("http://%s:%d", testAgent.Config.BindAddr, testAgent.Config.Ports.HTTP))
+	defer os.Setenv(EnvNomadAddr, "http://127.0.0.1:4646")
 
 	return NewClient()
 }
@@ -97,14 +97,15 @@ func TestTLSEnabled(t *testing.T) {
 	}
 	httpTests(t, enableTLS,
 		APITestCase{"ConfigFromEnv", testConfigFromEnv},
+		APITestCase{"ConfigFromArgs", testConfigFromArgs},
 	)
 }
 
 func testConfigFromEnv(t *testing.T, s *agent.TestAgent) {
-	t.Setenv("NOMAD_CACERT", mTLSFixturePath("client", "cafile"))
-	t.Setenv("NOMAD_CLIENT_CERT", mTLSFixturePath("client", "certfile"))
-	t.Setenv("NOMAD_CLIENT_KEY", mTLSFixturePath("client", "keyfile"))
-	t.Setenv("NOMAD_ADDR", s.HTTPAddr())
+	t.Setenv(EnvNomadCACert, mTLSFixturePath("client", "cafile"))
+	t.Setenv(EnvNomadClientCert, mTLSFixturePath("client", "certfile"))
+	t.Setenv(EnvNomadClientKey, mTLSFixturePath("client", "keyfile"))
+	t.Setenv(EnvNomadAddr, s.HTTPAddr())
 	client, err := NewClient()
 	require.NoError(t, err)
 
@@ -115,6 +116,28 @@ func testConfigFromEnv(t *testing.T, s *agent.TestAgent) {
 	result, err := client.Status().Leader(q.Ctx())
 	require.NoError(t, err)
 	t.Logf("result: %q\n", *result)
+	require.NotNil(t, result)
+}
+
+func testConfigFromArgs(t *testing.T, s *agent.TestAgent) {
+	client, err := NewClient(
+		WithTLSCerts(
+			mTLSFixturePath("client", "cafile"),
+			mTLSFixturePath("client", "certfile"),
+			mTLSFixturePath("client", "keyfile"),
+		),
+		WithAddress(s.HTTPAddr()),
+	)
+
+	require.NoError(t, err)
+
+	q := &QueryOpts{
+		Region:    globalRegion,
+		Namespace: defaultNamespace,
+	}
+	result, err := client.Status().Leader(q.Ctx())
+	t.Logf("result: %q", *result)
+	require.NoError(t, err)
 	require.NotNil(t, result)
 }
 
