@@ -14,101 +14,99 @@ func Int32ToPtr(i int32) *int32 {
 	return &i
 }
 
-func TestGetOperatorRaftConfiguration(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
-
-		result, err := testClient.Operator().Raft(queryOpts.Ctx())
-		require.NoError(t, err)
-		require.NotNil(t, result)
-	})
+func TestOperator(t *testing.T) {
+	httpTests(t, nil,
+		APITestCase{"GetOperatorRaftConfiguration", testGetOperatorRaftConfiguration},
+		APITestCase{"DeleteOperatorRaftPeer", testDeleteOperatorRaftPeer},
+		APITestCase{"GetAutopilotConfiguration", testGetAutopilotConfiguration},
+		APITestCase{"PutAutopilotConfiguration", testPutAutopilotConfiguration},
+		APITestCase{"GetAutopilotHealth", testGetAutopilotHealth},
+		APITestCase{"GetSchedulerConfiguration", testGetSchedulerConfiguration},
+		APITestCase{"PostSchedulerConfiguration", testPostSchedulerConfiguration},
+	)
 }
 
-func TestDeleteOperatorRaftPeer(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testGetOperatorRaftConfiguration(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		err = testClient.Operator().Peer(writeOpts.Ctx())
-		require.Error(t, err, "Must specify either ?id with the server's ID or ?address with IP:port of peer to remove")
-	})
+	result, err := testClient.Operator().Raft(queryOpts.Ctx())
+	require.NoError(t, err)
+	require.NotNil(t, result)
 }
 
-func TestGetAutopilotConfiguration(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testDeleteOperatorRaftPeer(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		result, err := testClient.Operator().Autopilot(queryOpts.Ctx())
-		require.NoError(t, err)
-		require.NotNil(t, result)
-	})
+	err = testClient.Operator().Peer(writeOpts.Ctx())
+	require.Error(t, err, "Must specify either ?id with the server's ID or ?address with IP:port of peer to remove")
 }
 
-func TestPutAutopilotConfiguration(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testGetAutopilotConfiguration(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		autopilotOpts := &client.AutopilotConfiguration{
-			CleanupDeadServers:      helper.BoolToPtr(true),
-			LastContactThreshold:    helper.StringToPtr("200ms"),
-			MaxTrailingLogs:         Int32ToPtr(250),
-			ServerStabilizationTime: helper.StringToPtr("10s"),
-			EnableRedundancyZones:   helper.BoolToPtr(false),
-			DisableUpgradeMigration: helper.BoolToPtr(false),
-			EnableCustomUpgrades:    helper.BoolToPtr(false),
-		}
-
-		result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)
-		require.NoError(t, err)
-		require.NotNil(t, result)
-	})
+	result, err := testClient.Operator().Autopilot(queryOpts.Ctx())
+	require.NoError(t, err)
+	require.NotNil(t, result)
 }
 
-func TestGetAutopilotHealth(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testPutAutopilotConfiguration(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		result, err := testClient.Operator().AutopilotHealth(queryOpts.Ctx())
-		require.Error(t, err, "all servers must have raft_protocol set to 3 or higher to use this endpoint")
-		require.Nil(t, result)
-	})
+	autopilotOpts := &client.AutopilotConfiguration{
+		CleanupDeadServers:      helper.BoolToPtr(true),
+		LastContactThreshold:    helper.StringToPtr("200ms"),
+		MaxTrailingLogs:         Int32ToPtr(250),
+		ServerStabilizationTime: helper.StringToPtr("10s"),
+		EnableRedundancyZones:   helper.BoolToPtr(false),
+		DisableUpgradeMigration: helper.BoolToPtr(false),
+		EnableCustomUpgrades:    helper.BoolToPtr(false),
+	}
+
+	result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)
+	require.NoError(t, err)
+	require.NotNil(t, result)
 }
 
-func TestGetSchedulerConfiguration(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testGetAutopilotHealth(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		result, meta, err := testClient.Operator().Scheduler(queryOpts.Ctx())
-		require.NoError(t, err)
-		require.NotNil(t, meta)
-		require.NotNil(t, result)
-	})
+	result, err := testClient.Operator().AutopilotHealth(queryOpts.Ctx())
+	require.Error(t, err, "all servers must have raft_protocol set to 3 or higher to use this endpoint")
+	require.Nil(t, result)
 }
 
-func TestPostSchedulerConfiguration(t *testing.T) {
-	httpTest(t, nil, func(s *agent.TestAgent) {
-		testClient, err := NewTestClient(s)
-		require.NoError(t, err)
+func testGetSchedulerConfiguration(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
 
-		schedulerOpts := &client.SchedulerConfiguration{
-			SchedulerAlgorithm:            helper.StringToPtr("spread"),
-			MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
-			PreemptionConfig: &client.PreemptionConfig{
-				BatchSchedulerEnabled:    helper.BoolToPtr(true),
-				ServiceSchedulerEnabled:  helper.BoolToPtr(true),
-				SysBatchSchedulerEnabled: helper.BoolToPtr(true),
-				SystemSchedulerEnabled:   helper.BoolToPtr(true),
-			},
-		}
+	result, meta, err := testClient.Operator().Scheduler(queryOpts.Ctx())
+	require.NoError(t, err)
+	require.NotNil(t, meta)
+	require.NotNil(t, result)
+}
 
-		result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), schedulerOpts)
-		require.NoError(t, err)
-		require.NotNil(t, meta)
-		require.NotNil(t, result)
-	})
+func testPostSchedulerConfiguration(t *testing.T, s *agent.TestAgent) {
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
+
+	schedulerOpts := &client.SchedulerConfiguration{
+		SchedulerAlgorithm:            helper.StringToPtr("spread"),
+		MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
+		PreemptionConfig: &client.PreemptionConfig{
+			BatchSchedulerEnabled:    helper.BoolToPtr(true),
+			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
+			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
+			SystemSchedulerEnabled:   helper.BoolToPtr(true),
+		},
+	}
+
+	result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), schedulerOpts)
+	require.NoError(t, err)
+	require.NotNil(t, meta)
+	require.NotNil(t, result)
 }

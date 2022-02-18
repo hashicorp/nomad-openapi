@@ -308,7 +308,7 @@ func (c *Client) ExecNoResponseRequest(_ context.Context, request interface{}) e
 // setQueryOptions is used to annotate the request with
 // additional query options
 func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interface{} {
-	opts, ok := ctx.Value("QueryOpts").(*QueryOpts)
+	opts, ok := ctx.Value(contextKeyQueryOpts).(*QueryOpts)
 	if !ok || opts == nil {
 		return iface
 	}
@@ -379,7 +379,7 @@ func (c *Client) setQueryOptions(ctx context.Context, iface interface{}) interfa
 
 // setWriteOptions is used to annotate an openapi request with additional write options.
 func (c *Client) setWriteOptions(ctx context.Context, iface interface{}) interface{} {
-	opts, ok := ctx.Value("WriteOpts").(*WriteOpts)
+	opts, ok := ctx.Value(contextKeyWriteOpts).(*WriteOpts)
 	if !ok || opts == nil {
 		return iface
 	}
@@ -505,7 +505,7 @@ func (q *QueryOpts) WithAllowStale(allowStale bool) *QueryOpts {
 }
 
 func (q *QueryOpts) Ctx() context.Context {
-	return context.WithValue(context.Background(), "QueryOpts", q)
+	return context.WithValue(context.Background(), contextKeyQueryOpts, q)
 }
 
 // WriteOpts are used to parametrize a write operation
@@ -553,7 +553,7 @@ func (w *WriteOpts) WithIdempotencyToken(idempotencyToken string) *WriteOpts {
 }
 
 func (w *WriteOpts) Ctx() context.Context {
-	return context.WithValue(context.Background(), "WriteOpts", w)
+	return context.WithValue(context.Background(), contextKeyWriteOpts, w)
 }
 
 // QueryMeta is used to return metadata about a query
@@ -639,18 +639,19 @@ func parseWriteMeta(resp *http.Response) (*WriteMeta, error) {
 	return &WriteMeta{LastIndex: index}, nil
 }
 
-// durToMsec converts a duration to a millisecond specified string
-func durToMsec(dur time.Duration) string {
-	return fmt.Sprintf("%dms", dur/time.Millisecond)
-}
+// NOTE: this is currently deadcode. Commenting it out to keep the linter happy.
+// // durToMsec converts a duration to a millisecond specified string
+// func durToMsec(dur time.Duration) string {
+// 	return fmt.Sprintf("%dms", dur/time.Millisecond)
+// }
 
-func headerByKey(resp *http.Response, key string) (string, error) {
-	h := resp.Header.Get(key)
-	if len(h) == 0 {
-		return "", errors.New("key not found")
-	}
-	return h, nil
-}
+// func headerByKey(resp *http.Response, key string) (string, error) {
+// 	h := resp.Header.Get(key)
+// 	if len(h) == 0 {
+// 		return "", errors.New("key not found")
+// 	}
+// 	return h, nil
+// }
 
 const (
 	// JobTypeService indicates a long-running processes
@@ -711,6 +712,17 @@ const (
 
 	// IdempotencyTokenKey can be used to prevent hard coded string key accessor errors
 	IdempotencyTokenKey = "IdempotencyToken"
+)
+
+type contextKey string
+
+func (c contextKey) String() string {
+	return "nomad-openapi " + string(c)
+}
+
+var (
+	contextKeyQueryOpts = contextKey("QueryOpts")
+	contextKeyWriteOpts = contextKey("WriteOpts")
 )
 
 // cronParseNext is a helper that parses the next time for the given expression
