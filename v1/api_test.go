@@ -2,7 +2,6 @@ package v1
 
 import (
 	"fmt"
-	"os"
 	"path"
 	"testing"
 	"time"
@@ -55,10 +54,7 @@ func httpTests(t *testing.T, cb func(c *agent.Config), tests ...APITestCase) {
 }
 
 func NewTestClient(testAgent *agent.TestAgent) (*Client, error) {
-	os.Setenv(EnvNomadAddr, fmt.Sprintf("http://%s:%d", testAgent.Config.BindAddr, testAgent.Config.Ports.HTTP))
-	defer os.Setenv(EnvNomadAddr, "http://127.0.0.1:4646")
-
-	return NewClient()
+	return NewClient(WithAddress(testAgent.HTTPAddr()))
 }
 
 func TestSetQueryOptions(t *testing.T) {
