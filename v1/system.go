@@ -18,7 +18,7 @@ func (s *System) SystemApi() *client.SystemApiService {
 	return s.client.apiClient.SystemApi
 }
 
-func (s *System) GarbageCollect(ctx context.Context) error {
+func (s *System) GarbageCollect(ctx context.Context) OpenAPIError {
 	request := s.SystemApi().PutSystemGC(s.client.Ctx)
 
 	err := s.client.ExecNoResponseRequest(ctx, request)
@@ -29,7 +29,7 @@ func (s *System) GarbageCollect(ctx context.Context) error {
 	return nil
 }
 
-func (s *System) Reconcile(ctx context.Context) error {
+func (s *System) Reconcile(ctx context.Context) OpenAPIError {
 	request := s.SystemApi().PutSystemReconcileSummaries(s.client.Ctx)
 
 	err := s.client.ExecNoResponseRequest(ctx, request)

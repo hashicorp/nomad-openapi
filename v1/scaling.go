@@ -2,7 +2,6 @@ package v1
 
 import (
 	"context"
-	"errors"
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
@@ -19,7 +18,7 @@ func (s *Scaling) ScalingApi() *client.ScalingApiService {
 	return s.client.apiClient.ScalingApi
 }
 
-func (s *Scaling) Policies(ctx context.Context) (*[]client.ScalingPolicyListStub, *QueryMeta, error) {
+func (s *Scaling) Policies(ctx context.Context) (*[]client.ScalingPolicyListStub, *QueryMeta, OpenAPIError) {
 	request := s.ScalingApi().GetScalingPolicies(s.client.Ctx)
 	result, meta, err := s.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -30,9 +29,9 @@ func (s *Scaling) Policies(ctx context.Context) (*[]client.ScalingPolicyListStub
 	return &final, meta, nil
 }
 
-func (s *Scaling) GetPolicy(ctx context.Context, policyID string) (*client.ScalingPolicy, *QueryMeta, error) {
+func (s *Scaling) GetPolicy(ctx context.Context, policyID string) (*client.ScalingPolicy, *QueryMeta, OpenAPIError) {
 	if policyID == "" {
-		return nil, nil, errors.New("scaling policy id is required")
+		return nil, nil, &APIError{error: "scaling policy id is required"}
 	}
 
 	request := s.ScalingApi().GetScalingPolicy(s.client.Ctx, policyID)

@@ -2,7 +2,6 @@ package v1
 
 import (
 	"context"
-	"errors"
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
@@ -19,7 +18,7 @@ func (d *Deployments) DeploymentsApi() *client.DeploymentsApiService {
 	return d.client.apiClient.DeploymentsApi
 }
 
-func (d *Deployments) Deployments(ctx context.Context) (*[]client.Deployment, *QueryMeta, error) {
+func (d *Deployments) Deployments(ctx context.Context) (*[]client.Deployment, *QueryMeta, OpenAPIError) {
 	request := d.DeploymentsApi().GetDeployments(d.client.Ctx)
 	result, meta, err := d.client.ExecQuery(ctx, request)
 	if err != nil {
@@ -30,9 +29,9 @@ func (d *Deployments) Deployments(ctx context.Context) (*[]client.Deployment, *Q
 	return &final, meta, nil
 }
 
-func (d *Deployments) GetDeployment(ctx context.Context, deploymentID string) (*client.Deployment, *QueryMeta, error) {
+func (d *Deployments) GetDeployment(ctx context.Context, deploymentID string) (*client.Deployment, *QueryMeta, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, nil, errors.New("deployment id is required")
+		return nil, nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().GetDeployment(d.client.Ctx, deploymentID)
@@ -45,9 +44,9 @@ func (d *Deployments) GetDeployment(ctx context.Context, deploymentID string) (*
 	return &final, meta, nil
 }
 
-func (d *Deployments) Allocations(ctx context.Context, deploymentID string) (*[]client.AllocationListStub, *QueryMeta, error) {
+func (d *Deployments) Allocations(ctx context.Context, deploymentID string) (*[]client.AllocationListStub, *QueryMeta, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, nil, errors.New("deployment id is required")
+		return nil, nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().GetDeploymentAllocations(d.client.Ctx, deploymentID)
@@ -60,24 +59,24 @@ func (d *Deployments) Allocations(ctx context.Context, deploymentID string) (*[]
 	return &final, meta, nil
 }
 
-func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, errors.New("deployment id is required")
+		return nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().PostDeploymentFail(d.client.Ctx, deploymentID)
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
 }
 
-func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool) (*client.DeploymentUpdateResponse, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, errors.New("deployment id is required")
+		return nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().PostDeploymentPause(d.client.Ctx, deploymentID)
@@ -90,16 +89,16 @@ func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
 }
 
-func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool, groups []string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool, groups []string) (*client.DeploymentUpdateResponse, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, errors.New("deployment id is required")
+		return nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().PostDeploymentPromote(d.client.Ctx, deploymentID)
@@ -113,16 +112,16 @@ func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
 }
 
-func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string, healthyallocs []string, unhealthyallocs []string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string, healthyallocs []string, unhealthyallocs []string) (*client.DeploymentUpdateResponse, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, errors.New("deployment id is required")
+		return nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().PostDeploymentAllocationHealth(d.client.Ctx, deploymentID)
@@ -136,16 +135,16 @@ func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string,
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
 	return &final, nil
 }
 
-func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, error) {
+func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, OpenAPIError) {
 	if deploymentID == "" {
-		return nil, errors.New("deployment id is required")
+		return nil, &APIError{error: "deployment id is required"}
 	}
 
 	request := d.DeploymentsApi().PostDeploymentUnblock(d.client.Ctx, deploymentID)
@@ -157,7 +156,7 @@ func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)

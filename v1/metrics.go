@@ -18,7 +18,7 @@ func (m *Metrics) MetricsApi() *client.MetricsApiService {
 	return m.client.apiClient.MetricsApi
 }
 
-func (m *Metrics) GetMetricsSummary(ctx context.Context) (*client.MetricsSummary, error) {
+func (m *Metrics) GetMetricsSummary(ctx context.Context) (*client.MetricsSummary, OpenAPIError) {
 	request := m.MetricsApi().GetMetricsSummary(m.client.Ctx)
 
 	result, err := m.client.ExecRequest(ctx, request)

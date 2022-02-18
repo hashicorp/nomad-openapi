@@ -18,24 +18,24 @@ func (s *Status) StatusApi() *client.StatusApiService {
 	return s.client.apiClient.StatusApi
 }
 
-func (s *Status) Leader(ctx context.Context) (*string, error) {
+func (s *Status) Leader(ctx context.Context) (*string, OpenAPIError) {
 	request := s.StatusApi().GetStatusLeader(s.client.Ctx)
 
 	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(string)
 	return &final, nil
 }
 
-func (s *Status) Peers(ctx context.Context) (*[]string, error) {
+func (s *Status) Peers(ctx context.Context) (*[]string, OpenAPIError) {
 	request := s.StatusApi().GetStatusPeers(s.client.Ctx)
 
 	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.([]string)
