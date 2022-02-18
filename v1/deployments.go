@@ -67,7 +67,7 @@ func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.De
 	request := d.DeploymentsApi().PostDeploymentFail(d.client.Ctx, deploymentID)
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
@@ -89,7 +89,7 @@ func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
@@ -112,7 +112,7 @@ func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
@@ -135,7 +135,7 @@ func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string,
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)
@@ -156,7 +156,7 @@ func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client
 
 	result, err := d.client.ExecNoMetaWrite(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(client.DeploymentUpdateResponse)

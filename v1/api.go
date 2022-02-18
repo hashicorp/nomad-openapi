@@ -66,13 +66,7 @@ func (e APIError) Model() interface{} {
 	return e.model
 }
 
-func NewClient() (*Client, error) {
-	nomadAddr := os.Getenv("NOMAD_ADDR")
-	configuration := client.NewConfiguration()
-}
-
 type ClientOption func(*Client)
-
 
 // WithAddress
 func WithAddress(address string) func(*Client) {

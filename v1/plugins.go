@@ -22,7 +22,7 @@ func (p *Plugins) Get(ctx context.Context) (*[]client.CSIPluginListStub, OpenAPI
 	request := p.PluginsApi().GetPlugins(p.client.Ctx)
 	result, err := p.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.([]client.CSIPluginListStub)
@@ -37,7 +37,7 @@ func (p *Plugins) GetPlugin(ctx context.Context, pluginID string) (*[]client.CSI
 	request := p.PluginsApi().GetPluginCSI(p.client.Ctx, pluginID)
 	result, meta, err := p.client.ExecQuery(ctx, request)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, &APIError{error: err.Error()}
 	}
 
 	final := result.([]client.CSIPlugin)

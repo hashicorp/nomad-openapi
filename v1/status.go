@@ -23,7 +23,7 @@ func (s *Status) Leader(ctx context.Context) (*string, OpenAPIError) {
 
 	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.(string)
@@ -35,7 +35,7 @@ func (s *Status) Peers(ctx context.Context) (*[]string, OpenAPIError) {
 
 	result, err := s.client.ExecNoMetaQuery(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, &APIError{error: err.Error()}
 	}
 
 	final := result.([]string)
