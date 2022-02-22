@@ -1,8 +1,10 @@
 package v1
 
 import (
+	"errors"
 	"fmt"
 	"path"
+	"reflect"
 	"testing"
 	"time"
 
@@ -55,6 +57,48 @@ func httpTests(t *testing.T, cb func(c *agent.Config), tests ...APITestCase) {
 
 func NewTestClient(testAgent *agent.TestAgent) (*Client, error) {
 	return NewClient(WithAddress(testAgent.HTTPAddr()))
+}
+func Test_MakeAPIError(t *testing.T) {
+	testcases := []struct {
+		name              string
+		input             interface{}
+		expectErrContains string
+	}{
+		{
+			name:              "good error",
+			input:             errors.New("test error"),
+			expectErrContains: "test error",
+		},
+		{
+			name:              "string",
+			input:             "foo",
+			expectErrContains: "Received non-error value",
+		},
+		{
+			name:              "empty string",
+			input:             "",
+			expectErrContains: "Received non-error value",
+		},
+		{
+			name:              "string slice",
+			input:             []string{"a", "b"},
+			expectErrContains: "Received non-error value",
+		},
+		{
+			name:              "nil",
+			input:             nil,
+			expectErrContains: "Received invalid value",
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			v := reflect.ValueOf(tc.input)
+			apiErr := MakeAPIError([]reflect.Value{v})
+			require.Error(t, apiErr)
+			require.Contains(t, apiErr.Error(), tc.expectErrContains)
+		})
+	}
 }
 
 func TestSetQueryOptions(t *testing.T) {

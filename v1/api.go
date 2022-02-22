@@ -688,11 +688,26 @@ func (q *QueryOpts) Ctx() context.Context {
 
 func MakeAPIError(values []reflect.Value) *APIError {
 	errIdx := len(values) - 1
-	if values[errIdx].IsNil() {
-		return nil
+	eV := values[errIdx]
+
+	if !eV.IsValid() {
+		return &APIError{
+			error: fmt.Sprintf("Received invalid value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
 	}
 
-	v := values[errIdx].Interface().(error)
+	if !eV.CanInterface() {
+		return &APIError{
+			error: fmt.Sprintf("Received non-interface value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
+	}
+
+	v, ok := eV.Interface().(error)
+	if !ok {
+		return &APIError{
+			error: fmt.Sprintf("Received non-error value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
+	}
 
 	var ge client.GenericOpenAPIError
 	if errors.As(v, &ge) {
