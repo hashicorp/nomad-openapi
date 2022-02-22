@@ -53,12 +53,21 @@ type APIError struct {
 
 // Error returns non-empty string if there was an error.
 func (e APIError) Error() string {
+	if len(e.body) > 0 {
+		return string(e.body)
+	}
+	// fallback to status code and status description when no body.
 	return e.error
 }
 
 // Body returns the raw bytes of the response
 func (e APIError) Body() []byte {
 	return e.body
+}
+
+// Status returns the status code and status text of the HTTP error.
+func (e APIError) Status() string {
+	return e.error
 }
 
 // Model returns the unpacked model of the error
@@ -312,9 +321,8 @@ func (c *Client) ExecQuery(ctx context.Context, request interface{}) (interface{
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, nil, &APIError{
-			error: values[2].Interface().(error).Error(),
-		}
+		apiErr := MakeAPIError(values)
+		return nil, nil, apiErr
 	}
 
 	result := values[0].Interface()
@@ -343,7 +351,8 @@ func (c *Client) ExecNoMetaQuery(ctx context.Context, request interface{}) (inte
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, values[2].Interface().(error)
+		apiErr := MakeAPIError(values)
+		return nil, apiErr
 	}
 
 	result := values[0].Interface()
@@ -366,9 +375,8 @@ func (c *Client) ExecWrite(ctx context.Context, request interface{}) (interface{
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, nil, &APIError{
-			error: values[2].Interface().(error).Error(),
-		}
+		apiErr := MakeAPIError(values)
+		return nil, nil, apiErr
 	}
 
 	result := values[0].Interface()
@@ -427,7 +435,8 @@ func (c *Client) ExecNoMetaWrite(ctx context.Context, request interface{}) (inte
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, values[2].Interface().(error)
+		apiErr := MakeAPIError(values)
+		return nil, apiErr
 	}
 
 	result := values[0].Interface()
@@ -447,9 +456,8 @@ func (c *Client) ExecRequest(_ context.Context, request interface{}) (interface{
 
 	values := valueOf.MethodByName("Execute").Call([]reflect.Value{})
 	if !values[2].IsNil() {
-		return nil, &APIError{
-			error: values[2].Interface().(error).Error(),
-		}
+		apiErr := MakeAPIError(values)
+		return nil, apiErr
 	}
 
 	result := values[0].Interface()
@@ -676,6 +684,43 @@ func (q *QueryOpts) WithAllowStale(allowStale bool) *QueryOpts {
 
 func (q *QueryOpts) Ctx() context.Context {
 	return context.WithValue(context.Background(), contextKeyQueryOpts, q)
+}
+
+func MakeAPIError(values []reflect.Value) *APIError {
+	errIdx := len(values) - 1
+	eV := values[errIdx]
+
+	if !eV.IsValid() {
+		return &APIError{
+			error: fmt.Sprintf("Received invalid value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
+	}
+
+	if !eV.CanInterface() {
+		return &APIError{
+			error: fmt.Sprintf("Received non-interface value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
+	}
+
+	v, ok := eV.Interface().(error)
+	if !ok {
+		return &APIError{
+			error: fmt.Sprintf("Received non-error value in error position. This is an API bug. value: %v", values[errIdx]),
+		}
+	}
+
+	var ge client.GenericOpenAPIError
+	if errors.As(v, &ge) {
+		return &APIError{
+			error: ge.Error(),
+			body:  ge.Body(),
+			model: ge.Model(),
+		}
+	}
+
+	return &APIError{
+		error: v.Error(),
+	}
 }
 
 // WriteOpts are used to parametrize a write operation
