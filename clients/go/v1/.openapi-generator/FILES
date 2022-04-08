@@ -50,6 +50,7 @@ docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
 docs/CSISnapshotListResponse.md
 docs/CSITopology.md
+docs/CSITopologyRequest.md
 docs/CSIVolume.md
 docs/CSIVolumeCapability.md
 docs/CSIVolumeCreateRequest.md
@@ -96,12 +97,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
 docs/JobChildrenSummary.md
@@ -133,6 +136,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -220,6 +224,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 model_acl_policy.go
 model_acl_policy_list_stub.go
 model_acl_token.go
@@ -267,6 +272,7 @@ model_csi_snapshot_create_request.go
 model_csi_snapshot_create_response.go
 model_csi_snapshot_list_response.go
 model_csi_topology.go
+model_csi_topology_request.go
 model_csi_volume.go
 model_csi_volume_capability.go
 model_csi_volume_create_request.go
@@ -292,11 +298,13 @@ model_driver_info.go
 model_ephemeral_disk.go
 model_eval_options.go
 model_evaluation.go
+model_evaluation_stub.go
 model_field_diff.go
 model_fuzzy_match.go
 model_fuzzy_search_request.go
 model_fuzzy_search_response.go
 model_gauge_value.go
+model_host_network_info.go
 model_host_volume_info.go
 model_job.go
 model_job_children_summary.go
@@ -326,6 +334,7 @@ model_multiregion.go
 model_multiregion_region.go
 model_multiregion_strategy.go
 model_namespace.go
+model_namespace_capabilities.go
 model_network_resource.go
 model_node.go
 model_node_cpu_resources.go
@@ -403,5 +412,6 @@ model_update_strategy.go
 model_vault.go
 model_volume_mount.go
 model_volume_request.go
+model_wait_config.go
 response.go
 utils.go

@@ -21,6 +21,7 @@ type SchedulerConfiguration struct {
 	MemoryOversubscriptionEnabled *bool `json:"MemoryOversubscriptionEnabled,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	PreemptionConfig *PreemptionConfig `json:"PreemptionConfig,omitempty"`
+	RejectJobRegistration *bool `json:"RejectJobRegistration,omitempty"`
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitempty"`
 }
 
@@ -169,6 +170,38 @@ func (o *SchedulerConfiguration) SetPreemptionConfig(v PreemptionConfig) {
 	o.PreemptionConfig = &v
 }
 
+// GetRejectJobRegistration returns the RejectJobRegistration field value if set, zero value otherwise.
+func (o *SchedulerConfiguration) GetRejectJobRegistration() bool {
+	if o == nil || o.RejectJobRegistration == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RejectJobRegistration
+}
+
+// GetRejectJobRegistrationOk returns a tuple with the RejectJobRegistration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchedulerConfiguration) GetRejectJobRegistrationOk() (*bool, bool) {
+	if o == nil || o.RejectJobRegistration == nil {
+		return nil, false
+	}
+	return o.RejectJobRegistration, true
+}
+
+// HasRejectJobRegistration returns a boolean if a field has been set.
+func (o *SchedulerConfiguration) HasRejectJobRegistration() bool {
+	if o != nil && o.RejectJobRegistration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRejectJobRegistration gets a reference to the given bool and assigns it to the RejectJobRegistration field.
+func (o *SchedulerConfiguration) SetRejectJobRegistration(v bool) {
+	o.RejectJobRegistration = &v
+}
+
 // GetSchedulerAlgorithm returns the SchedulerAlgorithm field value if set, zero value otherwise.
 func (o *SchedulerConfiguration) GetSchedulerAlgorithm() string {
 	if o == nil || o.SchedulerAlgorithm == nil {
@@ -214,6 +247,9 @@ func (o SchedulerConfiguration) MarshalJSON() ([]byte, error) {
 	}
 	if o.PreemptionConfig != nil {
 		toSerialize["PreemptionConfig"] = o.PreemptionConfig
+	}
+	if o.RejectJobRegistration != nil {
+		toSerialize["RejectJobRegistration"] = o.RejectJobRegistration
 	}
 	if o.SchedulerAlgorithm != nil {
 		toSerialize["SchedulerAlgorithm"] = o.SchedulerAlgorithm

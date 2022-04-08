@@ -17,8 +17,10 @@ import (
 
 // Namespace struct for Namespace
 type Namespace struct {
+	Capabilities *NamespaceCapabilities `json:"Capabilities,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	Description *string `json:"Description,omitempty"`
+	Meta *map[string]string `json:"Meta,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Quota *string `json:"Quota,omitempty"`
@@ -39,6 +41,38 @@ func NewNamespace() *Namespace {
 func NewNamespaceWithDefaults() *Namespace {
 	this := Namespace{}
 	return &this
+}
+
+// GetCapabilities returns the Capabilities field value if set, zero value otherwise.
+func (o *Namespace) GetCapabilities() NamespaceCapabilities {
+	if o == nil || o.Capabilities == nil {
+		var ret NamespaceCapabilities
+		return ret
+	}
+	return *o.Capabilities
+}
+
+// GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Namespace) GetCapabilitiesOk() (*NamespaceCapabilities, bool) {
+	if o == nil || o.Capabilities == nil {
+		return nil, false
+	}
+	return o.Capabilities, true
+}
+
+// HasCapabilities returns a boolean if a field has been set.
+func (o *Namespace) HasCapabilities() bool {
+	if o != nil && o.Capabilities != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCapabilities gets a reference to the given NamespaceCapabilities and assigns it to the Capabilities field.
+func (o *Namespace) SetCapabilities(v NamespaceCapabilities) {
+	o.Capabilities = &v
 }
 
 // GetCreateIndex returns the CreateIndex field value if set, zero value otherwise.
@@ -103,6 +137,38 @@ func (o *Namespace) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Namespace) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetMeta returns the Meta field value if set, zero value otherwise.
+func (o *Namespace) GetMeta() map[string]string {
+	if o == nil || o.Meta == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Meta
+}
+
+// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Namespace) GetMetaOk() (*map[string]string, bool) {
+	if o == nil || o.Meta == nil {
+		return nil, false
+	}
+	return o.Meta, true
+}
+
+// HasMeta returns a boolean if a field has been set.
+func (o *Namespace) HasMeta() bool {
+	if o != nil && o.Meta != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
+func (o *Namespace) SetMeta(v map[string]string) {
+	o.Meta = &v
 }
 
 // GetModifyIndex returns the ModifyIndex field value if set, zero value otherwise.
@@ -203,11 +269,17 @@ func (o *Namespace) SetQuota(v string) {
 
 func (o Namespace) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Capabilities != nil {
+		toSerialize["Capabilities"] = o.Capabilities
+	}
 	if o.CreateIndex != nil {
 		toSerialize["CreateIndex"] = o.CreateIndex
 	}
 	if o.Description != nil {
 		toSerialize["Description"] = o.Description
+	}
+	if o.Meta != nil {
+		toSerialize["Meta"] = o.Meta
 	}
 	if o.ModifyIndex != nil {
 		toSerialize["ModifyIndex"] = o.ModifyIndex

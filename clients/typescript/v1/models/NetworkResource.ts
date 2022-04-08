@@ -19,6 +19,7 @@ export class NetworkResource {
     'DNS'?: DNSConfig;
     'device'?: string;
     'dynamicPorts'?: Array<Port>;
+    'hostname'?: string;
     'IP'?: string;
     'mBits'?: number;
     'mode'?: string;
@@ -49,6 +50,12 @@ export class NetworkResource {
             "name": "dynamicPorts",
             "baseName": "DynamicPorts",
             "type": "Array<Port>",
+            "format": ""
+        },
+        {
+            "name": "hostname",
+            "baseName": "Hostname",
+            "type": "string",
             "format": ""
         },
         {

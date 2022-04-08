@@ -24,6 +24,7 @@ import io.nomadproject.client.models.Allocation;
 import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.CSIMountOptions;
 import io.nomadproject.client.models.CSITopology;
+import io.nomadproject.client.models.CSITopologyRequest;
 import io.nomadproject.client.models.CSIVolumeCapability;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -142,6 +143,10 @@ public class CSIVolume {
   public static final String SERIALIZED_NAME_REQUESTED_CAPACITY_MIN = "RequestedCapacityMin";
   @SerializedName(SERIALIZED_NAME_REQUESTED_CAPACITY_MIN)
   private Long requestedCapacityMin;
+
+  public static final String SERIALIZED_NAME_REQUESTED_TOPOLOGIES = "RequestedTopologies";
+  @SerializedName(SERIALIZED_NAME_REQUESTED_TOPOLOGIES)
+  private CSITopologyRequest requestedTopologies;
 
   public static final String SERIALIZED_NAME_RESOURCE_EXHAUSTED = "ResourceExhausted";
   @SerializedName(SERIALIZED_NAME_RESOURCE_EXHAUSTED)
@@ -810,6 +815,29 @@ public class CSIVolume {
   }
 
 
+  public CSIVolume requestedTopologies(CSITopologyRequest requestedTopologies) {
+    
+    this.requestedTopologies = requestedTopologies;
+    return this;
+  }
+
+   /**
+   * Get requestedTopologies
+   * @return requestedTopologies
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CSITopologyRequest getRequestedTopologies() {
+    return requestedTopologies;
+  }
+
+
+  public void setRequestedTopologies(CSITopologyRequest requestedTopologies) {
+    this.requestedTopologies = requestedTopologies;
+  }
+
+
   public CSIVolume resourceExhausted(OffsetDateTime resourceExhausted) {
     
     this.resourceExhausted = resourceExhausted;
@@ -1007,6 +1035,7 @@ public class CSIVolume {
         Objects.equals(this.requestedCapabilities, csIVolume.requestedCapabilities) &&
         Objects.equals(this.requestedCapacityMax, csIVolume.requestedCapacityMax) &&
         Objects.equals(this.requestedCapacityMin, csIVolume.requestedCapacityMin) &&
+        Objects.equals(this.requestedTopologies, csIVolume.requestedTopologies) &&
         Objects.equals(this.resourceExhausted, csIVolume.resourceExhausted) &&
         Objects.equals(this.schedulable, csIVolume.schedulable) &&
         Objects.equals(this.secrets, csIVolume.secrets) &&
@@ -1017,7 +1046,7 @@ public class CSIVolume {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessMode, allocations, attachmentMode, capacity, cloneID, context, controllerRequired, controllersExpected, controllersHealthy, createIndex, externalID, ID, modifyIndex, mountOptions, name, namespace, nodesExpected, nodesHealthy, parameters, pluginID, provider, providerVersion, readAllocs, requestedCapabilities, requestedCapacityMax, requestedCapacityMin, resourceExhausted, schedulable, secrets, snapshotID, topologies, writeAllocs);
+    return Objects.hash(accessMode, allocations, attachmentMode, capacity, cloneID, context, controllerRequired, controllersExpected, controllersHealthy, createIndex, externalID, ID, modifyIndex, mountOptions, name, namespace, nodesExpected, nodesHealthy, parameters, pluginID, provider, providerVersion, readAllocs, requestedCapabilities, requestedCapacityMax, requestedCapacityMin, requestedTopologies, resourceExhausted, schedulable, secrets, snapshotID, topologies, writeAllocs);
   }
 
   @Override
@@ -1050,6 +1079,7 @@ public class CSIVolume {
     sb.append("    requestedCapabilities: ").append(toIndentedString(requestedCapabilities)).append("\n");
     sb.append("    requestedCapacityMax: ").append(toIndentedString(requestedCapacityMax)).append("\n");
     sb.append("    requestedCapacityMin: ").append(toIndentedString(requestedCapacityMin)).append("\n");
+    sb.append("    requestedTopologies: ").append(toIndentedString(requestedTopologies)).append("\n");
     sb.append("    resourceExhausted: ").append(toIndentedString(resourceExhausted)).append("\n");
     sb.append("    schedulable: ").append(toIndentedString(schedulable)).append("\n");
     sb.append("    secrets: ").append(toIndentedString(secrets)).append("\n");

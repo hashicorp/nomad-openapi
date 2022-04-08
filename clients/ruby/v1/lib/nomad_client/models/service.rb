@@ -39,6 +39,8 @@ module NomadClient
 
     attr_accessor :port_label
 
+    attr_accessor :provider
+
     attr_accessor :tags
 
     attr_accessor :task_name
@@ -58,6 +60,7 @@ module NomadClient
         :'name' => :'Name',
         :'on_update' => :'OnUpdate',
         :'port_label' => :'PortLabel',
+        :'provider' => :'Provider',
         :'tags' => :'Tags',
         :'task_name' => :'TaskName'
       }
@@ -83,6 +86,7 @@ module NomadClient
         :'name' => :'String',
         :'on_update' => :'String',
         :'port_label' => :'String',
+        :'provider' => :'String',
         :'tags' => :'Array<String>',
         :'task_name' => :'String'
       }
@@ -165,6 +169,10 @@ module NomadClient
         self.port_label = attributes[:'port_label']
       end
 
+      if attributes.key?(:'provider')
+        self.provider = attributes[:'provider']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -206,6 +214,7 @@ module NomadClient
           name == o.name &&
           on_update == o.on_update &&
           port_label == o.port_label &&
+          provider == o.provider &&
           tags == o.tags &&
           task_name == o.task_name
     end
@@ -219,7 +228,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address_mode, canary_meta, canary_tags, check_restart, checks, connect, enable_tag_override, id, meta, name, on_update, port_label, tags, task_name].hash
+      [address_mode, canary_meta, canary_tags, check_restart, checks, connect, enable_tag_override, id, meta, name, on_update, port_label, provider, tags, task_name].hash
     end
 
     # Builds the object from hash

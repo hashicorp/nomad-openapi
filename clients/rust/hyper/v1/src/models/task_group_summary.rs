@@ -25,6 +25,8 @@ pub struct TaskGroupSummary {
     pub running: Option<i32>,
     #[serde(rename = "Starting", skip_serializing_if = "Option::is_none")]
     pub starting: Option<i32>,
+    #[serde(rename = "Unknown", skip_serializing_if = "Option::is_none")]
+    pub unknown: Option<i32>,
 }
 
 impl TaskGroupSummary {
@@ -36,6 +38,7 @@ impl TaskGroupSummary {
             queued: None,
             running: None,
             starting: None,
+            unknown: None,
         }
     }
 }

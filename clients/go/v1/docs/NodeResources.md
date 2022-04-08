@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **Cpu** | Pointer to [**NodeCpuResources**](NodeCpuResources.md) |  | [optional] 
 **Devices** | Pointer to [**[]NodeDeviceResource**](NodeDeviceResource.md) |  | [optional] 
 **Disk** | Pointer to [**NodeDiskResources**](NodeDiskResources.md) |  | [optional] 
+**MaxDynamicPort** | Pointer to **int32** |  | [optional] 
 **Memory** | Pointer to [**NodeMemoryResources**](NodeMemoryResources.md) |  | [optional] 
+**MinDynamicPort** | Pointer to **int32** |  | [optional] 
 **Networks** | Pointer to [**[]NetworkResource**](NetworkResource.md) |  | [optional] 
 
 ## Methods
@@ -104,6 +106,31 @@ SetDisk sets Disk field to given value.
 
 HasDisk returns a boolean if a field has been set.
 
+### GetMaxDynamicPort
+
+`func (o *NodeResources) GetMaxDynamicPort() int32`
+
+GetMaxDynamicPort returns the MaxDynamicPort field if non-nil, zero value otherwise.
+
+### GetMaxDynamicPortOk
+
+`func (o *NodeResources) GetMaxDynamicPortOk() (*int32, bool)`
+
+GetMaxDynamicPortOk returns a tuple with the MaxDynamicPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxDynamicPort
+
+`func (o *NodeResources) SetMaxDynamicPort(v int32)`
+
+SetMaxDynamicPort sets MaxDynamicPort field to given value.
+
+### HasMaxDynamicPort
+
+`func (o *NodeResources) HasMaxDynamicPort() bool`
+
+HasMaxDynamicPort returns a boolean if a field has been set.
+
 ### GetMemory
 
 `func (o *NodeResources) GetMemory() NodeMemoryResources`
@@ -128,6 +155,31 @@ SetMemory sets Memory field to given value.
 `func (o *NodeResources) HasMemory() bool`
 
 HasMemory returns a boolean if a field has been set.
+
+### GetMinDynamicPort
+
+`func (o *NodeResources) GetMinDynamicPort() int32`
+
+GetMinDynamicPort returns the MinDynamicPort field if non-nil, zero value otherwise.
+
+### GetMinDynamicPortOk
+
+`func (o *NodeResources) GetMinDynamicPortOk() (*int32, bool)`
+
+GetMinDynamicPortOk returns a tuple with the MinDynamicPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinDynamicPort
+
+`func (o *NodeResources) SetMinDynamicPort(v int32)`
+
+SetMinDynamicPort sets MinDynamicPort field to given value.
+
+### HasMinDynamicPort
+
+`func (o *NodeResources) HasMinDynamicPort() bool`
+
+HasMinDynamicPort returns a boolean if a field has been set.
 
 ### GetNetworks
 

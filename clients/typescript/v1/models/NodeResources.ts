@@ -21,7 +21,9 @@ export class NodeResources {
     'cpu'?: NodeCpuResources;
     'devices'?: Array<NodeDeviceResource>;
     'disk'?: NodeDiskResources;
+    'maxDynamicPort'?: number;
     'memory'?: NodeMemoryResources;
+    'minDynamicPort'?: number;
     'networks'?: Array<NetworkResource>;
 
     static readonly discriminator: string | undefined = undefined;
@@ -46,9 +48,21 @@ export class NodeResources {
             "format": ""
         },
         {
+            "name": "maxDynamicPort",
+            "baseName": "MaxDynamicPort",
+            "type": "number",
+            "format": ""
+        },
+        {
             "name": "memory",
             "baseName": "Memory",
             "type": "NodeMemoryResources",
+            "format": ""
+        },
+        {
+            "name": "minDynamicPort",
+            "baseName": "MinDynamicPort",
+            "type": "number",
             "format": ""
         },
         {

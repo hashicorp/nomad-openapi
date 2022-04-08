@@ -17,6 +17,22 @@ module NomadClient
   class CSIControllerInfo
     attr_accessor :supports_attach_detach
 
+    attr_accessor :supports_clone
+
+    attr_accessor :supports_condition
+
+    attr_accessor :supports_create_delete
+
+    attr_accessor :supports_create_delete_snapshot
+
+    attr_accessor :supports_expand
+
+    attr_accessor :supports_get
+
+    attr_accessor :supports_get_capacity
+
+    attr_accessor :supports_list_snapshots
+
     attr_accessor :supports_list_volumes
 
     attr_accessor :supports_list_volumes_attached_nodes
@@ -27,6 +43,14 @@ module NomadClient
     def self.attribute_map
       {
         :'supports_attach_detach' => :'SupportsAttachDetach',
+        :'supports_clone' => :'SupportsClone',
+        :'supports_condition' => :'SupportsCondition',
+        :'supports_create_delete' => :'SupportsCreateDelete',
+        :'supports_create_delete_snapshot' => :'SupportsCreateDeleteSnapshot',
+        :'supports_expand' => :'SupportsExpand',
+        :'supports_get' => :'SupportsGet',
+        :'supports_get_capacity' => :'SupportsGetCapacity',
+        :'supports_list_snapshots' => :'SupportsListSnapshots',
         :'supports_list_volumes' => :'SupportsListVolumes',
         :'supports_list_volumes_attached_nodes' => :'SupportsListVolumesAttachedNodes',
         :'supports_read_only_attach' => :'SupportsReadOnlyAttach'
@@ -42,6 +66,14 @@ module NomadClient
     def self.openapi_types
       {
         :'supports_attach_detach' => :'Boolean',
+        :'supports_clone' => :'Boolean',
+        :'supports_condition' => :'Boolean',
+        :'supports_create_delete' => :'Boolean',
+        :'supports_create_delete_snapshot' => :'Boolean',
+        :'supports_expand' => :'Boolean',
+        :'supports_get' => :'Boolean',
+        :'supports_get_capacity' => :'Boolean',
+        :'supports_list_snapshots' => :'Boolean',
         :'supports_list_volumes' => :'Boolean',
         :'supports_list_volumes_attached_nodes' => :'Boolean',
         :'supports_read_only_attach' => :'Boolean'
@@ -71,6 +103,38 @@ module NomadClient
 
       if attributes.key?(:'supports_attach_detach')
         self.supports_attach_detach = attributes[:'supports_attach_detach']
+      end
+
+      if attributes.key?(:'supports_clone')
+        self.supports_clone = attributes[:'supports_clone']
+      end
+
+      if attributes.key?(:'supports_condition')
+        self.supports_condition = attributes[:'supports_condition']
+      end
+
+      if attributes.key?(:'supports_create_delete')
+        self.supports_create_delete = attributes[:'supports_create_delete']
+      end
+
+      if attributes.key?(:'supports_create_delete_snapshot')
+        self.supports_create_delete_snapshot = attributes[:'supports_create_delete_snapshot']
+      end
+
+      if attributes.key?(:'supports_expand')
+        self.supports_expand = attributes[:'supports_expand']
+      end
+
+      if attributes.key?(:'supports_get')
+        self.supports_get = attributes[:'supports_get']
+      end
+
+      if attributes.key?(:'supports_get_capacity')
+        self.supports_get_capacity = attributes[:'supports_get_capacity']
+      end
+
+      if attributes.key?(:'supports_list_snapshots')
+        self.supports_list_snapshots = attributes[:'supports_list_snapshots']
       end
 
       if attributes.key?(:'supports_list_volumes')
@@ -105,6 +169,14 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           supports_attach_detach == o.supports_attach_detach &&
+          supports_clone == o.supports_clone &&
+          supports_condition == o.supports_condition &&
+          supports_create_delete == o.supports_create_delete &&
+          supports_create_delete_snapshot == o.supports_create_delete_snapshot &&
+          supports_expand == o.supports_expand &&
+          supports_get == o.supports_get &&
+          supports_get_capacity == o.supports_get_capacity &&
+          supports_list_snapshots == o.supports_list_snapshots &&
           supports_list_volumes == o.supports_list_volumes &&
           supports_list_volumes_attached_nodes == o.supports_list_volumes_attached_nodes &&
           supports_read_only_attach == o.supports_read_only_attach
@@ -119,7 +191,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [supports_attach_detach, supports_list_volumes, supports_list_volumes_attached_nodes, supports_read_only_attach].hash
+      [supports_attach_detach, supports_clone, supports_condition, supports_create_delete, supports_create_delete_snapshot, supports_expand, supports_get, supports_get_capacity, supports_list_snapshots, supports_list_volumes, supports_list_volumes_attached_nodes, supports_read_only_attach].hash
     end
 
     # Builds the object from hash

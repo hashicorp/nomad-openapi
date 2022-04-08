@@ -37,6 +37,8 @@ module NomadClient
 
     attr_accessor :vault_grace
 
+    attr_accessor :wait
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -50,7 +52,8 @@ module NomadClient
         :'right_delim' => :'RightDelim',
         :'source_path' => :'SourcePath',
         :'splay' => :'Splay',
-        :'vault_grace' => :'VaultGrace'
+        :'vault_grace' => :'VaultGrace',
+        :'wait' => :'Wait'
       }
     end
 
@@ -72,7 +75,8 @@ module NomadClient
         :'right_delim' => :'String',
         :'source_path' => :'String',
         :'splay' => :'Integer',
-        :'vault_grace' => :'Integer'
+        :'vault_grace' => :'Integer',
+        :'wait' => :'WaitConfig'
       }
     end
 
@@ -140,6 +144,10 @@ module NomadClient
       if attributes.key?(:'vault_grace')
         self.vault_grace = attributes[:'vault_grace']
       end
+
+      if attributes.key?(:'wait')
+        self.wait = attributes[:'wait']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -170,7 +178,8 @@ module NomadClient
           right_delim == o.right_delim &&
           source_path == o.source_path &&
           splay == o.splay &&
-          vault_grace == o.vault_grace
+          vault_grace == o.vault_grace &&
+          wait == o.wait
     end
 
     # @see the `==` method
@@ -182,7 +191,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [change_mode, change_signal, dest_path, embedded_tmpl, envvars, left_delim, perms, right_delim, source_path, splay, vault_grace].hash
+      [change_mode, change_signal, dest_path, embedded_tmpl, envvars, left_delim, perms, right_delim, source_path, splay, vault_grace, wait].hash
     end
 
     # Builds the object from hash

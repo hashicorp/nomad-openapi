@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **enforce_index** | **Boolean** |  | [optional] |
+| **eval_priority** | **Integer** |  | [optional] |
 | **job** | [**Job**](Job.md) |  | [optional] |
 | **job_modify_index** | **Integer** |  | [optional] |
 | **namespace** | **String** |  | [optional] |
@@ -20,6 +21,7 @@ require 'nomad_client'
 
 instance = NomadClient::JobRegisterRequest.new(
   enforce_index: null,
+  eval_priority: null,
   job: null,
   job_modify_index: null,
   namespace: null,

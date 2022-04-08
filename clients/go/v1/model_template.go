@@ -28,6 +28,7 @@ type Template struct {
 	SourcePath *string `json:"SourcePath,omitempty"`
 	Splay *int64 `json:"Splay,omitempty"`
 	VaultGrace *int64 `json:"VaultGrace,omitempty"`
+	Wait *WaitConfig `json:"Wait,omitempty"`
 }
 
 // NewTemplate instantiates a new Template object
@@ -399,6 +400,38 @@ func (o *Template) SetVaultGrace(v int64) {
 	o.VaultGrace = &v
 }
 
+// GetWait returns the Wait field value if set, zero value otherwise.
+func (o *Template) GetWait() WaitConfig {
+	if o == nil || o.Wait == nil {
+		var ret WaitConfig
+		return ret
+	}
+	return *o.Wait
+}
+
+// GetWaitOk returns a tuple with the Wait field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetWaitOk() (*WaitConfig, bool) {
+	if o == nil || o.Wait == nil {
+		return nil, false
+	}
+	return o.Wait, true
+}
+
+// HasWait returns a boolean if a field has been set.
+func (o *Template) HasWait() bool {
+	if o != nil && o.Wait != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWait gets a reference to the given WaitConfig and assigns it to the Wait field.
+func (o *Template) SetWait(v WaitConfig) {
+	o.Wait = &v
+}
+
 func (o Template) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ChangeMode != nil {
@@ -433,6 +466,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 	}
 	if o.VaultGrace != nil {
 		toSerialize["VaultGrace"] = o.VaultGrace
+	}
+	if o.Wait != nil {
+		toSerialize["Wait"] = o.Wait
 	}
 	return json.Marshal(toSerialize)
 }

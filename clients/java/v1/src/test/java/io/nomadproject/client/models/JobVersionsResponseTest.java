@@ -77,6 +77,14 @@ public class JobVersionsResponseTest {
     }
 
     /**
+     * Test the property 'nextToken'
+     */
+    @Test
+    public void nextTokenTest() {
+        // TODO: test nextToken
+    }
+
+    /**
      * Test the property 'requestTime'
      */
     @Test

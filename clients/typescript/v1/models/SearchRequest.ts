@@ -16,12 +16,15 @@ export class SearchRequest {
     'allowStale'?: boolean;
     'authToken'?: string;
     'context'?: string;
+    'filter'?: string;
+    'headers'?: { [key: string]: string; };
     'namespace'?: string;
     'nextToken'?: string;
     'params'?: { [key: string]: string; };
     'perPage'?: number;
     'prefix'?: string;
     'region'?: string;
+    'reverse'?: boolean;
     'waitIndex'?: number;
     'waitTime'?: number;
 
@@ -44,6 +47,18 @@ export class SearchRequest {
             "name": "context",
             "baseName": "Context",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "filter",
+            "baseName": "Filter",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "headers",
+            "baseName": "Headers",
+            "type": "{ [key: string]: string; }",
             "format": ""
         },
         {
@@ -80,6 +95,12 @@ export class SearchRequest {
             "name": "region",
             "baseName": "Region",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "reverse",
+            "baseName": "Reverse",
+            "type": "boolean",
             "format": ""
         },
         {

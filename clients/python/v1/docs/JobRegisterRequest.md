@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enforce_index** | **bool** |  | [optional] 
+**eval_priority** | **int** |  | [optional] 
 **job** | [**Job**](Job.md) |  | [optional] 
 **job_modify_index** | **int** |  | [optional] 
 **namespace** | **str** |  | [optional] 

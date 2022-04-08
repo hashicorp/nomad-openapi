@@ -8,6 +8,7 @@
 | **dns** | [**DNSConfig**](DNSConfig.md) |  | [optional] |
 | **device** | **String** |  | [optional] |
 | **dynamic_ports** | [**Array&lt;Port&gt;**](Port.md) |  | [optional] |
+| **hostname** | **String** |  | [optional] |
 | **ip** | **String** |  | [optional] |
 | **m_bits** | **Integer** |  | [optional] |
 | **mode** | **String** |  | [optional] |
@@ -23,6 +24,7 @@ instance = NomadClient::NetworkResource.new(
   dns: null,
   device: null,
   dynamic_ports: null,
+  hostname: null,
   ip: null,
   m_bits: null,
   mode: null,

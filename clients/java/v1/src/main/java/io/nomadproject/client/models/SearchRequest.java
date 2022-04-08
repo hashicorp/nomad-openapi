@@ -44,6 +44,14 @@ public class SearchRequest {
   @SerializedName(SERIALIZED_NAME_CONTEXT)
   private String context;
 
+  public static final String SERIALIZED_NAME_FILTER = "Filter";
+  @SerializedName(SERIALIZED_NAME_FILTER)
+  private String filter;
+
+  public static final String SERIALIZED_NAME_HEADERS = "Headers";
+  @SerializedName(SERIALIZED_NAME_HEADERS)
+  private Map<String, String> headers = null;
+
   public static final String SERIALIZED_NAME_NAMESPACE = "Namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
@@ -67,6 +75,10 @@ public class SearchRequest {
   public static final String SERIALIZED_NAME_REGION = "Region";
   @SerializedName(SERIALIZED_NAME_REGION)
   private String region;
+
+  public static final String SERIALIZED_NAME_REVERSE = "Reverse";
+  @SerializedName(SERIALIZED_NAME_REVERSE)
+  private Boolean reverse;
 
   public static final String SERIALIZED_NAME_WAIT_INDEX = "WaitIndex";
   @SerializedName(SERIALIZED_NAME_WAIT_INDEX)
@@ -143,6 +155,60 @@ public class SearchRequest {
 
   public void setContext(String context) {
     this.context = context;
+  }
+
+
+  public SearchRequest filter(String filter) {
+    
+    this.filter = filter;
+    return this;
+  }
+
+   /**
+   * Get filter
+   * @return filter
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getFilter() {
+    return filter;
+  }
+
+
+  public void setFilter(String filter) {
+    this.filter = filter;
+  }
+
+
+  public SearchRequest headers(Map<String, String> headers) {
+    
+    this.headers = headers;
+    return this;
+  }
+
+  public SearchRequest putHeadersItem(String key, String headersItem) {
+    if (this.headers == null) {
+      this.headers = new HashMap<String, String>();
+    }
+    this.headers.put(key, headersItem);
+    return this;
+  }
+
+   /**
+   * Get headers
+   * @return headers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, String> getHeaders() {
+    return headers;
+  }
+
+
+  public void setHeaders(Map<String, String> headers) {
+    this.headers = headers;
   }
 
 
@@ -292,6 +358,29 @@ public class SearchRequest {
   }
 
 
+  public SearchRequest reverse(Boolean reverse) {
+    
+    this.reverse = reverse;
+    return this;
+  }
+
+   /**
+   * Get reverse
+   * @return reverse
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getReverse() {
+    return reverse;
+  }
+
+
+  public void setReverse(Boolean reverse) {
+    this.reverse = reverse;
+  }
+
+
   public SearchRequest waitIndex(Integer waitIndex) {
     
     this.waitIndex = waitIndex;
@@ -352,19 +441,22 @@ public class SearchRequest {
     return Objects.equals(this.allowStale, searchRequest.allowStale) &&
         Objects.equals(this.authToken, searchRequest.authToken) &&
         Objects.equals(this.context, searchRequest.context) &&
+        Objects.equals(this.filter, searchRequest.filter) &&
+        Objects.equals(this.headers, searchRequest.headers) &&
         Objects.equals(this.namespace, searchRequest.namespace) &&
         Objects.equals(this.nextToken, searchRequest.nextToken) &&
         Objects.equals(this.params, searchRequest.params) &&
         Objects.equals(this.perPage, searchRequest.perPage) &&
         Objects.equals(this.prefix, searchRequest.prefix) &&
         Objects.equals(this.region, searchRequest.region) &&
+        Objects.equals(this.reverse, searchRequest.reverse) &&
         Objects.equals(this.waitIndex, searchRequest.waitIndex) &&
         Objects.equals(this.waitTime, searchRequest.waitTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowStale, authToken, context, namespace, nextToken, params, perPage, prefix, region, waitIndex, waitTime);
+    return Objects.hash(allowStale, authToken, context, filter, headers, namespace, nextToken, params, perPage, prefix, region, reverse, waitIndex, waitTime);
   }
 
   @Override
@@ -374,12 +466,15 @@ public class SearchRequest {
     sb.append("    allowStale: ").append(toIndentedString(allowStale)).append("\n");
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
     sb.append("    context: ").append(toIndentedString(context)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    perPage: ").append(toIndentedString(perPage)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
+    sb.append("    reverse: ").append(toIndentedString(reverse)).append("\n");
     sb.append("    waitIndex: ").append(toIndentedString(waitIndex)).append("\n");
     sb.append("    waitTime: ").append(toIndentedString(waitTime)).append("\n");
     sb.append("}");

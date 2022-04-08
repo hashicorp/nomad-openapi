@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **on_update** | **str** |  | [optional] 
 **port_label** | **str** |  | [optional] 
+**provider** | **str** |  | [optional] 
 **tags** | **[str]** |  | [optional] 
 **task_name** | **str** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

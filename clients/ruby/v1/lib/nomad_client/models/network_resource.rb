@@ -23,6 +23,8 @@ module NomadClient
 
     attr_accessor :dynamic_ports
 
+    attr_accessor :hostname
+
     attr_accessor :ip
 
     attr_accessor :m_bits
@@ -38,6 +40,7 @@ module NomadClient
         :'dns' => :'DNS',
         :'device' => :'Device',
         :'dynamic_ports' => :'DynamicPorts',
+        :'hostname' => :'Hostname',
         :'ip' => :'IP',
         :'m_bits' => :'MBits',
         :'mode' => :'Mode',
@@ -57,6 +60,7 @@ module NomadClient
         :'dns' => :'DNSConfig',
         :'device' => :'String',
         :'dynamic_ports' => :'Array<Port>',
+        :'hostname' => :'String',
         :'ip' => :'String',
         :'m_bits' => :'Integer',
         :'mode' => :'String',
@@ -103,6 +107,10 @@ module NomadClient
         end
       end
 
+      if attributes.key?(:'hostname')
+        self.hostname = attributes[:'hostname']
+      end
+
       if attributes.key?(:'ip')
         self.ip = attributes[:'ip']
       end
@@ -144,6 +152,7 @@ module NomadClient
           dns == o.dns &&
           device == o.device &&
           dynamic_ports == o.dynamic_ports &&
+          hostname == o.hostname &&
           ip == o.ip &&
           m_bits == o.m_bits &&
           mode == o.mode &&
@@ -159,7 +168,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cidr, dns, device, dynamic_ports, ip, m_bits, mode, reserved_ports].hash
+      [cidr, dns, device, dynamic_ports, hostname, ip, m_bits, mode, reserved_ports].hash
     end
 
     # Builds the object from hash

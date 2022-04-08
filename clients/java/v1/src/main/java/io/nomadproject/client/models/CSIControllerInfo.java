@@ -33,6 +33,38 @@ public class CSIControllerInfo {
   @SerializedName(SERIALIZED_NAME_SUPPORTS_ATTACH_DETACH)
   private Boolean supportsAttachDetach;
 
+  public static final String SERIALIZED_NAME_SUPPORTS_CLONE = "SupportsClone";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_CLONE)
+  private Boolean supportsClone;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_CONDITION = "SupportsCondition";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_CONDITION)
+  private Boolean supportsCondition;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_CREATE_DELETE = "SupportsCreateDelete";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_CREATE_DELETE)
+  private Boolean supportsCreateDelete;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_CREATE_DELETE_SNAPSHOT = "SupportsCreateDeleteSnapshot";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_CREATE_DELETE_SNAPSHOT)
+  private Boolean supportsCreateDeleteSnapshot;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_EXPAND = "SupportsExpand";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_EXPAND)
+  private Boolean supportsExpand;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_GET = "SupportsGet";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_GET)
+  private Boolean supportsGet;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_GET_CAPACITY = "SupportsGetCapacity";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_GET_CAPACITY)
+  private Boolean supportsGetCapacity;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_LIST_SNAPSHOTS = "SupportsListSnapshots";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_LIST_SNAPSHOTS)
+  private Boolean supportsListSnapshots;
+
   public static final String SERIALIZED_NAME_SUPPORTS_LIST_VOLUMES = "SupportsListVolumes";
   @SerializedName(SERIALIZED_NAME_SUPPORTS_LIST_VOLUMES)
   private Boolean supportsListVolumes;
@@ -66,6 +98,190 @@ public class CSIControllerInfo {
 
   public void setSupportsAttachDetach(Boolean supportsAttachDetach) {
     this.supportsAttachDetach = supportsAttachDetach;
+  }
+
+
+  public CSIControllerInfo supportsClone(Boolean supportsClone) {
+    
+    this.supportsClone = supportsClone;
+    return this;
+  }
+
+   /**
+   * Get supportsClone
+   * @return supportsClone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsClone() {
+    return supportsClone;
+  }
+
+
+  public void setSupportsClone(Boolean supportsClone) {
+    this.supportsClone = supportsClone;
+  }
+
+
+  public CSIControllerInfo supportsCondition(Boolean supportsCondition) {
+    
+    this.supportsCondition = supportsCondition;
+    return this;
+  }
+
+   /**
+   * Get supportsCondition
+   * @return supportsCondition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsCondition() {
+    return supportsCondition;
+  }
+
+
+  public void setSupportsCondition(Boolean supportsCondition) {
+    this.supportsCondition = supportsCondition;
+  }
+
+
+  public CSIControllerInfo supportsCreateDelete(Boolean supportsCreateDelete) {
+    
+    this.supportsCreateDelete = supportsCreateDelete;
+    return this;
+  }
+
+   /**
+   * Get supportsCreateDelete
+   * @return supportsCreateDelete
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsCreateDelete() {
+    return supportsCreateDelete;
+  }
+
+
+  public void setSupportsCreateDelete(Boolean supportsCreateDelete) {
+    this.supportsCreateDelete = supportsCreateDelete;
+  }
+
+
+  public CSIControllerInfo supportsCreateDeleteSnapshot(Boolean supportsCreateDeleteSnapshot) {
+    
+    this.supportsCreateDeleteSnapshot = supportsCreateDeleteSnapshot;
+    return this;
+  }
+
+   /**
+   * Get supportsCreateDeleteSnapshot
+   * @return supportsCreateDeleteSnapshot
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsCreateDeleteSnapshot() {
+    return supportsCreateDeleteSnapshot;
+  }
+
+
+  public void setSupportsCreateDeleteSnapshot(Boolean supportsCreateDeleteSnapshot) {
+    this.supportsCreateDeleteSnapshot = supportsCreateDeleteSnapshot;
+  }
+
+
+  public CSIControllerInfo supportsExpand(Boolean supportsExpand) {
+    
+    this.supportsExpand = supportsExpand;
+    return this;
+  }
+
+   /**
+   * Get supportsExpand
+   * @return supportsExpand
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsExpand() {
+    return supportsExpand;
+  }
+
+
+  public void setSupportsExpand(Boolean supportsExpand) {
+    this.supportsExpand = supportsExpand;
+  }
+
+
+  public CSIControllerInfo supportsGet(Boolean supportsGet) {
+    
+    this.supportsGet = supportsGet;
+    return this;
+  }
+
+   /**
+   * Get supportsGet
+   * @return supportsGet
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsGet() {
+    return supportsGet;
+  }
+
+
+  public void setSupportsGet(Boolean supportsGet) {
+    this.supportsGet = supportsGet;
+  }
+
+
+  public CSIControllerInfo supportsGetCapacity(Boolean supportsGetCapacity) {
+    
+    this.supportsGetCapacity = supportsGetCapacity;
+    return this;
+  }
+
+   /**
+   * Get supportsGetCapacity
+   * @return supportsGetCapacity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsGetCapacity() {
+    return supportsGetCapacity;
+  }
+
+
+  public void setSupportsGetCapacity(Boolean supportsGetCapacity) {
+    this.supportsGetCapacity = supportsGetCapacity;
+  }
+
+
+  public CSIControllerInfo supportsListSnapshots(Boolean supportsListSnapshots) {
+    
+    this.supportsListSnapshots = supportsListSnapshots;
+    return this;
+  }
+
+   /**
+   * Get supportsListSnapshots
+   * @return supportsListSnapshots
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsListSnapshots() {
+    return supportsListSnapshots;
+  }
+
+
+  public void setSupportsListSnapshots(Boolean supportsListSnapshots) {
+    this.supportsListSnapshots = supportsListSnapshots;
   }
 
 
@@ -148,6 +364,14 @@ public class CSIControllerInfo {
     }
     CSIControllerInfo csIControllerInfo = (CSIControllerInfo) o;
     return Objects.equals(this.supportsAttachDetach, csIControllerInfo.supportsAttachDetach) &&
+        Objects.equals(this.supportsClone, csIControllerInfo.supportsClone) &&
+        Objects.equals(this.supportsCondition, csIControllerInfo.supportsCondition) &&
+        Objects.equals(this.supportsCreateDelete, csIControllerInfo.supportsCreateDelete) &&
+        Objects.equals(this.supportsCreateDeleteSnapshot, csIControllerInfo.supportsCreateDeleteSnapshot) &&
+        Objects.equals(this.supportsExpand, csIControllerInfo.supportsExpand) &&
+        Objects.equals(this.supportsGet, csIControllerInfo.supportsGet) &&
+        Objects.equals(this.supportsGetCapacity, csIControllerInfo.supportsGetCapacity) &&
+        Objects.equals(this.supportsListSnapshots, csIControllerInfo.supportsListSnapshots) &&
         Objects.equals(this.supportsListVolumes, csIControllerInfo.supportsListVolumes) &&
         Objects.equals(this.supportsListVolumesAttachedNodes, csIControllerInfo.supportsListVolumesAttachedNodes) &&
         Objects.equals(this.supportsReadOnlyAttach, csIControllerInfo.supportsReadOnlyAttach);
@@ -155,7 +379,7 @@ public class CSIControllerInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(supportsAttachDetach, supportsListVolumes, supportsListVolumesAttachedNodes, supportsReadOnlyAttach);
+    return Objects.hash(supportsAttachDetach, supportsClone, supportsCondition, supportsCreateDelete, supportsCreateDeleteSnapshot, supportsExpand, supportsGet, supportsGetCapacity, supportsListSnapshots, supportsListVolumes, supportsListVolumesAttachedNodes, supportsReadOnlyAttach);
   }
 
   @Override
@@ -163,6 +387,14 @@ public class CSIControllerInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class CSIControllerInfo {\n");
     sb.append("    supportsAttachDetach: ").append(toIndentedString(supportsAttachDetach)).append("\n");
+    sb.append("    supportsClone: ").append(toIndentedString(supportsClone)).append("\n");
+    sb.append("    supportsCondition: ").append(toIndentedString(supportsCondition)).append("\n");
+    sb.append("    supportsCreateDelete: ").append(toIndentedString(supportsCreateDelete)).append("\n");
+    sb.append("    supportsCreateDeleteSnapshot: ").append(toIndentedString(supportsCreateDeleteSnapshot)).append("\n");
+    sb.append("    supportsExpand: ").append(toIndentedString(supportsExpand)).append("\n");
+    sb.append("    supportsGet: ").append(toIndentedString(supportsGet)).append("\n");
+    sb.append("    supportsGetCapacity: ").append(toIndentedString(supportsGetCapacity)).append("\n");
+    sb.append("    supportsListSnapshots: ").append(toIndentedString(supportsListSnapshots)).append("\n");
     sb.append("    supportsListVolumes: ").append(toIndentedString(supportsListVolumes)).append("\n");
     sb.append("    supportsListVolumesAttachedNodes: ").append(toIndentedString(supportsListVolumesAttachedNodes)).append("\n");
     sb.append("    supportsReadOnlyAttach: ").append(toIndentedString(supportsReadOnlyAttach)).append("\n");

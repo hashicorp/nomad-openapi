@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **consul_token** | Option<**String**> |  | [optional]
 **create_index** | Option<**i32**> |  | [optional]
 **datacenters** | Option<**Vec<String>**> |  | [optional]
+**dispatch_idempotency_token** | Option<**String**> |  | [optional]
 **dispatched** | Option<**bool**> |  | [optional]
 **ID** | Option<**String**> |  | [optional]
 **job_modify_index** | Option<**i32**> |  | [optional]

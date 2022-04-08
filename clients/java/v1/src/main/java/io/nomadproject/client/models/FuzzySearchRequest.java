@@ -44,6 +44,14 @@ public class FuzzySearchRequest {
   @SerializedName(SERIALIZED_NAME_CONTEXT)
   private String context;
 
+  public static final String SERIALIZED_NAME_FILTER = "Filter";
+  @SerializedName(SERIALIZED_NAME_FILTER)
+  private String filter;
+
+  public static final String SERIALIZED_NAME_HEADERS = "Headers";
+  @SerializedName(SERIALIZED_NAME_HEADERS)
+  private Map<String, String> headers = null;
+
   public static final String SERIALIZED_NAME_NAMESPACE = "Namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
@@ -67,6 +75,10 @@ public class FuzzySearchRequest {
   public static final String SERIALIZED_NAME_REGION = "Region";
   @SerializedName(SERIALIZED_NAME_REGION)
   private String region;
+
+  public static final String SERIALIZED_NAME_REVERSE = "Reverse";
+  @SerializedName(SERIALIZED_NAME_REVERSE)
+  private Boolean reverse;
 
   public static final String SERIALIZED_NAME_TEXT = "Text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -147,6 +159,60 @@ public class FuzzySearchRequest {
 
   public void setContext(String context) {
     this.context = context;
+  }
+
+
+  public FuzzySearchRequest filter(String filter) {
+    
+    this.filter = filter;
+    return this;
+  }
+
+   /**
+   * Get filter
+   * @return filter
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getFilter() {
+    return filter;
+  }
+
+
+  public void setFilter(String filter) {
+    this.filter = filter;
+  }
+
+
+  public FuzzySearchRequest headers(Map<String, String> headers) {
+    
+    this.headers = headers;
+    return this;
+  }
+
+  public FuzzySearchRequest putHeadersItem(String key, String headersItem) {
+    if (this.headers == null) {
+      this.headers = new HashMap<String, String>();
+    }
+    this.headers.put(key, headersItem);
+    return this;
+  }
+
+   /**
+   * Get headers
+   * @return headers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, String> getHeaders() {
+    return headers;
+  }
+
+
+  public void setHeaders(Map<String, String> headers) {
+    this.headers = headers;
   }
 
 
@@ -296,6 +362,29 @@ public class FuzzySearchRequest {
   }
 
 
+  public FuzzySearchRequest reverse(Boolean reverse) {
+    
+    this.reverse = reverse;
+    return this;
+  }
+
+   /**
+   * Get reverse
+   * @return reverse
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getReverse() {
+    return reverse;
+  }
+
+
+  public void setReverse(Boolean reverse) {
+    this.reverse = reverse;
+  }
+
+
   public FuzzySearchRequest text(String text) {
     
     this.text = text;
@@ -379,12 +468,15 @@ public class FuzzySearchRequest {
     return Objects.equals(this.allowStale, fuzzySearchRequest.allowStale) &&
         Objects.equals(this.authToken, fuzzySearchRequest.authToken) &&
         Objects.equals(this.context, fuzzySearchRequest.context) &&
+        Objects.equals(this.filter, fuzzySearchRequest.filter) &&
+        Objects.equals(this.headers, fuzzySearchRequest.headers) &&
         Objects.equals(this.namespace, fuzzySearchRequest.namespace) &&
         Objects.equals(this.nextToken, fuzzySearchRequest.nextToken) &&
         Objects.equals(this.params, fuzzySearchRequest.params) &&
         Objects.equals(this.perPage, fuzzySearchRequest.perPage) &&
         Objects.equals(this.prefix, fuzzySearchRequest.prefix) &&
         Objects.equals(this.region, fuzzySearchRequest.region) &&
+        Objects.equals(this.reverse, fuzzySearchRequest.reverse) &&
         Objects.equals(this.text, fuzzySearchRequest.text) &&
         Objects.equals(this.waitIndex, fuzzySearchRequest.waitIndex) &&
         Objects.equals(this.waitTime, fuzzySearchRequest.waitTime);
@@ -392,7 +484,7 @@ public class FuzzySearchRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowStale, authToken, context, namespace, nextToken, params, perPage, prefix, region, text, waitIndex, waitTime);
+    return Objects.hash(allowStale, authToken, context, filter, headers, namespace, nextToken, params, perPage, prefix, region, reverse, text, waitIndex, waitTime);
   }
 
   @Override
@@ -402,12 +494,15 @@ public class FuzzySearchRequest {
     sb.append("    allowStale: ").append(toIndentedString(allowStale)).append("\n");
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
     sb.append("    context: ").append(toIndentedString(context)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    perPage: ").append(toIndentedString(perPage)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
+    sb.append("    reverse: ").append(toIndentedString(reverse)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    waitIndex: ").append(toIndentedString(waitIndex)).append("\n");
     sb.append("    waitTime: ").append(toIndentedString(waitTime)).append("\n");

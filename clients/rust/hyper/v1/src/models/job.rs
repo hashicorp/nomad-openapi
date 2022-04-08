@@ -27,6 +27,8 @@ pub struct Job {
     pub create_index: Option<i32>,
     #[serde(rename = "Datacenters", skip_serializing_if = "Option::is_none")]
     pub datacenters: Option<Vec<String>>,
+    #[serde(rename = "DispatchIdempotencyToken", skip_serializing_if = "Option::is_none")]
+    pub dispatch_idempotency_token: Option<String>,
     #[serde(rename = "Dispatched", skip_serializing_if = "Option::is_none")]
     pub dispatched: Option<bool>,
     #[serde(rename = "ID", skip_serializing_if = "Option::is_none")]
@@ -97,6 +99,7 @@ impl Job {
             consul_token: None,
             create_index: None,
             datacenters: None,
+            dispatch_idempotency_token: None,
             dispatched: None,
             ID: None,
             job_modify_index: None,

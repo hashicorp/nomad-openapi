@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property nextToken (base name: "NextToken")', function() {
+      // uncomment below and update the code to test the property nextToken
+      //var instance = new nomad-client.SchedulerConfigurationResponse();
+      //expect(instance).to.be();
+    });
+
     it('should have the property requestTime (base name: "RequestTime")', function() {
       // uncomment below and update the code to test the property requestTime
       //var instance = new nomad-client.SchedulerConfigurationResponse();

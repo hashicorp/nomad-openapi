@@ -30,6 +30,7 @@
 | **requested_capabilities** | [**Array&lt;CSIVolumeCapability&gt;**](CSIVolumeCapability.md) |  | [optional] |
 | **requested_capacity_max** | **Integer** |  | [optional] |
 | **requested_capacity_min** | **Integer** |  | [optional] |
+| **requested_topologies** | [**CSITopologyRequest**](CSITopologyRequest.md) |  | [optional] |
 | **resource_exhausted** | **Time** |  | [optional] |
 | **schedulable** | **Boolean** |  | [optional] |
 | **secrets** | **Hash&lt;String, String&gt;** |  | [optional] |
@@ -69,6 +70,7 @@ instance = NomadClient::CSIVolume.new(
   requested_capabilities: null,
   requested_capacity_max: null,
   requested_capacity_min: null,
+  requested_topologies: null,
   resource_exhausted: null,
   schedulable: null,
   secrets: null,

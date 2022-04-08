@@ -53,6 +53,10 @@ public class JobRegisterResponse {
   @SerializedName(SERIALIZED_NAME_LAST_INDEX)
   private Integer lastIndex;
 
+  public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
+  @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+  private String nextToken;
+
   public static final String SERIALIZED_NAME_REQUEST_TIME = "RequestTime";
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
@@ -206,6 +210,29 @@ public class JobRegisterResponse {
   }
 
 
+  public JobRegisterResponse nextToken(String nextToken) {
+    
+    this.nextToken = nextToken;
+    return this;
+  }
+
+   /**
+   * Get nextToken
+   * @return nextToken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNextToken() {
+    return nextToken;
+  }
+
+
+  public void setNextToken(String nextToken) {
+    this.nextToken = nextToken;
+  }
+
+
   public JobRegisterResponse requestTime(Long requestTime) {
     
     this.requestTime = requestTime;
@@ -267,13 +294,14 @@ public class JobRegisterResponse {
         Objects.equals(this.knownLeader, jobRegisterResponse.knownLeader) &&
         Objects.equals(this.lastContact, jobRegisterResponse.lastContact) &&
         Objects.equals(this.lastIndex, jobRegisterResponse.lastIndex) &&
+        Objects.equals(this.nextToken, jobRegisterResponse.nextToken) &&
         Objects.equals(this.requestTime, jobRegisterResponse.requestTime) &&
         Objects.equals(this.warnings, jobRegisterResponse.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(evalCreateIndex, evalID, jobModifyIndex, knownLeader, lastContact, lastIndex, requestTime, warnings);
+    return Objects.hash(evalCreateIndex, evalID, jobModifyIndex, knownLeader, lastContact, lastIndex, nextToken, requestTime, warnings);
   }
 
   @Override
@@ -286,6 +314,7 @@ public class JobRegisterResponse {
     sb.append("    knownLeader: ").append(toIndentedString(knownLeader)).append("\n");
     sb.append("    lastContact: ").append(toIndentedString(lastContact)).append("\n");
     sb.append("    lastIndex: ").append(toIndentedString(lastIndex)).append("\n");
+    sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
     sb.append("    requestTime: ").append(toIndentedString(requestTime)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");

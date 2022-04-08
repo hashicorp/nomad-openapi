@@ -48,9 +48,17 @@ public class NodeResources {
   @SerializedName(SERIALIZED_NAME_DISK)
   private NodeDiskResources disk;
 
+  public static final String SERIALIZED_NAME_MAX_DYNAMIC_PORT = "MaxDynamicPort";
+  @SerializedName(SERIALIZED_NAME_MAX_DYNAMIC_PORT)
+  private Integer maxDynamicPort;
+
   public static final String SERIALIZED_NAME_MEMORY = "Memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   private NodeMemoryResources memory;
+
+  public static final String SERIALIZED_NAME_MIN_DYNAMIC_PORT = "MinDynamicPort";
+  @SerializedName(SERIALIZED_NAME_MIN_DYNAMIC_PORT)
+  private Integer minDynamicPort;
 
   public static final String SERIALIZED_NAME_NETWORKS = "Networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
@@ -134,6 +142,29 @@ public class NodeResources {
   }
 
 
+  public NodeResources maxDynamicPort(Integer maxDynamicPort) {
+    
+    this.maxDynamicPort = maxDynamicPort;
+    return this;
+  }
+
+   /**
+   * Get maxDynamicPort
+   * @return maxDynamicPort
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getMaxDynamicPort() {
+    return maxDynamicPort;
+  }
+
+
+  public void setMaxDynamicPort(Integer maxDynamicPort) {
+    this.maxDynamicPort = maxDynamicPort;
+  }
+
+
   public NodeResources memory(NodeMemoryResources memory) {
     
     this.memory = memory;
@@ -154,6 +185,29 @@ public class NodeResources {
 
   public void setMemory(NodeMemoryResources memory) {
     this.memory = memory;
+  }
+
+
+  public NodeResources minDynamicPort(Integer minDynamicPort) {
+    
+    this.minDynamicPort = minDynamicPort;
+    return this;
+  }
+
+   /**
+   * Get minDynamicPort
+   * @return minDynamicPort
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getMinDynamicPort() {
+    return minDynamicPort;
+  }
+
+
+  public void setMinDynamicPort(Integer minDynamicPort) {
+    this.minDynamicPort = minDynamicPort;
   }
 
 
@@ -200,13 +254,15 @@ public class NodeResources {
     return Objects.equals(this.cpu, nodeResources.cpu) &&
         Objects.equals(this.devices, nodeResources.devices) &&
         Objects.equals(this.disk, nodeResources.disk) &&
+        Objects.equals(this.maxDynamicPort, nodeResources.maxDynamicPort) &&
         Objects.equals(this.memory, nodeResources.memory) &&
+        Objects.equals(this.minDynamicPort, nodeResources.minDynamicPort) &&
         Objects.equals(this.networks, nodeResources.networks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpu, devices, disk, memory, networks);
+    return Objects.hash(cpu, devices, disk, maxDynamicPort, memory, minDynamicPort, networks);
   }
 
   @Override
@@ -216,7 +272,9 @@ public class NodeResources {
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
     sb.append("    disk: ").append(toIndentedString(disk)).append("\n");
+    sb.append("    maxDynamicPort: ").append(toIndentedString(maxDynamicPort)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
+    sb.append("    minDynamicPort: ").append(toIndentedString(minDynamicPort)).append("\n");
     sb.append("    networks: ").append(toIndentedString(networks)).append("\n");
     sb.append("}");
     return sb.toString();

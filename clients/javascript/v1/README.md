@@ -255,6 +255,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)
  - [nomad-client.CSISnapshotListResponse](docs/CSISnapshotListResponse.md)
  - [nomad-client.CSITopology](docs/CSITopology.md)
+ - [nomad-client.CSITopologyRequest](docs/CSITopologyRequest.md)
  - [nomad-client.CSIVolume](docs/CSIVolume.md)
  - [nomad-client.CSIVolumeCapability](docs/CSIVolumeCapability.md)
  - [nomad-client.CSIVolumeCreateRequest](docs/CSIVolumeCreateRequest.md)
@@ -299,11 +300,13 @@ Class | Method | HTTP request | Description
  - [nomad-client.EphemeralDisk](docs/EphemeralDisk.md)
  - [nomad-client.EvalOptions](docs/EvalOptions.md)
  - [nomad-client.Evaluation](docs/Evaluation.md)
+ - [nomad-client.EvaluationStub](docs/EvaluationStub.md)
  - [nomad-client.FieldDiff](docs/FieldDiff.md)
  - [nomad-client.FuzzyMatch](docs/FuzzyMatch.md)
  - [nomad-client.FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [nomad-client.FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [nomad-client.GaugeValue](docs/GaugeValue.md)
+ - [nomad-client.HostNetworkInfo](docs/HostNetworkInfo.md)
  - [nomad-client.HostVolumeInfo](docs/HostVolumeInfo.md)
  - [nomad-client.Job](docs/Job.md)
  - [nomad-client.JobChildrenSummary](docs/JobChildrenSummary.md)
@@ -333,6 +336,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.MultiregionRegion](docs/MultiregionRegion.md)
  - [nomad-client.MultiregionStrategy](docs/MultiregionStrategy.md)
  - [nomad-client.Namespace](docs/Namespace.md)
+ - [nomad-client.NamespaceCapabilities](docs/NamespaceCapabilities.md)
  - [nomad-client.NetworkResource](docs/NetworkResource.md)
  - [nomad-client.Node](docs/Node.md)
  - [nomad-client.NodeCpuResources](docs/NodeCpuResources.md)
@@ -410,6 +414,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.Vault](docs/Vault.md)
  - [nomad-client.VolumeMount](docs/VolumeMount.md)
  - [nomad-client.VolumeRequest](docs/VolumeRequest.md)
+ - [nomad-client.WaitConfig](docs/WaitConfig.md)
 
 
 ## Documentation for Authorization

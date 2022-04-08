@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **ID** | **String** |  |  [optional]
 **maxVolumes** | **Long** |  |  [optional]
 **requiresNodeStageVolume** | **Boolean** |  |  [optional]
+**supportsCondition** | **Boolean** |  |  [optional]
+**supportsExpand** | **Boolean** |  |  [optional]
+**supportsStats** | **Boolean** |  |  [optional]
 
 
 

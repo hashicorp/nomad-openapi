@@ -65,6 +65,9 @@ class TaskGroupSummary {
             if (data.hasOwnProperty('Starting')) {
                 obj['Starting'] = ApiClient.convertToType(data['Starting'], 'Number');
             }
+            if (data.hasOwnProperty('Unknown')) {
+                obj['Unknown'] = ApiClient.convertToType(data['Unknown'], 'Number');
+            }
         }
         return obj;
     }
@@ -101,6 +104,11 @@ TaskGroupSummary.prototype['Running'] = undefined;
  * @member {Number} Starting
  */
 TaskGroupSummary.prototype['Starting'] = undefined;
+
+/**
+ * @member {Number} Unknown
+ */
+TaskGroupSummary.prototype['Unknown'] = undefined;
 
 
 

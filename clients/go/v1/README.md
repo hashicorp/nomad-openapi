@@ -201,6 +201,7 @@ Class | Method | HTTP request | Description
  - [CSISnapshotCreateResponse](docs/CSISnapshotCreateResponse.md)
  - [CSISnapshotListResponse](docs/CSISnapshotListResponse.md)
  - [CSITopology](docs/CSITopology.md)
+ - [CSITopologyRequest](docs/CSITopologyRequest.md)
  - [CSIVolume](docs/CSIVolume.md)
  - [CSIVolumeCapability](docs/CSIVolumeCapability.md)
  - [CSIVolumeCreateRequest](docs/CSIVolumeCreateRequest.md)
@@ -245,11 +246,13 @@ Class | Method | HTTP request | Description
  - [EphemeralDisk](docs/EphemeralDisk.md)
  - [EvalOptions](docs/EvalOptions.md)
  - [Evaluation](docs/Evaluation.md)
+ - [EvaluationStub](docs/EvaluationStub.md)
  - [FieldDiff](docs/FieldDiff.md)
  - [FuzzyMatch](docs/FuzzyMatch.md)
  - [FuzzySearchRequest](docs/FuzzySearchRequest.md)
  - [FuzzySearchResponse](docs/FuzzySearchResponse.md)
  - [GaugeValue](docs/GaugeValue.md)
+ - [HostNetworkInfo](docs/HostNetworkInfo.md)
  - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
@@ -279,6 +282,7 @@ Class | Method | HTTP request | Description
  - [MultiregionRegion](docs/MultiregionRegion.md)
  - [MultiregionStrategy](docs/MultiregionStrategy.md)
  - [Namespace](docs/Namespace.md)
+ - [NamespaceCapabilities](docs/NamespaceCapabilities.md)
  - [NetworkResource](docs/NetworkResource.md)
  - [Node](docs/Node.md)
  - [NodeCpuResources](docs/NodeCpuResources.md)
@@ -356,6 +360,7 @@ Class | Method | HTTP request | Description
  - [Vault](docs/Vault.md)
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)
+ - [WaitConfig](docs/WaitConfig.md)
 
 
 ## Documentation For Authorization

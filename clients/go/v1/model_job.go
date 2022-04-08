@@ -24,6 +24,7 @@ type Job struct {
 	ConsulToken *string `json:"ConsulToken,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	Datacenters *[]string `json:"Datacenters,omitempty"`
+	DispatchIdempotencyToken *string `json:"DispatchIdempotencyToken,omitempty"`
 	Dispatched *bool `json:"Dispatched,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	JobModifyIndex *int32 `json:"JobModifyIndex,omitempty"`
@@ -294,6 +295,38 @@ func (o *Job) HasDatacenters() bool {
 // SetDatacenters gets a reference to the given []string and assigns it to the Datacenters field.
 func (o *Job) SetDatacenters(v []string) {
 	o.Datacenters = &v
+}
+
+// GetDispatchIdempotencyToken returns the DispatchIdempotencyToken field value if set, zero value otherwise.
+func (o *Job) GetDispatchIdempotencyToken() string {
+	if o == nil || o.DispatchIdempotencyToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.DispatchIdempotencyToken
+}
+
+// GetDispatchIdempotencyTokenOk returns a tuple with the DispatchIdempotencyToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Job) GetDispatchIdempotencyTokenOk() (*string, bool) {
+	if o == nil || o.DispatchIdempotencyToken == nil {
+		return nil, false
+	}
+	return o.DispatchIdempotencyToken, true
+}
+
+// HasDispatchIdempotencyToken returns a boolean if a field has been set.
+func (o *Job) HasDispatchIdempotencyToken() bool {
+	if o != nil && o.DispatchIdempotencyToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDispatchIdempotencyToken gets a reference to the given string and assigns it to the DispatchIdempotencyToken field.
+func (o *Job) SetDispatchIdempotencyToken(v string) {
+	o.DispatchIdempotencyToken = &v
 }
 
 // GetDispatched returns the Dispatched field value if set, zero value otherwise.
@@ -1246,6 +1279,9 @@ func (o Job) MarshalJSON() ([]byte, error) {
 	}
 	if o.Datacenters != nil {
 		toSerialize["Datacenters"] = o.Datacenters
+	}
+	if o.DispatchIdempotencyToken != nil {
+		toSerialize["DispatchIdempotencyToken"] = o.DispatchIdempotencyToken
 	}
 	if o.Dispatched != nil {
 		toSerialize["Dispatched"] = o.Dispatched

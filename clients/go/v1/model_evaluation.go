@@ -39,6 +39,7 @@ type Evaluation struct {
 	Priority *int32 `json:"Priority,omitempty"`
 	QueuedAllocations *map[string]int32 `json:"QueuedAllocations,omitempty"`
 	QuotaLimitReached *string `json:"QuotaLimitReached,omitempty"`
+	RelatedEvals *[]EvaluationStub `json:"RelatedEvals,omitempty"`
 	SnapshotIndex *int32 `json:"SnapshotIndex,omitempty"`
 	Status *string `json:"Status,omitempty"`
 	StatusDescription *string `json:"StatusDescription,omitempty"`
@@ -737,6 +738,38 @@ func (o *Evaluation) SetQuotaLimitReached(v string) {
 	o.QuotaLimitReached = &v
 }
 
+// GetRelatedEvals returns the RelatedEvals field value if set, zero value otherwise.
+func (o *Evaluation) GetRelatedEvals() []EvaluationStub {
+	if o == nil || o.RelatedEvals == nil {
+		var ret []EvaluationStub
+		return ret
+	}
+	return *o.RelatedEvals
+}
+
+// GetRelatedEvalsOk returns a tuple with the RelatedEvals field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Evaluation) GetRelatedEvalsOk() (*[]EvaluationStub, bool) {
+	if o == nil || o.RelatedEvals == nil {
+		return nil, false
+	}
+	return o.RelatedEvals, true
+}
+
+// HasRelatedEvals returns a boolean if a field has been set.
+func (o *Evaluation) HasRelatedEvals() bool {
+	if o != nil && o.RelatedEvals != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRelatedEvals gets a reference to the given []EvaluationStub and assigns it to the RelatedEvals field.
+func (o *Evaluation) SetRelatedEvals(v []EvaluationStub) {
+	o.RelatedEvals = &v
+}
+
 // GetSnapshotIndex returns the SnapshotIndex field value if set, zero value otherwise.
 func (o *Evaluation) GetSnapshotIndex() int32 {
 	if o == nil || o.SnapshotIndex == nil {
@@ -1025,6 +1058,9 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 	}
 	if o.QuotaLimitReached != nil {
 		toSerialize["QuotaLimitReached"] = o.QuotaLimitReached
+	}
+	if o.RelatedEvals != nil {
+		toSerialize["RelatedEvals"] = o.RelatedEvals
 	}
 	if o.SnapshotIndex != nil {
 		toSerialize["SnapshotIndex"] = o.SnapshotIndex

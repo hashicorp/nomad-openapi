@@ -21,6 +21,8 @@ pub struct SearchResponse {
     pub last_index: Option<i32>,
     #[serde(rename = "Matches", skip_serializing_if = "Option::is_none")]
     pub matches: Option<::std::collections::HashMap<String, Vec<String>>>,
+    #[serde(rename = "NextToken", skip_serializing_if = "Option::is_none")]
+    pub next_token: Option<String>,
     #[serde(rename = "RequestTime", skip_serializing_if = "Option::is_none")]
     pub request_time: Option<i64>,
     #[serde(rename = "Truncations", skip_serializing_if = "Option::is_none")]
@@ -34,6 +36,7 @@ impl SearchResponse {
             last_contact: None,
             last_index: None,
             matches: None,
+            next_token: None,
             request_time: None,
             truncations: None,
         }

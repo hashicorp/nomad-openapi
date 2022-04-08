@@ -68,6 +68,22 @@ public class FuzzySearchRequestTest {
     }
 
     /**
+     * Test the property 'filter'
+     */
+    @Test
+    public void filterTest() {
+        // TODO: test filter
+    }
+
+    /**
+     * Test the property 'headers'
+     */
+    @Test
+    public void headersTest() {
+        // TODO: test headers
+    }
+
+    /**
      * Test the property 'namespace'
      */
     @Test
@@ -113,6 +129,14 @@ public class FuzzySearchRequestTest {
     @Test
     public void regionTest() {
         // TODO: test region
+    }
+
+    /**
+     * Test the property 'reverse'
+     */
+    @Test
+    public void reverseTest() {
+        // TODO: test reverse
     }
 
     /**

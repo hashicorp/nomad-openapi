@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnforceIndex** | Pointer to **bool** |  | [optional] 
+**EvalPriority** | Pointer to **int32** |  | [optional] 
 **Job** | Pointer to [**Job**](Job.md) |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
@@ -56,6 +57,31 @@ SetEnforceIndex sets EnforceIndex field to given value.
 `func (o *JobRegisterRequest) HasEnforceIndex() bool`
 
 HasEnforceIndex returns a boolean if a field has been set.
+
+### GetEvalPriority
+
+`func (o *JobRegisterRequest) GetEvalPriority() int32`
+
+GetEvalPriority returns the EvalPriority field if non-nil, zero value otherwise.
+
+### GetEvalPriorityOk
+
+`func (o *JobRegisterRequest) GetEvalPriorityOk() (*int32, bool)`
+
+GetEvalPriorityOk returns a tuple with the EvalPriority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEvalPriority
+
+`func (o *JobRegisterRequest) SetEvalPriority(v int32)`
+
+SetEvalPriority sets EvalPriority field to given value.
+
+### HasEvalPriority
+
+`func (o *JobRegisterRequest) HasEvalPriority() bool`
+
+HasEvalPriority returns a boolean if a field has been set.
 
 ### GetJob
 

@@ -53,6 +53,10 @@ public class TaskGroupSummary {
   @SerializedName(SERIALIZED_NAME_STARTING)
   private Integer starting;
 
+  public static final String SERIALIZED_NAME_UNKNOWN = "Unknown";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN)
+  private Integer unknown;
+
 
   public TaskGroupSummary complete(Integer complete) {
     
@@ -192,6 +196,29 @@ public class TaskGroupSummary {
   }
 
 
+  public TaskGroupSummary unknown(Integer unknown) {
+    
+    this.unknown = unknown;
+    return this;
+  }
+
+   /**
+   * Get unknown
+   * @return unknown
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getUnknown() {
+    return unknown;
+  }
+
+
+  public void setUnknown(Integer unknown) {
+    this.unknown = unknown;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -206,12 +233,13 @@ public class TaskGroupSummary {
         Objects.equals(this.lost, taskGroupSummary.lost) &&
         Objects.equals(this.queued, taskGroupSummary.queued) &&
         Objects.equals(this.running, taskGroupSummary.running) &&
-        Objects.equals(this.starting, taskGroupSummary.starting);
+        Objects.equals(this.starting, taskGroupSummary.starting) &&
+        Objects.equals(this.unknown, taskGroupSummary.unknown);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(complete, failed, lost, queued, running, starting);
+    return Objects.hash(complete, failed, lost, queued, running, starting, unknown);
   }
 
   @Override
@@ -224,6 +252,7 @@ public class TaskGroupSummary {
     sb.append("    queued: ").append(toIndentedString(queued)).append("\n");
     sb.append("    running: ").append(toIndentedString(running)).append("\n");
     sb.append("    starting: ").append(toIndentedString(starting)).append("\n");
+    sb.append("    unknown: ").append(toIndentedString(unknown)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **OnUpdate** | Pointer to **string** |  | [optional] 
 **PortLabel** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **TaskName** | Pointer to **string** |  | [optional] 
 
@@ -337,6 +338,31 @@ SetPortLabel sets PortLabel field to given value.
 `func (o *Service) HasPortLabel() bool`
 
 HasPortLabel returns a boolean if a field has been set.
+
+### GetProvider
+
+`func (o *Service) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *Service) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *Service) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *Service) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
 
 ### GetTags
 

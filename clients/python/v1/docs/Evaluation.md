@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **priority** | **int** |  | [optional] 
 **queued_allocations** | **{str: (int,)}** |  | [optional] 
 **quota_limit_reached** | **str** |  | [optional] 
+**related_evals** | [**[EvaluationStub]**](EvaluationStub.md) |  | [optional] 
 **snapshot_index** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 

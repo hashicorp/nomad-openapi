@@ -21,7 +21,11 @@ module NomadClient
 
     attr_accessor :disk
 
+    attr_accessor :max_dynamic_port
+
     attr_accessor :memory
+
+    attr_accessor :min_dynamic_port
 
     attr_accessor :networks
 
@@ -31,7 +35,9 @@ module NomadClient
         :'cpu' => :'Cpu',
         :'devices' => :'Devices',
         :'disk' => :'Disk',
+        :'max_dynamic_port' => :'MaxDynamicPort',
         :'memory' => :'Memory',
+        :'min_dynamic_port' => :'MinDynamicPort',
         :'networks' => :'Networks'
       }
     end
@@ -47,7 +53,9 @@ module NomadClient
         :'cpu' => :'NodeCpuResources',
         :'devices' => :'Array<NodeDeviceResource>',
         :'disk' => :'NodeDiskResources',
+        :'max_dynamic_port' => :'Integer',
         :'memory' => :'NodeMemoryResources',
+        :'min_dynamic_port' => :'Integer',
         :'networks' => :'Array<NetworkResource>'
       }
     end
@@ -87,8 +95,16 @@ module NomadClient
         self.disk = attributes[:'disk']
       end
 
+      if attributes.key?(:'max_dynamic_port')
+        self.max_dynamic_port = attributes[:'max_dynamic_port']
+      end
+
       if attributes.key?(:'memory')
         self.memory = attributes[:'memory']
+      end
+
+      if attributes.key?(:'min_dynamic_port')
+        self.min_dynamic_port = attributes[:'min_dynamic_port']
       end
 
       if attributes.key?(:'networks')
@@ -119,7 +135,9 @@ module NomadClient
           cpu == o.cpu &&
           devices == o.devices &&
           disk == o.disk &&
+          max_dynamic_port == o.max_dynamic_port &&
           memory == o.memory &&
+          min_dynamic_port == o.min_dynamic_port &&
           networks == o.networks
     end
 
@@ -132,7 +150,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cpu, devices, disk, memory, networks].hash
+      [cpu, devices, disk, max_dynamic_port, memory, min_dynamic_port, networks].hash
     end
 
     # Builds the object from hash

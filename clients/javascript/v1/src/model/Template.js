@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import WaitConfig from './WaitConfig';
 
 /**
  * The Template model module.
@@ -80,6 +81,9 @@ class Template {
             if (data.hasOwnProperty('VaultGrace')) {
                 obj['VaultGrace'] = ApiClient.convertToType(data['VaultGrace'], 'Number');
             }
+            if (data.hasOwnProperty('Wait')) {
+                obj['Wait'] = WaitConfig.constructFromObject(data['Wait']);
+            }
         }
         return obj;
     }
@@ -141,6 +145,11 @@ Template.prototype['Splay'] = undefined;
  * @member {Number} VaultGrace
  */
 Template.prototype['VaultGrace'] = undefined;
+
+/**
+ * @member {module:model/WaitConfig} Wait
+ */
+Template.prototype['Wait'] = undefined;
 
 
 

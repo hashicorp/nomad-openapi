@@ -8,6 +8,7 @@
 | **last_contact** | **Integer** |  | [optional] |
 | **last_index** | **Integer** |  | [optional] |
 | **matches** | **Hash&lt;String, Array&lt;FuzzyMatch&gt;&gt;** |  | [optional] |
+| **next_token** | **String** |  | [optional] |
 | **request_time** | **Integer** |  | [optional] |
 | **truncations** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
 
@@ -21,6 +22,7 @@ instance = NomadClient::FuzzySearchResponse.new(
   last_contact: null,
   last_index: null,
   matches: null,
+  next_token: null,
   request_time: null,
   truncations: null
 )

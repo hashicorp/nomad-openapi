@@ -129,6 +129,7 @@ class Job(ModelNormal):
             'consul_token': (str,),  # noqa: E501
             'create_index': (int,),  # noqa: E501
             'datacenters': ([str],),  # noqa: E501
+            'dispatch_idempotency_token': (str,),  # noqa: E501
             'dispatched': (bool,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'job_modify_index': (int,),  # noqa: E501
@@ -173,6 +174,7 @@ class Job(ModelNormal):
         'consul_token': 'ConsulToken',  # noqa: E501
         'create_index': 'CreateIndex',  # noqa: E501
         'datacenters': 'Datacenters',  # noqa: E501
+        'dispatch_idempotency_token': 'DispatchIdempotencyToken',  # noqa: E501
         'dispatched': 'Dispatched',  # noqa: E501
         'id': 'ID',  # noqa: E501
         'job_modify_index': 'JobModifyIndex',  # noqa: E501
@@ -252,6 +254,7 @@ class Job(ModelNormal):
             consul_token (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenters ([str]): [optional]  # noqa: E501
+            dispatch_idempotency_token (str): [optional]  # noqa: E501
             dispatched (bool): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
@@ -369,6 +372,7 @@ class Job(ModelNormal):
             consul_token (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenters ([str]): [optional]  # noqa: E501
+            dispatch_idempotency_token (str): [optional]  # noqa: E501
             dispatched (bool): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501

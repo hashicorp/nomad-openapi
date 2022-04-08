@@ -84,6 +84,7 @@ class Vault(ModelNormal):
         return {
             'change_mode': (str,),  # noqa: E501
             'change_signal': (str,),  # noqa: E501
+            'entity_alias': (str,),  # noqa: E501
             'env': (bool,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
             'policies': ([str],),  # noqa: E501
@@ -97,6 +98,7 @@ class Vault(ModelNormal):
     attribute_map = {
         'change_mode': 'ChangeMode',  # noqa: E501
         'change_signal': 'ChangeSignal',  # noqa: E501
+        'entity_alias': 'EntityAlias',  # noqa: E501
         'env': 'Env',  # noqa: E501
         'namespace': 'Namespace',  # noqa: E501
         'policies': 'Policies',  # noqa: E501
@@ -145,6 +147,7 @@ class Vault(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             change_mode (str): [optional]  # noqa: E501
             change_signal (str): [optional]  # noqa: E501
+            entity_alias (str): [optional]  # noqa: E501
             env (bool): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
             policies ([str]): [optional]  # noqa: E501
@@ -231,6 +234,7 @@ class Vault(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             change_mode (str): [optional]  # noqa: E501
             change_signal (str): [optional]  # noqa: E501
+            entity_alias (str): [optional]  # noqa: E501
             env (bool): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
             policies ([str]): [optional]  # noqa: E501

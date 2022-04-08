@@ -19,6 +19,7 @@ export class JobDeregisterResponse {
     'knownLeader'?: boolean;
     'lastContact'?: number;
     'lastIndex'?: number;
+    'nextToken'?: string;
     'requestTime'?: number;
 
     static readonly discriminator: string | undefined = undefined;
@@ -58,6 +59,12 @@ export class JobDeregisterResponse {
             "name": "lastIndex",
             "baseName": "LastIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

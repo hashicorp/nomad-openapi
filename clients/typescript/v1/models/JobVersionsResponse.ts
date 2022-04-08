@@ -19,6 +19,7 @@ export class JobVersionsResponse {
     'knownLeader'?: boolean;
     'lastContact'?: number;
     'lastIndex'?: number;
+    'nextToken'?: string;
     'requestTime'?: number;
     'versions'?: Array<Job>;
 
@@ -47,6 +48,12 @@ export class JobVersionsResponse {
             "name": "lastIndex",
             "baseName": "LastIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

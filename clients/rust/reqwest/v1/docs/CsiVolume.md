@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **requested_capabilities** | Option<[**Vec<crate::models::CsiVolumeCapability>**](CSIVolumeCapability.md)> |  | [optional]
 **requested_capacity_max** | Option<**i64**> |  | [optional]
 **requested_capacity_min** | Option<**i64**> |  | [optional]
+**requested_topologies** | Option<[**crate::models::CsiTopologyRequest**](CSITopologyRequest.md)> |  | [optional]
 **resource_exhausted** | Option<**String**> |  | [optional]
 **schedulable** | Option<**bool**> |  | [optional]
 **secrets** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]

@@ -38,6 +38,7 @@ from nomad_client.model.csi_snapshot_create_request import CSISnapshotCreateRequ
 from nomad_client.model.csi_snapshot_create_response import CSISnapshotCreateResponse
 from nomad_client.model.csi_snapshot_list_response import CSISnapshotListResponse
 from nomad_client.model.csi_topology import CSITopology
+from nomad_client.model.csi_topology_request import CSITopologyRequest
 from nomad_client.model.csi_volume import CSIVolume
 from nomad_client.model.csi_volume_capability import CSIVolumeCapability
 from nomad_client.model.csi_volume_create_request import CSIVolumeCreateRequest
@@ -82,11 +83,13 @@ from nomad_client.model.driver_info import DriverInfo
 from nomad_client.model.ephemeral_disk import EphemeralDisk
 from nomad_client.model.eval_options import EvalOptions
 from nomad_client.model.evaluation import Evaluation
+from nomad_client.model.evaluation_stub import EvaluationStub
 from nomad_client.model.field_diff import FieldDiff
 from nomad_client.model.fuzzy_match import FuzzyMatch
 from nomad_client.model.fuzzy_search_request import FuzzySearchRequest
 from nomad_client.model.fuzzy_search_response import FuzzySearchResponse
 from nomad_client.model.gauge_value import GaugeValue
+from nomad_client.model.host_network_info import HostNetworkInfo
 from nomad_client.model.host_volume_info import HostVolumeInfo
 from nomad_client.model.int8 import Int8
 from nomad_client.model.job import Job
@@ -117,6 +120,7 @@ from nomad_client.model.multiregion import Multiregion
 from nomad_client.model.multiregion_region import MultiregionRegion
 from nomad_client.model.multiregion_strategy import MultiregionStrategy
 from nomad_client.model.namespace import Namespace
+from nomad_client.model.namespace_capabilities import NamespaceCapabilities
 from nomad_client.model.network_resource import NetworkResource
 from nomad_client.model.node import Node
 from nomad_client.model.node_cpu_resources import NodeCpuResources
@@ -198,3 +202,4 @@ from nomad_client.model.update_strategy import UpdateStrategy
 from nomad_client.model.vault import Vault
 from nomad_client.model.volume_mount import VolumeMount
 from nomad_client.model.volume_request import VolumeRequest
+from nomad_client.model.wait_config import WaitConfig

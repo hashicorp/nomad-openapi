@@ -19,6 +19,8 @@ module NomadClient
 
     attr_accessor :change_signal
 
+    attr_accessor :entity_alias
+
     attr_accessor :env
 
     attr_accessor :namespace
@@ -30,6 +32,7 @@ module NomadClient
       {
         :'change_mode' => :'ChangeMode',
         :'change_signal' => :'ChangeSignal',
+        :'entity_alias' => :'EntityAlias',
         :'env' => :'Env',
         :'namespace' => :'Namespace',
         :'policies' => :'Policies'
@@ -46,6 +49,7 @@ module NomadClient
       {
         :'change_mode' => :'String',
         :'change_signal' => :'String',
+        :'entity_alias' => :'String',
         :'env' => :'Boolean',
         :'namespace' => :'String',
         :'policies' => :'Array<String>'
@@ -79,6 +83,10 @@ module NomadClient
 
       if attributes.key?(:'change_signal')
         self.change_signal = attributes[:'change_signal']
+      end
+
+      if attributes.key?(:'entity_alias')
+        self.entity_alias = attributes[:'entity_alias']
       end
 
       if attributes.key?(:'env')
@@ -116,6 +124,7 @@ module NomadClient
       self.class == o.class &&
           change_mode == o.change_mode &&
           change_signal == o.change_signal &&
+          entity_alias == o.entity_alias &&
           env == o.env &&
           namespace == o.namespace &&
           policies == o.policies
@@ -130,7 +139,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [change_mode, change_signal, env, namespace, policies].hash
+      [change_mode, change_signal, entity_alias, env, namespace, policies].hash
     end
 
     # Builds the object from hash

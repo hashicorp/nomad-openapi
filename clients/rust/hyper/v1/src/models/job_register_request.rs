@@ -15,6 +15,8 @@
 pub struct JobRegisterRequest {
     #[serde(rename = "EnforceIndex", skip_serializing_if = "Option::is_none")]
     pub enforce_index: Option<bool>,
+    #[serde(rename = "EvalPriority", skip_serializing_if = "Option::is_none")]
+    pub eval_priority: Option<i32>,
     #[serde(rename = "Job", skip_serializing_if = "Option::is_none")]
     pub job: Option<Box<crate::models::Job>>,
     #[serde(rename = "JobModifyIndex", skip_serializing_if = "Option::is_none")]
@@ -35,6 +37,7 @@ impl JobRegisterRequest {
     pub fn new() -> JobRegisterRequest {
         JobRegisterRequest {
             enforce_index: None,
+            eval_priority: None,
             job: None,
             job_modify_index: None,
             namespace: None,

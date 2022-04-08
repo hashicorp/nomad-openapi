@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Queued** | Pointer to **int32** |  | [optional] 
 **Running** | Pointer to **int32** |  | [optional] 
 **Starting** | Pointer to **int32** |  | [optional] 
+**Unknown** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetStarting sets Starting field to given value.
 `func (o *TaskGroupSummary) HasStarting() bool`
 
 HasStarting returns a boolean if a field has been set.
+
+### GetUnknown
+
+`func (o *TaskGroupSummary) GetUnknown() int32`
+
+GetUnknown returns the Unknown field if non-nil, zero value otherwise.
+
+### GetUnknownOk
+
+`func (o *TaskGroupSummary) GetUnknownOk() (*int32, bool)`
+
+GetUnknownOk returns a tuple with the Unknown field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnknown
+
+`func (o *TaskGroupSummary) SetUnknown(v int32)`
+
+SetUnknown sets Unknown field to given value.
+
+### HasUnknown
+
+`func (o *TaskGroupSummary) HasUnknown() bool`
+
+HasUnknown returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

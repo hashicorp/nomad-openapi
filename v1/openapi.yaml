@@ -54,13 +54,16 @@ components:
       schema:
         type: string
     IndexHeader:
-      description: If set, wait until query exceeds given index. Must be provided with WaitParam.
+      description: If set, wait until query exceeds given index. Must be provided
+        with WaitParam.
       in: header
       name: index
       schema:
         type: integer
     JobAllocationsParam:
-      description: Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.
+      description: Specifies whether the list of allocations should include allocations
+        from a previously registered job with the same ID. This is possible if the
+        job is deregistered and reregistered.
       in: query
       name: all
       schema:
@@ -72,7 +75,8 @@ components:
       schema:
         type: boolean
     JobGlobalParam:
-      description: Boolean flag indicating whether the operation should apply to all instances of the job globally.
+      description: Boolean flag indicating whether the operation should apply to all
+        instances of the job globally.
       in: query
       name: global
       schema:
@@ -85,7 +89,8 @@ components:
       schema:
         type: string
     JobPurgeParam:
-      description: Boolean flag indicating whether to purge allocations of the job after deleting.
+      description: Boolean flag indicating whether to purge allocations of the job
+        after deleting.
       in: query
       name: purge
       schema:
@@ -123,7 +128,8 @@ components:
       schema:
         type: string
     NodeResourcesParam:
-      description: Whether or not to include the NodeResources and ReservedResources fields in the response.
+      description: Whether or not to include the NodeResources and ReservedResources
+        fields in the response.
       in: query
       name: resources
       schema:
@@ -405,28 +411,32 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     CreateQuotaSpecResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteACLPolicyResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteACLTokenResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteJobResponse:
@@ -437,14 +447,16 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteNamespaceResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteOperatorRaftPeerResponse:
@@ -453,21 +465,24 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DeleteVolumeRegistrationResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     DetachOrDeleteVolumeResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -475,7 +490,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     ForbiddenResponse:
@@ -490,7 +506,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -498,7 +515,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetACLPolicyResponse:
@@ -509,7 +527,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -517,7 +536,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetACLTokenResponse:
@@ -528,7 +548,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -536,7 +557,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetACLTokenSelfResponse:
@@ -547,7 +569,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -555,7 +578,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetACLTokensResponse:
@@ -568,7 +592,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -576,7 +601,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetAllocationsResponse:
@@ -589,7 +615,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -597,7 +624,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetDeploymentAllocationsResponse:
@@ -610,7 +638,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -618,7 +647,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetDeploymentResponse:
@@ -629,7 +659,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -637,7 +668,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetDeploymentsResponse:
@@ -650,7 +682,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -658,7 +691,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetEvaluationAllocationsResponse:
@@ -671,7 +705,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -679,7 +714,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetEvaluationResponse:
@@ -690,7 +726,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -698,7 +735,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetEvaluationsResponse:
@@ -711,7 +749,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -719,7 +758,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetExternalVolumesResponse:
@@ -730,7 +770,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -738,7 +779,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetFuzzySearchResponse:
@@ -749,7 +791,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -757,7 +800,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobAllocationsResponse:
@@ -770,7 +814,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -778,7 +823,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobDeploymentResponse:
@@ -789,7 +835,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -797,7 +844,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobDeploymentsResponse:
@@ -810,7 +858,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -818,7 +867,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobEvaluationsResponse:
@@ -831,7 +881,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -839,7 +890,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobResponse:
@@ -850,7 +902,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -858,7 +911,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobScaleStatusResponse:
@@ -869,7 +923,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -877,7 +932,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobSummaryResponse:
@@ -888,7 +944,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -896,7 +953,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobVersionsResponse:
@@ -907,7 +965,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -915,7 +974,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetJobsResponse:
@@ -928,7 +988,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -936,7 +997,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetMetricsSummaryResponse:
@@ -953,7 +1015,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -961,7 +1024,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetNamespacesResponse:
@@ -974,7 +1038,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -982,7 +1047,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetNodeAllocationsResponse:
@@ -995,7 +1061,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1003,7 +1070,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetNodeResponse:
@@ -1014,7 +1082,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1022,7 +1091,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetNodesResponse:
@@ -1035,7 +1105,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1043,7 +1114,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetOperatorAutopilotConfigurationResponse:
@@ -1072,7 +1144,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1080,7 +1153,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetPluginCSIResponse:
@@ -1093,7 +1167,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1101,7 +1176,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetPluginsResponse:
@@ -1120,7 +1196,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1128,7 +1205,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetQuotasResponse:
@@ -1140,7 +1218,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1148,7 +1227,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetRegionsResponse:
@@ -1169,7 +1249,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1177,7 +1258,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetScalingPolicyResponse:
@@ -1188,7 +1270,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1196,7 +1279,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetSearchResponse:
@@ -1207,7 +1291,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1215,7 +1300,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetSnapshotsResponse:
@@ -1226,7 +1312,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1234,7 +1321,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetStatusLeaderResponse:
@@ -1259,7 +1347,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1267,7 +1356,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     GetVolumesResponse:
@@ -1280,7 +1370,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1288,7 +1379,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     InternalServerErrorResponse:
@@ -1303,7 +1395,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     NodeEligibilityUpdateResponse:
@@ -1314,7 +1407,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     NodePurgeResponse:
@@ -1325,7 +1419,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostACLBootstrapResponse:
@@ -1336,14 +1431,16 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostACLPolicyResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostACLTokenOnetimeExchangeResponse:
@@ -1354,7 +1451,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostACLTokenOnetimeResponse:
@@ -1365,7 +1463,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostACLTokenResponse:
@@ -1376,7 +1475,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostDeploymentAllocationHealthResponse:
@@ -1417,7 +1517,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobEvaluateResponse:
@@ -1428,7 +1529,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobParseResponse:
@@ -1445,7 +1547,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobPlanResponse:
@@ -1456,7 +1559,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobResponse:
@@ -1467,7 +1571,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1475,7 +1580,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     PostJobRevertResponse:
@@ -1486,7 +1592,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobScalingResponse:
@@ -1497,7 +1604,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobStabilityResponse:
@@ -1508,7 +1616,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostJobValidateResponse:
@@ -1519,14 +1628,16 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostNamespaceResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostOperatorSchedulerConfigurationResponse:
@@ -1537,14 +1648,16 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostQuotaSpecResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostSnapshotResponse:
@@ -1555,21 +1668,24 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostVolumeRegistrationResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
     PostVolumeResponse:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1577,7 +1693,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     PutOperatorAutopilotConfigurationResponse:
@@ -1598,7 +1715,8 @@ components:
       description: ""
       headers:
         X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1.
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
         X-Nomad-KnownLeader:
@@ -1606,7 +1724,8 @@ components:
           schema:
             type: boolean
         X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by the leader node.
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
           schema:
             type: integer
     default:
@@ -2041,6 +2160,22 @@ components:
       properties:
         SupportsAttachDetach:
           type: boolean
+        SupportsClone:
+          type: boolean
+        SupportsCondition:
+          type: boolean
+        SupportsCreateDelete:
+          type: boolean
+        SupportsCreateDeleteSnapshot:
+          type: boolean
+        SupportsExpand:
+          type: boolean
+        SupportsGet:
+          type: boolean
+        SupportsGetCapacity:
+          type: boolean
+        SupportsListSnapshots:
+          type: boolean
         SupportsListVolumes:
           type: boolean
         SupportsListVolumesAttachedNodes:
@@ -2089,6 +2224,12 @@ components:
           format: int64
           type: integer
         RequiresNodeStageVolume:
+          type: boolean
+        SupportsCondition:
+          type: boolean
+        SupportsExpand:
+          type: boolean
+        SupportsStats:
           type: boolean
       type: object
     CSIPlugin:
@@ -2212,6 +2353,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -2247,6 +2390,17 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    CSITopologyRequest:
+      properties:
+        Preferred:
+          items:
+            $ref: '#/components/schemas/CSITopology'
+          type: array
+        Required:
+          items:
+            $ref: '#/components/schemas/CSITopology'
+          type: array
       type: object
     CSIVolume:
       properties:
@@ -2319,6 +2473,8 @@ components:
         RequestedCapacityMin:
           format: int64
           type: integer
+        RequestedTopologies:
+          $ref: '#/components/schemas/CSITopologyRequest'
         ResourceExhausted:
           format: date-time
           type: string
@@ -2998,6 +3154,10 @@ components:
           type: object
         QuotaLimitReached:
           type: string
+        RelatedEvals:
+          items:
+            $ref: '#/components/schemas/EvaluationStub'
+          type: array
         SnapshotIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3013,6 +3173,52 @@ components:
         Wait:
           format: int64
           type: integer
+        WaitUntil:
+          format: date-time
+          type: string
+      type: object
+    EvaluationStub:
+      properties:
+        BlockedEval:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        CreateTime:
+          format: int64
+          type: integer
+        DeploymentID:
+          type: string
+        ID:
+          type: string
+        JobID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        ModifyTime:
+          format: int64
+          type: integer
+        Namespace:
+          type: string
+        NextEval:
+          type: string
+        NodeID:
+          type: string
+        PreviousEval:
+          type: string
+        Priority:
+          type: integer
+        Status:
+          type: string
+        StatusDescription:
+          type: string
+        TriggeredBy:
+          type: string
+        Type:
+          type: string
         WaitUntil:
           format: date-time
           type: string
@@ -3049,6 +3255,12 @@ components:
           type: string
         Context:
           type: string
+        Filter:
+          type: string
+        Headers:
+          additionalProperties:
+            type: string
+          type: object
         Namespace:
           type: string
         NextToken:
@@ -3064,6 +3276,8 @@ components:
           type: string
         Region:
           type: string
+        Reverse:
+          type: boolean
         Text:
           type: string
         WaitIndex:
@@ -3091,6 +3305,8 @@ components:
               $ref: '#/components/schemas/FuzzyMatch'
             type: array
           type: object
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -3110,6 +3326,17 @@ components:
         Value:
           format: float
           type: number
+      type: object
+    HostNetworkInfo:
+      properties:
+        CIDR:
+          type: string
+        Interface:
+          type: string
+        Name:
+          type: string
+        ReservedPorts:
+          type: string
       type: object
     HostVolumeInfo:
       properties:
@@ -3142,6 +3369,8 @@ components:
           items:
             type: string
           type: array
+        DispatchIdempotencyToken:
+          type: string
         Dispatched:
           type: boolean
         ID:
@@ -3248,6 +3477,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -3407,6 +3638,8 @@ components:
       properties:
         EnforceIndex:
           type: boolean
+        EvalPriority:
+          type: integer
         Job:
           $ref: '#/components/schemas/Job'
         JobModifyIndex:
@@ -3445,6 +3678,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -3579,6 +3814,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -3670,12 +3907,18 @@ components:
       type: object
     Namespace:
       properties:
+        Capabilities:
+          $ref: '#/components/schemas/NamespaceCapabilities'
         CreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
         Description:
           type: string
+        Meta:
+          additionalProperties:
+            type: string
+          type: object
         ModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3684,6 +3927,17 @@ components:
           type: string
         Quota:
           type: string
+      type: object
+    NamespaceCapabilities:
+      properties:
+        DisabledTaskDrivers:
+          items:
+            type: string
+          type: array
+        EnabledTaskDrivers:
+          items:
+            type: string
+          type: array
       type: object
     NetworkResource:
       properties:
@@ -3697,6 +3951,8 @@ components:
           items:
             $ref: '#/components/schemas/Port'
           type: array
+        Hostname:
+          type: string
         IP:
           type: string
         MBits:
@@ -3722,6 +3978,8 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/CSIInfo'
           type: object
+        CgroupParent:
+          type: string
         CreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -3742,6 +4000,10 @@ components:
           type: array
         HTTPAddr:
           type: string
+        HostNetworks:
+          additionalProperties:
+            $ref: '#/components/schemas/HostNetworkInfo'
+          type: object
         HostVolumes:
           additionalProperties:
             $ref: '#/components/schemas/HostVolumeInfo'
@@ -4012,8 +4274,12 @@ components:
           type: array
         Disk:
           $ref: '#/components/schemas/NodeDiskResources'
+        MaxDynamicPort:
+          type: integer
         Memory:
           $ref: '#/components/schemas/NodeMemoryResources'
+        MinDynamicPort:
+          type: integer
         Networks:
           items:
             $ref: '#/components/schemas/NetworkResource'
@@ -4487,6 +4753,8 @@ components:
           type: integer
         PreemptionConfig:
           $ref: '#/components/schemas/PreemptionConfig'
+        RejectJobRegistration:
+          type: boolean
         SchedulerAlgorithm:
           type: string
       type: object
@@ -4501,6 +4769,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -4527,6 +4797,12 @@ components:
           type: string
         Context:
           type: string
+        Filter:
+          type: string
+        Headers:
+          additionalProperties:
+            type: string
+          type: object
         Namespace:
           type: string
         NextToken:
@@ -4542,6 +4818,8 @@ components:
           type: string
         Region:
           type: string
+        Reverse:
+          type: boolean
         WaitIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -4567,6 +4845,8 @@ components:
               type: string
             type: array
           type: object
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer
@@ -4641,6 +4921,8 @@ components:
         OnUpdate:
           type: string
         PortLabel:
+          type: string
+        Provider:
           type: string
         Tags:
           items:
@@ -4957,6 +5239,9 @@ components:
           type: integer
         EphemeralDisk:
           $ref: '#/components/schemas/EphemeralDisk'
+        MaxClientDisconnect:
+          format: int64
+          type: integer
         Meta:
           additionalProperties:
             type: string
@@ -5056,6 +5341,8 @@ components:
           type: integer
         Starting:
           type: integer
+        Unknown:
+          type: integer
       type: object
     TaskHandle:
       properties:
@@ -5124,6 +5411,8 @@ components:
         VaultGrace:
           format: int64
           type: integer
+        Wait:
+          $ref: '#/components/schemas/WaitConfig'
       type: object
     Time:
       format: date-time
@@ -5158,6 +5447,8 @@ components:
         ChangeMode:
           type: string
         ChangeSignal:
+          type: string
+        EntityAlias:
           type: string
         Env:
           type: boolean
@@ -5197,6 +5488,15 @@ components:
           type: string
         Type:
           type: string
+      type: object
+    WaitConfig:
+      properties:
+        Max:
+          format: int64
+          type: integer
+        Min:
+          format: int64
+          type: integer
       type: object
     float32:
       format: float

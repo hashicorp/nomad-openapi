@@ -35,6 +35,8 @@ pub struct Template {
     pub splay: Option<i64>,
     #[serde(rename = "VaultGrace", skip_serializing_if = "Option::is_none")]
     pub vault_grace: Option<i64>,
+    #[serde(rename = "Wait", skip_serializing_if = "Option::is_none")]
+    pub wait: Option<Box<crate::models::WaitConfig>>,
 }
 
 impl Template {
@@ -51,6 +53,7 @@ impl Template {
             source_path: None,
             splay: None,
             vault_grace: None,
+            wait: None,
         }
     }
 }

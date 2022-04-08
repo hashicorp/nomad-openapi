@@ -21,6 +21,8 @@ pub struct SchedulerConfiguration {
     pub modify_index: Option<i32>,
     #[serde(rename = "PreemptionConfig", skip_serializing_if = "Option::is_none")]
     pub preemption_config: Option<Box<crate::models::PreemptionConfig>>,
+    #[serde(rename = "RejectJobRegistration", skip_serializing_if = "Option::is_none")]
+    pub reject_job_registration: Option<bool>,
     #[serde(rename = "SchedulerAlgorithm", skip_serializing_if = "Option::is_none")]
     pub scheduler_algorithm: Option<String>,
 }
@@ -32,6 +34,7 @@ impl SchedulerConfiguration {
             memory_oversubscription_enabled: None,
             modify_index: None,
             preemption_config: None,
+            reject_job_registration: None,
             scheduler_algorithm: None,
         }
     }

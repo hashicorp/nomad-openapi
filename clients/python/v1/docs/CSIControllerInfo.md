@@ -5,6 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **supports_attach_detach** | **bool** |  | [optional] 
+**supports_clone** | **bool** |  | [optional] 
+**supports_condition** | **bool** |  | [optional] 
+**supports_create_delete** | **bool** |  | [optional] 
+**supports_create_delete_snapshot** | **bool** |  | [optional] 
+**supports_expand** | **bool** |  | [optional] 
+**supports_get** | **bool** |  | [optional] 
+**supports_get_capacity** | **bool** |  | [optional] 
+**supports_list_snapshots** | **bool** |  | [optional] 
 **supports_list_volumes** | **bool** |  | [optional] 
 **supports_list_volumes_attached_nodes** | **bool** |  | [optional] 
 **supports_read_only_attach** | **bool** |  | [optional] 

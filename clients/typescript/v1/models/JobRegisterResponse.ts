@@ -19,6 +19,7 @@ export class JobRegisterResponse {
     'knownLeader'?: boolean;
     'lastContact'?: number;
     'lastIndex'?: number;
+    'nextToken'?: string;
     'requestTime'?: number;
     'warnings'?: string;
 
@@ -59,6 +60,12 @@ export class JobRegisterResponse {
             "name": "lastIndex",
             "baseName": "LastIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

@@ -32,7 +32,9 @@ from nomad_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from nomad_client.model.allocation_metric import AllocationMetric
+    from nomad_client.model.evaluation_stub import EvaluationStub
     globals()['AllocationMetric'] = AllocationMetric
+    globals()['EvaluationStub'] = EvaluationStub
 
 
 class Evaluation(ModelNormal):
@@ -129,6 +131,7 @@ class Evaluation(ModelNormal):
             'priority': (int,),  # noqa: E501
             'queued_allocations': ({str: (int,)},),  # noqa: E501
             'quota_limit_reached': (str,),  # noqa: E501
+            'related_evals': ([EvaluationStub],),  # noqa: E501
             'snapshot_index': (int,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'status_description': (str,),  # noqa: E501
@@ -165,6 +168,7 @@ class Evaluation(ModelNormal):
         'priority': 'Priority',  # noqa: E501
         'queued_allocations': 'QueuedAllocations',  # noqa: E501
         'quota_limit_reached': 'QuotaLimitReached',  # noqa: E501
+        'related_evals': 'RelatedEvals',  # noqa: E501
         'snapshot_index': 'SnapshotIndex',  # noqa: E501
         'status': 'Status',  # noqa: E501
         'status_description': 'StatusDescription',  # noqa: E501
@@ -236,6 +240,7 @@ class Evaluation(ModelNormal):
             priority (int): [optional]  # noqa: E501
             queued_allocations ({str: (int,)}): [optional]  # noqa: E501
             quota_limit_reached (str): [optional]  # noqa: E501
+            related_evals ([EvaluationStub]): [optional]  # noqa: E501
             snapshot_index (int): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             status_description (str): [optional]  # noqa: E501
@@ -345,6 +350,7 @@ class Evaluation(ModelNormal):
             priority (int): [optional]  # noqa: E501
             queued_allocations ({str: (int,)}): [optional]  # noqa: E501
             quota_limit_reached (str): [optional]  # noqa: E501
+            related_evals ([EvaluationStub]): [optional]  # noqa: E501
             snapshot_index (int): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             status_description (str): [optional]  # noqa: E501

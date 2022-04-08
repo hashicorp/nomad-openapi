@@ -21,6 +21,8 @@ pub struct NetworkResource {
     pub device: Option<String>,
     #[serde(rename = "DynamicPorts", skip_serializing_if = "Option::is_none")]
     pub dynamic_ports: Option<Vec<crate::models::Port>>,
+    #[serde(rename = "Hostname", skip_serializing_if = "Option::is_none")]
+    pub hostname: Option<String>,
     #[serde(rename = "IP", skip_serializing_if = "Option::is_none")]
     pub IP: Option<String>,
     #[serde(rename = "MBits", skip_serializing_if = "Option::is_none")]
@@ -38,6 +40,7 @@ impl NetworkResource {
             DNS: None,
             device: None,
             dynamic_ports: None,
+            hostname: None,
             IP: None,
             m_bits: None,
             mode: None,

@@ -18,9 +18,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.NamespaceCapabilities;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,6 +45,14 @@ public class NamespaceTest {
     }
 
     /**
+     * Test the property 'capabilities'
+     */
+    @Test
+    public void capabilitiesTest() {
+        // TODO: test capabilities
+    }
+
+    /**
      * Test the property 'createIndex'
      */
     @Test
@@ -54,6 +66,14 @@ public class NamespaceTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'meta'
+     */
+    @Test
+    public void metaTest() {
+        // TODO: test meta
     }
 
     /**

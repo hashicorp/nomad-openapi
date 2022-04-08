@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SourcePath** | Pointer to **string** |  | [optional] 
 **Splay** | Pointer to **int64** |  | [optional] 
 **VaultGrace** | Pointer to **int64** |  | [optional] 
+**Wait** | Pointer to [**WaitConfig**](WaitConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetVaultGrace sets VaultGrace field to given value.
 `func (o *Template) HasVaultGrace() bool`
 
 HasVaultGrace returns a boolean if a field has been set.
+
+### GetWait
+
+`func (o *Template) GetWait() WaitConfig`
+
+GetWait returns the Wait field if non-nil, zero value otherwise.
+
+### GetWaitOk
+
+`func (o *Template) GetWaitOk() (*WaitConfig, bool)`
+
+GetWaitOk returns a tuple with the Wait field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWait
+
+`func (o *Template) SetWait(v WaitConfig)`
+
+SetWait sets Wait field to given value.
+
+### HasWait
+
+`func (o *Template) HasWait() bool`
+
+HasWait returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,6 +20,7 @@ type Node struct {
 	Attributes *map[string]string `json:"Attributes,omitempty"`
 	CSIControllerPlugins *map[string]CSIInfo `json:"CSIControllerPlugins,omitempty"`
 	CSINodePlugins *map[string]CSIInfo `json:"CSINodePlugins,omitempty"`
+	CgroupParent *string `json:"CgroupParent,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	Datacenter *string `json:"Datacenter,omitempty"`
 	Drain *bool `json:"Drain,omitempty"`
@@ -27,6 +28,7 @@ type Node struct {
 	Drivers *map[string]DriverInfo `json:"Drivers,omitempty"`
 	Events *[]NodeEvent `json:"Events,omitempty"`
 	HTTPAddr *string `json:"HTTPAddr,omitempty"`
+	HostNetworks *map[string]HostNetworkInfo `json:"HostNetworks,omitempty"`
 	HostVolumes *map[string]HostVolumeInfo `json:"HostVolumes,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	LastDrain *DrainMetadata `json:"LastDrain,omitempty"`
@@ -157,6 +159,38 @@ func (o *Node) HasCSINodePlugins() bool {
 // SetCSINodePlugins gets a reference to the given map[string]CSIInfo and assigns it to the CSINodePlugins field.
 func (o *Node) SetCSINodePlugins(v map[string]CSIInfo) {
 	o.CSINodePlugins = &v
+}
+
+// GetCgroupParent returns the CgroupParent field value if set, zero value otherwise.
+func (o *Node) GetCgroupParent() string {
+	if o == nil || o.CgroupParent == nil {
+		var ret string
+		return ret
+	}
+	return *o.CgroupParent
+}
+
+// GetCgroupParentOk returns a tuple with the CgroupParent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Node) GetCgroupParentOk() (*string, bool) {
+	if o == nil || o.CgroupParent == nil {
+		return nil, false
+	}
+	return o.CgroupParent, true
+}
+
+// HasCgroupParent returns a boolean if a field has been set.
+func (o *Node) HasCgroupParent() bool {
+	if o != nil && o.CgroupParent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCgroupParent gets a reference to the given string and assigns it to the CgroupParent field.
+func (o *Node) SetCgroupParent(v string) {
+	o.CgroupParent = &v
 }
 
 // GetCreateIndex returns the CreateIndex field value if set, zero value otherwise.
@@ -381,6 +415,38 @@ func (o *Node) HasHTTPAddr() bool {
 // SetHTTPAddr gets a reference to the given string and assigns it to the HTTPAddr field.
 func (o *Node) SetHTTPAddr(v string) {
 	o.HTTPAddr = &v
+}
+
+// GetHostNetworks returns the HostNetworks field value if set, zero value otherwise.
+func (o *Node) GetHostNetworks() map[string]HostNetworkInfo {
+	if o == nil || o.HostNetworks == nil {
+		var ret map[string]HostNetworkInfo
+		return ret
+	}
+	return *o.HostNetworks
+}
+
+// GetHostNetworksOk returns a tuple with the HostNetworks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Node) GetHostNetworksOk() (*map[string]HostNetworkInfo, bool) {
+	if o == nil || o.HostNetworks == nil {
+		return nil, false
+	}
+	return o.HostNetworks, true
+}
+
+// HasHostNetworks returns a boolean if a field has been set.
+func (o *Node) HasHostNetworks() bool {
+	if o != nil && o.HostNetworks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostNetworks gets a reference to the given map[string]HostNetworkInfo and assigns it to the HostNetworks field.
+func (o *Node) SetHostNetworks(v map[string]HostNetworkInfo) {
+	o.HostNetworks = &v
 }
 
 // GetHostVolumes returns the HostVolumes field value if set, zero value otherwise.
@@ -938,6 +1004,9 @@ func (o Node) MarshalJSON() ([]byte, error) {
 	if o.CSINodePlugins != nil {
 		toSerialize["CSINodePlugins"] = o.CSINodePlugins
 	}
+	if o.CgroupParent != nil {
+		toSerialize["CgroupParent"] = o.CgroupParent
+	}
 	if o.CreateIndex != nil {
 		toSerialize["CreateIndex"] = o.CreateIndex
 	}
@@ -958,6 +1027,9 @@ func (o Node) MarshalJSON() ([]byte, error) {
 	}
 	if o.HTTPAddr != nil {
 		toSerialize["HTTPAddr"] = o.HTTPAddr
+	}
+	if o.HostNetworks != nil {
+		toSerialize["HostNetworks"] = o.HostNetworks
 	}
 	if o.HostVolumes != nil {
 		toSerialize["HostVolumes"] = o.HostVolumes

@@ -99,7 +99,9 @@ class NodeResources(ModelNormal):
             'cpu': (NodeCpuResources,),  # noqa: E501
             'devices': ([NodeDeviceResource],),  # noqa: E501
             'disk': (NodeDiskResources,),  # noqa: E501
+            'max_dynamic_port': (int,),  # noqa: E501
             'memory': (NodeMemoryResources,),  # noqa: E501
+            'min_dynamic_port': (int,),  # noqa: E501
             'networks': ([NetworkResource],),  # noqa: E501
         }
 
@@ -112,7 +114,9 @@ class NodeResources(ModelNormal):
         'cpu': 'Cpu',  # noqa: E501
         'devices': 'Devices',  # noqa: E501
         'disk': 'Disk',  # noqa: E501
+        'max_dynamic_port': 'MaxDynamicPort',  # noqa: E501
         'memory': 'Memory',  # noqa: E501
+        'min_dynamic_port': 'MinDynamicPort',  # noqa: E501
         'networks': 'Networks',  # noqa: E501
     }
 
@@ -160,7 +164,9 @@ class NodeResources(ModelNormal):
             cpu (NodeCpuResources): [optional]  # noqa: E501
             devices ([NodeDeviceResource]): [optional]  # noqa: E501
             disk (NodeDiskResources): [optional]  # noqa: E501
+            max_dynamic_port (int): [optional]  # noqa: E501
             memory (NodeMemoryResources): [optional]  # noqa: E501
+            min_dynamic_port (int): [optional]  # noqa: E501
             networks ([NetworkResource]): [optional]  # noqa: E501
         """
 
@@ -246,7 +252,9 @@ class NodeResources(ModelNormal):
             cpu (NodeCpuResources): [optional]  # noqa: E501
             devices ([NodeDeviceResource]): [optional]  # noqa: E501
             disk (NodeDiskResources): [optional]  # noqa: E501
+            max_dynamic_port (int): [optional]  # noqa: E501
             memory (NodeMemoryResources): [optional]  # noqa: E501
+            min_dynamic_port (int): [optional]  # noqa: E501
             networks ([NetworkResource]): [optional]  # noqa: E501
         """
 

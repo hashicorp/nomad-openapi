@@ -94,6 +94,7 @@ class NetworkResource(ModelNormal):
             'dns': (DNSConfig,),  # noqa: E501
             'device': (str,),  # noqa: E501
             'dynamic_ports': ([Port],),  # noqa: E501
+            'hostname': (str,),  # noqa: E501
             'ip': (str,),  # noqa: E501
             'm_bits': (int,),  # noqa: E501
             'mode': (str,),  # noqa: E501
@@ -110,6 +111,7 @@ class NetworkResource(ModelNormal):
         'dns': 'DNS',  # noqa: E501
         'device': 'Device',  # noqa: E501
         'dynamic_ports': 'DynamicPorts',  # noqa: E501
+        'hostname': 'Hostname',  # noqa: E501
         'ip': 'IP',  # noqa: E501
         'm_bits': 'MBits',  # noqa: E501
         'mode': 'Mode',  # noqa: E501
@@ -161,6 +163,7 @@ class NetworkResource(ModelNormal):
             dns (DNSConfig): [optional]  # noqa: E501
             device (str): [optional]  # noqa: E501
             dynamic_ports ([Port]): [optional]  # noqa: E501
+            hostname (str): [optional]  # noqa: E501
             ip (str): [optional]  # noqa: E501
             m_bits (int): [optional]  # noqa: E501
             mode (str): [optional]  # noqa: E501
@@ -250,6 +253,7 @@ class NetworkResource(ModelNormal):
             dns (DNSConfig): [optional]  # noqa: E501
             device (str): [optional]  # noqa: E501
             dynamic_ports ([Port]): [optional]  # noqa: E501
+            hostname (str): [optional]  # noqa: E501
             ip (str): [optional]  # noqa: E501
             m_bits (int): [optional]  # noqa: E501
             mode (str): [optional]  # noqa: E501

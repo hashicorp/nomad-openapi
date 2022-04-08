@@ -11,6 +11,7 @@
  */
 
 import { AllocationMetric } from './AllocationMetric';
+import { EvaluationStub } from './EvaluationStub';
 import { HttpFile } from '../http/http';
 
 export class Evaluation {
@@ -35,6 +36,7 @@ export class Evaluation {
     'priority'?: number;
     'queuedAllocations'?: { [key: string]: number; };
     'quotaLimitReached'?: string;
+    'relatedEvals'?: Array<EvaluationStub>;
     'snapshotIndex'?: number;
     'status'?: string;
     'statusDescription'?: string;
@@ -170,6 +172,12 @@ export class Evaluation {
             "name": "quotaLimitReached",
             "baseName": "QuotaLimitReached",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "relatedEvals",
+            "baseName": "RelatedEvals",
+            "type": "Array<EvaluationStub>",
             "format": ""
         },
         {

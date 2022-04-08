@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Capabilities** | Pointer to [**NamespaceCapabilities**](NamespaceCapabilities.md) |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**Meta** | Pointer to **map[string]string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Quota** | Pointer to **string** |  | [optional] 
@@ -28,6 +30,31 @@ will change when the set of required properties is changed
 NewNamespaceWithDefaults instantiates a new Namespace object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCapabilities
+
+`func (o *Namespace) GetCapabilities() NamespaceCapabilities`
+
+GetCapabilities returns the Capabilities field if non-nil, zero value otherwise.
+
+### GetCapabilitiesOk
+
+`func (o *Namespace) GetCapabilitiesOk() (*NamespaceCapabilities, bool)`
+
+GetCapabilitiesOk returns a tuple with the Capabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCapabilities
+
+`func (o *Namespace) SetCapabilities(v NamespaceCapabilities)`
+
+SetCapabilities sets Capabilities field to given value.
+
+### HasCapabilities
+
+`func (o *Namespace) HasCapabilities() bool`
+
+HasCapabilities returns a boolean if a field has been set.
 
 ### GetCreateIndex
 
@@ -78,6 +105,31 @@ SetDescription sets Description field to given value.
 `func (o *Namespace) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetMeta
+
+`func (o *Namespace) GetMeta() map[string]string`
+
+GetMeta returns the Meta field if non-nil, zero value otherwise.
+
+### GetMetaOk
+
+`func (o *Namespace) GetMetaOk() (*map[string]string, bool)`
+
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeta
+
+`func (o *Namespace) SetMeta(v map[string]string)`
+
+SetMeta sets Meta field to given value.
+
+### HasMeta
+
+`func (o *Namespace) HasMeta() bool`
+
+HasMeta returns a boolean if a field has been set.
 
 ### GetModifyIndex
 

@@ -32,6 +32,7 @@ export class TaskGroup {
     'consul'?: Consul;
     'count'?: number;
     'ephemeralDisk'?: EphemeralDisk;
+    'maxClientDisconnect'?: number;
     'meta'?: { [key: string]: string; };
     'migrate'?: MigrateStrategy;
     'name'?: string;
@@ -79,6 +80,12 @@ export class TaskGroup {
             "baseName": "EphemeralDisk",
             "type": "EphemeralDisk",
             "format": ""
+        },
+        {
+            "name": "maxClientDisconnect",
+            "baseName": "MaxClientDisconnect",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "meta",

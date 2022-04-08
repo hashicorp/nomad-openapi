@@ -49,6 +49,12 @@ describe NomadClient::SchedulerConfiguration do
     end
   end
 
+  describe 'test attribute "reject_job_registration"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "scheduler_algorithm"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

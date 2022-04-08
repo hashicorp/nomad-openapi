@@ -78,6 +78,9 @@ class Job {
             if (data.hasOwnProperty('Datacenters')) {
                 obj['Datacenters'] = ApiClient.convertToType(data['Datacenters'], ['String']);
             }
+            if (data.hasOwnProperty('DispatchIdempotencyToken')) {
+                obj['DispatchIdempotencyToken'] = ApiClient.convertToType(data['DispatchIdempotencyToken'], 'String');
+            }
             if (data.hasOwnProperty('Dispatched')) {
                 obj['Dispatched'] = ApiClient.convertToType(data['Dispatched'], 'Boolean');
             }
@@ -206,6 +209,11 @@ Job.prototype['CreateIndex'] = undefined;
  * @member {Array.<String>} Datacenters
  */
 Job.prototype['Datacenters'] = undefined;
+
+/**
+ * @member {String} DispatchIdempotencyToken
+ */
+Job.prototype['DispatchIdempotencyToken'] = undefined;
 
 /**
  * @member {Boolean} Dispatched

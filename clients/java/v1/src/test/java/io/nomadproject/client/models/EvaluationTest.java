@@ -19,9 +19,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.nomadproject.client.models.AllocationMetric;
+import io.nomadproject.client.models.EvaluationStub;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -211,6 +213,14 @@ public class EvaluationTest {
     @Test
     public void quotaLimitReachedTest() {
         // TODO: test quotaLimitReached
+    }
+
+    /**
+     * Test the property 'relatedEvals'
+     */
+    @Test
+    public void relatedEvalsTest() {
+        // TODO: test relatedEvals
     }
 
     /**

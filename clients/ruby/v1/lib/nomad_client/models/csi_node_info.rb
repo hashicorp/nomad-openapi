@@ -23,13 +23,22 @@ module NomadClient
 
     attr_accessor :requires_node_stage_volume
 
+    attr_accessor :supports_condition
+
+    attr_accessor :supports_expand
+
+    attr_accessor :supports_stats
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'accessible_topology' => :'AccessibleTopology',
         :'id' => :'ID',
         :'max_volumes' => :'MaxVolumes',
-        :'requires_node_stage_volume' => :'RequiresNodeStageVolume'
+        :'requires_node_stage_volume' => :'RequiresNodeStageVolume',
+        :'supports_condition' => :'SupportsCondition',
+        :'supports_expand' => :'SupportsExpand',
+        :'supports_stats' => :'SupportsStats'
       }
     end
 
@@ -44,7 +53,10 @@ module NomadClient
         :'accessible_topology' => :'CSITopology',
         :'id' => :'String',
         :'max_volumes' => :'Integer',
-        :'requires_node_stage_volume' => :'Boolean'
+        :'requires_node_stage_volume' => :'Boolean',
+        :'supports_condition' => :'Boolean',
+        :'supports_expand' => :'Boolean',
+        :'supports_stats' => :'Boolean'
       }
     end
 
@@ -84,6 +96,18 @@ module NomadClient
       if attributes.key?(:'requires_node_stage_volume')
         self.requires_node_stage_volume = attributes[:'requires_node_stage_volume']
       end
+
+      if attributes.key?(:'supports_condition')
+        self.supports_condition = attributes[:'supports_condition']
+      end
+
+      if attributes.key?(:'supports_expand')
+        self.supports_expand = attributes[:'supports_expand']
+      end
+
+      if attributes.key?(:'supports_stats')
+        self.supports_stats = attributes[:'supports_stats']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -107,7 +131,10 @@ module NomadClient
           accessible_topology == o.accessible_topology &&
           id == o.id &&
           max_volumes == o.max_volumes &&
-          requires_node_stage_volume == o.requires_node_stage_volume
+          requires_node_stage_volume == o.requires_node_stage_volume &&
+          supports_condition == o.supports_condition &&
+          supports_expand == o.supports_expand &&
+          supports_stats == o.supports_stats
     end
 
     # @see the `==` method
@@ -119,7 +146,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessible_topology, id, max_volumes, requires_node_stage_volume].hash
+      [accessible_topology, id, max_volumes, requires_node_stage_volume, supports_condition, supports_expand, supports_stats].hash
     end
 
     # Builds the object from hash

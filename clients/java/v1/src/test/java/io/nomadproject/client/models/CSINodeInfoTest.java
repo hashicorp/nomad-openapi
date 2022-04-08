@@ -73,4 +73,28 @@ public class CSINodeInfoTest {
         // TODO: test requiresNodeStageVolume
     }
 
+    /**
+     * Test the property 'supportsCondition'
+     */
+    @Test
+    public void supportsConditionTest() {
+        // TODO: test supportsCondition
+    }
+
+    /**
+     * Test the property 'supportsExpand'
+     */
+    @Test
+    public void supportsExpandTest() {
+        // TODO: test supportsExpand
+    }
+
+    /**
+     * Test the property 'supportsStats'
+     */
+    @Test
+    public void supportsStatsTest() {
+        // TODO: test supportsStats
+    }
+
 }

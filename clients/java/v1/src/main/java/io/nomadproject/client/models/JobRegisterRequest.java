@@ -34,6 +34,10 @@ public class JobRegisterRequest {
   @SerializedName(SERIALIZED_NAME_ENFORCE_INDEX)
   private Boolean enforceIndex;
 
+  public static final String SERIALIZED_NAME_EVAL_PRIORITY = "EvalPriority";
+  @SerializedName(SERIALIZED_NAME_EVAL_PRIORITY)
+  private Integer evalPriority;
+
   public static final String SERIALIZED_NAME_JOB = "Job";
   @SerializedName(SERIALIZED_NAME_JOB)
   private Job job;
@@ -83,6 +87,29 @@ public class JobRegisterRequest {
 
   public void setEnforceIndex(Boolean enforceIndex) {
     this.enforceIndex = enforceIndex;
+  }
+
+
+  public JobRegisterRequest evalPriority(Integer evalPriority) {
+    
+    this.evalPriority = evalPriority;
+    return this;
+  }
+
+   /**
+   * Get evalPriority
+   * @return evalPriority
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getEvalPriority() {
+    return evalPriority;
+  }
+
+
+  public void setEvalPriority(Integer evalPriority) {
+    this.evalPriority = evalPriority;
   }
 
 
@@ -259,6 +286,7 @@ public class JobRegisterRequest {
     }
     JobRegisterRequest jobRegisterRequest = (JobRegisterRequest) o;
     return Objects.equals(this.enforceIndex, jobRegisterRequest.enforceIndex) &&
+        Objects.equals(this.evalPriority, jobRegisterRequest.evalPriority) &&
         Objects.equals(this.job, jobRegisterRequest.job) &&
         Objects.equals(this.jobModifyIndex, jobRegisterRequest.jobModifyIndex) &&
         Objects.equals(this.namespace, jobRegisterRequest.namespace) &&
@@ -270,7 +298,7 @@ public class JobRegisterRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(enforceIndex, job, jobModifyIndex, namespace, policyOverride, preserveCounts, region, secretID);
+    return Objects.hash(enforceIndex, evalPriority, job, jobModifyIndex, namespace, policyOverride, preserveCounts, region, secretID);
   }
 
   @Override
@@ -278,6 +306,7 @@ public class JobRegisterRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobRegisterRequest {\n");
     sb.append("    enforceIndex: ").append(toIndentedString(enforceIndex)).append("\n");
+    sb.append("    evalPriority: ").append(toIndentedString(evalPriority)).append("\n");
     sb.append("    job: ").append(toIndentedString(job)).append("\n");
     sb.append("    jobModifyIndex: ").append(toIndentedString(jobModifyIndex)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");

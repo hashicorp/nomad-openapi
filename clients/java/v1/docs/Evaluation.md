@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **priority** | **Integer** |  |  [optional]
 **queuedAllocations** | **Map&lt;String, Integer&gt;** |  |  [optional]
 **quotaLimitReached** | **String** |  |  [optional]
+**relatedEvals** | [**List&lt;EvaluationStub&gt;**](EvaluationStub.md) |  |  [optional]
 **snapshotIndex** | **Integer** |  |  [optional]
 **status** | **String** |  |  [optional]
 **statusDescription** | **String** |  |  [optional]

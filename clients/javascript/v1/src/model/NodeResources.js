@@ -61,8 +61,14 @@ class NodeResources {
             if (data.hasOwnProperty('Disk')) {
                 obj['Disk'] = NodeDiskResources.constructFromObject(data['Disk']);
             }
+            if (data.hasOwnProperty('MaxDynamicPort')) {
+                obj['MaxDynamicPort'] = ApiClient.convertToType(data['MaxDynamicPort'], 'Number');
+            }
             if (data.hasOwnProperty('Memory')) {
                 obj['Memory'] = NodeMemoryResources.constructFromObject(data['Memory']);
+            }
+            if (data.hasOwnProperty('MinDynamicPort')) {
+                obj['MinDynamicPort'] = ApiClient.convertToType(data['MinDynamicPort'], 'Number');
             }
             if (data.hasOwnProperty('Networks')) {
                 obj['Networks'] = ApiClient.convertToType(data['Networks'], [NetworkResource]);
@@ -90,9 +96,19 @@ NodeResources.prototype['Devices'] = undefined;
 NodeResources.prototype['Disk'] = undefined;
 
 /**
+ * @member {Number} MaxDynamicPort
+ */
+NodeResources.prototype['MaxDynamicPort'] = undefined;
+
+/**
  * @member {module:model/NodeMemoryResources} Memory
  */
 NodeResources.prototype['Memory'] = undefined;
+
+/**
+ * @member {Number} MinDynamicPort
+ */
+NodeResources.prototype['MinDynamicPort'] = undefined;
 
 /**
  * @member {Array.<module:model/NetworkResource>} Networks

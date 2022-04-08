@@ -60,6 +60,9 @@ class SchedulerConfiguration {
             if (data.hasOwnProperty('PreemptionConfig')) {
                 obj['PreemptionConfig'] = PreemptionConfig.constructFromObject(data['PreemptionConfig']);
             }
+            if (data.hasOwnProperty('RejectJobRegistration')) {
+                obj['RejectJobRegistration'] = ApiClient.convertToType(data['RejectJobRegistration'], 'Boolean');
+            }
             if (data.hasOwnProperty('SchedulerAlgorithm')) {
                 obj['SchedulerAlgorithm'] = ApiClient.convertToType(data['SchedulerAlgorithm'], 'String');
             }
@@ -89,6 +92,11 @@ SchedulerConfiguration.prototype['ModifyIndex'] = undefined;
  * @member {module:model/PreemptionConfig} PreemptionConfig
  */
 SchedulerConfiguration.prototype['PreemptionConfig'] = undefined;
+
+/**
+ * @member {Boolean} RejectJobRegistration
+ */
+SchedulerConfiguration.prototype['RejectJobRegistration'] = undefined;
 
 /**
  * @member {String} SchedulerAlgorithm

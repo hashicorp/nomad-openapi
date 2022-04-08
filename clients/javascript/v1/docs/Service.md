@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **onUpdate** | **String** |  | [optional] 
 **portLabel** | **String** |  | [optional] 
+**provider** | **String** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
 **taskName** | **String** |  | [optional] 
 

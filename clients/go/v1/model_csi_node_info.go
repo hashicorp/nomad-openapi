@@ -21,6 +21,9 @@ type CSINodeInfo struct {
 	ID *string `json:"ID,omitempty"`
 	MaxVolumes *int64 `json:"MaxVolumes,omitempty"`
 	RequiresNodeStageVolume *bool `json:"RequiresNodeStageVolume,omitempty"`
+	SupportsCondition *bool `json:"SupportsCondition,omitempty"`
+	SupportsExpand *bool `json:"SupportsExpand,omitempty"`
+	SupportsStats *bool `json:"SupportsStats,omitempty"`
 }
 
 // NewCSINodeInfo instantiates a new CSINodeInfo object
@@ -168,6 +171,102 @@ func (o *CSINodeInfo) SetRequiresNodeStageVolume(v bool) {
 	o.RequiresNodeStageVolume = &v
 }
 
+// GetSupportsCondition returns the SupportsCondition field value if set, zero value otherwise.
+func (o *CSINodeInfo) GetSupportsCondition() bool {
+	if o == nil || o.SupportsCondition == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsCondition
+}
+
+// GetSupportsConditionOk returns a tuple with the SupportsCondition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSINodeInfo) GetSupportsConditionOk() (*bool, bool) {
+	if o == nil || o.SupportsCondition == nil {
+		return nil, false
+	}
+	return o.SupportsCondition, true
+}
+
+// HasSupportsCondition returns a boolean if a field has been set.
+func (o *CSINodeInfo) HasSupportsCondition() bool {
+	if o != nil && o.SupportsCondition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsCondition gets a reference to the given bool and assigns it to the SupportsCondition field.
+func (o *CSINodeInfo) SetSupportsCondition(v bool) {
+	o.SupportsCondition = &v
+}
+
+// GetSupportsExpand returns the SupportsExpand field value if set, zero value otherwise.
+func (o *CSINodeInfo) GetSupportsExpand() bool {
+	if o == nil || o.SupportsExpand == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsExpand
+}
+
+// GetSupportsExpandOk returns a tuple with the SupportsExpand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSINodeInfo) GetSupportsExpandOk() (*bool, bool) {
+	if o == nil || o.SupportsExpand == nil {
+		return nil, false
+	}
+	return o.SupportsExpand, true
+}
+
+// HasSupportsExpand returns a boolean if a field has been set.
+func (o *CSINodeInfo) HasSupportsExpand() bool {
+	if o != nil && o.SupportsExpand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsExpand gets a reference to the given bool and assigns it to the SupportsExpand field.
+func (o *CSINodeInfo) SetSupportsExpand(v bool) {
+	o.SupportsExpand = &v
+}
+
+// GetSupportsStats returns the SupportsStats field value if set, zero value otherwise.
+func (o *CSINodeInfo) GetSupportsStats() bool {
+	if o == nil || o.SupportsStats == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsStats
+}
+
+// GetSupportsStatsOk returns a tuple with the SupportsStats field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSINodeInfo) GetSupportsStatsOk() (*bool, bool) {
+	if o == nil || o.SupportsStats == nil {
+		return nil, false
+	}
+	return o.SupportsStats, true
+}
+
+// HasSupportsStats returns a boolean if a field has been set.
+func (o *CSINodeInfo) HasSupportsStats() bool {
+	if o != nil && o.SupportsStats != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsStats gets a reference to the given bool and assigns it to the SupportsStats field.
+func (o *CSINodeInfo) SetSupportsStats(v bool) {
+	o.SupportsStats = &v
+}
+
 func (o CSINodeInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessibleTopology != nil {
@@ -181,6 +280,15 @@ func (o CSINodeInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequiresNodeStageVolume != nil {
 		toSerialize["RequiresNodeStageVolume"] = o.RequiresNodeStageVolume
+	}
+	if o.SupportsCondition != nil {
+		toSerialize["SupportsCondition"] = o.SupportsCondition
+	}
+	if o.SupportsExpand != nil {
+		toSerialize["SupportsExpand"] = o.SupportsExpand
+	}
+	if o.SupportsStats != nil {
+		toSerialize["SupportsStats"] = o.SupportsStats
 	}
 	return json.Marshal(toSerialize)
 }

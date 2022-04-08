@@ -56,6 +56,12 @@ class FuzzySearchRequest {
             if (data.hasOwnProperty('Context')) {
                 obj['Context'] = ApiClient.convertToType(data['Context'], 'String');
             }
+            if (data.hasOwnProperty('Filter')) {
+                obj['Filter'] = ApiClient.convertToType(data['Filter'], 'String');
+            }
+            if (data.hasOwnProperty('Headers')) {
+                obj['Headers'] = ApiClient.convertToType(data['Headers'], {'String': 'String'});
+            }
             if (data.hasOwnProperty('Namespace')) {
                 obj['Namespace'] = ApiClient.convertToType(data['Namespace'], 'String');
             }
@@ -73,6 +79,9 @@ class FuzzySearchRequest {
             }
             if (data.hasOwnProperty('Region')) {
                 obj['Region'] = ApiClient.convertToType(data['Region'], 'String');
+            }
+            if (data.hasOwnProperty('Reverse')) {
+                obj['Reverse'] = ApiClient.convertToType(data['Reverse'], 'Boolean');
             }
             if (data.hasOwnProperty('Text')) {
                 obj['Text'] = ApiClient.convertToType(data['Text'], 'String');
@@ -106,6 +115,16 @@ FuzzySearchRequest.prototype['AuthToken'] = undefined;
 FuzzySearchRequest.prototype['Context'] = undefined;
 
 /**
+ * @member {String} Filter
+ */
+FuzzySearchRequest.prototype['Filter'] = undefined;
+
+/**
+ * @member {Object.<String, String>} Headers
+ */
+FuzzySearchRequest.prototype['Headers'] = undefined;
+
+/**
  * @member {String} Namespace
  */
 FuzzySearchRequest.prototype['Namespace'] = undefined;
@@ -134,6 +153,11 @@ FuzzySearchRequest.prototype['Prefix'] = undefined;
  * @member {String} Region
  */
 FuzzySearchRequest.prototype['Region'] = undefined;
+
+/**
+ * @member {Boolean} Reverse
+ */
+FuzzySearchRequest.prototype['Reverse'] = undefined;
 
 /**
  * @member {String} Text

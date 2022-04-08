@@ -29,6 +29,8 @@ module NomadClient
 
     attr_accessor :datacenters
 
+    attr_accessor :dispatch_idempotency_token
+
     attr_accessor :dispatched
 
     attr_accessor :id
@@ -97,6 +99,7 @@ module NomadClient
         :'consul_token' => :'ConsulToken',
         :'create_index' => :'CreateIndex',
         :'datacenters' => :'Datacenters',
+        :'dispatch_idempotency_token' => :'DispatchIdempotencyToken',
         :'dispatched' => :'Dispatched',
         :'id' => :'ID',
         :'job_modify_index' => :'JobModifyIndex',
@@ -144,6 +147,7 @@ module NomadClient
         :'consul_token' => :'String',
         :'create_index' => :'Integer',
         :'datacenters' => :'Array<String>',
+        :'dispatch_idempotency_token' => :'String',
         :'dispatched' => :'Boolean',
         :'id' => :'String',
         :'job_modify_index' => :'Integer',
@@ -229,6 +233,10 @@ module NomadClient
         if (value = attributes[:'datacenters']).is_a?(Array)
           self.datacenters = value
         end
+      end
+
+      if attributes.key?(:'dispatch_idempotency_token')
+        self.dispatch_idempotency_token = attributes[:'dispatch_idempotency_token']
       end
 
       if attributes.key?(:'dispatched')
@@ -475,6 +483,7 @@ module NomadClient
           consul_token == o.consul_token &&
           create_index == o.create_index &&
           datacenters == o.datacenters &&
+          dispatch_idempotency_token == o.dispatch_idempotency_token &&
           dispatched == o.dispatched &&
           id == o.id &&
           job_modify_index == o.job_modify_index &&
@@ -515,7 +524,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affinities, all_at_once, constraints, consul_namespace, consul_token, create_index, datacenters, dispatched, id, job_modify_index, meta, migrate, modify_index, multiregion, name, namespace, nomad_token_id, parameterized_job, parent_id, payload, periodic, priority, region, reschedule, spreads, stable, status, status_description, stop, submit_time, task_groups, type, update, vault_namespace, vault_token, version].hash
+      [affinities, all_at_once, constraints, consul_namespace, consul_token, create_index, datacenters, dispatch_idempotency_token, dispatched, id, job_modify_index, meta, migrate, modify_index, multiregion, name, namespace, nomad_token_id, parameterized_job, parent_id, payload, periodic, priority, region, reschedule, spreads, stable, status, status_description, stop, submit_time, task_groups, type, update, vault_namespace, vault_token, version].hash
     end
 
     # Builds the object from hash

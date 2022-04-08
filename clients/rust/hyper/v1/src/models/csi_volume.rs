@@ -65,6 +65,8 @@ pub struct CsiVolume {
     pub requested_capacity_max: Option<i64>,
     #[serde(rename = "RequestedCapacityMin", skip_serializing_if = "Option::is_none")]
     pub requested_capacity_min: Option<i64>,
+    #[serde(rename = "RequestedTopologies", skip_serializing_if = "Option::is_none")]
+    pub requested_topologies: Option<Box<crate::models::CsiTopologyRequest>>,
     #[serde(rename = "ResourceExhausted", skip_serializing_if = "Option::is_none")]
     pub resource_exhausted: Option<String>,
     #[serde(rename = "Schedulable", skip_serializing_if = "Option::is_none")]
@@ -108,6 +110,7 @@ impl CsiVolume {
             requested_capabilities: None,
             requested_capacity_max: None,
             requested_capacity_min: None,
+            requested_topologies: None,
             resource_exhausted: None,
             schedulable: None,
             secrets: None,

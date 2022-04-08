@@ -50,6 +50,30 @@ class CSIControllerInfo {
             if (data.hasOwnProperty('SupportsAttachDetach')) {
                 obj['SupportsAttachDetach'] = ApiClient.convertToType(data['SupportsAttachDetach'], 'Boolean');
             }
+            if (data.hasOwnProperty('SupportsClone')) {
+                obj['SupportsClone'] = ApiClient.convertToType(data['SupportsClone'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsCondition')) {
+                obj['SupportsCondition'] = ApiClient.convertToType(data['SupportsCondition'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsCreateDelete')) {
+                obj['SupportsCreateDelete'] = ApiClient.convertToType(data['SupportsCreateDelete'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsCreateDeleteSnapshot')) {
+                obj['SupportsCreateDeleteSnapshot'] = ApiClient.convertToType(data['SupportsCreateDeleteSnapshot'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsExpand')) {
+                obj['SupportsExpand'] = ApiClient.convertToType(data['SupportsExpand'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsGet')) {
+                obj['SupportsGet'] = ApiClient.convertToType(data['SupportsGet'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsGetCapacity')) {
+                obj['SupportsGetCapacity'] = ApiClient.convertToType(data['SupportsGetCapacity'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsListSnapshots')) {
+                obj['SupportsListSnapshots'] = ApiClient.convertToType(data['SupportsListSnapshots'], 'Boolean');
+            }
             if (data.hasOwnProperty('SupportsListVolumes')) {
                 obj['SupportsListVolumes'] = ApiClient.convertToType(data['SupportsListVolumes'], 'Boolean');
             }
@@ -70,6 +94,46 @@ class CSIControllerInfo {
  * @member {Boolean} SupportsAttachDetach
  */
 CSIControllerInfo.prototype['SupportsAttachDetach'] = undefined;
+
+/**
+ * @member {Boolean} SupportsClone
+ */
+CSIControllerInfo.prototype['SupportsClone'] = undefined;
+
+/**
+ * @member {Boolean} SupportsCondition
+ */
+CSIControllerInfo.prototype['SupportsCondition'] = undefined;
+
+/**
+ * @member {Boolean} SupportsCreateDelete
+ */
+CSIControllerInfo.prototype['SupportsCreateDelete'] = undefined;
+
+/**
+ * @member {Boolean} SupportsCreateDeleteSnapshot
+ */
+CSIControllerInfo.prototype['SupportsCreateDeleteSnapshot'] = undefined;
+
+/**
+ * @member {Boolean} SupportsExpand
+ */
+CSIControllerInfo.prototype['SupportsExpand'] = undefined;
+
+/**
+ * @member {Boolean} SupportsGet
+ */
+CSIControllerInfo.prototype['SupportsGet'] = undefined;
+
+/**
+ * @member {Boolean} SupportsGetCapacity
+ */
+CSIControllerInfo.prototype['SupportsGetCapacity'] = undefined;
+
+/**
+ * @member {Boolean} SupportsListSnapshots
+ */
+CSIControllerInfo.prototype['SupportsListSnapshots'] = undefined;
 
 /**
  * @member {Boolean} SupportsListVolumes

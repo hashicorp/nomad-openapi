@@ -7,12 +7,15 @@
 | **allow_stale** | **Boolean** |  | [optional] |
 | **auth_token** | **String** |  | [optional] |
 | **context** | **String** |  | [optional] |
+| **filter** | **String** |  | [optional] |
+| **headers** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **namespace** | **String** |  | [optional] |
 | **next_token** | **String** |  | [optional] |
 | **params** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **per_page** | **Integer** |  | [optional] |
 | **prefix** | **String** |  | [optional] |
 | **region** | **String** |  | [optional] |
+| **reverse** | **Boolean** |  | [optional] |
 | **wait_index** | **Integer** |  | [optional] |
 | **wait_time** | **Integer** |  | [optional] |
 
@@ -25,12 +28,15 @@ instance = NomadClient::SearchRequest.new(
   allow_stale: null,
   auth_token: null,
   context: null,
+  filter: null,
+  headers: null,
   namespace: null,
   next_token: null,
   params: null,
   per_page: null,
   prefix: null,
   region: null,
+  reverse: null,
   wait_index: null,
   wait_time: null
 )

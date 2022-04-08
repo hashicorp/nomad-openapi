@@ -31,6 +31,12 @@ describe NomadClient::JobRegisterRequest do
     end
   end
 
+  describe 'test attribute "eval_priority"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "job"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

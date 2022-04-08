@@ -25,6 +25,8 @@ pub struct JobRegisterResponse {
     pub last_contact: Option<i64>,
     #[serde(rename = "LastIndex", skip_serializing_if = "Option::is_none")]
     pub last_index: Option<i32>,
+    #[serde(rename = "NextToken", skip_serializing_if = "Option::is_none")]
+    pub next_token: Option<String>,
     #[serde(rename = "RequestTime", skip_serializing_if = "Option::is_none")]
     pub request_time: Option<i64>,
     #[serde(rename = "Warnings", skip_serializing_if = "Option::is_none")]
@@ -40,6 +42,7 @@ impl JobRegisterResponse {
             known_leader: None,
             last_contact: None,
             last_index: None,
+            next_token: None,
             request_time: None,
             warnings: None,
         }

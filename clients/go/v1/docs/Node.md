@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]string** |  | [optional] 
 **CSIControllerPlugins** | Pointer to [**map[string]CSIInfo**](CSIInfo.md) |  | [optional] 
 **CSINodePlugins** | Pointer to [**map[string]CSIInfo**](CSIInfo.md) |  | [optional] 
+**CgroupParent** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Datacenter** | Pointer to **string** |  | [optional] 
 **Drain** | Pointer to **bool** |  | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **Drivers** | Pointer to [**map[string]DriverInfo**](DriverInfo.md) |  | [optional] 
 **Events** | Pointer to [**[]NodeEvent**](NodeEvent.md) |  | [optional] 
 **HTTPAddr** | Pointer to **string** |  | [optional] 
+**HostNetworks** | Pointer to [**map[string]HostNetworkInfo**](HostNetworkInfo.md) |  | [optional] 
 **HostVolumes** | Pointer to [**map[string]HostVolumeInfo**](HostVolumeInfo.md) |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **LastDrain** | Pointer to [**DrainMetadata**](DrainMetadata.md) |  | [optional] 
@@ -125,6 +127,31 @@ SetCSINodePlugins sets CSINodePlugins field to given value.
 `func (o *Node) HasCSINodePlugins() bool`
 
 HasCSINodePlugins returns a boolean if a field has been set.
+
+### GetCgroupParent
+
+`func (o *Node) GetCgroupParent() string`
+
+GetCgroupParent returns the CgroupParent field if non-nil, zero value otherwise.
+
+### GetCgroupParentOk
+
+`func (o *Node) GetCgroupParentOk() (*string, bool)`
+
+GetCgroupParentOk returns a tuple with the CgroupParent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCgroupParent
+
+`func (o *Node) SetCgroupParent(v string)`
+
+SetCgroupParent sets CgroupParent field to given value.
+
+### HasCgroupParent
+
+`func (o *Node) HasCgroupParent() bool`
+
+HasCgroupParent returns a boolean if a field has been set.
 
 ### GetCreateIndex
 
@@ -300,6 +327,31 @@ SetHTTPAddr sets HTTPAddr field to given value.
 `func (o *Node) HasHTTPAddr() bool`
 
 HasHTTPAddr returns a boolean if a field has been set.
+
+### GetHostNetworks
+
+`func (o *Node) GetHostNetworks() map[string]HostNetworkInfo`
+
+GetHostNetworks returns the HostNetworks field if non-nil, zero value otherwise.
+
+### GetHostNetworksOk
+
+`func (o *Node) GetHostNetworksOk() (*map[string]HostNetworkInfo, bool)`
+
+GetHostNetworksOk returns a tuple with the HostNetworks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostNetworks
+
+`func (o *Node) SetHostNetworks(v map[string]HostNetworkInfo)`
+
+SetHostNetworks sets HostNetworks field to given value.
+
+### HasHostNetworks
+
+`func (o *Node) HasHostNetworks() bool`
+
+HasHostNetworks returns a boolean if a field has been set.
 
 ### GetHostVolumes
 

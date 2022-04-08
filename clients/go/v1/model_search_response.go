@@ -21,6 +21,7 @@ type SearchResponse struct {
 	LastContact *int64 `json:"LastContact,omitempty"`
 	LastIndex *int32 `json:"LastIndex,omitempty"`
 	Matches *map[string][]string `json:"Matches,omitempty"`
+	NextToken *string `json:"NextToken,omitempty"`
 	RequestTime *int64 `json:"RequestTime,omitempty"`
 	Truncations *map[string]bool `json:"Truncations,omitempty"`
 }
@@ -170,6 +171,38 @@ func (o *SearchResponse) SetMatches(v map[string][]string) {
 	o.Matches = &v
 }
 
+// GetNextToken returns the NextToken field value if set, zero value otherwise.
+func (o *SearchResponse) GetNextToken() string {
+	if o == nil || o.NextToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.NextToken
+}
+
+// GetNextTokenOk returns a tuple with the NextToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchResponse) GetNextTokenOk() (*string, bool) {
+	if o == nil || o.NextToken == nil {
+		return nil, false
+	}
+	return o.NextToken, true
+}
+
+// HasNextToken returns a boolean if a field has been set.
+func (o *SearchResponse) HasNextToken() bool {
+	if o != nil && o.NextToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNextToken gets a reference to the given string and assigns it to the NextToken field.
+func (o *SearchResponse) SetNextToken(v string) {
+	o.NextToken = &v
+}
+
 // GetRequestTime returns the RequestTime field value if set, zero value otherwise.
 func (o *SearchResponse) GetRequestTime() int64 {
 	if o == nil || o.RequestTime == nil {
@@ -247,6 +280,9 @@ func (o SearchResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Matches != nil {
 		toSerialize["Matches"] = o.Matches
+	}
+	if o.NextToken != nil {
+		toSerialize["NextToken"] = o.NextToken
 	}
 	if o.RequestTime != nil {
 		toSerialize["RequestTime"] = o.RequestTime

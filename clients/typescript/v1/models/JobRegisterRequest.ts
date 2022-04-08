@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 
 export class JobRegisterRequest {
     'enforceIndex'?: boolean;
+    'evalPriority'?: number;
     'job'?: Job;
     'jobModifyIndex'?: number;
     'namespace'?: string;
@@ -30,6 +31,12 @@ export class JobRegisterRequest {
             "name": "enforceIndex",
             "baseName": "EnforceIndex",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "evalPriority",
+            "baseName": "EvalPriority",
+            "type": "number",
             "format": ""
         },
         {

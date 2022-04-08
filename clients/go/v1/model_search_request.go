@@ -20,12 +20,15 @@ type SearchRequest struct {
 	AllowStale *bool `json:"AllowStale,omitempty"`
 	AuthToken *string `json:"AuthToken,omitempty"`
 	Context *string `json:"Context,omitempty"`
+	Filter *string `json:"Filter,omitempty"`
+	Headers *map[string]string `json:"Headers,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
 	NextToken *string `json:"NextToken,omitempty"`
 	Params *map[string]string `json:"Params,omitempty"`
 	PerPage *int32 `json:"PerPage,omitempty"`
 	Prefix *string `json:"Prefix,omitempty"`
 	Region *string `json:"Region,omitempty"`
+	Reverse *bool `json:"Reverse,omitempty"`
 	WaitIndex *int32 `json:"WaitIndex,omitempty"`
 	WaitTime *int64 `json:"WaitTime,omitempty"`
 }
@@ -141,6 +144,70 @@ func (o *SearchRequest) HasContext() bool {
 // SetContext gets a reference to the given string and assigns it to the Context field.
 func (o *SearchRequest) SetContext(v string) {
 	o.Context = &v
+}
+
+// GetFilter returns the Filter field value if set, zero value otherwise.
+func (o *SearchRequest) GetFilter() string {
+	if o == nil || o.Filter == nil {
+		var ret string
+		return ret
+	}
+	return *o.Filter
+}
+
+// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchRequest) GetFilterOk() (*string, bool) {
+	if o == nil || o.Filter == nil {
+		return nil, false
+	}
+	return o.Filter, true
+}
+
+// HasFilter returns a boolean if a field has been set.
+func (o *SearchRequest) HasFilter() bool {
+	if o != nil && o.Filter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFilter gets a reference to the given string and assigns it to the Filter field.
+func (o *SearchRequest) SetFilter(v string) {
+	o.Filter = &v
+}
+
+// GetHeaders returns the Headers field value if set, zero value otherwise.
+func (o *SearchRequest) GetHeaders() map[string]string {
+	if o == nil || o.Headers == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Headers
+}
+
+// GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchRequest) GetHeadersOk() (*map[string]string, bool) {
+	if o == nil || o.Headers == nil {
+		return nil, false
+	}
+	return o.Headers, true
+}
+
+// HasHeaders returns a boolean if a field has been set.
+func (o *SearchRequest) HasHeaders() bool {
+	if o != nil && o.Headers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaders gets a reference to the given map[string]string and assigns it to the Headers field.
+func (o *SearchRequest) SetHeaders(v map[string]string) {
+	o.Headers = &v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
@@ -335,6 +402,38 @@ func (o *SearchRequest) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetReverse returns the Reverse field value if set, zero value otherwise.
+func (o *SearchRequest) GetReverse() bool {
+	if o == nil || o.Reverse == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Reverse
+}
+
+// GetReverseOk returns a tuple with the Reverse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchRequest) GetReverseOk() (*bool, bool) {
+	if o == nil || o.Reverse == nil {
+		return nil, false
+	}
+	return o.Reverse, true
+}
+
+// HasReverse returns a boolean if a field has been set.
+func (o *SearchRequest) HasReverse() bool {
+	if o != nil && o.Reverse != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReverse gets a reference to the given bool and assigns it to the Reverse field.
+func (o *SearchRequest) SetReverse(v bool) {
+	o.Reverse = &v
+}
+
 // GetWaitIndex returns the WaitIndex field value if set, zero value otherwise.
 func (o *SearchRequest) GetWaitIndex() int32 {
 	if o == nil || o.WaitIndex == nil {
@@ -410,6 +509,12 @@ func (o SearchRequest) MarshalJSON() ([]byte, error) {
 	if o.Context != nil {
 		toSerialize["Context"] = o.Context
 	}
+	if o.Filter != nil {
+		toSerialize["Filter"] = o.Filter
+	}
+	if o.Headers != nil {
+		toSerialize["Headers"] = o.Headers
+	}
 	if o.Namespace != nil {
 		toSerialize["Namespace"] = o.Namespace
 	}
@@ -427,6 +532,9 @@ func (o SearchRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Region != nil {
 		toSerialize["Region"] = o.Region
+	}
+	if o.Reverse != nil {
+		toSerialize["Reverse"] = o.Reverse
 	}
 	if o.WaitIndex != nil {
 		toSerialize["WaitIndex"] = o.WaitIndex

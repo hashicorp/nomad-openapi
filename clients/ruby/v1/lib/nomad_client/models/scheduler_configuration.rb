@@ -23,6 +23,8 @@ module NomadClient
 
     attr_accessor :preemption_config
 
+    attr_accessor :reject_job_registration
+
     attr_accessor :scheduler_algorithm
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -32,6 +34,7 @@ module NomadClient
         :'memory_oversubscription_enabled' => :'MemoryOversubscriptionEnabled',
         :'modify_index' => :'ModifyIndex',
         :'preemption_config' => :'PreemptionConfig',
+        :'reject_job_registration' => :'RejectJobRegistration',
         :'scheduler_algorithm' => :'SchedulerAlgorithm'
       }
     end
@@ -48,6 +51,7 @@ module NomadClient
         :'memory_oversubscription_enabled' => :'Boolean',
         :'modify_index' => :'Integer',
         :'preemption_config' => :'PreemptionConfig',
+        :'reject_job_registration' => :'Boolean',
         :'scheduler_algorithm' => :'String'
       }
     end
@@ -87,6 +91,10 @@ module NomadClient
 
       if attributes.key?(:'preemption_config')
         self.preemption_config = attributes[:'preemption_config']
+      end
+
+      if attributes.key?(:'reject_job_registration')
+        self.reject_job_registration = attributes[:'reject_job_registration']
       end
 
       if attributes.key?(:'scheduler_algorithm')
@@ -164,6 +172,7 @@ module NomadClient
           memory_oversubscription_enabled == o.memory_oversubscription_enabled &&
           modify_index == o.modify_index &&
           preemption_config == o.preemption_config &&
+          reject_job_registration == o.reject_job_registration &&
           scheduler_algorithm == o.scheduler_algorithm
     end
 
@@ -176,7 +185,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_index, memory_oversubscription_enabled, modify_index, preemption_config, scheduler_algorithm].hash
+      [create_index, memory_oversubscription_enabled, modify_index, preemption_config, reject_job_registration, scheduler_algorithm].hash
     end
 
     # Builds the object from hash

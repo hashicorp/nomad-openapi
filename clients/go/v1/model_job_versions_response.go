@@ -21,6 +21,7 @@ type JobVersionsResponse struct {
 	KnownLeader *bool `json:"KnownLeader,omitempty"`
 	LastContact *int64 `json:"LastContact,omitempty"`
 	LastIndex *int32 `json:"LastIndex,omitempty"`
+	NextToken *string `json:"NextToken,omitempty"`
 	RequestTime *int64 `json:"RequestTime,omitempty"`
 	Versions *[]Job `json:"Versions,omitempty"`
 }
@@ -170,6 +171,38 @@ func (o *JobVersionsResponse) SetLastIndex(v int32) {
 	o.LastIndex = &v
 }
 
+// GetNextToken returns the NextToken field value if set, zero value otherwise.
+func (o *JobVersionsResponse) GetNextToken() string {
+	if o == nil || o.NextToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.NextToken
+}
+
+// GetNextTokenOk returns a tuple with the NextToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobVersionsResponse) GetNextTokenOk() (*string, bool) {
+	if o == nil || o.NextToken == nil {
+		return nil, false
+	}
+	return o.NextToken, true
+}
+
+// HasNextToken returns a boolean if a field has been set.
+func (o *JobVersionsResponse) HasNextToken() bool {
+	if o != nil && o.NextToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNextToken gets a reference to the given string and assigns it to the NextToken field.
+func (o *JobVersionsResponse) SetNextToken(v string) {
+	o.NextToken = &v
+}
+
 // GetRequestTime returns the RequestTime field value if set, zero value otherwise.
 func (o *JobVersionsResponse) GetRequestTime() int64 {
 	if o == nil || o.RequestTime == nil {
@@ -247,6 +280,9 @@ func (o JobVersionsResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastIndex != nil {
 		toSerialize["LastIndex"] = o.LastIndex
+	}
+	if o.NextToken != nil {
+		toSerialize["NextToken"] = o.NextToken
 	}
 	if o.RequestTime != nil {
 		toSerialize["RequestTime"] = o.RequestTime

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import NamespaceCapabilities from './NamespaceCapabilities';
 
 /**
  * The Namespace model module.
@@ -47,11 +48,17 @@ class Namespace {
         if (data) {
             obj = obj || new Namespace();
 
+            if (data.hasOwnProperty('Capabilities')) {
+                obj['Capabilities'] = NamespaceCapabilities.constructFromObject(data['Capabilities']);
+            }
             if (data.hasOwnProperty('CreateIndex')) {
                 obj['CreateIndex'] = ApiClient.convertToType(data['CreateIndex'], 'Number');
             }
             if (data.hasOwnProperty('Description')) {
                 obj['Description'] = ApiClient.convertToType(data['Description'], 'String');
+            }
+            if (data.hasOwnProperty('Meta')) {
+                obj['Meta'] = ApiClient.convertToType(data['Meta'], {'String': 'String'});
             }
             if (data.hasOwnProperty('ModifyIndex')) {
                 obj['ModifyIndex'] = ApiClient.convertToType(data['ModifyIndex'], 'Number');
@@ -70,6 +77,11 @@ class Namespace {
 }
 
 /**
+ * @member {module:model/NamespaceCapabilities} Capabilities
+ */
+Namespace.prototype['Capabilities'] = undefined;
+
+/**
  * @member {Number} CreateIndex
  */
 Namespace.prototype['CreateIndex'] = undefined;
@@ -78,6 +90,11 @@ Namespace.prototype['CreateIndex'] = undefined;
  * @member {String} Description
  */
 Namespace.prototype['Description'] = undefined;
+
+/**
+ * @member {Object.<String, String>} Meta
+ */
+Namespace.prototype['Meta'] = undefined;
 
 /**
  * @member {Number} ModifyIndex

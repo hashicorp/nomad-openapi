@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **dns** | [**DNSConfig**](DNSConfig.md) |  | [optional] 
 **device** | **str** |  | [optional] 
 **dynamic_ports** | [**[Port]**](Port.md) |  | [optional] 
+**hostname** | **str** |  | [optional] 
 **ip** | **str** |  | [optional] 
 **m_bits** | **int** |  | [optional] 
 **mode** | **str** |  | [optional] 

@@ -20,15 +20,23 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.NamespaceCapabilities;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Namespace
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Namespace {
+  public static final String SERIALIZED_NAME_CAPABILITIES = "Capabilities";
+  @SerializedName(SERIALIZED_NAME_CAPABILITIES)
+  private NamespaceCapabilities capabilities;
+
   public static final String SERIALIZED_NAME_CREATE_INDEX = "CreateIndex";
   @SerializedName(SERIALIZED_NAME_CREATE_INDEX)
   private Integer createIndex;
@@ -36,6 +44,10 @@ public class Namespace {
   public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_META = "Meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Map<String, String> meta = null;
 
   public static final String SERIALIZED_NAME_MODIFY_INDEX = "ModifyIndex";
   @SerializedName(SERIALIZED_NAME_MODIFY_INDEX)
@@ -48,6 +60,29 @@ public class Namespace {
   public static final String SERIALIZED_NAME_QUOTA = "Quota";
   @SerializedName(SERIALIZED_NAME_QUOTA)
   private String quota;
+
+
+  public Namespace capabilities(NamespaceCapabilities capabilities) {
+    
+    this.capabilities = capabilities;
+    return this;
+  }
+
+   /**
+   * Get capabilities
+   * @return capabilities
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public NamespaceCapabilities getCapabilities() {
+    return capabilities;
+  }
+
+
+  public void setCapabilities(NamespaceCapabilities capabilities) {
+    this.capabilities = capabilities;
+  }
 
 
   public Namespace createIndex(Integer createIndex) {
@@ -95,6 +130,37 @@ public class Namespace {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public Namespace meta(Map<String, String> meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+  public Namespace putMetaItem(String key, String metaItem) {
+    if (this.meta == null) {
+      this.meta = new HashMap<String, String>();
+    }
+    this.meta.put(key, metaItem);
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, String> getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Map<String, String> meta) {
+    this.meta = meta;
   }
 
 
@@ -178,8 +244,10 @@ public class Namespace {
       return false;
     }
     Namespace namespace = (Namespace) o;
-    return Objects.equals(this.createIndex, namespace.createIndex) &&
+    return Objects.equals(this.capabilities, namespace.capabilities) &&
+        Objects.equals(this.createIndex, namespace.createIndex) &&
         Objects.equals(this.description, namespace.description) &&
+        Objects.equals(this.meta, namespace.meta) &&
         Objects.equals(this.modifyIndex, namespace.modifyIndex) &&
         Objects.equals(this.name, namespace.name) &&
         Objects.equals(this.quota, namespace.quota);
@@ -187,15 +255,17 @@ public class Namespace {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createIndex, description, modifyIndex, name, quota);
+    return Objects.hash(capabilities, createIndex, description, meta, modifyIndex, name, quota);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Namespace {\n");
+    sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quota: ").append(toIndentedString(quota)).append("\n");

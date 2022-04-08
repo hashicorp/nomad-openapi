@@ -25,6 +25,7 @@
 | **priority** | **Integer** |  | [optional] |
 | **queued_allocations** | **Hash&lt;String, Integer&gt;** |  | [optional] |
 | **quota_limit_reached** | **String** |  | [optional] |
+| **related_evals** | [**Array&lt;EvaluationStub&gt;**](EvaluationStub.md) |  | [optional] |
 | **snapshot_index** | **Integer** |  | [optional] |
 | **status** | **String** |  | [optional] |
 | **status_description** | **String** |  | [optional] |
@@ -60,6 +61,7 @@ instance = NomadClient::Evaluation.new(
   priority: null,
   queued_allocations: null,
   quota_limit_reached: null,
+  related_evals: null,
   snapshot_index: null,
   status: null,
   status_description: null,

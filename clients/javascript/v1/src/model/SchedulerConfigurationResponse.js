@@ -57,6 +57,9 @@ class SchedulerConfigurationResponse {
             if (data.hasOwnProperty('LastIndex')) {
                 obj['LastIndex'] = ApiClient.convertToType(data['LastIndex'], 'Number');
             }
+            if (data.hasOwnProperty('NextToken')) {
+                obj['NextToken'] = ApiClient.convertToType(data['NextToken'], 'String');
+            }
             if (data.hasOwnProperty('RequestTime')) {
                 obj['RequestTime'] = ApiClient.convertToType(data['RequestTime'], 'Number');
             }
@@ -84,6 +87,11 @@ SchedulerConfigurationResponse.prototype['LastContact'] = undefined;
  * @member {Number} LastIndex
  */
 SchedulerConfigurationResponse.prototype['LastIndex'] = undefined;
+
+/**
+ * @member {String} NextToken
+ */
+SchedulerConfigurationResponse.prototype['NextToken'] = undefined;
 
 /**
  * @member {Number} RequestTime

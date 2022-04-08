@@ -67,6 +67,8 @@ module NomadClient
 
     attr_accessor :requested_capacity_min
 
+    attr_accessor :requested_topologies
+
     attr_accessor :resource_exhausted
 
     attr_accessor :schedulable
@@ -108,6 +110,7 @@ module NomadClient
         :'requested_capabilities' => :'RequestedCapabilities',
         :'requested_capacity_max' => :'RequestedCapacityMax',
         :'requested_capacity_min' => :'RequestedCapacityMin',
+        :'requested_topologies' => :'RequestedTopologies',
         :'resource_exhausted' => :'ResourceExhausted',
         :'schedulable' => :'Schedulable',
         :'secrets' => :'Secrets',
@@ -151,6 +154,7 @@ module NomadClient
         :'requested_capabilities' => :'Array<CSIVolumeCapability>',
         :'requested_capacity_max' => :'Integer',
         :'requested_capacity_min' => :'Integer',
+        :'requested_topologies' => :'CSITopologyRequest',
         :'resource_exhausted' => :'Time',
         :'schedulable' => :'Boolean',
         :'secrets' => :'Hash<String, String>',
@@ -295,6 +299,10 @@ module NomadClient
         self.requested_capacity_min = attributes[:'requested_capacity_min']
       end
 
+      if attributes.key?(:'requested_topologies')
+        self.requested_topologies = attributes[:'requested_topologies']
+      end
+
       if attributes.key?(:'resource_exhausted')
         self.resource_exhausted = attributes[:'resource_exhausted']
       end
@@ -418,6 +426,7 @@ module NomadClient
           requested_capabilities == o.requested_capabilities &&
           requested_capacity_max == o.requested_capacity_max &&
           requested_capacity_min == o.requested_capacity_min &&
+          requested_topologies == o.requested_topologies &&
           resource_exhausted == o.resource_exhausted &&
           schedulable == o.schedulable &&
           secrets == o.secrets &&
@@ -435,7 +444,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_mode, allocations, attachment_mode, capacity, clone_id, context, controller_required, controllers_expected, controllers_healthy, create_index, external_id, id, modify_index, mount_options, name, namespace, nodes_expected, nodes_healthy, parameters, plugin_id, provider, provider_version, read_allocs, requested_capabilities, requested_capacity_max, requested_capacity_min, resource_exhausted, schedulable, secrets, snapshot_id, topologies, write_allocs].hash
+      [access_mode, allocations, attachment_mode, capacity, clone_id, context, controller_required, controllers_expected, controllers_healthy, create_index, external_id, id, modify_index, mount_options, name, namespace, nodes_expected, nodes_healthy, parameters, plugin_id, provider, provider_version, read_allocs, requested_capabilities, requested_capacity_max, requested_capacity_min, requested_topologies, resource_exhausted, schedulable, secrets, snapshot_id, topologies, write_allocs].hash
     end
 
     # Builds the object from hash

@@ -55,6 +55,8 @@ pub struct Evaluation {
     pub queued_allocations: Option<::std::collections::HashMap<String, i32>>,
     #[serde(rename = "QuotaLimitReached", skip_serializing_if = "Option::is_none")]
     pub quota_limit_reached: Option<String>,
+    #[serde(rename = "RelatedEvals", skip_serializing_if = "Option::is_none")]
+    pub related_evals: Option<Vec<crate::models::EvaluationStub>>,
     #[serde(rename = "SnapshotIndex", skip_serializing_if = "Option::is_none")]
     pub snapshot_index: Option<i32>,
     #[serde(rename = "Status", skip_serializing_if = "Option::is_none")]
@@ -95,6 +97,7 @@ impl Evaluation {
             priority: None,
             queued_allocations: None,
             quota_limit_reached: None,
+            related_evals: None,
             snapshot_index: None,
             status: None,
             status_description: None,

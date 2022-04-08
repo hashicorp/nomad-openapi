@@ -17,6 +17,7 @@ export class SearchResponse {
     'lastContact'?: number;
     'lastIndex'?: number;
     'matches'?: { [key: string]: Array<string>; };
+    'nextToken'?: string;
     'requestTime'?: number;
     'truncations'?: { [key: string]: boolean; };
 
@@ -45,6 +46,12 @@ export class SearchResponse {
             "name": "matches",
             "baseName": "Matches",
             "type": "{ [key: string]: Array<string>; }",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

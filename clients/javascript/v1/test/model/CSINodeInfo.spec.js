@@ -78,6 +78,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property supportsCondition (base name: "SupportsCondition")', function() {
+      // uncomment below and update the code to test the property supportsCondition
+      //var instance = new nomad-client.CSINodeInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsExpand (base name: "SupportsExpand")', function() {
+      // uncomment below and update the code to test the property supportsExpand
+      //var instance = new nomad-client.CSINodeInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsStats (base name: "SupportsStats")', function() {
+      // uncomment below and update the code to test the property supportsStats
+      //var instance = new nomad-client.CSINodeInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

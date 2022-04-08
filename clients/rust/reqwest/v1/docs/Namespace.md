@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**capabilities** | Option<[**crate::models::NamespaceCapabilities**](NamespaceCapabilities.md)> |  | [optional]
 **create_index** | Option<**i32**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
+**meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **modify_index** | Option<**i32**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **quota** | Option<**String**> |  | [optional]

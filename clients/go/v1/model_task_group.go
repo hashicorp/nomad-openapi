@@ -22,6 +22,7 @@ type TaskGroup struct {
 	Consul *Consul `json:"Consul,omitempty"`
 	Count *int32 `json:"Count,omitempty"`
 	EphemeralDisk *EphemeralDisk `json:"EphemeralDisk,omitempty"`
+	MaxClientDisconnect *int64 `json:"MaxClientDisconnect,omitempty"`
 	Meta *map[string]string `json:"Meta,omitempty"`
 	Migrate *MigrateStrategy `json:"Migrate,omitempty"`
 	Name *string `json:"Name,omitempty"`
@@ -213,6 +214,38 @@ func (o *TaskGroup) HasEphemeralDisk() bool {
 // SetEphemeralDisk gets a reference to the given EphemeralDisk and assigns it to the EphemeralDisk field.
 func (o *TaskGroup) SetEphemeralDisk(v EphemeralDisk) {
 	o.EphemeralDisk = &v
+}
+
+// GetMaxClientDisconnect returns the MaxClientDisconnect field value if set, zero value otherwise.
+func (o *TaskGroup) GetMaxClientDisconnect() int64 {
+	if o == nil || o.MaxClientDisconnect == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MaxClientDisconnect
+}
+
+// GetMaxClientDisconnectOk returns a tuple with the MaxClientDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaskGroup) GetMaxClientDisconnectOk() (*int64, bool) {
+	if o == nil || o.MaxClientDisconnect == nil {
+		return nil, false
+	}
+	return o.MaxClientDisconnect, true
+}
+
+// HasMaxClientDisconnect returns a boolean if a field has been set.
+func (o *TaskGroup) HasMaxClientDisconnect() bool {
+	if o != nil && o.MaxClientDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxClientDisconnect gets a reference to the given int64 and assigns it to the MaxClientDisconnect field.
+func (o *TaskGroup) SetMaxClientDisconnect(v int64) {
+	o.MaxClientDisconnect = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
@@ -679,6 +712,9 @@ func (o TaskGroup) MarshalJSON() ([]byte, error) {
 	}
 	if o.EphemeralDisk != nil {
 		toSerialize["EphemeralDisk"] = o.EphemeralDisk
+	}
+	if o.MaxClientDisconnect != nil {
+		toSerialize["MaxClientDisconnect"] = o.MaxClientDisconnect
 	}
 	if o.Meta != nil {
 		toSerialize["Meta"] = o.Meta

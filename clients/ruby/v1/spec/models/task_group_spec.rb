@@ -55,6 +55,12 @@ describe NomadClient::TaskGroup do
     end
   end
 
+  describe 'test attribute "max_client_disconnect"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "meta"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

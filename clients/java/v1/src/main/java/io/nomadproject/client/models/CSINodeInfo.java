@@ -46,6 +46,18 @@ public class CSINodeInfo {
   @SerializedName(SERIALIZED_NAME_REQUIRES_NODE_STAGE_VOLUME)
   private Boolean requiresNodeStageVolume;
 
+  public static final String SERIALIZED_NAME_SUPPORTS_CONDITION = "SupportsCondition";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_CONDITION)
+  private Boolean supportsCondition;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_EXPAND = "SupportsExpand";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_EXPAND)
+  private Boolean supportsExpand;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_STATS = "SupportsStats";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_STATS)
+  private Boolean supportsStats;
+
 
   public CSINodeInfo accessibleTopology(CSITopology accessibleTopology) {
     
@@ -139,6 +151,75 @@ public class CSINodeInfo {
   }
 
 
+  public CSINodeInfo supportsCondition(Boolean supportsCondition) {
+    
+    this.supportsCondition = supportsCondition;
+    return this;
+  }
+
+   /**
+   * Get supportsCondition
+   * @return supportsCondition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsCondition() {
+    return supportsCondition;
+  }
+
+
+  public void setSupportsCondition(Boolean supportsCondition) {
+    this.supportsCondition = supportsCondition;
+  }
+
+
+  public CSINodeInfo supportsExpand(Boolean supportsExpand) {
+    
+    this.supportsExpand = supportsExpand;
+    return this;
+  }
+
+   /**
+   * Get supportsExpand
+   * @return supportsExpand
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsExpand() {
+    return supportsExpand;
+  }
+
+
+  public void setSupportsExpand(Boolean supportsExpand) {
+    this.supportsExpand = supportsExpand;
+  }
+
+
+  public CSINodeInfo supportsStats(Boolean supportsStats) {
+    
+    this.supportsStats = supportsStats;
+    return this;
+  }
+
+   /**
+   * Get supportsStats
+   * @return supportsStats
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSupportsStats() {
+    return supportsStats;
+  }
+
+
+  public void setSupportsStats(Boolean supportsStats) {
+    this.supportsStats = supportsStats;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -151,12 +232,15 @@ public class CSINodeInfo {
     return Objects.equals(this.accessibleTopology, csINodeInfo.accessibleTopology) &&
         Objects.equals(this.ID, csINodeInfo.ID) &&
         Objects.equals(this.maxVolumes, csINodeInfo.maxVolumes) &&
-        Objects.equals(this.requiresNodeStageVolume, csINodeInfo.requiresNodeStageVolume);
+        Objects.equals(this.requiresNodeStageVolume, csINodeInfo.requiresNodeStageVolume) &&
+        Objects.equals(this.supportsCondition, csINodeInfo.supportsCondition) &&
+        Objects.equals(this.supportsExpand, csINodeInfo.supportsExpand) &&
+        Objects.equals(this.supportsStats, csINodeInfo.supportsStats);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessibleTopology, ID, maxVolumes, requiresNodeStageVolume);
+    return Objects.hash(accessibleTopology, ID, maxVolumes, requiresNodeStageVolume, supportsCondition, supportsExpand, supportsStats);
   }
 
   @Override
@@ -167,6 +251,9 @@ public class CSINodeInfo {
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    maxVolumes: ").append(toIndentedString(maxVolumes)).append("\n");
     sb.append("    requiresNodeStageVolume: ").append(toIndentedString(requiresNodeStageVolume)).append("\n");
+    sb.append("    supportsCondition: ").append(toIndentedString(supportsCondition)).append("\n");
+    sb.append("    supportsExpand: ").append(toIndentedString(supportsExpand)).append("\n");
+    sb.append("    supportsStats: ").append(toIndentedString(supportsStats)).append("\n");
     sb.append("}");
     return sb.toString();
   }

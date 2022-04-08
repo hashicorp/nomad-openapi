@@ -50,6 +50,7 @@ docs/CsiSnapshotCreateRequest.md
 docs/CsiSnapshotCreateResponse.md
 docs/CsiSnapshotListResponse.md
 docs/CsiTopology.md
+docs/CsiTopologyRequest.md
 docs/CsiVolume.md
 docs/CsiVolumeCapability.md
 docs/CsiVolumeCreateRequest.md
@@ -77,12 +78,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
 docs/JobChildrenSummary.md
@@ -114,6 +117,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -201,6 +205,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 src/apis/acl_api.rs
 src/apis/allocations_api.rs
 src/apis/configuration.rs
@@ -268,6 +273,7 @@ src/models/csi_snapshot_create_request.rs
 src/models/csi_snapshot_create_response.rs
 src/models/csi_snapshot_list_response.rs
 src/models/csi_topology.rs
+src/models/csi_topology_request.rs
 src/models/csi_volume.rs
 src/models/csi_volume_capability.rs
 src/models/csi_volume_create_request.rs
@@ -293,11 +299,13 @@ src/models/driver_info.rs
 src/models/ephemeral_disk.rs
 src/models/eval_options.rs
 src/models/evaluation.rs
+src/models/evaluation_stub.rs
 src/models/field_diff.rs
 src/models/fuzzy_match.rs
 src/models/fuzzy_search_request.rs
 src/models/fuzzy_search_response.rs
 src/models/gauge_value.rs
+src/models/host_network_info.rs
 src/models/host_volume_info.rs
 src/models/job.rs
 src/models/job_children_summary.rs
@@ -328,6 +336,7 @@ src/models/multiregion.rs
 src/models/multiregion_region.rs
 src/models/multiregion_strategy.rs
 src/models/namespace.rs
+src/models/namespace_capabilities.rs
 src/models/network_resource.rs
 src/models/node.rs
 src/models/node_cpu_resources.rs
@@ -405,3 +414,4 @@ src/models/update_strategy.rs
 src/models/vault.rs
 src/models/volume_mount.rs
 src/models/volume_request.rs
+src/models/wait_config.rs

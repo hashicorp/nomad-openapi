@@ -100,6 +100,7 @@ class SchedulerConfiguration(ModelNormal):
             'memory_oversubscription_enabled': (bool,),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
             'preemption_config': (PreemptionConfig,),  # noqa: E501
+            'reject_job_registration': (bool,),  # noqa: E501
             'scheduler_algorithm': (str,),  # noqa: E501
         }
 
@@ -113,6 +114,7 @@ class SchedulerConfiguration(ModelNormal):
         'memory_oversubscription_enabled': 'MemoryOversubscriptionEnabled',  # noqa: E501
         'modify_index': 'ModifyIndex',  # noqa: E501
         'preemption_config': 'PreemptionConfig',  # noqa: E501
+        'reject_job_registration': 'RejectJobRegistration',  # noqa: E501
         'scheduler_algorithm': 'SchedulerAlgorithm',  # noqa: E501
     }
 
@@ -161,6 +163,7 @@ class SchedulerConfiguration(ModelNormal):
             memory_oversubscription_enabled (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             preemption_config (PreemptionConfig): [optional]  # noqa: E501
+            reject_job_registration (bool): [optional]  # noqa: E501
             scheduler_algorithm (str): [optional]  # noqa: E501
         """
 
@@ -247,6 +250,7 @@ class SchedulerConfiguration(ModelNormal):
             memory_oversubscription_enabled (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             preemption_config (PreemptionConfig): [optional]  # noqa: E501
+            reject_job_registration (bool): [optional]  # noqa: E501
             scheduler_algorithm (str): [optional]  # noqa: E501
         """
 

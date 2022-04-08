@@ -99,6 +99,14 @@ public class TaskGroupTest {
     }
 
     /**
+     * Test the property 'maxClientDisconnect'
+     */
+    @Test
+    public void maxClientDisconnectTest() {
+        // TODO: test maxClientDisconnect
+    }
+
+    /**
      * Test the property 'meta'
      */
     @Test

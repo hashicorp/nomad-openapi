@@ -86,6 +86,9 @@ class Service {
             if (data.hasOwnProperty('PortLabel')) {
                 obj['PortLabel'] = ApiClient.convertToType(data['PortLabel'], 'String');
             }
+            if (data.hasOwnProperty('Provider')) {
+                obj['Provider'] = ApiClient.convertToType(data['Provider'], 'String');
+            }
             if (data.hasOwnProperty('Tags')) {
                 obj['Tags'] = ApiClient.convertToType(data['Tags'], ['String']);
             }
@@ -158,6 +161,11 @@ Service.prototype['OnUpdate'] = undefined;
  * @member {String} PortLabel
  */
 Service.prototype['PortLabel'] = undefined;
+
+/**
+ * @member {String} Provider
+ */
+Service.prototype['Provider'] = undefined;
 
 /**
  * @member {Array.<String>} Tags

@@ -16,6 +16,7 @@ import CSIInfo from './CSIInfo';
 import DrainMetadata from './DrainMetadata';
 import DrainStrategy from './DrainStrategy';
 import DriverInfo from './DriverInfo';
+import HostNetworkInfo from './HostNetworkInfo';
 import HostVolumeInfo from './HostVolumeInfo';
 import NodeEvent from './NodeEvent';
 import NodeReservedResources from './NodeReservedResources';
@@ -65,6 +66,9 @@ class Node {
             if (data.hasOwnProperty('CSINodePlugins')) {
                 obj['CSINodePlugins'] = ApiClient.convertToType(data['CSINodePlugins'], {'String': CSIInfo});
             }
+            if (data.hasOwnProperty('CgroupParent')) {
+                obj['CgroupParent'] = ApiClient.convertToType(data['CgroupParent'], 'String');
+            }
             if (data.hasOwnProperty('CreateIndex')) {
                 obj['CreateIndex'] = ApiClient.convertToType(data['CreateIndex'], 'Number');
             }
@@ -85,6 +89,9 @@ class Node {
             }
             if (data.hasOwnProperty('HTTPAddr')) {
                 obj['HTTPAddr'] = ApiClient.convertToType(data['HTTPAddr'], 'String');
+            }
+            if (data.hasOwnProperty('HostNetworks')) {
+                obj['HostNetworks'] = ApiClient.convertToType(data['HostNetworks'], {'String': HostNetworkInfo});
             }
             if (data.hasOwnProperty('HostVolumes')) {
                 obj['HostVolumes'] = ApiClient.convertToType(data['HostVolumes'], {'String': HostVolumeInfo});
@@ -160,6 +167,11 @@ Node.prototype['CSIControllerPlugins'] = undefined;
 Node.prototype['CSINodePlugins'] = undefined;
 
 /**
+ * @member {String} CgroupParent
+ */
+Node.prototype['CgroupParent'] = undefined;
+
+/**
  * @member {Number} CreateIndex
  */
 Node.prototype['CreateIndex'] = undefined;
@@ -193,6 +205,11 @@ Node.prototype['Events'] = undefined;
  * @member {String} HTTPAddr
  */
 Node.prototype['HTTPAddr'] = undefined;
+
+/**
+ * @member {Object.<String, module:model/HostNetworkInfo>} HostNetworks
+ */
+Node.prototype['HostNetworks'] = undefined;
 
 /**
  * @member {Object.<String, module:model/HostVolumeInfo>} HostVolumes

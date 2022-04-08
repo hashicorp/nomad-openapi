@@ -21,6 +21,8 @@ module NomadClient
 
     attr_accessor :csi_node_plugins
 
+    attr_accessor :cgroup_parent
+
     attr_accessor :create_index
 
     attr_accessor :datacenter
@@ -34,6 +36,8 @@ module NomadClient
     attr_accessor :events
 
     attr_accessor :http_addr
+
+    attr_accessor :host_networks
 
     attr_accessor :host_volumes
 
@@ -75,6 +79,7 @@ module NomadClient
         :'attributes' => :'Attributes',
         :'csi_controller_plugins' => :'CSIControllerPlugins',
         :'csi_node_plugins' => :'CSINodePlugins',
+        :'cgroup_parent' => :'CgroupParent',
         :'create_index' => :'CreateIndex',
         :'datacenter' => :'Datacenter',
         :'drain' => :'Drain',
@@ -82,6 +87,7 @@ module NomadClient
         :'drivers' => :'Drivers',
         :'events' => :'Events',
         :'http_addr' => :'HTTPAddr',
+        :'host_networks' => :'HostNetworks',
         :'host_volumes' => :'HostVolumes',
         :'id' => :'ID',
         :'last_drain' => :'LastDrain',
@@ -113,6 +119,7 @@ module NomadClient
         :'attributes' => :'Hash<String, String>',
         :'csi_controller_plugins' => :'Hash<String, CSIInfo>',
         :'csi_node_plugins' => :'Hash<String, CSIInfo>',
+        :'cgroup_parent' => :'String',
         :'create_index' => :'Integer',
         :'datacenter' => :'String',
         :'drain' => :'Boolean',
@@ -120,6 +127,7 @@ module NomadClient
         :'drivers' => :'Hash<String, DriverInfo>',
         :'events' => :'Array<NodeEvent>',
         :'http_addr' => :'String',
+        :'host_networks' => :'Hash<String, HostNetworkInfo>',
         :'host_volumes' => :'Hash<String, HostVolumeInfo>',
         :'id' => :'String',
         :'last_drain' => :'DrainMetadata',
@@ -179,6 +187,10 @@ module NomadClient
         end
       end
 
+      if attributes.key?(:'cgroup_parent')
+        self.cgroup_parent = attributes[:'cgroup_parent']
+      end
+
       if attributes.key?(:'create_index')
         self.create_index = attributes[:'create_index']
       end
@@ -209,6 +221,12 @@ module NomadClient
 
       if attributes.key?(:'http_addr')
         self.http_addr = attributes[:'http_addr']
+      end
+
+      if attributes.key?(:'host_networks')
+        if (value = attributes[:'host_networks']).is_a?(Hash)
+          self.host_networks = value
+        end
       end
 
       if attributes.key?(:'host_volumes')
@@ -355,6 +373,7 @@ module NomadClient
           attributes == o.attributes &&
           csi_controller_plugins == o.csi_controller_plugins &&
           csi_node_plugins == o.csi_node_plugins &&
+          cgroup_parent == o.cgroup_parent &&
           create_index == o.create_index &&
           datacenter == o.datacenter &&
           drain == o.drain &&
@@ -362,6 +381,7 @@ module NomadClient
           drivers == o.drivers &&
           events == o.events &&
           http_addr == o.http_addr &&
+          host_networks == o.host_networks &&
           host_volumes == o.host_volumes &&
           id == o.id &&
           last_drain == o.last_drain &&
@@ -390,7 +410,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, csi_controller_plugins, csi_node_plugins, create_index, datacenter, drain, drain_strategy, drivers, events, http_addr, host_volumes, id, last_drain, links, meta, modify_index, name, node_class, node_resources, reserved, reserved_resources, resources, scheduling_eligibility, status, status_description, status_updated_at, tls_enabled].hash
+      [attributes, csi_controller_plugins, csi_node_plugins, cgroup_parent, create_index, datacenter, drain, drain_strategy, drivers, events, http_addr, host_networks, host_volumes, id, last_drain, links, meta, modify_index, name, node_class, node_resources, reserved, reserved_resources, resources, scheduling_eligibility, status, status_description, status_updated_at, tls_enabled].hash
     end
 
     # Builds the object from hash

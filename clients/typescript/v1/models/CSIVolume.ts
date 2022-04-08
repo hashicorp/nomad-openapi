@@ -14,6 +14,7 @@ import { Allocation } from './Allocation';
 import { AllocationListStub } from './AllocationListStub';
 import { CSIMountOptions } from './CSIMountOptions';
 import { CSITopology } from './CSITopology';
+import { CSITopologyRequest } from './CSITopologyRequest';
 import { CSIVolumeCapability } from './CSIVolumeCapability';
 import { HttpFile } from '../http/http';
 
@@ -44,6 +45,7 @@ export class CSIVolume {
     'requestedCapabilities'?: Array<CSIVolumeCapability>;
     'requestedCapacityMax'?: number;
     'requestedCapacityMin'?: number;
+    'requestedTopologies'?: CSITopologyRequest;
     'resourceExhausted'?: Date;
     'schedulable'?: boolean;
     'secrets'?: { [key: string]: string; };
@@ -209,6 +211,12 @@ export class CSIVolume {
             "baseName": "RequestedCapacityMin",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "requestedTopologies",
+            "baseName": "RequestedTopologies",
+            "type": "CSITopologyRequest",
+            "format": ""
         },
         {
             "name": "resourceExhausted",

@@ -517,6 +517,7 @@ with nomad_client.ApiClient(configuration) as api_client:
             sys_batch_scheduler_enabled=True,
             system_scheduler_enabled=True,
         ),
+        reject_job_registration=True,
         scheduler_algorithm="scheduler_algorithm_example",
     ) # SchedulerConfiguration | 
     region = "region_example" # str | Filters results based on the specified region. (optional)

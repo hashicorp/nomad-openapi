@@ -53,6 +53,7 @@ models/CSISnapshotCreateRequest.ts
 models/CSISnapshotCreateResponse.ts
 models/CSISnapshotListResponse.ts
 models/CSITopology.ts
+models/CSITopologyRequest.ts
 models/CSIVolume.ts
 models/CSIVolumeCapability.ts
 models/CSIVolumeCreateRequest.ts
@@ -97,11 +98,13 @@ models/DriverInfo.ts
 models/EphemeralDisk.ts
 models/EvalOptions.ts
 models/Evaluation.ts
+models/EvaluationStub.ts
 models/FieldDiff.ts
 models/FuzzyMatch.ts
 models/FuzzySearchRequest.ts
 models/FuzzySearchResponse.ts
 models/GaugeValue.ts
+models/HostNetworkInfo.ts
 models/HostVolumeInfo.ts
 models/Job.ts
 models/JobChildrenSummary.ts
@@ -131,6 +134,7 @@ models/Multiregion.ts
 models/MultiregionRegion.ts
 models/MultiregionStrategy.ts
 models/Namespace.ts
+models/NamespaceCapabilities.ts
 models/NetworkResource.ts
 models/Node.ts
 models/NodeCpuResources.ts
@@ -209,6 +213,7 @@ models/UpdateStrategy.ts
 models/Vault.ts
 models/VolumeMount.ts
 models/VolumeRequest.ts
+models/WaitConfig.ts
 models/all.ts
 package.json
 rxjsStub.ts

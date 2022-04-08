@@ -417,8 +417,19 @@ with nomad_client.ApiClient(configuration) as api_client:
     api_instance = namespaces_api.NamespacesApi(api_client)
     namespace_name = "namespaceName_example" # str | The namespace identifier.
     namespace2 = Namespace(
+        capabilities=NamespaceCapabilities(
+            disabled_task_drivers=[
+                "disabled_task_drivers_example",
+            ],
+            enabled_task_drivers=[
+                "enabled_task_drivers_example",
+            ],
+        ),
         create_index=0,
         description="description_example",
+        meta={
+            "key": "key_example",
+        },
         modify_index=0,
         name="name_example",
         quota="quota_example",

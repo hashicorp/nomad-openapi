@@ -51,6 +51,9 @@ class JobRegisterRequest {
             if (data.hasOwnProperty('EnforceIndex')) {
                 obj['EnforceIndex'] = ApiClient.convertToType(data['EnforceIndex'], 'Boolean');
             }
+            if (data.hasOwnProperty('EvalPriority')) {
+                obj['EvalPriority'] = ApiClient.convertToType(data['EvalPriority'], 'Number');
+            }
             if (data.hasOwnProperty('Job')) {
                 obj['Job'] = Job.constructFromObject(data['Job']);
             }
@@ -83,6 +86,11 @@ class JobRegisterRequest {
  * @member {Boolean} EnforceIndex
  */
 JobRegisterRequest.prototype['EnforceIndex'] = undefined;
+
+/**
+ * @member {Number} EvalPriority
+ */
+JobRegisterRequest.prototype['EvalPriority'] = undefined;
 
 /**
  * @member {module:model/Job} Job

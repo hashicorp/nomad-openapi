@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **name** | Option<**String**> |  | [optional]
 **on_update** | Option<**String**> |  | [optional]
 **port_label** | Option<**String**> |  | [optional]
+**provider** | Option<**String**> |  | [optional]
 **tags** | Option<**Vec<String>**> |  | [optional]
 **task_name** | Option<**String**> |  | [optional]
 

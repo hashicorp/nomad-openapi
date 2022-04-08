@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ConsulToken** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Datacenters** | Pointer to **[]string** |  | [optional] 
+**DispatchIdempotencyToken** | Pointer to **string** |  | [optional] 
 **Dispatched** | Pointer to **bool** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
@@ -234,6 +235,31 @@ SetDatacenters sets Datacenters field to given value.
 `func (o *Job) HasDatacenters() bool`
 
 HasDatacenters returns a boolean if a field has been set.
+
+### GetDispatchIdempotencyToken
+
+`func (o *Job) GetDispatchIdempotencyToken() string`
+
+GetDispatchIdempotencyToken returns the DispatchIdempotencyToken field if non-nil, zero value otherwise.
+
+### GetDispatchIdempotencyTokenOk
+
+`func (o *Job) GetDispatchIdempotencyTokenOk() (*string, bool)`
+
+GetDispatchIdempotencyTokenOk returns a tuple with the DispatchIdempotencyToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDispatchIdempotencyToken
+
+`func (o *Job) SetDispatchIdempotencyToken(v string)`
+
+SetDispatchIdempotencyToken sets DispatchIdempotencyToken field to given value.
+
+### HasDispatchIdempotencyToken
+
+`func (o *Job) HasDispatchIdempotencyToken() bool`
+
+HasDispatchIdempotencyToken returns a boolean if a field has been set.
 
 ### GetDispatched
 

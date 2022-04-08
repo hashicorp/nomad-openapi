@@ -71,6 +71,10 @@ public class Job {
   @SerializedName(SERIALIZED_NAME_DATACENTERS)
   private List<String> datacenters = null;
 
+  public static final String SERIALIZED_NAME_DISPATCH_IDEMPOTENCY_TOKEN = "DispatchIdempotencyToken";
+  @SerializedName(SERIALIZED_NAME_DISPATCH_IDEMPOTENCY_TOKEN)
+  private String dispatchIdempotencyToken;
+
   public static final String SERIALIZED_NAME_DISPATCHED = "Dispatched";
   @SerializedName(SERIALIZED_NAME_DISPATCHED)
   private Boolean dispatched;
@@ -372,6 +376,29 @@ public class Job {
 
   public void setDatacenters(List<String> datacenters) {
     this.datacenters = datacenters;
+  }
+
+
+  public Job dispatchIdempotencyToken(String dispatchIdempotencyToken) {
+    
+    this.dispatchIdempotencyToken = dispatchIdempotencyToken;
+    return this;
+  }
+
+   /**
+   * Get dispatchIdempotencyToken
+   * @return dispatchIdempotencyToken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDispatchIdempotencyToken() {
+    return dispatchIdempotencyToken;
+  }
+
+
+  public void setDispatchIdempotencyToken(String dispatchIdempotencyToken) {
+    this.dispatchIdempotencyToken = dispatchIdempotencyToken;
   }
 
 
@@ -1088,6 +1115,7 @@ public class Job {
         Objects.equals(this.consulToken, job.consulToken) &&
         Objects.equals(this.createIndex, job.createIndex) &&
         Objects.equals(this.datacenters, job.datacenters) &&
+        Objects.equals(this.dispatchIdempotencyToken, job.dispatchIdempotencyToken) &&
         Objects.equals(this.dispatched, job.dispatched) &&
         Objects.equals(this.ID, job.ID) &&
         Objects.equals(this.jobModifyIndex, job.jobModifyIndex) &&
@@ -1121,7 +1149,7 @@ public class Job {
 
   @Override
   public int hashCode() {
-    return Objects.hash(affinities, allAtOnce, constraints, consulNamespace, consulToken, createIndex, datacenters, dispatched, ID, jobModifyIndex, meta, migrate, modifyIndex, multiregion, name, namespace, nomadTokenID, parameterizedJob, parentID, Arrays.hashCode(payload), periodic, priority, region, reschedule, spreads, stable, status, statusDescription, stop, submitTime, taskGroups, type, update, vaultNamespace, vaultToken, version);
+    return Objects.hash(affinities, allAtOnce, constraints, consulNamespace, consulToken, createIndex, datacenters, dispatchIdempotencyToken, dispatched, ID, jobModifyIndex, meta, migrate, modifyIndex, multiregion, name, namespace, nomadTokenID, parameterizedJob, parentID, Arrays.hashCode(payload), periodic, priority, region, reschedule, spreads, stable, status, statusDescription, stop, submitTime, taskGroups, type, update, vaultNamespace, vaultToken, version);
   }
 
   @Override
@@ -1135,6 +1163,7 @@ public class Job {
     sb.append("    consulToken: ").append(toIndentedString(consulToken)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    datacenters: ").append(toIndentedString(datacenters)).append("\n");
+    sb.append("    dispatchIdempotencyToken: ").append(toIndentedString(dispatchIdempotencyToken)).append("\n");
     sb.append("    dispatched: ").append(toIndentedString(dispatched)).append("\n");
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    jobModifyIndex: ").append(toIndentedString(jobModifyIndex)).append("\n");

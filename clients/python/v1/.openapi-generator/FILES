@@ -31,6 +31,7 @@ docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
 docs/CSISnapshotListResponse.md
 docs/CSITopology.md
+docs/CSITopologyRequest.md
 docs/CSIVolume.md
 docs/CSIVolumeCapability.md
 docs/CSIVolumeCreateRequest.md
@@ -77,12 +78,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Int8.md
 docs/Job.md
@@ -115,6 +118,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -206,6 +210,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 nomad_client/__init__.py
 nomad_client/api/__init__.py
 nomad_client/api/acl_api.py
@@ -278,6 +283,7 @@ nomad_client/model/csi_snapshot_create_request.py
 nomad_client/model/csi_snapshot_create_response.py
 nomad_client/model/csi_snapshot_list_response.py
 nomad_client/model/csi_topology.py
+nomad_client/model/csi_topology_request.py
 nomad_client/model/csi_volume.py
 nomad_client/model/csi_volume_capability.py
 nomad_client/model/csi_volume_create_request.py
@@ -303,11 +309,13 @@ nomad_client/model/driver_info.py
 nomad_client/model/ephemeral_disk.py
 nomad_client/model/eval_options.py
 nomad_client/model/evaluation.py
+nomad_client/model/evaluation_stub.py
 nomad_client/model/field_diff.py
 nomad_client/model/fuzzy_match.py
 nomad_client/model/fuzzy_search_request.py
 nomad_client/model/fuzzy_search_response.py
 nomad_client/model/gauge_value.py
+nomad_client/model/host_network_info.py
 nomad_client/model/host_volume_info.py
 nomad_client/model/int8.py
 nomad_client/model/job.py
@@ -338,6 +346,7 @@ nomad_client/model/multiregion.py
 nomad_client/model/multiregion_region.py
 nomad_client/model/multiregion_strategy.py
 nomad_client/model/namespace.py
+nomad_client/model/namespace_capabilities.py
 nomad_client/model/network_resource.py
 nomad_client/model/node.py
 nomad_client/model/node_cpu_resources.py
@@ -419,6 +428,7 @@ nomad_client/model/update_strategy.py
 nomad_client/model/vault.py
 nomad_client/model/volume_mount.py
 nomad_client/model/volume_request.py
+nomad_client/model/wait_config.py
 nomad_client/model_utils.py
 nomad_client/models/__init__.py
 nomad_client/rest.py
@@ -433,13 +443,17 @@ test/test_csi_info.py
 test/test_csi_node_info.py
 test/test_csi_plugin.py
 test/test_csi_plugin_list_stub.py
+test/test_csi_topology_request.py
 test/test_deployment_alloc_health_request.py
 test/test_deployment_pause_request.py
 test/test_deployment_promote_request.py
 test/test_deployment_unblock_request.py
 test/test_deployment_update_response.py
 test/test_deployments_api.py
+test/test_evaluation_stub.py
 test/test_evaluations_api.py
+test/test_host_network_info.py
+test/test_namespace_capabilities.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py
 test/test_operator_api.py
@@ -457,4 +471,5 @@ test/test_server_health.py
 test/test_status_api.py
 test/test_system_api.py
 test/test_uint.py
+test/test_wait_config.py
 tox.ini

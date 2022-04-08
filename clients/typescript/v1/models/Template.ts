@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { WaitConfig } from './WaitConfig';
 import { HttpFile } from '../http/http';
 
 export class Template {
@@ -24,6 +25,7 @@ export class Template {
     'sourcePath'?: string;
     'splay'?: number;
     'vaultGrace'?: number;
+    'wait'?: WaitConfig;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -93,6 +95,12 @@ export class Template {
             "baseName": "VaultGrace",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "wait",
+            "baseName": "Wait",
+            "type": "WaitConfig",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

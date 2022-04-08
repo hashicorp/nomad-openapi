@@ -60,6 +60,9 @@ class FuzzySearchResponse {
             if (data.hasOwnProperty('Matches')) {
                 obj['Matches'] = ApiClient.convertToType(data['Matches'], {'String': [FuzzyMatch]});
             }
+            if (data.hasOwnProperty('NextToken')) {
+                obj['NextToken'] = ApiClient.convertToType(data['NextToken'], 'String');
+            }
             if (data.hasOwnProperty('RequestTime')) {
                 obj['RequestTime'] = ApiClient.convertToType(data['RequestTime'], 'Number');
             }
@@ -92,6 +95,11 @@ FuzzySearchResponse.prototype['LastIndex'] = undefined;
  * @member {Object.<String, Array.<module:model/FuzzyMatch>>} Matches
  */
 FuzzySearchResponse.prototype['Matches'] = undefined;
+
+/**
+ * @member {String} NextToken
+ */
+FuzzySearchResponse.prototype['NextToken'] = undefined;
 
 /**
  * @member {Number} RequestTime

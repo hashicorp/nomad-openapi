@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **memoryOversubscriptionEnabled** | **Boolean** |  |  [optional]
 **modifyIndex** | **Integer** |  |  [optional]
 **preemptionConfig** | [**PreemptionConfig**](PreemptionConfig.md) |  |  [optional]
+**rejectJobRegistration** | **Boolean** |  |  [optional]
 **schedulerAlgorithm** | **String** |  |  [optional]
 
 

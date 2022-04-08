@@ -18,6 +18,9 @@ export class CSINodeInfo {
     'ID'?: string;
     'maxVolumes'?: number;
     'requiresNodeStageVolume'?: boolean;
+    'supportsCondition'?: boolean;
+    'supportsExpand'?: boolean;
+    'supportsStats'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -43,6 +46,24 @@ export class CSINodeInfo {
         {
             "name": "requiresNodeStageVolume",
             "baseName": "RequiresNodeStageVolume",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "supportsCondition",
+            "baseName": "SupportsCondition",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "supportsExpand",
+            "baseName": "SupportsExpand",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "supportsStats",
+            "baseName": "SupportsStats",
             "type": "boolean",
             "format": ""
         }    ];

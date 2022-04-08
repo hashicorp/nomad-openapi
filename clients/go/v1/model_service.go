@@ -29,6 +29,7 @@ type Service struct {
 	Name *string `json:"Name,omitempty"`
 	OnUpdate *string `json:"OnUpdate,omitempty"`
 	PortLabel *string `json:"PortLabel,omitempty"`
+	Provider *string `json:"Provider,omitempty"`
 	Tags *[]string `json:"Tags,omitempty"`
 	TaskName *string `json:"TaskName,omitempty"`
 }
@@ -434,6 +435,38 @@ func (o *Service) SetPortLabel(v string) {
 	o.PortLabel = &v
 }
 
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *Service) GetProvider() string {
+	if o == nil || o.Provider == nil {
+		var ret string
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Service) GetProviderOk() (*string, bool) {
+	if o == nil || o.Provider == nil {
+		return nil, false
+	}
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *Service) HasProvider() bool {
+	if o != nil && o.Provider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *Service) SetProvider(v string) {
+	o.Provider = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Service) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -535,6 +568,9 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	}
 	if o.PortLabel != nil {
 		toSerialize["PortLabel"] = o.PortLabel
+	}
+	if o.Provider != nil {
+		toSerialize["Provider"] = o.Provider
 	}
 	if o.Tags != nil {
 		toSerialize["Tags"] = o.Tags

@@ -17,6 +17,8 @@ pub struct Vault {
     pub change_mode: Option<String>,
     #[serde(rename = "ChangeSignal", skip_serializing_if = "Option::is_none")]
     pub change_signal: Option<String>,
+    #[serde(rename = "EntityAlias", skip_serializing_if = "Option::is_none")]
+    pub entity_alias: Option<String>,
     #[serde(rename = "Env", skip_serializing_if = "Option::is_none")]
     pub env: Option<bool>,
     #[serde(rename = "Namespace", skip_serializing_if = "Option::is_none")]
@@ -30,6 +32,7 @@ impl Vault {
         Vault {
             change_mode: None,
             change_signal: None,
+            entity_alias: None,
             env: None,
             namespace: None,
             policies: None,

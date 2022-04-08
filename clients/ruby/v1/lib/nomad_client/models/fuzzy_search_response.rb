@@ -23,6 +23,8 @@ module NomadClient
 
     attr_accessor :matches
 
+    attr_accessor :next_token
+
     attr_accessor :request_time
 
     attr_accessor :truncations
@@ -34,6 +36,7 @@ module NomadClient
         :'last_contact' => :'LastContact',
         :'last_index' => :'LastIndex',
         :'matches' => :'Matches',
+        :'next_token' => :'NextToken',
         :'request_time' => :'RequestTime',
         :'truncations' => :'Truncations'
       }
@@ -51,6 +54,7 @@ module NomadClient
         :'last_contact' => :'Integer',
         :'last_index' => :'Integer',
         :'matches' => :'Hash<String, Array<FuzzyMatch>>',
+        :'next_token' => :'String',
         :'request_time' => :'Integer',
         :'truncations' => :'Hash<String, Boolean>'
       }
@@ -93,6 +97,10 @@ module NomadClient
         if (value = attributes[:'matches']).is_a?(Hash)
           self.matches = value
         end
+      end
+
+      if attributes.key?(:'next_token')
+        self.next_token = attributes[:'next_token']
       end
 
       if attributes.key?(:'request_time')
@@ -152,6 +160,7 @@ module NomadClient
           last_contact == o.last_contact &&
           last_index == o.last_index &&
           matches == o.matches &&
+          next_token == o.next_token &&
           request_time == o.request_time &&
           truncations == o.truncations
     end
@@ -165,7 +174,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [known_leader, last_contact, last_index, matches, request_time, truncations].hash
+      [known_leader, last_contact, last_index, matches, next_token, request_time, truncations].hash
     end
 
     # Builds the object from hash

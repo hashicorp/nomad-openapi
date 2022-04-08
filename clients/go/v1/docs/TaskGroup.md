@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Consul** | Pointer to [**Consul**](Consul.md) |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
 **EphemeralDisk** | Pointer to [**EphemeralDisk**](EphemeralDisk.md) |  | [optional] 
+**MaxClientDisconnect** | Pointer to **int64** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Migrate** | Pointer to [**MigrateStrategy**](MigrateStrategy.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -167,6 +168,31 @@ SetEphemeralDisk sets EphemeralDisk field to given value.
 `func (o *TaskGroup) HasEphemeralDisk() bool`
 
 HasEphemeralDisk returns a boolean if a field has been set.
+
+### GetMaxClientDisconnect
+
+`func (o *TaskGroup) GetMaxClientDisconnect() int64`
+
+GetMaxClientDisconnect returns the MaxClientDisconnect field if non-nil, zero value otherwise.
+
+### GetMaxClientDisconnectOk
+
+`func (o *TaskGroup) GetMaxClientDisconnectOk() (*int64, bool)`
+
+GetMaxClientDisconnectOk returns a tuple with the MaxClientDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxClientDisconnect
+
+`func (o *TaskGroup) SetMaxClientDisconnect(v int64)`
+
+SetMaxClientDisconnect sets MaxClientDisconnect field to given value.
+
+### HasMaxClientDisconnect
+
+`func (o *TaskGroup) HasMaxClientDisconnect() bool`
+
+HasMaxClientDisconnect returns a boolean if a field has been set.
 
 ### GetMeta
 

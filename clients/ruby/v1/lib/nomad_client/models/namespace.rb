@@ -15,9 +15,13 @@ require 'time'
 
 module NomadClient
   class Namespace
+    attr_accessor :capabilities
+
     attr_accessor :create_index
 
     attr_accessor :description
+
+    attr_accessor :meta
 
     attr_accessor :modify_index
 
@@ -28,8 +32,10 @@ module NomadClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'capabilities' => :'Capabilities',
         :'create_index' => :'CreateIndex',
         :'description' => :'Description',
+        :'meta' => :'Meta',
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'quota' => :'Quota'
@@ -44,8 +50,10 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'capabilities' => :'NamespaceCapabilities',
         :'create_index' => :'Integer',
         :'description' => :'String',
+        :'meta' => :'Hash<String, String>',
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'quota' => :'String'
@@ -73,12 +81,22 @@ module NomadClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'capabilities')
+        self.capabilities = attributes[:'capabilities']
+      end
+
       if attributes.key?(:'create_index')
         self.create_index = attributes[:'create_index']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'meta')
+        if (value = attributes[:'meta']).is_a?(Hash)
+          self.meta = value
+        end
       end
 
       if attributes.key?(:'modify_index')
@@ -160,8 +178,10 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          capabilities == o.capabilities &&
           create_index == o.create_index &&
           description == o.description &&
+          meta == o.meta &&
           modify_index == o.modify_index &&
           name == o.name &&
           quota == o.quota
@@ -176,7 +196,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_index, description, modify_index, name, quota].hash
+      [capabilities, create_index, description, meta, modify_index, name, quota].hash
     end
 
     # Builds the object from hash

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **queued** | **Integer** |  |  [optional]
 **running** | **Integer** |  |  [optional]
 **starting** | **Integer** |  |  [optional]
+**unknown** | **Integer** |  |  [optional]
 
 
 

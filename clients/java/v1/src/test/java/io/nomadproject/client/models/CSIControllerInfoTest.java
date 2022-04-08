@@ -49,6 +49,70 @@ public class CSIControllerInfoTest {
     }
 
     /**
+     * Test the property 'supportsClone'
+     */
+    @Test
+    public void supportsCloneTest() {
+        // TODO: test supportsClone
+    }
+
+    /**
+     * Test the property 'supportsCondition'
+     */
+    @Test
+    public void supportsConditionTest() {
+        // TODO: test supportsCondition
+    }
+
+    /**
+     * Test the property 'supportsCreateDelete'
+     */
+    @Test
+    public void supportsCreateDeleteTest() {
+        // TODO: test supportsCreateDelete
+    }
+
+    /**
+     * Test the property 'supportsCreateDeleteSnapshot'
+     */
+    @Test
+    public void supportsCreateDeleteSnapshotTest() {
+        // TODO: test supportsCreateDeleteSnapshot
+    }
+
+    /**
+     * Test the property 'supportsExpand'
+     */
+    @Test
+    public void supportsExpandTest() {
+        // TODO: test supportsExpand
+    }
+
+    /**
+     * Test the property 'supportsGet'
+     */
+    @Test
+    public void supportsGetTest() {
+        // TODO: test supportsGet
+    }
+
+    /**
+     * Test the property 'supportsGetCapacity'
+     */
+    @Test
+    public void supportsGetCapacityTest() {
+        // TODO: test supportsGetCapacity
+    }
+
+    /**
+     * Test the property 'supportsListSnapshots'
+     */
+    @Test
+    public void supportsListSnapshotsTest() {
+        // TODO: test supportsListSnapshots
+    }
+
+    /**
      * Test the property 'supportsListVolumes'
      */
     @Test
