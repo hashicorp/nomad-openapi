@@ -33,6 +33,7 @@ docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
 docs/CSISnapshotListResponse.md
 docs/CSITopology.md
+docs/CSITopologyRequest.md
 docs/CSIVolume.md
 docs/CSIVolumeCapability.md
 docs/CSIVolumeCreateRequest.md
@@ -79,12 +80,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
 docs/JobChildrenSummary.md
@@ -116,6 +119,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -203,6 +207,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -273,6 +278,7 @@ src/main/java/io/nomadproject/client/models/CSISnapshotCreateRequest.java
 src/main/java/io/nomadproject/client/models/CSISnapshotCreateResponse.java
 src/main/java/io/nomadproject/client/models/CSISnapshotListResponse.java
 src/main/java/io/nomadproject/client/models/CSITopology.java
+src/main/java/io/nomadproject/client/models/CSITopologyRequest.java
 src/main/java/io/nomadproject/client/models/CSIVolume.java
 src/main/java/io/nomadproject/client/models/CSIVolumeCapability.java
 src/main/java/io/nomadproject/client/models/CSIVolumeCreateRequest.java
@@ -317,11 +323,13 @@ src/main/java/io/nomadproject/client/models/DriverInfo.java
 src/main/java/io/nomadproject/client/models/EphemeralDisk.java
 src/main/java/io/nomadproject/client/models/EvalOptions.java
 src/main/java/io/nomadproject/client/models/Evaluation.java
+src/main/java/io/nomadproject/client/models/EvaluationStub.java
 src/main/java/io/nomadproject/client/models/FieldDiff.java
 src/main/java/io/nomadproject/client/models/FuzzyMatch.java
 src/main/java/io/nomadproject/client/models/FuzzySearchRequest.java
 src/main/java/io/nomadproject/client/models/FuzzySearchResponse.java
 src/main/java/io/nomadproject/client/models/GaugeValue.java
+src/main/java/io/nomadproject/client/models/HostNetworkInfo.java
 src/main/java/io/nomadproject/client/models/HostVolumeInfo.java
 src/main/java/io/nomadproject/client/models/Job.java
 src/main/java/io/nomadproject/client/models/JobChildrenSummary.java
@@ -351,6 +359,7 @@ src/main/java/io/nomadproject/client/models/Multiregion.java
 src/main/java/io/nomadproject/client/models/MultiregionRegion.java
 src/main/java/io/nomadproject/client/models/MultiregionStrategy.java
 src/main/java/io/nomadproject/client/models/Namespace.java
+src/main/java/io/nomadproject/client/models/NamespaceCapabilities.java
 src/main/java/io/nomadproject/client/models/NetworkResource.java
 src/main/java/io/nomadproject/client/models/Node.java
 src/main/java/io/nomadproject/client/models/NodeCpuResources.java
@@ -428,6 +437,7 @@ src/main/java/io/nomadproject/client/models/UpdateStrategy.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
+src/main/java/io/nomadproject/client/models/WaitConfig.java
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
 src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
@@ -469,6 +479,7 @@ src/test/java/io/nomadproject/client/models/CSISnapshotCreateRequestTest.java
 src/test/java/io/nomadproject/client/models/CSISnapshotCreateResponseTest.java
 src/test/java/io/nomadproject/client/models/CSISnapshotListResponseTest.java
 src/test/java/io/nomadproject/client/models/CSISnapshotTest.java
+src/test/java/io/nomadproject/client/models/CSITopologyRequestTest.java
 src/test/java/io/nomadproject/client/models/CSITopologyTest.java
 src/test/java/io/nomadproject/client/models/CSIVolumeCapabilityTest.java
 src/test/java/io/nomadproject/client/models/CSIVolumeCreateRequestTest.java
@@ -513,12 +524,14 @@ src/test/java/io/nomadproject/client/models/DrainStrategyTest.java
 src/test/java/io/nomadproject/client/models/DriverInfoTest.java
 src/test/java/io/nomadproject/client/models/EphemeralDiskTest.java
 src/test/java/io/nomadproject/client/models/EvalOptionsTest.java
+src/test/java/io/nomadproject/client/models/EvaluationStubTest.java
 src/test/java/io/nomadproject/client/models/EvaluationTest.java
 src/test/java/io/nomadproject/client/models/FieldDiffTest.java
 src/test/java/io/nomadproject/client/models/FuzzyMatchTest.java
 src/test/java/io/nomadproject/client/models/FuzzySearchRequestTest.java
 src/test/java/io/nomadproject/client/models/FuzzySearchResponseTest.java
 src/test/java/io/nomadproject/client/models/GaugeValueTest.java
+src/test/java/io/nomadproject/client/models/HostNetworkInfoTest.java
 src/test/java/io/nomadproject/client/models/HostVolumeInfoTest.java
 src/test/java/io/nomadproject/client/models/JobChildrenSummaryTest.java
 src/test/java/io/nomadproject/client/models/JobDeregisterResponseTest.java
@@ -547,6 +560,7 @@ src/test/java/io/nomadproject/client/models/MigrateStrategyTest.java
 src/test/java/io/nomadproject/client/models/MultiregionRegionTest.java
 src/test/java/io/nomadproject/client/models/MultiregionStrategyTest.java
 src/test/java/io/nomadproject/client/models/MultiregionTest.java
+src/test/java/io/nomadproject/client/models/NamespaceCapabilitiesTest.java
 src/test/java/io/nomadproject/client/models/NamespaceTest.java
 src/test/java/io/nomadproject/client/models/NetworkResourceTest.java
 src/test/java/io/nomadproject/client/models/NodeCpuResourcesTest.java
@@ -625,3 +639,4 @@ src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
+src/test/java/io/nomadproject/client/models/WaitConfigTest.java

@@ -4,8 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**capabilities** | [**NamespaceCapabilities**](NamespaceCapabilities.md) |  | [optional] 
 **create_index** | **int** |  | [optional] 
 **description** | **str** |  | [optional] 
+**meta** | **{str: (str,)}** |  | [optional] 
 **modify_index** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **quota** | **str** |  | [optional] 

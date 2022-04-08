@@ -7,6 +7,7 @@
 | **attributes** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **csi_controller_plugins** | [**Hash&lt;String, CSIInfo&gt;**](CSIInfo.md) |  | [optional] |
 | **csi_node_plugins** | [**Hash&lt;String, CSIInfo&gt;**](CSIInfo.md) |  | [optional] |
+| **cgroup_parent** | **String** |  | [optional] |
 | **create_index** | **Integer** |  | [optional] |
 | **datacenter** | **String** |  | [optional] |
 | **drain** | **Boolean** |  | [optional] |
@@ -14,6 +15,7 @@
 | **drivers** | [**Hash&lt;String, DriverInfo&gt;**](DriverInfo.md) |  | [optional] |
 | **events** | [**Array&lt;NodeEvent&gt;**](NodeEvent.md) |  | [optional] |
 | **http_addr** | **String** |  | [optional] |
+| **host_networks** | [**Hash&lt;String, HostNetworkInfo&gt;**](HostNetworkInfo.md) |  | [optional] |
 | **host_volumes** | [**Hash&lt;String, HostVolumeInfo&gt;**](HostVolumeInfo.md) |  | [optional] |
 | **id** | **String** |  | [optional] |
 | **last_drain** | [**DrainMetadata**](DrainMetadata.md) |  | [optional] |
@@ -41,6 +43,7 @@ instance = NomadClient::Node.new(
   attributes: null,
   csi_controller_plugins: null,
   csi_node_plugins: null,
+  cgroup_parent: null,
   create_index: null,
   datacenter: null,
   drain: null,
@@ -48,6 +51,7 @@ instance = NomadClient::Node.new(
   drivers: null,
   events: null,
   http_addr: null,
+  host_networks: null,
   host_volumes: null,
   id: null,
   last_drain: null,

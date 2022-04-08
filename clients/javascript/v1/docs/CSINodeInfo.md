@@ -8,5 +8,8 @@ Name | Type | Description | Notes
 **ID** | **String** |  | [optional] 
 **maxVolumes** | **Number** |  | [optional] 
 **requiresNodeStageVolume** | **Boolean** |  | [optional] 
+**supportsCondition** | **Boolean** |  | [optional] 
+**supportsExpand** | **Boolean** |  | [optional] 
+**supportsStats** | **Boolean** |  | [optional] 
 
 

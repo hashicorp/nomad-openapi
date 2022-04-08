@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DNS** | Option<[**crate::models::DnsConfig**](DNSConfig.md)> |  | [optional]
 **device** | Option<**String**> |  | [optional]
 **dynamic_ports** | Option<[**Vec<crate::models::Port>**](Port.md)> |  | [optional]
+**hostname** | Option<**String**> |  | [optional]
 **IP** | Option<**String**> |  | [optional]
 **m_bits** | Option<**i32**> |  | [optional]
 **mode** | Option<**String**> |  | [optional]

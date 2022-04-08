@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **queued** | **Number** |  | [optional] 
 **running** | **Number** |  | [optional] 
 **starting** | **Number** |  | [optional] 
+**unknown** | **Number** |  | [optional] 
 
 

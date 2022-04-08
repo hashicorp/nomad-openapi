@@ -49,6 +49,10 @@ public class NetworkResource {
   @SerializedName(SERIALIZED_NAME_DYNAMIC_PORTS)
   private List<Port> dynamicPorts = null;
 
+  public static final String SERIALIZED_NAME_HOSTNAME = "Hostname";
+  @SerializedName(SERIALIZED_NAME_HOSTNAME)
+  private String hostname;
+
   public static final String SERIALIZED_NAME_I_P = "IP";
   @SerializedName(SERIALIZED_NAME_I_P)
   private String IP;
@@ -166,6 +170,29 @@ public class NetworkResource {
   }
 
 
+  public NetworkResource hostname(String hostname) {
+    
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * Get hostname
+   * @return hostname
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHostname() {
+    return hostname;
+  }
+
+
+  public void setHostname(String hostname) {
+    this.hostname = hostname;
+  }
+
+
   public NetworkResource IP(String IP) {
     
     this.IP = IP;
@@ -279,6 +306,7 @@ public class NetworkResource {
         Objects.equals(this.DNS, networkResource.DNS) &&
         Objects.equals(this.device, networkResource.device) &&
         Objects.equals(this.dynamicPorts, networkResource.dynamicPorts) &&
+        Objects.equals(this.hostname, networkResource.hostname) &&
         Objects.equals(this.IP, networkResource.IP) &&
         Objects.equals(this.mbits, networkResource.mbits) &&
         Objects.equals(this.mode, networkResource.mode) &&
@@ -287,7 +315,7 @@ public class NetworkResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(CIDR, DNS, device, dynamicPorts, IP, mbits, mode, reservedPorts);
+    return Objects.hash(CIDR, DNS, device, dynamicPorts, hostname, IP, mbits, mode, reservedPorts);
   }
 
   @Override
@@ -298,6 +326,7 @@ public class NetworkResource {
     sb.append("    DNS: ").append(toIndentedString(DNS)).append("\n");
     sb.append("    device: ").append(toIndentedString(device)).append("\n");
     sb.append("    dynamicPorts: ").append(toIndentedString(dynamicPorts)).append("\n");
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    IP: ").append(toIndentedString(IP)).append("\n");
     sb.append("    mbits: ").append(toIndentedString(mbits)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");

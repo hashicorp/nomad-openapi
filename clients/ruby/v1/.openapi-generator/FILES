@@ -34,6 +34,7 @@ docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
 docs/CSISnapshotListResponse.md
 docs/CSITopology.md
+docs/CSITopologyRequest.md
 docs/CSIVolume.md
 docs/CSIVolumeCapability.md
 docs/CSIVolumeCreateRequest.md
@@ -80,12 +81,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
 docs/JobChildrenSummary.md
@@ -117,6 +120,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -204,6 +208,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 lib/nomad_client.rb
 lib/nomad_client/api/acl_api.rb
 lib/nomad_client/api/allocations_api.rb
@@ -272,6 +277,7 @@ lib/nomad_client/models/csi_snapshot_create_request.rb
 lib/nomad_client/models/csi_snapshot_create_response.rb
 lib/nomad_client/models/csi_snapshot_list_response.rb
 lib/nomad_client/models/csi_topology.rb
+lib/nomad_client/models/csi_topology_request.rb
 lib/nomad_client/models/csi_volume.rb
 lib/nomad_client/models/csi_volume_capability.rb
 lib/nomad_client/models/csi_volume_create_request.rb
@@ -297,11 +303,13 @@ lib/nomad_client/models/driver_info.rb
 lib/nomad_client/models/ephemeral_disk.rb
 lib/nomad_client/models/eval_options.rb
 lib/nomad_client/models/evaluation.rb
+lib/nomad_client/models/evaluation_stub.rb
 lib/nomad_client/models/field_diff.rb
 lib/nomad_client/models/fuzzy_match.rb
 lib/nomad_client/models/fuzzy_search_request.rb
 lib/nomad_client/models/fuzzy_search_response.rb
 lib/nomad_client/models/gauge_value.rb
+lib/nomad_client/models/host_network_info.rb
 lib/nomad_client/models/host_volume_info.rb
 lib/nomad_client/models/job.rb
 lib/nomad_client/models/job_children_summary.rb
@@ -331,6 +339,7 @@ lib/nomad_client/models/multiregion.rb
 lib/nomad_client/models/multiregion_region.rb
 lib/nomad_client/models/multiregion_strategy.rb
 lib/nomad_client/models/namespace.rb
+lib/nomad_client/models/namespace_capabilities.rb
 lib/nomad_client/models/network_resource.rb
 lib/nomad_client/models/node.rb
 lib/nomad_client/models/node_cpu_resources.rb
@@ -408,6 +417,7 @@ lib/nomad_client/models/update_strategy.rb
 lib/nomad_client/models/vault.rb
 lib/nomad_client/models/volume_mount.rb
 lib/nomad_client/models/volume_request.rb
+lib/nomad_client/models/wait_config.rb
 lib/nomad_client/version.rb
 nomad_client.gemspec
 spec/api/acl_api_spec.rb
@@ -475,6 +485,7 @@ spec/models/csi_snapshot_create_request_spec.rb
 spec/models/csi_snapshot_create_response_spec.rb
 spec/models/csi_snapshot_list_response_spec.rb
 spec/models/csi_snapshot_spec.rb
+spec/models/csi_topology_request_spec.rb
 spec/models/csi_topology_spec.rb
 spec/models/csi_volume_capability_spec.rb
 spec/models/csi_volume_create_request_spec.rb
@@ -501,11 +512,13 @@ spec/models/driver_info_spec.rb
 spec/models/ephemeral_disk_spec.rb
 spec/models/eval_options_spec.rb
 spec/models/evaluation_spec.rb
+spec/models/evaluation_stub_spec.rb
 spec/models/field_diff_spec.rb
 spec/models/fuzzy_match_spec.rb
 spec/models/fuzzy_search_request_spec.rb
 spec/models/fuzzy_search_response_spec.rb
 spec/models/gauge_value_spec.rb
+spec/models/host_network_info_spec.rb
 spec/models/host_volume_info_spec.rb
 spec/models/job_children_summary_spec.rb
 spec/models/job_deregister_response_spec.rb
@@ -534,6 +547,7 @@ spec/models/migrate_strategy_spec.rb
 spec/models/multiregion_region_spec.rb
 spec/models/multiregion_spec.rb
 spec/models/multiregion_strategy_spec.rb
+spec/models/namespace_capabilities_spec.rb
 spec/models/namespace_spec.rb
 spec/models/network_resource_spec.rb
 spec/models/node_cpu_resources_spec.rb
@@ -612,4 +626,5 @@ spec/models/update_strategy_spec.rb
 spec/models/vault_spec.rb
 spec/models/volume_mount_spec.rb
 spec/models/volume_request_spec.rb
+spec/models/wait_config_spec.rb
 spec/spec_helper.rb

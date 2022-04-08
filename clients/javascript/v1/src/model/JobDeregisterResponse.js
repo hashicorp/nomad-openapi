@@ -65,6 +65,9 @@ class JobDeregisterResponse {
             if (data.hasOwnProperty('LastIndex')) {
                 obj['LastIndex'] = ApiClient.convertToType(data['LastIndex'], 'Number');
             }
+            if (data.hasOwnProperty('NextToken')) {
+                obj['NextToken'] = ApiClient.convertToType(data['NextToken'], 'String');
+            }
             if (data.hasOwnProperty('RequestTime')) {
                 obj['RequestTime'] = ApiClient.convertToType(data['RequestTime'], 'Number');
             }
@@ -104,6 +107,11 @@ JobDeregisterResponse.prototype['LastContact'] = undefined;
  * @member {Number} LastIndex
  */
 JobDeregisterResponse.prototype['LastIndex'] = undefined;
+
+/**
+ * @member {String} NextToken
+ */
+JobDeregisterResponse.prototype['NextToken'] = undefined;
 
 /**
  * @member {Number} RequestTime

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **consulToken** | **String** |  |  [optional]
 **createIndex** | **Integer** |  |  [optional]
 **datacenters** | **List&lt;String&gt;** |  |  [optional]
+**dispatchIdempotencyToken** | **String** |  |  [optional]
 **dispatched** | **Boolean** |  |  [optional]
 **ID** | **String** |  |  [optional]
 **jobModifyIndex** | **Integer** |  |  [optional]

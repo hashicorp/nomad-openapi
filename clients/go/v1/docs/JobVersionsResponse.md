@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **KnownLeader** | Pointer to **bool** |  | [optional] 
 **LastContact** | Pointer to **int64** |  | [optional] 
 **LastIndex** | Pointer to **int32** |  | [optional] 
+**NextToken** | Pointer to **string** |  | [optional] 
 **RequestTime** | Pointer to **int64** |  | [optional] 
 **Versions** | Pointer to [**[]Job**](Job.md) |  | [optional] 
 
@@ -129,6 +130,31 @@ SetLastIndex sets LastIndex field to given value.
 `func (o *JobVersionsResponse) HasLastIndex() bool`
 
 HasLastIndex returns a boolean if a field has been set.
+
+### GetNextToken
+
+`func (o *JobVersionsResponse) GetNextToken() string`
+
+GetNextToken returns the NextToken field if non-nil, zero value otherwise.
+
+### GetNextTokenOk
+
+`func (o *JobVersionsResponse) GetNextTokenOk() (*string, bool)`
+
+GetNextTokenOk returns a tuple with the NextToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextToken
+
+`func (o *JobVersionsResponse) SetNextToken(v string)`
+
+SetNextToken sets NextToken field to given value.
+
+### HasNextToken
+
+`func (o *JobVersionsResponse) HasNextToken() bool`
+
+HasNextToken returns a boolean if a field has been set.
 
 ### GetRequestTime
 

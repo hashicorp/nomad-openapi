@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **ID** | Pointer to **string** |  | [optional] 
 **MaxVolumes** | Pointer to **int64** |  | [optional] 
 **RequiresNodeStageVolume** | Pointer to **bool** |  | [optional] 
+**SupportsCondition** | Pointer to **bool** |  | [optional] 
+**SupportsExpand** | Pointer to **bool** |  | [optional] 
+**SupportsStats** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +130,81 @@ SetRequiresNodeStageVolume sets RequiresNodeStageVolume field to given value.
 `func (o *CSINodeInfo) HasRequiresNodeStageVolume() bool`
 
 HasRequiresNodeStageVolume returns a boolean if a field has been set.
+
+### GetSupportsCondition
+
+`func (o *CSINodeInfo) GetSupportsCondition() bool`
+
+GetSupportsCondition returns the SupportsCondition field if non-nil, zero value otherwise.
+
+### GetSupportsConditionOk
+
+`func (o *CSINodeInfo) GetSupportsConditionOk() (*bool, bool)`
+
+GetSupportsConditionOk returns a tuple with the SupportsCondition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsCondition
+
+`func (o *CSINodeInfo) SetSupportsCondition(v bool)`
+
+SetSupportsCondition sets SupportsCondition field to given value.
+
+### HasSupportsCondition
+
+`func (o *CSINodeInfo) HasSupportsCondition() bool`
+
+HasSupportsCondition returns a boolean if a field has been set.
+
+### GetSupportsExpand
+
+`func (o *CSINodeInfo) GetSupportsExpand() bool`
+
+GetSupportsExpand returns the SupportsExpand field if non-nil, zero value otherwise.
+
+### GetSupportsExpandOk
+
+`func (o *CSINodeInfo) GetSupportsExpandOk() (*bool, bool)`
+
+GetSupportsExpandOk returns a tuple with the SupportsExpand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsExpand
+
+`func (o *CSINodeInfo) SetSupportsExpand(v bool)`
+
+SetSupportsExpand sets SupportsExpand field to given value.
+
+### HasSupportsExpand
+
+`func (o *CSINodeInfo) HasSupportsExpand() bool`
+
+HasSupportsExpand returns a boolean if a field has been set.
+
+### GetSupportsStats
+
+`func (o *CSINodeInfo) GetSupportsStats() bool`
+
+GetSupportsStats returns the SupportsStats field if non-nil, zero value otherwise.
+
+### GetSupportsStatsOk
+
+`func (o *CSINodeInfo) GetSupportsStatsOk() (*bool, bool)`
+
+GetSupportsStatsOk returns a tuple with the SupportsStats field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsStats
+
+`func (o *CSINodeInfo) SetSupportsStats(v bool)`
+
+SetSupportsStats sets SupportsStats field to given value.
+
+### HasSupportsStats
+
+`func (o *CSINodeInfo) HasSupportsStats() bool`
+
+HasSupportsStats returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

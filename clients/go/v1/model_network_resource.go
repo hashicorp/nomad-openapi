@@ -21,6 +21,7 @@ type NetworkResource struct {
 	DNS *DNSConfig `json:"DNS,omitempty"`
 	Device *string `json:"Device,omitempty"`
 	DynamicPorts *[]Port `json:"DynamicPorts,omitempty"`
+	Hostname *string `json:"Hostname,omitempty"`
 	IP *string `json:"IP,omitempty"`
 	MBits *int32 `json:"MBits,omitempty"`
 	Mode *string `json:"Mode,omitempty"`
@@ -172,6 +173,38 @@ func (o *NetworkResource) SetDynamicPorts(v []Port) {
 	o.DynamicPorts = &v
 }
 
+// GetHostname returns the Hostname field value if set, zero value otherwise.
+func (o *NetworkResource) GetHostname() string {
+	if o == nil || o.Hostname == nil {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NetworkResource) GetHostnameOk() (*string, bool) {
+	if o == nil || o.Hostname == nil {
+		return nil, false
+	}
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *NetworkResource) HasHostname() bool {
+	if o != nil && o.Hostname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *NetworkResource) SetHostname(v string) {
+	o.Hostname = &v
+}
+
 // GetIP returns the IP field value if set, zero value otherwise.
 func (o *NetworkResource) GetIP() string {
 	if o == nil || o.IP == nil {
@@ -313,6 +346,9 @@ func (o NetworkResource) MarshalJSON() ([]byte, error) {
 	}
 	if o.DynamicPorts != nil {
 		toSerialize["DynamicPorts"] = o.DynamicPorts
+	}
+	if o.Hostname != nil {
+		toSerialize["Hostname"] = o.Hostname
 	}
 	if o.IP != nil {
 		toSerialize["IP"] = o.IP

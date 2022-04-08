@@ -59,6 +59,14 @@ public class VaultTest {
     }
 
     /**
+     * Test the property 'entityAlias'
+     */
+    @Test
+    public void entityAliasTest() {
+        // TODO: test entityAlias
+    }
+
+    /**
      * Test the property 'env'
      */
     @Test

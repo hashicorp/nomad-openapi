@@ -10,11 +10,14 @@
  * Do not edit the class manually.
  */
 
+import { NamespaceCapabilities } from './NamespaceCapabilities';
 import { HttpFile } from '../http/http';
 
 export class Namespace {
+    'capabilities'?: NamespaceCapabilities;
     'createIndex'?: number;
     'description'?: string;
+    'meta'?: { [key: string]: string; };
     'modifyIndex'?: number;
     'name'?: string;
     'quota'?: string;
@@ -22,6 +25,12 @@ export class Namespace {
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "capabilities",
+            "baseName": "Capabilities",
+            "type": "NamespaceCapabilities",
+            "format": ""
+        },
         {
             "name": "createIndex",
             "baseName": "CreateIndex",
@@ -32,6 +41,12 @@ export class Namespace {
             "name": "description",
             "baseName": "Description",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "meta",
+            "baseName": "Meta",
+            "type": "{ [key: string]: string; }",
             "format": ""
         },
         {

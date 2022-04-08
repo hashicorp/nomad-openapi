@@ -61,6 +61,9 @@ class NetworkResource {
             if (data.hasOwnProperty('DynamicPorts')) {
                 obj['DynamicPorts'] = ApiClient.convertToType(data['DynamicPorts'], [Port]);
             }
+            if (data.hasOwnProperty('Hostname')) {
+                obj['Hostname'] = ApiClient.convertToType(data['Hostname'], 'String');
+            }
             if (data.hasOwnProperty('IP')) {
                 obj['IP'] = ApiClient.convertToType(data['IP'], 'String');
             }
@@ -99,6 +102,11 @@ NetworkResource.prototype['Device'] = undefined;
  * @member {Array.<module:model/Port>} DynamicPorts
  */
 NetworkResource.prototype['DynamicPorts'] = undefined;
+
+/**
+ * @member {String} Hostname
+ */
+NetworkResource.prototype['Hostname'] = undefined;
 
 /**
  * @member {String} IP

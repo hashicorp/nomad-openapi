@@ -119,6 +119,7 @@ class TaskGroup(ModelNormal):
             'consul': (Consul,),  # noqa: E501
             'count': (int,),  # noqa: E501
             'ephemeral_disk': (EphemeralDisk,),  # noqa: E501
+            'max_client_disconnect': (int,),  # noqa: E501
             'meta': ({str: (str,)},),  # noqa: E501
             'migrate': (MigrateStrategy,),  # noqa: E501
             'name': (str,),  # noqa: E501
@@ -146,6 +147,7 @@ class TaskGroup(ModelNormal):
         'consul': 'Consul',  # noqa: E501
         'count': 'Count',  # noqa: E501
         'ephemeral_disk': 'EphemeralDisk',  # noqa: E501
+        'max_client_disconnect': 'MaxClientDisconnect',  # noqa: E501
         'meta': 'Meta',  # noqa: E501
         'migrate': 'Migrate',  # noqa: E501
         'name': 'Name',  # noqa: E501
@@ -208,6 +210,7 @@ class TaskGroup(ModelNormal):
             consul (Consul): [optional]  # noqa: E501
             count (int): [optional]  # noqa: E501
             ephemeral_disk (EphemeralDisk): [optional]  # noqa: E501
+            max_client_disconnect (int): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             migrate (MigrateStrategy): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
@@ -308,6 +311,7 @@ class TaskGroup(ModelNormal):
             consul (Consul): [optional]  # noqa: E501
             count (int): [optional]  # noqa: E501
             ephemeral_disk (EphemeralDisk): [optional]  # noqa: E501
+            max_client_disconnect (int): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             migrate (MigrateStrategy): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501

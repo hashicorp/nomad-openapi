@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property rejectJobRegistration (base name: "RejectJobRegistration")', function() {
+      // uncomment below and update the code to test the property rejectJobRegistration
+      //var instance = new nomad-client.SchedulerConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property schedulerAlgorithm (base name: "SchedulerAlgorithm")', function() {
       // uncomment below and update the code to test the property schedulerAlgorithm
       //var instance = new nomad-client.SchedulerConfiguration();

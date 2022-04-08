@@ -88,4 +88,12 @@ public class TaskGroupSummaryTest {
         // TODO: test starting
     }
 
+    /**
+     * Test the property 'unknown'
+     */
+    @Test
+    public void unknownTest() {
+        // TODO: test unknown
+    }
+
 }

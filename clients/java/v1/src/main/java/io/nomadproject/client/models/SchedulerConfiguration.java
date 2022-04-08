@@ -46,6 +46,10 @@ public class SchedulerConfiguration {
   @SerializedName(SERIALIZED_NAME_PREEMPTION_CONFIG)
   private PreemptionConfig preemptionConfig;
 
+  public static final String SERIALIZED_NAME_REJECT_JOB_REGISTRATION = "RejectJobRegistration";
+  @SerializedName(SERIALIZED_NAME_REJECT_JOB_REGISTRATION)
+  private Boolean rejectJobRegistration;
+
   public static final String SERIALIZED_NAME_SCHEDULER_ALGORITHM = "SchedulerAlgorithm";
   @SerializedName(SERIALIZED_NAME_SCHEDULER_ALGORITHM)
   private String schedulerAlgorithm;
@@ -147,6 +151,29 @@ public class SchedulerConfiguration {
   }
 
 
+  public SchedulerConfiguration rejectJobRegistration(Boolean rejectJobRegistration) {
+    
+    this.rejectJobRegistration = rejectJobRegistration;
+    return this;
+  }
+
+   /**
+   * Get rejectJobRegistration
+   * @return rejectJobRegistration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getRejectJobRegistration() {
+    return rejectJobRegistration;
+  }
+
+
+  public void setRejectJobRegistration(Boolean rejectJobRegistration) {
+    this.rejectJobRegistration = rejectJobRegistration;
+  }
+
+
   public SchedulerConfiguration schedulerAlgorithm(String schedulerAlgorithm) {
     
     this.schedulerAlgorithm = schedulerAlgorithm;
@@ -183,12 +210,13 @@ public class SchedulerConfiguration {
         Objects.equals(this.memoryOversubscriptionEnabled, schedulerConfiguration.memoryOversubscriptionEnabled) &&
         Objects.equals(this.modifyIndex, schedulerConfiguration.modifyIndex) &&
         Objects.equals(this.preemptionConfig, schedulerConfiguration.preemptionConfig) &&
+        Objects.equals(this.rejectJobRegistration, schedulerConfiguration.rejectJobRegistration) &&
         Objects.equals(this.schedulerAlgorithm, schedulerConfiguration.schedulerAlgorithm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createIndex, memoryOversubscriptionEnabled, modifyIndex, preemptionConfig, schedulerAlgorithm);
+    return Objects.hash(createIndex, memoryOversubscriptionEnabled, modifyIndex, preemptionConfig, rejectJobRegistration, schedulerAlgorithm);
   }
 
   @Override
@@ -199,6 +227,7 @@ public class SchedulerConfiguration {
     sb.append("    memoryOversubscriptionEnabled: ").append(toIndentedString(memoryOversubscriptionEnabled)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
     sb.append("    preemptionConfig: ").append(toIndentedString(preemptionConfig)).append("\n");
+    sb.append("    rejectJobRegistration: ").append(toIndentedString(rejectJobRegistration)).append("\n");
     sb.append("    schedulerAlgorithm: ").append(toIndentedString(schedulerAlgorithm)).append("\n");
     sb.append("}");
     return sb.toString();

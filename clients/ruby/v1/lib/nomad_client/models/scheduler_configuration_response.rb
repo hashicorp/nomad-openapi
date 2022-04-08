@@ -21,6 +21,8 @@ module NomadClient
 
     attr_accessor :last_index
 
+    attr_accessor :next_token
+
     attr_accessor :request_time
 
     attr_accessor :scheduler_config
@@ -31,6 +33,7 @@ module NomadClient
         :'known_leader' => :'KnownLeader',
         :'last_contact' => :'LastContact',
         :'last_index' => :'LastIndex',
+        :'next_token' => :'NextToken',
         :'request_time' => :'RequestTime',
         :'scheduler_config' => :'SchedulerConfig'
       }
@@ -47,6 +50,7 @@ module NomadClient
         :'known_leader' => :'Boolean',
         :'last_contact' => :'Integer',
         :'last_index' => :'Integer',
+        :'next_token' => :'String',
         :'request_time' => :'Integer',
         :'scheduler_config' => :'SchedulerConfiguration'
       }
@@ -83,6 +87,10 @@ module NomadClient
 
       if attributes.key?(:'last_index')
         self.last_index = attributes[:'last_index']
+      end
+
+      if attributes.key?(:'next_token')
+        self.next_token = attributes[:'next_token']
       end
 
       if attributes.key?(:'request_time')
@@ -139,6 +147,7 @@ module NomadClient
           known_leader == o.known_leader &&
           last_contact == o.last_contact &&
           last_index == o.last_index &&
+          next_token == o.next_token &&
           request_time == o.request_time &&
           scheduler_config == o.scheduler_config
     end
@@ -152,7 +161,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [known_leader, last_contact, last_index, request_time, scheduler_config].hash
+      [known_leader, last_contact, last_index, next_token, request_time, scheduler_config].hash
     end
 
     # Builds the object from hash

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **LastContact** | Pointer to **int64** |  | [optional] 
 **LastIndex** | Pointer to **int32** |  | [optional] 
 **Matches** | Pointer to [**map[string][]FuzzyMatch**](array.md) |  | [optional] 
+**NextToken** | Pointer to **string** |  | [optional] 
 **RequestTime** | Pointer to **int64** |  | [optional] 
 **Truncations** | Pointer to **map[string]bool** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetMatches sets Matches field to given value.
 `func (o *FuzzySearchResponse) HasMatches() bool`
 
 HasMatches returns a boolean if a field has been set.
+
+### GetNextToken
+
+`func (o *FuzzySearchResponse) GetNextToken() string`
+
+GetNextToken returns the NextToken field if non-nil, zero value otherwise.
+
+### GetNextTokenOk
+
+`func (o *FuzzySearchResponse) GetNextTokenOk() (*string, bool)`
+
+GetNextTokenOk returns a tuple with the NextToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextToken
+
+`func (o *FuzzySearchResponse) SetNextToken(v string)`
+
+SetNextToken sets NextToken field to given value.
+
+### HasNextToken
+
+`func (o *FuzzySearchResponse) HasNextToken() bool`
+
+HasNextToken returns a boolean if a field has been set.
 
 ### GetRequestTime
 

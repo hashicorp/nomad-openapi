@@ -20,7 +20,9 @@ type NodeResources struct {
 	Cpu *NodeCpuResources `json:"Cpu,omitempty"`
 	Devices *[]NodeDeviceResource `json:"Devices,omitempty"`
 	Disk *NodeDiskResources `json:"Disk,omitempty"`
+	MaxDynamicPort *int32 `json:"MaxDynamicPort,omitempty"`
 	Memory *NodeMemoryResources `json:"Memory,omitempty"`
+	MinDynamicPort *int32 `json:"MinDynamicPort,omitempty"`
 	Networks *[]NetworkResource `json:"Networks,omitempty"`
 }
 
@@ -137,6 +139,38 @@ func (o *NodeResources) SetDisk(v NodeDiskResources) {
 	o.Disk = &v
 }
 
+// GetMaxDynamicPort returns the MaxDynamicPort field value if set, zero value otherwise.
+func (o *NodeResources) GetMaxDynamicPort() int32 {
+	if o == nil || o.MaxDynamicPort == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxDynamicPort
+}
+
+// GetMaxDynamicPortOk returns a tuple with the MaxDynamicPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NodeResources) GetMaxDynamicPortOk() (*int32, bool) {
+	if o == nil || o.MaxDynamicPort == nil {
+		return nil, false
+	}
+	return o.MaxDynamicPort, true
+}
+
+// HasMaxDynamicPort returns a boolean if a field has been set.
+func (o *NodeResources) HasMaxDynamicPort() bool {
+	if o != nil && o.MaxDynamicPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxDynamicPort gets a reference to the given int32 and assigns it to the MaxDynamicPort field.
+func (o *NodeResources) SetMaxDynamicPort(v int32) {
+	o.MaxDynamicPort = &v
+}
+
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *NodeResources) GetMemory() NodeMemoryResources {
 	if o == nil || o.Memory == nil {
@@ -167,6 +201,38 @@ func (o *NodeResources) HasMemory() bool {
 // SetMemory gets a reference to the given NodeMemoryResources and assigns it to the Memory field.
 func (o *NodeResources) SetMemory(v NodeMemoryResources) {
 	o.Memory = &v
+}
+
+// GetMinDynamicPort returns the MinDynamicPort field value if set, zero value otherwise.
+func (o *NodeResources) GetMinDynamicPort() int32 {
+	if o == nil || o.MinDynamicPort == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MinDynamicPort
+}
+
+// GetMinDynamicPortOk returns a tuple with the MinDynamicPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NodeResources) GetMinDynamicPortOk() (*int32, bool) {
+	if o == nil || o.MinDynamicPort == nil {
+		return nil, false
+	}
+	return o.MinDynamicPort, true
+}
+
+// HasMinDynamicPort returns a boolean if a field has been set.
+func (o *NodeResources) HasMinDynamicPort() bool {
+	if o != nil && o.MinDynamicPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMinDynamicPort gets a reference to the given int32 and assigns it to the MinDynamicPort field.
+func (o *NodeResources) SetMinDynamicPort(v int32) {
+	o.MinDynamicPort = &v
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
@@ -212,8 +278,14 @@ func (o NodeResources) MarshalJSON() ([]byte, error) {
 	if o.Disk != nil {
 		toSerialize["Disk"] = o.Disk
 	}
+	if o.MaxDynamicPort != nil {
+		toSerialize["MaxDynamicPort"] = o.MaxDynamicPort
+	}
 	if o.Memory != nil {
 		toSerialize["Memory"] = o.Memory
+	}
+	if o.MinDynamicPort != nil {
+		toSerialize["MinDynamicPort"] = o.MinDynamicPort
 	}
 	if o.Networks != nil {
 		toSerialize["Networks"] = o.Networks

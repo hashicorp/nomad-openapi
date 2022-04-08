@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **requestedCapabilities** | [**List&lt;CSIVolumeCapability&gt;**](CSIVolumeCapability.md) |  |  [optional]
 **requestedCapacityMax** | **Long** |  |  [optional]
 **requestedCapacityMin** | **Long** |  |  [optional]
+**requestedTopologies** | [**CSITopologyRequest**](CSITopologyRequest.md) |  |  [optional]
 **resourceExhausted** | **OffsetDateTime** |  |  [optional]
 **schedulable** | **Boolean** |  |  [optional]
 **secrets** | **Map&lt;String, String&gt;** |  |  [optional]

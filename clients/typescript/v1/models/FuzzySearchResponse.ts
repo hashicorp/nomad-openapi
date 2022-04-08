@@ -18,6 +18,7 @@ export class FuzzySearchResponse {
     'lastContact'?: number;
     'lastIndex'?: number;
     'matches'?: { [key: string]: Array<FuzzyMatch>; };
+    'nextToken'?: string;
     'requestTime'?: number;
     'truncations'?: { [key: string]: boolean; };
 
@@ -46,6 +47,12 @@ export class FuzzySearchResponse {
             "name": "matches",
             "baseName": "Matches",
             "type": "{ [key: string]: Array<FuzzyMatch>; }",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

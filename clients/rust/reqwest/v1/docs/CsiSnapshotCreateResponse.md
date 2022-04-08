@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **known_leader** | Option<**bool**> |  | [optional]
 **last_contact** | Option<**i64**> |  | [optional]
 **last_index** | Option<**i32**> |  | [optional]
+**next_token** | Option<**String**> |  | [optional]
 **request_time** | Option<**i64**> |  | [optional]
 **snapshots** | Option<[**Vec<crate::models::CsiSnapshot>**](CSISnapshot.md)> |  | [optional]
 

@@ -17,6 +17,7 @@ export class CSISnapshotCreateResponse {
     'knownLeader'?: boolean;
     'lastContact'?: number;
     'lastIndex'?: number;
+    'nextToken'?: string;
     'requestTime'?: number;
     'snapshots'?: Array<CSISnapshot>;
 
@@ -39,6 +40,12 @@ export class CSISnapshotCreateResponse {
             "name": "lastIndex",
             "baseName": "LastIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **MemoryOversubscriptionEnabled** | Pointer to **bool** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **PreemptionConfig** | Pointer to [**PreemptionConfig**](PreemptionConfig.md) |  | [optional] 
+**RejectJobRegistration** | Pointer to **bool** |  | [optional] 
 **SchedulerAlgorithm** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetPreemptionConfig sets PreemptionConfig field to given value.
 `func (o *SchedulerConfiguration) HasPreemptionConfig() bool`
 
 HasPreemptionConfig returns a boolean if a field has been set.
+
+### GetRejectJobRegistration
+
+`func (o *SchedulerConfiguration) GetRejectJobRegistration() bool`
+
+GetRejectJobRegistration returns the RejectJobRegistration field if non-nil, zero value otherwise.
+
+### GetRejectJobRegistrationOk
+
+`func (o *SchedulerConfiguration) GetRejectJobRegistrationOk() (*bool, bool)`
+
+GetRejectJobRegistrationOk returns a tuple with the RejectJobRegistration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRejectJobRegistration
+
+`func (o *SchedulerConfiguration) SetRejectJobRegistration(v bool)`
+
+SetRejectJobRegistration sets RejectJobRegistration field to given value.
+
+### HasRejectJobRegistration
+
+`func (o *SchedulerConfiguration) HasRejectJobRegistration() bool`
+
+HasRejectJobRegistration returns a boolean if a field has been set.
 
 ### GetSchedulerAlgorithm
 

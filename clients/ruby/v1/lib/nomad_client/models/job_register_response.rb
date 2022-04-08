@@ -27,6 +27,8 @@ module NomadClient
 
     attr_accessor :last_index
 
+    attr_accessor :next_token
+
     attr_accessor :request_time
 
     attr_accessor :warnings
@@ -40,6 +42,7 @@ module NomadClient
         :'known_leader' => :'KnownLeader',
         :'last_contact' => :'LastContact',
         :'last_index' => :'LastIndex',
+        :'next_token' => :'NextToken',
         :'request_time' => :'RequestTime',
         :'warnings' => :'Warnings'
       }
@@ -59,6 +62,7 @@ module NomadClient
         :'known_leader' => :'Boolean',
         :'last_contact' => :'Integer',
         :'last_index' => :'Integer',
+        :'next_token' => :'String',
         :'request_time' => :'Integer',
         :'warnings' => :'String'
       }
@@ -107,6 +111,10 @@ module NomadClient
 
       if attributes.key?(:'last_index')
         self.last_index = attributes[:'last_index']
+      end
+
+      if attributes.key?(:'next_token')
+        self.next_token = attributes[:'next_token']
       end
 
       if attributes.key?(:'request_time')
@@ -214,6 +222,7 @@ module NomadClient
           known_leader == o.known_leader &&
           last_contact == o.last_contact &&
           last_index == o.last_index &&
+          next_token == o.next_token &&
           request_time == o.request_time &&
           warnings == o.warnings
     end
@@ -227,7 +236,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [eval_create_index, eval_id, job_modify_index, known_leader, last_contact, last_index, request_time, warnings].hash
+      [eval_create_index, eval_id, job_modify_index, known_leader, last_contact, last_index, next_token, request_time, warnings].hash
     end
 
     # Builds the object from hash

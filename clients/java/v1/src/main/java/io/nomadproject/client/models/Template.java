@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.WaitConfig;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -72,6 +73,10 @@ public class Template {
   public static final String SERIALIZED_NAME_VAULT_GRACE = "VaultGrace";
   @SerializedName(SERIALIZED_NAME_VAULT_GRACE)
   private Long vaultGrace;
+
+  public static final String SERIALIZED_NAME_WAIT = "Wait";
+  @SerializedName(SERIALIZED_NAME_WAIT)
+  private WaitConfig wait;
 
 
   public Template changeMode(String changeMode) {
@@ -327,6 +332,29 @@ public class Template {
   }
 
 
+  public Template wait(WaitConfig wait) {
+    
+    this.wait = wait;
+    return this;
+  }
+
+   /**
+   * Get wait
+   * @return wait
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public WaitConfig getWait() {
+    return wait;
+  }
+
+
+  public void setWait(WaitConfig wait) {
+    this.wait = wait;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -346,12 +374,13 @@ public class Template {
         Objects.equals(this.rightDelim, template.rightDelim) &&
         Objects.equals(this.sourcePath, template.sourcePath) &&
         Objects.equals(this.splay, template.splay) &&
-        Objects.equals(this.vaultGrace, template.vaultGrace);
+        Objects.equals(this.vaultGrace, template.vaultGrace) &&
+        Objects.equals(this.wait, template.wait);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(changeMode, changeSignal, destPath, embeddedTmpl, envvars, leftDelim, perms, rightDelim, sourcePath, splay, vaultGrace);
+    return Objects.hash(changeMode, changeSignal, destPath, embeddedTmpl, envvars, leftDelim, perms, rightDelim, sourcePath, splay, vaultGrace, wait);
   }
 
   @Override
@@ -369,6 +398,7 @@ public class Template {
     sb.append("    sourcePath: ").append(toIndentedString(sourcePath)).append("\n");
     sb.append("    splay: ").append(toIndentedString(splay)).append("\n");
     sb.append("    vaultGrace: ").append(toIndentedString(vaultGrace)).append("\n");
+    sb.append("    wait: ").append(toIndentedString(wait)).append("\n");
     sb.append("}");
     return sb.toString();
   }

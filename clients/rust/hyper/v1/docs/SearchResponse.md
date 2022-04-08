@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_contact** | Option<**i64**> |  | [optional]
 **last_index** | Option<**i32**> |  | [optional]
 **matches** | Option<[**::std::collections::HashMap<String, Vec<String>>**](array.md)> |  | [optional]
+**next_token** | Option<**String**> |  | [optional]
 **request_time** | Option<**i64**> |  | [optional]
 **truncations** | Option<**::std::collections::HashMap<String, bool>**> |  | [optional]
 

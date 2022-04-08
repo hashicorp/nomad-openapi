@@ -100,6 +100,7 @@ class JobRegisterResponse(ModelNormal):
             'known_leader': (bool,),  # noqa: E501
             'last_contact': (int,),  # noqa: E501
             'last_index': (int,),  # noqa: E501
+            'next_token': (str,),  # noqa: E501
             'request_time': (int,),  # noqa: E501
             'warnings': (str,),  # noqa: E501
         }
@@ -116,6 +117,7 @@ class JobRegisterResponse(ModelNormal):
         'known_leader': 'KnownLeader',  # noqa: E501
         'last_contact': 'LastContact',  # noqa: E501
         'last_index': 'LastIndex',  # noqa: E501
+        'next_token': 'NextToken',  # noqa: E501
         'request_time': 'RequestTime',  # noqa: E501
         'warnings': 'Warnings',  # noqa: E501
     }
@@ -167,6 +169,7 @@ class JobRegisterResponse(ModelNormal):
             known_leader (bool): [optional]  # noqa: E501
             last_contact (int): [optional]  # noqa: E501
             last_index (int): [optional]  # noqa: E501
+            next_token (str): [optional]  # noqa: E501
             request_time (int): [optional]  # noqa: E501
             warnings (str): [optional]  # noqa: E501
         """
@@ -256,6 +259,7 @@ class JobRegisterResponse(ModelNormal):
             known_leader (bool): [optional]  # noqa: E501
             last_contact (int): [optional]  # noqa: E501
             last_index (int): [optional]  # noqa: E501
+            next_token (str): [optional]  # noqa: E501
             request_time (int): [optional]  # noqa: E501
             warnings (str): [optional]  # noqa: E501
         """

@@ -36,12 +36,14 @@ def lazy_import():
     from nomad_client.model.csi_mount_options import CSIMountOptions
     from nomad_client.model.csi_secrets import CSISecrets
     from nomad_client.model.csi_topology import CSITopology
+    from nomad_client.model.csi_topology_request import CSITopologyRequest
     from nomad_client.model.csi_volume_capability import CSIVolumeCapability
     globals()['Allocation'] = Allocation
     globals()['AllocationListStub'] = AllocationListStub
     globals()['CSIMountOptions'] = CSIMountOptions
     globals()['CSISecrets'] = CSISecrets
     globals()['CSITopology'] = CSITopology
+    globals()['CSITopologyRequest'] = CSITopologyRequest
     globals()['CSIVolumeCapability'] = CSIVolumeCapability
 
 
@@ -132,6 +134,7 @@ class CSIVolume(ModelNormal):
             'requested_capabilities': ([CSIVolumeCapability],),  # noqa: E501
             'requested_capacity_max': (int,),  # noqa: E501
             'requested_capacity_min': (int,),  # noqa: E501
+            'requested_topologies': (CSITopologyRequest,),  # noqa: E501
             'resource_exhausted': (datetime,),  # noqa: E501
             'schedulable': (bool,),  # noqa: E501
             'secrets': (CSISecrets,),  # noqa: E501
@@ -172,6 +175,7 @@ class CSIVolume(ModelNormal):
         'requested_capabilities': 'RequestedCapabilities',  # noqa: E501
         'requested_capacity_max': 'RequestedCapacityMax',  # noqa: E501
         'requested_capacity_min': 'RequestedCapacityMin',  # noqa: E501
+        'requested_topologies': 'RequestedTopologies',  # noqa: E501
         'resource_exhausted': 'ResourceExhausted',  # noqa: E501
         'schedulable': 'Schedulable',  # noqa: E501
         'secrets': 'Secrets',  # noqa: E501
@@ -247,6 +251,7 @@ class CSIVolume(ModelNormal):
             requested_capabilities ([CSIVolumeCapability]): [optional]  # noqa: E501
             requested_capacity_max (int): [optional]  # noqa: E501
             requested_capacity_min (int): [optional]  # noqa: E501
+            requested_topologies (CSITopologyRequest): [optional]  # noqa: E501
             resource_exhausted (datetime): [optional]  # noqa: E501
             schedulable (bool): [optional]  # noqa: E501
             secrets (CSISecrets): [optional]  # noqa: E501
@@ -360,6 +365,7 @@ class CSIVolume(ModelNormal):
             requested_capabilities ([CSIVolumeCapability]): [optional]  # noqa: E501
             requested_capacity_max (int): [optional]  # noqa: E501
             requested_capacity_min (int): [optional]  # noqa: E501
+            requested_topologies (CSITopologyRequest): [optional]  # noqa: E501
             resource_exhausted (datetime): [optional]  # noqa: E501
             schedulable (bool): [optional]  # noqa: E501
             secrets (CSISecrets): [optional]  # noqa: E501

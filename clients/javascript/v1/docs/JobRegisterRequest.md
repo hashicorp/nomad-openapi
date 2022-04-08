@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enforceIndex** | **Boolean** |  | [optional] 
+**evalPriority** | **Number** |  | [optional] 
 **job** | [**Job**](Job.md) |  | [optional] 
 **jobModifyIndex** | **Number** |  | [optional] 
 **namespace** | **String** |  | [optional] 

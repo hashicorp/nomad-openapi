@@ -88,6 +88,7 @@ class TaskGroupSummary(ModelNormal):
             'queued': (int,),  # noqa: E501
             'running': (int,),  # noqa: E501
             'starting': (int,),  # noqa: E501
+            'unknown': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -102,6 +103,7 @@ class TaskGroupSummary(ModelNormal):
         'queued': 'Queued',  # noqa: E501
         'running': 'Running',  # noqa: E501
         'starting': 'Starting',  # noqa: E501
+        'unknown': 'Unknown',  # noqa: E501
     }
 
     read_only_vars = {
@@ -151,6 +153,7 @@ class TaskGroupSummary(ModelNormal):
             queued (int): [optional]  # noqa: E501
             running (int): [optional]  # noqa: E501
             starting (int): [optional]  # noqa: E501
+            unknown (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -238,6 +241,7 @@ class TaskGroupSummary(ModelNormal):
             queued (int): [optional]  # noqa: E501
             running (int): [optional]  # noqa: E501
             starting (int): [optional]  # noqa: E501
+            unknown (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

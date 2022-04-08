@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **RequestedCapabilities** | Pointer to [**[]CSIVolumeCapability**](CSIVolumeCapability.md) |  | [optional] 
 **RequestedCapacityMax** | Pointer to **int64** |  | [optional] 
 **RequestedCapacityMin** | Pointer to **int64** |  | [optional] 
+**RequestedTopologies** | Pointer to [**CSITopologyRequest**](CSITopologyRequest.md) |  | [optional] 
 **ResourceExhausted** | Pointer to **time.Time** |  | [optional] 
 **Schedulable** | Pointer to **bool** |  | [optional] 
 **Secrets** | Pointer to **map[string]string** |  | [optional] 
@@ -705,6 +706,31 @@ SetRequestedCapacityMin sets RequestedCapacityMin field to given value.
 `func (o *CSIVolume) HasRequestedCapacityMin() bool`
 
 HasRequestedCapacityMin returns a boolean if a field has been set.
+
+### GetRequestedTopologies
+
+`func (o *CSIVolume) GetRequestedTopologies() CSITopologyRequest`
+
+GetRequestedTopologies returns the RequestedTopologies field if non-nil, zero value otherwise.
+
+### GetRequestedTopologiesOk
+
+`func (o *CSIVolume) GetRequestedTopologiesOk() (*CSITopologyRequest, bool)`
+
+GetRequestedTopologiesOk returns a tuple with the RequestedTopologies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedTopologies
+
+`func (o *CSIVolume) SetRequestedTopologies(v CSITopologyRequest)`
+
+SetRequestedTopologies sets RequestedTopologies field to given value.
+
+### HasRequestedTopologies
+
+`func (o *CSIVolume) HasRequestedTopologies() bool`
+
+HasRequestedTopologies returns a boolean if a field has been set.
 
 ### GetResourceExhausted
 

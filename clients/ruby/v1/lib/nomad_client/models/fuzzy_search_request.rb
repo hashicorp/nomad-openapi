@@ -21,6 +21,10 @@ module NomadClient
 
     attr_accessor :context
 
+    attr_accessor :filter
+
+    attr_accessor :headers
+
     attr_accessor :namespace
 
     attr_accessor :next_token
@@ -32,6 +36,8 @@ module NomadClient
     attr_accessor :prefix
 
     attr_accessor :region
+
+    attr_accessor :reverse
 
     attr_accessor :text
 
@@ -45,12 +51,15 @@ module NomadClient
         :'allow_stale' => :'AllowStale',
         :'auth_token' => :'AuthToken',
         :'context' => :'Context',
+        :'filter' => :'Filter',
+        :'headers' => :'Headers',
         :'namespace' => :'Namespace',
         :'next_token' => :'NextToken',
         :'params' => :'Params',
         :'per_page' => :'PerPage',
         :'prefix' => :'Prefix',
         :'region' => :'Region',
+        :'reverse' => :'Reverse',
         :'text' => :'Text',
         :'wait_index' => :'WaitIndex',
         :'wait_time' => :'WaitTime'
@@ -68,12 +77,15 @@ module NomadClient
         :'allow_stale' => :'Boolean',
         :'auth_token' => :'String',
         :'context' => :'String',
+        :'filter' => :'String',
+        :'headers' => :'Hash<String, String>',
         :'namespace' => :'String',
         :'next_token' => :'String',
         :'params' => :'Hash<String, String>',
         :'per_page' => :'Integer',
         :'prefix' => :'String',
         :'region' => :'String',
+        :'reverse' => :'Boolean',
         :'text' => :'String',
         :'wait_index' => :'Integer',
         :'wait_time' => :'Integer'
@@ -113,6 +125,16 @@ module NomadClient
         self.context = attributes[:'context']
       end
 
+      if attributes.key?(:'filter')
+        self.filter = attributes[:'filter']
+      end
+
+      if attributes.key?(:'headers')
+        if (value = attributes[:'headers']).is_a?(Hash)
+          self.headers = value
+        end
+      end
+
       if attributes.key?(:'namespace')
         self.namespace = attributes[:'namespace']
       end
@@ -137,6 +159,10 @@ module NomadClient
 
       if attributes.key?(:'region')
         self.region = attributes[:'region']
+      end
+
+      if attributes.key?(:'reverse')
+        self.reverse = attributes[:'reverse']
       end
 
       if attributes.key?(:'text')
@@ -197,12 +223,15 @@ module NomadClient
           allow_stale == o.allow_stale &&
           auth_token == o.auth_token &&
           context == o.context &&
+          filter == o.filter &&
+          headers == o.headers &&
           namespace == o.namespace &&
           next_token == o.next_token &&
           params == o.params &&
           per_page == o.per_page &&
           prefix == o.prefix &&
           region == o.region &&
+          reverse == o.reverse &&
           text == o.text &&
           wait_index == o.wait_index &&
           wait_time == o.wait_time
@@ -217,7 +246,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_stale, auth_token, context, namespace, next_token, params, per_page, prefix, region, text, wait_index, wait_time].hash
+      [allow_stale, auth_token, context, filter, headers, namespace, next_token, params, per_page, prefix, region, reverse, text, wait_index, wait_time].hash
     end
 
     # Builds the object from hash

@@ -60,6 +60,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property supportsClone (base name: "SupportsClone")', function() {
+      // uncomment below and update the code to test the property supportsClone
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsCondition (base name: "SupportsCondition")', function() {
+      // uncomment below and update the code to test the property supportsCondition
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsCreateDelete (base name: "SupportsCreateDelete")', function() {
+      // uncomment below and update the code to test the property supportsCreateDelete
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsCreateDeleteSnapshot (base name: "SupportsCreateDeleteSnapshot")', function() {
+      // uncomment below and update the code to test the property supportsCreateDeleteSnapshot
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsExpand (base name: "SupportsExpand")', function() {
+      // uncomment below and update the code to test the property supportsExpand
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsGet (base name: "SupportsGet")', function() {
+      // uncomment below and update the code to test the property supportsGet
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsGetCapacity (base name: "SupportsGetCapacity")', function() {
+      // uncomment below and update the code to test the property supportsGetCapacity
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property supportsListSnapshots (base name: "SupportsListSnapshots")', function() {
+      // uncomment below and update the code to test the property supportsListSnapshots
+      //var instance = new nomad-client.CSIControllerInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property supportsListVolumes (base name: "SupportsListVolumes")', function() {
       // uncomment below and update the code to test the property supportsListVolumes
       //var instance = new nomad-client.CSIControllerInfo();

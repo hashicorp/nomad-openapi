@@ -19,6 +19,7 @@ export class TaskGroupSummary {
     'queued'?: number;
     'running'?: number;
     'starting'?: number;
+    'unknown'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -56,6 +57,12 @@ export class TaskGroupSummary {
         {
             "name": "starting",
             "baseName": "Starting",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "unknown",
+            "baseName": "Unknown",
             "type": "number",
             "format": ""
         }    ];

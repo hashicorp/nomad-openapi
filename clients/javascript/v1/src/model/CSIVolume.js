@@ -16,6 +16,7 @@ import Allocation from './Allocation';
 import AllocationListStub from './AllocationListStub';
 import CSIMountOptions from './CSIMountOptions';
 import CSITopology from './CSITopology';
+import CSITopologyRequest from './CSITopologyRequest';
 import CSIVolumeCapability from './CSIVolumeCapability';
 
 /**
@@ -129,6 +130,9 @@ class CSIVolume {
             }
             if (data.hasOwnProperty('RequestedCapacityMin')) {
                 obj['RequestedCapacityMin'] = ApiClient.convertToType(data['RequestedCapacityMin'], 'Number');
+            }
+            if (data.hasOwnProperty('RequestedTopologies')) {
+                obj['RequestedTopologies'] = CSITopologyRequest.constructFromObject(data['RequestedTopologies']);
             }
             if (data.hasOwnProperty('ResourceExhausted')) {
                 obj['ResourceExhausted'] = ApiClient.convertToType(data['ResourceExhausted'], 'Date');
@@ -284,6 +288,11 @@ CSIVolume.prototype['RequestedCapacityMax'] = undefined;
  * @member {Number} RequestedCapacityMin
  */
 CSIVolume.prototype['RequestedCapacityMin'] = undefined;
+
+/**
+ * @member {module:model/CSITopologyRequest} RequestedTopologies
+ */
+CSIVolume.prototype['RequestedTopologies'] = undefined;
 
 /**
  * @member {Date} ResourceExhausted

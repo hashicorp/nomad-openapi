@@ -19,6 +19,7 @@ import (
 type Vault struct {
 	ChangeMode *string `json:"ChangeMode,omitempty"`
 	ChangeSignal *string `json:"ChangeSignal,omitempty"`
+	EntityAlias *string `json:"EntityAlias,omitempty"`
 	Env *bool `json:"Env,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
 	Policies *[]string `json:"Policies,omitempty"`
@@ -103,6 +104,38 @@ func (o *Vault) HasChangeSignal() bool {
 // SetChangeSignal gets a reference to the given string and assigns it to the ChangeSignal field.
 func (o *Vault) SetChangeSignal(v string) {
 	o.ChangeSignal = &v
+}
+
+// GetEntityAlias returns the EntityAlias field value if set, zero value otherwise.
+func (o *Vault) GetEntityAlias() string {
+	if o == nil || o.EntityAlias == nil {
+		var ret string
+		return ret
+	}
+	return *o.EntityAlias
+}
+
+// GetEntityAliasOk returns a tuple with the EntityAlias field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Vault) GetEntityAliasOk() (*string, bool) {
+	if o == nil || o.EntityAlias == nil {
+		return nil, false
+	}
+	return o.EntityAlias, true
+}
+
+// HasEntityAlias returns a boolean if a field has been set.
+func (o *Vault) HasEntityAlias() bool {
+	if o != nil && o.EntityAlias != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntityAlias gets a reference to the given string and assigns it to the EntityAlias field.
+func (o *Vault) SetEntityAlias(v string) {
+	o.EntityAlias = &v
 }
 
 // GetEnv returns the Env field value if set, zero value otherwise.
@@ -208,6 +241,9 @@ func (o Vault) MarshalJSON() ([]byte, error) {
 	}
 	if o.ChangeSignal != nil {
 		toSerialize["ChangeSignal"] = o.ChangeSignal
+	}
+	if o.EntityAlias != nil {
+		toSerialize["EntityAlias"] = o.EntityAlias
 	}
 	if o.Env != nil {
 		toSerialize["Env"] = o.Env

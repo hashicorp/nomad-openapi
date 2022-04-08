@@ -9,6 +9,7 @@
 | **consul** | [**Consul**](Consul.md) |  | [optional] |
 | **count** | **Integer** |  | [optional] |
 | **ephemeral_disk** | [**EphemeralDisk**](EphemeralDisk.md) |  | [optional] |
+| **max_client_disconnect** | **Integer** |  | [optional] |
 | **meta** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **migrate** | [**MigrateStrategy**](MigrateStrategy.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
@@ -35,6 +36,7 @@ instance = NomadClient::TaskGroup.new(
   consul: null,
   count: null,
   ephemeral_disk: null,
+  max_client_disconnect: null,
   meta: null,
   migrate: null,
   name: null,

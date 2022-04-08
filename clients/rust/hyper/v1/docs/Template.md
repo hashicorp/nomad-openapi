@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **source_path** | Option<**String**> |  | [optional]
 **splay** | Option<**i64**> |  | [optional]
 **vault_grace** | Option<**i64**> |  | [optional]
+**wait** | Option<[**crate::models::WaitConfig**](WaitConfig.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

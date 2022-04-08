@@ -44,6 +44,7 @@ type CSIVolume struct {
 	RequestedCapabilities *[]CSIVolumeCapability `json:"RequestedCapabilities,omitempty"`
 	RequestedCapacityMax *int64 `json:"RequestedCapacityMax,omitempty"`
 	RequestedCapacityMin *int64 `json:"RequestedCapacityMin,omitempty"`
+	RequestedTopologies *CSITopologyRequest `json:"RequestedTopologies,omitempty"`
 	ResourceExhausted *time.Time `json:"ResourceExhausted,omitempty"`
 	Schedulable *bool `json:"Schedulable,omitempty"`
 	Secrets *map[string]string `json:"Secrets,omitempty"`
@@ -901,6 +902,38 @@ func (o *CSIVolume) SetRequestedCapacityMin(v int64) {
 	o.RequestedCapacityMin = &v
 }
 
+// GetRequestedTopologies returns the RequestedTopologies field value if set, zero value otherwise.
+func (o *CSIVolume) GetRequestedTopologies() CSITopologyRequest {
+	if o == nil || o.RequestedTopologies == nil {
+		var ret CSITopologyRequest
+		return ret
+	}
+	return *o.RequestedTopologies
+}
+
+// GetRequestedTopologiesOk returns a tuple with the RequestedTopologies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSIVolume) GetRequestedTopologiesOk() (*CSITopologyRequest, bool) {
+	if o == nil || o.RequestedTopologies == nil {
+		return nil, false
+	}
+	return o.RequestedTopologies, true
+}
+
+// HasRequestedTopologies returns a boolean if a field has been set.
+func (o *CSIVolume) HasRequestedTopologies() bool {
+	if o != nil && o.RequestedTopologies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedTopologies gets a reference to the given CSITopologyRequest and assigns it to the RequestedTopologies field.
+func (o *CSIVolume) SetRequestedTopologies(v CSITopologyRequest) {
+	o.RequestedTopologies = &v
+}
+
 // GetResourceExhausted returns the ResourceExhausted field value if set, zero value otherwise.
 func (o *CSIVolume) GetResourceExhausted() time.Time {
 	if o == nil || o.ResourceExhausted == nil {
@@ -1172,6 +1205,9 @@ func (o CSIVolume) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestedCapacityMin != nil {
 		toSerialize["RequestedCapacityMin"] = o.RequestedCapacityMin
+	}
+	if o.RequestedTopologies != nil {
+		toSerialize["RequestedTopologies"] = o.RequestedTopologies
 	}
 	if o.ResourceExhausted != nil {
 		toSerialize["ResourceExhausted"] = o.ResourceExhausted

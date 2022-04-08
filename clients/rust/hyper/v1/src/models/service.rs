@@ -37,6 +37,8 @@ pub struct Service {
     pub on_update: Option<String>,
     #[serde(rename = "PortLabel", skip_serializing_if = "Option::is_none")]
     pub port_label: Option<String>,
+    #[serde(rename = "Provider", skip_serializing_if = "Option::is_none")]
+    pub provider: Option<String>,
     #[serde(rename = "Tags", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<String>>,
     #[serde(rename = "TaskName", skip_serializing_if = "Option::is_none")]
@@ -58,6 +60,7 @@ impl Service {
             name: None,
             on_update: None,
             port_label: None,
+            provider: None,
             tags: None,
             task_name: None,
         }

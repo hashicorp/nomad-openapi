@@ -26,6 +26,7 @@ export * from './CSISnapshotCreateRequest';
 export * from './CSISnapshotCreateResponse';
 export * from './CSISnapshotListResponse';
 export * from './CSITopology';
+export * from './CSITopologyRequest';
 export * from './CSIVolume';
 export * from './CSIVolumeCapability';
 export * from './CSIVolumeCreateRequest';
@@ -70,11 +71,13 @@ export * from './DriverInfo';
 export * from './EphemeralDisk';
 export * from './EvalOptions';
 export * from './Evaluation';
+export * from './EvaluationStub';
 export * from './FieldDiff';
 export * from './FuzzyMatch';
 export * from './FuzzySearchRequest';
 export * from './FuzzySearchResponse';
 export * from './GaugeValue';
+export * from './HostNetworkInfo';
 export * from './HostVolumeInfo';
 export * from './Job';
 export * from './JobChildrenSummary';
@@ -104,6 +107,7 @@ export * from './Multiregion';
 export * from './MultiregionRegion';
 export * from './MultiregionStrategy';
 export * from './Namespace';
+export * from './NamespaceCapabilities';
 export * from './NetworkResource';
 export * from './Node';
 export * from './NodeCpuResources';
@@ -181,6 +185,7 @@ export * from './UpdateStrategy';
 export * from './Vault';
 export * from './VolumeMount';
 export * from './VolumeRequest';
+export * from './WaitConfig';
 
 import { ACLPolicy } from './ACLPolicy';
 import { ACLPolicyListStub } from './ACLPolicyListStub';
@@ -210,6 +215,7 @@ import { CSISnapshotCreateRequest } from './CSISnapshotCreateRequest';
 import { CSISnapshotCreateResponse } from './CSISnapshotCreateResponse';
 import { CSISnapshotListResponse } from './CSISnapshotListResponse';
 import { CSITopology } from './CSITopology';
+import { CSITopologyRequest } from './CSITopologyRequest';
 import { CSIVolume } from './CSIVolume';
 import { CSIVolumeCapability } from './CSIVolumeCapability';
 import { CSIVolumeCreateRequest } from './CSIVolumeCreateRequest';
@@ -254,11 +260,13 @@ import { DriverInfo } from './DriverInfo';
 import { EphemeralDisk } from './EphemeralDisk';
 import { EvalOptions } from './EvalOptions';
 import { Evaluation } from './Evaluation';
+import { EvaluationStub } from './EvaluationStub';
 import { FieldDiff } from './FieldDiff';
 import { FuzzyMatch } from './FuzzyMatch';
 import { FuzzySearchRequest } from './FuzzySearchRequest';
 import { FuzzySearchResponse } from './FuzzySearchResponse';
 import { GaugeValue } from './GaugeValue';
+import { HostNetworkInfo } from './HostNetworkInfo';
 import { HostVolumeInfo } from './HostVolumeInfo';
 import { Job } from './Job';
 import { JobChildrenSummary } from './JobChildrenSummary';
@@ -288,6 +296,7 @@ import { Multiregion } from './Multiregion';
 import { MultiregionRegion } from './MultiregionRegion';
 import { MultiregionStrategy } from './MultiregionStrategy';
 import { Namespace } from './Namespace';
+import { NamespaceCapabilities } from './NamespaceCapabilities';
 import { NetworkResource } from './NetworkResource';
 import { Node } from './Node';
 import { NodeCpuResources } from './NodeCpuResources';
@@ -365,6 +374,7 @@ import { UpdateStrategy } from './UpdateStrategy';
 import { Vault } from './Vault';
 import { VolumeMount } from './VolumeMount';
 import { VolumeRequest } from './VolumeRequest';
+import { WaitConfig } from './WaitConfig';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -416,6 +426,7 @@ let typeMap: {[index: string]: any} = {
     "CSISnapshotCreateResponse": CSISnapshotCreateResponse,
     "CSISnapshotListResponse": CSISnapshotListResponse,
     "CSITopology": CSITopology,
+    "CSITopologyRequest": CSITopologyRequest,
     "CSIVolume": CSIVolume,
     "CSIVolumeCapability": CSIVolumeCapability,
     "CSIVolumeCreateRequest": CSIVolumeCreateRequest,
@@ -460,11 +471,13 @@ let typeMap: {[index: string]: any} = {
     "EphemeralDisk": EphemeralDisk,
     "EvalOptions": EvalOptions,
     "Evaluation": Evaluation,
+    "EvaluationStub": EvaluationStub,
     "FieldDiff": FieldDiff,
     "FuzzyMatch": FuzzyMatch,
     "FuzzySearchRequest": FuzzySearchRequest,
     "FuzzySearchResponse": FuzzySearchResponse,
     "GaugeValue": GaugeValue,
+    "HostNetworkInfo": HostNetworkInfo,
     "HostVolumeInfo": HostVolumeInfo,
     "Job": Job,
     "JobChildrenSummary": JobChildrenSummary,
@@ -494,6 +507,7 @@ let typeMap: {[index: string]: any} = {
     "MultiregionRegion": MultiregionRegion,
     "MultiregionStrategy": MultiregionStrategy,
     "Namespace": Namespace,
+    "NamespaceCapabilities": NamespaceCapabilities,
     "NetworkResource": NetworkResource,
     "Node": Node,
     "NodeCpuResources": NodeCpuResources,
@@ -571,6 +585,7 @@ let typeMap: {[index: string]: any} = {
     "Vault": Vault,
     "VolumeMount": VolumeMount,
     "VolumeRequest": VolumeRequest,
+    "WaitConfig": WaitConfig,
 }
 
 export class ObjectSerializer {

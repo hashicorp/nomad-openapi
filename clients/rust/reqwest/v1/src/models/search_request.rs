@@ -19,6 +19,10 @@ pub struct SearchRequest {
     pub auth_token: Option<String>,
     #[serde(rename = "Context", skip_serializing_if = "Option::is_none")]
     pub context: Option<String>,
+    #[serde(rename = "Filter", skip_serializing_if = "Option::is_none")]
+    pub filter: Option<String>,
+    #[serde(rename = "Headers", skip_serializing_if = "Option::is_none")]
+    pub headers: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "Namespace", skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
     #[serde(rename = "NextToken", skip_serializing_if = "Option::is_none")]
@@ -31,6 +35,8 @@ pub struct SearchRequest {
     pub prefix: Option<String>,
     #[serde(rename = "Region", skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
+    #[serde(rename = "Reverse", skip_serializing_if = "Option::is_none")]
+    pub reverse: Option<bool>,
     #[serde(rename = "WaitIndex", skip_serializing_if = "Option::is_none")]
     pub wait_index: Option<i32>,
     #[serde(rename = "WaitTime", skip_serializing_if = "Option::is_none")]
@@ -43,12 +49,15 @@ impl SearchRequest {
             allow_stale: None,
             auth_token: None,
             context: None,
+            filter: None,
+            headers: None,
             namespace: None,
             next_token: None,
             params: None,
             per_page: None,
             prefix: None,
             region: None,
+            reverse: None,
             wait_index: None,
             wait_time: None,
         }

@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AllocationMetric from './AllocationMetric';
+import EvaluationStub from './EvaluationStub';
 
 /**
  * The Evaluation model module.
@@ -110,6 +111,9 @@ class Evaluation {
             }
             if (data.hasOwnProperty('QuotaLimitReached')) {
                 obj['QuotaLimitReached'] = ApiClient.convertToType(data['QuotaLimitReached'], 'String');
+            }
+            if (data.hasOwnProperty('RelatedEvals')) {
+                obj['RelatedEvals'] = ApiClient.convertToType(data['RelatedEvals'], [EvaluationStub]);
             }
             if (data.hasOwnProperty('SnapshotIndex')) {
                 obj['SnapshotIndex'] = ApiClient.convertToType(data['SnapshotIndex'], 'Number');
@@ -243,6 +247,11 @@ Evaluation.prototype['QueuedAllocations'] = undefined;
  * @member {String} QuotaLimitReached
  */
 Evaluation.prototype['QuotaLimitReached'] = undefined;
+
+/**
+ * @member {Array.<module:model/EvaluationStub>} RelatedEvals
+ */
+Evaluation.prototype['RelatedEvals'] = undefined;
 
 /**
  * @member {Number} SnapshotIndex

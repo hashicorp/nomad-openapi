@@ -21,9 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.nomadproject.client.models.AllocationMetric;
+import io.nomadproject.client.models.EvaluationStub;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -117,6 +119,10 @@ public class Evaluation {
   public static final String SERIALIZED_NAME_QUOTA_LIMIT_REACHED = "QuotaLimitReached";
   @SerializedName(SERIALIZED_NAME_QUOTA_LIMIT_REACHED)
   private String quotaLimitReached;
+
+  public static final String SERIALIZED_NAME_RELATED_EVALS = "RelatedEvals";
+  @SerializedName(SERIALIZED_NAME_RELATED_EVALS)
+  private List<EvaluationStub> relatedEvals = null;
 
   public static final String SERIALIZED_NAME_SNAPSHOT_INDEX = "SnapshotIndex";
   @SerializedName(SERIALIZED_NAME_SNAPSHOT_INDEX)
@@ -662,6 +668,37 @@ public class Evaluation {
   }
 
 
+  public Evaluation relatedEvals(List<EvaluationStub> relatedEvals) {
+    
+    this.relatedEvals = relatedEvals;
+    return this;
+  }
+
+  public Evaluation addRelatedEvalsItem(EvaluationStub relatedEvalsItem) {
+    if (this.relatedEvals == null) {
+      this.relatedEvals = new ArrayList<EvaluationStub>();
+    }
+    this.relatedEvals.add(relatedEvalsItem);
+    return this;
+  }
+
+   /**
+   * Get relatedEvals
+   * @return relatedEvals
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<EvaluationStub> getRelatedEvals() {
+    return relatedEvals;
+  }
+
+
+  public void setRelatedEvals(List<EvaluationStub> relatedEvals) {
+    this.relatedEvals = relatedEvals;
+  }
+
+
   public Evaluation snapshotIndex(Integer snapshotIndex) {
     
     this.snapshotIndex = snapshotIndex;
@@ -855,6 +892,7 @@ public class Evaluation {
         Objects.equals(this.priority, evaluation.priority) &&
         Objects.equals(this.queuedAllocations, evaluation.queuedAllocations) &&
         Objects.equals(this.quotaLimitReached, evaluation.quotaLimitReached) &&
+        Objects.equals(this.relatedEvals, evaluation.relatedEvals) &&
         Objects.equals(this.snapshotIndex, evaluation.snapshotIndex) &&
         Objects.equals(this.status, evaluation.status) &&
         Objects.equals(this.statusDescription, evaluation.statusDescription) &&
@@ -866,7 +904,7 @@ public class Evaluation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(annotatePlan, blockedEval, classEligibility, createIndex, createTime, deploymentID, escapedComputedClass, failedTGAllocs, ID, jobID, jobModifyIndex, modifyIndex, modifyTime, namespace, nextEval, nodeID, nodeModifyIndex, previousEval, priority, queuedAllocations, quotaLimitReached, snapshotIndex, status, statusDescription, triggeredBy, type, wait, waitUntil);
+    return Objects.hash(annotatePlan, blockedEval, classEligibility, createIndex, createTime, deploymentID, escapedComputedClass, failedTGAllocs, ID, jobID, jobModifyIndex, modifyIndex, modifyTime, namespace, nextEval, nodeID, nodeModifyIndex, previousEval, priority, queuedAllocations, quotaLimitReached, relatedEvals, snapshotIndex, status, statusDescription, triggeredBy, type, wait, waitUntil);
   }
 
   @Override
@@ -894,6 +932,7 @@ public class Evaluation {
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    queuedAllocations: ").append(toIndentedString(queuedAllocations)).append("\n");
     sb.append("    quotaLimitReached: ").append(toIndentedString(quotaLimitReached)).append("\n");
+    sb.append("    relatedEvals: ").append(toIndentedString(relatedEvals)).append("\n");
     sb.append("    snapshotIndex: ").append(toIndentedString(snapshotIndex)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    statusDescription: ").append(toIndentedString(statusDescription)).append("\n");

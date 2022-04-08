@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **priority** | **Number** |  | [optional] 
 **queuedAllocations** | **{String: Number}** |  | [optional] 
 **quotaLimitReached** | **String** |  | [optional] 
+**relatedEvals** | [**[EvaluationStub]**](EvaluationStub.md) |  | [optional] 
 **snapshotIndex** | **Number** |  | [optional] 
 **status** | **String** |  | [optional] 
 **statusDescription** | **String** |  | [optional] 

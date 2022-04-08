@@ -18,6 +18,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.WaitConfig;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -126,6 +127,14 @@ public class TemplateTest {
     @Test
     public void vaultGraceTest() {
         // TODO: test vaultGrace
+    }
+
+    /**
+     * Test the property 'wait'
+     */
+    @Test
+    public void waitTest() {
+        // TODO: test wait
     }
 
 }

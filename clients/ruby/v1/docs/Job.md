@@ -11,6 +11,7 @@
 | **consul_token** | **String** |  | [optional] |
 | **create_index** | **Integer** |  | [optional] |
 | **datacenters** | **Array&lt;String&gt;** |  | [optional] |
+| **dispatch_idempotency_token** | **String** |  | [optional] |
 | **dispatched** | **Boolean** |  | [optional] |
 | **id** | **String** |  | [optional] |
 | **job_modify_index** | **Integer** |  | [optional] |
@@ -54,6 +55,7 @@ instance = NomadClient::Job.new(
   consul_token: null,
   create_index: null,
   datacenters: null,
+  dispatch_idempotency_token: null,
   dispatched: null,
   id: null,
   job_modify_index: null,

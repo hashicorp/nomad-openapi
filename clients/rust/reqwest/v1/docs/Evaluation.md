@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **priority** | Option<**i32**> |  | [optional]
 **queued_allocations** | Option<**::std::collections::HashMap<String, i32>**> |  | [optional]
 **quota_limit_reached** | Option<**String**> |  | [optional]
+**related_evals** | Option<[**Vec<crate::models::EvaluationStub>**](EvaluationStub.md)> |  | [optional]
 **snapshot_index** | Option<**i32**> |  | [optional]
 **status** | Option<**String**> |  | [optional]
 **status_description** | Option<**String**> |  | [optional]

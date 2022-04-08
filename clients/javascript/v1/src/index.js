@@ -41,6 +41,7 @@ import CSISnapshotCreateRequest from './model/CSISnapshotCreateRequest';
 import CSISnapshotCreateResponse from './model/CSISnapshotCreateResponse';
 import CSISnapshotListResponse from './model/CSISnapshotListResponse';
 import CSITopology from './model/CSITopology';
+import CSITopologyRequest from './model/CSITopologyRequest';
 import CSIVolume from './model/CSIVolume';
 import CSIVolumeCapability from './model/CSIVolumeCapability';
 import CSIVolumeCreateRequest from './model/CSIVolumeCreateRequest';
@@ -85,11 +86,13 @@ import DriverInfo from './model/DriverInfo';
 import EphemeralDisk from './model/EphemeralDisk';
 import EvalOptions from './model/EvalOptions';
 import Evaluation from './model/Evaluation';
+import EvaluationStub from './model/EvaluationStub';
 import FieldDiff from './model/FieldDiff';
 import FuzzyMatch from './model/FuzzyMatch';
 import FuzzySearchRequest from './model/FuzzySearchRequest';
 import FuzzySearchResponse from './model/FuzzySearchResponse';
 import GaugeValue from './model/GaugeValue';
+import HostNetworkInfo from './model/HostNetworkInfo';
 import HostVolumeInfo from './model/HostVolumeInfo';
 import Job from './model/Job';
 import JobChildrenSummary from './model/JobChildrenSummary';
@@ -119,6 +122,7 @@ import Multiregion from './model/Multiregion';
 import MultiregionRegion from './model/MultiregionRegion';
 import MultiregionStrategy from './model/MultiregionStrategy';
 import Namespace from './model/Namespace';
+import NamespaceCapabilities from './model/NamespaceCapabilities';
 import NetworkResource from './model/NetworkResource';
 import Node from './model/Node';
 import NodeCpuResources from './model/NodeCpuResources';
@@ -196,6 +200,7 @@ import UpdateStrategy from './model/UpdateStrategy';
 import Vault from './model/Vault';
 import VolumeMount from './model/VolumeMount';
 import VolumeRequest from './model/VolumeRequest';
+import WaitConfig from './model/WaitConfig';
 import ACLApi from './api/ACLApi';
 import AllocationsApi from './api/AllocationsApi';
 import DeploymentsApi from './api/DeploymentsApi';
@@ -420,6 +425,12 @@ export {
      * @property {module:model/CSITopology}
      */
     CSITopology,
+
+    /**
+     * The CSITopologyRequest model constructor.
+     * @property {module:model/CSITopologyRequest}
+     */
+    CSITopologyRequest,
 
     /**
      * The CSIVolume model constructor.
@@ -686,6 +697,12 @@ export {
     Evaluation,
 
     /**
+     * The EvaluationStub model constructor.
+     * @property {module:model/EvaluationStub}
+     */
+    EvaluationStub,
+
+    /**
      * The FieldDiff model constructor.
      * @property {module:model/FieldDiff}
      */
@@ -714,6 +731,12 @@ export {
      * @property {module:model/GaugeValue}
      */
     GaugeValue,
+
+    /**
+     * The HostNetworkInfo model constructor.
+     * @property {module:model/HostNetworkInfo}
+     */
+    HostNetworkInfo,
 
     /**
      * The HostVolumeInfo model constructor.
@@ -888,6 +911,12 @@ export {
      * @property {module:model/Namespace}
      */
     Namespace,
+
+    /**
+     * The NamespaceCapabilities model constructor.
+     * @property {module:model/NamespaceCapabilities}
+     */
+    NamespaceCapabilities,
 
     /**
      * The NetworkResource model constructor.
@@ -1350,6 +1379,12 @@ export {
      * @property {module:model/VolumeRequest}
      */
     VolumeRequest,
+
+    /**
+     * The WaitConfig model constructor.
+     * @property {module:model/WaitConfig}
+     */
+    WaitConfig,
 
     /**
     * The ACLApi service constructor.

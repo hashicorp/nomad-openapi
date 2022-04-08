@@ -89,12 +89,15 @@ class FuzzySearchRequest(ModelNormal):
             'allow_stale': (bool,),  # noqa: E501
             'auth_token': (str,),  # noqa: E501
             'context': (str,),  # noqa: E501
+            'filter': (str,),  # noqa: E501
+            'headers': ({str: (str,)},),  # noqa: E501
             'namespace': (str,),  # noqa: E501
             'next_token': (str,),  # noqa: E501
             'params': ({str: (str,)},),  # noqa: E501
             'per_page': (int,),  # noqa: E501
             'prefix': (str,),  # noqa: E501
             'region': (str,),  # noqa: E501
+            'reverse': (bool,),  # noqa: E501
             'text': (str,),  # noqa: E501
             'wait_index': (int,),  # noqa: E501
             'wait_time': (int,),  # noqa: E501
@@ -109,12 +112,15 @@ class FuzzySearchRequest(ModelNormal):
         'allow_stale': 'AllowStale',  # noqa: E501
         'auth_token': 'AuthToken',  # noqa: E501
         'context': 'Context',  # noqa: E501
+        'filter': 'Filter',  # noqa: E501
+        'headers': 'Headers',  # noqa: E501
         'namespace': 'Namespace',  # noqa: E501
         'next_token': 'NextToken',  # noqa: E501
         'params': 'Params',  # noqa: E501
         'per_page': 'PerPage',  # noqa: E501
         'prefix': 'Prefix',  # noqa: E501
         'region': 'Region',  # noqa: E501
+        'reverse': 'Reverse',  # noqa: E501
         'text': 'Text',  # noqa: E501
         'wait_index': 'WaitIndex',  # noqa: E501
         'wait_time': 'WaitTime',  # noqa: E501
@@ -164,12 +170,15 @@ class FuzzySearchRequest(ModelNormal):
             allow_stale (bool): [optional]  # noqa: E501
             auth_token (str): [optional]  # noqa: E501
             context (str): [optional]  # noqa: E501
+            filter (str): [optional]  # noqa: E501
+            headers ({str: (str,)}): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
             next_token (str): [optional]  # noqa: E501
             params ({str: (str,)}): [optional]  # noqa: E501
             per_page (int): [optional]  # noqa: E501
             prefix (str): [optional]  # noqa: E501
             region (str): [optional]  # noqa: E501
+            reverse (bool): [optional]  # noqa: E501
             text (str): [optional]  # noqa: E501
             wait_index (int): [optional]  # noqa: E501
             wait_time (int): [optional]  # noqa: E501
@@ -257,12 +266,15 @@ class FuzzySearchRequest(ModelNormal):
             allow_stale (bool): [optional]  # noqa: E501
             auth_token (str): [optional]  # noqa: E501
             context (str): [optional]  # noqa: E501
+            filter (str): [optional]  # noqa: E501
+            headers ({str: (str,)}): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
             next_token (str): [optional]  # noqa: E501
             params ({str: (str,)}): [optional]  # noqa: E501
             per_page (int): [optional]  # noqa: E501
             prefix (str): [optional]  # noqa: E501
             region (str): [optional]  # noqa: E501
+            reverse (bool): [optional]  # noqa: E501
             text (str): [optional]  # noqa: E501
             wait_index (int): [optional]  # noqa: E501
             wait_time (int): [optional]  # noqa: E501

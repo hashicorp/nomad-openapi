@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DNS** | Pointer to [**DNSConfig**](DNSConfig.md) |  | [optional] 
 **Device** | Pointer to **string** |  | [optional] 
 **DynamicPorts** | Pointer to [**[]Port**](Port.md) |  | [optional] 
+**Hostname** | Pointer to **string** |  | [optional] 
 **IP** | Pointer to **string** |  | [optional] 
 **MBits** | Pointer to **int32** |  | [optional] 
 **Mode** | Pointer to **string** |  | [optional] 
@@ -131,6 +132,31 @@ SetDynamicPorts sets DynamicPorts field to given value.
 `func (o *NetworkResource) HasDynamicPorts() bool`
 
 HasDynamicPorts returns a boolean if a field has been set.
+
+### GetHostname
+
+`func (o *NetworkResource) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *NetworkResource) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *NetworkResource) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *NetworkResource) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
 
 ### GetIP
 

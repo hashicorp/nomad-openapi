@@ -111,6 +111,14 @@ public class JobTest {
     }
 
     /**
+     * Test the property 'dispatchIdempotencyToken'
+     */
+    @Test
+    public void dispatchIdempotencyTokenTest() {
+        // TODO: test dispatchIdempotencyToken
+    }
+
+    /**
      * Test the property 'dispatched'
      */
     @Test

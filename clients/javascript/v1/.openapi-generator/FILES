@@ -31,6 +31,7 @@ docs/CSISnapshotCreateRequest.md
 docs/CSISnapshotCreateResponse.md
 docs/CSISnapshotListResponse.md
 docs/CSITopology.md
+docs/CSITopologyRequest.md
 docs/CSIVolume.md
 docs/CSIVolumeCapability.md
 docs/CSIVolumeCreateRequest.md
@@ -77,12 +78,14 @@ docs/EnterpriseApi.md
 docs/EphemeralDisk.md
 docs/EvalOptions.md
 docs/Evaluation.md
+docs/EvaluationStub.md
 docs/EvaluationsApi.md
 docs/FieldDiff.md
 docs/FuzzyMatch.md
 docs/FuzzySearchRequest.md
 docs/FuzzySearchResponse.md
 docs/GaugeValue.md
+docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
 docs/JobChildrenSummary.md
@@ -114,6 +117,7 @@ docs/Multiregion.md
 docs/MultiregionRegion.md
 docs/MultiregionStrategy.md
 docs/Namespace.md
+docs/NamespaceCapabilities.md
 docs/NamespacesApi.md
 docs/NetworkResource.md
 docs/Node.md
@@ -201,6 +205,7 @@ docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
+docs/WaitConfig.md
 mocha.opts
 package.json
 src/ApiClient.js
@@ -250,6 +255,7 @@ src/model/CSISnapshotCreateRequest.js
 src/model/CSISnapshotCreateResponse.js
 src/model/CSISnapshotListResponse.js
 src/model/CSITopology.js
+src/model/CSITopologyRequest.js
 src/model/CSIVolume.js
 src/model/CSIVolumeCapability.js
 src/model/CSIVolumeCreateRequest.js
@@ -294,11 +300,13 @@ src/model/DriverInfo.js
 src/model/EphemeralDisk.js
 src/model/EvalOptions.js
 src/model/Evaluation.js
+src/model/EvaluationStub.js
 src/model/FieldDiff.js
 src/model/FuzzyMatch.js
 src/model/FuzzySearchRequest.js
 src/model/FuzzySearchResponse.js
 src/model/GaugeValue.js
+src/model/HostNetworkInfo.js
 src/model/HostVolumeInfo.js
 src/model/Job.js
 src/model/JobChildrenSummary.js
@@ -328,6 +336,7 @@ src/model/Multiregion.js
 src/model/MultiregionRegion.js
 src/model/MultiregionStrategy.js
 src/model/Namespace.js
+src/model/NamespaceCapabilities.js
 src/model/NetworkResource.js
 src/model/Node.js
 src/model/NodeCpuResources.js
@@ -405,6 +414,7 @@ src/model/UpdateStrategy.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
+src/model/WaitConfig.js
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/OperatorApi.spec.js
@@ -418,11 +428,15 @@ test/model/CSIInfo.spec.js
 test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
+test/model/CSITopologyRequest.spec.js
 test/model/DeploymentAllocHealthRequest.spec.js
 test/model/DeploymentPauseRequest.spec.js
 test/model/DeploymentPromoteRequest.spec.js
 test/model/DeploymentUnblockRequest.spec.js
 test/model/DeploymentUpdateResponse.spec.js
+test/model/EvaluationStub.spec.js
+test/model/HostNetworkInfo.spec.js
+test/model/NamespaceCapabilities.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js
 test/model/OperatorHealthReply.spec.js
@@ -434,3 +448,4 @@ test/model/SchedulerConfiguration.spec.js
 test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
+test/model/WaitConfig.spec.js

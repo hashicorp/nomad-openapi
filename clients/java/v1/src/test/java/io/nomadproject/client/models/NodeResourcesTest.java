@@ -72,11 +72,27 @@ public class NodeResourcesTest {
     }
 
     /**
+     * Test the property 'maxDynamicPort'
+     */
+    @Test
+    public void maxDynamicPortTest() {
+        // TODO: test maxDynamicPort
+    }
+
+    /**
      * Test the property 'memory'
      */
     @Test
     public void memoryTest() {
         // TODO: test memory
+    }
+
+    /**
+     * Test the property 'minDynamicPort'
+     */
+    @Test
+    public void minDynamicPortTest() {
+        // TODO: test minDynamicPort
     }
 
     /**

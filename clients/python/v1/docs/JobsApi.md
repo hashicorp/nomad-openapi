@@ -1087,6 +1087,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     job_name = "jobName_example" # str | The job identifier.
     job_register_request = JobRegisterRequest(
         enforce_index=True,
+        eval_priority=1,
         job=Job(
             affinities=[
                 Affinity(
@@ -1110,6 +1111,7 @@ with nomad_client.ApiClient(configuration) as api_client:
             datacenters=[
                 "datacenters_example",
             ],
+            dispatch_idempotency_token="dispatch_idempotency_token_example",
             dispatched=True,
             id="id_example",
             job_modify_index=0,
@@ -1215,6 +1217,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                         size_mb=1,
                         sticky=True,
                     ),
+                    max_client_disconnect=1,
                     meta={
                         "key": "key_example",
                     },
@@ -1248,6 +1251,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     value=1,
                                 ),
                             ],
+                            hostname="hostname_example",
                             ip="ip_example",
                             m_bits=1,
                             mode="mode_example",
@@ -1498,6 +1502,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                         value=1,
                                                     ),
                                                 ],
+                                                hostname="hostname_example",
                                                 ip="ip_example",
                                                 m_bits=1,
                                                 mode="mode_example",
@@ -1524,6 +1529,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             name="name_example",
                             on_update="on_update_example",
                             port_label="port_label_example",
+                            provider="provider_example",
                             tags=[
                                 "tags_example",
                             ],
@@ -1656,6 +1662,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 value=1,
                                             ),
                                         ],
+                                        hostname="hostname_example",
                                         ip="ip_example",
                                         m_bits=1,
                                         mode="mode_example",
@@ -1901,6 +1908,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                 value=1,
                                                             ),
                                                         ],
+                                                        hostname="hostname_example",
                                                         ip="ip_example",
                                                         m_bits=1,
                                                         mode="mode_example",
@@ -1927,6 +1935,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     name="name_example",
                                     on_update="on_update_example",
                                     port_label="port_label_example",
+                                    provider="provider_example",
                                     tags=[
                                         "tags_example",
                                     ],
@@ -1947,12 +1956,17 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     source_path="source_path_example",
                                     splay=1,
                                     vault_grace=1,
+                                    wait=WaitConfig(
+                                        max=1,
+                                        min=1,
+                                    ),
                                 ),
                             ],
                             user="user_example",
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
+                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -2523,6 +2537,7 @@ with nomad_client.ApiClient(configuration) as api_client:
             datacenters=[
                 "datacenters_example",
             ],
+            dispatch_idempotency_token="dispatch_idempotency_token_example",
             dispatched=True,
             id="id_example",
             job_modify_index=0,
@@ -2628,6 +2643,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                         size_mb=1,
                         sticky=True,
                     ),
+                    max_client_disconnect=1,
                     meta={
                         "key": "key_example",
                     },
@@ -2661,6 +2677,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     value=1,
                                 ),
                             ],
+                            hostname="hostname_example",
                             ip="ip_example",
                             m_bits=1,
                             mode="mode_example",
@@ -2911,6 +2928,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                         value=1,
                                                     ),
                                                 ],
+                                                hostname="hostname_example",
                                                 ip="ip_example",
                                                 m_bits=1,
                                                 mode="mode_example",
@@ -2937,6 +2955,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             name="name_example",
                             on_update="on_update_example",
                             port_label="port_label_example",
+                            provider="provider_example",
                             tags=[
                                 "tags_example",
                             ],
@@ -3069,6 +3088,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 value=1,
                                             ),
                                         ],
+                                        hostname="hostname_example",
                                         ip="ip_example",
                                         m_bits=1,
                                         mode="mode_example",
@@ -3314,6 +3334,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                 value=1,
                                                             ),
                                                         ],
+                                                        hostname="hostname_example",
                                                         ip="ip_example",
                                                         m_bits=1,
                                                         mode="mode_example",
@@ -3340,6 +3361,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     name="name_example",
                                     on_update="on_update_example",
                                     port_label="port_label_example",
+                                    provider="provider_example",
                                     tags=[
                                         "tags_example",
                                     ],
@@ -3360,12 +3382,17 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     source_path="source_path_example",
                                     splay=1,
                                     vault_grace=1,
+                                    wait=WaitConfig(
+                                        max=1,
+                                        min=1,
+                                    ),
                                 ),
                             ],
                             user="user_example",
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
+                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -3869,6 +3896,7 @@ with nomad_client.ApiClient(configuration) as api_client:
             datacenters=[
                 "datacenters_example",
             ],
+            dispatch_idempotency_token="dispatch_idempotency_token_example",
             dispatched=True,
             id="id_example",
             job_modify_index=0,
@@ -3974,6 +4002,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                         size_mb=1,
                         sticky=True,
                     ),
+                    max_client_disconnect=1,
                     meta={
                         "key": "key_example",
                     },
@@ -4007,6 +4036,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     value=1,
                                 ),
                             ],
+                            hostname="hostname_example",
                             ip="ip_example",
                             m_bits=1,
                             mode="mode_example",
@@ -4257,6 +4287,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                         value=1,
                                                     ),
                                                 ],
+                                                hostname="hostname_example",
                                                 ip="ip_example",
                                                 m_bits=1,
                                                 mode="mode_example",
@@ -4283,6 +4314,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             name="name_example",
                             on_update="on_update_example",
                             port_label="port_label_example",
+                            provider="provider_example",
                             tags=[
                                 "tags_example",
                             ],
@@ -4415,6 +4447,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 value=1,
                                             ),
                                         ],
+                                        hostname="hostname_example",
                                         ip="ip_example",
                                         m_bits=1,
                                         mode="mode_example",
@@ -4660,6 +4693,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                 value=1,
                                                             ),
                                                         ],
+                                                        hostname="hostname_example",
                                                         ip="ip_example",
                                                         m_bits=1,
                                                         mode="mode_example",
@@ -4686,6 +4720,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     name="name_example",
                                     on_update="on_update_example",
                                     port_label="port_label_example",
+                                    provider="provider_example",
                                     tags=[
                                         "tags_example",
                                     ],
@@ -4706,12 +4741,17 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     source_path="source_path_example",
                                     splay=1,
                                     vault_grace=1,
+                                    wait=WaitConfig(
+                                        max=1,
+                                        min=1,
+                                    ),
                                 ),
                             ],
                             user="user_example",
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
+                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -4873,6 +4913,7 @@ with nomad_client.ApiClient(configuration) as api_client:
     api_instance = jobs_api.JobsApi(api_client)
     job_register_request = JobRegisterRequest(
         enforce_index=True,
+        eval_priority=1,
         job=Job(
             affinities=[
                 Affinity(
@@ -4896,6 +4937,7 @@ with nomad_client.ApiClient(configuration) as api_client:
             datacenters=[
                 "datacenters_example",
             ],
+            dispatch_idempotency_token="dispatch_idempotency_token_example",
             dispatched=True,
             id="id_example",
             job_modify_index=0,
@@ -5001,6 +5043,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                         size_mb=1,
                         sticky=True,
                     ),
+                    max_client_disconnect=1,
                     meta={
                         "key": "key_example",
                     },
@@ -5034,6 +5077,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     value=1,
                                 ),
                             ],
+                            hostname="hostname_example",
                             ip="ip_example",
                             m_bits=1,
                             mode="mode_example",
@@ -5284,6 +5328,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                         value=1,
                                                     ),
                                                 ],
+                                                hostname="hostname_example",
                                                 ip="ip_example",
                                                 m_bits=1,
                                                 mode="mode_example",
@@ -5310,6 +5355,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             name="name_example",
                             on_update="on_update_example",
                             port_label="port_label_example",
+                            provider="provider_example",
                             tags=[
                                 "tags_example",
                             ],
@@ -5442,6 +5488,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 value=1,
                                             ),
                                         ],
+                                        hostname="hostname_example",
                                         ip="ip_example",
                                         m_bits=1,
                                         mode="mode_example",
@@ -5687,6 +5734,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                 value=1,
                                                             ),
                                                         ],
+                                                        hostname="hostname_example",
                                                         ip="ip_example",
                                                         m_bits=1,
                                                         mode="mode_example",
@@ -5713,6 +5761,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     name="name_example",
                                     on_update="on_update_example",
                                     port_label="port_label_example",
+                                    provider="provider_example",
                                     tags=[
                                         "tags_example",
                                     ],
@@ -5733,12 +5782,17 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     source_path="source_path_example",
                                     splay=1,
                                     vault_grace=1,
+                                    wait=WaitConfig(
+                                        max=1,
+                                        min=1,
+                                    ),
                                 ),
                             ],
                             user="user_example",
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
+                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[

@@ -10,6 +10,7 @@
 | **queued** | **Integer** |  | [optional] |
 | **running** | **Integer** |  | [optional] |
 | **starting** | **Integer** |  | [optional] |
+| **unknown** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = NomadClient::TaskGroupSummary.new(
   lost: null,
   queued: null,
   running: null,
-  starting: null
+  starting: null,
+  unknown: null
 )
 ```
 

@@ -67,6 +67,10 @@ public class TaskGroup {
   @SerializedName(SERIALIZED_NAME_EPHEMERAL_DISK)
   private EphemeralDisk ephemeralDisk;
 
+  public static final String SERIALIZED_NAME_MAX_CLIENT_DISCONNECT = "MaxClientDisconnect";
+  @SerializedName(SERIALIZED_NAME_MAX_CLIENT_DISCONNECT)
+  private Long maxClientDisconnect;
+
   public static final String SERIALIZED_NAME_META = "Meta";
   @SerializedName(SERIALIZED_NAME_META)
   private Map<String, String> meta = null;
@@ -252,6 +256,29 @@ public class TaskGroup {
 
   public void setEphemeralDisk(EphemeralDisk ephemeralDisk) {
     this.ephemeralDisk = ephemeralDisk;
+  }
+
+
+  public TaskGroup maxClientDisconnect(Long maxClientDisconnect) {
+    
+    this.maxClientDisconnect = maxClientDisconnect;
+    return this;
+  }
+
+   /**
+   * Get maxClientDisconnect
+   * @return maxClientDisconnect
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getMaxClientDisconnect() {
+    return maxClientDisconnect;
+  }
+
+
+  public void setMaxClientDisconnect(Long maxClientDisconnect) {
+    this.maxClientDisconnect = maxClientDisconnect;
   }
 
 
@@ -639,6 +666,7 @@ public class TaskGroup {
         Objects.equals(this.consul, taskGroup.consul) &&
         Objects.equals(this.count, taskGroup.count) &&
         Objects.equals(this.ephemeralDisk, taskGroup.ephemeralDisk) &&
+        Objects.equals(this.maxClientDisconnect, taskGroup.maxClientDisconnect) &&
         Objects.equals(this.meta, taskGroup.meta) &&
         Objects.equals(this.migrate, taskGroup.migrate) &&
         Objects.equals(this.name, taskGroup.name) &&
@@ -657,7 +685,7 @@ public class TaskGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(affinities, constraints, consul, count, ephemeralDisk, meta, migrate, name, networks, reschedulePolicy, restartPolicy, scaling, services, shutdownDelay, spreads, stopAfterClientDisconnect, tasks, update, volumes);
+    return Objects.hash(affinities, constraints, consul, count, ephemeralDisk, maxClientDisconnect, meta, migrate, name, networks, reschedulePolicy, restartPolicy, scaling, services, shutdownDelay, spreads, stopAfterClientDisconnect, tasks, update, volumes);
   }
 
   @Override
@@ -669,6 +697,7 @@ public class TaskGroup {
     sb.append("    consul: ").append(toIndentedString(consul)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    ephemeralDisk: ").append(toIndentedString(ephemeralDisk)).append("\n");
+    sb.append("    maxClientDisconnect: ").append(toIndentedString(maxClientDisconnect)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    migrate: ").append(toIndentedString(migrate)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

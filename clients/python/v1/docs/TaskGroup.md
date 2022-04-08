@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **consul** | [**Consul**](Consul.md) |  | [optional] 
 **count** | **int** |  | [optional] 
 **ephemeral_disk** | [**EphemeralDisk**](EphemeralDisk.md) |  | [optional] 
+**max_client_disconnect** | **int** |  | [optional] 
 **meta** | **{str: (str,)}** |  | [optional] 
 **migrate** | [**MigrateStrategy**](MigrateStrategy.md) |  | [optional] 
 **name** | **str** |  | [optional] 

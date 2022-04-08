@@ -30,6 +30,7 @@ export class Job {
     'consulToken'?: string;
     'createIndex'?: number;
     'datacenters'?: Array<string>;
+    'dispatchIdempotencyToken'?: string;
     'dispatched'?: boolean;
     'ID'?: string;
     'jobModifyIndex'?: number;
@@ -103,6 +104,12 @@ export class Job {
             "name": "datacenters",
             "baseName": "Datacenters",
             "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "dispatchIdempotencyToken",
+            "baseName": "DispatchIdempotencyToken",
+            "type": "string",
             "format": ""
         },
         {

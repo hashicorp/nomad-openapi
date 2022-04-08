@@ -42,6 +42,10 @@ public class SchedulerConfigurationResponse {
   @SerializedName(SERIALIZED_NAME_LAST_INDEX)
   private Integer lastIndex;
 
+  public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
+  @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+  private String nextToken;
+
   public static final String SERIALIZED_NAME_REQUEST_TIME = "RequestTime";
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
@@ -122,6 +126,29 @@ public class SchedulerConfigurationResponse {
   }
 
 
+  public SchedulerConfigurationResponse nextToken(String nextToken) {
+    
+    this.nextToken = nextToken;
+    return this;
+  }
+
+   /**
+   * Get nextToken
+   * @return nextToken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNextToken() {
+    return nextToken;
+  }
+
+
+  public void setNextToken(String nextToken) {
+    this.nextToken = nextToken;
+  }
+
+
   public SchedulerConfigurationResponse requestTime(Long requestTime) {
     
     this.requestTime = requestTime;
@@ -180,13 +207,14 @@ public class SchedulerConfigurationResponse {
     return Objects.equals(this.knownLeader, schedulerConfigurationResponse.knownLeader) &&
         Objects.equals(this.lastContact, schedulerConfigurationResponse.lastContact) &&
         Objects.equals(this.lastIndex, schedulerConfigurationResponse.lastIndex) &&
+        Objects.equals(this.nextToken, schedulerConfigurationResponse.nextToken) &&
         Objects.equals(this.requestTime, schedulerConfigurationResponse.requestTime) &&
         Objects.equals(this.schedulerConfig, schedulerConfigurationResponse.schedulerConfig);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(knownLeader, lastContact, lastIndex, requestTime, schedulerConfig);
+    return Objects.hash(knownLeader, lastContact, lastIndex, nextToken, requestTime, schedulerConfig);
   }
 
   @Override
@@ -196,6 +224,7 @@ public class SchedulerConfigurationResponse {
     sb.append("    knownLeader: ").append(toIndentedString(knownLeader)).append("\n");
     sb.append("    lastContact: ").append(toIndentedString(lastContact)).append("\n");
     sb.append("    lastIndex: ").append(toIndentedString(lastIndex)).append("\n");
+    sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
     sb.append("    requestTime: ").append(toIndentedString(requestTime)).append("\n");
     sb.append("    schedulerConfig: ").append(toIndentedString(schedulerConfig)).append("\n");
     sb.append("}");

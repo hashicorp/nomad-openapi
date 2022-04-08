@@ -59,6 +59,9 @@ class SearchResponse {
             if (data.hasOwnProperty('Matches')) {
                 obj['Matches'] = ApiClient.convertToType(data['Matches'], {'String': ['String']});
             }
+            if (data.hasOwnProperty('NextToken')) {
+                obj['NextToken'] = ApiClient.convertToType(data['NextToken'], 'String');
+            }
             if (data.hasOwnProperty('RequestTime')) {
                 obj['RequestTime'] = ApiClient.convertToType(data['RequestTime'], 'Number');
             }
@@ -91,6 +94,11 @@ SearchResponse.prototype['LastIndex'] = undefined;
  * @member {Object.<String, Array.<String>>} Matches
  */
 SearchResponse.prototype['Matches'] = undefined;
+
+/**
+ * @member {String} NextToken
+ */
+SearchResponse.prototype['NextToken'] = undefined;
 
 /**
  * @member {Number} RequestTime

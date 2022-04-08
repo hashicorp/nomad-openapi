@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **consul_token** | **str** |  | [optional] 
 **create_index** | **int** |  | [optional] 
 **datacenters** | **[str]** |  | [optional] 
+**dispatch_idempotency_token** | **str** |  | [optional] 
 **dispatched** | **bool** |  | [optional] 
 **id** | **str** |  | [optional] 
 **job_modify_index** | **int** |  | [optional] 

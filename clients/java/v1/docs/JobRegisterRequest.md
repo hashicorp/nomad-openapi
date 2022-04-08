@@ -8,6 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enforceIndex** | **Boolean** |  |  [optional]
+**evalPriority** | **Integer** |  |  [optional]
 **job** | [**Job**](Job.md) |  |  [optional]
 **jobModifyIndex** | **Integer** |  |  [optional]
 **namespace** | **String** |  |  [optional]

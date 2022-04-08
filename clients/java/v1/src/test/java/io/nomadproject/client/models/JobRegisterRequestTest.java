@@ -50,6 +50,14 @@ public class JobRegisterRequestTest {
     }
 
     /**
+     * Test the property 'evalPriority'
+     */
+    @Test
+    public void evalPriorityTest() {
+        // TODO: test evalPriority
+    }
+
+    /**
      * Test the property 'job'
      */
     @Test

@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Priority** | Pointer to **int32** |  | [optional] 
 **QueuedAllocations** | Pointer to **map[string]int32** |  | [optional] 
 **QuotaLimitReached** | Pointer to **string** |  | [optional] 
+**RelatedEvals** | Pointer to [**[]EvaluationStub**](EvaluationStub.md) |  | [optional] 
 **SnapshotIndex** | Pointer to **int32** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDescription** | Pointer to **string** |  | [optional] 
@@ -576,6 +577,31 @@ SetQuotaLimitReached sets QuotaLimitReached field to given value.
 `func (o *Evaluation) HasQuotaLimitReached() bool`
 
 HasQuotaLimitReached returns a boolean if a field has been set.
+
+### GetRelatedEvals
+
+`func (o *Evaluation) GetRelatedEvals() []EvaluationStub`
+
+GetRelatedEvals returns the RelatedEvals field if non-nil, zero value otherwise.
+
+### GetRelatedEvalsOk
+
+`func (o *Evaluation) GetRelatedEvalsOk() (*[]EvaluationStub, bool)`
+
+GetRelatedEvalsOk returns a tuple with the RelatedEvals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelatedEvals
+
+`func (o *Evaluation) SetRelatedEvals(v []EvaluationStub)`
+
+SetRelatedEvals sets RelatedEvals field to given value.
+
+### HasRelatedEvals
+
+`func (o *Evaluation) HasRelatedEvals() bool`
+
+HasRelatedEvals returns a boolean if a field has been set.
 
 ### GetSnapshotIndex
 

@@ -49,6 +49,10 @@ public class FuzzySearchResponse {
   @SerializedName(SERIALIZED_NAME_MATCHES)
   private Map<String, List<FuzzyMatch>> matches = null;
 
+  public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
+  @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+  private String nextToken;
+
   public static final String SERIALIZED_NAME_REQUEST_TIME = "RequestTime";
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
@@ -160,6 +164,29 @@ public class FuzzySearchResponse {
   }
 
 
+  public FuzzySearchResponse nextToken(String nextToken) {
+    
+    this.nextToken = nextToken;
+    return this;
+  }
+
+   /**
+   * Get nextToken
+   * @return nextToken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getNextToken() {
+    return nextToken;
+  }
+
+
+  public void setNextToken(String nextToken) {
+    this.nextToken = nextToken;
+  }
+
+
   public FuzzySearchResponse requestTime(Long requestTime) {
     
     this.requestTime = requestTime;
@@ -227,13 +254,14 @@ public class FuzzySearchResponse {
         Objects.equals(this.lastContact, fuzzySearchResponse.lastContact) &&
         Objects.equals(this.lastIndex, fuzzySearchResponse.lastIndex) &&
         Objects.equals(this.matches, fuzzySearchResponse.matches) &&
+        Objects.equals(this.nextToken, fuzzySearchResponse.nextToken) &&
         Objects.equals(this.requestTime, fuzzySearchResponse.requestTime) &&
         Objects.equals(this.truncations, fuzzySearchResponse.truncations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(knownLeader, lastContact, lastIndex, matches, requestTime, truncations);
+    return Objects.hash(knownLeader, lastContact, lastIndex, matches, nextToken, requestTime, truncations);
   }
 
   @Override
@@ -244,6 +272,7 @@ public class FuzzySearchResponse {
     sb.append("    lastContact: ").append(toIndentedString(lastContact)).append("\n");
     sb.append("    lastIndex: ").append(toIndentedString(lastIndex)).append("\n");
     sb.append("    matches: ").append(toIndentedString(matches)).append("\n");
+    sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
     sb.append("    requestTime: ").append(toIndentedString(requestTime)).append("\n");
     sb.append("    truncations: ").append(toIndentedString(truncations)).append("\n");
     sb.append("}");

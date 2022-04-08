@@ -60,6 +60,15 @@ class CSINodeInfo {
             if (data.hasOwnProperty('RequiresNodeStageVolume')) {
                 obj['RequiresNodeStageVolume'] = ApiClient.convertToType(data['RequiresNodeStageVolume'], 'Boolean');
             }
+            if (data.hasOwnProperty('SupportsCondition')) {
+                obj['SupportsCondition'] = ApiClient.convertToType(data['SupportsCondition'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsExpand')) {
+                obj['SupportsExpand'] = ApiClient.convertToType(data['SupportsExpand'], 'Boolean');
+            }
+            if (data.hasOwnProperty('SupportsStats')) {
+                obj['SupportsStats'] = ApiClient.convertToType(data['SupportsStats'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -86,6 +95,21 @@ CSINodeInfo.prototype['MaxVolumes'] = undefined;
  * @member {Boolean} RequiresNodeStageVolume
  */
 CSINodeInfo.prototype['RequiresNodeStageVolume'] = undefined;
+
+/**
+ * @member {Boolean} SupportsCondition
+ */
+CSINodeInfo.prototype['SupportsCondition'] = undefined;
+
+/**
+ * @member {Boolean} SupportsExpand
+ */
+CSINodeInfo.prototype['SupportsExpand'] = undefined;
+
+/**
+ * @member {Boolean} SupportsStats
+ */
+CSINodeInfo.prototype['SupportsStats'] = undefined;
 
 
 

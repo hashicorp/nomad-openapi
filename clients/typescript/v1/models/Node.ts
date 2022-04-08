@@ -14,6 +14,7 @@ import { CSIInfo } from './CSIInfo';
 import { DrainMetadata } from './DrainMetadata';
 import { DrainStrategy } from './DrainStrategy';
 import { DriverInfo } from './DriverInfo';
+import { HostNetworkInfo } from './HostNetworkInfo';
 import { HostVolumeInfo } from './HostVolumeInfo';
 import { NodeEvent } from './NodeEvent';
 import { NodeReservedResources } from './NodeReservedResources';
@@ -25,6 +26,7 @@ export class Node {
     'attributes'?: { [key: string]: string; };
     'cSIControllerPlugins'?: { [key: string]: CSIInfo; };
     'cSINodePlugins'?: { [key: string]: CSIInfo; };
+    'cgroupParent'?: string;
     'createIndex'?: number;
     'datacenter'?: string;
     'drain'?: boolean;
@@ -32,6 +34,7 @@ export class Node {
     'drivers'?: { [key: string]: DriverInfo; };
     'events'?: Array<NodeEvent>;
     'hTTPAddr'?: string;
+    'hostNetworks'?: { [key: string]: HostNetworkInfo; };
     'hostVolumes'?: { [key: string]: HostVolumeInfo; };
     'ID'?: string;
     'lastDrain'?: DrainMetadata;
@@ -69,6 +72,12 @@ export class Node {
             "name": "cSINodePlugins",
             "baseName": "CSINodePlugins",
             "type": "{ [key: string]: CSIInfo; }",
+            "format": ""
+        },
+        {
+            "name": "cgroupParent",
+            "baseName": "CgroupParent",
+            "type": "string",
             "format": ""
         },
         {
@@ -111,6 +120,12 @@ export class Node {
             "name": "hTTPAddr",
             "baseName": "HTTPAddr",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "hostNetworks",
+            "baseName": "HostNetworks",
+            "type": "{ [key: string]: HostNetworkInfo; }",
             "format": ""
         },
         {

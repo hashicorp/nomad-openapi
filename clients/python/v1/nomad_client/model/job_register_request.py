@@ -93,6 +93,7 @@ class JobRegisterRequest(ModelNormal):
         lazy_import()
         return {
             'enforce_index': (bool,),  # noqa: E501
+            'eval_priority': (int,),  # noqa: E501
             'job': (Job,),  # noqa: E501
             'job_modify_index': (int,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
@@ -109,6 +110,7 @@ class JobRegisterRequest(ModelNormal):
 
     attribute_map = {
         'enforce_index': 'EnforceIndex',  # noqa: E501
+        'eval_priority': 'EvalPriority',  # noqa: E501
         'job': 'Job',  # noqa: E501
         'job_modify_index': 'JobModifyIndex',  # noqa: E501
         'namespace': 'Namespace',  # noqa: E501
@@ -160,6 +162,7 @@ class JobRegisterRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             enforce_index (bool): [optional]  # noqa: E501
+            eval_priority (int): [optional]  # noqa: E501
             job (Job): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
@@ -249,6 +252,7 @@ class JobRegisterRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             enforce_index (bool): [optional]  # noqa: E501
+            eval_priority (int): [optional]  # noqa: E501
             job (Job): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501

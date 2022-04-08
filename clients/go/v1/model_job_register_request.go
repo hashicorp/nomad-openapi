@@ -18,6 +18,7 @@ import (
 // JobRegisterRequest struct for JobRegisterRequest
 type JobRegisterRequest struct {
 	EnforceIndex *bool `json:"EnforceIndex,omitempty"`
+	EvalPriority *int32 `json:"EvalPriority,omitempty"`
 	Job *Job `json:"Job,omitempty"`
 	JobModifyIndex *int32 `json:"JobModifyIndex,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
@@ -74,6 +75,38 @@ func (o *JobRegisterRequest) HasEnforceIndex() bool {
 // SetEnforceIndex gets a reference to the given bool and assigns it to the EnforceIndex field.
 func (o *JobRegisterRequest) SetEnforceIndex(v bool) {
 	o.EnforceIndex = &v
+}
+
+// GetEvalPriority returns the EvalPriority field value if set, zero value otherwise.
+func (o *JobRegisterRequest) GetEvalPriority() int32 {
+	if o == nil || o.EvalPriority == nil {
+		var ret int32
+		return ret
+	}
+	return *o.EvalPriority
+}
+
+// GetEvalPriorityOk returns a tuple with the EvalPriority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRegisterRequest) GetEvalPriorityOk() (*int32, bool) {
+	if o == nil || o.EvalPriority == nil {
+		return nil, false
+	}
+	return o.EvalPriority, true
+}
+
+// HasEvalPriority returns a boolean if a field has been set.
+func (o *JobRegisterRequest) HasEvalPriority() bool {
+	if o != nil && o.EvalPriority != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEvalPriority gets a reference to the given int32 and assigns it to the EvalPriority field.
+func (o *JobRegisterRequest) SetEvalPriority(v int32) {
+	o.EvalPriority = &v
 }
 
 // GetJob returns the Job field value if set, zero value otherwise.
@@ -304,6 +337,9 @@ func (o JobRegisterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.EnforceIndex != nil {
 		toSerialize["EnforceIndex"] = o.EnforceIndex
+	}
+	if o.EvalPriority != nil {
+		toSerialize["EvalPriority"] = o.EvalPriority
 	}
 	if o.Job != nil {
 		toSerialize["Job"] = o.Job

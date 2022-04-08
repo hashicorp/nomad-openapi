@@ -48,6 +48,10 @@ with nomad_client.ApiClient(configuration) as api_client:
         allow_stale=True,
         auth_token="auth_token_example",
         context="context_example",
+        filter="filter_example",
+        headers={
+            "key": "key_example",
+        },
         namespace="namespace_example",
         next_token="next_token_example",
         params={
@@ -56,6 +60,7 @@ with nomad_client.ApiClient(configuration) as api_client:
         per_page=1,
         prefix="prefix_example",
         region="region_example",
+        reverse=True,
         text="text_example",
         wait_index=0,
         wait_time=1,
@@ -167,6 +172,10 @@ with nomad_client.ApiClient(configuration) as api_client:
         allow_stale=True,
         auth_token="auth_token_example",
         context="context_example",
+        filter="filter_example",
+        headers={
+            "key": "key_example",
+        },
         namespace="namespace_example",
         next_token="next_token_example",
         params={
@@ -175,6 +184,7 @@ with nomad_client.ApiClient(configuration) as api_client:
         per_page=1,
         prefix="prefix_example",
         region="region_example",
+        reverse=True,
         wait_index=0,
         wait_time=1,
     ) # SearchRequest | 

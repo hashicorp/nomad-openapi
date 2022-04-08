@@ -15,6 +15,7 @@
 | **source_path** | **String** |  | [optional] |
 | **splay** | **Integer** |  | [optional] |
 | **vault_grace** | **Integer** |  | [optional] |
+| **wait** | [**WaitConfig**](WaitConfig.md) |  | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = NomadClient::Template.new(
   right_delim: null,
   source_path: null,
   splay: null,
-  vault_grace: null
+  vault_grace: null,
+  wait: null
 )
 ```
 

@@ -96,6 +96,7 @@ class FuzzySearchResponse(ModelNormal):
             'last_contact': (int,),  # noqa: E501
             'last_index': (int,),  # noqa: E501
             'matches': ({str: ([FuzzyMatch],)},),  # noqa: E501
+            'next_token': (str,),  # noqa: E501
             'request_time': (int,),  # noqa: E501
             'truncations': ({str: (bool,)},),  # noqa: E501
         }
@@ -110,6 +111,7 @@ class FuzzySearchResponse(ModelNormal):
         'last_contact': 'LastContact',  # noqa: E501
         'last_index': 'LastIndex',  # noqa: E501
         'matches': 'Matches',  # noqa: E501
+        'next_token': 'NextToken',  # noqa: E501
         'request_time': 'RequestTime',  # noqa: E501
         'truncations': 'Truncations',  # noqa: E501
     }
@@ -159,6 +161,7 @@ class FuzzySearchResponse(ModelNormal):
             last_contact (int): [optional]  # noqa: E501
             last_index (int): [optional]  # noqa: E501
             matches ({str: ([FuzzyMatch],)}): [optional]  # noqa: E501
+            next_token (str): [optional]  # noqa: E501
             request_time (int): [optional]  # noqa: E501
             truncations ({str: (bool,)}): [optional]  # noqa: E501
         """
@@ -246,6 +249,7 @@ class FuzzySearchResponse(ModelNormal):
             last_contact (int): [optional]  # noqa: E501
             last_index (int): [optional]  # noqa: E501
             matches ({str: ([FuzzyMatch],)}): [optional]  # noqa: E501
+            next_token (str): [optional]  # noqa: E501
             request_time (int): [optional]  # noqa: E501
             truncations ({str: (bool,)}): [optional]  # noqa: E501
         """

@@ -17,6 +17,8 @@ module NomadClient
   class JobRegisterRequest
     attr_accessor :enforce_index
 
+    attr_accessor :eval_priority
+
     attr_accessor :job
 
     attr_accessor :job_modify_index
@@ -35,6 +37,7 @@ module NomadClient
     def self.attribute_map
       {
         :'enforce_index' => :'EnforceIndex',
+        :'eval_priority' => :'EvalPriority',
         :'job' => :'Job',
         :'job_modify_index' => :'JobModifyIndex',
         :'namespace' => :'Namespace',
@@ -54,6 +57,7 @@ module NomadClient
     def self.openapi_types
       {
         :'enforce_index' => :'Boolean',
+        :'eval_priority' => :'Integer',
         :'job' => :'Job',
         :'job_modify_index' => :'Integer',
         :'namespace' => :'String',
@@ -87,6 +91,10 @@ module NomadClient
 
       if attributes.key?(:'enforce_index')
         self.enforce_index = attributes[:'enforce_index']
+      end
+
+      if attributes.key?(:'eval_priority')
+        self.eval_priority = attributes[:'eval_priority']
       end
 
       if attributes.key?(:'job')
@@ -161,6 +169,7 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           enforce_index == o.enforce_index &&
+          eval_priority == o.eval_priority &&
           job == o.job &&
           job_modify_index == o.job_modify_index &&
           namespace == o.namespace &&
@@ -179,7 +188,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [enforce_index, job, job_modify_index, namespace, policy_override, preserve_counts, region, secret_id].hash
+      [enforce_index, eval_priority, job, job_modify_index, namespace, policy_override, preserve_counts, region, secret_id].hash
     end
 
     # Builds the object from hash

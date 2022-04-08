@@ -19,6 +19,8 @@ pub struct Node {
     pub csi_controller_plugins: Option<::std::collections::HashMap<String, crate::models::CsiInfo>>,
     #[serde(rename = "CSINodePlugins", skip_serializing_if = "Option::is_none")]
     pub csi_node_plugins: Option<::std::collections::HashMap<String, crate::models::CsiInfo>>,
+    #[serde(rename = "CgroupParent", skip_serializing_if = "Option::is_none")]
+    pub cgroup_parent: Option<String>,
     #[serde(rename = "CreateIndex", skip_serializing_if = "Option::is_none")]
     pub create_index: Option<i32>,
     #[serde(rename = "Datacenter", skip_serializing_if = "Option::is_none")]
@@ -33,6 +35,8 @@ pub struct Node {
     pub events: Option<Vec<crate::models::NodeEvent>>,
     #[serde(rename = "HTTPAddr", skip_serializing_if = "Option::is_none")]
     pub http_addr: Option<String>,
+    #[serde(rename = "HostNetworks", skip_serializing_if = "Option::is_none")]
+    pub host_networks: Option<::std::collections::HashMap<String, crate::models::HostNetworkInfo>>,
     #[serde(rename = "HostVolumes", skip_serializing_if = "Option::is_none")]
     pub host_volumes: Option<::std::collections::HashMap<String, crate::models::HostVolumeInfo>>,
     #[serde(rename = "ID", skip_serializing_if = "Option::is_none")]
@@ -75,6 +79,7 @@ impl Node {
             attributes: None,
             csi_controller_plugins: None,
             csi_node_plugins: None,
+            cgroup_parent: None,
             create_index: None,
             datacenter: None,
             drain: None,
@@ -82,6 +87,7 @@ impl Node {
             drivers: None,
             events: None,
             http_addr: None,
+            host_networks: None,
             host_volumes: None,
             ID: None,
             last_drain: None,

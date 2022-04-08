@@ -7,12 +7,15 @@ Name | Type | Description | Notes
 **AllowStale** | Pointer to **bool** |  | [optional] 
 **AuthToken** | Pointer to **string** |  | [optional] 
 **Context** | Pointer to **string** |  | [optional] 
+**Filter** | Pointer to **string** |  | [optional] 
+**Headers** | Pointer to **map[string]string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **NextToken** | Pointer to **string** |  | [optional] 
 **Params** | Pointer to **map[string]string** |  | [optional] 
 **PerPage** | Pointer to **int32** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
+**Reverse** | Pointer to **bool** |  | [optional] 
 **Text** | Pointer to **string** |  | [optional] 
 **WaitIndex** | Pointer to **int32** |  | [optional] 
 **WaitTime** | Pointer to **int64** |  | [optional] 
@@ -110,6 +113,56 @@ SetContext sets Context field to given value.
 `func (o *FuzzySearchRequest) HasContext() bool`
 
 HasContext returns a boolean if a field has been set.
+
+### GetFilter
+
+`func (o *FuzzySearchRequest) GetFilter() string`
+
+GetFilter returns the Filter field if non-nil, zero value otherwise.
+
+### GetFilterOk
+
+`func (o *FuzzySearchRequest) GetFilterOk() (*string, bool)`
+
+GetFilterOk returns a tuple with the Filter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilter
+
+`func (o *FuzzySearchRequest) SetFilter(v string)`
+
+SetFilter sets Filter field to given value.
+
+### HasFilter
+
+`func (o *FuzzySearchRequest) HasFilter() bool`
+
+HasFilter returns a boolean if a field has been set.
+
+### GetHeaders
+
+`func (o *FuzzySearchRequest) GetHeaders() map[string]string`
+
+GetHeaders returns the Headers field if non-nil, zero value otherwise.
+
+### GetHeadersOk
+
+`func (o *FuzzySearchRequest) GetHeadersOk() (*map[string]string, bool)`
+
+GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeaders
+
+`func (o *FuzzySearchRequest) SetHeaders(v map[string]string)`
+
+SetHeaders sets Headers field to given value.
+
+### HasHeaders
+
+`func (o *FuzzySearchRequest) HasHeaders() bool`
+
+HasHeaders returns a boolean if a field has been set.
 
 ### GetNamespace
 
@@ -260,6 +313,31 @@ SetRegion sets Region field to given value.
 `func (o *FuzzySearchRequest) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetReverse
+
+`func (o *FuzzySearchRequest) GetReverse() bool`
+
+GetReverse returns the Reverse field if non-nil, zero value otherwise.
+
+### GetReverseOk
+
+`func (o *FuzzySearchRequest) GetReverseOk() (*bool, bool)`
+
+GetReverseOk returns a tuple with the Reverse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReverse
+
+`func (o *FuzzySearchRequest) SetReverse(v bool)`
+
+SetReverse sets Reverse field to given value.
+
+### HasReverse
+
+`func (o *FuzzySearchRequest) HasReverse() bool`
+
+HasReverse returns a boolean if a field has been set.
 
 ### GetText
 

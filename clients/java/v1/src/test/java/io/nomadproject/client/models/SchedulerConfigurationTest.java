@@ -74,6 +74,14 @@ public class SchedulerConfigurationTest {
     }
 
     /**
+     * Test the property 'rejectJobRegistration'
+     */
+    @Test
+    public void rejectJobRegistrationTest() {
+        // TODO: test rejectJobRegistration
+    }
+
+    /**
      * Test the property 'schedulerAlgorithm'
      */
     @Test

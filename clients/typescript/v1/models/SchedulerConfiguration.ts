@@ -18,6 +18,7 @@ export class SchedulerConfiguration {
     'memoryOversubscriptionEnabled'?: boolean;
     'modifyIndex'?: number;
     'preemptionConfig'?: PreemptionConfig;
+    'rejectJobRegistration'?: boolean;
     'schedulerAlgorithm'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -45,6 +46,12 @@ export class SchedulerConfiguration {
             "name": "preemptionConfig",
             "baseName": "PreemptionConfig",
             "type": "PreemptionConfig",
+            "format": ""
+        },
+        {
+            "name": "rejectJobRegistration",
+            "baseName": "RejectJobRegistration",
+            "type": "boolean",
             "format": ""
         },
         {

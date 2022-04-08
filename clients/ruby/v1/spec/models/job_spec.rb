@@ -67,6 +67,12 @@ describe NomadClient::Job do
     end
   end
 
+  describe 'test attribute "dispatch_idempotency_token"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "dispatched"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

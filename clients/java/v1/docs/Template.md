@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **sourcePath** | **String** |  |  [optional]
 **splay** | **Long** |  |  [optional]
 **vaultGrace** | **Long** |  |  [optional]
+**wait** | [**WaitConfig**](WaitConfig.md) |  |  [optional]
 
 
 

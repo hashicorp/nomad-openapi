@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enforce_index** | Option<**bool**> |  | [optional]
+**eval_priority** | Option<**i32**> |  | [optional]
 **job** | Option<[**crate::models::Job**](Job.md)> |  | [optional]
 **job_modify_index** | Option<**i32**> |  | [optional]
 **namespace** | Option<**String**> |  | [optional]

@@ -25,6 +25,12 @@ describe NomadClient::Namespace do
       expect(instance).to be_instance_of(NomadClient::Namespace)
     end
   end
+  describe 'test attribute "capabilities"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "create_index"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -32,6 +38,12 @@ describe NomadClient::Namespace do
   end
 
   describe 'test attribute "description"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "meta"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

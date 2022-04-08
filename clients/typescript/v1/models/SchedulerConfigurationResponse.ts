@@ -17,6 +17,7 @@ export class SchedulerConfigurationResponse {
     'knownLeader'?: boolean;
     'lastContact'?: number;
     'lastIndex'?: number;
+    'nextToken'?: string;
     'requestTime'?: number;
     'schedulerConfig'?: SchedulerConfiguration;
 
@@ -39,6 +40,12 @@ export class SchedulerConfigurationResponse {
             "name": "lastIndex",
             "baseName": "LastIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "nextToken",
+            "baseName": "NextToken",
+            "type": "string",
             "format": ""
         },
         {

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **consul** | [**Consul**](Consul.md) |  |  [optional]
 **count** | **Integer** |  |  [optional]
 **ephemeralDisk** | [**EphemeralDisk**](EphemeralDisk.md) |  |  [optional]
+**maxClientDisconnect** | **Long** |  |  [optional]
 **meta** | **Map&lt;String, String&gt;** |  |  [optional]
 **migrate** | [**MigrateStrategy**](MigrateStrategy.md) |  |  [optional]
 **name** | **String** |  |  [optional]

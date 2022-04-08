@@ -21,6 +21,12 @@ pub struct CsiNodeInfo {
     pub max_volumes: Option<i64>,
     #[serde(rename = "RequiresNodeStageVolume", skip_serializing_if = "Option::is_none")]
     pub requires_node_stage_volume: Option<bool>,
+    #[serde(rename = "SupportsCondition", skip_serializing_if = "Option::is_none")]
+    pub supports_condition: Option<bool>,
+    #[serde(rename = "SupportsExpand", skip_serializing_if = "Option::is_none")]
+    pub supports_expand: Option<bool>,
+    #[serde(rename = "SupportsStats", skip_serializing_if = "Option::is_none")]
+    pub supports_stats: Option<bool>,
 }
 
 impl CsiNodeInfo {
@@ -30,6 +36,9 @@ impl CsiNodeInfo {
             ID: None,
             max_volumes: None,
             requires_node_stage_volume: None,
+            supports_condition: None,
+            supports_expand: None,
+            supports_stats: None,
         }
     }
 }

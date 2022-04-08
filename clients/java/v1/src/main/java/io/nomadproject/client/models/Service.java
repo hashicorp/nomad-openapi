@@ -84,6 +84,10 @@ public class Service {
   @SerializedName(SERIALIZED_NAME_PORT_LABEL)
   private String portLabel;
 
+  public static final String SERIALIZED_NAME_PROVIDER = "Provider";
+  @SerializedName(SERIALIZED_NAME_PROVIDER)
+  private String provider;
+
   public static final String SERIALIZED_NAME_TAGS = "Tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
@@ -401,6 +405,29 @@ public class Service {
   }
 
 
+  public Service provider(String provider) {
+    
+    this.provider = provider;
+    return this;
+  }
+
+   /**
+   * Get provider
+   * @return provider
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getProvider() {
+    return provider;
+  }
+
+
+  public void setProvider(String provider) {
+    this.provider = provider;
+  }
+
+
   public Service tags(List<String> tags) {
     
     this.tags = tags;
@@ -476,13 +503,14 @@ public class Service {
         Objects.equals(this.name, service.name) &&
         Objects.equals(this.onUpdate, service.onUpdate) &&
         Objects.equals(this.portLabel, service.portLabel) &&
+        Objects.equals(this.provider, service.provider) &&
         Objects.equals(this.tags, service.tags) &&
         Objects.equals(this.taskName, service.taskName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, id, meta, name, onUpdate, portLabel, tags, taskName);
+    return Objects.hash(addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, id, meta, name, onUpdate, portLabel, provider, tags, taskName);
   }
 
   @Override
@@ -501,6 +529,7 @@ public class Service {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onUpdate: ").append(toIndentedString(onUpdate)).append("\n");
     sb.append("    portLabel: ").append(toIndentedString(portLabel)).append("\n");
+    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    taskName: ").append(toIndentedString(taskName)).append("\n");
     sb.append("}");

@@ -22,6 +22,7 @@ import io.nomadproject.client.models.CSIInfo;
 import io.nomadproject.client.models.DrainMetadata;
 import io.nomadproject.client.models.DrainStrategy;
 import io.nomadproject.client.models.DriverInfo;
+import io.nomadproject.client.models.HostNetworkInfo;
 import io.nomadproject.client.models.HostVolumeInfo;
 import io.nomadproject.client.models.NodeEvent;
 import io.nomadproject.client.models.NodeReservedResources;
@@ -78,6 +79,14 @@ public class NodeTest {
     }
 
     /**
+     * Test the property 'cgroupParent'
+     */
+    @Test
+    public void cgroupParentTest() {
+        // TODO: test cgroupParent
+    }
+
+    /**
      * Test the property 'createIndex'
      */
     @Test
@@ -131,6 +140,14 @@ public class NodeTest {
     @Test
     public void htTPAddrTest() {
         // TODO: test htTPAddr
+    }
+
+    /**
+     * Test the property 'hostNetworks'
+     */
+    @Test
+    public void hostNetworksTest() {
+        // TODO: test hostNetworks
     }
 
     /**

@@ -22,6 +22,7 @@ import io.nomadproject.client.models.Allocation;
 import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.CSIMountOptions;
 import io.nomadproject.client.models.CSITopology;
+import io.nomadproject.client.models.CSITopologyRequest;
 import io.nomadproject.client.models.CSIVolumeCapability;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -256,6 +257,14 @@ public class CSIVolumeTest {
     @Test
     public void requestedCapacityMinTest() {
         // TODO: test requestedCapacityMin
+    }
+
+    /**
+     * Test the property 'requestedTopologies'
+     */
+    @Test
+    public void requestedTopologiesTest() {
+        // TODO: test requestedTopologies
     }
 
     /**

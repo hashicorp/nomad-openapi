@@ -35,6 +35,7 @@ def lazy_import():
     from nomad_client.model.drain_metadata import DrainMetadata
     from nomad_client.model.drain_strategy import DrainStrategy
     from nomad_client.model.driver_info import DriverInfo
+    from nomad_client.model.host_network_info import HostNetworkInfo
     from nomad_client.model.host_volume_info import HostVolumeInfo
     from nomad_client.model.node_event import NodeEvent
     from nomad_client.model.node_reserved_resources import NodeReservedResources
@@ -44,6 +45,7 @@ def lazy_import():
     globals()['DrainMetadata'] = DrainMetadata
     globals()['DrainStrategy'] = DrainStrategy
     globals()['DriverInfo'] = DriverInfo
+    globals()['HostNetworkInfo'] = HostNetworkInfo
     globals()['HostVolumeInfo'] = HostVolumeInfo
     globals()['NodeEvent'] = NodeEvent
     globals()['NodeReservedResources'] = NodeReservedResources
@@ -115,6 +117,7 @@ class Node(ModelNormal):
             'attributes': ({str: (str,)},),  # noqa: E501
             'csi_controller_plugins': ({str: (CSIInfo,)},),  # noqa: E501
             'csi_node_plugins': ({str: (CSIInfo,)},),  # noqa: E501
+            'cgroup_parent': (str,),  # noqa: E501
             'create_index': (int,),  # noqa: E501
             'datacenter': (str,),  # noqa: E501
             'drain': (bool,),  # noqa: E501
@@ -122,6 +125,7 @@ class Node(ModelNormal):
             'drivers': ({str: (DriverInfo,)},),  # noqa: E501
             'events': ([NodeEvent],),  # noqa: E501
             'http_addr': (str,),  # noqa: E501
+            'host_networks': ({str: (HostNetworkInfo,)},),  # noqa: E501
             'host_volumes': ({str: (HostVolumeInfo,)},),  # noqa: E501
             'id': (str,),  # noqa: E501
             'last_drain': (DrainMetadata,),  # noqa: E501
@@ -150,6 +154,7 @@ class Node(ModelNormal):
         'attributes': 'Attributes',  # noqa: E501
         'csi_controller_plugins': 'CSIControllerPlugins',  # noqa: E501
         'csi_node_plugins': 'CSINodePlugins',  # noqa: E501
+        'cgroup_parent': 'CgroupParent',  # noqa: E501
         'create_index': 'CreateIndex',  # noqa: E501
         'datacenter': 'Datacenter',  # noqa: E501
         'drain': 'Drain',  # noqa: E501
@@ -157,6 +162,7 @@ class Node(ModelNormal):
         'drivers': 'Drivers',  # noqa: E501
         'events': 'Events',  # noqa: E501
         'http_addr': 'HTTPAddr',  # noqa: E501
+        'host_networks': 'HostNetworks',  # noqa: E501
         'host_volumes': 'HostVolumes',  # noqa: E501
         'id': 'ID',  # noqa: E501
         'last_drain': 'LastDrain',  # noqa: E501
@@ -220,6 +226,7 @@ class Node(ModelNormal):
             attributes ({str: (str,)}): [optional]  # noqa: E501
             csi_controller_plugins ({str: (CSIInfo,)}): [optional]  # noqa: E501
             csi_node_plugins ({str: (CSIInfo,)}): [optional]  # noqa: E501
+            cgroup_parent (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             drain (bool): [optional]  # noqa: E501
@@ -227,6 +234,7 @@ class Node(ModelNormal):
             drivers ({str: (DriverInfo,)}): [optional]  # noqa: E501
             events ([NodeEvent]): [optional]  # noqa: E501
             http_addr (str): [optional]  # noqa: E501
+            host_networks ({str: (HostNetworkInfo,)}): [optional]  # noqa: E501
             host_volumes ({str: (HostVolumeInfo,)}): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             last_drain (DrainMetadata): [optional]  # noqa: E501
@@ -328,6 +336,7 @@ class Node(ModelNormal):
             attributes ({str: (str,)}): [optional]  # noqa: E501
             csi_controller_plugins ({str: (CSIInfo,)}): [optional]  # noqa: E501
             csi_node_plugins ({str: (CSIInfo,)}): [optional]  # noqa: E501
+            cgroup_parent (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             drain (bool): [optional]  # noqa: E501
@@ -335,6 +344,7 @@ class Node(ModelNormal):
             drivers ({str: (DriverInfo,)}): [optional]  # noqa: E501
             events ([NodeEvent]): [optional]  # noqa: E501
             http_addr (str): [optional]  # noqa: E501
+            host_networks ({str: (HostNetworkInfo,)}): [optional]  # noqa: E501
             host_volumes ({str: (HostVolumeInfo,)}): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             last_drain (DrainMetadata): [optional]  # noqa: E501

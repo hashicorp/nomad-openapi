@@ -57,6 +57,8 @@ module NomadClient
 
     attr_accessor :quota_limit_reached
 
+    attr_accessor :related_evals
+
     attr_accessor :snapshot_index
 
     attr_accessor :status
@@ -95,6 +97,7 @@ module NomadClient
         :'priority' => :'Priority',
         :'queued_allocations' => :'QueuedAllocations',
         :'quota_limit_reached' => :'QuotaLimitReached',
+        :'related_evals' => :'RelatedEvals',
         :'snapshot_index' => :'SnapshotIndex',
         :'status' => :'Status',
         :'status_description' => :'StatusDescription',
@@ -134,6 +137,7 @@ module NomadClient
         :'priority' => :'Integer',
         :'queued_allocations' => :'Hash<String, Integer>',
         :'quota_limit_reached' => :'String',
+        :'related_evals' => :'Array<EvaluationStub>',
         :'snapshot_index' => :'Integer',
         :'status' => :'String',
         :'status_description' => :'String',
@@ -253,6 +257,12 @@ module NomadClient
 
       if attributes.key?(:'quota_limit_reached')
         self.quota_limit_reached = attributes[:'quota_limit_reached']
+      end
+
+      if attributes.key?(:'related_evals')
+        if (value = attributes[:'related_evals']).is_a?(Array)
+          self.related_evals = value
+        end
       end
 
       if attributes.key?(:'snapshot_index')
@@ -443,6 +453,7 @@ module NomadClient
           priority == o.priority &&
           queued_allocations == o.queued_allocations &&
           quota_limit_reached == o.quota_limit_reached &&
+          related_evals == o.related_evals &&
           snapshot_index == o.snapshot_index &&
           status == o.status &&
           status_description == o.status_description &&
@@ -461,7 +472,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [annotate_plan, blocked_eval, class_eligibility, create_index, create_time, deployment_id, escaped_computed_class, failed_tg_allocs, id, job_id, job_modify_index, modify_index, modify_time, namespace, next_eval, node_id, node_modify_index, previous_eval, priority, queued_allocations, quota_limit_reached, snapshot_index, status, status_description, triggered_by, type, wait, wait_until].hash
+      [annotate_plan, blocked_eval, class_eligibility, create_index, create_time, deployment_id, escaped_computed_class, failed_tg_allocs, id, job_id, job_modify_index, modify_index, modify_time, namespace, next_eval, node_id, node_modify_index, previous_eval, priority, queued_allocations, quota_limit_reached, related_evals, snapshot_index, status, status_description, triggered_by, type, wait, wait_until].hash
     end
 
     # Builds the object from hash

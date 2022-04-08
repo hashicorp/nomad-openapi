@@ -24,6 +24,7 @@ import io.nomadproject.client.models.CSIInfo;
 import io.nomadproject.client.models.DrainMetadata;
 import io.nomadproject.client.models.DrainStrategy;
 import io.nomadproject.client.models.DriverInfo;
+import io.nomadproject.client.models.HostNetworkInfo;
 import io.nomadproject.client.models.HostVolumeInfo;
 import io.nomadproject.client.models.NodeEvent;
 import io.nomadproject.client.models.NodeReservedResources;
@@ -54,6 +55,10 @@ public class Node {
   @SerializedName(SERIALIZED_NAME_CS_I_NODE_PLUGINS)
   private Map<String, CSIInfo> csINodePlugins = null;
 
+  public static final String SERIALIZED_NAME_CGROUP_PARENT = "CgroupParent";
+  @SerializedName(SERIALIZED_NAME_CGROUP_PARENT)
+  private String cgroupParent;
+
   public static final String SERIALIZED_NAME_CREATE_INDEX = "CreateIndex";
   @SerializedName(SERIALIZED_NAME_CREATE_INDEX)
   private Integer createIndex;
@@ -81,6 +86,10 @@ public class Node {
   public static final String SERIALIZED_NAME_HT_T_P_ADDR = "HTTPAddr";
   @SerializedName(SERIALIZED_NAME_HT_T_P_ADDR)
   private String htTPAddr;
+
+  public static final String SERIALIZED_NAME_HOST_NETWORKS = "HostNetworks";
+  @SerializedName(SERIALIZED_NAME_HOST_NETWORKS)
+  private Map<String, HostNetworkInfo> hostNetworks = null;
 
   public static final String SERIALIZED_NAME_HOST_VOLUMES = "HostVolumes";
   @SerializedName(SERIALIZED_NAME_HOST_VOLUMES)
@@ -241,6 +250,29 @@ public class Node {
 
   public void setCsINodePlugins(Map<String, CSIInfo> csINodePlugins) {
     this.csINodePlugins = csINodePlugins;
+  }
+
+
+  public Node cgroupParent(String cgroupParent) {
+    
+    this.cgroupParent = cgroupParent;
+    return this;
+  }
+
+   /**
+   * Get cgroupParent
+   * @return cgroupParent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCgroupParent() {
+    return cgroupParent;
+  }
+
+
+  public void setCgroupParent(String cgroupParent) {
+    this.cgroupParent = cgroupParent;
   }
 
 
@@ -420,6 +452,37 @@ public class Node {
 
   public void setHtTPAddr(String htTPAddr) {
     this.htTPAddr = htTPAddr;
+  }
+
+
+  public Node hostNetworks(Map<String, HostNetworkInfo> hostNetworks) {
+    
+    this.hostNetworks = hostNetworks;
+    return this;
+  }
+
+  public Node putHostNetworksItem(String key, HostNetworkInfo hostNetworksItem) {
+    if (this.hostNetworks == null) {
+      this.hostNetworks = new HashMap<String, HostNetworkInfo>();
+    }
+    this.hostNetworks.put(key, hostNetworksItem);
+    return this;
+  }
+
+   /**
+   * Get hostNetworks
+   * @return hostNetworks
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, HostNetworkInfo> getHostNetworks() {
+    return hostNetworks;
+  }
+
+
+  public void setHostNetworks(Map<String, HostNetworkInfo> hostNetworks) {
+    this.hostNetworks = hostNetworks;
   }
 
 
@@ -852,6 +915,7 @@ public class Node {
     return Objects.equals(this.attributes, node.attributes) &&
         Objects.equals(this.csIControllerPlugins, node.csIControllerPlugins) &&
         Objects.equals(this.csINodePlugins, node.csINodePlugins) &&
+        Objects.equals(this.cgroupParent, node.cgroupParent) &&
         Objects.equals(this.createIndex, node.createIndex) &&
         Objects.equals(this.datacenter, node.datacenter) &&
         Objects.equals(this.drain, node.drain) &&
@@ -859,6 +923,7 @@ public class Node {
         Objects.equals(this.drivers, node.drivers) &&
         Objects.equals(this.events, node.events) &&
         Objects.equals(this.htTPAddr, node.htTPAddr) &&
+        Objects.equals(this.hostNetworks, node.hostNetworks) &&
         Objects.equals(this.hostVolumes, node.hostVolumes) &&
         Objects.equals(this.ID, node.ID) &&
         Objects.equals(this.lastDrain, node.lastDrain) &&
@@ -880,7 +945,7 @@ public class Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, csIControllerPlugins, csINodePlugins, createIndex, datacenter, drain, drainStrategy, drivers, events, htTPAddr, hostVolumes, ID, lastDrain, links, meta, modifyIndex, name, nodeClass, nodeResources, reserved, reservedResources, resources, schedulingEligibility, status, statusDescription, statusUpdatedAt, tlSEnabled);
+    return Objects.hash(attributes, csIControllerPlugins, csINodePlugins, cgroupParent, createIndex, datacenter, drain, drainStrategy, drivers, events, htTPAddr, hostNetworks, hostVolumes, ID, lastDrain, links, meta, modifyIndex, name, nodeClass, nodeResources, reserved, reservedResources, resources, schedulingEligibility, status, statusDescription, statusUpdatedAt, tlSEnabled);
   }
 
   @Override
@@ -890,6 +955,7 @@ public class Node {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    csIControllerPlugins: ").append(toIndentedString(csIControllerPlugins)).append("\n");
     sb.append("    csINodePlugins: ").append(toIndentedString(csINodePlugins)).append("\n");
+    sb.append("    cgroupParent: ").append(toIndentedString(cgroupParent)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    datacenter: ").append(toIndentedString(datacenter)).append("\n");
     sb.append("    drain: ").append(toIndentedString(drain)).append("\n");
@@ -897,6 +963,7 @@ public class Node {
     sb.append("    drivers: ").append(toIndentedString(drivers)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    htTPAddr: ").append(toIndentedString(htTPAddr)).append("\n");
+    sb.append("    hostNetworks: ").append(toIndentedString(hostNetworks)).append("\n");
     sb.append("    hostVolumes: ").append(toIndentedString(hostVolumes)).append("\n");
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    lastDrain: ").append(toIndentedString(lastDrain)).append("\n");

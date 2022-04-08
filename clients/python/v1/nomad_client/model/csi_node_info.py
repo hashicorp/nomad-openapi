@@ -92,6 +92,9 @@ class CSINodeInfo(ModelNormal):
             'id': (str,),  # noqa: E501
             'max_volumes': (int,),  # noqa: E501
             'requires_node_stage_volume': (bool,),  # noqa: E501
+            'supports_condition': (bool,),  # noqa: E501
+            'supports_expand': (bool,),  # noqa: E501
+            'supports_stats': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -104,6 +107,9 @@ class CSINodeInfo(ModelNormal):
         'id': 'ID',  # noqa: E501
         'max_volumes': 'MaxVolumes',  # noqa: E501
         'requires_node_stage_volume': 'RequiresNodeStageVolume',  # noqa: E501
+        'supports_condition': 'SupportsCondition',  # noqa: E501
+        'supports_expand': 'SupportsExpand',  # noqa: E501
+        'supports_stats': 'SupportsStats',  # noqa: E501
     }
 
     read_only_vars = {
@@ -151,6 +157,9 @@ class CSINodeInfo(ModelNormal):
             id (str): [optional]  # noqa: E501
             max_volumes (int): [optional]  # noqa: E501
             requires_node_stage_volume (bool): [optional]  # noqa: E501
+            supports_condition (bool): [optional]  # noqa: E501
+            supports_expand (bool): [optional]  # noqa: E501
+            supports_stats (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -236,6 +245,9 @@ class CSINodeInfo(ModelNormal):
             id (str): [optional]  # noqa: E501
             max_volumes (int): [optional]  # noqa: E501
             requires_node_stage_volume (bool): [optional]  # noqa: E501
+            supports_condition (bool): [optional]  # noqa: E501
+            supports_expand (bool): [optional]  # noqa: E501
+            supports_stats (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

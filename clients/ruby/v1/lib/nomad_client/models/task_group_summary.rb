@@ -27,6 +27,8 @@ module NomadClient
 
     attr_accessor :starting
 
+    attr_accessor :unknown
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +37,8 @@ module NomadClient
         :'lost' => :'Lost',
         :'queued' => :'Queued',
         :'running' => :'Running',
-        :'starting' => :'Starting'
+        :'starting' => :'Starting',
+        :'unknown' => :'Unknown'
       }
     end
 
@@ -52,7 +55,8 @@ module NomadClient
         :'lost' => :'Integer',
         :'queued' => :'Integer',
         :'running' => :'Integer',
-        :'starting' => :'Integer'
+        :'starting' => :'Integer',
+        :'unknown' => :'Integer'
       }
     end
 
@@ -100,6 +104,10 @@ module NomadClient
       if attributes.key?(:'starting')
         self.starting = attributes[:'starting']
       end
+
+      if attributes.key?(:'unknown')
+        self.unknown = attributes[:'unknown']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -125,7 +133,8 @@ module NomadClient
           lost == o.lost &&
           queued == o.queued &&
           running == o.running &&
-          starting == o.starting
+          starting == o.starting &&
+          unknown == o.unknown
     end
 
     # @see the `==` method
@@ -137,7 +146,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [complete, failed, lost, queued, running, starting].hash
+      [complete, failed, lost, queued, running, starting, unknown].hash
     end
 
     # Builds the object from hash

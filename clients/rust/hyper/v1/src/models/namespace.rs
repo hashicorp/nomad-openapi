@@ -13,10 +13,14 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Namespace {
+    #[serde(rename = "Capabilities", skip_serializing_if = "Option::is_none")]
+    pub capabilities: Option<Box<crate::models::NamespaceCapabilities>>,
     #[serde(rename = "CreateIndex", skip_serializing_if = "Option::is_none")]
     pub create_index: Option<i32>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(rename = "Meta", skip_serializing_if = "Option::is_none")]
+    pub meta: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
     pub modify_index: Option<i32>,
     #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
@@ -28,8 +32,10 @@ pub struct Namespace {
 impl Namespace {
     pub fn new() -> Namespace {
         Namespace {
+            capabilities: None,
             create_index: None,
             description: None,
+            meta: None,
             modify_index: None,
             name: None,
             quota: None,

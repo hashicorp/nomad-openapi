@@ -25,6 +25,8 @@ module NomadClient
 
     attr_accessor :ephemeral_disk
 
+    attr_accessor :max_client_disconnect
+
     attr_accessor :meta
 
     attr_accessor :migrate
@@ -61,6 +63,7 @@ module NomadClient
         :'consul' => :'Consul',
         :'count' => :'Count',
         :'ephemeral_disk' => :'EphemeralDisk',
+        :'max_client_disconnect' => :'MaxClientDisconnect',
         :'meta' => :'Meta',
         :'migrate' => :'Migrate',
         :'name' => :'Name',
@@ -91,6 +94,7 @@ module NomadClient
         :'consul' => :'Consul',
         :'count' => :'Integer',
         :'ephemeral_disk' => :'EphemeralDisk',
+        :'max_client_disconnect' => :'Integer',
         :'meta' => :'Hash<String, String>',
         :'migrate' => :'MigrateStrategy',
         :'name' => :'String',
@@ -151,6 +155,10 @@ module NomadClient
 
       if attributes.key?(:'ephemeral_disk')
         self.ephemeral_disk = attributes[:'ephemeral_disk']
+      end
+
+      if attributes.key?(:'max_client_disconnect')
+        self.max_client_disconnect = attributes[:'max_client_disconnect']
       end
 
       if attributes.key?(:'meta')
@@ -245,6 +253,7 @@ module NomadClient
           consul == o.consul &&
           count == o.count &&
           ephemeral_disk == o.ephemeral_disk &&
+          max_client_disconnect == o.max_client_disconnect &&
           meta == o.meta &&
           migrate == o.migrate &&
           name == o.name &&
@@ -270,7 +279,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affinities, constraints, consul, count, ephemeral_disk, meta, migrate, name, networks, reschedule_policy, restart_policy, scaling, services, shutdown_delay, spreads, stop_after_client_disconnect, tasks, update, volumes].hash
+      [affinities, constraints, consul, count, ephemeral_disk, max_client_disconnect, meta, migrate, name, networks, reschedule_policy, restart_policy, scaling, services, shutdown_delay, spreads, stop_after_client_disconnect, tasks, update, volumes].hash
     end
 
     # Builds the object from hash

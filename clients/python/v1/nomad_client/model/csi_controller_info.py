@@ -83,6 +83,14 @@ class CSIControllerInfo(ModelNormal):
         """
         return {
             'supports_attach_detach': (bool,),  # noqa: E501
+            'supports_clone': (bool,),  # noqa: E501
+            'supports_condition': (bool,),  # noqa: E501
+            'supports_create_delete': (bool,),  # noqa: E501
+            'supports_create_delete_snapshot': (bool,),  # noqa: E501
+            'supports_expand': (bool,),  # noqa: E501
+            'supports_get': (bool,),  # noqa: E501
+            'supports_get_capacity': (bool,),  # noqa: E501
+            'supports_list_snapshots': (bool,),  # noqa: E501
             'supports_list_volumes': (bool,),  # noqa: E501
             'supports_list_volumes_attached_nodes': (bool,),  # noqa: E501
             'supports_read_only_attach': (bool,),  # noqa: E501
@@ -95,6 +103,14 @@ class CSIControllerInfo(ModelNormal):
 
     attribute_map = {
         'supports_attach_detach': 'SupportsAttachDetach',  # noqa: E501
+        'supports_clone': 'SupportsClone',  # noqa: E501
+        'supports_condition': 'SupportsCondition',  # noqa: E501
+        'supports_create_delete': 'SupportsCreateDelete',  # noqa: E501
+        'supports_create_delete_snapshot': 'SupportsCreateDeleteSnapshot',  # noqa: E501
+        'supports_expand': 'SupportsExpand',  # noqa: E501
+        'supports_get': 'SupportsGet',  # noqa: E501
+        'supports_get_capacity': 'SupportsGetCapacity',  # noqa: E501
+        'supports_list_snapshots': 'SupportsListSnapshots',  # noqa: E501
         'supports_list_volumes': 'SupportsListVolumes',  # noqa: E501
         'supports_list_volumes_attached_nodes': 'SupportsListVolumesAttachedNodes',  # noqa: E501
         'supports_read_only_attach': 'SupportsReadOnlyAttach',  # noqa: E501
@@ -142,6 +158,14 @@ class CSIControllerInfo(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             supports_attach_detach (bool): [optional]  # noqa: E501
+            supports_clone (bool): [optional]  # noqa: E501
+            supports_condition (bool): [optional]  # noqa: E501
+            supports_create_delete (bool): [optional]  # noqa: E501
+            supports_create_delete_snapshot (bool): [optional]  # noqa: E501
+            supports_expand (bool): [optional]  # noqa: E501
+            supports_get (bool): [optional]  # noqa: E501
+            supports_get_capacity (bool): [optional]  # noqa: E501
+            supports_list_snapshots (bool): [optional]  # noqa: E501
             supports_list_volumes (bool): [optional]  # noqa: E501
             supports_list_volumes_attached_nodes (bool): [optional]  # noqa: E501
             supports_read_only_attach (bool): [optional]  # noqa: E501
@@ -227,6 +251,14 @@ class CSIControllerInfo(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             supports_attach_detach (bool): [optional]  # noqa: E501
+            supports_clone (bool): [optional]  # noqa: E501
+            supports_condition (bool): [optional]  # noqa: E501
+            supports_create_delete (bool): [optional]  # noqa: E501
+            supports_create_delete_snapshot (bool): [optional]  # noqa: E501
+            supports_expand (bool): [optional]  # noqa: E501
+            supports_get (bool): [optional]  # noqa: E501
+            supports_get_capacity (bool): [optional]  # noqa: E501
+            supports_list_snapshots (bool): [optional]  # noqa: E501
             supports_list_volumes (bool): [optional]  # noqa: E501
             supports_list_volumes_attached_nodes (bool): [optional]  # noqa: E501
             supports_read_only_attach (bool): [optional]  # noqa: E501

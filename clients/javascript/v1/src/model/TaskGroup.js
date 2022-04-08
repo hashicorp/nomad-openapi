@@ -76,6 +76,9 @@ class TaskGroup {
             if (data.hasOwnProperty('EphemeralDisk')) {
                 obj['EphemeralDisk'] = EphemeralDisk.constructFromObject(data['EphemeralDisk']);
             }
+            if (data.hasOwnProperty('MaxClientDisconnect')) {
+                obj['MaxClientDisconnect'] = ApiClient.convertToType(data['MaxClientDisconnect'], 'Number');
+            }
             if (data.hasOwnProperty('Meta')) {
                 obj['Meta'] = ApiClient.convertToType(data['Meta'], {'String': 'String'});
             }
@@ -149,6 +152,11 @@ TaskGroup.prototype['Count'] = undefined;
  * @member {module:model/EphemeralDisk} EphemeralDisk
  */
 TaskGroup.prototype['EphemeralDisk'] = undefined;
+
+/**
+ * @member {Number} MaxClientDisconnect
+ */
+TaskGroup.prototype['MaxClientDisconnect'] = undefined;
 
 /**
  * @member {Object.<String, String>} Meta

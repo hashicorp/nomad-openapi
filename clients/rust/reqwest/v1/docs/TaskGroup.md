@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **consul** | Option<[**crate::models::Consul**](Consul.md)> |  | [optional]
 **count** | Option<**i32**> |  | [optional]
 **ephemeral_disk** | Option<[**crate::models::EphemeralDisk**](EphemeralDisk.md)> |  | [optional]
+**max_client_disconnect** | Option<**i64**> |  | [optional]
 **meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **migrate** | Option<[**crate::models::MigrateStrategy**](MigrateStrategy.md)> |  | [optional]
 **name** | Option<**String**> |  | [optional]

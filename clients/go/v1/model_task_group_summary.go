@@ -23,6 +23,7 @@ type TaskGroupSummary struct {
 	Queued *int32 `json:"Queued,omitempty"`
 	Running *int32 `json:"Running,omitempty"`
 	Starting *int32 `json:"Starting,omitempty"`
+	Unknown *int32 `json:"Unknown,omitempty"`
 }
 
 // NewTaskGroupSummary instantiates a new TaskGroupSummary object
@@ -234,6 +235,38 @@ func (o *TaskGroupSummary) SetStarting(v int32) {
 	o.Starting = &v
 }
 
+// GetUnknown returns the Unknown field value if set, zero value otherwise.
+func (o *TaskGroupSummary) GetUnknown() int32 {
+	if o == nil || o.Unknown == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Unknown
+}
+
+// GetUnknownOk returns a tuple with the Unknown field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaskGroupSummary) GetUnknownOk() (*int32, bool) {
+	if o == nil || o.Unknown == nil {
+		return nil, false
+	}
+	return o.Unknown, true
+}
+
+// HasUnknown returns a boolean if a field has been set.
+func (o *TaskGroupSummary) HasUnknown() bool {
+	if o != nil && o.Unknown != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUnknown gets a reference to the given int32 and assigns it to the Unknown field.
+func (o *TaskGroupSummary) SetUnknown(v int32) {
+	o.Unknown = &v
+}
+
 func (o TaskGroupSummary) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Complete != nil {
@@ -253,6 +286,9 @@ func (o TaskGroupSummary) MarshalJSON() ([]byte, error) {
 	}
 	if o.Starting != nil {
 		toSerialize["Starting"] = o.Starting
+	}
+	if o.Unknown != nil {
+		toSerialize["Unknown"] = o.Unknown
 	}
 	return json.Marshal(toSerialize)
 }

@@ -23,6 +23,8 @@ pub struct TaskGroup {
     pub count: Option<i32>,
     #[serde(rename = "EphemeralDisk", skip_serializing_if = "Option::is_none")]
     pub ephemeral_disk: Option<Box<crate::models::EphemeralDisk>>,
+    #[serde(rename = "MaxClientDisconnect", skip_serializing_if = "Option::is_none")]
+    pub max_client_disconnect: Option<i64>,
     #[serde(rename = "Meta", skip_serializing_if = "Option::is_none")]
     pub meta: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "Migrate", skip_serializing_if = "Option::is_none")]
@@ -61,6 +63,7 @@ impl TaskGroup {
             consul: None,
             count: None,
             ephemeral_disk: None,
+            max_client_disconnect: None,
             meta: None,
             migrate: None,
             name: None,
