@@ -21,17 +21,25 @@ type parameter struct {
 	Name        string
 	SchemaType  schemaType
 	In          parameterLocation
+	Style       parameterStyle
+	Explode     bool
 	Description string
 	Required    bool
 }
 
 type parameterLocation string
+type parameterStyle string
 
 const (
 	inHeader parameterLocation = "header"
 	inQuery                    = "query"
 	inPath                     = "path"
 	inCookie                   = "cookie"
+)
+
+// See for explanation https://stackoverflow.com/questions/62527254/how-does-open-api-3-0-support-a-single-query-param-key-with-multiple-values
+const (
+	formStyle parameterStyle = "form"
 )
 
 type responseHeader struct {

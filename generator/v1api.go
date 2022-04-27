@@ -48,6 +48,26 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	agentAddressParam = parameter{
+				Id:          "AgentAddressParam",
+				SchemaType:  stringSchema,
+				Description: "List of join server ip addresses. Can be repeated.",
+				Name:        "address",
+				In:          inQuery,
+				Style:       formStyle,
+				Explode:     true,
+				Required:    true,
+			}
+	agentTypeParam = parameter{
+		Id:          "AgentTypeParam",
+		SchemaType:  stringSchema,
+		Description: "List of agent types to retrieve health info for (e.g. client,server). Can be repeated.",
+		Name:        "type",
+		In:          inQuery,
+		Style:       formStyle,
+		Explode:     true,
+		Required:    true,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,
@@ -91,6 +111,14 @@ var (
 		Description: "If set, wait until query exceeds given index. Must be provided with WaitParam.",
 		Name:        "index",
 		In:          inHeader,
+	}
+	keyringActionParam = parameter{
+		Id:          "KeyringActionParam",
+		SchemaType:  stringSchema,
+		Description: "The action to perform on the keyring (list, install, use, remove).",
+		Name:        "action",
+		In:          inPath,
+		Required:    true,
 	}
 	jobAllocationsAllParam = parameter{
 		Id:          "JobAllocationsParam",
@@ -140,6 +168,14 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	nodeNameParam = parameter{
+		Id:          "NodeNameParam",
+		SchemaType:  stringSchema,
+		Description: "Node name to target with operation.",
+		Name:        "node",
+		In:          inQuery,
+		Required:    true,
+	}
 	nodeIdParam = parameter{
 		Id:          "NodeIdParam",
 		SchemaType:  stringSchema,
@@ -169,6 +205,21 @@ var (
 		SchemaType:  stringSchema,
 		Description: "The CSI plugin identifier.",
 		Name:        "pluginID",
+		In:          inPath,
+		Required:    true,
+	}
+	pprofProfileParam = parameter{
+		Id:          "PprofProfileParam",
+		SchemaType:  stringSchema,
+		Description: "Type of profile data to collect. Valid values are: goroutine, threadcreate, heap, allocs, block, or mutex",
+		Name:        "profile",
+		In:          inQuery,
+	}
+	pprofTypeParam = parameter{
+		Id:          "PprofTypeParam",
+		SchemaType:  stringSchema,
+		Description: "Type of profile request. Valid values are: cmdline, profile, trace",
+		Name:        "type",
 		In:          inPath,
 		Required:    true,
 	}
@@ -222,6 +273,13 @@ var (
 		Name:        "policyID",
 		In:          inPath,
 		Required:    true,
+	}
+	serverIDParam = parameter{
+		Id:          "ServerIDParam",
+		SchemaType:  stringSchema,
+		Description: "Server ID to get data for. Mutually exclusive with node_id.",
+		Name:        "server_id",
+		In:          inQuery,
 	}
 	snapshotIDParam = parameter{
 		Id:          "SnapshotIDParam",
