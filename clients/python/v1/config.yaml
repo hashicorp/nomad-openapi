@@ -1,4 +1,4 @@
-# File is used by the openapi-generator cli to generate a javascript client.
+# File is used by the openapi-generator cli to generate a python client.
 generatorName: python
 gitUserId: hashicorp
 gitRepoId: nomad-openapi/clients/python/v1

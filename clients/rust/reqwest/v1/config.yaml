@@ -1,4 +1,4 @@
-# File is used by the openapi-generator cli to generate a go client.
+# File is used by the openapi-generator cli to generate a rust reqwest client.
 generatorName: rust
 gitUserId: hashicorp
 gitRepoId: nomad-openapi/clients/rust/reqwest/v1

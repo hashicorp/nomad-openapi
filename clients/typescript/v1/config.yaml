@@ -1,4 +1,4 @@
-# File is used by the openapi-generator cli to generate a javascript client.
+# File is used by the openapi-generator cli to generate a typescript client.
 generatorName: typescript
 gitUserId: hashicorp
 gitRepoId: nomad-openapi/clients/typescript/v1
