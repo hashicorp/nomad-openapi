@@ -17,6 +17,7 @@ import (
 
 // Service struct for Service
 type Service struct {
+	Address *string `json:"Address,omitempty"`
 	AddressMode *string `json:"AddressMode,omitempty"`
 	CanaryMeta *map[string]string `json:"CanaryMeta,omitempty"`
 	CanaryTags *[]string `json:"CanaryTags,omitempty"`
@@ -24,7 +25,6 @@ type Service struct {
 	Checks *[]ServiceCheck `json:"Checks,omitempty"`
 	Connect *ConsulConnect `json:"Connect,omitempty"`
 	EnableTagOverride *bool `json:"EnableTagOverride,omitempty"`
-	Id *string `json:"Id,omitempty"`
 	Meta *map[string]string `json:"Meta,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	OnUpdate *string `json:"OnUpdate,omitempty"`
@@ -49,6 +49,38 @@ func NewService() *Service {
 func NewServiceWithDefaults() *Service {
 	this := Service{}
 	return &this
+}
+
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *Service) GetAddress() string {
+	if o == nil || o.Address == nil {
+		var ret string
+		return ret
+	}
+	return *o.Address
+}
+
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Service) GetAddressOk() (*string, bool) {
+	if o == nil || o.Address == nil {
+		return nil, false
+	}
+	return o.Address, true
+}
+
+// HasAddress returns a boolean if a field has been set.
+func (o *Service) HasAddress() bool {
+	if o != nil && o.Address != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
+func (o *Service) SetAddress(v string) {
+	o.Address = &v
 }
 
 // GetAddressMode returns the AddressMode field value if set, zero value otherwise.
@@ -273,38 +305,6 @@ func (o *Service) HasEnableTagOverride() bool {
 // SetEnableTagOverride gets a reference to the given bool and assigns it to the EnableTagOverride field.
 func (o *Service) SetEnableTagOverride(v bool) {
 	o.EnableTagOverride = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Service) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Service) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Service) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Service) SetId(v string) {
-	o.Id = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
@@ -533,6 +533,9 @@ func (o *Service) SetTaskName(v string) {
 
 func (o Service) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Address != nil {
+		toSerialize["Address"] = o.Address
+	}
 	if o.AddressMode != nil {
 		toSerialize["AddressMode"] = o.AddressMode
 	}
@@ -553,9 +556,6 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableTagOverride != nil {
 		toSerialize["EnableTagOverride"] = o.EnableTagOverride
-	}
-	if o.Id != nil {
-		toSerialize["Id"] = o.Id
 	}
 	if o.Meta != nil {
 		toSerialize["Meta"] = o.Meta

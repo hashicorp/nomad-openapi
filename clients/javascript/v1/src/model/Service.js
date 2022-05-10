@@ -50,6 +50,9 @@ class Service {
         if (data) {
             obj = obj || new Service();
 
+            if (data.hasOwnProperty('Address')) {
+                obj['Address'] = ApiClient.convertToType(data['Address'], 'String');
+            }
             if (data.hasOwnProperty('AddressMode')) {
                 obj['AddressMode'] = ApiClient.convertToType(data['AddressMode'], 'String');
             }
@@ -70,9 +73,6 @@ class Service {
             }
             if (data.hasOwnProperty('EnableTagOverride')) {
                 obj['EnableTagOverride'] = ApiClient.convertToType(data['EnableTagOverride'], 'Boolean');
-            }
-            if (data.hasOwnProperty('Id')) {
-                obj['Id'] = ApiClient.convertToType(data['Id'], 'String');
             }
             if (data.hasOwnProperty('Meta')) {
                 obj['Meta'] = ApiClient.convertToType(data['Meta'], {'String': 'String'});
@@ -101,6 +101,11 @@ class Service {
 
 
 }
+
+/**
+ * @member {String} Address
+ */
+Service.prototype['Address'] = undefined;
 
 /**
  * @member {String} AddressMode
@@ -136,11 +141,6 @@ Service.prototype['Connect'] = undefined;
  * @member {Boolean} EnableTagOverride
  */
 Service.prototype['EnableTagOverride'] = undefined;
-
-/**
- * @member {String} Id
- */
-Service.prototype['Id'] = undefined;
 
 /**
  * @member {Object.<String, String>} Meta

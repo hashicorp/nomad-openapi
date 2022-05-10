@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Address** | Pointer to **string** |  | [optional] 
 **AddressMode** | Pointer to **string** |  | [optional] 
 **CanaryMeta** | Pointer to **map[string]string** |  | [optional] 
 **CanaryTags** | Pointer to **[]string** |  | [optional] 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **Checks** | Pointer to [**[]ServiceCheck**](ServiceCheck.md) |  | [optional] 
 **Connect** | Pointer to [**ConsulConnect**](ConsulConnect.md) |  | [optional] 
 **EnableTagOverride** | Pointer to **bool** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **OnUpdate** | Pointer to **string** |  | [optional] 
@@ -38,6 +38,31 @@ will change when the set of required properties is changed
 NewServiceWithDefaults instantiates a new Service object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddress
+
+`func (o *Service) GetAddress() string`
+
+GetAddress returns the Address field if non-nil, zero value otherwise.
+
+### GetAddressOk
+
+`func (o *Service) GetAddressOk() (*string, bool)`
+
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress
+
+`func (o *Service) SetAddress(v string)`
+
+SetAddress sets Address field to given value.
+
+### HasAddress
+
+`func (o *Service) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetAddressMode
 
@@ -213,31 +238,6 @@ SetEnableTagOverride sets EnableTagOverride field to given value.
 `func (o *Service) HasEnableTagOverride() bool`
 
 HasEnableTagOverride returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *Service) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Service) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Service) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Service) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetMeta
 

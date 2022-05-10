@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_mode** | Option<**String**> |  | [optional]
+**advertise** | Option<**String**> |  | [optional]
 **args** | Option<**Vec<String>**> |  | [optional]
 **body** | Option<**String**> |  | [optional]
 **check_restart** | Option<[**crate::models::CheckRestart**](CheckRestart.md)> |  | [optional]
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **grpc_service** | Option<**String**> |  | [optional]
 **grpc_use_tls** | Option<**bool**> |  | [optional]
 **header** | Option<[**::std::collections::HashMap<String, Vec<String>>**](array.md)> |  | [optional]
-**id** | Option<**String**> |  | [optional]
 **initial_status** | Option<**String**> |  | [optional]
 **interval** | Option<**i64**> |  | [optional]
 **method** | Option<**String**> |  | [optional]

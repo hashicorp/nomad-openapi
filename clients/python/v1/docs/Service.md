@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**address** | **str** |  | [optional] 
 **address_mode** | **str** |  | [optional] 
 **canary_meta** | **{str: (str,)}** |  | [optional] 
 **canary_tags** | **[str]** |  | [optional] 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **checks** | [**[ServiceCheck]**](ServiceCheck.md) |  | [optional] 
 **connect** | [**ConsulConnect**](ConsulConnect.md) |  | [optional] 
 **enable_tag_override** | **bool** |  | [optional] 
-**id** | **str** |  | [optional] 
 **meta** | **{str: (str,)}** |  | [optional] 
 **name** | **str** |  | [optional] 
 **on_update** | **str** |  | [optional] 

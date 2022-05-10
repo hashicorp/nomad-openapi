@@ -17,6 +17,8 @@ module NomadClient
   class ServiceCheck
     attr_accessor :address_mode
 
+    attr_accessor :advertise
+
     attr_accessor :args
 
     attr_accessor :body
@@ -34,8 +36,6 @@ module NomadClient
     attr_accessor :grpc_use_tls
 
     attr_accessor :header
-
-    attr_accessor :id
 
     attr_accessor :initial_status
 
@@ -67,6 +67,7 @@ module NomadClient
     def self.attribute_map
       {
         :'address_mode' => :'AddressMode',
+        :'advertise' => :'Advertise',
         :'args' => :'Args',
         :'body' => :'Body',
         :'check_restart' => :'CheckRestart',
@@ -76,7 +77,6 @@ module NomadClient
         :'grpc_service' => :'GRPCService',
         :'grpc_use_tls' => :'GRPCUseTLS',
         :'header' => :'Header',
-        :'id' => :'Id',
         :'initial_status' => :'InitialStatus',
         :'interval' => :'Interval',
         :'method' => :'Method',
@@ -102,6 +102,7 @@ module NomadClient
     def self.openapi_types
       {
         :'address_mode' => :'String',
+        :'advertise' => :'String',
         :'args' => :'Array<String>',
         :'body' => :'String',
         :'check_restart' => :'CheckRestart',
@@ -111,7 +112,6 @@ module NomadClient
         :'grpc_service' => :'String',
         :'grpc_use_tls' => :'Boolean',
         :'header' => :'Hash<String, Array<String>>',
-        :'id' => :'String',
         :'initial_status' => :'String',
         :'interval' => :'Integer',
         :'method' => :'String',
@@ -153,6 +153,10 @@ module NomadClient
         self.address_mode = attributes[:'address_mode']
       end
 
+      if attributes.key?(:'advertise')
+        self.advertise = attributes[:'advertise']
+      end
+
       if attributes.key?(:'args')
         if (value = attributes[:'args']).is_a?(Array)
           self.args = value
@@ -191,10 +195,6 @@ module NomadClient
         if (value = attributes[:'header']).is_a?(Hash)
           self.header = value
         end
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'initial_status')
@@ -269,6 +269,7 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           address_mode == o.address_mode &&
+          advertise == o.advertise &&
           args == o.args &&
           body == o.body &&
           check_restart == o.check_restart &&
@@ -278,7 +279,6 @@ module NomadClient
           grpc_service == o.grpc_service &&
           grpc_use_tls == o.grpc_use_tls &&
           header == o.header &&
-          id == o.id &&
           initial_status == o.initial_status &&
           interval == o.interval &&
           method == o.method &&
@@ -303,7 +303,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address_mode, args, body, check_restart, command, expose, failures_before_critical, grpc_service, grpc_use_tls, header, id, initial_status, interval, method, name, on_update, path, port_label, protocol, success_before_passing, tls_skip_verify, task_name, timeout, type].hash
+      [address_mode, advertise, args, body, check_restart, command, expose, failures_before_critical, grpc_service, grpc_use_tls, header, initial_status, interval, method, name, on_update, path, port_label, protocol, success_before_passing, tls_skip_verify, task_name, timeout, type].hash
     end
 
     # Builds the object from hash

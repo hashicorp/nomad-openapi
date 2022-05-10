@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**address** | Option<**String**> |  | [optional]
 **address_mode** | Option<**String**> |  | [optional]
 **canary_meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **canary_tags** | Option<**Vec<String>**> |  | [optional]
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **checks** | Option<[**Vec<crate::models::ServiceCheck>**](ServiceCheck.md)> |  | [optional]
 **connect** | Option<[**crate::models::ConsulConnect**](ConsulConnect.md)> |  | [optional]
 **enable_tag_override** | Option<**bool**> |  | [optional]
-**id** | Option<**String**> |  | [optional]
 **meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **on_update** | Option<**String**> |  | [optional]

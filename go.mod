@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/hashicorp/cronexpr v1.1.1
 	github.com/hashicorp/nomad v1.3.0-rc.1
-	github.com/hashicorp/nomad/api v0.0.0-20220407202126-2eba643965c4 // indirect
+	github.com/hashicorp/nomad/api v0.0.0-20220506174431-b5665129cd1f // indirect
 	github.com/stretchr/testify v1.7.1
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
 )
@@ -101,7 +101,7 @@ require (
 	github.com/gophercloud/gophercloud v0.1.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.1-0.20200228141219-3ce3d519df39 // indirect
 	github.com/hashicorp/consul v1.7.8 // indirect
 	github.com/hashicorp/consul-template v0.29.0 // indirect
@@ -171,7 +171,7 @@ require (
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/hashstructure v1.1.0 // indirect
-	github.com/mitchellh/mapstructure v1.4.3 // indirect
+	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/pointerstructure v1.2.1 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/moby/sys/mount v0.3.0 // indirect

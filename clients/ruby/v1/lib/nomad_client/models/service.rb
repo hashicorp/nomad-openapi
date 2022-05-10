@@ -15,6 +15,8 @@ require 'time'
 
 module NomadClient
   class Service
+    attr_accessor :address
+
     attr_accessor :address_mode
 
     attr_accessor :canary_meta
@@ -28,8 +30,6 @@ module NomadClient
     attr_accessor :connect
 
     attr_accessor :enable_tag_override
-
-    attr_accessor :id
 
     attr_accessor :meta
 
@@ -48,6 +48,7 @@ module NomadClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'address' => :'Address',
         :'address_mode' => :'AddressMode',
         :'canary_meta' => :'CanaryMeta',
         :'canary_tags' => :'CanaryTags',
@@ -55,7 +56,6 @@ module NomadClient
         :'checks' => :'Checks',
         :'connect' => :'Connect',
         :'enable_tag_override' => :'EnableTagOverride',
-        :'id' => :'Id',
         :'meta' => :'Meta',
         :'name' => :'Name',
         :'on_update' => :'OnUpdate',
@@ -74,6 +74,7 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'address' => :'String',
         :'address_mode' => :'String',
         :'canary_meta' => :'Hash<String, String>',
         :'canary_tags' => :'Array<String>',
@@ -81,7 +82,6 @@ module NomadClient
         :'checks' => :'Array<ServiceCheck>',
         :'connect' => :'ConsulConnect',
         :'enable_tag_override' => :'Boolean',
-        :'id' => :'String',
         :'meta' => :'Hash<String, String>',
         :'name' => :'String',
         :'on_update' => :'String',
@@ -112,6 +112,10 @@ module NomadClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'address')
+        self.address = attributes[:'address']
+      end
 
       if attributes.key?(:'address_mode')
         self.address_mode = attributes[:'address_mode']
@@ -145,10 +149,6 @@ module NomadClient
 
       if attributes.key?(:'enable_tag_override')
         self.enable_tag_override = attributes[:'enable_tag_override']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'meta')
@@ -202,6 +202,7 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          address == o.address &&
           address_mode == o.address_mode &&
           canary_meta == o.canary_meta &&
           canary_tags == o.canary_tags &&
@@ -209,7 +210,6 @@ module NomadClient
           checks == o.checks &&
           connect == o.connect &&
           enable_tag_override == o.enable_tag_override &&
-          id == o.id &&
           meta == o.meta &&
           name == o.name &&
           on_update == o.on_update &&
@@ -228,7 +228,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address_mode, canary_meta, canary_tags, check_restart, checks, connect, enable_tag_override, id, meta, name, on_update, port_label, provider, tags, task_name].hash
+      [address, address_mode, canary_meta, canary_tags, check_restart, checks, connect, enable_tag_override, meta, name, on_update, port_label, provider, tags, task_name].hash
     end
 
     # Builds the object from hash

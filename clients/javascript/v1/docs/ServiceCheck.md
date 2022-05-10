@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addressMode** | **String** |  | [optional] 
+**advertise** | **String** |  | [optional] 
 **args** | **[String]** |  | [optional] 
 **body** | **String** |  | [optional] 
 **checkRestart** | [**CheckRestart**](CheckRestart.md) |  | [optional] 
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **gRPCService** | **String** |  | [optional] 
 **gRPCUseTLS** | **Boolean** |  | [optional] 
 **header** | **{String: [String]}** |  | [optional] 
-**id** | **String** |  | [optional] 
 **initialStatus** | **String** |  | [optional] 
 **interval** | **Number** |  | [optional] 
 **method** | **String** |  | [optional] 

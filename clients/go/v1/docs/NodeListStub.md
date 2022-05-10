@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** |  | [optional] 
+**Attributes** | Pointer to **map[string]string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Datacenter** | Pointer to **string** |  | [optional] 
 **Drain** | Pointer to **bool** |  | [optional] 
@@ -64,6 +65,31 @@ SetAddress sets Address field to given value.
 `func (o *NodeListStub) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetAttributes
+
+`func (o *NodeListStub) GetAttributes() map[string]string`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *NodeListStub) GetAttributesOk() (*map[string]string, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *NodeListStub) SetAttributes(v map[string]string)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *NodeListStub) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetCreateIndex
 

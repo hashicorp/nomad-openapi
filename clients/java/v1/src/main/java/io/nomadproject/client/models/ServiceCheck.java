@@ -38,6 +38,10 @@ public class ServiceCheck {
   @SerializedName(SERIALIZED_NAME_ADDRESS_MODE)
   private String addressMode;
 
+  public static final String SERIALIZED_NAME_ADVERTISE = "Advertise";
+  @SerializedName(SERIALIZED_NAME_ADVERTISE)
+  private String advertise;
+
   public static final String SERIALIZED_NAME_ARGS = "Args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   private List<String> args = null;
@@ -73,10 +77,6 @@ public class ServiceCheck {
   public static final String SERIALIZED_NAME_HEADER = "Header";
   @SerializedName(SERIALIZED_NAME_HEADER)
   private Map<String, List<String>> header = null;
-
-  public static final String SERIALIZED_NAME_ID = "Id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
 
   public static final String SERIALIZED_NAME_INITIAL_STATUS = "InitialStatus";
   @SerializedName(SERIALIZED_NAME_INITIAL_STATUS)
@@ -151,6 +151,29 @@ public class ServiceCheck {
 
   public void setAddressMode(String addressMode) {
     this.addressMode = addressMode;
+  }
+
+
+  public ServiceCheck advertise(String advertise) {
+    
+    this.advertise = advertise;
+    return this;
+  }
+
+   /**
+   * Get advertise
+   * @return advertise
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAdvertise() {
+    return advertise;
+  }
+
+
+  public void setAdvertise(String advertise) {
+    this.advertise = advertise;
   }
 
 
@@ -374,29 +397,6 @@ public class ServiceCheck {
 
   public void setHeader(Map<String, List<String>> header) {
     this.header = header;
-  }
-
-
-  public ServiceCheck id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
   }
 
 
@@ -709,6 +709,7 @@ public class ServiceCheck {
     }
     ServiceCheck serviceCheck = (ServiceCheck) o;
     return Objects.equals(this.addressMode, serviceCheck.addressMode) &&
+        Objects.equals(this.advertise, serviceCheck.advertise) &&
         Objects.equals(this.args, serviceCheck.args) &&
         Objects.equals(this.body, serviceCheck.body) &&
         Objects.equals(this.checkRestart, serviceCheck.checkRestart) &&
@@ -718,7 +719,6 @@ public class ServiceCheck {
         Objects.equals(this.grPCService, serviceCheck.grPCService) &&
         Objects.equals(this.grPCUseTLS, serviceCheck.grPCUseTLS) &&
         Objects.equals(this.header, serviceCheck.header) &&
-        Objects.equals(this.id, serviceCheck.id) &&
         Objects.equals(this.initialStatus, serviceCheck.initialStatus) &&
         Objects.equals(this.interval, serviceCheck.interval) &&
         Objects.equals(this.method, serviceCheck.method) &&
@@ -736,7 +736,7 @@ public class ServiceCheck {
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressMode, args, body, checkRestart, command, expose, failuresBeforeCritical, grPCService, grPCUseTLS, header, id, initialStatus, interval, method, name, onUpdate, path, portLabel, protocol, successBeforePassing, tlSSkipVerify, taskName, timeout, type);
+    return Objects.hash(addressMode, advertise, args, body, checkRestart, command, expose, failuresBeforeCritical, grPCService, grPCUseTLS, header, initialStatus, interval, method, name, onUpdate, path, portLabel, protocol, successBeforePassing, tlSSkipVerify, taskName, timeout, type);
   }
 
   @Override
@@ -744,6 +744,7 @@ public class ServiceCheck {
     StringBuilder sb = new StringBuilder();
     sb.append("class ServiceCheck {\n");
     sb.append("    addressMode: ").append(toIndentedString(addressMode)).append("\n");
+    sb.append("    advertise: ").append(toIndentedString(advertise)).append("\n");
     sb.append("    args: ").append(toIndentedString(args)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    checkRestart: ").append(toIndentedString(checkRestart)).append("\n");
@@ -753,7 +754,6 @@ public class ServiceCheck {
     sb.append("    grPCService: ").append(toIndentedString(grPCService)).append("\n");
     sb.append("    grPCUseTLS: ").append(toIndentedString(grPCUseTLS)).append("\n");
     sb.append("    header: ").append(toIndentedString(header)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    initialStatus: ").append(toIndentedString(initialStatus)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");

@@ -39,10 +39,6 @@ public class Vault {
   @SerializedName(SERIALIZED_NAME_CHANGE_SIGNAL)
   private String changeSignal;
 
-  public static final String SERIALIZED_NAME_ENTITY_ALIAS = "EntityAlias";
-  @SerializedName(SERIALIZED_NAME_ENTITY_ALIAS)
-  private String entityAlias;
-
   public static final String SERIALIZED_NAME_ENV = "Env";
   @SerializedName(SERIALIZED_NAME_ENV)
   private Boolean env;
@@ -99,29 +95,6 @@ public class Vault {
 
   public void setChangeSignal(String changeSignal) {
     this.changeSignal = changeSignal;
-  }
-
-
-  public Vault entityAlias(String entityAlias) {
-    
-    this.entityAlias = entityAlias;
-    return this;
-  }
-
-   /**
-   * Get entityAlias
-   * @return entityAlias
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getEntityAlias() {
-    return entityAlias;
-  }
-
-
-  public void setEntityAlias(String entityAlias) {
-    this.entityAlias = entityAlias;
   }
 
 
@@ -213,7 +186,6 @@ public class Vault {
     Vault vault = (Vault) o;
     return Objects.equals(this.changeMode, vault.changeMode) &&
         Objects.equals(this.changeSignal, vault.changeSignal) &&
-        Objects.equals(this.entityAlias, vault.entityAlias) &&
         Objects.equals(this.env, vault.env) &&
         Objects.equals(this.namespace, vault.namespace) &&
         Objects.equals(this.policies, vault.policies);
@@ -221,7 +193,7 @@ public class Vault {
 
   @Override
   public int hashCode() {
-    return Objects.hash(changeMode, changeSignal, entityAlias, env, namespace, policies);
+    return Objects.hash(changeMode, changeSignal, env, namespace, policies);
   }
 
   @Override
@@ -230,7 +202,6 @@ public class Vault {
     sb.append("class Vault {\n");
     sb.append("    changeMode: ").append(toIndentedString(changeMode)).append("\n");
     sb.append("    changeSignal: ").append(toIndentedString(changeSignal)).append("\n");
-    sb.append("    entityAlias: ").append(toIndentedString(entityAlias)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    policies: ").append(toIndentedString(policies)).append("\n");

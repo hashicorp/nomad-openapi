@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str** |  | [optional] 
+**attributes** | **{str: (str,)}** |  | [optional] 
 **create_index** | **int** |  | [optional] 
 **datacenter** | **str** |  | [optional] 
 **drain** | **bool** |  | [optional] 

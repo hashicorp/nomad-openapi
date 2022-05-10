@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | Option<**String**> |  | [optional]
+**attributes** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **create_index** | Option<**i32**> |  | [optional]
 **datacenter** | Option<**String**> |  | [optional]
 **drain** | Option<**bool**> |  | [optional]

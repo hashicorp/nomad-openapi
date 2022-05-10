@@ -40,6 +40,10 @@ public class NodeListStub {
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private String address;
 
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "Attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private Map<String, String> attributes = null;
+
   public static final String SERIALIZED_NAME_CREATE_INDEX = "CreateIndex";
   @SerializedName(SERIALIZED_NAME_CREATE_INDEX)
   private Integer createIndex;
@@ -121,6 +125,37 @@ public class NodeListStub {
 
   public void setAddress(String address) {
     this.address = address;
+  }
+
+
+  public NodeListStub attributes(Map<String, String> attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+  public NodeListStub putAttributesItem(String key, String attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, String>();
+    }
+    this.attributes.put(key, attributesItem);
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, String> getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(Map<String, String> attributes) {
+    this.attributes = attributes;
   }
 
 
@@ -491,6 +526,7 @@ public class NodeListStub {
     }
     NodeListStub nodeListStub = (NodeListStub) o;
     return Objects.equals(this.address, nodeListStub.address) &&
+        Objects.equals(this.attributes, nodeListStub.attributes) &&
         Objects.equals(this.createIndex, nodeListStub.createIndex) &&
         Objects.equals(this.datacenter, nodeListStub.datacenter) &&
         Objects.equals(this.drain, nodeListStub.drain) &&
@@ -510,7 +546,7 @@ public class NodeListStub {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, createIndex, datacenter, drain, drivers, ID, lastDrain, modifyIndex, name, nodeClass, nodeResources, reservedResources, schedulingEligibility, status, statusDescription, version);
+    return Objects.hash(address, attributes, createIndex, datacenter, drain, drivers, ID, lastDrain, modifyIndex, name, nodeClass, nodeResources, reservedResources, schedulingEligibility, status, statusDescription, version);
   }
 
   @Override
@@ -518,6 +554,7 @@ public class NodeListStub {
     StringBuilder sb = new StringBuilder();
     sb.append("class NodeListStub {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    datacenter: ").append(toIndentedString(datacenter)).append("\n");
     sb.append("    drain: ").append(toIndentedString(drain)).append("\n");

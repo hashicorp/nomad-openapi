@@ -18,6 +18,7 @@ import { HttpFile } from '../http/http';
 
 export class NodeListStub {
     'address'?: string;
+    'attributes'?: { [key: string]: string; };
     'createIndex'?: number;
     'datacenter'?: string;
     'drain'?: boolean;
@@ -41,6 +42,12 @@ export class NodeListStub {
             "name": "address",
             "baseName": "Address",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "attributes",
+            "baseName": "Attributes",
+            "type": "{ [key: string]: string; }",
             "format": ""
         },
         {

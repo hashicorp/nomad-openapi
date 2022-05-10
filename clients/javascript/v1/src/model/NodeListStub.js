@@ -54,6 +54,9 @@ class NodeListStub {
             if (data.hasOwnProperty('Address')) {
                 obj['Address'] = ApiClient.convertToType(data['Address'], 'String');
             }
+            if (data.hasOwnProperty('Attributes')) {
+                obj['Attributes'] = ApiClient.convertToType(data['Attributes'], {'String': 'String'});
+            }
             if (data.hasOwnProperty('CreateIndex')) {
                 obj['CreateIndex'] = ApiClient.convertToType(data['CreateIndex'], 'Number');
             }
@@ -110,6 +113,11 @@ class NodeListStub {
  * @member {String} Address
  */
 NodeListStub.prototype['Address'] = undefined;
+
+/**
+ * @member {Object.<String, String>} Attributes
+ */
+NodeListStub.prototype['Attributes'] = undefined;
 
 /**
  * @member {Number} CreateIndex

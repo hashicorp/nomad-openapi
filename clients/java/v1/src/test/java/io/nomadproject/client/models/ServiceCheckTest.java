@@ -54,6 +54,14 @@ public class ServiceCheckTest {
     }
 
     /**
+     * Test the property 'advertise'
+     */
+    @Test
+    public void advertiseTest() {
+        // TODO: test advertise
+    }
+
+    /**
      * Test the property 'args'
      */
     @Test
@@ -123,14 +131,6 @@ public class ServiceCheckTest {
     @Test
     public void headerTest() {
         // TODO: test header
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
     }
 
     /**

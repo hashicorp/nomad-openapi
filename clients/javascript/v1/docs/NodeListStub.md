@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **String** |  | [optional] 
+**attributes** | **{String: String}** |  | [optional] 
 **createIndex** | **Number** |  | [optional] 
 **datacenter** | **String** |  | [optional] 
 **drain** | **Boolean** |  | [optional] 

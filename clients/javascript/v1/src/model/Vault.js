@@ -53,9 +53,6 @@ class Vault {
             if (data.hasOwnProperty('ChangeSignal')) {
                 obj['ChangeSignal'] = ApiClient.convertToType(data['ChangeSignal'], 'String');
             }
-            if (data.hasOwnProperty('EntityAlias')) {
-                obj['EntityAlias'] = ApiClient.convertToType(data['EntityAlias'], 'String');
-            }
             if (data.hasOwnProperty('Env')) {
                 obj['Env'] = ApiClient.convertToType(data['Env'], 'Boolean');
             }
@@ -81,11 +78,6 @@ Vault.prototype['ChangeMode'] = undefined;
  * @member {String} ChangeSignal
  */
 Vault.prototype['ChangeSignal'] = undefined;
-
-/**
- * @member {String} EntityAlias
- */
-Vault.prototype['EntityAlias'] = undefined;
 
 /**
  * @member {Boolean} Env

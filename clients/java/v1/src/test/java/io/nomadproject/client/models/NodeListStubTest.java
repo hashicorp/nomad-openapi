@@ -56,6 +56,14 @@ public class NodeListStubTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'createIndex'
      */
     @Test

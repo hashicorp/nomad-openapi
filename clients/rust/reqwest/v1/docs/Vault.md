@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **change_mode** | Option<**String**> |  | [optional]
 **change_signal** | Option<**String**> |  | [optional]
-**entity_alias** | Option<**String**> |  | [optional]
 **env** | Option<**bool**> |  | [optional]
 **namespace** | Option<**String**> |  | [optional]
 **policies** | Option<**Vec<String>**> |  | [optional]

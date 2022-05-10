@@ -15,6 +15,8 @@
 pub struct ServiceCheck {
     #[serde(rename = "AddressMode", skip_serializing_if = "Option::is_none")]
     pub address_mode: Option<String>,
+    #[serde(rename = "Advertise", skip_serializing_if = "Option::is_none")]
+    pub advertise: Option<String>,
     #[serde(rename = "Args", skip_serializing_if = "Option::is_none")]
     pub args: Option<Vec<String>>,
     #[serde(rename = "Body", skip_serializing_if = "Option::is_none")]
@@ -33,8 +35,6 @@ pub struct ServiceCheck {
     pub grpc_use_tls: Option<bool>,
     #[serde(rename = "Header", skip_serializing_if = "Option::is_none")]
     pub header: Option<::std::collections::HashMap<String, Vec<String>>>,
-    #[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
     #[serde(rename = "InitialStatus", skip_serializing_if = "Option::is_none")]
     pub initial_status: Option<String>,
     #[serde(rename = "Interval", skip_serializing_if = "Option::is_none")]
@@ -67,6 +67,7 @@ impl ServiceCheck {
     pub fn new() -> ServiceCheck {
         ServiceCheck {
             address_mode: None,
+            advertise: None,
             args: None,
             body: None,
             check_restart: None,
@@ -76,7 +77,6 @@ impl ServiceCheck {
             grpc_service: None,
             grpc_use_tls: None,
             header: None,
-            id: None,
             initial_status: None,
             interval: None,
             method: None,

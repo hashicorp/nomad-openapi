@@ -1297,6 +1297,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                     ),
                     services=[
                         Service(
+                            address="address_example",
                             address_mode="address_mode_example",
                             canary_meta={
                                 "key": "key_example",
@@ -1312,6 +1313,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             checks=[
                                 ServiceCheck(
                                     address_mode="address_mode_example",
+                                    advertise="advertise_example",
                                     args=[
                                         "args_example",
                                     ],
@@ -1331,7 +1333,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             "key_example",
                                         ],
                                     },
-                                    id="id_example",
                                     initial_status="initial_status_example",
                                     interval=1,
                                     method="method_example",
@@ -1522,7 +1523,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                 ),
                             ),
                             enable_tag_override=True,
-                            id="id_example",
                             meta={
                                 "key": "key_example",
                             },
@@ -1703,6 +1703,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             ],
                             services=[
                                 Service(
+                                    address="address_example",
                                     address_mode="address_mode_example",
                                     canary_meta={
                                         "key": "key_example",
@@ -1718,6 +1719,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     checks=[
                                         ServiceCheck(
                                             address_mode="address_mode_example",
+                                            advertise="advertise_example",
                                             args=[
                                                 "args_example",
                                             ],
@@ -1737,7 +1739,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     "key_example",
                                                 ],
                                             },
-                                            id="id_example",
                                             initial_status="initial_status_example",
                                             interval=1,
                                             method="method_example",
@@ -1928,7 +1929,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                         ),
                                     ),
                                     enable_tag_override=True,
-                                    id="id_example",
                                     meta={
                                         "key": "key_example",
                                     },
@@ -1966,7 +1966,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
-                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -2723,6 +2722,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                     ),
                     services=[
                         Service(
+                            address="address_example",
                             address_mode="address_mode_example",
                             canary_meta={
                                 "key": "key_example",
@@ -2738,6 +2738,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             checks=[
                                 ServiceCheck(
                                     address_mode="address_mode_example",
+                                    advertise="advertise_example",
                                     args=[
                                         "args_example",
                                     ],
@@ -2757,7 +2758,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             "key_example",
                                         ],
                                     },
-                                    id="id_example",
                                     initial_status="initial_status_example",
                                     interval=1,
                                     method="method_example",
@@ -2948,7 +2948,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                 ),
                             ),
                             enable_tag_override=True,
-                            id="id_example",
                             meta={
                                 "key": "key_example",
                             },
@@ -3129,6 +3128,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             ],
                             services=[
                                 Service(
+                                    address="address_example",
                                     address_mode="address_mode_example",
                                     canary_meta={
                                         "key": "key_example",
@@ -3144,6 +3144,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     checks=[
                                         ServiceCheck(
                                             address_mode="address_mode_example",
+                                            advertise="advertise_example",
                                             args=[
                                                 "args_example",
                                             ],
@@ -3163,7 +3164,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     "key_example",
                                                 ],
                                             },
-                                            id="id_example",
                                             initial_status="initial_status_example",
                                             interval=1,
                                             method="method_example",
@@ -3354,7 +3354,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                         ),
                                     ),
                                     enable_tag_override=True,
-                                    id="id_example",
                                     meta={
                                         "key": "key_example",
                                     },
@@ -3392,7 +3391,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
-                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -4082,6 +4080,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                     ),
                     services=[
                         Service(
+                            address="address_example",
                             address_mode="address_mode_example",
                             canary_meta={
                                 "key": "key_example",
@@ -4097,6 +4096,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             checks=[
                                 ServiceCheck(
                                     address_mode="address_mode_example",
+                                    advertise="advertise_example",
                                     args=[
                                         "args_example",
                                     ],
@@ -4116,7 +4116,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             "key_example",
                                         ],
                                     },
-                                    id="id_example",
                                     initial_status="initial_status_example",
                                     interval=1,
                                     method="method_example",
@@ -4307,7 +4306,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                 ),
                             ),
                             enable_tag_override=True,
-                            id="id_example",
                             meta={
                                 "key": "key_example",
                             },
@@ -4488,6 +4486,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             ],
                             services=[
                                 Service(
+                                    address="address_example",
                                     address_mode="address_mode_example",
                                     canary_meta={
                                         "key": "key_example",
@@ -4503,6 +4502,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     checks=[
                                         ServiceCheck(
                                             address_mode="address_mode_example",
+                                            advertise="advertise_example",
                                             args=[
                                                 "args_example",
                                             ],
@@ -4522,7 +4522,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     "key_example",
                                                 ],
                                             },
-                                            id="id_example",
                                             initial_status="initial_status_example",
                                             interval=1,
                                             method="method_example",
@@ -4713,7 +4712,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                         ),
                                     ),
                                     enable_tag_override=True,
-                                    id="id_example",
                                     meta={
                                         "key": "key_example",
                                     },
@@ -4751,7 +4749,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
-                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[
@@ -5123,6 +5120,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                     ),
                     services=[
                         Service(
+                            address="address_example",
                             address_mode="address_mode_example",
                             canary_meta={
                                 "key": "key_example",
@@ -5138,6 +5136,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             checks=[
                                 ServiceCheck(
                                     address_mode="address_mode_example",
+                                    advertise="advertise_example",
                                     args=[
                                         "args_example",
                                     ],
@@ -5157,7 +5156,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             "key_example",
                                         ],
                                     },
-                                    id="id_example",
                                     initial_status="initial_status_example",
                                     interval=1,
                                     method="method_example",
@@ -5348,7 +5346,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                 ),
                             ),
                             enable_tag_override=True,
-                            id="id_example",
                             meta={
                                 "key": "key_example",
                             },
@@ -5529,6 +5526,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                             ],
                             services=[
                                 Service(
+                                    address="address_example",
                                     address_mode="address_mode_example",
                                     canary_meta={
                                         "key": "key_example",
@@ -5544,6 +5542,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                     checks=[
                                         ServiceCheck(
                                             address_mode="address_mode_example",
+                                            advertise="advertise_example",
                                             args=[
                                                 "args_example",
                                             ],
@@ -5563,7 +5562,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     "key_example",
                                                 ],
                                             },
-                                            id="id_example",
                                             initial_status="initial_status_example",
                                             interval=1,
                                             method="method_example",
@@ -5754,7 +5752,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                                         ),
                                     ),
                                     enable_tag_override=True,
-                                    id="id_example",
                                     meta={
                                         "key": "key_example",
                                     },
@@ -5792,7 +5789,6 @@ with nomad_client.ApiClient(configuration) as api_client:
                             vault=Vault(
                                 change_mode="change_mode_example",
                                 change_signal="change_signal_example",
-                                entity_alias="entity_alias_example",
                                 env=True,
                                 namespace="namespace_example",
                                 policies=[

@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **address** | **String** |  | [optional] |
 | **address_mode** | **String** |  | [optional] |
 | **canary_meta** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **canary_tags** | **Array&lt;String&gt;** |  | [optional] |
@@ -11,7 +12,6 @@
 | **checks** | [**Array&lt;ServiceCheck&gt;**](ServiceCheck.md) |  | [optional] |
 | **connect** | [**ConsulConnect**](ConsulConnect.md) |  | [optional] |
 | **enable_tag_override** | **Boolean** |  | [optional] |
-| **id** | **String** |  | [optional] |
 | **meta** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **on_update** | **String** |  | [optional] |
@@ -26,6 +26,7 @@
 require 'nomad_client'
 
 instance = NomadClient::Service.new(
+  address: null,
   address_mode: null,
   canary_meta: null,
   canary_tags: null,
@@ -33,7 +34,6 @@ instance = NomadClient::Service.new(
   checks: null,
   connect: null,
   enable_tag_override: null,
-  id: null,
   meta: null,
   name: null,
   on_update: null,

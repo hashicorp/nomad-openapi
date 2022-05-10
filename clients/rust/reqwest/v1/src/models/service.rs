@@ -13,6 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Service {
+    #[serde(rename = "Address", skip_serializing_if = "Option::is_none")]
+    pub address: Option<String>,
     #[serde(rename = "AddressMode", skip_serializing_if = "Option::is_none")]
     pub address_mode: Option<String>,
     #[serde(rename = "CanaryMeta", skip_serializing_if = "Option::is_none")]
@@ -27,8 +29,6 @@ pub struct Service {
     pub connect: Option<Box<crate::models::ConsulConnect>>,
     #[serde(rename = "EnableTagOverride", skip_serializing_if = "Option::is_none")]
     pub enable_tag_override: Option<bool>,
-    #[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
     #[serde(rename = "Meta", skip_serializing_if = "Option::is_none")]
     pub meta: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
@@ -48,6 +48,7 @@ pub struct Service {
 impl Service {
     pub fn new() -> Service {
         Service {
+            address: None,
             address_mode: None,
             canary_meta: None,
             canary_tags: None,
@@ -55,7 +56,6 @@ impl Service {
             checks: None,
             connect: None,
             enable_tag_override: None,
-            id: None,
             meta: None,
             name: None,
             on_update: None,

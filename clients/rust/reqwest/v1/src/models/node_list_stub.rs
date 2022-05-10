@@ -15,6 +15,8 @@
 pub struct NodeListStub {
     #[serde(rename = "Address", skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
+    #[serde(rename = "Attributes", skip_serializing_if = "Option::is_none")]
+    pub attributes: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "CreateIndex", skip_serializing_if = "Option::is_none")]
     pub create_index: Option<i32>,
     #[serde(rename = "Datacenter", skip_serializing_if = "Option::is_none")]
@@ -51,6 +53,7 @@ impl NodeListStub {
     pub fn new() -> NodeListStub {
         NodeListStub {
             address: None,
+            attributes: None,
             create_index: None,
             datacenter: None,
             drain: None,

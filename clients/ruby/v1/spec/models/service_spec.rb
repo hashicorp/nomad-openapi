@@ -25,6 +25,12 @@ describe NomadClient::Service do
       expect(instance).to be_instance_of(NomadClient::Service)
     end
   end
+  describe 'test attribute "address"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "address_mode"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -62,12 +68,6 @@ describe NomadClient::Service do
   end
 
   describe 'test attribute "enable_tag_override"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

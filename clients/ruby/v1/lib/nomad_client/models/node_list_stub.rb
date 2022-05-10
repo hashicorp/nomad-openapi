@@ -17,6 +17,8 @@ module NomadClient
   class NodeListStub
     attr_accessor :address
 
+    attr_accessor :attributes
+
     attr_accessor :create_index
 
     attr_accessor :datacenter
@@ -51,6 +53,7 @@ module NomadClient
     def self.attribute_map
       {
         :'address' => :'Address',
+        :'attributes' => :'Attributes',
         :'create_index' => :'CreateIndex',
         :'datacenter' => :'Datacenter',
         :'drain' => :'Drain',
@@ -78,6 +81,7 @@ module NomadClient
     def self.openapi_types
       {
         :'address' => :'String',
+        :'attributes' => :'Hash<String, String>',
         :'create_index' => :'Integer',
         :'datacenter' => :'String',
         :'drain' => :'Boolean',
@@ -119,6 +123,12 @@ module NomadClient
 
       if attributes.key?(:'address')
         self.address = attributes[:'address']
+      end
+
+      if attributes.key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Hash)
+          self.attributes = value
+        end
       end
 
       if attributes.key?(:'create_index')
@@ -251,6 +261,7 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           address == o.address &&
+          attributes == o.attributes &&
           create_index == o.create_index &&
           datacenter == o.datacenter &&
           drain == o.drain &&
@@ -277,7 +288,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, create_index, datacenter, drain, drivers, id, last_drain, modify_index, name, node_class, node_resources, reserved_resources, scheduling_eligibility, status, status_description, version].hash
+      [address, attributes, create_index, datacenter, drain, drivers, id, last_drain, modify_index, name, node_class, node_resources, reserved_resources, scheduling_eligibility, status, status_description, version].hash
     end
 
     # Builds the object from hash

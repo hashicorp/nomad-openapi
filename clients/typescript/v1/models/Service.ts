@@ -16,6 +16,7 @@ import { ServiceCheck } from './ServiceCheck';
 import { HttpFile } from '../http/http';
 
 export class Service {
+    'address'?: string;
     'addressMode'?: string;
     'canaryMeta'?: { [key: string]: string; };
     'canaryTags'?: Array<string>;
@@ -23,7 +24,6 @@ export class Service {
     'checks'?: Array<ServiceCheck>;
     'connect'?: ConsulConnect;
     'enableTagOverride'?: boolean;
-    'id'?: string;
     'meta'?: { [key: string]: string; };
     'name'?: string;
     'onUpdate'?: string;
@@ -35,6 +35,12 @@ export class Service {
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "address",
+            "baseName": "Address",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "addressMode",
             "baseName": "AddressMode",
@@ -75,12 +81,6 @@ export class Service {
             "name": "enableTagOverride",
             "baseName": "EnableTagOverride",
             "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "id",
-            "baseName": "Id",
-            "type": "string",
             "format": ""
         },
         {

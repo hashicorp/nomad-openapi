@@ -8,6 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addressMode** | **String** |  |  [optional]
+**advertise** | **String** |  |  [optional]
 **args** | **List&lt;String&gt;** |  |  [optional]
 **body** | **String** |  |  [optional]
 **checkRestart** | [**CheckRestart**](CheckRestart.md) |  |  [optional]
@@ -17,7 +18,6 @@ Name | Type | Description | Notes
 **grPCService** | **String** |  |  [optional]
 **grPCUseTLS** | **Boolean** |  |  [optional]
 **header** | **Map&lt;String, List&lt;String&gt;&gt;** |  |  [optional]
-**id** | **String** |  |  [optional]
 **initialStatus** | **String** |  |  [optional]
 **interval** | **Long** |  |  [optional]
 **method** | **String** |  |  [optional]

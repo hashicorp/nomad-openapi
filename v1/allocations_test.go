@@ -122,6 +122,16 @@ func testGetAllocationServices(t *testing.T, s *agent.TestAgent) {
 		t.Fatalf("err: %v", err)
 	}
 
+	serviceRegistrations := mock.ServiceRegistrations()
+	for _, registration := range serviceRegistrations {
+		registration.AllocID = alloc1.ID
+	}
+
+	err = state.UpsertServiceRegistrations(structs.MsgTypeTestSetup, 2000, serviceRegistrations)
+	if err != nil {
+		t.Fatalf("err: %v", err)
+	}
+
 	// Make the HTTP request
 	testClient, err := NewTestClient(s)
 	require.NoError(t, err)
@@ -131,9 +141,7 @@ func testGetAllocationServices(t *testing.T, s *agent.TestAgent) {
 	require.NotNil(t, result)
 	require.NotNil(t, meta)
 
-	require.Len(t, *result, 2)
-
 	services := *result
 	require.NotNil(t, services)
-	require.Len(t, services, 0)
+	require.Len(t, services, 2)
 }

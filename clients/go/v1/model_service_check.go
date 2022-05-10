@@ -18,6 +18,7 @@ import (
 // ServiceCheck struct for ServiceCheck
 type ServiceCheck struct {
 	AddressMode *string `json:"AddressMode,omitempty"`
+	Advertise *string `json:"Advertise,omitempty"`
 	Args *[]string `json:"Args,omitempty"`
 	Body *string `json:"Body,omitempty"`
 	CheckRestart *CheckRestart `json:"CheckRestart,omitempty"`
@@ -27,7 +28,6 @@ type ServiceCheck struct {
 	GRPCService *string `json:"GRPCService,omitempty"`
 	GRPCUseTLS *bool `json:"GRPCUseTLS,omitempty"`
 	Header *map[string][]string `json:"Header,omitempty"`
-	Id *string `json:"Id,omitempty"`
 	InitialStatus *string `json:"InitialStatus,omitempty"`
 	Interval *int64 `json:"Interval,omitempty"`
 	Method *string `json:"Method,omitempty"`
@@ -90,6 +90,38 @@ func (o *ServiceCheck) HasAddressMode() bool {
 // SetAddressMode gets a reference to the given string and assigns it to the AddressMode field.
 func (o *ServiceCheck) SetAddressMode(v string) {
 	o.AddressMode = &v
+}
+
+// GetAdvertise returns the Advertise field value if set, zero value otherwise.
+func (o *ServiceCheck) GetAdvertise() string {
+	if o == nil || o.Advertise == nil {
+		var ret string
+		return ret
+	}
+	return *o.Advertise
+}
+
+// GetAdvertiseOk returns a tuple with the Advertise field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceCheck) GetAdvertiseOk() (*string, bool) {
+	if o == nil || o.Advertise == nil {
+		return nil, false
+	}
+	return o.Advertise, true
+}
+
+// HasAdvertise returns a boolean if a field has been set.
+func (o *ServiceCheck) HasAdvertise() bool {
+	if o != nil && o.Advertise != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvertise gets a reference to the given string and assigns it to the Advertise field.
+func (o *ServiceCheck) SetAdvertise(v string) {
+	o.Advertise = &v
 }
 
 // GetArgs returns the Args field value if set, zero value otherwise.
@@ -378,38 +410,6 @@ func (o *ServiceCheck) HasHeader() bool {
 // SetHeader gets a reference to the given map[string][]string and assigns it to the Header field.
 func (o *ServiceCheck) SetHeader(v map[string][]string) {
 	o.Header = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ServiceCheck) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceCheck) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ServiceCheck) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ServiceCheck) SetId(v string) {
-	o.Id = &v
 }
 
 // GetInitialStatus returns the InitialStatus field value if set, zero value otherwise.
@@ -833,6 +833,9 @@ func (o ServiceCheck) MarshalJSON() ([]byte, error) {
 	if o.AddressMode != nil {
 		toSerialize["AddressMode"] = o.AddressMode
 	}
+	if o.Advertise != nil {
+		toSerialize["Advertise"] = o.Advertise
+	}
 	if o.Args != nil {
 		toSerialize["Args"] = o.Args
 	}
@@ -859,9 +862,6 @@ func (o ServiceCheck) MarshalJSON() ([]byte, error) {
 	}
 	if o.Header != nil {
 		toSerialize["Header"] = o.Header
-	}
-	if o.Id != nil {
-		toSerialize["Id"] = o.Id
 	}
 	if o.InitialStatus != nil {
 		toSerialize["InitialStatus"] = o.InitialStatus
