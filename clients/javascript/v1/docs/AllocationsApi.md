@@ -4,8 +4,149 @@ All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /allocation/{allocID} | 
+[**getAllocationServices**](AllocationsApi.md#getAllocationServices) | **GET** /allocation/{allocID}/services | 
 [**getAllocations**](AllocationsApi.md#getAllocations) | **GET** /allocations | 
+[**postAllocationStop**](AllocationsApi.md#postAllocationStop) | **POST** /allocation/{allocID}/stop | 
 
+
+
+## getAllocation
+
+> Allocation getAllocation(allocID, opts)
+
+
+
+### Example
+
+```javascript
+import nomad-client from 'nomad';
+let defaultClient = nomad-client.ApiClient.instance;
+// Configure API key authorization: X-Nomad-Token
+let X-Nomad-Token = defaultClient.authentications['X-Nomad-Token'];
+X-Nomad-Token.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//X-Nomad-Token.apiKeyPrefix = 'Token';
+
+let apiInstance = new nomad-client.AllocationsApi();
+let allocID = "allocID_example"; // String | Allocation ID.
+let opts = {
+  'region': "region_example", // String | Filters results based on the specified region.
+  'namespace': "namespace_example", // String | Filters results based on the specified namespace.
+  'index': 56, // Number | If set, wait until query exceeds given index. Must be provided with WaitParam.
+  'wait': "wait_example", // String | Provided with IndexParam to wait for change.
+  'stale': "stale_example", // String | If present, results will include stale reads.
+  'prefix': "prefix_example", // String | Constrains results to jobs that start with the defined prefix
+  'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
+  'perPage': 56, // Number | Maximum number of results to return.
+  'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
+};
+apiInstance.getAllocation(allocID, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **allocID** | **String**| Allocation ID. | 
+ **region** | **String**| Filters results based on the specified region. | [optional] 
+ **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
+ **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 
+ **wait** | **String**| Provided with IndexParam to wait for change. | [optional] 
+ **stale** | **String**| If present, results will include stale reads. | [optional] 
+ **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] 
+ **xNomadToken** | **String**| A Nomad ACL token. | [optional] 
+ **perPage** | **Number**| Maximum number of results to return. | [optional] 
+ **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] 
+
+### Return type
+
+[**Allocation**](Allocation.md)
+
+### Authorization
+
+[X-Nomad-Token](../README.md#X-Nomad-Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getAllocationServices
+
+> [ServiceRegistration] getAllocationServices(allocID, opts)
+
+
+
+### Example
+
+```javascript
+import nomad-client from 'nomad';
+let defaultClient = nomad-client.ApiClient.instance;
+// Configure API key authorization: X-Nomad-Token
+let X-Nomad-Token = defaultClient.authentications['X-Nomad-Token'];
+X-Nomad-Token.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//X-Nomad-Token.apiKeyPrefix = 'Token';
+
+let apiInstance = new nomad-client.AllocationsApi();
+let allocID = "allocID_example"; // String | Allocation ID.
+let opts = {
+  'region': "region_example", // String | Filters results based on the specified region.
+  'namespace': "namespace_example", // String | Filters results based on the specified namespace.
+  'index': 56, // Number | If set, wait until query exceeds given index. Must be provided with WaitParam.
+  'wait': "wait_example", // String | Provided with IndexParam to wait for change.
+  'stale': "stale_example", // String | If present, results will include stale reads.
+  'prefix': "prefix_example", // String | Constrains results to jobs that start with the defined prefix
+  'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
+  'perPage': 56, // Number | Maximum number of results to return.
+  'nextToken': "nextToken_example" // String | Indicates where to start paging for queries that support pagination.
+};
+apiInstance.getAllocationServices(allocID, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **allocID** | **String**| Allocation ID. | 
+ **region** | **String**| Filters results based on the specified region. | [optional] 
+ **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
+ **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 
+ **wait** | **String**| Provided with IndexParam to wait for change. | [optional] 
+ **stale** | **String**| If present, results will include stale reads. | [optional] 
+ **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] 
+ **xNomadToken** | **String**| A Nomad ACL token. | [optional] 
+ **perPage** | **Number**| Maximum number of results to return. | [optional] 
+ **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] 
+
+### Return type
+
+[**[ServiceRegistration]**](ServiceRegistration.md)
+
+### Authorization
+
+[X-Nomad-Token](../README.md#X-Nomad-Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## getAllocations
@@ -68,6 +209,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[AllocationListStub]**](AllocationListStub.md)
+
+### Authorization
+
+[X-Nomad-Token](../README.md#X-Nomad-Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## postAllocationStop
+
+> AllocStopResponse postAllocationStop(allocID, opts)
+
+
+
+### Example
+
+```javascript
+import nomad-client from 'nomad';
+let defaultClient = nomad-client.ApiClient.instance;
+// Configure API key authorization: X-Nomad-Token
+let X-Nomad-Token = defaultClient.authentications['X-Nomad-Token'];
+X-Nomad-Token.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//X-Nomad-Token.apiKeyPrefix = 'Token';
+
+let apiInstance = new nomad-client.AllocationsApi();
+let allocID = "allocID_example"; // String | Allocation ID.
+let opts = {
+  'region': "region_example", // String | Filters results based on the specified region.
+  'namespace': "namespace_example", // String | Filters results based on the specified namespace.
+  'index': 56, // Number | If set, wait until query exceeds given index. Must be provided with WaitParam.
+  'wait': "wait_example", // String | Provided with IndexParam to wait for change.
+  'stale': "stale_example", // String | If present, results will include stale reads.
+  'prefix': "prefix_example", // String | Constrains results to jobs that start with the defined prefix
+  'xNomadToken': "xNomadToken_example", // String | A Nomad ACL token.
+  'perPage': 56, // Number | Maximum number of results to return.
+  'nextToken': "nextToken_example", // String | Indicates where to start paging for queries that support pagination.
+  'noShutdownDelay': true // Boolean | Flag indicating whether to delay shutdown when requesting an allocation stop.
+};
+apiInstance.postAllocationStop(allocID, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **allocID** | **String**| Allocation ID. | 
+ **region** | **String**| Filters results based on the specified region. | [optional] 
+ **namespace** | **String**| Filters results based on the specified namespace. | [optional] 
+ **index** | **Number**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] 
+ **wait** | **String**| Provided with IndexParam to wait for change. | [optional] 
+ **stale** | **String**| If present, results will include stale reads. | [optional] 
+ **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] 
+ **xNomadToken** | **String**| A Nomad ACL token. | [optional] 
+ **perPage** | **Number**| Maximum number of results to return. | [optional] 
+ **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] 
+ **noShutdownDelay** | **Boolean**| Flag indicating whether to delay shutdown when requesting an allocation stop. | [optional] 
+
+### Return type
+
+[**AllocStopResponse**](AllocStopResponse.md)
 
 ### Authorization
 

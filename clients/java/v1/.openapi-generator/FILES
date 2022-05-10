@@ -10,6 +10,7 @@ docs/ACLTokenListStub.md
 docs/AclApi.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -184,6 +185,7 @@ docs/SearchResponse.md
 docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
+docs/ServiceRegistration.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
@@ -256,6 +258,7 @@ src/main/java/io/nomadproject/client/models/ACLToken.java
 src/main/java/io/nomadproject/client/models/ACLTokenListStub.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
+src/main/java/io/nomadproject/client/models/AllocStopResponse.java
 src/main/java/io/nomadproject/client/models/AllocatedCpuResources.java
 src/main/java/io/nomadproject/client/models/AllocatedDeviceResource.java
 src/main/java/io/nomadproject/client/models/AllocatedMemoryResources.java
@@ -417,6 +420,7 @@ src/main/java/io/nomadproject/client/models/SearchResponse.java
 src/main/java/io/nomadproject/client/models/ServerHealth.java
 src/main/java/io/nomadproject/client/models/Service.java
 src/main/java/io/nomadproject/client/models/ServiceCheck.java
+src/main/java/io/nomadproject/client/models/ServiceRegistration.java
 src/main/java/io/nomadproject/client/models/SidecarTask.java
 src/main/java/io/nomadproject/client/models/Spread.java
 src/main/java/io/nomadproject/client/models/SpreadTarget.java
@@ -458,6 +462,7 @@ src/test/java/io/nomadproject/client/api/VolumesApiTest.java
 src/test/java/io/nomadproject/client/models/ACLPolicyListStubTest.java
 src/test/java/io/nomadproject/client/models/AffinityTest.java
 src/test/java/io/nomadproject/client/models/AllocDeploymentStatusTest.java
+src/test/java/io/nomadproject/client/models/AllocStopResponseTest.java
 src/test/java/io/nomadproject/client/models/AllocatedCpuResourcesTest.java
 src/test/java/io/nomadproject/client/models/AllocatedDeviceResourceTest.java
 src/test/java/io/nomadproject/client/models/AllocatedMemoryResourcesTest.java
@@ -618,6 +623,7 @@ src/test/java/io/nomadproject/client/models/SearchRequestTest.java
 src/test/java/io/nomadproject/client/models/SearchResponseTest.java
 src/test/java/io/nomadproject/client/models/ServerHealthTest.java
 src/test/java/io/nomadproject/client/models/ServiceCheckTest.java
+src/test/java/io/nomadproject/client/models/ServiceRegistrationTest.java
 src/test/java/io/nomadproject/client/models/ServiceTest.java
 src/test/java/io/nomadproject/client/models/SidecarTaskTest.java
 src/test/java/io/nomadproject/client/models/SpreadTargetTest.java

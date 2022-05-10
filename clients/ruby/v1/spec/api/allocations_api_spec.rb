@@ -32,6 +32,44 @@ describe 'AllocationsApi' do
     end
   end
 
+  # unit tests for get_allocation
+  # @param alloc_id Allocation ID.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :region Filters results based on the specified region.
+  # @option opts [String] :namespace Filters results based on the specified namespace.
+  # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+  # @option opts [String] :wait Provided with IndexParam to wait for change.
+  # @option opts [String] :stale If present, results will include stale reads.
+  # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+  # @option opts [String] :x_nomad_token A Nomad ACL token.
+  # @option opts [Integer] :per_page Maximum number of results to return.
+  # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+  # @return [Allocation]
+  describe 'get_allocation test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_allocation_services
+  # @param alloc_id Allocation ID.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :region Filters results based on the specified region.
+  # @option opts [String] :namespace Filters results based on the specified namespace.
+  # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+  # @option opts [String] :wait Provided with IndexParam to wait for change.
+  # @option opts [String] :stale If present, results will include stale reads.
+  # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+  # @option opts [String] :x_nomad_token A Nomad ACL token.
+  # @option opts [Integer] :per_page Maximum number of results to return.
+  # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+  # @return [Array<ServiceRegistration>]
+  describe 'get_allocation_services test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_allocations
   # @param [Hash] opts the optional parameters
   # @option opts [String] :region Filters results based on the specified region.
@@ -47,6 +85,26 @@ describe 'AllocationsApi' do
   # @option opts [Boolean] :task_states Flag indicating whether to include task states in response.
   # @return [Array<AllocationListStub>]
   describe 'get_allocations test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for post_allocation_stop
+  # @param alloc_id Allocation ID.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :region Filters results based on the specified region.
+  # @option opts [String] :namespace Filters results based on the specified namespace.
+  # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+  # @option opts [String] :wait Provided with IndexParam to wait for change.
+  # @option opts [String] :stale If present, results will include stale reads.
+  # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+  # @option opts [String] :x_nomad_token A Nomad ACL token.
+  # @option opts [Integer] :per_page Maximum number of results to return.
+  # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+  # @option opts [Boolean] :no_shutdown_delay Flag indicating whether to delay shutdown when requesting an allocation stop.
+  # @return [AllocStopResponse]
+  describe 'post_allocation_stop test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -8,6 +8,7 @@ import { ACLToken } from '../models/ACLToken';
 import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
+import { AllocStopResponse } from '../models/AllocStopResponse';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
 import { AllocatedDeviceResource } from '../models/AllocatedDeviceResource';
 import { AllocatedMemoryResources } from '../models/AllocatedMemoryResources';
@@ -169,6 +170,7 @@ import { SearchResponse } from '../models/SearchResponse';
 import { ServerHealth } from '../models/ServerHealth';
 import { Service } from '../models/Service';
 import { ServiceCheck } from '../models/ServiceCheck';
+import { ServiceRegistration } from '../models/ServiceRegistration';
 import { SidecarTask } from '../models/SidecarTask';
 import { Spread } from '../models/Spread';
 import { SpreadTarget } from '../models/SpreadTarget';
@@ -818,6 +820,132 @@ export class ObjectACLApi {
 import { ObservableAllocationsApi } from "./ObservableAPI";
 import { AllocationsApiRequestFactory, AllocationsApiResponseProcessor} from "../apis/AllocationsApi";
 
+export interface AllocationsApiGetAllocationRequest {
+    /**
+     * Allocation ID.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    allocID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof AllocationsApigetAllocation
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof AllocationsApigetAllocation
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof AllocationsApigetAllocation
+     */
+    nextToken?: string
+}
+
+export interface AllocationsApiGetAllocationServicesRequest {
+    /**
+     * Allocation ID.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    allocID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof AllocationsApigetAllocationServices
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof AllocationsApigetAllocationServices
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof AllocationsApigetAllocationServices
+     */
+    nextToken?: string
+}
+
 export interface AllocationsApiGetAllocationsRequest {
     /**
      * Filters results based on the specified region.
@@ -887,6 +1015,75 @@ export interface AllocationsApiGetAllocationsRequest {
     taskStates?: boolean
 }
 
+export interface AllocationsApiPostAllocationStopRequest {
+    /**
+     * Allocation ID.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    allocID: string
+    /**
+     * Filters results based on the specified region.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    region?: string
+    /**
+     * Filters results based on the specified namespace.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    namespace?: string
+    /**
+     * If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @type number
+     * @memberof AllocationsApipostAllocationStop
+     */
+    index?: number
+    /**
+     * Provided with IndexParam to wait for change.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    wait?: string
+    /**
+     * If present, results will include stale reads.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    stale?: string
+    /**
+     * Constrains results to jobs that start with the defined prefix
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    prefix?: string
+    /**
+     * A Nomad ACL token.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    xNomadToken?: string
+    /**
+     * Maximum number of results to return.
+     * @type number
+     * @memberof AllocationsApipostAllocationStop
+     */
+    perPage?: number
+    /**
+     * Indicates where to start paging for queries that support pagination.
+     * @type string
+     * @memberof AllocationsApipostAllocationStop
+     */
+    nextToken?: string
+    /**
+     * Flag indicating whether to delay shutdown when requesting an allocation stop.
+     * @type boolean
+     * @memberof AllocationsApipostAllocationStop
+     */
+    noShutdownDelay?: boolean
+}
+
 export class ObjectAllocationsApi {
     private api: ObservableAllocationsApi
 
@@ -897,8 +1094,29 @@ export class ObjectAllocationsApi {
     /**
      * @param param the request object
      */
+    public getAllocation(param: AllocationsApiGetAllocationRequest, options?: Configuration): Promise<Allocation> {
+        return this.api.getAllocation(param.allocID, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public getAllocationServices(param: AllocationsApiGetAllocationServicesRequest, options?: Configuration): Promise<Array<ServiceRegistration>> {
+        return this.api.getAllocationServices(param.allocID, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
     public getAllocations(param: AllocationsApiGetAllocationsRequest, options?: Configuration): Promise<Array<AllocationListStub>> {
         return this.api.getAllocations(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.resources, param.taskStates,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public postAllocationStop(param: AllocationsApiPostAllocationStopRequest, options?: Configuration): Promise<AllocStopResponse> {
+        return this.api.postAllocationStop(param.allocID, param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.noShutdownDelay,  options).toPromise();
     }
 
 }

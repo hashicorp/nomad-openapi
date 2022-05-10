@@ -21,6 +21,20 @@ components:
       name: all
       schema:
         type: integer
+    AllocIDParam:
+      description: Allocation ID.
+      in: path
+      name: allocID
+      required: true
+      schema:
+        type: string
+    AllocNoShutdownDelayParam:
+      description: Flag indicating whether to delay shutdown when requesting an allocation
+        stop.
+      in: query
+      name: no_shutdown_delay
+      schema:
+        type: boolean
     AllocationResourcesParam:
       description: Flag indicating whether to include resources in response.
       in: query
@@ -588,6 +602,50 @@ components:
           schema:
             items:
               $ref: '#/components/schemas/ACLTokenListStub'
+            type: array
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          schema:
+            type: integer
+    GetAllocationResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Allocation'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
+        X-Nomad-KnownLeader:
+          description: Boolean indicating if there is a known cluster leader.
+          schema:
+            type: boolean
+        X-Nomad-LastContact:
+          description: The time in milliseconds that a server was last contacted by
+            the leader node.
+          schema:
+            type: integer
+    GetAllocationServicesResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ServiceRegistration'
             type: array
       description: ""
       headers:
@@ -1479,6 +1537,18 @@ components:
             resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
+    PostAllocationStopResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllocStopResponse'
+      description: ""
+      headers:
+        X-Nomad-Index:
+          description: A unique identifier representing the current state of the requested
+            resource. On a new Nomad cluster the value of this index starts at 1.
+          schema:
+            type: integer
     PostDeploymentAllocationHealthResponse:
       content:
         application/json:
@@ -1843,6 +1913,15 @@ components:
         Timestamp:
           format: date-time
           type: string
+      type: object
+    AllocStopResponse:
+      properties:
+        EvalID:
+          type: string
+        Index:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
       type: object
     AllocatedCpuResources:
       properties:
@@ -4990,6 +5069,39 @@ components:
         Type:
           type: string
       type: object
+    ServiceRegistration:
+      properties:
+        Address:
+          type: string
+        AllocID:
+          type: string
+        CreateIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Datacenter:
+          type: string
+        ID:
+          type: string
+        JobID:
+          type: string
+        ModifyIndex:
+          maximum: 1.8446744073709552e+19
+          minimum: 0
+          type: integer
+        Namespace:
+          type: string
+        NodeID:
+          type: string
+        Port:
+          type: integer
+        ServiceName:
+          type: string
+        Tags:
+          items:
+            type: string
+          type: array
+      type: object
     SidecarTask:
       properties:
         Config:
@@ -5867,6 +5979,94 @@ paths:
       - X-Nomad-Token: []
       tags:
       - ACL
+  /allocation/{allocID}:
+    get:
+      operationId: GetAllocation
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/AllocIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAllocationResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Allocations
+  /allocation/{allocID}/services:
+    get:
+      operationId: GetAllocationServices
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/AllocIDParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/GetAllocationServicesResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Allocations
+  /allocation/{allocID}/stop:
+    post:
+      operationId: PostAllocationStop
+      parameters:
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/NamespaceParam'
+      - $ref: '#/components/parameters/IndexHeader'
+      - $ref: '#/components/parameters/WaitParam'
+      - $ref: '#/components/parameters/StaleParam'
+      - $ref: '#/components/parameters/PrefixParam'
+      - $ref: '#/components/parameters/NomadTokenHeader'
+      - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/NextTokenParam'
+      - $ref: '#/components/parameters/AllocIDParam'
+      - $ref: '#/components/parameters/AllocNoShutdownDelayParam'
+      responses:
+        "200":
+          $ref: '#/components/responses/PostAllocationStopResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestResponse'
+        "403":
+          $ref: '#/components/responses/ForbiddenResponse'
+        "405":
+          $ref: '#/components/responses/MethodNotAllowedResponse'
+        "500":
+          $ref: '#/components/responses/InternalServerErrorResponse'
+      security:
+      - X-Nomad-Token: []
+      tags:
+      - Allocations
   /allocations:
     get:
       operationId: GetAllocations

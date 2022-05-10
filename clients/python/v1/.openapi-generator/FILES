@@ -7,6 +7,7 @@ docs/ACLToken.md
 docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -183,6 +184,7 @@ docs/SearchResponse.md
 docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
+docs/ServiceRegistration.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
@@ -241,6 +243,7 @@ nomad_client/model/acl_token.py
 nomad_client/model/acl_token_list_stub.py
 nomad_client/model/affinity.py
 nomad_client/model/alloc_deployment_status.py
+nomad_client/model/alloc_stop_response.py
 nomad_client/model/allocated_cpu_resources.py
 nomad_client/model/allocated_device_resource.py
 nomad_client/model/allocated_memory_resources.py
@@ -404,6 +407,7 @@ nomad_client/model/search_response.py
 nomad_client/model/server_health.py
 nomad_client/model/service.py
 nomad_client/model/service_check.py
+nomad_client/model/service_registration.py
 nomad_client/model/sidecar_task.py
 nomad_client/model/spread.py
 nomad_client/model/spread_target.py
@@ -437,6 +441,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_alloc_stop_response.py
 test/test_autopilot_configuration.py
 test/test_csi_controller_info.py
 test/test_csi_info.py
@@ -468,6 +473,7 @@ test/test_scheduler_configuration.py
 test/test_scheduler_configuration_response.py
 test/test_scheduler_set_configuration_response.py
 test/test_server_health.py
+test/test_service_registration.py
 test/test_status_api.py
 test/test_system_api.py
 test/test_uint.py

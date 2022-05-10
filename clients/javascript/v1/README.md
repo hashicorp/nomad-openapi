@@ -144,7 +144,10 @@ Class | Method | HTTP request | Description
 *nomad-client.ACLApi* | [**postACLToken**](docs/ACLApi.md#postACLToken) | **POST** /acl/token/{tokenAccessor} | 
 *nomad-client.ACLApi* | [**postACLTokenOnetime**](docs/ACLApi.md#postACLTokenOnetime) | **POST** /acl/token/onetime | 
 *nomad-client.ACLApi* | [**postACLTokenOnetimeExchange**](docs/ACLApi.md#postACLTokenOnetimeExchange) | **POST** /acl/token/onetime/exchange | 
+*nomad-client.AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocation/{allocID} | 
+*nomad-client.AllocationsApi* | [**getAllocationServices**](docs/AllocationsApi.md#getAllocationServices) | **GET** /allocation/{allocID}/services | 
 *nomad-client.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
+*nomad-client.AllocationsApi* | [**postAllocationStop**](docs/AllocationsApi.md#postAllocationStop) | **POST** /allocation/{allocID}/stop | 
 *nomad-client.DeploymentsApi* | [**getDeployment**](docs/DeploymentsApi.md#getDeployment) | **GET** /deployment/{deploymentID} | 
 *nomad-client.DeploymentsApi* | [**getDeploymentAllocations**](docs/DeploymentsApi.md#getDeploymentAllocations) | **GET** /deployment/allocations/{deploymentID} | 
 *nomad-client.DeploymentsApi* | [**getDeployments**](docs/DeploymentsApi.md#getDeployments) | **GET** /deployments | 
@@ -233,6 +236,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.ACLTokenListStub](docs/ACLTokenListStub.md)
  - [nomad-client.Affinity](docs/Affinity.md)
  - [nomad-client.AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [nomad-client.AllocStopResponse](docs/AllocStopResponse.md)
  - [nomad-client.AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [nomad-client.AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [nomad-client.AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
@@ -394,6 +398,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.ServerHealth](docs/ServerHealth.md)
  - [nomad-client.Service](docs/Service.md)
  - [nomad-client.ServiceCheck](docs/ServiceCheck.md)
+ - [nomad-client.ServiceRegistration](docs/ServiceRegistration.md)
  - [nomad-client.SidecarTask](docs/SidecarTask.md)
  - [nomad-client.Spread](docs/Spread.md)
  - [nomad-client.SpreadTarget](docs/SpreadTarget.md)

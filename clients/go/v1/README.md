@@ -90,7 +90,10 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**PostACLToken**](docs/ACLApi.md#postacltoken) | **Post** /acl/token/{tokenAccessor} | 
 *ACLApi* | [**PostACLTokenOnetime**](docs/ACLApi.md#postacltokenonetime) | **Post** /acl/token/onetime | 
 *ACLApi* | [**PostACLTokenOnetimeExchange**](docs/ACLApi.md#postacltokenonetimeexchange) | **Post** /acl/token/onetime/exchange | 
+*AllocationsApi* | [**GetAllocation**](docs/AllocationsApi.md#getallocation) | **Get** /allocation/{allocID} | 
+*AllocationsApi* | [**GetAllocationServices**](docs/AllocationsApi.md#getallocationservices) | **Get** /allocation/{allocID}/services | 
 *AllocationsApi* | [**GetAllocations**](docs/AllocationsApi.md#getallocations) | **Get** /allocations | 
+*AllocationsApi* | [**PostAllocationStop**](docs/AllocationsApi.md#postallocationstop) | **Post** /allocation/{allocID}/stop | 
 *DeploymentsApi* | [**GetDeployment**](docs/DeploymentsApi.md#getdeployment) | **Get** /deployment/{deploymentID} | 
 *DeploymentsApi* | [**GetDeploymentAllocations**](docs/DeploymentsApi.md#getdeploymentallocations) | **Get** /deployment/allocations/{deploymentID} | 
 *DeploymentsApi* | [**GetDeployments**](docs/DeploymentsApi.md#getdeployments) | **Get** /deployments | 
@@ -179,6 +182,7 @@ Class | Method | HTTP request | Description
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [AllocStopResponse](docs/AllocStopResponse.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
@@ -340,6 +344,7 @@ Class | Method | HTTP request | Description
  - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
+ - [ServiceRegistration](docs/ServiceRegistration.md)
  - [SidecarTask](docs/SidecarTask.md)
  - [Spread](docs/Spread.md)
  - [SpreadTarget](docs/SpreadTarget.md)

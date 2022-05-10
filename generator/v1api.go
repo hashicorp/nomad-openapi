@@ -48,6 +48,21 @@ var (
 		In:          inPath,
 		Required:    true,
 	}
+	allocIDParam = parameter{
+		Id:          "AllocIDParam",
+		SchemaType:  stringSchema,
+		Description: "Allocation ID.",
+		Name:        "allocID",
+		In:          inPath,
+		Required:    true,
+	}
+	allocNoShutdownDelayParam = parameter{
+		Id:          "AllocNoShutdownDelayParam",
+		SchemaType:  boolSchema,
+		Description: "Flag indicating whether to delay shutdown when requesting an allocation stop.",
+		Name:        "no_shutdown_delay",
+		In:          inQuery,
+	}
 	allocationsResourcesParam = parameter{
 		Id:          "AllocationResourcesParam",
 		SchemaType:  boolSchema,
