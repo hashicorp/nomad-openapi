@@ -14,7 +14,10 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
+import io.nomadproject.client.models.AllocStopResponse;
+import io.nomadproject.client.models.Allocation;
 import io.nomadproject.client.models.AllocationListStub;
+import io.nomadproject.client.models.ServiceRegistration;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,6 +44,56 @@ public class AllocationsApiTest {
      *          if the Api call fails
      */
     @Test
+    public void getAllocationTest() throws ApiException {
+        String allocID = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        Allocation response = api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllocationServicesTest() throws ApiException {
+        String allocID = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        List<ServiceRegistration> response = api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
     public void getAllocationsTest() throws ApiException {
         String region = null;
         String namespace = null;
@@ -54,6 +107,32 @@ public class AllocationsApiTest {
         Boolean resources = null;
         Boolean taskStates = null;
         List<AllocationListStub> response = api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postAllocationStopTest() throws ApiException {
+        String allocID = null;
+        String region = null;
+        String namespace = null;
+        Integer index = null;
+        String wait = null;
+        String stale = null;
+        String prefix = null;
+        String xNomadToken = null;
+        Integer perPage = null;
+        String nextToken = null;
+        Boolean noShutdownDelay = null;
+        AllocStopResponse response = api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
 
         // TODO: test validations
     }

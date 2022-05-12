@@ -8,6 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **String** |  |  [optional]
+**attributes** | **Map&lt;String, String&gt;** |  |  [optional]
 **createIndex** | **Integer** |  |  [optional]
 **datacenter** | **String** |  |  [optional]
 **drain** | **Boolean** |  |  [optional]

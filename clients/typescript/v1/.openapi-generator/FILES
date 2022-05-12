@@ -31,6 +31,7 @@ models/ACLToken.ts
 models/ACLTokenListStub.ts
 models/Affinity.ts
 models/AllocDeploymentStatus.ts
+models/AllocStopResponse.ts
 models/AllocatedCpuResources.ts
 models/AllocatedDeviceResource.ts
 models/AllocatedMemoryResources.ts
@@ -193,6 +194,7 @@ models/SearchResponse.ts
 models/ServerHealth.ts
 models/Service.ts
 models/ServiceCheck.ts
+models/ServiceRegistration.ts
 models/SidecarTask.ts
 models/Spread.ts
 models/SpreadTarget.ts

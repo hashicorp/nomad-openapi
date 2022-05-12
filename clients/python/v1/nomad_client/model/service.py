@@ -92,6 +92,7 @@ class Service(ModelNormal):
         """
         lazy_import()
         return {
+            'address': (str,),  # noqa: E501
             'address_mode': (str,),  # noqa: E501
             'canary_meta': ({str: (str,)},),  # noqa: E501
             'canary_tags': ([str],),  # noqa: E501
@@ -99,7 +100,6 @@ class Service(ModelNormal):
             'checks': ([ServiceCheck],),  # noqa: E501
             'connect': (ConsulConnect,),  # noqa: E501
             'enable_tag_override': (bool,),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'meta': ({str: (str,)},),  # noqa: E501
             'name': (str,),  # noqa: E501
             'on_update': (str,),  # noqa: E501
@@ -115,6 +115,7 @@ class Service(ModelNormal):
 
 
     attribute_map = {
+        'address': 'Address',  # noqa: E501
         'address_mode': 'AddressMode',  # noqa: E501
         'canary_meta': 'CanaryMeta',  # noqa: E501
         'canary_tags': 'CanaryTags',  # noqa: E501
@@ -122,7 +123,6 @@ class Service(ModelNormal):
         'checks': 'Checks',  # noqa: E501
         'connect': 'Connect',  # noqa: E501
         'enable_tag_override': 'EnableTagOverride',  # noqa: E501
-        'id': 'Id',  # noqa: E501
         'meta': 'Meta',  # noqa: E501
         'name': 'Name',  # noqa: E501
         'on_update': 'OnUpdate',  # noqa: E501
@@ -173,6 +173,7 @@ class Service(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            address (str): [optional]  # noqa: E501
             address_mode (str): [optional]  # noqa: E501
             canary_meta ({str: (str,)}): [optional]  # noqa: E501
             canary_tags ([str]): [optional]  # noqa: E501
@@ -180,7 +181,6 @@ class Service(ModelNormal):
             checks ([ServiceCheck]): [optional]  # noqa: E501
             connect (ConsulConnect): [optional]  # noqa: E501
             enable_tag_override (bool): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             on_update (str): [optional]  # noqa: E501
@@ -269,6 +269,7 @@ class Service(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            address (str): [optional]  # noqa: E501
             address_mode (str): [optional]  # noqa: E501
             canary_meta ({str: (str,)}): [optional]  # noqa: E501
             canary_tags ([str]): [optional]  # noqa: E501
@@ -276,7 +277,6 @@ class Service(ModelNormal):
             checks ([ServiceCheck]): [optional]  # noqa: E501
             connect (ConsulConnect): [optional]  # noqa: E501
             enable_tag_override (bool): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             on_update (str): [optional]  # noqa: E501

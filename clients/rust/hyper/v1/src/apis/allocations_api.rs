@@ -33,10 +33,93 @@ impl<C: hyper::client::Connect> AllocationsApiClient<C> {
 }
 
 pub trait AllocationsApi {
+    fn get_allocation(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Allocation, Error = Error<serde_json::Value>>>;
+    fn get_allocation_services(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::ServiceRegistration>, Error = Error<serde_json::Value>>>;
     fn get_allocations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<bool>, task_states: Option<bool>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>>;
+    fn post_allocation_stop(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, no_shutdown_delay: Option<bool>) -> Box<dyn Future<Item = crate::models::AllocStopResponse, Error = Error<serde_json::Value>>>;
 }
 
 impl<C: hyper::client::Connect>AllocationsApi for AllocationsApiClient<C> {
+    fn get_allocation(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Allocation, Error = Error<serde_json::Value>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::Get, "/allocation/{allocID}".to_string())
+            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+                in_header: true,
+                in_query: false,
+                param_name: "X-Nomad-Token".to_owned(),
+            }))
+        ;
+        if let Some(ref s) = region {
+            req = req.with_query_param("region".to_string(), s.to_string());
+        }
+        if let Some(ref s) = namespace {
+            req = req.with_query_param("namespace".to_string(), s.to_string());
+        }
+        if let Some(ref s) = wait {
+            req = req.with_query_param("wait".to_string(), s.to_string());
+        }
+        if let Some(ref s) = stale {
+            req = req.with_query_param("stale".to_string(), s.to_string());
+        }
+        if let Some(ref s) = prefix {
+            req = req.with_query_param("prefix".to_string(), s.to_string());
+        }
+        if let Some(ref s) = per_page {
+            req = req.with_query_param("per_page".to_string(), s.to_string());
+        }
+        if let Some(ref s) = next_token {
+            req = req.with_query_param("next_token".to_string(), s.to_string());
+        }
+        req = req.with_path_param("allocID".to_string(), alloc_id.to_string());
+        if let Some(param_value) = index {
+            req = req.with_header_param("index".to_string(), param_value.to_string());
+        }
+        if let Some(param_value) = x_nomad_token {
+            req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
+        }
+
+        req.execute(self.configuration.borrow())
+    }
+
+    fn get_allocation_services(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::ServiceRegistration>, Error = Error<serde_json::Value>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::Get, "/allocation/{allocID}/services".to_string())
+            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+                in_header: true,
+                in_query: false,
+                param_name: "X-Nomad-Token".to_owned(),
+            }))
+        ;
+        if let Some(ref s) = region {
+            req = req.with_query_param("region".to_string(), s.to_string());
+        }
+        if let Some(ref s) = namespace {
+            req = req.with_query_param("namespace".to_string(), s.to_string());
+        }
+        if let Some(ref s) = wait {
+            req = req.with_query_param("wait".to_string(), s.to_string());
+        }
+        if let Some(ref s) = stale {
+            req = req.with_query_param("stale".to_string(), s.to_string());
+        }
+        if let Some(ref s) = prefix {
+            req = req.with_query_param("prefix".to_string(), s.to_string());
+        }
+        if let Some(ref s) = per_page {
+            req = req.with_query_param("per_page".to_string(), s.to_string());
+        }
+        if let Some(ref s) = next_token {
+            req = req.with_query_param("next_token".to_string(), s.to_string());
+        }
+        req = req.with_path_param("allocID".to_string(), alloc_id.to_string());
+        if let Some(param_value) = index {
+            req = req.with_header_param("index".to_string(), param_value.to_string());
+        }
+        if let Some(param_value) = x_nomad_token {
+            req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
+        }
+
+        req.execute(self.configuration.borrow())
+    }
+
     fn get_allocations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<bool>, task_states: Option<bool>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>> {
         let mut req = __internal_request::Request::new(hyper::Method::Get, "/allocations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
@@ -72,6 +155,49 @@ impl<C: hyper::client::Connect>AllocationsApi for AllocationsApiClient<C> {
         if let Some(ref s) = task_states {
             req = req.with_query_param("task_states".to_string(), s.to_string());
         }
+        if let Some(param_value) = index {
+            req = req.with_header_param("index".to_string(), param_value.to_string());
+        }
+        if let Some(param_value) = x_nomad_token {
+            req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
+        }
+
+        req.execute(self.configuration.borrow())
+    }
+
+    fn post_allocation_stop(&self, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, no_shutdown_delay: Option<bool>) -> Box<dyn Future<Item = crate::models::AllocStopResponse, Error = Error<serde_json::Value>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::Post, "/allocation/{allocID}/stop".to_string())
+            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+                in_header: true,
+                in_query: false,
+                param_name: "X-Nomad-Token".to_owned(),
+            }))
+        ;
+        if let Some(ref s) = region {
+            req = req.with_query_param("region".to_string(), s.to_string());
+        }
+        if let Some(ref s) = namespace {
+            req = req.with_query_param("namespace".to_string(), s.to_string());
+        }
+        if let Some(ref s) = wait {
+            req = req.with_query_param("wait".to_string(), s.to_string());
+        }
+        if let Some(ref s) = stale {
+            req = req.with_query_param("stale".to_string(), s.to_string());
+        }
+        if let Some(ref s) = prefix {
+            req = req.with_query_param("prefix".to_string(), s.to_string());
+        }
+        if let Some(ref s) = per_page {
+            req = req.with_query_param("per_page".to_string(), s.to_string());
+        }
+        if let Some(ref s) = next_token {
+            req = req.with_query_param("next_token".to_string(), s.to_string());
+        }
+        if let Some(ref s) = no_shutdown_delay {
+            req = req.with_query_param("no_shutdown_delay".to_string(), s.to_string());
+        }
+        req = req.with_path_param("allocID".to_string(), alloc_id.to_string());
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
         }

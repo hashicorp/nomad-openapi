@@ -6,8 +6,8 @@ require (
 	github.com/getkin/kin-openapi v0.74.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-hclog v1.2.0
-	github.com/hashicorp/nomad v1.3.0-beta.1
-	github.com/hashicorp/nomad/api v0.0.0-20220408135303-53eb6ed81777
+	github.com/hashicorp/nomad v1.3.0-rc.1
+	github.com/hashicorp/nomad/api v0.0.0-20220506174431-b5665129cd1f
 	github.com/stretchr/testify v1.7.1
 )
 
@@ -107,9 +107,8 @@ require (
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.1-0.20200228141219-3ce3d519df39 // indirect
 	github.com/hashicorp/consul v1.7.8 // indirect
-	github.com/hashicorp/consul-template v0.28.1-0.20220406001259-e710909d8054 // indirect
+	github.com/hashicorp/consul-template v0.29.0 // indirect
 	github.com/hashicorp/consul/api v1.12.0 // indirect
-	github.com/hashicorp/consul/sdk v0.8.0 // indirect
 	github.com/hashicorp/cronexpr v1.1.1 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-bexpr v0.1.11 // indirect
@@ -176,7 +175,7 @@ require (
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/hashstructure v1.1.0 // indirect
-	github.com/mitchellh/mapstructure v1.4.3 // indirect
+	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/pointerstructure v1.2.1 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/moby/sys/mount v0.3.0 // indirect

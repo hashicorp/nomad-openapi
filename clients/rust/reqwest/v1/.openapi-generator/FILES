@@ -8,6 +8,7 @@ docs/AclToken.md
 docs/AclTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -182,6 +183,7 @@ docs/SearchResponse.md
 docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
+docs/ServiceRegistration.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
@@ -232,6 +234,7 @@ src/models/acl_token.rs
 src/models/acl_token_list_stub.rs
 src/models/affinity.rs
 src/models/alloc_deployment_status.rs
+src/models/alloc_stop_response.rs
 src/models/allocated_cpu_resources.rs
 src/models/allocated_device_resource.rs
 src/models/allocated_memory_resources.rs
@@ -394,6 +397,7 @@ src/models/search_response.rs
 src/models/server_health.rs
 src/models/service.rs
 src/models/service_check.rs
+src/models/service_registration.rs
 src/models/sidecar_task.rs
 src/models/spread.rs
 src/models/spread_target.rs

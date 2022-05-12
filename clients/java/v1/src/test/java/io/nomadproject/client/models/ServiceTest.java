@@ -48,6 +48,14 @@ public class ServiceTest {
     }
 
     /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
      * Test the property 'addressMode'
      */
     @Test
@@ -101,14 +109,6 @@ public class ServiceTest {
     @Test
     public void enableTagOverrideTest() {
         // TODO: test enableTagOverride
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
     }
 
     /**

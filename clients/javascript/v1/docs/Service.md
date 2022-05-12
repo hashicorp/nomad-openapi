@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**address** | **String** |  | [optional] 
 **addressMode** | **String** |  | [optional] 
 **canaryMeta** | **{String: String}** |  | [optional] 
 **canaryTags** | **[String]** |  | [optional] 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **checks** | [**[ServiceCheck]**](ServiceCheck.md) |  | [optional] 
 **connect** | [**ConsulConnect**](ConsulConnect.md) |  | [optional] 
 **enableTagOverride** | **Boolean** |  | [optional] 
-**id** | **String** |  | [optional] 
 **meta** | **{String: String}** |  | [optional] 
 **name** | **String** |  | [optional] 
 **onUpdate** | **String** |  | [optional] 

@@ -108,7 +108,10 @@ Class | Method | HTTP request | Description
 *ACLApi* | [**post_acl_token**](docs/ACLApi.md#post_acl_token) | **POST** /acl/token/{tokenAccessor} | 
 *ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **POST** /acl/token/onetime | 
 *ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **POST** /acl/token/onetime/exchange | 
+*AllocationsApi* | [**get_allocation**](docs/AllocationsApi.md#get_allocation) | **GET** /allocation/{allocID} | 
+*AllocationsApi* | [**get_allocation_services**](docs/AllocationsApi.md#get_allocation_services) | **GET** /allocation/{allocID}/services | 
 *AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
+*AllocationsApi* | [**post_allocation_stop**](docs/AllocationsApi.md#post_allocation_stop) | **POST** /allocation/{allocID}/stop | 
 *DeploymentsApi* | [**get_deployment**](docs/DeploymentsApi.md#get_deployment) | **GET** /deployment/{deploymentID} | 
 *DeploymentsApi* | [**get_deployment_allocations**](docs/DeploymentsApi.md#get_deployment_allocations) | **GET** /deployment/allocations/{deploymentID} | 
 *DeploymentsApi* | [**get_deployments**](docs/DeploymentsApi.md#get_deployments) | **GET** /deployments | 
@@ -197,6 +200,7 @@ Class | Method | HTTP request | Description
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [AllocStopResponse](docs/AllocStopResponse.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
@@ -360,6 +364,7 @@ Class | Method | HTTP request | Description
  - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
+ - [ServiceRegistration](docs/ServiceRegistration.md)
  - [SidecarTask](docs/SidecarTask.md)
  - [Spread](docs/Spread.md)
  - [SpreadTarget](docs/SpreadTarget.md)

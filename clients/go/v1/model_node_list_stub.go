@@ -18,6 +18,7 @@ import (
 // NodeListStub struct for NodeListStub
 type NodeListStub struct {
 	Address *string `json:"Address,omitempty"`
+	Attributes *map[string]string `json:"Attributes,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	Datacenter *string `json:"Datacenter,omitempty"`
 	Drain *bool `json:"Drain,omitempty"`
@@ -82,6 +83,38 @@ func (o *NodeListStub) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *NodeListStub) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *NodeListStub) GetAttributes() map[string]string {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NodeListStub) GetAttributesOk() (*map[string]string, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *NodeListStub) HasAttributes() bool {
+	if o != nil && o.Attributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]string and assigns it to the Attributes field.
+func (o *NodeListStub) SetAttributes(v map[string]string) {
+	o.Attributes = &v
 }
 
 // GetCreateIndex returns the CreateIndex field value if set, zero value otherwise.
@@ -568,6 +601,9 @@ func (o NodeListStub) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Address != nil {
 		toSerialize["Address"] = o.Address
+	}
+	if o.Attributes != nil {
+		toSerialize["Attributes"] = o.Attributes
 	}
 	if o.CreateIndex != nil {
 		toSerialize["CreateIndex"] = o.CreateIndex

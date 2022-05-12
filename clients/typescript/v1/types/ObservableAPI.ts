@@ -9,6 +9,7 @@ import { ACLToken } from '../models/ACLToken';
 import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
+import { AllocStopResponse } from '../models/AllocStopResponse';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
 import { AllocatedDeviceResource } from '../models/AllocatedDeviceResource';
 import { AllocatedMemoryResources } from '../models/AllocatedMemoryResources';
@@ -170,6 +171,7 @@ import { SearchResponse } from '../models/SearchResponse';
 import { ServerHealth } from '../models/ServerHealth';
 import { Service } from '../models/Service';
 import { ServiceCheck } from '../models/ServiceCheck';
+import { ServiceRegistration } from '../models/ServiceRegistration';
 import { SidecarTask } from '../models/SidecarTask';
 import { Spread } from '../models/Spread';
 import { SpreadTarget } from '../models/SpreadTarget';
@@ -561,6 +563,68 @@ export class ObservableAllocationsApi {
     }
 
     /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getAllocation(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Allocation> {
+        const requestContextPromise = this.requestFactory.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocation(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getAllocationServices(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<ServiceRegistration>> {
+        const requestContextPromise = this.requestFactory.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocationServices(rsp)));
+            }));
+    }
+ 
+    /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -589,6 +653,38 @@ export class ObservableAllocationsApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocations(rsp)));
+            }));
+    }
+ 
+    /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop.
+     */
+    public postAllocationStop(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, noShutdownDelay?: boolean, _options?: Configuration): Observable<AllocStopResponse> {
+        const requestContextPromise = this.requestFactory.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postAllocationStop(rsp)));
             }));
     }
  

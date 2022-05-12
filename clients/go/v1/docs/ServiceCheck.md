@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddressMode** | Pointer to **string** |  | [optional] 
+**Advertise** | Pointer to **string** |  | [optional] 
 **Args** | Pointer to **[]string** |  | [optional] 
 **Body** | Pointer to **string** |  | [optional] 
 **CheckRestart** | Pointer to [**CheckRestart**](CheckRestart.md) |  | [optional] 
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **GRPCService** | Pointer to **string** |  | [optional] 
 **GRPCUseTLS** | Pointer to **bool** |  | [optional] 
 **Header** | Pointer to **map[string][]string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **InitialStatus** | Pointer to **string** |  | [optional] 
 **Interval** | Pointer to **int64** |  | [optional] 
 **Method** | Pointer to **string** |  | [optional] 
@@ -72,6 +72,31 @@ SetAddressMode sets AddressMode field to given value.
 `func (o *ServiceCheck) HasAddressMode() bool`
 
 HasAddressMode returns a boolean if a field has been set.
+
+### GetAdvertise
+
+`func (o *ServiceCheck) GetAdvertise() string`
+
+GetAdvertise returns the Advertise field if non-nil, zero value otherwise.
+
+### GetAdvertiseOk
+
+`func (o *ServiceCheck) GetAdvertiseOk() (*string, bool)`
+
+GetAdvertiseOk returns a tuple with the Advertise field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdvertise
+
+`func (o *ServiceCheck) SetAdvertise(v string)`
+
+SetAdvertise sets Advertise field to given value.
+
+### HasAdvertise
+
+`func (o *ServiceCheck) HasAdvertise() bool`
+
+HasAdvertise returns a boolean if a field has been set.
 
 ### GetArgs
 
@@ -297,31 +322,6 @@ SetHeader sets Header field to given value.
 `func (o *ServiceCheck) HasHeader() bool`
 
 HasHeader returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *ServiceCheck) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ServiceCheck) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ServiceCheck) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *ServiceCheck) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetInitialStatus
 

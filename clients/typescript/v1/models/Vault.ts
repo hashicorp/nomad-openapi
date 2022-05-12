@@ -15,7 +15,6 @@ import { HttpFile } from '../http/http';
 export class Vault {
     'changeMode'?: string;
     'changeSignal'?: string;
-    'entityAlias'?: string;
     'env'?: boolean;
     'namespace'?: string;
     'policies'?: Array<string>;
@@ -32,12 +31,6 @@ export class Vault {
         {
             "name": "changeSignal",
             "baseName": "ChangeSignal",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "entityAlias",
-            "baseName": "EntityAlias",
             "type": "string",
             "format": ""
         },

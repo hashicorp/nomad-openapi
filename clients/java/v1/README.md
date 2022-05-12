@@ -128,7 +128,10 @@ Class | Method | HTTP request | Description
 *AclApi* | [**postACLToken**](docs/AclApi.md#postACLToken) | **POST** /acl/token/{tokenAccessor} | 
 *AclApi* | [**postACLTokenOnetime**](docs/AclApi.md#postACLTokenOnetime) | **POST** /acl/token/onetime | 
 *AclApi* | [**postACLTokenOnetimeExchange**](docs/AclApi.md#postACLTokenOnetimeExchange) | **POST** /acl/token/onetime/exchange | 
+*AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocation/{allocID} | 
+*AllocationsApi* | [**getAllocationServices**](docs/AllocationsApi.md#getAllocationServices) | **GET** /allocation/{allocID}/services | 
 *AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | 
+*AllocationsApi* | [**postAllocationStop**](docs/AllocationsApi.md#postAllocationStop) | **POST** /allocation/{allocID}/stop | 
 *DeploymentsApi* | [**getDeployment**](docs/DeploymentsApi.md#getDeployment) | **GET** /deployment/{deploymentID} | 
 *DeploymentsApi* | [**getDeploymentAllocations**](docs/DeploymentsApi.md#getDeploymentAllocations) | **GET** /deployment/allocations/{deploymentID} | 
 *DeploymentsApi* | [**getDeployments**](docs/DeploymentsApi.md#getDeployments) | **GET** /deployments | 
@@ -217,6 +220,7 @@ Class | Method | HTTP request | Description
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [AllocStopResponse](docs/AllocStopResponse.md)
  - [AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
@@ -378,6 +382,7 @@ Class | Method | HTTP request | Description
  - [ServerHealth](docs/ServerHealth.md)
  - [Service](docs/Service.md)
  - [ServiceCheck](docs/ServiceCheck.md)
+ - [ServiceRegistration](docs/ServiceRegistration.md)
  - [SidecarTask](docs/SidecarTask.md)
  - [Spread](docs/Spread.md)
  - [SpreadTarget](docs/SpreadTarget.md)

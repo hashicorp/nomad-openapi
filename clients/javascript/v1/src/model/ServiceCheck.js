@@ -51,6 +51,9 @@ class ServiceCheck {
             if (data.hasOwnProperty('AddressMode')) {
                 obj['AddressMode'] = ApiClient.convertToType(data['AddressMode'], 'String');
             }
+            if (data.hasOwnProperty('Advertise')) {
+                obj['Advertise'] = ApiClient.convertToType(data['Advertise'], 'String');
+            }
             if (data.hasOwnProperty('Args')) {
                 obj['Args'] = ApiClient.convertToType(data['Args'], ['String']);
             }
@@ -77,9 +80,6 @@ class ServiceCheck {
             }
             if (data.hasOwnProperty('Header')) {
                 obj['Header'] = ApiClient.convertToType(data['Header'], {'String': ['String']});
-            }
-            if (data.hasOwnProperty('Id')) {
-                obj['Id'] = ApiClient.convertToType(data['Id'], 'String');
             }
             if (data.hasOwnProperty('InitialStatus')) {
                 obj['InitialStatus'] = ApiClient.convertToType(data['InitialStatus'], 'String');
@@ -133,6 +133,11 @@ class ServiceCheck {
 ServiceCheck.prototype['AddressMode'] = undefined;
 
 /**
+ * @member {String} Advertise
+ */
+ServiceCheck.prototype['Advertise'] = undefined;
+
+/**
  * @member {Array.<String>} Args
  */
 ServiceCheck.prototype['Args'] = undefined;
@@ -176,11 +181,6 @@ ServiceCheck.prototype['GRPCUseTLS'] = undefined;
  * @member {Object.<String, Array.<String>>} Header
  */
 ServiceCheck.prototype['Header'] = undefined;
-
-/**
- * @member {String} Id
- */
-ServiceCheck.prototype['Id'] = undefined;
 
 /**
  * @member {String} InitialStatus

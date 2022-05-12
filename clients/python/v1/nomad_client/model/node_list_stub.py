@@ -103,6 +103,7 @@ class NodeListStub(ModelNormal):
         lazy_import()
         return {
             'address': (str,),  # noqa: E501
+            'attributes': ({str: (str,)},),  # noqa: E501
             'create_index': (int,),  # noqa: E501
             'datacenter': (str,),  # noqa: E501
             'drain': (bool,),  # noqa: E501
@@ -127,6 +128,7 @@ class NodeListStub(ModelNormal):
 
     attribute_map = {
         'address': 'Address',  # noqa: E501
+        'attributes': 'Attributes',  # noqa: E501
         'create_index': 'CreateIndex',  # noqa: E501
         'datacenter': 'Datacenter',  # noqa: E501
         'drain': 'Drain',  # noqa: E501
@@ -186,6 +188,7 @@ class NodeListStub(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str): [optional]  # noqa: E501
+            attributes ({str: (str,)}): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             drain (bool): [optional]  # noqa: E501
@@ -283,6 +286,7 @@ class NodeListStub(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str): [optional]  # noqa: E501
+            attributes ({str: (str,)}): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             drain (bool): [optional]  # noqa: E501

@@ -15,6 +15,7 @@ from nomad_client.model.acl_token import ACLToken
 from nomad_client.model.acl_token_list_stub import ACLTokenListStub
 from nomad_client.model.affinity import Affinity
 from nomad_client.model.alloc_deployment_status import AllocDeploymentStatus
+from nomad_client.model.alloc_stop_response import AllocStopResponse
 from nomad_client.model.allocated_cpu_resources import AllocatedCpuResources
 from nomad_client.model.allocated_device_resource import AllocatedDeviceResource
 from nomad_client.model.allocated_memory_resources import AllocatedMemoryResources
@@ -178,6 +179,7 @@ from nomad_client.model.search_response import SearchResponse
 from nomad_client.model.server_health import ServerHealth
 from nomad_client.model.service import Service
 from nomad_client.model.service_check import ServiceCheck
+from nomad_client.model.service_registration import ServiceRegistration
 from nomad_client.model.sidecar_task import SidecarTask
 from nomad_client.model.spread import Spread
 from nomad_client.model.spread_target import SpreadTarget

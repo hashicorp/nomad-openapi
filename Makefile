@@ -56,3 +56,12 @@ v1: spec
 		--rm \
 		--volume "$(shell pwd):/local" \
 		$(DOCKER_IMAGE) batch --clean /local/clients/typescript/v1/config.yaml
+
+
+.PHONY: update-nomad
+update-nomad:
+	(cd generator && go get github.com/hashicorp/nomad)
+	(cd generator && go get github.com/hashicorp/nomad/api)
+	(cd generator && go mod tidy)
+	@go get github.com/hashicorp/nomad
+	@go mod tidy

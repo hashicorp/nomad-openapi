@@ -8,6 +8,7 @@ docs/ACLToken.md
 docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -182,6 +183,7 @@ docs/SearchResponse.md
 docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
+docs/ServiceRegistration.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
@@ -233,6 +235,7 @@ src/model/ACLToken.js
 src/model/ACLTokenListStub.js
 src/model/Affinity.js
 src/model/AllocDeploymentStatus.js
+src/model/AllocStopResponse.js
 src/model/AllocatedCpuResources.js
 src/model/AllocatedDeviceResource.js
 src/model/AllocatedMemoryResources.js
@@ -394,6 +397,7 @@ src/model/SearchResponse.js
 src/model/ServerHealth.js
 src/model/Service.js
 src/model/ServiceCheck.js
+src/model/ServiceRegistration.js
 src/model/SidecarTask.js
 src/model/Spread.js
 src/model/SpreadTarget.js
@@ -422,6 +426,7 @@ test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js
 test/api/StatusApi.spec.js
 test/api/SystemApi.spec.js
+test/model/AllocStopResponse.spec.js
 test/model/AutopilotConfiguration.spec.js
 test/model/CSIControllerInfo.spec.js
 test/model/CSIInfo.spec.js
@@ -448,4 +453,5 @@ test/model/SchedulerConfiguration.spec.js
 test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
+test/model/ServiceRegistration.spec.js
 test/model/WaitConfig.spec.js

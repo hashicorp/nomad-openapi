@@ -27,7 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.nomadproject.client.models.AllocStopResponse;
+import io.nomadproject.client.models.Allocation;
 import io.nomadproject.client.models.AllocationListStub;
+import io.nomadproject.client.models.ServiceRegistration;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -54,6 +57,406 @@ public class AllocationsApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for getAllocation
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllocationCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/allocation/{allocID}"
+            .replaceAll("\\{" + "allocID" + "\\}", localVarApiClient.escapeString(allocID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllocationValidateBeforeCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'allocID' is set
+        if (allocID == null) {
+            throw new ApiException("Missing the required parameter 'allocID' when calling getAllocation(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAllocationCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return Allocation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public Allocation getAllocation(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<Allocation> localVarResp = getAllocationWithHttpInfo(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;Allocation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Allocation> getAllocationWithHttpInfo(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getAllocationValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<Allocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllocationAsync(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<Allocation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllocationValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<Allocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAllocationServices
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllocationServicesCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/allocation/{allocID}/services"
+            .replaceAll("\\{" + "allocID" + "\\}", localVarApiClient.escapeString(allocID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllocationServicesValidateBeforeCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'allocID' is set
+        if (allocID == null) {
+            throw new ApiException("Missing the required parameter 'allocID' when calling getAllocationServices(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAllocationServicesCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return List&lt;ServiceRegistration&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ServiceRegistration> getAllocationServices(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        ApiResponse<List<ServiceRegistration>> localVarResp = getAllocationServicesWithHttpInfo(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @return ApiResponse&lt;List&lt;ServiceRegistration&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ServiceRegistration>> getAllocationServicesWithHttpInfo(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken) throws ApiException {
+        okhttp3.Call localVarCall = getAllocationServicesValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, null);
+        Type localVarReturnType = new TypeToken<List<ServiceRegistration>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllocationServicesAsync(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback<List<ServiceRegistration>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllocationServicesValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _callback);
+        Type localVarReturnType = new TypeToken<List<ServiceRegistration>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getAllocations
      * @param region Filters results based on the specified region. (optional)
@@ -257,6 +660,214 @@ public class AllocationsApi {
 
         okhttp3.Call localVarCall = getAllocationsValidateBeforeCall(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates, _callback);
         Type localVarReturnType = new TypeToken<List<AllocationListStub>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAllocationStop
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAllocationStopCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/allocation/{allocID}/stop"
+            .replaceAll("\\{" + "allocID" + "\\}", localVarApiClient.escapeString(allocID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
+        if (wait != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wait", wait));
+        }
+
+        if (stale != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("stale", stale));
+        }
+
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (nextToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("next_token", nextToken));
+        }
+
+        if (noShutdownDelay != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("no_shutdown_delay", noShutdownDelay));
+        }
+
+        if (index != null) {
+            localVarHeaderParams.put("index", localVarApiClient.parameterToString(index));
+        }
+
+        if (xNomadToken != null) {
+            localVarHeaderParams.put("X-Nomad-Token", localVarApiClient.parameterToString(xNomadToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "X-Nomad-Token" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAllocationStopValidateBeforeCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'allocID' is set
+        if (allocID == null) {
+            throw new ApiException("Missing the required parameter 'allocID' when calling postAllocationStop(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postAllocationStopCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop. (optional)
+     * @return AllocStopResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public AllocStopResponse postAllocationStop(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay) throws ApiException {
+        ApiResponse<AllocStopResponse> localVarResp = postAllocationStopWithHttpInfo(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop. (optional)
+     * @return ApiResponse&lt;AllocStopResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AllocStopResponse> postAllocationStopWithHttpInfo(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay) throws ApiException {
+        okhttp3.Call localVarCall = postAllocationStopValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay, null);
+        Type localVarReturnType = new TypeToken<AllocStopResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param allocID Allocation ID. (required)
+     * @param region Filters results based on the specified region. (optional)
+     * @param namespace Filters results based on the specified namespace. (optional)
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam. (optional)
+     * @param wait Provided with IndexParam to wait for change. (optional)
+     * @param stale If present, results will include stale reads. (optional)
+     * @param prefix Constrains results to jobs that start with the defined prefix (optional)
+     * @param xNomadToken A Nomad ACL token. (optional)
+     * @param perPage Maximum number of results to return. (optional)
+     * @param nextToken Indicates where to start paging for queries that support pagination. (optional)
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method not allowed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAllocationStopAsync(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay, final ApiCallback<AllocStopResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAllocationStopValidateBeforeCall(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay, _callback);
+        Type localVarReturnType = new TypeToken<AllocStopResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

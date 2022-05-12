@@ -99,7 +99,10 @@ Class | Method | HTTP request | Description
 *NomadClient::ACLApi* | [**post_acl_token**](docs/ACLApi.md#post_acl_token) | **POST** /acl/token/{tokenAccessor} | 
 *NomadClient::ACLApi* | [**post_acl_token_onetime**](docs/ACLApi.md#post_acl_token_onetime) | **POST** /acl/token/onetime | 
 *NomadClient::ACLApi* | [**post_acl_token_onetime_exchange**](docs/ACLApi.md#post_acl_token_onetime_exchange) | **POST** /acl/token/onetime/exchange | 
+*NomadClient::AllocationsApi* | [**get_allocation**](docs/AllocationsApi.md#get_allocation) | **GET** /allocation/{allocID} | 
+*NomadClient::AllocationsApi* | [**get_allocation_services**](docs/AllocationsApi.md#get_allocation_services) | **GET** /allocation/{allocID}/services | 
 *NomadClient::AllocationsApi* | [**get_allocations**](docs/AllocationsApi.md#get_allocations) | **GET** /allocations | 
+*NomadClient::AllocationsApi* | [**post_allocation_stop**](docs/AllocationsApi.md#post_allocation_stop) | **POST** /allocation/{allocID}/stop | 
 *NomadClient::DeploymentsApi* | [**get_deployment**](docs/DeploymentsApi.md#get_deployment) | **GET** /deployment/{deploymentID} | 
 *NomadClient::DeploymentsApi* | [**get_deployment_allocations**](docs/DeploymentsApi.md#get_deployment_allocations) | **GET** /deployment/allocations/{deploymentID} | 
 *NomadClient::DeploymentsApi* | [**get_deployments**](docs/DeploymentsApi.md#get_deployments) | **GET** /deployments | 
@@ -188,6 +191,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::ACLTokenListStub](docs/ACLTokenListStub.md)
  - [NomadClient::Affinity](docs/Affinity.md)
  - [NomadClient::AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
+ - [NomadClient::AllocStopResponse](docs/AllocStopResponse.md)
  - [NomadClient::AllocatedCpuResources](docs/AllocatedCpuResources.md)
  - [NomadClient::AllocatedDeviceResource](docs/AllocatedDeviceResource.md)
  - [NomadClient::AllocatedMemoryResources](docs/AllocatedMemoryResources.md)
@@ -349,6 +353,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::ServerHealth](docs/ServerHealth.md)
  - [NomadClient::Service](docs/Service.md)
  - [NomadClient::ServiceCheck](docs/ServiceCheck.md)
+ - [NomadClient::ServiceRegistration](docs/ServiceRegistration.md)
  - [NomadClient::SidecarTask](docs/SidecarTask.md)
  - [NomadClient::Spread](docs/Spread.md)
  - [NomadClient::SpreadTarget](docs/SpreadTarget.md)

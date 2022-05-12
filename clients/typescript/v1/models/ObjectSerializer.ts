@@ -4,6 +4,7 @@ export * from './ACLToken';
 export * from './ACLTokenListStub';
 export * from './Affinity';
 export * from './AllocDeploymentStatus';
+export * from './AllocStopResponse';
 export * from './AllocatedCpuResources';
 export * from './AllocatedDeviceResource';
 export * from './AllocatedMemoryResources';
@@ -165,6 +166,7 @@ export * from './SearchResponse';
 export * from './ServerHealth';
 export * from './Service';
 export * from './ServiceCheck';
+export * from './ServiceRegistration';
 export * from './SidecarTask';
 export * from './Spread';
 export * from './SpreadTarget';
@@ -193,6 +195,7 @@ import { ACLToken } from './ACLToken';
 import { ACLTokenListStub } from './ACLTokenListStub';
 import { Affinity } from './Affinity';
 import { AllocDeploymentStatus } from './AllocDeploymentStatus';
+import { AllocStopResponse } from './AllocStopResponse';
 import { AllocatedCpuResources } from './AllocatedCpuResources';
 import { AllocatedDeviceResource } from './AllocatedDeviceResource';
 import { AllocatedMemoryResources } from './AllocatedMemoryResources';
@@ -354,6 +357,7 @@ import { SearchResponse } from './SearchResponse';
 import { ServerHealth } from './ServerHealth';
 import { Service } from './Service';
 import { ServiceCheck } from './ServiceCheck';
+import { ServiceRegistration } from './ServiceRegistration';
 import { SidecarTask } from './SidecarTask';
 import { Spread } from './Spread';
 import { SpreadTarget } from './SpreadTarget';
@@ -404,6 +408,7 @@ let typeMap: {[index: string]: any} = {
     "ACLTokenListStub": ACLTokenListStub,
     "Affinity": Affinity,
     "AllocDeploymentStatus": AllocDeploymentStatus,
+    "AllocStopResponse": AllocStopResponse,
     "AllocatedCpuResources": AllocatedCpuResources,
     "AllocatedDeviceResource": AllocatedDeviceResource,
     "AllocatedMemoryResources": AllocatedMemoryResources,
@@ -565,6 +570,7 @@ let typeMap: {[index: string]: any} = {
     "ServerHealth": ServerHealth,
     "Service": Service,
     "ServiceCheck": ServiceCheck,
+    "ServiceRegistration": ServiceRegistration,
     "SidecarTask": SidecarTask,
     "Spread": Spread,
     "SpreadTarget": SpreadTarget,

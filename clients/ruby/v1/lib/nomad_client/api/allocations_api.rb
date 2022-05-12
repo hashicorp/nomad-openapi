@@ -19,6 +19,178 @@ module NomadClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @return [Allocation]
+    def get_allocation(alloc_id, opts = {})
+      data, _status_code, _headers = get_allocation_with_http_info(alloc_id, opts)
+      data
+    end
+
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @return [Array<(Allocation, Integer, Hash)>] Allocation data, response status code and response headers
+    def get_allocation_with_http_info(alloc_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AllocationsApi.get_allocation ...'
+      end
+      # verify the required parameter 'alloc_id' is set
+      if @api_client.config.client_side_validation && alloc_id.nil?
+        fail ArgumentError, "Missing the required parameter 'alloc_id' when calling AllocationsApi.get_allocation"
+      end
+      # resource path
+      local_var_path = '/allocation/{allocID}'.sub('{' + 'allocID' + '}', CGI.escape(alloc_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'namespace'] = opts[:'namespace'] if !opts[:'namespace'].nil?
+      query_params[:'wait'] = opts[:'wait'] if !opts[:'wait'].nil?
+      query_params[:'stale'] = opts[:'stale'] if !opts[:'stale'].nil?
+      query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'next_token'] = opts[:'next_token'] if !opts[:'next_token'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'index'] = opts[:'index'] if !opts[:'index'].nil?
+      header_params[:'X-Nomad-Token'] = opts[:'x_nomad_token'] if !opts[:'x_nomad_token'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Allocation'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']
+
+      new_options = opts.merge(
+        :operation => :"AllocationsApi.get_allocation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AllocationsApi#get_allocation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @return [Array<ServiceRegistration>]
+    def get_allocation_services(alloc_id, opts = {})
+      data, _status_code, _headers = get_allocation_services_with_http_info(alloc_id, opts)
+      data
+    end
+
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @return [Array<(Array<ServiceRegistration>, Integer, Hash)>] Array<ServiceRegistration> data, response status code and response headers
+    def get_allocation_services_with_http_info(alloc_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AllocationsApi.get_allocation_services ...'
+      end
+      # verify the required parameter 'alloc_id' is set
+      if @api_client.config.client_side_validation && alloc_id.nil?
+        fail ArgumentError, "Missing the required parameter 'alloc_id' when calling AllocationsApi.get_allocation_services"
+      end
+      # resource path
+      local_var_path = '/allocation/{allocID}/services'.sub('{' + 'allocID' + '}', CGI.escape(alloc_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'namespace'] = opts[:'namespace'] if !opts[:'namespace'].nil?
+      query_params[:'wait'] = opts[:'wait'] if !opts[:'wait'].nil?
+      query_params[:'stale'] = opts[:'stale'] if !opts[:'stale'].nil?
+      query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'next_token'] = opts[:'next_token'] if !opts[:'next_token'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'index'] = opts[:'index'] if !opts[:'index'].nil?
+      header_params[:'X-Nomad-Token'] = opts[:'x_nomad_token'] if !opts[:'x_nomad_token'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<ServiceRegistration>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']
+
+      new_options = opts.merge(
+        :operation => :"AllocationsApi.get_allocation_services",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AllocationsApi#get_allocation_services\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param [Hash] opts the optional parameters
     # @option opts [String] :region Filters results based on the specified region.
     # @option opts [String] :namespace Filters results based on the specified namespace.
@@ -101,6 +273,95 @@ module NomadClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AllocationsApi#get_allocations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @option opts [Boolean] :no_shutdown_delay Flag indicating whether to delay shutdown when requesting an allocation stop.
+    # @return [AllocStopResponse]
+    def post_allocation_stop(alloc_id, opts = {})
+      data, _status_code, _headers = post_allocation_stop_with_http_info(alloc_id, opts)
+      data
+    end
+
+    # @param alloc_id [String] Allocation ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :region Filters results based on the specified region.
+    # @option opts [String] :namespace Filters results based on the specified namespace.
+    # @option opts [Integer] :index If set, wait until query exceeds given index. Must be provided with WaitParam.
+    # @option opts [String] :wait Provided with IndexParam to wait for change.
+    # @option opts [String] :stale If present, results will include stale reads.
+    # @option opts [String] :prefix Constrains results to jobs that start with the defined prefix
+    # @option opts [String] :x_nomad_token A Nomad ACL token.
+    # @option opts [Integer] :per_page Maximum number of results to return.
+    # @option opts [String] :next_token Indicates where to start paging for queries that support pagination.
+    # @option opts [Boolean] :no_shutdown_delay Flag indicating whether to delay shutdown when requesting an allocation stop.
+    # @return [Array<(AllocStopResponse, Integer, Hash)>] AllocStopResponse data, response status code and response headers
+    def post_allocation_stop_with_http_info(alloc_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AllocationsApi.post_allocation_stop ...'
+      end
+      # verify the required parameter 'alloc_id' is set
+      if @api_client.config.client_side_validation && alloc_id.nil?
+        fail ArgumentError, "Missing the required parameter 'alloc_id' when calling AllocationsApi.post_allocation_stop"
+      end
+      # resource path
+      local_var_path = '/allocation/{allocID}/stop'.sub('{' + 'allocID' + '}', CGI.escape(alloc_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'namespace'] = opts[:'namespace'] if !opts[:'namespace'].nil?
+      query_params[:'wait'] = opts[:'wait'] if !opts[:'wait'].nil?
+      query_params[:'stale'] = opts[:'stale'] if !opts[:'stale'].nil?
+      query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'next_token'] = opts[:'next_token'] if !opts[:'next_token'].nil?
+      query_params[:'no_shutdown_delay'] = opts[:'no_shutdown_delay'] if !opts[:'no_shutdown_delay'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'index'] = opts[:'index'] if !opts[:'index'].nil?
+      header_params[:'X-Nomad-Token'] = opts[:'x_nomad_token'] if !opts[:'x_nomad_token'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AllocStopResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['X-Nomad-Token']
+
+      new_options = opts.merge(
+        :operation => :"AllocationsApi.post_allocation_stop",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AllocationsApi#post_allocation_stop\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

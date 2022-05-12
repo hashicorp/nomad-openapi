@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **change_mode** | **str** |  | [optional] 
 **change_signal** | **str** |  | [optional] 
-**entity_alias** | **str** |  | [optional] 
 **env** | **bool** |  | [optional] 
 **namespace** | **str** |  | [optional] 
 **policies** | **[str]** |  | [optional] 

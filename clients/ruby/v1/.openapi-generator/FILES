@@ -11,6 +11,7 @@ docs/ACLToken.md
 docs/ACLTokenListStub.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
+docs/AllocStopResponse.md
 docs/AllocatedCpuResources.md
 docs/AllocatedDeviceResource.md
 docs/AllocatedMemoryResources.md
@@ -185,6 +186,7 @@ docs/SearchResponse.md
 docs/ServerHealth.md
 docs/Service.md
 docs/ServiceCheck.md
+docs/ServiceRegistration.md
 docs/SidecarTask.md
 docs/Spread.md
 docs/SpreadTarget.md
@@ -236,6 +238,7 @@ lib/nomad_client/models/acl_token.rb
 lib/nomad_client/models/acl_token_list_stub.rb
 lib/nomad_client/models/affinity.rb
 lib/nomad_client/models/alloc_deployment_status.rb
+lib/nomad_client/models/alloc_stop_response.rb
 lib/nomad_client/models/allocated_cpu_resources.rb
 lib/nomad_client/models/allocated_device_resource.rb
 lib/nomad_client/models/allocated_memory_resources.rb
@@ -397,6 +400,7 @@ lib/nomad_client/models/search_response.rb
 lib/nomad_client/models/server_health.rb
 lib/nomad_client/models/service.rb
 lib/nomad_client/models/service_check.rb
+lib/nomad_client/models/service_registration.rb
 lib/nomad_client/models/sidecar_task.rb
 lib/nomad_client/models/spread.rb
 lib/nomad_client/models/spread_target.rb
@@ -445,6 +449,7 @@ spec/models/acl_token_list_stub_spec.rb
 spec/models/acl_token_spec.rb
 spec/models/affinity_spec.rb
 spec/models/alloc_deployment_status_spec.rb
+spec/models/alloc_stop_response_spec.rb
 spec/models/allocated_cpu_resources_spec.rb
 spec/models/allocated_device_resource_spec.rb
 spec/models/allocated_memory_resources_spec.rb
@@ -605,6 +610,7 @@ spec/models/search_request_spec.rb
 spec/models/search_response_spec.rb
 spec/models/server_health_spec.rb
 spec/models/service_check_spec.rb
+spec/models/service_registration_spec.rb
 spec/models/service_spec.rb
 spec/models/sidecar_task_spec.rb
 spec/models/spread_spec.rb

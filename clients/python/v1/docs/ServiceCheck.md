@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_mode** | **str** |  | [optional] 
+**advertise** | **str** |  | [optional] 
 **args** | **[str]** |  | [optional] 
 **body** | **str** |  | [optional] 
 **check_restart** | [**CheckRestart**](CheckRestart.md) |  | [optional] 
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **grpc_service** | **str** |  | [optional] 
 **grpc_use_tls** | **bool** |  | [optional] 
 **header** | **{str: ([str],)}** |  | [optional] 
-**id** | **str** |  | [optional] 
 **initial_status** | **str** |  | [optional] 
 **interval** | **int** |  | [optional] 
 **method** | **str** |  | [optional] 

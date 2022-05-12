@@ -19,6 +19,7 @@ import ACLToken from './model/ACLToken';
 import ACLTokenListStub from './model/ACLTokenListStub';
 import Affinity from './model/Affinity';
 import AllocDeploymentStatus from './model/AllocDeploymentStatus';
+import AllocStopResponse from './model/AllocStopResponse';
 import AllocatedCpuResources from './model/AllocatedCpuResources';
 import AllocatedDeviceResource from './model/AllocatedDeviceResource';
 import AllocatedMemoryResources from './model/AllocatedMemoryResources';
@@ -180,6 +181,7 @@ import SearchResponse from './model/SearchResponse';
 import ServerHealth from './model/ServerHealth';
 import Service from './model/Service';
 import ServiceCheck from './model/ServiceCheck';
+import ServiceRegistration from './model/ServiceRegistration';
 import SidecarTask from './model/SidecarTask';
 import Spread from './model/Spread';
 import SpreadTarget from './model/SpreadTarget';
@@ -293,6 +295,12 @@ export {
      * @property {module:model/AllocDeploymentStatus}
      */
     AllocDeploymentStatus,
+
+    /**
+     * The AllocStopResponse model constructor.
+     * @property {module:model/AllocStopResponse}
+     */
+    AllocStopResponse,
 
     /**
      * The AllocatedCpuResources model constructor.
@@ -1259,6 +1267,12 @@ export {
      * @property {module:model/ServiceCheck}
      */
     ServiceCheck,
+
+    /**
+     * The ServiceRegistration model constructor.
+     * @property {module:model/ServiceRegistration}
+     */
+    ServiceRegistration,
 
     /**
      * The SidecarTask model constructor.

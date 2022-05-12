@@ -18,6 +18,8 @@
 
 generator/bin
 
+.idea/
+
 # in case someone makes the generator with go build directly
 generator/generator
 

@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 
 export class ServiceCheck {
     'addressMode'?: string;
+    'advertise'?: string;
     'args'?: Array<string>;
     'body'?: string;
     'checkRestart'?: CheckRestart;
@@ -24,7 +25,6 @@ export class ServiceCheck {
     'gRPCService'?: string;
     'gRPCUseTLS'?: boolean;
     'header'?: { [key: string]: Array<string>; };
-    'id'?: string;
     'initialStatus'?: string;
     'interval'?: number;
     'method'?: string;
@@ -45,6 +45,12 @@ export class ServiceCheck {
         {
             "name": "addressMode",
             "baseName": "AddressMode",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "advertise",
+            "baseName": "Advertise",
             "type": "string",
             "format": ""
         },
@@ -100,12 +106,6 @@ export class ServiceCheck {
             "name": "header",
             "baseName": "Header",
             "type": "{ [key: string]: Array<string>; }",
-            "format": ""
-        },
-        {
-            "name": "id",
-            "baseName": "Id",
-            "type": "string",
             "format": ""
         },
         {

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChangeMode** | Pointer to **string** |  | [optional] 
 **ChangeSignal** | Pointer to **string** |  | [optional] 
-**EntityAlias** | Pointer to **string** |  | [optional] 
 **Env** | Pointer to **bool** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **Policies** | Pointer to **[]string** |  | [optional] 
@@ -79,31 +78,6 @@ SetChangeSignal sets ChangeSignal field to given value.
 `func (o *Vault) HasChangeSignal() bool`
 
 HasChangeSignal returns a boolean if a field has been set.
-
-### GetEntityAlias
-
-`func (o *Vault) GetEntityAlias() string`
-
-GetEntityAlias returns the EntityAlias field if non-nil, zero value otherwise.
-
-### GetEntityAliasOk
-
-`func (o *Vault) GetEntityAliasOk() (*string, bool)`
-
-GetEntityAliasOk returns a tuple with the EntityAlias field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntityAlias
-
-`func (o *Vault) SetEntityAlias(v string)`
-
-SetEntityAlias sets EntityAlias field to given value.
-
-### HasEntityAlias
-
-`func (o *Vault) HasEntityAlias() bool`
-
-HasEntityAlias returns a boolean if a field has been set.
 
 ### GetEnv
 

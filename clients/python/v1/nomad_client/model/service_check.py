@@ -89,6 +89,7 @@ class ServiceCheck(ModelNormal):
         lazy_import()
         return {
             'address_mode': (str,),  # noqa: E501
+            'advertise': (str,),  # noqa: E501
             'args': ([str],),  # noqa: E501
             'body': (str,),  # noqa: E501
             'check_restart': (CheckRestart,),  # noqa: E501
@@ -98,7 +99,6 @@ class ServiceCheck(ModelNormal):
             'grpc_service': (str,),  # noqa: E501
             'grpc_use_tls': (bool,),  # noqa: E501
             'header': ({str: ([str],)},),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'initial_status': (str,),  # noqa: E501
             'interval': (int,),  # noqa: E501
             'method': (str,),  # noqa: E501
@@ -121,6 +121,7 @@ class ServiceCheck(ModelNormal):
 
     attribute_map = {
         'address_mode': 'AddressMode',  # noqa: E501
+        'advertise': 'Advertise',  # noqa: E501
         'args': 'Args',  # noqa: E501
         'body': 'Body',  # noqa: E501
         'check_restart': 'CheckRestart',  # noqa: E501
@@ -130,7 +131,6 @@ class ServiceCheck(ModelNormal):
         'grpc_service': 'GRPCService',  # noqa: E501
         'grpc_use_tls': 'GRPCUseTLS',  # noqa: E501
         'header': 'Header',  # noqa: E501
-        'id': 'Id',  # noqa: E501
         'initial_status': 'InitialStatus',  # noqa: E501
         'interval': 'Interval',  # noqa: E501
         'method': 'Method',  # noqa: E501
@@ -188,6 +188,7 @@ class ServiceCheck(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address_mode (str): [optional]  # noqa: E501
+            advertise (str): [optional]  # noqa: E501
             args ([str]): [optional]  # noqa: E501
             body (str): [optional]  # noqa: E501
             check_restart (CheckRestart): [optional]  # noqa: E501
@@ -197,7 +198,6 @@ class ServiceCheck(ModelNormal):
             grpc_service (str): [optional]  # noqa: E501
             grpc_use_tls (bool): [optional]  # noqa: E501
             header ({str: ([str],)}): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
             initial_status (str): [optional]  # noqa: E501
             interval (int): [optional]  # noqa: E501
             method (str): [optional]  # noqa: E501
@@ -293,6 +293,7 @@ class ServiceCheck(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address_mode (str): [optional]  # noqa: E501
+            advertise (str): [optional]  # noqa: E501
             args ([str]): [optional]  # noqa: E501
             body (str): [optional]  # noqa: E501
             check_restart (CheckRestart): [optional]  # noqa: E501
@@ -302,7 +303,6 @@ class ServiceCheck(ModelNormal):
             grpc_service (str): [optional]  # noqa: E501
             grpc_use_tls (bool): [optional]  # noqa: E501
             header ({str: ([str],)}): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
             initial_status (str): [optional]  # noqa: E501
             interval (int): [optional]  # noqa: E501
             method (str): [optional]  # noqa: E501

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **address** | **String** |  | [optional] |
+| **attributes** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **create_index** | **Integer** |  | [optional] |
 | **datacenter** | **String** |  | [optional] |
 | **drain** | **Boolean** |  | [optional] |
@@ -28,6 +29,7 @@ require 'nomad_client'
 
 instance = NomadClient::NodeListStub.new(
   address: null,
+  attributes: null,
   create_index: null,
   datacenter: null,
   drain: null,

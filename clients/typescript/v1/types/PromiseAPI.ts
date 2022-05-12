@@ -8,6 +8,7 @@ import { ACLToken } from '../models/ACLToken';
 import { ACLTokenListStub } from '../models/ACLTokenListStub';
 import { Affinity } from '../models/Affinity';
 import { AllocDeploymentStatus } from '../models/AllocDeploymentStatus';
+import { AllocStopResponse } from '../models/AllocStopResponse';
 import { AllocatedCpuResources } from '../models/AllocatedCpuResources';
 import { AllocatedDeviceResource } from '../models/AllocatedDeviceResource';
 import { AllocatedMemoryResources } from '../models/AllocatedMemoryResources';
@@ -169,6 +170,7 @@ import { SearchResponse } from '../models/SearchResponse';
 import { ServerHealth } from '../models/ServerHealth';
 import { Service } from '../models/Service';
 import { ServiceCheck } from '../models/ServiceCheck';
+import { ServiceRegistration } from '../models/ServiceRegistration';
 import { SidecarTask } from '../models/SidecarTask';
 import { Spread } from '../models/Spread';
 import { SpreadTarget } from '../models/SpreadTarget';
@@ -390,6 +392,40 @@ export class PromiseAllocationsApi {
     }
 
     /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getAllocation(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Allocation> {
+        const result = this.api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     */
+    public getAllocationServices(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<ServiceRegistration>> {
+        const result = this.api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
+        return result.toPromise();
+    }
+
+    /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
      * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
@@ -404,6 +440,24 @@ export class PromiseAllocationsApi {
      */
     public getAllocations(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, resources?: boolean, taskStates?: boolean, _options?: Configuration): Promise<Array<AllocationListStub>> {
         const result = this.api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param allocID Allocation ID.
+     * @param region Filters results based on the specified region.
+     * @param namespace Filters results based on the specified namespace.
+     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
+     * @param wait Provided with IndexParam to wait for change.
+     * @param stale If present, results will include stale reads.
+     * @param prefix Constrains results to jobs that start with the defined prefix
+     * @param xNomadToken A Nomad ACL token.
+     * @param perPage Maximum number of results to return.
+     * @param nextToken Indicates where to start paging for queries that support pagination.
+     * @param noShutdownDelay Flag indicating whether to delay shutdown when requesting an allocation stop.
+     */
+    public postAllocationStop(allocID: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, noShutdownDelay?: boolean, _options?: Configuration): Promise<AllocStopResponse> {
+        const result = this.api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay, _options);
         return result.toPromise();
     }
 

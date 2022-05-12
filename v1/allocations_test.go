@@ -12,6 +12,9 @@ import (
 func TestAllocations(t *testing.T) {
 	httpTests(t, nil,
 		APITestCase{"GetAllocations", testGetAllocations},
+		APITestCase{"GetAllocation", testGetAllocation},
+		APITestCase{"StopAllocation", testStopAllocation},
+		APITestCase{"GetAllocationServices", testGetAllocationServices},
 	)
 }
 
@@ -58,4 +61,87 @@ func testGetAllocations(t *testing.T, s *agent.TestAgent) {
 	require.NotNil(t, events)
 	displayMsg1 := *events[0].DisplayMessage
 	require.Equal(t, expectedMsg, displayMsg1, "DisplayMessage should be set")
+}
+
+func testGetAllocation(t *testing.T, s *agent.TestAgent) {
+
+	// Directly manipulate the state
+	state := s.Agent.Server().State()
+	alloc1 := mock.Alloc()
+
+	err := state.UpsertAllocs(structs.MsgTypeTestSetup, 1000, []*structs.Allocation{alloc1})
+	if err != nil {
+		t.Fatalf("err: %v", err)
+	}
+
+	// Make the HTTP request
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
+
+	result, meta, err := testClient.Allocations().GetAllocation(queryOpts.Ctx(), alloc1.ID)
+	require.NoError(t, err)
+	require.NotNil(t, result)
+	require.NotNil(t, meta)
+
+	alloc := *result
+	require.Equal(t, alloc1.DesiredStatus, *alloc.DesiredStatus)
+}
+
+func testStopAllocation(t *testing.T, s *agent.TestAgent) {
+
+	// Directly manipulate the state
+	state := s.Agent.Server().State()
+	alloc1 := mock.Alloc()
+
+	err := state.UpsertAllocs(structs.MsgTypeTestSetup, 1000, []*structs.Allocation{alloc1})
+	if err != nil {
+		t.Fatalf("err: %v", err)
+	}
+
+	// Make the HTTP request
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
+
+	result, meta, err := testClient.Allocations().StopAllocation(queryOpts.Ctx(), alloc1.ID, false)
+	require.NoError(t, err)
+	require.NotNil(t, result)
+	require.NotNil(t, meta)
+
+	stopResult := *result
+	require.NotNil(t, stopResult.EvalID)
+}
+
+func testGetAllocationServices(t *testing.T, s *agent.TestAgent) {
+
+	// Directly manipulate the state
+	state := s.Agent.Server().State()
+	alloc1 := mock.Alloc()
+
+	err := state.UpsertAllocs(structs.MsgTypeTestSetup, 1000, []*structs.Allocation{alloc1})
+	if err != nil {
+		t.Fatalf("err: %v", err)
+	}
+
+	serviceRegistrations := mock.ServiceRegistrations()
+	for _, registration := range serviceRegistrations {
+		registration.AllocID = alloc1.ID
+	}
+
+	err = state.UpsertServiceRegistrations(structs.MsgTypeTestSetup, 2000, serviceRegistrations)
+	if err != nil {
+		t.Fatalf("err: %v", err)
+	}
+
+	// Make the HTTP request
+	testClient, err := NewTestClient(s)
+	require.NoError(t, err)
+
+	result, meta, err := testClient.Allocations().GetAllocationServices(queryOpts.Ctx(), alloc1.ID)
+	require.NoError(t, err)
+	require.NotNil(t, result)
+	require.NotNil(t, meta)
+
+	services := *result
+	require.NotNil(t, services)
+	require.Len(t, services, 2)
 }

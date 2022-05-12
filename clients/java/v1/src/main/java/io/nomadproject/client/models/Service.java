@@ -36,6 +36,10 @@ import java.util.Map;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Service {
+  public static final String SERIALIZED_NAME_ADDRESS = "Address";
+  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  private String address;
+
   public static final String SERIALIZED_NAME_ADDRESS_MODE = "AddressMode";
   @SerializedName(SERIALIZED_NAME_ADDRESS_MODE)
   private String addressMode;
@@ -64,10 +68,6 @@ public class Service {
   @SerializedName(SERIALIZED_NAME_ENABLE_TAG_OVERRIDE)
   private Boolean enableTagOverride;
 
-  public static final String SERIALIZED_NAME_ID = "Id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public static final String SERIALIZED_NAME_META = "Meta";
   @SerializedName(SERIALIZED_NAME_META)
   private Map<String, String> meta = null;
@@ -95,6 +95,29 @@ public class Service {
   public static final String SERIALIZED_NAME_TASK_NAME = "TaskName";
   @SerializedName(SERIALIZED_NAME_TASK_NAME)
   private String taskName;
+
+
+  public Service address(String address) {
+    
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAddress() {
+    return address;
+  }
+
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
 
   public Service addressMode(String addressMode) {
@@ -279,29 +302,6 @@ public class Service {
 
   public void setEnableTagOverride(Boolean enableTagOverride) {
     this.enableTagOverride = enableTagOverride;
-  }
-
-
-  public Service id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
   }
 
 
@@ -491,14 +491,14 @@ public class Service {
       return false;
     }
     Service service = (Service) o;
-    return Objects.equals(this.addressMode, service.addressMode) &&
+    return Objects.equals(this.address, service.address) &&
+        Objects.equals(this.addressMode, service.addressMode) &&
         Objects.equals(this.canaryMeta, service.canaryMeta) &&
         Objects.equals(this.canaryTags, service.canaryTags) &&
         Objects.equals(this.checkRestart, service.checkRestart) &&
         Objects.equals(this.checks, service.checks) &&
         Objects.equals(this.connect, service.connect) &&
         Objects.equals(this.enableTagOverride, service.enableTagOverride) &&
-        Objects.equals(this.id, service.id) &&
         Objects.equals(this.meta, service.meta) &&
         Objects.equals(this.name, service.name) &&
         Objects.equals(this.onUpdate, service.onUpdate) &&
@@ -510,13 +510,14 @@ public class Service {
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, id, meta, name, onUpdate, portLabel, provider, tags, taskName);
+    return Objects.hash(address, addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, meta, name, onUpdate, portLabel, provider, tags, taskName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Service {\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    addressMode: ").append(toIndentedString(addressMode)).append("\n");
     sb.append("    canaryMeta: ").append(toIndentedString(canaryMeta)).append("\n");
     sb.append("    canaryTags: ").append(toIndentedString(canaryTags)).append("\n");
@@ -524,7 +525,6 @@ public class Service {
     sb.append("    checks: ").append(toIndentedString(checks)).append("\n");
     sb.append("    connect: ").append(toIndentedString(connect)).append("\n");
     sb.append("    enableTagOverride: ").append(toIndentedString(enableTagOverride)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onUpdate: ").append(toIndentedString(onUpdate)).append("\n");
