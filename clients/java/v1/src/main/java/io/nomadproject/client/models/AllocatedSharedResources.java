@@ -28,6 +28,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * AllocatedSharedResources
  */
@@ -45,6 +65,8 @@ public class AllocatedSharedResources {
   @SerializedName(SERIALIZED_NAME_PORTS)
   private List<PortMapping> ports = null;
 
+  public AllocatedSharedResources() { 
+  }
 
   public AllocatedSharedResources diskMB(Long diskMB) {
     
@@ -77,7 +99,7 @@ public class AllocatedSharedResources {
 
   public AllocatedSharedResources addNetworksItem(NetworkResource networksItem) {
     if (this.networks == null) {
-      this.networks = new ArrayList<NetworkResource>();
+      this.networks = new ArrayList<>();
     }
     this.networks.add(networksItem);
     return this;
@@ -108,7 +130,7 @@ public class AllocatedSharedResources {
 
   public AllocatedSharedResources addPortsItem(PortMapping portsItem) {
     if (this.ports == null) {
-      this.ports = new ArrayList<PortMapping>();
+      this.ports = new ArrayList<>();
     }
     this.ports.add(portsItem);
     return this;
@@ -129,6 +151,7 @@ public class AllocatedSharedResources {
   public void setPorts(List<PortMapping> ports) {
     this.ports = ports;
   }
+
 
 
   @Override
@@ -172,5 +195,116 @@ public class AllocatedSharedResources {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DiskMB");
+    openapiFields.add("Networks");
+    openapiFields.add("Ports");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AllocatedSharedResources
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (AllocatedSharedResources.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AllocatedSharedResources is not found in the empty JSON string", AllocatedSharedResources.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!AllocatedSharedResources.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AllocatedSharedResources` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraynetworks = jsonObj.getAsJsonArray("Networks");
+      if (jsonArraynetworks != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Networks").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Networks` to be an array in the JSON string but got `%s`", jsonObj.get("Networks").toString()));
+        }
+
+        // validate the optional field `Networks` (array)
+        for (int i = 0; i < jsonArraynetworks.size(); i++) {
+          NetworkResource.validateJsonObject(jsonArraynetworks.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayports = jsonObj.getAsJsonArray("Ports");
+      if (jsonArrayports != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Ports").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Ports` to be an array in the JSON string but got `%s`", jsonObj.get("Ports").toString()));
+        }
+
+        // validate the optional field `Ports` (array)
+        for (int i = 0; i < jsonArrayports.size(); i++) {
+          PortMapping.validateJsonObject(jsonArrayports.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!AllocatedSharedResources.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AllocatedSharedResources' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<AllocatedSharedResources> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AllocatedSharedResources.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<AllocatedSharedResources>() {
+           @Override
+           public void write(JsonWriter out, AllocatedSharedResources value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public AllocatedSharedResources read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of AllocatedSharedResources given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AllocatedSharedResources
+  * @throws IOException if the JSON string is invalid with respect to AllocatedSharedResources
+  */
+  public static AllocatedSharedResources fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AllocatedSharedResources.class);
+  }
+
+ /**
+  * Convert an instance of AllocatedSharedResources to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

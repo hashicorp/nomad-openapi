@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Children** | Pointer to [**JobChildrenSummary**](JobChildrenSummary.md) |  | [optional] 
+**Children** | Pointer to [**NullableJobChildrenSummary**](JobChildrenSummary.md) |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **JobID** | Pointer to **string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
@@ -55,6 +55,16 @@ SetChildren sets Children field to given value.
 
 HasChildren returns a boolean if a field has been set.
 
+### SetChildrenNil
+
+`func (o *JobSummary) SetChildrenNil(b bool)`
+
+ SetChildrenNil sets the value for Children to be an explicit nil
+
+### UnsetChildren
+`func (o *JobSummary) UnsetChildren()`
+
+UnsetChildren ensures that no value is present for Children, not even an explicit nil
 ### GetCreateIndex
 
 `func (o *JobSummary) GetCreateIndex() int32`

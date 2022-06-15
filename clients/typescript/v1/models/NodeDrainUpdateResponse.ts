@@ -56,7 +56,7 @@ export class NodeDrainUpdateResponse {
     static getAttributeTypeMap() {
         return NodeDrainUpdateResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

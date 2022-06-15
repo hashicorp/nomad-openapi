@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `delete_operator_raft_peer`
+/// struct for typed errors of method [`delete_operator_raft_peer`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteOperatorRaftPeerError {
@@ -26,7 +26,7 @@ pub enum DeleteOperatorRaftPeerError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_operator_autopilot_configuration`
+/// struct for typed errors of method [`get_operator_autopilot_configuration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetOperatorAutopilotConfigurationError {
@@ -37,7 +37,7 @@ pub enum GetOperatorAutopilotConfigurationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_operator_autopilot_health`
+/// struct for typed errors of method [`get_operator_autopilot_health`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetOperatorAutopilotHealthError {
@@ -48,7 +48,7 @@ pub enum GetOperatorAutopilotHealthError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_operator_raft_configuration`
+/// struct for typed errors of method [`get_operator_raft_configuration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetOperatorRaftConfigurationError {
@@ -59,7 +59,7 @@ pub enum GetOperatorRaftConfigurationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_operator_scheduler_configuration`
+/// struct for typed errors of method [`get_operator_scheduler_configuration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetOperatorSchedulerConfigurationError {
@@ -70,7 +70,7 @@ pub enum GetOperatorSchedulerConfigurationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_operator_scheduler_configuration`
+/// struct for typed errors of method [`post_operator_scheduler_configuration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostOperatorSchedulerConfigurationError {
@@ -81,7 +81,7 @@ pub enum PostOperatorSchedulerConfigurationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `put_operator_autopilot_configuration`
+/// struct for typed errors of method [`put_operator_autopilot_configuration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PutOperatorAutopilotConfigurationError {
@@ -94,10 +94,11 @@ pub enum PutOperatorAutopilotConfigurationError {
 
 
 pub async fn delete_operator_raft_peer(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteOperatorRaftPeerError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/raft/peer", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/raft/peer", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -109,13 +110,13 @@ pub async fn delete_operator_raft_peer(configuration: &configuration::Configurat
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -140,10 +141,11 @@ pub async fn delete_operator_raft_peer(configuration: &configuration::Configurat
 }
 
 pub async fn get_operator_autopilot_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::AutopilotConfiguration, Error<GetOperatorAutopilotConfigurationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/autopilot/configuration", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/autopilot/configuration", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -167,7 +169,7 @@ pub async fn get_operator_autopilot_configuration(configuration: &configuration:
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -176,7 +178,7 @@ pub async fn get_operator_autopilot_configuration(configuration: &configuration:
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -201,10 +203,11 @@ pub async fn get_operator_autopilot_configuration(configuration: &configuration:
 }
 
 pub async fn get_operator_autopilot_health(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::OperatorHealthReply, Error<GetOperatorAutopilotHealthError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/autopilot/health", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/autopilot/health", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -228,7 +231,7 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -237,7 +240,7 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -262,10 +265,11 @@ pub async fn get_operator_autopilot_health(configuration: &configuration::Config
 }
 
 pub async fn get_operator_raft_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::RaftConfiguration, Error<GetOperatorRaftConfigurationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/raft/configuration", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/raft/configuration", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -289,7 +293,7 @@ pub async fn get_operator_raft_configuration(configuration: &configuration::Conf
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -298,7 +302,7 @@ pub async fn get_operator_raft_configuration(configuration: &configuration::Conf
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -323,10 +327,11 @@ pub async fn get_operator_raft_configuration(configuration: &configuration::Conf
 }
 
 pub async fn get_operator_scheduler_configuration(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::SchedulerConfigurationResponse, Error<GetOperatorSchedulerConfigurationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/scheduler/configuration", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/scheduler/configuration", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -350,7 +355,7 @@ pub async fn get_operator_scheduler_configuration(configuration: &configuration:
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -359,7 +364,7 @@ pub async fn get_operator_scheduler_configuration(configuration: &configuration:
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -383,11 +388,12 @@ pub async fn get_operator_scheduler_configuration(configuration: &configuration:
     }
 }
 
-pub async fn post_operator_scheduler_configuration(configuration: &configuration::Configuration, scheduler_configuration: crate::models::SchedulerConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::SchedulerSetConfigurationResponse, Error<PostOperatorSchedulerConfigurationError>> {
+pub async fn post_operator_scheduler_configuration(configuration: &configuration::Configuration, scheduler_configuration: Option<crate::models::SchedulerConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::SchedulerSetConfigurationResponse, Error<PostOperatorSchedulerConfigurationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/scheduler/configuration", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/scheduler/configuration", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -399,13 +405,13 @@ pub async fn post_operator_scheduler_configuration(configuration: &configuration
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -430,11 +436,12 @@ pub async fn post_operator_scheduler_configuration(configuration: &configuration
     }
 }
 
-pub async fn put_operator_autopilot_configuration(configuration: &configuration::Configuration, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<bool, Error<PutOperatorAutopilotConfigurationError>> {
+pub async fn put_operator_autopilot_configuration(configuration: &configuration::Configuration, autopilot_configuration: Option<crate::models::AutopilotConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<bool, Error<PutOperatorAutopilotConfigurationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/operator/autopilot/configuration", configuration.base_path);
+    let local_var_uri_str = format!("{}/operator/autopilot/configuration", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -446,13 +453,13 @@ pub async fn put_operator_autopilot_configuration(configuration: &configuration:
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

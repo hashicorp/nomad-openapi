@@ -35,7 +35,7 @@ export class ConsulIngressService {
     static getAttributeTypeMap() {
         return ConsulIngressService.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

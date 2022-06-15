@@ -16,6 +16,7 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (X-Nomad-Token):
+
 ```python
 import time
 import nomad_client
@@ -91,6 +92,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -109,6 +111,7 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (X-Nomad-Token):
+
 ```python
 import time
 import nomad_client
@@ -184,6 +187,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

@@ -42,7 +42,7 @@ export class Constraint {
     static getAttributeTypeMap() {
         return Constraint.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

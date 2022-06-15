@@ -25,6 +25,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * Template
  */
@@ -78,6 +98,8 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_WAIT)
   private WaitConfig wait;
 
+  public Template() { 
+  }
 
   public Template changeMode(String changeMode) {
     
@@ -355,6 +377,7 @@ public class Template {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -414,5 +437,129 @@ public class Template {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ChangeMode");
+    openapiFields.add("ChangeSignal");
+    openapiFields.add("DestPath");
+    openapiFields.add("EmbeddedTmpl");
+    openapiFields.add("Envvars");
+    openapiFields.add("LeftDelim");
+    openapiFields.add("Perms");
+    openapiFields.add("RightDelim");
+    openapiFields.add("SourcePath");
+    openapiFields.add("Splay");
+    openapiFields.add("VaultGrace");
+    openapiFields.add("Wait");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Template
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Template.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Template is not found in the empty JSON string", Template.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Template.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Template` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("ChangeMode") != null && !jsonObj.get("ChangeMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ChangeMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ChangeMode").toString()));
+      }
+      if (jsonObj.get("ChangeSignal") != null && !jsonObj.get("ChangeSignal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ChangeSignal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ChangeSignal").toString()));
+      }
+      if (jsonObj.get("DestPath") != null && !jsonObj.get("DestPath").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DestPath` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DestPath").toString()));
+      }
+      if (jsonObj.get("EmbeddedTmpl") != null && !jsonObj.get("EmbeddedTmpl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `EmbeddedTmpl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("EmbeddedTmpl").toString()));
+      }
+      if (jsonObj.get("LeftDelim") != null && !jsonObj.get("LeftDelim").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LeftDelim` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LeftDelim").toString()));
+      }
+      if (jsonObj.get("Perms") != null && !jsonObj.get("Perms").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Perms` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Perms").toString()));
+      }
+      if (jsonObj.get("RightDelim") != null && !jsonObj.get("RightDelim").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RightDelim` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RightDelim").toString()));
+      }
+      if (jsonObj.get("SourcePath") != null && !jsonObj.get("SourcePath").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourcePath` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SourcePath").toString()));
+      }
+      // validate the optional field `Wait`
+      if (jsonObj.getAsJsonObject("Wait") != null) {
+        WaitConfig.validateJsonObject(jsonObj.getAsJsonObject("Wait"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Template.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Template' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Template> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Template.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Template>() {
+           @Override
+           public void write(JsonWriter out, Template value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Template read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Template given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Template
+  * @throws IOException if the JSON string is invalid with respect to Template
+  */
+  public static Template fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Template.class);
+  }
+
+ /**
+  * Convert an instance of Template to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

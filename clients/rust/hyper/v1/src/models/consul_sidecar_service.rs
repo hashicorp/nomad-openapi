@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ConsulSidecarService {
     #[serde(rename = "DisableDefaultTCPCheck", skip_serializing_if = "Option::is_none")]
     pub disable_default_tcp_check: Option<bool>,

@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://127.0.0.1:4646/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /allocation/{allocID} | 
-[**getAllocationServices**](AllocationsApi.md#getAllocationServices) | **GET** /allocation/{allocID}/services | 
-[**getAllocations**](AllocationsApi.md#getAllocations) | **GET** /allocations | 
-[**postAllocationStop**](AllocationsApi.md#postAllocationStop) | **POST** /allocation/{allocID}/stop | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /allocation/{allocID} |  |
+| [**getAllocationServices**](AllocationsApi.md#getAllocationServices) | **GET** /allocation/{allocID}/services |  |
+| [**getAllocations**](AllocationsApi.md#getAllocations) | **GET** /allocations |  |
+| [**postAllocationStop**](AllocationsApi.md#postAllocationStop) | **POST** /allocation/{allocID}/stop |  |
 
 
 <a name="getAllocation"></a>
@@ -64,18 +64,18 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **allocID** | **String**| Allocation ID. |
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
- **wait** | **String**| Provided with IndexParam to wait for change. | [optional]
- **stale** | **String**| If present, results will include stale reads. | [optional]
- **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **perPage** | **Integer**| Maximum number of results to return. | [optional]
- **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **allocID** | **String**| Allocation ID. | |
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] |
+| **wait** | **String**| Provided with IndexParam to wait for change. | [optional] |
+| **stale** | **String**| If present, results will include stale reads. | [optional] |
+| **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **perPage** | **Integer**| Maximum number of results to return. | [optional] |
+| **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] |
 
 ### Return type
 
@@ -93,11 +93,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 
 <a name="getAllocationServices"></a>
 # **getAllocationServices**
@@ -153,18 +153,18 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **allocID** | **String**| Allocation ID. |
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
- **wait** | **String**| Provided with IndexParam to wait for change. | [optional]
- **stale** | **String**| If present, results will include stale reads. | [optional]
- **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **perPage** | **Integer**| Maximum number of results to return. | [optional]
- **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **allocID** | **String**| Allocation ID. | |
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] |
+| **wait** | **String**| Provided with IndexParam to wait for change. | [optional] |
+| **stale** | **String**| If present, results will include stale reads. | [optional] |
+| **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **perPage** | **Integer**| Maximum number of results to return. | [optional] |
+| **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] |
 
 ### Return type
 
@@ -182,11 +182,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 
 <a name="getAllocations"></a>
 # **getAllocations**
@@ -243,19 +243,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
- **wait** | **String**| Provided with IndexParam to wait for change. | [optional]
- **stale** | **String**| If present, results will include stale reads. | [optional]
- **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **perPage** | **Integer**| Maximum number of results to return. | [optional]
- **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
- **resources** | **Boolean**| Flag indicating whether to include resources in response. | [optional]
- **taskStates** | **Boolean**| Flag indicating whether to include task states in response. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] |
+| **wait** | **String**| Provided with IndexParam to wait for change. | [optional] |
+| **stale** | **String**| If present, results will include stale reads. | [optional] |
+| **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **perPage** | **Integer**| Maximum number of results to return. | [optional] |
+| **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] |
+| **resources** | **Boolean**| Flag indicating whether to include resources in response. | [optional] |
+| **taskStates** | **Boolean**| Flag indicating whether to include task states in response. | [optional] |
 
 ### Return type
 
@@ -273,11 +273,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 
 <a name="postAllocationStop"></a>
 # **postAllocationStop**
@@ -334,19 +334,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **allocID** | **String**| Allocation ID. |
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional]
- **wait** | **String**| Provided with IndexParam to wait for change. | [optional]
- **stale** | **String**| If present, results will include stale reads. | [optional]
- **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **perPage** | **Integer**| Maximum number of results to return. | [optional]
- **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional]
- **noShutdownDelay** | **Boolean**| Flag indicating whether to delay shutdown when requesting an allocation stop. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **allocID** | **String**| Allocation ID. | |
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **index** | **Integer**| If set, wait until query exceeds given index. Must be provided with WaitParam. | [optional] |
+| **wait** | **String**| Provided with IndexParam to wait for change. | [optional] |
+| **stale** | **String**| If present, results will include stale reads. | [optional] |
+| **prefix** | **String**| Constrains results to jobs that start with the defined prefix | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **perPage** | **Integer**| Maximum number of results to return. | [optional] |
+| **nextToken** | **String**| Indicates where to start paging for queries that support pagination. | [optional] |
+| **noShutdownDelay** | **Boolean**| Flag indicating whether to delay shutdown when requesting an allocation stop. | [optional] |
 
 ### Return type
 
@@ -364,9 +364,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 

@@ -29,6 +29,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * ConsulProxy
@@ -55,6 +76,8 @@ public class ConsulProxy {
   @SerializedName(SERIALIZED_NAME_UPSTREAMS)
   private List<ConsulUpstream> upstreams = null;
 
+  public ConsulProxy() { 
+  }
 
   public ConsulProxy config(Map<String, Object> config) {
     
@@ -64,7 +87,7 @@ public class ConsulProxy {
 
   public ConsulProxy putConfigItem(String key, Object configItem) {
     if (this.config == null) {
-      this.config = new HashMap<String, Object>();
+      this.config = new HashMap<>();
     }
     this.config.put(key, configItem);
     return this;
@@ -164,7 +187,7 @@ public class ConsulProxy {
 
   public ConsulProxy addUpstreamsItem(ConsulUpstream upstreamsItem) {
     if (this.upstreams == null) {
-      this.upstreams = new ArrayList<ConsulUpstream>();
+      this.upstreams = new ArrayList<>();
     }
     this.upstreams.add(upstreamsItem);
     return this;
@@ -187,6 +210,7 @@ public class ConsulProxy {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -203,9 +227,20 @@ public class ConsulProxy {
         Objects.equals(this.upstreams, consulProxy.upstreams);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(config, exposeConfig, localServiceAddress, localServicePort, upstreams);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -232,5 +267,113 @@ public class ConsulProxy {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Config");
+    openapiFields.add("ExposeConfig");
+    openapiFields.add("LocalServiceAddress");
+    openapiFields.add("LocalServicePort");
+    openapiFields.add("Upstreams");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsulProxy
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ConsulProxy.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsulProxy is not found in the empty JSON string", ConsulProxy.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsulProxy.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsulProxy` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `ExposeConfig`
+      if (jsonObj.getAsJsonObject("ExposeConfig") != null) {
+        ConsulExposeConfig.validateJsonObject(jsonObj.getAsJsonObject("ExposeConfig"));
+      }
+      if (jsonObj.get("LocalServiceAddress") != null && !jsonObj.get("LocalServiceAddress").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LocalServiceAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LocalServiceAddress").toString()));
+      }
+      JsonArray jsonArrayupstreams = jsonObj.getAsJsonArray("Upstreams");
+      if (jsonArrayupstreams != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Upstreams").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Upstreams` to be an array in the JSON string but got `%s`", jsonObj.get("Upstreams").toString()));
+        }
+
+        // validate the optional field `Upstreams` (array)
+        for (int i = 0; i < jsonArrayupstreams.size(); i++) {
+          ConsulUpstream.validateJsonObject(jsonArrayupstreams.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsulProxy.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsulProxy' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsulProxy> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsulProxy.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsulProxy>() {
+           @Override
+           public void write(JsonWriter out, ConsulProxy value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsulProxy read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsulProxy given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsulProxy
+  * @throws IOException if the JSON string is invalid with respect to ConsulProxy
+  */
+  public static ConsulProxy fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsulProxy.class);
+  }
+
+ /**
+  * Convert an instance of ConsulProxy to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

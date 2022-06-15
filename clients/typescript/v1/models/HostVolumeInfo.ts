@@ -35,7 +35,7 @@ export class HostVolumeInfo {
     static getAttributeTypeMap() {
         return HostVolumeInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

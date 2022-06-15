@@ -86,7 +86,7 @@ export class NetworkResource {
     static getAttributeTypeMap() {
         return NetworkResource.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

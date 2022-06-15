@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **NodesHealthy** | Pointer to **int32** |  | [optional] 
 **PluginID** | Pointer to **string** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
-**ResourceExhausted** | Pointer to **time.Time** |  | [optional] 
+**ResourceExhausted** | Pointer to **NullableTime** |  | [optional] 
 **Schedulable** | Pointer to **bool** |  | [optional] 
 **Topologies** | Pointer to [**[]CSITopology**](CSITopology.md) |  | [optional] 
 
@@ -442,6 +442,16 @@ SetResourceExhausted sets ResourceExhausted field to given value.
 
 HasResourceExhausted returns a boolean if a field has been set.
 
+### SetResourceExhaustedNil
+
+`func (o *CSIVolumeListStub) SetResourceExhaustedNil(b bool)`
+
+ SetResourceExhaustedNil sets the value for ResourceExhausted to be an explicit nil
+
+### UnsetResourceExhausted
+`func (o *CSIVolumeListStub) UnsetResourceExhausted()`
+
+UnsetResourceExhausted ensures that no value is present for ResourceExhausted, not even an explicit nil
 ### GetSchedulable
 
 `func (o *CSIVolumeListStub) GetSchedulable() bool`

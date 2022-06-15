@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Affinities** | Pointer to [**[]Affinity**](Affinity.md) |  | [optional] 
 **Constraints** | Pointer to [**[]Constraint**](Constraint.md) |  | [optional] 
-**Consul** | Pointer to [**Consul**](Consul.md) |  | [optional] 
+**Consul** | Pointer to [**NullableConsul**](Consul.md) |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
 **EphemeralDisk** | Pointer to [**EphemeralDisk**](EphemeralDisk.md) |  | [optional] 
 **MaxClientDisconnect** | Pointer to **int64** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Networks** | Pointer to [**[]NetworkResource**](NetworkResource.md) |  | [optional] 
 **ReschedulePolicy** | Pointer to [**ReschedulePolicy**](ReschedulePolicy.md) |  | [optional] 
 **RestartPolicy** | Pointer to [**RestartPolicy**](RestartPolicy.md) |  | [optional] 
-**Scaling** | Pointer to [**ScalingPolicy**](ScalingPolicy.md) |  | [optional] 
+**Scaling** | Pointer to [**NullableScalingPolicy**](ScalingPolicy.md) |  | [optional] 
 **Services** | Pointer to [**[]Service**](Service.md) |  | [optional] 
 **ShutdownDelay** | Pointer to **int64** |  | [optional] 
 **Spreads** | Pointer to [**[]Spread**](Spread.md) |  | [optional] 
@@ -119,6 +119,16 @@ SetConsul sets Consul field to given value.
 
 HasConsul returns a boolean if a field has been set.
 
+### SetConsulNil
+
+`func (o *TaskGroup) SetConsulNil(b bool)`
+
+ SetConsulNil sets the value for Consul to be an explicit nil
+
+### UnsetConsul
+`func (o *TaskGroup) UnsetConsul()`
+
+UnsetConsul ensures that no value is present for Consul, not even an explicit nil
 ### GetCount
 
 `func (o *TaskGroup) GetCount() int32`
@@ -369,6 +379,16 @@ SetScaling sets Scaling field to given value.
 
 HasScaling returns a boolean if a field has been set.
 
+### SetScalingNil
+
+`func (o *TaskGroup) SetScalingNil(b bool)`
+
+ SetScalingNil sets the value for Scaling to be an explicit nil
+
+### UnsetScaling
+`func (o *TaskGroup) UnsetScaling()`
+
+UnsetScaling ensures that no value is present for Scaling, not even an explicit nil
 ### GetServices
 
 `func (o *TaskGroup) GetServices() []Service`

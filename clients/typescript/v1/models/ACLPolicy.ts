@@ -56,7 +56,7 @@ export class ACLPolicy {
     static getAttributeTypeMap() {
         return ACLPolicy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

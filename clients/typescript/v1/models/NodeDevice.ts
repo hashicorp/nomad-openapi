@@ -50,7 +50,7 @@ export class NodeDevice {
     static getAttributeTypeMap() {
         return NodeDevice.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

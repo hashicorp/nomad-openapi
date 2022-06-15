@@ -50,7 +50,7 @@
   describe('CSIPluginListStub', function() {
     it('should create an instance of CSIPluginListStub', function() {
       // uncomment below and update the code to test CSIPluginListStub
-      //var instane = new nomad-client.CSIPluginListStub();
+      //var instance = new nomad-client.CSIPluginListStub();
       //expect(instance).to.be.a(nomad-client.CSIPluginListStub);
     });
 

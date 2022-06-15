@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `create_namespace`
+/// struct for typed errors of method [`create_namespace`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CreateNamespaceError {
@@ -26,7 +26,7 @@ pub enum CreateNamespaceError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `delete_namespace`
+/// struct for typed errors of method [`delete_namespace`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteNamespaceError {
@@ -37,7 +37,7 @@ pub enum DeleteNamespaceError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_namespace`
+/// struct for typed errors of method [`get_namespace`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetNamespaceError {
@@ -48,7 +48,7 @@ pub enum GetNamespaceError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_namespaces`
+/// struct for typed errors of method [`get_namespaces`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetNamespacesError {
@@ -59,7 +59,7 @@ pub enum GetNamespacesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_namespace`
+/// struct for typed errors of method [`post_namespace`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostNamespaceError {
@@ -72,10 +72,11 @@ pub enum PostNamespaceError {
 
 
 pub async fn create_namespace(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<CreateNamespaceError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/namespace", configuration.base_path);
+    let local_var_uri_str = format!("{}/namespace", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -87,13 +88,13 @@ pub async fn create_namespace(configuration: &configuration::Configuration, regi
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -118,10 +119,11 @@ pub async fn create_namespace(configuration: &configuration::Configuration, regi
 }
 
 pub async fn delete_namespace(configuration: &configuration::Configuration, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteNamespaceError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/namespace/{namespaceName}", configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
+    let local_var_uri_str = format!("{}/namespace/{namespaceName}", local_var_configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -133,13 +135,13 @@ pub async fn delete_namespace(configuration: &configuration::Configuration, name
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -164,10 +166,11 @@ pub async fn delete_namespace(configuration: &configuration::Configuration, name
 }
 
 pub async fn get_namespace(configuration: &configuration::Configuration, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Namespace, Error<GetNamespaceError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/namespace/{namespaceName}", configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
+    let local_var_uri_str = format!("{}/namespace/{namespaceName}", local_var_configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -191,7 +194,7 @@ pub async fn get_namespace(configuration: &configuration::Configuration, namespa
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -200,7 +203,7 @@ pub async fn get_namespace(configuration: &configuration::Configuration, namespa
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -225,10 +228,11 @@ pub async fn get_namespace(configuration: &configuration::Configuration, namespa
 }
 
 pub async fn get_namespaces(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::Namespace>, Error<GetNamespacesError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/namespaces", configuration.base_path);
+    let local_var_uri_str = format!("{}/namespaces", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -252,7 +256,7 @@ pub async fn get_namespaces(configuration: &configuration::Configuration, region
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -261,7 +265,7 @@ pub async fn get_namespaces(configuration: &configuration::Configuration, region
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -285,11 +289,12 @@ pub async fn get_namespaces(configuration: &configuration::Configuration, region
     }
 }
 
-pub async fn post_namespace(configuration: &configuration::Configuration, namespace_name: &str, namespace2: crate::models::Namespace, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostNamespaceError>> {
+pub async fn post_namespace(configuration: &configuration::Configuration, namespace_name: &str, namespace2: Option<crate::models::Namespace>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostNamespaceError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/namespace/{namespaceName}", configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
+    let local_var_uri_str = format!("{}/namespace/{namespaceName}", local_var_configuration.base_path, namespaceName=crate::apis::urlencode(namespace_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -301,13 +306,13 @@ pub async fn post_namespace(configuration: &configuration::Configuration, namesp
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

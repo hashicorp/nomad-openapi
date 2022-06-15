@@ -23,9 +23,30 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * ACLToken
@@ -68,6 +89,8 @@ public class ACLToken {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ACLToken() { 
+  }
 
   public ACLToken accessorID(String accessorID) {
     
@@ -219,7 +242,7 @@ public class ACLToken {
 
   public ACLToken addPoliciesItem(String policiesItem) {
     if (this.policies == null) {
-      this.policies = new ArrayList<String>();
+      this.policies = new ArrayList<>();
     }
     this.policies.add(policiesItem);
     return this;
@@ -288,6 +311,7 @@ public class ACLToken {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -308,9 +332,20 @@ public class ACLToken {
         Objects.equals(this.type, acLToken.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accessorID, createIndex, createTime, global, modifyIndex, name, policies, secretID, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -341,5 +376,114 @@ public class ACLToken {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessorID");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("CreateTime");
+    openapiFields.add("Global");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("Name");
+    openapiFields.add("Policies");
+    openapiFields.add("SecretID");
+    openapiFields.add("Type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ACLToken
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ACLToken.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ACLToken is not found in the empty JSON string", ACLToken.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ACLToken.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ACLToken` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("AccessorID") != null && !jsonObj.get("AccessorID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccessorID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccessorID").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Policies") != null && !jsonObj.get("Policies").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Policies` to be an array in the JSON string but got `%s`", jsonObj.get("Policies").toString()));
+      }
+      if (jsonObj.get("SecretID") != null && !jsonObj.get("SecretID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretID").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ACLToken.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ACLToken' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ACLToken> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ACLToken.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ACLToken>() {
+           @Override
+           public void write(JsonWriter out, ACLToken value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ACLToken read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ACLToken given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ACLToken
+  * @throws IOException if the JSON string is invalid with respect to ACLToken
+  */
+  public static ACLToken fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ACLToken.class);
+  }
+
+ /**
+  * Convert an instance of ACLToken to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

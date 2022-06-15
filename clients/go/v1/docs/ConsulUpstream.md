@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DestinationNamespace** | Pointer to **string** |  | [optional] 
 **LocalBindAddress** | Pointer to **string** |  | [optional] 
 **LocalBindPort** | Pointer to **int32** |  | [optional] 
-**MeshGateway** | Pointer to [**ConsulMeshGateway**](ConsulMeshGateway.md) |  | [optional] 
+**MeshGateway** | Pointer to [**NullableConsulMeshGateway**](ConsulMeshGateway.md) |  | [optional] 
 
 ## Methods
 
@@ -180,6 +180,16 @@ SetMeshGateway sets MeshGateway field to given value.
 
 HasMeshGateway returns a boolean if a field has been set.
 
+### SetMeshGatewayNil
+
+`func (o *ConsulUpstream) SetMeshGatewayNil(b bool)`
+
+ SetMeshGatewayNil sets the value for MeshGateway to be an explicit nil
+
+### UnsetMeshGateway
+`func (o *ConsulUpstream) UnsetMeshGateway()`
+
+UnsetMeshGateway ensures that no value is present for MeshGateway, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,7 @@ export class ConsulSidecarService {
     static getAttributeTypeMap() {
         return ConsulSidecarService.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

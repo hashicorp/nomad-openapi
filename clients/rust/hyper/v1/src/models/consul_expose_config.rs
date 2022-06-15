@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ConsulExposeConfig {
     #[serde(rename = "Path", skip_serializing_if = "Option::is_none")]
     pub path: Option<Vec<crate::models::ConsulExposePath>>,

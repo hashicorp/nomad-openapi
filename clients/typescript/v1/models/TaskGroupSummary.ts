@@ -70,7 +70,7 @@ export class TaskGroupSummary {
     static getAttributeTypeMap() {
         return TaskGroupSummary.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

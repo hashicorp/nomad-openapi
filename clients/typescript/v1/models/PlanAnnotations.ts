@@ -37,7 +37,7 @@ export class PlanAnnotations {
     static getAttributeTypeMap() {
         return PlanAnnotations.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

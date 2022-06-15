@@ -27,6 +27,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * ScalingRequest
  */
@@ -68,6 +88,8 @@ public class ScalingRequest {
   @SerializedName(SERIALIZED_NAME_TARGET)
   private Map<String, String> target = null;
 
+  public ScalingRequest() { 
+  }
 
   public ScalingRequest count(Long count) {
     
@@ -146,7 +168,7 @@ public class ScalingRequest {
 
   public ScalingRequest putMetaItem(String key, Object metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, Object>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -269,7 +291,7 @@ public class ScalingRequest {
 
   public ScalingRequest putTargetItem(String key, String targetItem) {
     if (this.target == null) {
-      this.target = new HashMap<String, String>();
+      this.target = new HashMap<>();
     }
     this.target.put(key, targetItem);
     return this;
@@ -290,6 +312,7 @@ public class ScalingRequest {
   public void setTarget(Map<String, String> target) {
     this.target = target;
   }
+
 
 
   @Override
@@ -345,5 +368,110 @@ public class ScalingRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Count");
+    openapiFields.add("Error");
+    openapiFields.add("Message");
+    openapiFields.add("Meta");
+    openapiFields.add("Namespace");
+    openapiFields.add("PolicyOverride");
+    openapiFields.add("Region");
+    openapiFields.add("SecretID");
+    openapiFields.add("Target");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ScalingRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ScalingRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ScalingRequest is not found in the empty JSON string", ScalingRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ScalingRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ScalingRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Message") != null && !jsonObj.get("Message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Message").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      if (jsonObj.get("SecretID") != null && !jsonObj.get("SecretID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretID").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ScalingRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ScalingRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ScalingRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ScalingRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ScalingRequest>() {
+           @Override
+           public void write(JsonWriter out, ScalingRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ScalingRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ScalingRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ScalingRequest
+  * @throws IOException if the JSON string is invalid with respect to ScalingRequest
+  */
+  public static ScalingRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ScalingRequest.class);
+  }
+
+ /**
+  * Convert an instance of ScalingRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

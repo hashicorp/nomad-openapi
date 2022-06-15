@@ -28,7 +28,7 @@ export class NodeReservedNetworkResources {
     static getAttributeTypeMap() {
         return NodeReservedNetworkResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -57,7 +57,7 @@ export class QuotaSpec {
     static getAttributeTypeMap() {
         return QuotaSpec.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

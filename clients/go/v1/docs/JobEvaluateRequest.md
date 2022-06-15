@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EvalOptions** | Pointer to [**EvalOptions**](EvalOptions.md) |  | [optional] 
+**EvalOptions** | Pointer to [**NullableEvalOptions**](EvalOptions.md) |  | [optional] 
 **JobID** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
@@ -54,6 +54,16 @@ SetEvalOptions sets EvalOptions field to given value.
 
 HasEvalOptions returns a boolean if a field has been set.
 
+### SetEvalOptionsNil
+
+`func (o *JobEvaluateRequest) SetEvalOptionsNil(b bool)`
+
+ SetEvalOptionsNil sets the value for EvalOptions to be an explicit nil
+
+### UnsetEvalOptions
+`func (o *JobEvaluateRequest) UnsetEvalOptions()`
+
+UnsetEvalOptions ensures that no value is present for EvalOptions, not even an explicit nil
 ### GetJobID
 
 `func (o *JobEvaluateRequest) GetJobID() string`

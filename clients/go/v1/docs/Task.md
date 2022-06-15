@@ -6,28 +6,28 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Affinities** | Pointer to [**[]Affinity**](Affinity.md) |  | [optional] 
 **Artifacts** | Pointer to [**[]TaskArtifact**](TaskArtifact.md) |  | [optional] 
-**CSIPluginConfig** | Pointer to [**TaskCSIPluginConfig**](TaskCSIPluginConfig.md) |  | [optional] 
+**CSIPluginConfig** | Pointer to [**NullableTaskCSIPluginConfig**](TaskCSIPluginConfig.md) |  | [optional] 
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **Constraints** | Pointer to [**[]Constraint**](Constraint.md) |  | [optional] 
-**DispatchPayload** | Pointer to [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] 
+**DispatchPayload** | Pointer to [**NullableDispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] 
 **Driver** | Pointer to **string** |  | [optional] 
 **Env** | Pointer to **map[string]string** |  | [optional] 
 **KillSignal** | Pointer to **string** |  | [optional] 
 **KillTimeout** | Pointer to **int64** |  | [optional] 
 **Kind** | Pointer to **string** |  | [optional] 
 **Leader** | Pointer to **bool** |  | [optional] 
-**Lifecycle** | Pointer to [**TaskLifecycle**](TaskLifecycle.md) |  | [optional] 
+**Lifecycle** | Pointer to [**NullableTaskLifecycle**](TaskLifecycle.md) |  | [optional] 
 **LogConfig** | Pointer to [**LogConfig**](LogConfig.md) |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Resources** | Pointer to [**Resources**](Resources.md) |  | [optional] 
+**Resources** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
 **RestartPolicy** | Pointer to [**RestartPolicy**](RestartPolicy.md) |  | [optional] 
 **ScalingPolicies** | Pointer to [**[]ScalingPolicy**](ScalingPolicy.md) |  | [optional] 
 **Services** | Pointer to [**[]Service**](Service.md) |  | [optional] 
 **ShutdownDelay** | Pointer to **int64** |  | [optional] 
 **Templates** | Pointer to [**[]Template**](Template.md) |  | [optional] 
 **User** | Pointer to **string** |  | [optional] 
-**Vault** | Pointer to [**Vault**](Vault.md) |  | [optional] 
+**Vault** | Pointer to [**NullableVault**](Vault.md) |  | [optional] 
 **VolumeMounts** | Pointer to [**[]VolumeMount**](VolumeMount.md) |  | [optional] 
 
 ## Methods
@@ -124,6 +124,16 @@ SetCSIPluginConfig sets CSIPluginConfig field to given value.
 
 HasCSIPluginConfig returns a boolean if a field has been set.
 
+### SetCSIPluginConfigNil
+
+`func (o *Task) SetCSIPluginConfigNil(b bool)`
+
+ SetCSIPluginConfigNil sets the value for CSIPluginConfig to be an explicit nil
+
+### UnsetCSIPluginConfig
+`func (o *Task) UnsetCSIPluginConfig()`
+
+UnsetCSIPluginConfig ensures that no value is present for CSIPluginConfig, not even an explicit nil
 ### GetConfig
 
 `func (o *Task) GetConfig() map[string]interface{}`
@@ -199,6 +209,16 @@ SetDispatchPayload sets DispatchPayload field to given value.
 
 HasDispatchPayload returns a boolean if a field has been set.
 
+### SetDispatchPayloadNil
+
+`func (o *Task) SetDispatchPayloadNil(b bool)`
+
+ SetDispatchPayloadNil sets the value for DispatchPayload to be an explicit nil
+
+### UnsetDispatchPayload
+`func (o *Task) UnsetDispatchPayload()`
+
+UnsetDispatchPayload ensures that no value is present for DispatchPayload, not even an explicit nil
 ### GetDriver
 
 `func (o *Task) GetDriver() string`
@@ -374,6 +394,16 @@ SetLifecycle sets Lifecycle field to given value.
 
 HasLifecycle returns a boolean if a field has been set.
 
+### SetLifecycleNil
+
+`func (o *Task) SetLifecycleNil(b bool)`
+
+ SetLifecycleNil sets the value for Lifecycle to be an explicit nil
+
+### UnsetLifecycle
+`func (o *Task) UnsetLifecycle()`
+
+UnsetLifecycle ensures that no value is present for Lifecycle, not even an explicit nil
 ### GetLogConfig
 
 `func (o *Task) GetLogConfig() LogConfig`
@@ -474,6 +504,16 @@ SetResources sets Resources field to given value.
 
 HasResources returns a boolean if a field has been set.
 
+### SetResourcesNil
+
+`func (o *Task) SetResourcesNil(b bool)`
+
+ SetResourcesNil sets the value for Resources to be an explicit nil
+
+### UnsetResources
+`func (o *Task) UnsetResources()`
+
+UnsetResources ensures that no value is present for Resources, not even an explicit nil
 ### GetRestartPolicy
 
 `func (o *Task) GetRestartPolicy() RestartPolicy`
@@ -649,6 +689,16 @@ SetVault sets Vault field to given value.
 
 HasVault returns a boolean if a field has been set.
 
+### SetVaultNil
+
+`func (o *Task) SetVaultNil(b bool)`
+
+ SetVaultNil sets the value for Vault to be an explicit nil
+
+### UnsetVault
+`func (o *Task) UnsetVault()`
+
+UnsetVault ensures that no value is present for Vault, not even an explicit nil
 ### GetVolumeMounts
 
 `func (o *Task) GetVolumeMounts() []VolumeMount`

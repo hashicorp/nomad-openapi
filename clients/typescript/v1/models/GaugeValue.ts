@@ -42,7 +42,7 @@ export class GaugeValue {
     static getAttributeTypeMap() {
         return GaugeValue.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

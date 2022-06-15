@@ -50,7 +50,7 @@
   describe('AutopilotConfiguration', function() {
     it('should create an instance of AutopilotConfiguration', function() {
       // uncomment below and update the code to test AutopilotConfiguration
-      //var instane = new nomad-client.AutopilotConfiguration();
+      //var instance = new nomad-client.AutopilotConfiguration();
       //expect(instance).to.be.a(nomad-client.AutopilotConfiguration);
     });
 

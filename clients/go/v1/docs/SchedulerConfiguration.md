@@ -2,13 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CreateIndex** | Pointer to **int32** |  | [optional] 
-**MemoryOversubscriptionEnabled** | Pointer to **bool** |  | [optional] 
-**ModifyIndex** | Pointer to **int32** |  | [optional] 
-**PauseEvalBroker** | Pointer to **bool** |  | [optional] 
-**PreemptionConfig** | Pointer to [**PreemptionConfig**](PreemptionConfig.md) |  | [optional] 
+| Name                              | Type                                                           | Description | Notes      |
+| --------------------------------- | -------------------------------------------------------------- | ----------- | ---------- |
+| **CreateIndex**                   | Pointer to **int32**                                           |             | [optional] |
+| **MemoryOversubscriptionEnabled** | Pointer to **bool**                                            |             | [optional] |
+| **ModifyIndex**                   | Pointer to **int32**                                           |             | [optional] |
+| **PauseEvalBroker**               | Pointer to **bool**                                            |             | [optional] |
+| **PreemptionConfig**              | Pointer to [**NullablePreemptionConfig**](PreemptionConfig.md) |             | [optional] |
+>>>>>>> af4e01c (fix map spec generation and add nullable fields)
 **RejectJobRegistration** | Pointer to **bool** |  | [optional] 
 **SchedulerAlgorithm** | Pointer to **string** |  | [optional] 
 
@@ -156,6 +157,16 @@ SetPreemptionConfig sets PreemptionConfig field to given value.
 
 HasPreemptionConfig returns a boolean if a field has been set.
 
+### SetPreemptionConfigNil
+
+`func (o *SchedulerConfiguration) SetPreemptionConfigNil(b bool)`
+
+ SetPreemptionConfigNil sets the value for PreemptionConfig to be an explicit nil
+
+### UnsetPreemptionConfig
+`func (o *SchedulerConfiguration) UnsetPreemptionConfig()`
+
+UnsetPreemptionConfig ensures that no value is present for PreemptionConfig, not even an explicit nil
 ### GetRejectJobRegistration
 
 `func (o *SchedulerConfiguration) GetRejectJobRegistration() bool`

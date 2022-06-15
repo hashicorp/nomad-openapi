@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `get_deployment`
+/// struct for typed errors of method [`get_deployment`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetDeploymentError {
@@ -26,7 +26,7 @@ pub enum GetDeploymentError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_deployment_allocations`
+/// struct for typed errors of method [`get_deployment_allocations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetDeploymentAllocationsError {
@@ -37,7 +37,7 @@ pub enum GetDeploymentAllocationsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_deployments`
+/// struct for typed errors of method [`get_deployments`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetDeploymentsError {
@@ -48,7 +48,7 @@ pub enum GetDeploymentsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_deployment_allocation_health`
+/// struct for typed errors of method [`post_deployment_allocation_health`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostDeploymentAllocationHealthError {
@@ -59,7 +59,7 @@ pub enum PostDeploymentAllocationHealthError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_deployment_fail`
+/// struct for typed errors of method [`post_deployment_fail`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostDeploymentFailError {
@@ -70,7 +70,7 @@ pub enum PostDeploymentFailError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_deployment_pause`
+/// struct for typed errors of method [`post_deployment_pause`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostDeploymentPauseError {
@@ -81,7 +81,7 @@ pub enum PostDeploymentPauseError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_deployment_promote`
+/// struct for typed errors of method [`post_deployment_promote`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostDeploymentPromoteError {
@@ -92,7 +92,7 @@ pub enum PostDeploymentPromoteError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_deployment_unblock`
+/// struct for typed errors of method [`post_deployment_unblock`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostDeploymentUnblockError {
@@ -105,10 +105,11 @@ pub enum PostDeploymentUnblockError {
 
 
 pub async fn get_deployment(configuration: &configuration::Configuration, deployment_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Deployment, Error<GetDeploymentError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -132,7 +133,7 @@ pub async fn get_deployment(configuration: &configuration::Configuration, deploy
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -141,7 +142,7 @@ pub async fn get_deployment(configuration: &configuration::Configuration, deploy
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -166,10 +167,11 @@ pub async fn get_deployment(configuration: &configuration::Configuration, deploy
 }
 
 pub async fn get_deployment_allocations(configuration: &configuration::Configuration, deployment_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetDeploymentAllocationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/allocations/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/allocations/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -193,7 +195,7 @@ pub async fn get_deployment_allocations(configuration: &configuration::Configura
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -202,7 +204,7 @@ pub async fn get_deployment_allocations(configuration: &configuration::Configura
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -227,10 +229,11 @@ pub async fn get_deployment_allocations(configuration: &configuration::Configura
 }
 
 pub async fn get_deployments(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::Deployment>, Error<GetDeploymentsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployments", configuration.base_path);
+    let local_var_uri_str = format!("{}/deployments", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -254,7 +257,7 @@ pub async fn get_deployments(configuration: &configuration::Configuration, regio
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -263,7 +266,7 @@ pub async fn get_deployments(configuration: &configuration::Configuration, regio
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -287,11 +290,12 @@ pub async fn get_deployments(configuration: &configuration::Configuration, regio
     }
 }
 
-pub async fn post_deployment_allocation_health(configuration: &configuration::Configuration, deployment_id: &str, deployment_alloc_health_request: crate::models::DeploymentAllocHealthRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentAllocationHealthError>> {
+pub async fn post_deployment_allocation_health(configuration: &configuration::Configuration, deployment_id: &str, deployment_alloc_health_request: Option<crate::models::DeploymentAllocHealthRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentAllocationHealthError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/allocation-health/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/allocation-health/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -303,13 +307,13 @@ pub async fn post_deployment_allocation_health(configuration: &configuration::Co
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -335,10 +339,11 @@ pub async fn post_deployment_allocation_health(configuration: &configuration::Co
 }
 
 pub async fn post_deployment_fail(configuration: &configuration::Configuration, deployment_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentFailError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/fail/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/fail/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -350,13 +355,13 @@ pub async fn post_deployment_fail(configuration: &configuration::Configuration, 
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -380,11 +385,12 @@ pub async fn post_deployment_fail(configuration: &configuration::Configuration, 
     }
 }
 
-pub async fn post_deployment_pause(configuration: &configuration::Configuration, deployment_id: &str, deployment_pause_request: crate::models::DeploymentPauseRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentPauseError>> {
+pub async fn post_deployment_pause(configuration: &configuration::Configuration, deployment_id: &str, deployment_pause_request: Option<crate::models::DeploymentPauseRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentPauseError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/pause/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/pause/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -396,13 +402,13 @@ pub async fn post_deployment_pause(configuration: &configuration::Configuration,
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -427,11 +433,12 @@ pub async fn post_deployment_pause(configuration: &configuration::Configuration,
     }
 }
 
-pub async fn post_deployment_promote(configuration: &configuration::Configuration, deployment_id: &str, deployment_promote_request: crate::models::DeploymentPromoteRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentPromoteError>> {
+pub async fn post_deployment_promote(configuration: &configuration::Configuration, deployment_id: &str, deployment_promote_request: Option<crate::models::DeploymentPromoteRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentPromoteError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/promote/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/promote/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -443,13 +450,13 @@ pub async fn post_deployment_promote(configuration: &configuration::Configuratio
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -474,11 +481,12 @@ pub async fn post_deployment_promote(configuration: &configuration::Configuratio
     }
 }
 
-pub async fn post_deployment_unblock(configuration: &configuration::Configuration, deployment_id: &str, deployment_unblock_request: crate::models::DeploymentUnblockRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentUnblockError>> {
+pub async fn post_deployment_unblock(configuration: &configuration::Configuration, deployment_id: &str, deployment_unblock_request: Option<crate::models::DeploymentUnblockRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<PostDeploymentUnblockError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/deployment/unblock/{deploymentID}", configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
+    let local_var_uri_str = format!("{}/deployment/unblock/{deploymentID}", local_var_configuration.base_path, deploymentID=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -490,13 +498,13 @@ pub async fn post_deployment_unblock(configuration: &configuration::Configuratio
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

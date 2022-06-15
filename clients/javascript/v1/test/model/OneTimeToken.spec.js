@@ -50,7 +50,7 @@
   describe('OneTimeToken', function() {
     it('should create an instance of OneTimeToken', function() {
       // uncomment below and update the code to test OneTimeToken
-      //var instane = new nomad-client.OneTimeToken();
+      //var instance = new nomad-client.OneTimeToken();
       //expect(instance).to.be.a(nomad-client.OneTimeToken);
     });
 

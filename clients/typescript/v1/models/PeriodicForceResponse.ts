@@ -42,7 +42,7 @@ export class PeriodicForceResponse {
     static getAttributeTypeMap() {
         return PeriodicForceResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

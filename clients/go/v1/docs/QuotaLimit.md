@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Hash** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
-**RegionLimit** | Pointer to [**Resources**](Resources.md) |  | [optional] 
+**RegionLimit** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
 
 ## Methods
 
@@ -102,6 +102,16 @@ SetRegionLimit sets RegionLimit field to given value.
 
 HasRegionLimit returns a boolean if a field has been set.
 
+### SetRegionLimitNil
+
+`func (o *QuotaLimit) SetRegionLimitNil(b bool)`
+
+ SetRegionLimitNil sets the value for RegionLimit to be an explicit nil
+
+### UnsetRegionLimit
+`func (o *QuotaLimit) UnsetRegionLimit()`
+
+UnsetRegionLimit ensures that no value is present for RegionLimit, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

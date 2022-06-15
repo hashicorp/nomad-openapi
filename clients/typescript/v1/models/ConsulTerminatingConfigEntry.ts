@@ -29,7 +29,7 @@ export class ConsulTerminatingConfigEntry {
     static getAttributeTypeMap() {
         return ConsulTerminatingConfigEntry.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

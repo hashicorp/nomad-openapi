@@ -51,7 +51,7 @@ export class RequestedDevice {
     static getAttributeTypeMap() {
         return RequestedDevice.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

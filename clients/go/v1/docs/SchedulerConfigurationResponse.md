@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **LastIndex** | Pointer to **int32** |  | [optional] 
 **NextToken** | Pointer to **string** |  | [optional] 
 **RequestTime** | Pointer to **int64** |  | [optional] 
-**SchedulerConfig** | Pointer to [**SchedulerConfiguration**](SchedulerConfiguration.md) |  | [optional] 
+**SchedulerConfig** | Pointer to [**NullableSchedulerConfiguration**](SchedulerConfiguration.md) |  | [optional] 
 
 ## Methods
 
@@ -180,6 +180,16 @@ SetSchedulerConfig sets SchedulerConfig field to given value.
 
 HasSchedulerConfig returns a boolean if a field has been set.
 
+### SetSchedulerConfigNil
+
+`func (o *SchedulerConfigurationResponse) SetSchedulerConfigNil(b bool)`
+
+ SetSchedulerConfigNil sets the value for SchedulerConfig to be an explicit nil
+
+### UnsetSchedulerConfig
+`func (o *SchedulerConfigurationResponse) UnsetSchedulerConfig()`
+
+UnsetSchedulerConfig ensures that no value is present for SchedulerConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,6 +28,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * ServiceCheck
@@ -130,6 +151,8 @@ public class ServiceCheck {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ServiceCheck() { 
+  }
 
   public ServiceCheck addressMode(String addressMode) {
     
@@ -185,7 +208,7 @@ public class ServiceCheck {
 
   public ServiceCheck addArgsItem(String argsItem) {
     if (this.args == null) {
-      this.args = new ArrayList<String>();
+      this.args = new ArrayList<>();
     }
     this.args.add(argsItem);
     return this;
@@ -377,7 +400,7 @@ public class ServiceCheck {
 
   public ServiceCheck putHeaderItem(String key, List<String> headerItem) {
     if (this.header == null) {
-      this.header = new HashMap<String, List<String>>();
+      this.header = new HashMap<>();
     }
     this.header.put(key, headerItem);
     return this;
@@ -699,6 +722,7 @@ public class ServiceCheck {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -734,9 +758,20 @@ public class ServiceCheck {
         Objects.equals(this.type, serviceCheck.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(addressMode, advertise, args, body, checkRestart, command, expose, failuresBeforeCritical, grPCService, grPCUseTLS, header, initialStatus, interval, method, name, onUpdate, path, portLabel, protocol, successBeforePassing, tlSSkipVerify, taskName, timeout, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -782,5 +817,163 @@ public class ServiceCheck {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AddressMode");
+    openapiFields.add("Advertise");
+    openapiFields.add("Args");
+    openapiFields.add("Body");
+    openapiFields.add("CheckRestart");
+    openapiFields.add("Command");
+    openapiFields.add("Expose");
+    openapiFields.add("FailuresBeforeCritical");
+    openapiFields.add("GRPCService");
+    openapiFields.add("GRPCUseTLS");
+    openapiFields.add("Header");
+    openapiFields.add("InitialStatus");
+    openapiFields.add("Interval");
+    openapiFields.add("Method");
+    openapiFields.add("Name");
+    openapiFields.add("OnUpdate");
+    openapiFields.add("Path");
+    openapiFields.add("PortLabel");
+    openapiFields.add("Protocol");
+    openapiFields.add("SuccessBeforePassing");
+    openapiFields.add("TLSSkipVerify");
+    openapiFields.add("TaskName");
+    openapiFields.add("Timeout");
+    openapiFields.add("Type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ServiceCheck
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ServiceCheck.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ServiceCheck is not found in the empty JSON string", ServiceCheck.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ServiceCheck.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ServiceCheck` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("AddressMode") != null && !jsonObj.get("AddressMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AddressMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AddressMode").toString()));
+      }
+      if (jsonObj.get("Advertise") != null && !jsonObj.get("Advertise").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Advertise` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Advertise").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Args") != null && !jsonObj.get("Args").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Args` to be an array in the JSON string but got `%s`", jsonObj.get("Args").toString()));
+      }
+      if (jsonObj.get("Body") != null && !jsonObj.get("Body").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Body` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Body").toString()));
+      }
+      // validate the optional field `CheckRestart`
+      if (jsonObj.getAsJsonObject("CheckRestart") != null) {
+        CheckRestart.validateJsonObject(jsonObj.getAsJsonObject("CheckRestart"));
+      }
+      if (jsonObj.get("Command") != null && !jsonObj.get("Command").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Command` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Command").toString()));
+      }
+      if (jsonObj.get("GRPCService") != null && !jsonObj.get("GRPCService").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `GRPCService` to be a primitive type in the JSON string but got `%s`", jsonObj.get("GRPCService").toString()));
+      }
+      if (jsonObj.get("InitialStatus") != null && !jsonObj.get("InitialStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InitialStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InitialStatus").toString()));
+      }
+      if (jsonObj.get("Method") != null && !jsonObj.get("Method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Method").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("OnUpdate") != null && !jsonObj.get("OnUpdate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OnUpdate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OnUpdate").toString()));
+      }
+      if (jsonObj.get("Path") != null && !jsonObj.get("Path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Path").toString()));
+      }
+      if (jsonObj.get("PortLabel") != null && !jsonObj.get("PortLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PortLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PortLabel").toString()));
+      }
+      if (jsonObj.get("Protocol") != null && !jsonObj.get("Protocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Protocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Protocol").toString()));
+      }
+      if (jsonObj.get("TaskName") != null && !jsonObj.get("TaskName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskName").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ServiceCheck.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ServiceCheck' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ServiceCheck> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ServiceCheck.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ServiceCheck>() {
+           @Override
+           public void write(JsonWriter out, ServiceCheck value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ServiceCheck read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ServiceCheck given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ServiceCheck
+  * @throws IOException if the JSON string is invalid with respect to ServiceCheck
+  */
+  public static ServiceCheck fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ServiceCheck.class);
+  }
+
+ /**
+  * Convert an instance of ServiceCheck to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

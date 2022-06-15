@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * ConsulLinkedService
  */
@@ -49,6 +69,8 @@ public class ConsulLinkedService {
   @SerializedName(SERIALIZED_NAME_S_N_I)
   private String SNI;
 
+  public ConsulLinkedService() { 
+  }
 
   public ConsulLinkedService caFile(String caFile) {
     
@@ -165,6 +187,7 @@ public class ConsulLinkedService {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -210,5 +233,109 @@ public class ConsulLinkedService {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CAFile");
+    openapiFields.add("CertFile");
+    openapiFields.add("KeyFile");
+    openapiFields.add("Name");
+    openapiFields.add("SNI");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsulLinkedService
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ConsulLinkedService.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsulLinkedService is not found in the empty JSON string", ConsulLinkedService.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsulLinkedService.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsulLinkedService` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("CAFile") != null && !jsonObj.get("CAFile").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CAFile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CAFile").toString()));
+      }
+      if (jsonObj.get("CertFile") != null && !jsonObj.get("CertFile").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CertFile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CertFile").toString()));
+      }
+      if (jsonObj.get("KeyFile") != null && !jsonObj.get("KeyFile").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KeyFile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KeyFile").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("SNI") != null && !jsonObj.get("SNI").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SNI` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SNI").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsulLinkedService.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsulLinkedService' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsulLinkedService> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsulLinkedService.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsulLinkedService>() {
+           @Override
+           public void write(JsonWriter out, ConsulLinkedService value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsulLinkedService read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsulLinkedService given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsulLinkedService
+  * @throws IOException if the JSON string is invalid with respect to ConsulLinkedService
+  */
+  public static ConsulLinkedService fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsulLinkedService.class);
+  }
+
+ /**
+  * Convert an instance of ConsulLinkedService to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -56,7 +56,7 @@ export class Vault {
     static getAttributeTypeMap() {
         return Vault.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

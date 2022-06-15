@@ -25,9 +25,30 @@ import io.nomadproject.client.models.TaskHandle;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * TaskState
@@ -66,6 +87,8 @@ public class TaskState {
   @SerializedName(SERIALIZED_NAME_TASK_HANDLE)
   private TaskHandle taskHandle;
 
+  public TaskState() { 
+  }
 
   public TaskState events(List<TaskEvent> events) {
     
@@ -75,7 +98,7 @@ public class TaskState {
 
   public TaskState addEventsItem(TaskEvent eventsItem) {
     if (this.events == null) {
-      this.events = new ArrayList<TaskEvent>();
+      this.events = new ArrayList<>();
     }
     this.events.add(eventsItem);
     return this;
@@ -261,6 +284,7 @@ public class TaskState {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -280,9 +304,20 @@ public class TaskState {
         Objects.equals(this.taskHandle, taskState.taskHandle);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(events, failed, finishedAt, lastRestart, restarts, startedAt, state, taskHandle);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -312,5 +347,116 @@ public class TaskState {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Events");
+    openapiFields.add("Failed");
+    openapiFields.add("FinishedAt");
+    openapiFields.add("LastRestart");
+    openapiFields.add("Restarts");
+    openapiFields.add("StartedAt");
+    openapiFields.add("State");
+    openapiFields.add("TaskHandle");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskState
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskState.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskState is not found in the empty JSON string", TaskState.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TaskState.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskState` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayevents = jsonObj.getAsJsonArray("Events");
+      if (jsonArrayevents != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Events").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Events` to be an array in the JSON string but got `%s`", jsonObj.get("Events").toString()));
+        }
+
+        // validate the optional field `Events` (array)
+        for (int i = 0; i < jsonArrayevents.size(); i++) {
+          TaskEvent.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("State") != null && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      // validate the optional field `TaskHandle`
+      if (jsonObj.getAsJsonObject("TaskHandle") != null) {
+        TaskHandle.validateJsonObject(jsonObj.getAsJsonObject("TaskHandle"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TaskState.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskState' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TaskState> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskState.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TaskState>() {
+           @Override
+           public void write(JsonWriter out, TaskState value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TaskState read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TaskState given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskState
+  * @throws IOException if the JSON string is invalid with respect to TaskState
+  */
+  public static TaskState fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskState.class);
+  }
+
+ /**
+  * Convert an instance of TaskState to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

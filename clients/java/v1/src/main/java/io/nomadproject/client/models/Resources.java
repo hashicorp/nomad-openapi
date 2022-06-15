@@ -28,6 +28,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * Resources
  */
@@ -65,6 +85,8 @@ public class Resources {
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<NetworkResource> networks = null;
 
+  public Resources() { 
+  }
 
   public Resources CPU(Integer CPU) {
     
@@ -120,7 +142,7 @@ public class Resources {
 
   public Resources addDevicesItem(RequestedDevice devicesItem) {
     if (this.devices == null) {
-      this.devices = new ArrayList<RequestedDevice>();
+      this.devices = new ArrayList<>();
     }
     this.devices.add(devicesItem);
     return this;
@@ -243,7 +265,7 @@ public class Resources {
 
   public Resources addNetworksItem(NetworkResource networksItem) {
     if (this.networks == null) {
-      this.networks = new ArrayList<NetworkResource>();
+      this.networks = new ArrayList<>();
     }
     this.networks.add(networksItem);
     return this;
@@ -264,6 +286,7 @@ public class Resources {
   public void setNetworks(List<NetworkResource> networks) {
     this.networks = networks;
   }
+
 
 
   @Override
@@ -317,5 +340,121 @@ public class Resources {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CPU");
+    openapiFields.add("Cores");
+    openapiFields.add("Devices");
+    openapiFields.add("DiskMB");
+    openapiFields.add("IOPS");
+    openapiFields.add("MemoryMB");
+    openapiFields.add("MemoryMaxMB");
+    openapiFields.add("Networks");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Resources
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Resources.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Resources is not found in the empty JSON string", Resources.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Resources.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Resources` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraydevices = jsonObj.getAsJsonArray("Devices");
+      if (jsonArraydevices != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Devices").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Devices` to be an array in the JSON string but got `%s`", jsonObj.get("Devices").toString()));
+        }
+
+        // validate the optional field `Devices` (array)
+        for (int i = 0; i < jsonArraydevices.size(); i++) {
+          RequestedDevice.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraynetworks = jsonObj.getAsJsonArray("Networks");
+      if (jsonArraynetworks != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Networks").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Networks` to be an array in the JSON string but got `%s`", jsonObj.get("Networks").toString()));
+        }
+
+        // validate the optional field `Networks` (array)
+        for (int i = 0; i < jsonArraynetworks.size(); i++) {
+          NetworkResource.validateJsonObject(jsonArraynetworks.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Resources.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Resources' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Resources> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Resources.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Resources>() {
+           @Override
+           public void write(JsonWriter out, Resources value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Resources read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Resources given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Resources
+  * @throws IOException if the JSON string is invalid with respect to Resources
+  */
+  public static Resources fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Resources.class);
+  }
+
+ /**
+  * Convert an instance of Resources to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -27,6 +27,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * FuzzySearchRequest
  */
@@ -92,6 +112,8 @@ public class FuzzySearchRequest {
   @SerializedName(SERIALIZED_NAME_WAIT_TIME)
   private Long waitTime;
 
+  public FuzzySearchRequest() { 
+  }
 
   public FuzzySearchRequest allowStale(Boolean allowStale) {
     
@@ -193,7 +215,7 @@ public class FuzzySearchRequest {
 
   public FuzzySearchRequest putHeadersItem(String key, String headersItem) {
     if (this.headers == null) {
-      this.headers = new HashMap<String, String>();
+      this.headers = new HashMap<>();
     }
     this.headers.put(key, headersItem);
     return this;
@@ -270,7 +292,7 @@ public class FuzzySearchRequest {
 
   public FuzzySearchRequest putParamsItem(String key, String paramsItem) {
     if (this.params == null) {
-      this.params = new HashMap<String, String>();
+      this.params = new HashMap<>();
     }
     this.params.put(key, paramsItem);
     return this;
@@ -456,6 +478,7 @@ public class FuzzySearchRequest {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -521,5 +544,128 @@ public class FuzzySearchRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AllowStale");
+    openapiFields.add("AuthToken");
+    openapiFields.add("Context");
+    openapiFields.add("Filter");
+    openapiFields.add("Headers");
+    openapiFields.add("Namespace");
+    openapiFields.add("NextToken");
+    openapiFields.add("Params");
+    openapiFields.add("PerPage");
+    openapiFields.add("Prefix");
+    openapiFields.add("Region");
+    openapiFields.add("Reverse");
+    openapiFields.add("Text");
+    openapiFields.add("WaitIndex");
+    openapiFields.add("WaitTime");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FuzzySearchRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (FuzzySearchRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FuzzySearchRequest is not found in the empty JSON string", FuzzySearchRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FuzzySearchRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FuzzySearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("AuthToken") != null && !jsonObj.get("AuthToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AuthToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AuthToken").toString()));
+      }
+      if (jsonObj.get("Context") != null && !jsonObj.get("Context").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Context` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Context").toString()));
+      }
+      if (jsonObj.get("Filter") != null && !jsonObj.get("Filter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Filter").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextToken").toString()));
+      }
+      if (jsonObj.get("Prefix") != null && !jsonObj.get("Prefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Prefix").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      if (jsonObj.get("Text") != null && !jsonObj.get("Text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Text").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FuzzySearchRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FuzzySearchRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FuzzySearchRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FuzzySearchRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FuzzySearchRequest>() {
+           @Override
+           public void write(JsonWriter out, FuzzySearchRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FuzzySearchRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FuzzySearchRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FuzzySearchRequest
+  * @throws IOException if the JSON string is invalid with respect to FuzzySearchRequest
+  */
+  public static FuzzySearchRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FuzzySearchRequest.class);
+  }
+
+ /**
+  * Convert an instance of FuzzySearchRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

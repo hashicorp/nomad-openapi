@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AllocatedDeviceResource {
     #[serde(rename = "DeviceIDs", skip_serializing_if = "Option::is_none")]
     pub device_ids: Option<Vec<String>>,

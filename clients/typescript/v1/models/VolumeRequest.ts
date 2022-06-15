@@ -78,7 +78,7 @@ export class VolumeRequest {
     static getAttributeTypeMap() {
         return VolumeRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

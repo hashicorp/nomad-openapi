@@ -144,7 +144,7 @@ export class NodeListStub {
     static getAttributeTypeMap() {
         return NodeListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

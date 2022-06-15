@@ -58,7 +58,7 @@ export class TaskDiff {
     static getAttributeTypeMap() {
         return TaskDiff.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

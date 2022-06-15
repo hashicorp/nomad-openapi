@@ -63,7 +63,7 @@ export class DeploymentUpdateResponse {
     static getAttributeTypeMap() {
         return DeploymentUpdateResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

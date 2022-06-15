@@ -16,8 +16,8 @@ package io.nomadproject.client.api;
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.CSIPlugin;
 import io.nomadproject.client.models.CSIPluginListStub;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,19 +27,13 @@ import java.util.Map;
 /**
  * API tests for PluginsApi
  */
-@Ignore
+@Disabled
 public class PluginsApiTest {
 
     private final PluginsApi api = new PluginsApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getPluginCSITest() throws ApiException {
@@ -54,17 +48,11 @@ public class PluginsApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getPluginsTest() throws ApiException {
@@ -78,8 +66,7 @@ public class PluginsApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<CSIPluginListStub> response = api.getPlugins(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
 }

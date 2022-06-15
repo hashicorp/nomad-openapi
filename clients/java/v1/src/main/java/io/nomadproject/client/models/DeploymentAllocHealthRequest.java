@@ -26,6 +26,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * DeploymentAllocHealthRequest
  */
@@ -55,6 +75,8 @@ public class DeploymentAllocHealthRequest {
   @SerializedName(SERIALIZED_NAME_UNHEALTHY_ALLOCATION_I_DS)
   private List<String> unhealthyAllocationIDs = null;
 
+  public DeploymentAllocHealthRequest() { 
+  }
 
   public DeploymentAllocHealthRequest deploymentID(String deploymentID) {
     
@@ -87,7 +109,7 @@ public class DeploymentAllocHealthRequest {
 
   public DeploymentAllocHealthRequest addHealthyAllocationIDsItem(String healthyAllocationIDsItem) {
     if (this.healthyAllocationIDs == null) {
-      this.healthyAllocationIDs = new ArrayList<String>();
+      this.healthyAllocationIDs = new ArrayList<>();
     }
     this.healthyAllocationIDs.add(healthyAllocationIDsItem);
     return this;
@@ -187,7 +209,7 @@ public class DeploymentAllocHealthRequest {
 
   public DeploymentAllocHealthRequest addUnhealthyAllocationIDsItem(String unhealthyAllocationIDsItem) {
     if (this.unhealthyAllocationIDs == null) {
-      this.unhealthyAllocationIDs = new ArrayList<String>();
+      this.unhealthyAllocationIDs = new ArrayList<>();
     }
     this.unhealthyAllocationIDs.add(unhealthyAllocationIDsItem);
     return this;
@@ -208,6 +230,7 @@ public class DeploymentAllocHealthRequest {
   public void setUnhealthyAllocationIDs(List<String> unhealthyAllocationIDs) {
     this.unhealthyAllocationIDs = unhealthyAllocationIDs;
   }
+
 
 
   @Override
@@ -257,5 +280,115 @@ public class DeploymentAllocHealthRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DeploymentID");
+    openapiFields.add("HealthyAllocationIDs");
+    openapiFields.add("Namespace");
+    openapiFields.add("Region");
+    openapiFields.add("SecretID");
+    openapiFields.add("UnhealthyAllocationIDs");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DeploymentAllocHealthRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (DeploymentAllocHealthRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeploymentAllocHealthRequest is not found in the empty JSON string", DeploymentAllocHealthRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DeploymentAllocHealthRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeploymentAllocHealthRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("DeploymentID") != null && !jsonObj.get("DeploymentID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DeploymentID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DeploymentID").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("HealthyAllocationIDs") != null && !jsonObj.get("HealthyAllocationIDs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `HealthyAllocationIDs` to be an array in the JSON string but got `%s`", jsonObj.get("HealthyAllocationIDs").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      if (jsonObj.get("SecretID") != null && !jsonObj.get("SecretID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretID").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("UnhealthyAllocationIDs") != null && !jsonObj.get("UnhealthyAllocationIDs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `UnhealthyAllocationIDs` to be an array in the JSON string but got `%s`", jsonObj.get("UnhealthyAllocationIDs").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DeploymentAllocHealthRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeploymentAllocHealthRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DeploymentAllocHealthRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeploymentAllocHealthRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DeploymentAllocHealthRequest>() {
+           @Override
+           public void write(JsonWriter out, DeploymentAllocHealthRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DeploymentAllocHealthRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DeploymentAllocHealthRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DeploymentAllocHealthRequest
+  * @throws IOException if the JSON string is invalid with respect to DeploymentAllocHealthRequest
+  */
+  public static DeploymentAllocHealthRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeploymentAllocHealthRequest.class);
+  }
+
+ /**
+  * Convert an instance of DeploymentAllocHealthRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

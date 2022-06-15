@@ -30,6 +30,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * NodeDeviceResource
  */
@@ -55,6 +75,8 @@ public class NodeDeviceResource {
   @SerializedName(SERIALIZED_NAME_VENDOR)
   private String vendor;
 
+  public NodeDeviceResource() { 
+  }
 
   public NodeDeviceResource attributes(Map<String, Attribute> attributes) {
     
@@ -64,7 +86,7 @@ public class NodeDeviceResource {
 
   public NodeDeviceResource putAttributesItem(String key, Attribute attributesItem) {
     if (this.attributes == null) {
-      this.attributes = new HashMap<String, Attribute>();
+      this.attributes = new HashMap<>();
     }
     this.attributes.put(key, attributesItem);
     return this;
@@ -95,7 +117,7 @@ public class NodeDeviceResource {
 
   public NodeDeviceResource addInstancesItem(NodeDevice instancesItem) {
     if (this.instances == null) {
-      this.instances = new ArrayList<NodeDevice>();
+      this.instances = new ArrayList<>();
     }
     this.instances.add(instancesItem);
     return this;
@@ -187,6 +209,7 @@ public class NodeDeviceResource {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -232,5 +255,115 @@ public class NodeDeviceResource {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Attributes");
+    openapiFields.add("Instances");
+    openapiFields.add("Name");
+    openapiFields.add("Type");
+    openapiFields.add("Vendor");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NodeDeviceResource
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (NodeDeviceResource.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NodeDeviceResource is not found in the empty JSON string", NodeDeviceResource.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NodeDeviceResource.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NodeDeviceResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayinstances = jsonObj.getAsJsonArray("Instances");
+      if (jsonArrayinstances != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Instances").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Instances` to be an array in the JSON string but got `%s`", jsonObj.get("Instances").toString()));
+        }
+
+        // validate the optional field `Instances` (array)
+        for (int i = 0; i < jsonArrayinstances.size(); i++) {
+          NodeDevice.validateJsonObject(jsonArrayinstances.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+      if (jsonObj.get("Vendor") != null && !jsonObj.get("Vendor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Vendor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Vendor").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NodeDeviceResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NodeDeviceResource' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NodeDeviceResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NodeDeviceResource.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NodeDeviceResource>() {
+           @Override
+           public void write(JsonWriter out, NodeDeviceResource value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NodeDeviceResource read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NodeDeviceResource given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NodeDeviceResource
+  * @throws IOException if the JSON string is invalid with respect to NodeDeviceResource
+  */
+  public static NodeDeviceResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NodeDeviceResource.class);
+  }
+
+ /**
+  * Convert an instance of NodeDeviceResource to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

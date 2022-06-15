@@ -307,7 +307,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **policy_name** | **String** | The ACL policy name. | [required] |
-**acl_policy** | [**AclPolicy**](AclPolicy.md) |  | [required] |
+**acl_policy** | Option<[**AclPolicy**](AclPolicy.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -340,7 +340,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **token_accessor** | **String** | The token accessor ID. | [required] |
-**acl_token** | [**AclToken**](AclToken.md) |  | [required] |
+**acl_token** | Option<[**AclToken**](AclToken.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -403,7 +403,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**one_time_token_exchange_request** | [**OneTimeTokenExchangeRequest**](OneTimeTokenExchangeRequest.md) |  | [required] |
+**one_time_token_exchange_request** | Option<[**OneTimeTokenExchangeRequest**](OneTimeTokenExchangeRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

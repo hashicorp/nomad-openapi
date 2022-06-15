@@ -50,7 +50,7 @@
   describe('DeploymentAllocHealthRequest', function() {
     it('should create an instance of DeploymentAllocHealthRequest', function() {
       // uncomment below and update the code to test DeploymentAllocHealthRequest
-      //var instane = new nomad-client.DeploymentAllocHealthRequest();
+      //var instance = new nomad-client.DeploymentAllocHealthRequest();
       //expect(instance).to.be.a(nomad-client.DeploymentAllocHealthRequest);
     });
 

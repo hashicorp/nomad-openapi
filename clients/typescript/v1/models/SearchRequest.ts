@@ -119,7 +119,7 @@ export class SearchRequest {
     static getAttributeTypeMap() {
         return SearchRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

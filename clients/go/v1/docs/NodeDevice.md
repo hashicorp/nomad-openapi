@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **HealthDescription** | Pointer to **string** |  | [optional] 
 **Healthy** | Pointer to **bool** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
-**Locality** | Pointer to [**NodeDeviceLocality**](NodeDeviceLocality.md) |  | [optional] 
+**Locality** | Pointer to [**NullableNodeDeviceLocality**](NodeDeviceLocality.md) |  | [optional] 
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetLocality sets Locality field to given value.
 
 HasLocality returns a boolean if a field has been set.
 
+### SetLocalityNil
+
+`func (o *NodeDevice) SetLocalityNil(b bool)`
+
+ SetLocalityNil sets the value for Locality to be an explicit nil
+
+### UnsetLocality
+`func (o *NodeDevice) UnsetLocality()`
+
+UnsetLocality ensures that no value is present for Locality, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

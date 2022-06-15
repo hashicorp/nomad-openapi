@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Details** | Pointer to **map[string]string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
 **Subsystem** | Pointer to **string** |  | [optional] 
-**Timestamp** | Pointer to **time.Time** |  | [optional] 
+**Timestamp** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -154,6 +154,16 @@ SetTimestamp sets Timestamp field to given value.
 
 HasTimestamp returns a boolean if a field has been set.
 
+### SetTimestampNil
+
+`func (o *NodeEvent) SetTimestampNil(b bool)`
+
+ SetTimestampNil sets the value for Timestamp to be an explicit nil
+
+### UnsetTimestamp
+`func (o *NodeEvent) UnsetTimestamp()`
+
+UnsetTimestamp ensures that no value is present for Timestamp, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

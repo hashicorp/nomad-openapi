@@ -46,8 +46,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.CreateVolume(context.Background(), volumeId, action).CSIVolumeCreateRequest(cSIVolumeCreateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.CreateVolume(context.Background(), volumeId, action).CSIVolumeCreateRequest(cSIVolumeCreateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.CreateVolume``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,8 +124,8 @@ func main() {
     snapshotId := "snapshotId_example" // string | The ID of the snapshot to target. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.DeleteSnapshot(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).PluginId(pluginId).SnapshotId(snapshotId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.DeleteSnapshot(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).PluginId(pluginId).SnapshotId(snapshotId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.DeleteSnapshot``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,8 +196,8 @@ func main() {
     force := "force_example" // string | Used to force the de-registration of a volume. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.DeleteVolumeRegistration(context.Background(), volumeId).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Force(force).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.DeleteVolumeRegistration(context.Background(), volumeId).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.DeleteVolumeRegistration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -273,8 +273,8 @@ func main() {
     node := "node_example" // string | Specifies node to target volume operation for. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.DetachOrDeleteVolume(context.Background(), volumeId, action).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Node(node).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.DetachOrDeleteVolume(context.Background(), volumeId, action).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Node(node).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.DetachOrDeleteVolume``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,8 +355,8 @@ func main() {
     pluginId := "pluginId_example" // string | Filters volume lists by plugin ID. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.GetExternalVolumes(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).PluginId(pluginId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.GetExternalVolumes(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).PluginId(pluginId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.GetExternalVolumes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -437,8 +437,8 @@ func main() {
     pluginId := "pluginId_example" // string | Filters volume lists by plugin ID. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.GetSnapshots(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).PluginId(pluginId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.GetSnapshots(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).PluginId(pluginId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.GetSnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -519,8 +519,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.GetVolume(context.Background(), volumeId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.GetVolume(context.Background(), volumeId).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.GetVolume``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -607,8 +607,8 @@ func main() {
     type_ := "type__example" // string | Filters volume lists to a specific type. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.GetVolumes(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).NodeId(nodeId).PluginId(pluginId).Type_(type_).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.GetVolumes(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).NodeId(nodeId).PluginId(pluginId).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.GetVolumes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -686,8 +686,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.PostSnapshot(context.Background()).CSISnapshotCreateRequest(cSISnapshotCreateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.PostSnapshot(context.Background()).CSISnapshotCreateRequest(cSISnapshotCreateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.PostSnapshot``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -758,8 +758,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.PostVolume(context.Background()).CSIVolumeRegisterRequest(cSIVolumeRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.PostVolume(context.Background()).CSIVolumeRegisterRequest(cSIVolumeRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.PostVolume``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -829,8 +829,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VolumesApi.PostVolumeRegistration(context.Background(), volumeId).CSIVolumeRegisterRequest(cSIVolumeRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VolumesApi.PostVolumeRegistration(context.Background(), volumeId).CSIVolumeRegisterRequest(cSIVolumeRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VolumesApi.PostVolumeRegistration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

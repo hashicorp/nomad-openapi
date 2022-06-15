@@ -72,26 +72,52 @@ var jobResponseSchema = `
         EvalCreateIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
+          required:
+          - uint64
           type: integer
         EvalID:
+          required:
+          - string
           type: string
         JobModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
+          required:
+          - uint64
           type: integer
         KnownLeader:
+          required:
+          - bool
           type: boolean
         LastContact:
           format: int64
+          required:
+          - Duration
           type: integer
         LastIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
+          required:
+          - uint64
           type: integer
+        NextToken:
+          required:
+          - string
+          type: string
         RequestTime:
           format: int64
+          required:
+          - Duration
           type: integer
         Warnings:
+          required:
+          - string
           type: string
+      required:
+      - EvalID
+      - EvalCreateIndex
+      - JobModifyIndex
+      - Warnings
+      - QueryMeta
       type: object
 `

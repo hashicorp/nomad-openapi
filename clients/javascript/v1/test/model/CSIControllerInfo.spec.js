@@ -50,7 +50,7 @@
   describe('CSIControllerInfo', function() {
     it('should create an instance of CSIControllerInfo', function() {
       // uncomment below and update the code to test CSIControllerInfo
-      //var instane = new nomad-client.CSIControllerInfo();
+      //var instance = new nomad-client.CSIControllerInfo();
       //expect(instance).to.be.a(nomad-client.CSIControllerInfo);
     });
 

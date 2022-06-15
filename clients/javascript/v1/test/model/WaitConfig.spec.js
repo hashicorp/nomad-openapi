@@ -50,7 +50,7 @@
   describe('WaitConfig', function() {
     it('should create an instance of WaitConfig', function() {
       // uncomment below and update the code to test WaitConfig
-      //var instane = new nomad-client.WaitConfig();
+      //var instance = new nomad-client.WaitConfig();
       //expect(instance).to.be.a(nomad-client.WaitConfig);
     });
 

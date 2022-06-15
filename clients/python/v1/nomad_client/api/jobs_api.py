@@ -59,79 +59,7 @@ class JobsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __delete_job(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """delete_job  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.delete_job(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                purge (bool): Boolean flag indicating whether to purge allocations of the job after deleting.. [optional]
-                _global (bool): Boolean flag indicating whether the operation should apply to all instances of the job globally.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobDeregisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.delete_job = _Endpoint(
+        self.delete_job_endpoint = _Endpoint(
             settings={
                 'response_type': (JobDeregisterResponse,),
                 'auth': [
@@ -210,85 +138,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__delete_job
+            api_client=api_client
         )
-
-        def __get_job(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Job
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job = _Endpoint(
+        self.get_job_endpoint = _Endpoint(
             settings={
                 'response_type': (Job,),
                 'auth': [
@@ -382,86 +234,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job
+            api_client=api_client
         )
-
-        def __get_job_allocations(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_allocations  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_allocations(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                all (bool): Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [AllocationListStub]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_allocations = _Endpoint(
+        self.get_job_allocations_endpoint = _Endpoint(
             settings={
                 'response_type': ([AllocationListStub],),
                 'auth': [
@@ -560,85 +335,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_allocations
+            api_client=api_client
         )
-
-        def __get_job_deployment(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_deployment  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_deployment(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Deployment
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_deployment = _Endpoint(
+        self.get_job_deployment_endpoint = _Endpoint(
             settings={
                 'response_type': (Deployment,),
                 'auth': [
@@ -732,86 +431,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_deployment
+            api_client=api_client
         )
-
-        def __get_job_deployments(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_deployments  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_deployments(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                all (int): Flag indicating whether to constrain by job creation index or not.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [Deployment]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_deployments = _Endpoint(
+        self.get_job_deployments_endpoint = _Endpoint(
             settings={
                 'response_type': ([Deployment],),
                 'auth': [
@@ -910,85 +532,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_deployments
+            api_client=api_client
         )
-
-        def __get_job_evaluations(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_evaluations  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_evaluations(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [Evaluation]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_evaluations = _Endpoint(
+        self.get_job_evaluations_endpoint = _Endpoint(
             settings={
                 'response_type': ([Evaluation],),
                 'auth': [
@@ -1082,85 +628,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_evaluations
+            api_client=api_client
         )
-
-        def __get_job_scale_status(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_scale_status  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_scale_status(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobScaleStatusResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_scale_status = _Endpoint(
+        self.get_job_scale_status_endpoint = _Endpoint(
             settings={
                 'response_type': (JobScaleStatusResponse,),
                 'auth': [
@@ -1254,85 +724,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_scale_status
+            api_client=api_client
         )
-
-        def __get_job_summary(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_summary  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_summary(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobSummary
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_summary = _Endpoint(
+        self.get_job_summary_endpoint = _Endpoint(
             settings={
                 'response_type': (JobSummary,),
                 'auth': [
@@ -1426,86 +820,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_summary
+            api_client=api_client
         )
-
-        def __get_job_versions(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """get_job_versions  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_job_versions(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                diffs (bool): Boolean flag indicating whether to compute job diffs.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobVersionsResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.get_job_versions = _Endpoint(
+        self.get_job_versions_endpoint = _Endpoint(
             settings={
                 'response_type': (JobVersionsResponse,),
                 'auth': [
@@ -1604,80 +921,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_job_versions
+            api_client=api_client
         )
-
-        def __get_jobs(
-            self,
-            **kwargs
-        ):
-            """get_jobs  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_jobs(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [JobListStub]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_jobs = _Endpoint(
+        self.get_jobs_endpoint = _Endpoint(
             settings={
                 'response_type': ([JobListStub],),
                 'auth': [
@@ -1764,84 +1010,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_jobs
+            api_client=api_client
         )
-
-        def __post_job(
-            self,
-            job_name,
-            job_register_request,
-            **kwargs
-        ):
-            """post_job  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job(job_name, job_register_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_register_request (JobRegisterRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobRegisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_register_request'] = \
-                job_register_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job = _Endpoint(
+        self.post_job_endpoint = _Endpoint(
             settings={
                 'response_type': (JobRegisterResponse,),
                 'auth': [
@@ -1866,6 +1037,7 @@ class JobsApi(object):
                     'job_register_request',
                 ],
                 'nullable': [
+                    'job_register_request',
                 ],
                 'enum': [
                 ],
@@ -1917,84 +1089,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job
+            api_client=api_client
         )
-
-        def __post_job_dispatch(
-            self,
-            job_name,
-            job_dispatch_request,
-            **kwargs
-        ):
-            """post_job_dispatch  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_dispatch(job_name, job_dispatch_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_dispatch_request (JobDispatchRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobDispatchResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_dispatch_request'] = \
-                job_dispatch_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_dispatch = _Endpoint(
+        self.post_job_dispatch_endpoint = _Endpoint(
             settings={
                 'response_type': (JobDispatchResponse,),
                 'auth': [
@@ -2019,6 +1116,7 @@ class JobsApi(object):
                     'job_dispatch_request',
                 ],
                 'nullable': [
+                    'job_dispatch_request',
                 ],
                 'enum': [
                 ],
@@ -2070,84 +1168,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_dispatch
+            api_client=api_client
         )
-
-        def __post_job_evaluate(
-            self,
-            job_name,
-            job_evaluate_request,
-            **kwargs
-        ):
-            """post_job_evaluate  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_evaluate(job_name, job_evaluate_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_evaluate_request (JobEvaluateRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobRegisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_evaluate_request'] = \
-                job_evaluate_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_evaluate = _Endpoint(
+        self.post_job_evaluate_endpoint = _Endpoint(
             settings={
                 'response_type': (JobRegisterResponse,),
                 'auth': [
@@ -2172,6 +1195,7 @@ class JobsApi(object):
                     'job_evaluate_request',
                 ],
                 'nullable': [
+                    'job_evaluate_request',
                 ],
                 'enum': [
                 ],
@@ -2223,76 +1247,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_evaluate
+            api_client=api_client
         )
-
-        def __post_job_parse(
-            self,
-            jobs_parse_request,
-            **kwargs
-        ):
-            """post_job_parse  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_parse(jobs_parse_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                jobs_parse_request (JobsParseRequest):
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Job
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['jobs_parse_request'] = \
-                jobs_parse_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_parse = _Endpoint(
+        self.post_job_parse_endpoint = _Endpoint(
             settings={
                 'response_type': (Job,),
                 'auth': [
@@ -2311,6 +1268,7 @@ class JobsApi(object):
                     'jobs_parse_request',
                 ],
                 'nullable': [
+                    'jobs_parse_request',
                 ],
                 'enum': [
                 ],
@@ -2342,80 +1300,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_parse
+            api_client=api_client
         )
-
-        def __post_job_periodic_force(
-            self,
-            job_name,
-            **kwargs
-        ):
-            """post_job_periodic_force  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_periodic_force(job_name, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                PeriodicForceResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_periodic_force = _Endpoint(
+        self.post_job_periodic_force_endpoint = _Endpoint(
             settings={
                 'response_type': (PeriodicForceResponse,),
                 'auth': [
@@ -2484,84 +1371,9 @@ class JobsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__post_job_periodic_force
+            api_client=api_client
         )
-
-        def __post_job_plan(
-            self,
-            job_name,
-            job_plan_request,
-            **kwargs
-        ):
-            """post_job_plan  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_plan(job_name, job_plan_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_plan_request (JobPlanRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobPlanResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_plan_request'] = \
-                job_plan_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_plan = _Endpoint(
+        self.post_job_plan_endpoint = _Endpoint(
             settings={
                 'response_type': (JobPlanResponse,),
                 'auth': [
@@ -2586,6 +1398,7 @@ class JobsApi(object):
                     'job_plan_request',
                 ],
                 'nullable': [
+                    'job_plan_request',
                 ],
                 'enum': [
                 ],
@@ -2637,84 +1450,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_plan
+            api_client=api_client
         )
-
-        def __post_job_revert(
-            self,
-            job_name,
-            job_revert_request,
-            **kwargs
-        ):
-            """post_job_revert  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_revert(job_name, job_revert_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_revert_request (JobRevertRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobRegisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_revert_request'] = \
-                job_revert_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_revert = _Endpoint(
+        self.post_job_revert_endpoint = _Endpoint(
             settings={
                 'response_type': (JobRegisterResponse,),
                 'auth': [
@@ -2739,6 +1477,7 @@ class JobsApi(object):
                     'job_revert_request',
                 ],
                 'nullable': [
+                    'job_revert_request',
                 ],
                 'enum': [
                 ],
@@ -2790,84 +1529,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_revert
+            api_client=api_client
         )
-
-        def __post_job_scaling_request(
-            self,
-            job_name,
-            scaling_request,
-            **kwargs
-        ):
-            """post_job_scaling_request  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_scaling_request(job_name, scaling_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                scaling_request (ScalingRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobRegisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['scaling_request'] = \
-                scaling_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_scaling_request = _Endpoint(
+        self.post_job_scaling_request_endpoint = _Endpoint(
             settings={
                 'response_type': (JobRegisterResponse,),
                 'auth': [
@@ -2892,6 +1556,7 @@ class JobsApi(object):
                     'scaling_request',
                 ],
                 'nullable': [
+                    'scaling_request',
                 ],
                 'enum': [
                 ],
@@ -2943,84 +1608,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_scaling_request
+            api_client=api_client
         )
-
-        def __post_job_stability(
-            self,
-            job_name,
-            job_stability_request,
-            **kwargs
-        ):
-            """post_job_stability  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_stability(job_name, job_stability_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_name (str): The job identifier.
-                job_stability_request (JobStabilityRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobStabilityResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_name'] = \
-                job_name
-            kwargs['job_stability_request'] = \
-                job_stability_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_stability = _Endpoint(
+        self.post_job_stability_endpoint = _Endpoint(
             settings={
                 'response_type': (JobStabilityResponse,),
                 'auth': [
@@ -3045,6 +1635,7 @@ class JobsApi(object):
                     'job_stability_request',
                 ],
                 'nullable': [
+                    'job_stability_request',
                 ],
                 'enum': [
                 ],
@@ -3096,80 +1687,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_stability
+            api_client=api_client
         )
-
-        def __post_job_validate_request(
-            self,
-            job_validate_request,
-            **kwargs
-        ):
-            """post_job_validate_request  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_job_validate_request(job_validate_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_validate_request (JobValidateRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobValidateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_validate_request'] = \
-                job_validate_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_job_validate_request = _Endpoint(
+        self.post_job_validate_request_endpoint = _Endpoint(
             settings={
                 'response_type': (JobValidateResponse,),
                 'auth': [
@@ -3192,6 +1712,7 @@ class JobsApi(object):
                     'job_validate_request',
                 ],
                 'nullable': [
+                    'job_validate_request',
                 ],
                 'enum': [
                 ],
@@ -3239,80 +1760,9 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_job_validate_request
+            api_client=api_client
         )
-
-        def __register_job(
-            self,
-            job_register_request,
-            **kwargs
-        ):
-            """register_job  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.register_job(job_register_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                job_register_request (JobRegisterRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                JobRegisterResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['job_register_request'] = \
-                job_register_request
-            return self.call_with_http_info(**kwargs)
-
-        self.register_job = _Endpoint(
+        self.register_job_endpoint = _Endpoint(
             settings={
                 'response_type': (JobRegisterResponse,),
                 'auth': [
@@ -3335,6 +1785,7 @@ class JobsApi(object):
                     'job_register_request',
                 ],
                 'nullable': [
+                    'job_register_request',
                 ],
                 'enum': [
                 ],
@@ -3382,6 +1833,1881 @@ class JobsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__register_job
+            api_client=api_client
         )
+
+    def delete_job(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """delete_job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_job(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            purge (bool): Boolean flag indicating whether to purge allocations of the job after deleting.. [optional]
+            _global (bool): Boolean flag indicating whether the operation should apply to all instances of the job globally.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobDeregisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.delete_job_endpoint.call_with_http_info(**kwargs)
+
+    def get_job(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Job
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_allocations(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_allocations  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_allocations(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            all (bool): Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [AllocationListStub]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_allocations_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_deployment(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_deployment  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_deployment(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Deployment
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_deployment_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_deployments(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_deployments  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_deployments(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            all (int): Flag indicating whether to constrain by job creation index or not.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [Deployment]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_deployments_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_evaluations(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_evaluations  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_evaluations(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [Evaluation]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_evaluations_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_scale_status(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_scale_status  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_scale_status(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobScaleStatusResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_scale_status_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_summary(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_summary  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_summary(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobSummary
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_summary_endpoint.call_with_http_info(**kwargs)
+
+    def get_job_versions(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """get_job_versions  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_job_versions(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            diffs (bool): Boolean flag indicating whether to compute job diffs.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobVersionsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.get_job_versions_endpoint.call_with_http_info(**kwargs)
+
+    def get_jobs(
+        self,
+        **kwargs
+    ):
+        """get_jobs  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_jobs(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [JobListStub]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_jobs_endpoint.call_with_http_info(**kwargs)
+
+    def post_job(
+        self,
+        job_name,
+        job_register_request,
+        **kwargs
+    ):
+        """post_job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job(job_name, job_register_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_register_request (JobRegisterRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobRegisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_register_request'] = \
+            job_register_request
+        return self.post_job_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_dispatch(
+        self,
+        job_name,
+        job_dispatch_request,
+        **kwargs
+    ):
+        """post_job_dispatch  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_dispatch(job_name, job_dispatch_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_dispatch_request (JobDispatchRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobDispatchResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_dispatch_request'] = \
+            job_dispatch_request
+        return self.post_job_dispatch_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_evaluate(
+        self,
+        job_name,
+        job_evaluate_request,
+        **kwargs
+    ):
+        """post_job_evaluate  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_evaluate(job_name, job_evaluate_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_evaluate_request (JobEvaluateRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobRegisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_evaluate_request'] = \
+            job_evaluate_request
+        return self.post_job_evaluate_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_parse(
+        self,
+        jobs_parse_request,
+        **kwargs
+    ):
+        """post_job_parse  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_parse(jobs_parse_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            jobs_parse_request (JobsParseRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Job
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['jobs_parse_request'] = \
+            jobs_parse_request
+        return self.post_job_parse_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_periodic_force(
+        self,
+        job_name,
+        **kwargs
+    ):
+        """post_job_periodic_force  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_periodic_force(job_name, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeriodicForceResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        return self.post_job_periodic_force_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_plan(
+        self,
+        job_name,
+        job_plan_request,
+        **kwargs
+    ):
+        """post_job_plan  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_plan(job_name, job_plan_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_plan_request (JobPlanRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobPlanResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_plan_request'] = \
+            job_plan_request
+        return self.post_job_plan_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_revert(
+        self,
+        job_name,
+        job_revert_request,
+        **kwargs
+    ):
+        """post_job_revert  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_revert(job_name, job_revert_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_revert_request (JobRevertRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobRegisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_revert_request'] = \
+            job_revert_request
+        return self.post_job_revert_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_scaling_request(
+        self,
+        job_name,
+        scaling_request,
+        **kwargs
+    ):
+        """post_job_scaling_request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_scaling_request(job_name, scaling_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            scaling_request (ScalingRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobRegisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['scaling_request'] = \
+            scaling_request
+        return self.post_job_scaling_request_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_stability(
+        self,
+        job_name,
+        job_stability_request,
+        **kwargs
+    ):
+        """post_job_stability  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_stability(job_name, job_stability_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_name (str): The job identifier.
+            job_stability_request (JobStabilityRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobStabilityResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_name'] = \
+            job_name
+        kwargs['job_stability_request'] = \
+            job_stability_request
+        return self.post_job_stability_endpoint.call_with_http_info(**kwargs)
+
+    def post_job_validate_request(
+        self,
+        job_validate_request,
+        **kwargs
+    ):
+        """post_job_validate_request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_job_validate_request(job_validate_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_validate_request (JobValidateRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobValidateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_validate_request'] = \
+            job_validate_request
+        return self.post_job_validate_request_endpoint.call_with_http_info(**kwargs)
+
+    def register_job(
+        self,
+        job_register_request,
+        **kwargs
+    ):
+        """register_job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.register_job(job_register_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            job_register_request (JobRegisterRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            JobRegisterResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['job_register_request'] = \
+            job_register_request
+        return self.register_job_endpoint.call_with_http_info(**kwargs)
+

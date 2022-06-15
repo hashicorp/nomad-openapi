@@ -49,7 +49,7 @@ export class MultiregionRegion {
     static getAttributeTypeMap() {
         return MultiregionRegion.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

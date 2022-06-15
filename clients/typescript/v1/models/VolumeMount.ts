@@ -49,7 +49,7 @@ export class VolumeMount {
     static getAttributeTypeMap() {
         return VolumeMount.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

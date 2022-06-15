@@ -56,7 +56,7 @@ export class NodeEvent {
     static getAttributeTypeMap() {
         return NodeEvent.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **AddressMode** | Pointer to **string** |  | [optional] 
 **CanaryMeta** | Pointer to **map[string]string** |  | [optional] 
 **CanaryTags** | Pointer to **[]string** |  | [optional] 
-**CheckRestart** | Pointer to [**CheckRestart**](CheckRestart.md) |  | [optional] 
+**CheckRestart** | Pointer to [**NullableCheckRestart**](CheckRestart.md) |  | [optional] 
 **Checks** | Pointer to [**[]ServiceCheck**](ServiceCheck.md) |  | [optional] 
-**Connect** | Pointer to [**ConsulConnect**](ConsulConnect.md) |  | [optional] 
+**Connect** | Pointer to [**NullableConsulConnect**](ConsulConnect.md) |  | [optional] 
 **EnableTagOverride** | Pointer to **bool** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -165,6 +165,16 @@ SetCheckRestart sets CheckRestart field to given value.
 
 HasCheckRestart returns a boolean if a field has been set.
 
+### SetCheckRestartNil
+
+`func (o *Service) SetCheckRestartNil(b bool)`
+
+ SetCheckRestartNil sets the value for CheckRestart to be an explicit nil
+
+### UnsetCheckRestart
+`func (o *Service) UnsetCheckRestart()`
+
+UnsetCheckRestart ensures that no value is present for CheckRestart, not even an explicit nil
 ### GetChecks
 
 `func (o *Service) GetChecks() []ServiceCheck`
@@ -215,6 +225,16 @@ SetConnect sets Connect field to given value.
 
 HasConnect returns a boolean if a field has been set.
 
+### SetConnectNil
+
+`func (o *Service) SetConnectNil(b bool)`
+
+ SetConnectNil sets the value for Connect to be an explicit nil
+
+### UnsetConnect
+`func (o *Service) UnsetConnect()`
+
+UnsetConnect ensures that no value is present for Connect, not even an explicit nil
 ### GetEnableTagOverride
 
 `func (o *Service) GetEnableTagOverride() bool`

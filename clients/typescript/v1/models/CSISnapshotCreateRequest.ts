@@ -50,7 +50,7 @@ export class CSISnapshotCreateRequest {
     static getAttributeTypeMap() {
         return CSISnapshotCreateRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

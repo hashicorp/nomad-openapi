@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllocatedResources** | Pointer to [**AllocatedResources**](AllocatedResources.md) |  | [optional] 
+**AllocatedResources** | Pointer to [**NullableAllocatedResources**](AllocatedResources.md) |  | [optional] 
 **ClientDescription** | Pointer to **string** |  | [optional] 
 **ClientStatus** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **CreateTime** | Pointer to **int64** |  | [optional] 
-**DeploymentStatus** | Pointer to [**AllocDeploymentStatus**](AllocDeploymentStatus.md) |  | [optional] 
+**DeploymentStatus** | Pointer to [**NullableAllocDeploymentStatus**](AllocDeploymentStatus.md) |  | [optional] 
 **DesiredDescription** | Pointer to **string** |  | [optional] 
 **DesiredStatus** | Pointer to **string** |  | [optional] 
 **EvalID** | Pointer to **string** |  | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **NodeName** | Pointer to **string** |  | [optional] 
 **PreemptedAllocations** | Pointer to **[]string** |  | [optional] 
 **PreemptedByAllocation** | Pointer to **string** |  | [optional] 
-**RescheduleTracker** | Pointer to [**RescheduleTracker**](RescheduleTracker.md) |  | [optional] 
+**RescheduleTracker** | Pointer to [**NullableRescheduleTracker**](RescheduleTracker.md) |  | [optional] 
 **TaskGroup** | Pointer to **string** |  | [optional] 
 **TaskStates** | Pointer to [**map[string]TaskState**](TaskState.md) |  | [optional] 
 
@@ -74,6 +74,16 @@ SetAllocatedResources sets AllocatedResources field to given value.
 
 HasAllocatedResources returns a boolean if a field has been set.
 
+### SetAllocatedResourcesNil
+
+`func (o *AllocationListStub) SetAllocatedResourcesNil(b bool)`
+
+ SetAllocatedResourcesNil sets the value for AllocatedResources to be an explicit nil
+
+### UnsetAllocatedResources
+`func (o *AllocationListStub) UnsetAllocatedResources()`
+
+UnsetAllocatedResources ensures that no value is present for AllocatedResources, not even an explicit nil
 ### GetClientDescription
 
 `func (o *AllocationListStub) GetClientDescription() string`
@@ -199,6 +209,16 @@ SetDeploymentStatus sets DeploymentStatus field to given value.
 
 HasDeploymentStatus returns a boolean if a field has been set.
 
+### SetDeploymentStatusNil
+
+`func (o *AllocationListStub) SetDeploymentStatusNil(b bool)`
+
+ SetDeploymentStatusNil sets the value for DeploymentStatus to be an explicit nil
+
+### UnsetDeploymentStatus
+`func (o *AllocationListStub) UnsetDeploymentStatus()`
+
+UnsetDeploymentStatus ensures that no value is present for DeploymentStatus, not even an explicit nil
 ### GetDesiredDescription
 
 `func (o *AllocationListStub) GetDesiredDescription() string`
@@ -624,6 +644,16 @@ SetRescheduleTracker sets RescheduleTracker field to given value.
 
 HasRescheduleTracker returns a boolean if a field has been set.
 
+### SetRescheduleTrackerNil
+
+`func (o *AllocationListStub) SetRescheduleTrackerNil(b bool)`
+
+ SetRescheduleTrackerNil sets the value for RescheduleTracker to be an explicit nil
+
+### UnsetRescheduleTracker
+`func (o *AllocationListStub) UnsetRescheduleTracker()`
+
+UnsetRescheduleTracker ensures that no value is present for RescheduleTracker, not even an explicit nil
 ### GetTaskGroup
 
 `func (o *AllocationListStub) GetTaskGroup() string`

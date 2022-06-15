@@ -5,11 +5,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ltarget** | **String** |  |  [optional]
-**operand** | **String** |  |  [optional]
-**rtarget** | **String** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**ltarget** | **String** |  |  [optional] |
+|**operand** | **String** |  |  [optional] |
+|**rtarget** | **String** |  |  [optional] |
 
 
 

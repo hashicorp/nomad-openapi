@@ -43,82 +43,7 @@ class NodesApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __get_node(
-            self,
-            node_id,
-            **kwargs
-        ):
-            """get_node  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_node(node_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                node_id (str): The ID of the node.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Node
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['node_id'] = \
-                node_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_node = _Endpoint(
+        self.get_node_endpoint = _Endpoint(
             settings={
                 'response_type': (Node,),
                 'auth': [
@@ -212,85 +137,9 @@ class NodesApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_node
+            api_client=api_client
         )
-
-        def __get_node_allocations(
-            self,
-            node_id,
-            **kwargs
-        ):
-            """get_node_allocations  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_node_allocations(node_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                node_id (str): The ID of the node.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [AllocationListStub]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['node_id'] = \
-                node_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_node_allocations = _Endpoint(
+        self.get_node_allocations_endpoint = _Endpoint(
             settings={
                 'response_type': ([AllocationListStub],),
                 'auth': [
@@ -384,81 +233,9 @@ class NodesApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_node_allocations
+            api_client=api_client
         )
-
-        def __get_nodes(
-            self,
-            **kwargs
-        ):
-            """get_nodes  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_nodes(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                resources (bool): Whether or not to include the NodeResources and ReservedResources fields in the response.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [NodeListStub]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_nodes = _Endpoint(
+        self.get_nodes_endpoint = _Endpoint(
             settings={
                 'response_type': ([NodeListStub],),
                 'auth': [
@@ -550,89 +327,9 @@ class NodesApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_nodes
+            api_client=api_client
         )
-
-        def __update_node_drain(
-            self,
-            node_id,
-            node_update_drain_request,
-            **kwargs
-        ):
-            """update_node_drain  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.update_node_drain(node_id, node_update_drain_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                node_id (str): The ID of the node.
-                node_update_drain_request (NodeUpdateDrainRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                NodeDrainUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['node_id'] = \
-                node_id
-            kwargs['node_update_drain_request'] = \
-                node_update_drain_request
-            return self.call_with_http_info(**kwargs)
-
-        self.update_node_drain = _Endpoint(
+        self.update_node_drain_endpoint = _Endpoint(
             settings={
                 'response_type': (NodeDrainUpdateResponse,),
                 'auth': [
@@ -662,6 +359,7 @@ class NodesApi(object):
                     'node_update_drain_request',
                 ],
                 'nullable': [
+                    'node_update_drain_request',
                 ],
                 'enum': [
                 ],
@@ -733,89 +431,9 @@ class NodesApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__update_node_drain
+            api_client=api_client
         )
-
-        def __update_node_eligibility(
-            self,
-            node_id,
-            node_update_eligibility_request,
-            **kwargs
-        ):
-            """update_node_eligibility  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.update_node_eligibility(node_id, node_update_eligibility_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                node_id (str): The ID of the node.
-                node_update_eligibility_request (NodeUpdateEligibilityRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                NodeEligibilityUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['node_id'] = \
-                node_id
-            kwargs['node_update_eligibility_request'] = \
-                node_update_eligibility_request
-            return self.call_with_http_info(**kwargs)
-
-        self.update_node_eligibility = _Endpoint(
+        self.update_node_eligibility_endpoint = _Endpoint(
             settings={
                 'response_type': (NodeEligibilityUpdateResponse,),
                 'auth': [
@@ -845,6 +463,7 @@ class NodesApi(object):
                     'node_update_eligibility_request',
                 ],
                 'nullable': [
+                    'node_update_eligibility_request',
                 ],
                 'enum': [
                 ],
@@ -916,85 +535,9 @@ class NodesApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__update_node_eligibility
+            api_client=api_client
         )
-
-        def __update_node_purge(
-            self,
-            node_id,
-            **kwargs
-        ):
-            """update_node_purge  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.update_node_purge(node_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                node_id (str): The ID of the node.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                NodePurgeResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['node_id'] = \
-                node_id
-            return self.call_with_http_info(**kwargs)
-
-        self.update_node_purge = _Endpoint(
+        self.update_node_purge_endpoint = _Endpoint(
             settings={
                 'response_type': (NodePurgeResponse,),
                 'auth': [
@@ -1088,6 +631,556 @@ class NodesApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__update_node_purge
+            api_client=api_client
         )
+
+    def get_node(
+        self,
+        node_id,
+        **kwargs
+    ):
+        """get_node  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_node(node_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            node_id (str): The ID of the node.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Node
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['node_id'] = \
+            node_id
+        return self.get_node_endpoint.call_with_http_info(**kwargs)
+
+    def get_node_allocations(
+        self,
+        node_id,
+        **kwargs
+    ):
+        """get_node_allocations  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_node_allocations(node_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            node_id (str): The ID of the node.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [AllocationListStub]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['node_id'] = \
+            node_id
+        return self.get_node_allocations_endpoint.call_with_http_info(**kwargs)
+
+    def get_nodes(
+        self,
+        **kwargs
+    ):
+        """get_nodes  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_nodes(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            resources (bool): Whether or not to include the NodeResources and ReservedResources fields in the response.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [NodeListStub]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_nodes_endpoint.call_with_http_info(**kwargs)
+
+    def update_node_drain(
+        self,
+        node_id,
+        node_update_drain_request,
+        **kwargs
+    ):
+        """update_node_drain  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_node_drain(node_id, node_update_drain_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            node_id (str): The ID of the node.
+            node_update_drain_request (NodeUpdateDrainRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodeDrainUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['node_id'] = \
+            node_id
+        kwargs['node_update_drain_request'] = \
+            node_update_drain_request
+        return self.update_node_drain_endpoint.call_with_http_info(**kwargs)
+
+    def update_node_eligibility(
+        self,
+        node_id,
+        node_update_eligibility_request,
+        **kwargs
+    ):
+        """update_node_eligibility  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_node_eligibility(node_id, node_update_eligibility_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            node_id (str): The ID of the node.
+            node_update_eligibility_request (NodeUpdateEligibilityRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodeEligibilityUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['node_id'] = \
+            node_id
+        kwargs['node_update_eligibility_request'] = \
+            node_update_eligibility_request
+        return self.update_node_eligibility_endpoint.call_with_http_info(**kwargs)
+
+    def update_node_purge(
+        self,
+        node_id,
+        **kwargs
+    ):
+        """update_node_purge  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_node_purge(node_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            node_id (str): The ID of the node.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NodePurgeResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['node_id'] = \
+            node_id
+        return self.update_node_purge_endpoint.call_with_http_info(**kwargs)
+

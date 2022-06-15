@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct NodeCpuResources {
     #[serde(rename = "CpuShares", skip_serializing_if = "Option::is_none")]
     pub cpu_shares: Option<i64>,

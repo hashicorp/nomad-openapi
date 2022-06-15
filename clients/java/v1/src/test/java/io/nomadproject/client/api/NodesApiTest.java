@@ -22,8 +22,8 @@ import io.nomadproject.client.models.NodeListStub;
 import io.nomadproject.client.models.NodePurgeResponse;
 import io.nomadproject.client.models.NodeUpdateDrainRequest;
 import io.nomadproject.client.models.NodeUpdateEligibilityRequest;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,19 +33,13 @@ import java.util.Map;
 /**
  * API tests for NodesApi
  */
-@Ignore
+@Disabled
 public class NodesApiTest {
 
     private final NodesApi api = new NodesApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getNodeTest() throws ApiException {
@@ -60,17 +54,11 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         Node response = api.getNode(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getNodeAllocationsTest() throws ApiException {
@@ -85,17 +73,11 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<AllocationListStub> response = api.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getNodesTest() throws ApiException {
@@ -110,17 +92,11 @@ public class NodesApiTest {
         String nextToken = null;
         Boolean resources = null;
         List<NodeListStub> response = api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateNodeDrainTest() throws ApiException {
@@ -136,17 +112,11 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         NodeDrainUpdateResponse response = api.updateNodeDrain(nodeId, nodeUpdateDrainRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateNodeEligibilityTest() throws ApiException {
@@ -162,17 +132,11 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         NodeEligibilityUpdateResponse response = api.updateNodeEligibility(nodeId, nodeUpdateEligibilityRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateNodePurgeTest() throws ApiException {
@@ -187,8 +151,7 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         NodePurgeResponse response = api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
 }

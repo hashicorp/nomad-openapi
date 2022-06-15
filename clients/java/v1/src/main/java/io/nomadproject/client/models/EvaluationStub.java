@@ -23,7 +23,28 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * EvaluationStub
@@ -102,6 +123,8 @@ public class EvaluationStub {
   @SerializedName(SERIALIZED_NAME_WAIT_UNTIL)
   private OffsetDateTime waitUntil;
 
+  public EvaluationStub() { 
+  }
 
   public EvaluationStub blockedEval(String blockedEval) {
     
@@ -521,6 +544,7 @@ public class EvaluationStub {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -550,9 +574,20 @@ public class EvaluationStub {
         Objects.equals(this.waitUntil, evaluationStub.waitUntil);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(blockedEval, createIndex, createTime, deploymentID, ID, jobID, modifyIndex, modifyTime, namespace, nextEval, nodeID, previousEval, priority, status, statusDescription, triggeredBy, type, waitUntil);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -592,5 +627,143 @@ public class EvaluationStub {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BlockedEval");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("CreateTime");
+    openapiFields.add("DeploymentID");
+    openapiFields.add("ID");
+    openapiFields.add("JobID");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("ModifyTime");
+    openapiFields.add("Namespace");
+    openapiFields.add("NextEval");
+    openapiFields.add("NodeID");
+    openapiFields.add("PreviousEval");
+    openapiFields.add("Priority");
+    openapiFields.add("Status");
+    openapiFields.add("StatusDescription");
+    openapiFields.add("TriggeredBy");
+    openapiFields.add("Type");
+    openapiFields.add("WaitUntil");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to EvaluationStub
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (EvaluationStub.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EvaluationStub is not found in the empty JSON string", EvaluationStub.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!EvaluationStub.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EvaluationStub` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("BlockedEval") != null && !jsonObj.get("BlockedEval").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BlockedEval` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BlockedEval").toString()));
+      }
+      if (jsonObj.get("DeploymentID") != null && !jsonObj.get("DeploymentID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DeploymentID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DeploymentID").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      if (jsonObj.get("JobID") != null && !jsonObj.get("JobID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JobID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JobID").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("NextEval") != null && !jsonObj.get("NextEval").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextEval` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextEval").toString()));
+      }
+      if (jsonObj.get("NodeID") != null && !jsonObj.get("NodeID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NodeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NodeID").toString()));
+      }
+      if (jsonObj.get("PreviousEval") != null && !jsonObj.get("PreviousEval").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PreviousEval` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PreviousEval").toString()));
+      }
+      if (jsonObj.get("Status") != null && !jsonObj.get("Status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Status").toString()));
+      }
+      if (jsonObj.get("StatusDescription") != null && !jsonObj.get("StatusDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StatusDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StatusDescription").toString()));
+      }
+      if (jsonObj.get("TriggeredBy") != null && !jsonObj.get("TriggeredBy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TriggeredBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TriggeredBy").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!EvaluationStub.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EvaluationStub' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<EvaluationStub> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EvaluationStub.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<EvaluationStub>() {
+           @Override
+           public void write(JsonWriter out, EvaluationStub value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public EvaluationStub read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of EvaluationStub given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of EvaluationStub
+  * @throws IOException if the JSON string is invalid with respect to EvaluationStub
+  */
+  public static EvaluationStub fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EvaluationStub.class);
+  }
+
+ /**
+  * Convert an instance of EvaluationStub to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

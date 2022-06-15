@@ -42,7 +42,7 @@ export class SchedulerSetConfigurationResponse {
     static getAttributeTypeMap() {
         return SchedulerSetConfigurationResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

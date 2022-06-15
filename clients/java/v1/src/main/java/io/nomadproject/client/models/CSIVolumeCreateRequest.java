@@ -27,6 +27,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * CSIVolumeCreateRequest
  */
@@ -48,6 +68,8 @@ public class CSIVolumeCreateRequest {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<CSIVolume> volumes = null;
 
+  public CSIVolumeCreateRequest() { 
+  }
 
   public CSIVolumeCreateRequest namespace(String namespace) {
     
@@ -126,7 +148,7 @@ public class CSIVolumeCreateRequest {
 
   public CSIVolumeCreateRequest addVolumesItem(CSIVolume volumesItem) {
     if (this.volumes == null) {
-      this.volumes = new ArrayList<CSIVolume>();
+      this.volumes = new ArrayList<>();
     }
     this.volumes.add(volumesItem);
     return this;
@@ -147,6 +169,7 @@ public class CSIVolumeCreateRequest {
   public void setVolumes(List<CSIVolume> volumes) {
     this.volumes = volumes;
   }
+
 
 
   @Override
@@ -192,5 +215,114 @@ public class CSIVolumeCreateRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Namespace");
+    openapiFields.add("Region");
+    openapiFields.add("SecretID");
+    openapiFields.add("Volumes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CSIVolumeCreateRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CSIVolumeCreateRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CSIVolumeCreateRequest is not found in the empty JSON string", CSIVolumeCreateRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CSIVolumeCreateRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CSIVolumeCreateRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      if (jsonObj.get("SecretID") != null && !jsonObj.get("SecretID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretID").toString()));
+      }
+      JsonArray jsonArrayvolumes = jsonObj.getAsJsonArray("Volumes");
+      if (jsonArrayvolumes != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Volumes").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Volumes` to be an array in the JSON string but got `%s`", jsonObj.get("Volumes").toString()));
+        }
+
+        // validate the optional field `Volumes` (array)
+        for (int i = 0; i < jsonArrayvolumes.size(); i++) {
+          CSIVolume.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CSIVolumeCreateRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CSIVolumeCreateRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CSIVolumeCreateRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CSIVolumeCreateRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CSIVolumeCreateRequest>() {
+           @Override
+           public void write(JsonWriter out, CSIVolumeCreateRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CSIVolumeCreateRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CSIVolumeCreateRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CSIVolumeCreateRequest
+  * @throws IOException if the JSON string is invalid with respect to CSIVolumeCreateRequest
+  */
+  public static CSIVolumeCreateRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CSIVolumeCreateRequest.class);
+  }
+
+ /**
+  * Convert an instance of CSIVolumeCreateRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

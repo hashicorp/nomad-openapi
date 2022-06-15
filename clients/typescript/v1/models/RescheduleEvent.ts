@@ -42,7 +42,7 @@ export class RescheduleEvent {
     static getAttributeTypeMap() {
         return RescheduleEvent.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

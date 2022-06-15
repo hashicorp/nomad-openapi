@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './AnyType';
 import { HttpFile } from '../http/http';
 
 export class ScalingEvent {
@@ -19,7 +18,7 @@ export class ScalingEvent {
     'error'?: boolean;
     'evalID'?: string;
     'message'?: string;
-    'meta'?: { [key: string]: AnyType; };
+    'meta'?: { [key: string]: any; };
     'previousCount'?: number;
     'time'?: number;
 
@@ -59,7 +58,7 @@ export class ScalingEvent {
         {
             "name": "meta",
             "baseName": "Meta",
-            "type": "{ [key: string]: AnyType; }",
+            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {
@@ -78,7 +77,7 @@ export class ScalingEvent {
     static getAttributeTypeMap() {
         return ScalingEvent.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

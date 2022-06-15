@@ -37,6 +37,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * Node
@@ -159,6 +180,8 @@ public class Node {
   @SerializedName(SERIALIZED_NAME_TL_S_ENABLED)
   private Boolean tlSEnabled;
 
+  public Node() { 
+  }
 
   public Node attributes(Map<String, String> attributes) {
     
@@ -168,7 +191,7 @@ public class Node {
 
   public Node putAttributesItem(String key, String attributesItem) {
     if (this.attributes == null) {
-      this.attributes = new HashMap<String, String>();
+      this.attributes = new HashMap<>();
     }
     this.attributes.put(key, attributesItem);
     return this;
@@ -199,7 +222,7 @@ public class Node {
 
   public Node putCsIControllerPluginsItem(String key, CSIInfo csIControllerPluginsItem) {
     if (this.csIControllerPlugins == null) {
-      this.csIControllerPlugins = new HashMap<String, CSIInfo>();
+      this.csIControllerPlugins = new HashMap<>();
     }
     this.csIControllerPlugins.put(key, csIControllerPluginsItem);
     return this;
@@ -230,7 +253,7 @@ public class Node {
 
   public Node putCsINodePluginsItem(String key, CSIInfo csINodePluginsItem) {
     if (this.csINodePlugins == null) {
-      this.csINodePlugins = new HashMap<String, CSIInfo>();
+      this.csINodePlugins = new HashMap<>();
     }
     this.csINodePlugins.put(key, csINodePluginsItem);
     return this;
@@ -378,7 +401,7 @@ public class Node {
 
   public Node putDriversItem(String key, DriverInfo driversItem) {
     if (this.drivers == null) {
-      this.drivers = new HashMap<String, DriverInfo>();
+      this.drivers = new HashMap<>();
     }
     this.drivers.put(key, driversItem);
     return this;
@@ -409,7 +432,7 @@ public class Node {
 
   public Node addEventsItem(NodeEvent eventsItem) {
     if (this.events == null) {
-      this.events = new ArrayList<NodeEvent>();
+      this.events = new ArrayList<>();
     }
     this.events.add(eventsItem);
     return this;
@@ -463,7 +486,7 @@ public class Node {
 
   public Node putHostNetworksItem(String key, HostNetworkInfo hostNetworksItem) {
     if (this.hostNetworks == null) {
-      this.hostNetworks = new HashMap<String, HostNetworkInfo>();
+      this.hostNetworks = new HashMap<>();
     }
     this.hostNetworks.put(key, hostNetworksItem);
     return this;
@@ -494,7 +517,7 @@ public class Node {
 
   public Node putHostVolumesItem(String key, HostVolumeInfo hostVolumesItem) {
     if (this.hostVolumes == null) {
-      this.hostVolumes = new HashMap<String, HostVolumeInfo>();
+      this.hostVolumes = new HashMap<>();
     }
     this.hostVolumes.put(key, hostVolumesItem);
     return this;
@@ -571,7 +594,7 @@ public class Node {
 
   public Node putLinksItem(String key, String linksItem) {
     if (this.links == null) {
-      this.links = new HashMap<String, String>();
+      this.links = new HashMap<>();
     }
     this.links.put(key, linksItem);
     return this;
@@ -602,7 +625,7 @@ public class Node {
 
   public Node putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -903,6 +926,7 @@ public class Node {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -943,9 +967,20 @@ public class Node {
         Objects.equals(this.tlSEnabled, node.tlSEnabled);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(attributes, csIControllerPlugins, csINodePlugins, cgroupParent, createIndex, datacenter, drain, drainStrategy, drivers, events, htTPAddr, hostNetworks, hostVolumes, ID, lastDrain, links, meta, modifyIndex, name, nodeClass, nodeResources, reserved, reservedResources, resources, schedulingEligibility, status, statusDescription, statusUpdatedAt, tlSEnabled);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -996,5 +1031,181 @@ public class Node {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Attributes");
+    openapiFields.add("CSIControllerPlugins");
+    openapiFields.add("CSINodePlugins");
+    openapiFields.add("CgroupParent");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("Datacenter");
+    openapiFields.add("Drain");
+    openapiFields.add("DrainStrategy");
+    openapiFields.add("Drivers");
+    openapiFields.add("Events");
+    openapiFields.add("HTTPAddr");
+    openapiFields.add("HostNetworks");
+    openapiFields.add("HostVolumes");
+    openapiFields.add("ID");
+    openapiFields.add("LastDrain");
+    openapiFields.add("Links");
+    openapiFields.add("Meta");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("Name");
+    openapiFields.add("NodeClass");
+    openapiFields.add("NodeResources");
+    openapiFields.add("Reserved");
+    openapiFields.add("ReservedResources");
+    openapiFields.add("Resources");
+    openapiFields.add("SchedulingEligibility");
+    openapiFields.add("Status");
+    openapiFields.add("StatusDescription");
+    openapiFields.add("StatusUpdatedAt");
+    openapiFields.add("TLSEnabled");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Node
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Node.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Node is not found in the empty JSON string", Node.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Node.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Node` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("CgroupParent") != null && !jsonObj.get("CgroupParent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CgroupParent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CgroupParent").toString()));
+      }
+      if (jsonObj.get("Datacenter") != null && !jsonObj.get("Datacenter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Datacenter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Datacenter").toString()));
+      }
+      // validate the optional field `DrainStrategy`
+      if (jsonObj.getAsJsonObject("DrainStrategy") != null) {
+        DrainStrategy.validateJsonObject(jsonObj.getAsJsonObject("DrainStrategy"));
+      }
+      JsonArray jsonArrayevents = jsonObj.getAsJsonArray("Events");
+      if (jsonArrayevents != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Events").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Events` to be an array in the JSON string but got `%s`", jsonObj.get("Events").toString()));
+        }
+
+        // validate the optional field `Events` (array)
+        for (int i = 0; i < jsonArrayevents.size(); i++) {
+          NodeEvent.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("HTTPAddr") != null && !jsonObj.get("HTTPAddr").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `HTTPAddr` to be a primitive type in the JSON string but got `%s`", jsonObj.get("HTTPAddr").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      // validate the optional field `LastDrain`
+      if (jsonObj.getAsJsonObject("LastDrain") != null) {
+        DrainMetadata.validateJsonObject(jsonObj.getAsJsonObject("LastDrain"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("NodeClass") != null && !jsonObj.get("NodeClass").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NodeClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NodeClass").toString()));
+      }
+      // validate the optional field `NodeResources`
+      if (jsonObj.getAsJsonObject("NodeResources") != null) {
+        NodeResources.validateJsonObject(jsonObj.getAsJsonObject("NodeResources"));
+      }
+      // validate the optional field `Reserved`
+      if (jsonObj.getAsJsonObject("Reserved") != null) {
+        Resources.validateJsonObject(jsonObj.getAsJsonObject("Reserved"));
+      }
+      // validate the optional field `ReservedResources`
+      if (jsonObj.getAsJsonObject("ReservedResources") != null) {
+        NodeReservedResources.validateJsonObject(jsonObj.getAsJsonObject("ReservedResources"));
+      }
+      // validate the optional field `Resources`
+      if (jsonObj.getAsJsonObject("Resources") != null) {
+        Resources.validateJsonObject(jsonObj.getAsJsonObject("Resources"));
+      }
+      if (jsonObj.get("SchedulingEligibility") != null && !jsonObj.get("SchedulingEligibility").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SchedulingEligibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SchedulingEligibility").toString()));
+      }
+      if (jsonObj.get("Status") != null && !jsonObj.get("Status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Status").toString()));
+      }
+      if (jsonObj.get("StatusDescription") != null && !jsonObj.get("StatusDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StatusDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StatusDescription").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Node.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Node' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Node> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Node.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Node>() {
+           @Override
+           public void write(JsonWriter out, Node value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Node read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Node given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Node
+  * @throws IOException if the JSON string is invalid with respect to Node
+  */
+  public static Node fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Node.class);
+  }
+
+ /**
+  * Convert an instance of Node to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

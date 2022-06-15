@@ -63,7 +63,7 @@ export class JobStabilityRequest {
     static getAttributeTypeMap() {
         return JobStabilityRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

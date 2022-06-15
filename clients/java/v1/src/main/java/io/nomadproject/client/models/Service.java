@@ -30,6 +30,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * Service
@@ -100,6 +121,8 @@ public class Service {
   @SerializedName(SERIALIZED_NAME_TASK_NAME)
   private String taskName;
 
+  public Service() { 
+  }
 
   public Service address(String address) {
     
@@ -155,7 +178,7 @@ public class Service {
 
   public Service putCanaryMetaItem(String key, String canaryMetaItem) {
     if (this.canaryMeta == null) {
-      this.canaryMeta = new HashMap<String, String>();
+      this.canaryMeta = new HashMap<>();
     }
     this.canaryMeta.put(key, canaryMetaItem);
     return this;
@@ -186,7 +209,7 @@ public class Service {
 
   public Service addCanaryTagsItem(String canaryTagsItem) {
     if (this.canaryTags == null) {
-      this.canaryTags = new ArrayList<String>();
+      this.canaryTags = new ArrayList<>();
     }
     this.canaryTags.add(canaryTagsItem);
     return this;
@@ -240,7 +263,7 @@ public class Service {
 
   public Service addChecksItem(ServiceCheck checksItem) {
     if (this.checks == null) {
-      this.checks = new ArrayList<ServiceCheck>();
+      this.checks = new ArrayList<>();
     }
     this.checks.add(checksItem);
     return this;
@@ -317,7 +340,7 @@ public class Service {
 
   public Service putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -471,7 +494,7 @@ public class Service {
 
   public Service addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -517,6 +540,7 @@ public class Service {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -544,9 +568,20 @@ public class Service {
         Objects.equals(this.taskName, service.taskName);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(address, addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, meta, name, onUpdate, portLabel, provider, taggedAddresses, tags, taskName);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -584,5 +619,153 @@ public class Service {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Address");
+    openapiFields.add("AddressMode");
+    openapiFields.add("CanaryMeta");
+    openapiFields.add("CanaryTags");
+    openapiFields.add("CheckRestart");
+    openapiFields.add("Checks");
+    openapiFields.add("Connect");
+    openapiFields.add("EnableTagOverride");
+    openapiFields.add("Meta");
+    openapiFields.add("Name");
+    openapiFields.add("OnUpdate");
+    openapiFields.add("PortLabel");
+    openapiFields.add("Provider");
+    openapiFields.add("Tags");
+    openapiFields.add("TaskName");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Service
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Service.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Service is not found in the empty JSON string", Service.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Service.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Service` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Address") != null && !jsonObj.get("Address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Address").toString()));
+      }
+      if (jsonObj.get("AddressMode") != null && !jsonObj.get("AddressMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AddressMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AddressMode").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("CanaryTags") != null && !jsonObj.get("CanaryTags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CanaryTags` to be an array in the JSON string but got `%s`", jsonObj.get("CanaryTags").toString()));
+      }
+      // validate the optional field `CheckRestart`
+      if (jsonObj.getAsJsonObject("CheckRestart") != null) {
+        CheckRestart.validateJsonObject(jsonObj.getAsJsonObject("CheckRestart"));
+      }
+      JsonArray jsonArraychecks = jsonObj.getAsJsonArray("Checks");
+      if (jsonArraychecks != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Checks").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Checks` to be an array in the JSON string but got `%s`", jsonObj.get("Checks").toString()));
+        }
+
+        // validate the optional field `Checks` (array)
+        for (int i = 0; i < jsonArraychecks.size(); i++) {
+          ServiceCheck.validateJsonObject(jsonArraychecks.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `Connect`
+      if (jsonObj.getAsJsonObject("Connect") != null) {
+        ConsulConnect.validateJsonObject(jsonObj.getAsJsonObject("Connect"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("OnUpdate") != null && !jsonObj.get("OnUpdate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OnUpdate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OnUpdate").toString()));
+      }
+      if (jsonObj.get("PortLabel") != null && !jsonObj.get("PortLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PortLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PortLabel").toString()));
+      }
+      if (jsonObj.get("Provider") != null && !jsonObj.get("Provider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Provider").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+      if (jsonObj.get("TaskName") != null && !jsonObj.get("TaskName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskName").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Service.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Service' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Service> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Service.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Service>() {
+           @Override
+           public void write(JsonWriter out, Service value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Service read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Service given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Service
+  * @throws IOException if the JSON string is invalid with respect to Service
+  */
+  public static Service fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Service.class);
+  }
+
+ /**
+  * Convert an instance of Service to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

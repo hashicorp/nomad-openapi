@@ -7,7 +7,7 @@
 | **affinities** | [**Array&lt;Affinity&gt;**](Affinity.md) |  | [optional] |
 | **artifacts** | [**Array&lt;TaskArtifact&gt;**](TaskArtifact.md) |  | [optional] |
 | **csi_plugin_config** | [**TaskCSIPluginConfig**](TaskCSIPluginConfig.md) |  | [optional] |
-| **config** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **config** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **constraints** | [**Array&lt;Constraint&gt;**](Constraint.md) |  | [optional] |
 | **dispatch_payload** | [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] |
 | **driver** | **String** |  | [optional] |

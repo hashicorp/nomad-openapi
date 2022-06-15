@@ -50,7 +50,7 @@
   describe('ServiceRegistration', function() {
     it('should create an instance of ServiceRegistration', function() {
       // uncomment below and update the code to test ServiceRegistration
-      //var instane = new nomad-client.ServiceRegistration();
+      //var instance = new nomad-client.ServiceRegistration();
       //expect(instance).to.be.a(nomad-client.ServiceRegistration);
     });
 

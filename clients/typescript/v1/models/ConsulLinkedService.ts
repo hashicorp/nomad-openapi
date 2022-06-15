@@ -56,7 +56,7 @@ export class ConsulLinkedService {
     static getAttributeTypeMap() {
         return ConsulLinkedService.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

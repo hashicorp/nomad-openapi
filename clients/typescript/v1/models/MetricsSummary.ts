@@ -59,7 +59,7 @@ export class MetricsSummary {
     static getAttributeTypeMap() {
         return MetricsSummary.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

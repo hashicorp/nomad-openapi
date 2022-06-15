@@ -49,7 +49,7 @@ export class MigrateStrategy {
     static getAttributeTypeMap() {
         return MigrateStrategy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

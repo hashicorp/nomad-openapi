@@ -27,6 +27,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * OperatorHealthReply
  */
@@ -44,6 +64,8 @@ public class OperatorHealthReply {
   @SerializedName(SERIALIZED_NAME_SERVERS)
   private List<ServerHealth> servers = null;
 
+  public OperatorHealthReply() { 
+  }
 
   public OperatorHealthReply failureTolerance(Integer failureTolerance) {
     
@@ -99,7 +121,7 @@ public class OperatorHealthReply {
 
   public OperatorHealthReply addServersItem(ServerHealth serversItem) {
     if (this.servers == null) {
-      this.servers = new ArrayList<ServerHealth>();
+      this.servers = new ArrayList<>();
     }
     this.servers.add(serversItem);
     return this;
@@ -120,6 +142,7 @@ public class OperatorHealthReply {
   public void setServers(List<ServerHealth> servers) {
     this.servers = servers;
   }
+
 
 
   @Override
@@ -163,5 +186,104 @@ public class OperatorHealthReply {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("FailureTolerance");
+    openapiFields.add("Healthy");
+    openapiFields.add("Servers");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to OperatorHealthReply
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (OperatorHealthReply.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OperatorHealthReply is not found in the empty JSON string", OperatorHealthReply.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!OperatorHealthReply.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OperatorHealthReply` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayservers = jsonObj.getAsJsonArray("Servers");
+      if (jsonArrayservers != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Servers").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Servers` to be an array in the JSON string but got `%s`", jsonObj.get("Servers").toString()));
+        }
+
+        // validate the optional field `Servers` (array)
+        for (int i = 0; i < jsonArrayservers.size(); i++) {
+          ServerHealth.validateJsonObject(jsonArrayservers.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!OperatorHealthReply.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OperatorHealthReply' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<OperatorHealthReply> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OperatorHealthReply.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<OperatorHealthReply>() {
+           @Override
+           public void write(JsonWriter out, OperatorHealthReply value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public OperatorHealthReply read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of OperatorHealthReply given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of OperatorHealthReply
+  * @throws IOException if the JSON string is invalid with respect to OperatorHealthReply
+  */
+  public static OperatorHealthReply fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OperatorHealthReply.class);
+  }
+
+ /**
+  * Convert an instance of OperatorHealthReply to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

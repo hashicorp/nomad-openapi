@@ -136,7 +136,7 @@ export class Service {
     static getAttributeTypeMap() {
         return Service.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

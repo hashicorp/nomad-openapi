@@ -74,7 +74,7 @@ class Configuration(object):
     :param server_operation_variables: Mapping from operation ID to a mapping with
       string values to replace variables in templated server configuration.
       The validation of enums is performed for variables with defined enum values before.
-    :param ssl_ca_cert: str - the path to a file of concatenated CA certificates 
+    :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
       in PEM format
 
     :Example:
@@ -199,6 +199,9 @@ conf = nomad_client.Configuration(
 
         self.proxy = None
         """Proxy URL
+        """
+        self.no_proxy = None
+        """bypass proxy for host in the no_proxy list.
         """
         self.proxy_headers = None
         """Proxy headers
@@ -423,11 +426,11 @@ conf = nomad_client.Configuration(
                     'address': {
                         'description': "No description provided",
                         'default_value': "127.0.0.1",
-                        },
+                    },
                     'port': {
                         'description': "No description provided",
                         'default_value': "4646",
-                        },
+                    },
                     'scheme': {
                         'description': "No description provided",
                         'default_value': "https",
@@ -435,8 +438,8 @@ conf = nomad_client.Configuration(
                             "https",
                             "http"
                         ]
-                        }
                     }
+                }
             },
             {
                 'url': "{scheme}://{address}:{port}/v1",
@@ -445,11 +448,11 @@ conf = nomad_client.Configuration(
                     'address': {
                         'description': "No description provided",
                         'default_value': "127.0.0.1",
-                        },
+                    },
                     'port': {
                         'description': "No description provided",
                         'default_value': "4646",
-                        },
+                    },
                     'scheme': {
                         'description': "No description provided",
                         'default_value': "https",
@@ -457,8 +460,8 @@ conf = nomad_client.Configuration(
                             "https",
                             "http"
                         ]
-                        }
                     }
+                }
             }
         ]
 

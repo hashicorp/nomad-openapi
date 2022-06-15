@@ -1,10 +1,12 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
+
 
 import { ScalingPolicy } from '../models/ScalingPolicy';
 import { ScalingPolicyListStub } from '../models/ScalingPolicyListStub';
@@ -48,39 +50,54 @@ export class ScalingApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -103,7 +120,7 @@ export class ScalingApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'policyID' is not null or undefined
         if (policyID === null || policyID === undefined) {
-            throw new RequiredError('Required parameter policyID was null or undefined when calling getScalingPolicy.');
+            throw new RequiredError("ScalingApi", "getScalingPolicy", "policyID");
         }
 
 
@@ -128,39 +145,54 @@ export class ScalingApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -187,16 +219,16 @@ export class ScalingApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -208,8 +240,7 @@ export class ScalingApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -229,16 +260,16 @@ export class ScalingApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -250,8 +281,7 @@ export class ScalingApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

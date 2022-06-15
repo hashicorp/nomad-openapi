@@ -29,6 +29,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * MetricsSummary
  */
@@ -54,6 +74,8 @@ public class MetricsSummary {
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
   private String timestamp;
 
+  public MetricsSummary() { 
+  }
 
   public MetricsSummary counters(List<SampledValue> counters) {
     
@@ -63,7 +85,7 @@ public class MetricsSummary {
 
   public MetricsSummary addCountersItem(SampledValue countersItem) {
     if (this.counters == null) {
-      this.counters = new ArrayList<SampledValue>();
+      this.counters = new ArrayList<>();
     }
     this.counters.add(countersItem);
     return this;
@@ -94,7 +116,7 @@ public class MetricsSummary {
 
   public MetricsSummary addGaugesItem(GaugeValue gaugesItem) {
     if (this.gauges == null) {
-      this.gauges = new ArrayList<GaugeValue>();
+      this.gauges = new ArrayList<>();
     }
     this.gauges.add(gaugesItem);
     return this;
@@ -125,7 +147,7 @@ public class MetricsSummary {
 
   public MetricsSummary addPointsItem(PointValue pointsItem) {
     if (this.points == null) {
-      this.points = new ArrayList<PointValue>();
+      this.points = new ArrayList<>();
     }
     this.points.add(pointsItem);
     return this;
@@ -156,7 +178,7 @@ public class MetricsSummary {
 
   public MetricsSummary addSamplesItem(SampledValue samplesItem) {
     if (this.samples == null) {
-      this.samples = new ArrayList<SampledValue>();
+      this.samples = new ArrayList<>();
     }
     this.samples.add(samplesItem);
     return this;
@@ -200,6 +222,7 @@ public class MetricsSummary {
   public void setTimestamp(String timestamp) {
     this.timestamp = timestamp;
   }
+
 
 
   @Override
@@ -247,5 +270,145 @@ public class MetricsSummary {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Counters");
+    openapiFields.add("Gauges");
+    openapiFields.add("Points");
+    openapiFields.add("Samples");
+    openapiFields.add("Timestamp");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to MetricsSummary
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (MetricsSummary.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MetricsSummary is not found in the empty JSON string", MetricsSummary.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!MetricsSummary.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MetricsSummary` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraycounters = jsonObj.getAsJsonArray("Counters");
+      if (jsonArraycounters != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Counters").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Counters` to be an array in the JSON string but got `%s`", jsonObj.get("Counters").toString()));
+        }
+
+        // validate the optional field `Counters` (array)
+        for (int i = 0; i < jsonArraycounters.size(); i++) {
+          SampledValue.validateJsonObject(jsonArraycounters.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraygauges = jsonObj.getAsJsonArray("Gauges");
+      if (jsonArraygauges != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Gauges").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Gauges` to be an array in the JSON string but got `%s`", jsonObj.get("Gauges").toString()));
+        }
+
+        // validate the optional field `Gauges` (array)
+        for (int i = 0; i < jsonArraygauges.size(); i++) {
+          GaugeValue.validateJsonObject(jsonArraygauges.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraypoints = jsonObj.getAsJsonArray("Points");
+      if (jsonArraypoints != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Points").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Points` to be an array in the JSON string but got `%s`", jsonObj.get("Points").toString()));
+        }
+
+        // validate the optional field `Points` (array)
+        for (int i = 0; i < jsonArraypoints.size(); i++) {
+          PointValue.validateJsonObject(jsonArraypoints.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraysamples = jsonObj.getAsJsonArray("Samples");
+      if (jsonArraysamples != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Samples").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Samples` to be an array in the JSON string but got `%s`", jsonObj.get("Samples").toString()));
+        }
+
+        // validate the optional field `Samples` (array)
+        for (int i = 0; i < jsonArraysamples.size(); i++) {
+          SampledValue.validateJsonObject(jsonArraysamples.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("Timestamp") != null && !jsonObj.get("Timestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Timestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Timestamp").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!MetricsSummary.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MetricsSummary' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<MetricsSummary> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MetricsSummary.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<MetricsSummary>() {
+           @Override
+           public void write(JsonWriter out, MetricsSummary value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public MetricsSummary read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of MetricsSummary given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MetricsSummary
+  * @throws IOException if the JSON string is invalid with respect to MetricsSummary
+  */
+  public static MetricsSummary fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MetricsSummary.class);
+  }
+
+ /**
+  * Convert an instance of MetricsSummary to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

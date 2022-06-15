@@ -41,6 +41,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * Task
@@ -147,6 +168,8 @@ public class Task {
   @SerializedName(SERIALIZED_NAME_VOLUME_MOUNTS)
   private List<VolumeMount> volumeMounts = null;
 
+  public Task() { 
+  }
 
   public Task affinities(List<Affinity> affinities) {
     
@@ -156,7 +179,7 @@ public class Task {
 
   public Task addAffinitiesItem(Affinity affinitiesItem) {
     if (this.affinities == null) {
-      this.affinities = new ArrayList<Affinity>();
+      this.affinities = new ArrayList<>();
     }
     this.affinities.add(affinitiesItem);
     return this;
@@ -187,7 +210,7 @@ public class Task {
 
   public Task addArtifactsItem(TaskArtifact artifactsItem) {
     if (this.artifacts == null) {
-      this.artifacts = new ArrayList<TaskArtifact>();
+      this.artifacts = new ArrayList<>();
     }
     this.artifacts.add(artifactsItem);
     return this;
@@ -241,7 +264,7 @@ public class Task {
 
   public Task putConfigItem(String key, Object configItem) {
     if (this.config == null) {
-      this.config = new HashMap<String, Object>();
+      this.config = new HashMap<>();
     }
     this.config.put(key, configItem);
     return this;
@@ -272,7 +295,7 @@ public class Task {
 
   public Task addConstraintsItem(Constraint constraintsItem) {
     if (this.constraints == null) {
-      this.constraints = new ArrayList<Constraint>();
+      this.constraints = new ArrayList<>();
     }
     this.constraints.add(constraintsItem);
     return this;
@@ -349,7 +372,7 @@ public class Task {
 
   public Task putEnvItem(String key, String envItem) {
     if (this.env == null) {
-      this.env = new HashMap<String, String>();
+      this.env = new HashMap<>();
     }
     this.env.put(key, envItem);
     return this;
@@ -518,7 +541,7 @@ public class Task {
 
   public Task putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -618,7 +641,7 @@ public class Task {
 
   public Task addScalingPoliciesItem(ScalingPolicy scalingPoliciesItem) {
     if (this.scalingPolicies == null) {
-      this.scalingPolicies = new ArrayList<ScalingPolicy>();
+      this.scalingPolicies = new ArrayList<>();
     }
     this.scalingPolicies.add(scalingPoliciesItem);
     return this;
@@ -649,7 +672,7 @@ public class Task {
 
   public Task addServicesItem(Service servicesItem) {
     if (this.services == null) {
-      this.services = new ArrayList<Service>();
+      this.services = new ArrayList<>();
     }
     this.services.add(servicesItem);
     return this;
@@ -703,7 +726,7 @@ public class Task {
 
   public Task addTemplatesItem(Template templatesItem) {
     if (this.templates == null) {
-      this.templates = new ArrayList<Template>();
+      this.templates = new ArrayList<>();
     }
     this.templates.add(templatesItem);
     return this;
@@ -780,7 +803,7 @@ public class Task {
 
   public Task addVolumeMountsItem(VolumeMount volumeMountsItem) {
     if (this.volumeMounts == null) {
-      this.volumeMounts = new ArrayList<VolumeMount>();
+      this.volumeMounts = new ArrayList<>();
     }
     this.volumeMounts.add(volumeMountsItem);
     return this;
@@ -801,6 +824,7 @@ public class Task {
   public void setVolumeMounts(List<VolumeMount> volumeMounts) {
     this.volumeMounts = volumeMounts;
   }
+
 
 
   @Override
@@ -839,9 +863,20 @@ public class Task {
         Objects.equals(this.volumeMounts, task.volumeMounts);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(affinities, artifacts, csIPluginConfig, config, constraints, dispatchPayload, driver, env, killSignal, killTimeout, kind, leader, lifecycle, logConfig, meta, name, resources, restartPolicy, scalingPolicies, services, shutdownDelay, templates, user, vault, volumeMounts);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -888,5 +923,241 @@ public class Task {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Affinities");
+    openapiFields.add("Artifacts");
+    openapiFields.add("CSIPluginConfig");
+    openapiFields.add("Config");
+    openapiFields.add("Constraints");
+    openapiFields.add("DispatchPayload");
+    openapiFields.add("Driver");
+    openapiFields.add("Env");
+    openapiFields.add("KillSignal");
+    openapiFields.add("KillTimeout");
+    openapiFields.add("Kind");
+    openapiFields.add("Leader");
+    openapiFields.add("Lifecycle");
+    openapiFields.add("LogConfig");
+    openapiFields.add("Meta");
+    openapiFields.add("Name");
+    openapiFields.add("Resources");
+    openapiFields.add("RestartPolicy");
+    openapiFields.add("ScalingPolicies");
+    openapiFields.add("Services");
+    openapiFields.add("ShutdownDelay");
+    openapiFields.add("Templates");
+    openapiFields.add("User");
+    openapiFields.add("Vault");
+    openapiFields.add("VolumeMounts");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Task
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Task.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Task is not found in the empty JSON string", Task.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Task.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Task` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayaffinities = jsonObj.getAsJsonArray("Affinities");
+      if (jsonArrayaffinities != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Affinities").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Affinities` to be an array in the JSON string but got `%s`", jsonObj.get("Affinities").toString()));
+        }
+
+        // validate the optional field `Affinities` (array)
+        for (int i = 0; i < jsonArrayaffinities.size(); i++) {
+          Affinity.validateJsonObject(jsonArrayaffinities.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayartifacts = jsonObj.getAsJsonArray("Artifacts");
+      if (jsonArrayartifacts != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Artifacts").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Artifacts` to be an array in the JSON string but got `%s`", jsonObj.get("Artifacts").toString()));
+        }
+
+        // validate the optional field `Artifacts` (array)
+        for (int i = 0; i < jsonArrayartifacts.size(); i++) {
+          TaskArtifact.validateJsonObject(jsonArrayartifacts.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `CSIPluginConfig`
+      if (jsonObj.getAsJsonObject("CSIPluginConfig") != null) {
+        TaskCSIPluginConfig.validateJsonObject(jsonObj.getAsJsonObject("CSIPluginConfig"));
+      }
+      JsonArray jsonArrayconstraints = jsonObj.getAsJsonArray("Constraints");
+      if (jsonArrayconstraints != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Constraints").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Constraints` to be an array in the JSON string but got `%s`", jsonObj.get("Constraints").toString()));
+        }
+
+        // validate the optional field `Constraints` (array)
+        for (int i = 0; i < jsonArrayconstraints.size(); i++) {
+          Constraint.validateJsonObject(jsonArrayconstraints.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `DispatchPayload`
+      if (jsonObj.getAsJsonObject("DispatchPayload") != null) {
+        DispatchPayloadConfig.validateJsonObject(jsonObj.getAsJsonObject("DispatchPayload"));
+      }
+      if (jsonObj.get("Driver") != null && !jsonObj.get("Driver").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Driver` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Driver").toString()));
+      }
+      if (jsonObj.get("KillSignal") != null && !jsonObj.get("KillSignal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KillSignal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KillSignal").toString()));
+      }
+      if (jsonObj.get("Kind") != null && !jsonObj.get("Kind").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Kind").toString()));
+      }
+      // validate the optional field `Lifecycle`
+      if (jsonObj.getAsJsonObject("Lifecycle") != null) {
+        TaskLifecycle.validateJsonObject(jsonObj.getAsJsonObject("Lifecycle"));
+      }
+      // validate the optional field `LogConfig`
+      if (jsonObj.getAsJsonObject("LogConfig") != null) {
+        LogConfig.validateJsonObject(jsonObj.getAsJsonObject("LogConfig"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      // validate the optional field `Resources`
+      if (jsonObj.getAsJsonObject("Resources") != null) {
+        Resources.validateJsonObject(jsonObj.getAsJsonObject("Resources"));
+      }
+      // validate the optional field `RestartPolicy`
+      if (jsonObj.getAsJsonObject("RestartPolicy") != null) {
+        RestartPolicy.validateJsonObject(jsonObj.getAsJsonObject("RestartPolicy"));
+      }
+      JsonArray jsonArrayscalingPolicies = jsonObj.getAsJsonArray("ScalingPolicies");
+      if (jsonArrayscalingPolicies != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("ScalingPolicies").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `ScalingPolicies` to be an array in the JSON string but got `%s`", jsonObj.get("ScalingPolicies").toString()));
+        }
+
+        // validate the optional field `ScalingPolicies` (array)
+        for (int i = 0; i < jsonArrayscalingPolicies.size(); i++) {
+          ScalingPolicy.validateJsonObject(jsonArrayscalingPolicies.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayservices = jsonObj.getAsJsonArray("Services");
+      if (jsonArrayservices != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Services").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Services` to be an array in the JSON string but got `%s`", jsonObj.get("Services").toString()));
+        }
+
+        // validate the optional field `Services` (array)
+        for (int i = 0; i < jsonArrayservices.size(); i++) {
+          Service.validateJsonObject(jsonArrayservices.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraytemplates = jsonObj.getAsJsonArray("Templates");
+      if (jsonArraytemplates != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Templates").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Templates` to be an array in the JSON string but got `%s`", jsonObj.get("Templates").toString()));
+        }
+
+        // validate the optional field `Templates` (array)
+        for (int i = 0; i < jsonArraytemplates.size(); i++) {
+          Template.validateJsonObject(jsonArraytemplates.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("User") != null && !jsonObj.get("User").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `User` to be a primitive type in the JSON string but got `%s`", jsonObj.get("User").toString()));
+      }
+      // validate the optional field `Vault`
+      if (jsonObj.getAsJsonObject("Vault") != null) {
+        Vault.validateJsonObject(jsonObj.getAsJsonObject("Vault"));
+      }
+      JsonArray jsonArrayvolumeMounts = jsonObj.getAsJsonArray("VolumeMounts");
+      if (jsonArrayvolumeMounts != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("VolumeMounts").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `VolumeMounts` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeMounts").toString()));
+        }
+
+        // validate the optional field `VolumeMounts` (array)
+        for (int i = 0; i < jsonArrayvolumeMounts.size(); i++) {
+          VolumeMount.validateJsonObject(jsonArrayvolumeMounts.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Task.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Task' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Task> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Task.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Task>() {
+           @Override
+           public void write(JsonWriter out, Task value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Task read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Task given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Task
+  * @throws IOException if the JSON string is invalid with respect to Task
+  */
+  public static Task fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Task.class);
+  }
+
+ /**
+  * Convert an instance of Task to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

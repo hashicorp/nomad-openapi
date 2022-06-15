@@ -35,7 +35,7 @@ export class DesiredTransition {
     static getAttributeTypeMap() {
         return DesiredTransition.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

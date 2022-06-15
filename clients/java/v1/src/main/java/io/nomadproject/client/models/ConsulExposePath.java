@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * ConsulExposePath
  */
@@ -45,6 +65,8 @@ public class ConsulExposePath {
   @SerializedName(SERIALIZED_NAME_PROTOCOL)
   private String protocol;
 
+  public ConsulExposePath() { 
+  }
 
   public ConsulExposePath listenerPort(String listenerPort) {
     
@@ -138,6 +160,7 @@ public class ConsulExposePath {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -181,5 +204,102 @@ public class ConsulExposePath {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ListenerPort");
+    openapiFields.add("LocalPathPort");
+    openapiFields.add("Path");
+    openapiFields.add("Protocol");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsulExposePath
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ConsulExposePath.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsulExposePath is not found in the empty JSON string", ConsulExposePath.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsulExposePath.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsulExposePath` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("ListenerPort") != null && !jsonObj.get("ListenerPort").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ListenerPort` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ListenerPort").toString()));
+      }
+      if (jsonObj.get("Path") != null && !jsonObj.get("Path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Path").toString()));
+      }
+      if (jsonObj.get("Protocol") != null && !jsonObj.get("Protocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Protocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Protocol").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsulExposePath.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsulExposePath' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsulExposePath> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsulExposePath.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsulExposePath>() {
+           @Override
+           public void write(JsonWriter out, ConsulExposePath value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsulExposePath read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsulExposePath given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsulExposePath
+  * @throws IOException if the JSON string is invalid with respect to ConsulExposePath
+  */
+  public static ConsulExposePath fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsulExposePath.class);
+  }
+
+ /**
+  * Convert an instance of ConsulExposePath to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

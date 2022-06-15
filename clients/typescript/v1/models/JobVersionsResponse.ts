@@ -72,7 +72,7 @@ export class JobVersionsResponse {
     static getAttributeTypeMap() {
         return JobVersionsResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

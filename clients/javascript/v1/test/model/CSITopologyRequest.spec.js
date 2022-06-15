@@ -50,7 +50,7 @@
   describe('CSITopologyRequest', function() {
     it('should create an instance of CSITopologyRequest', function() {
       // uncomment below and update the code to test CSITopologyRequest
-      //var instane = new nomad-client.CSITopologyRequest();
+      //var instance = new nomad-client.CSITopologyRequest();
       //expect(instance).to.be.a(nomad-client.CSITopologyRequest);
     });
 

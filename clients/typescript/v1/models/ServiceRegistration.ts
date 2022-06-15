@@ -105,7 +105,7 @@ export class ServiceRegistration {
     static getAttributeTypeMap() {
         return ServiceRegistration.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

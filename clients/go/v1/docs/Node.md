@@ -11,23 +11,23 @@ Name | Type | Description | Notes
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Datacenter** | Pointer to **string** |  | [optional] 
 **Drain** | Pointer to **bool** |  | [optional] 
-**DrainStrategy** | Pointer to [**DrainStrategy**](DrainStrategy.md) |  | [optional] 
+**DrainStrategy** | Pointer to [**NullableDrainStrategy**](DrainStrategy.md) |  | [optional] 
 **Drivers** | Pointer to [**map[string]DriverInfo**](DriverInfo.md) |  | [optional] 
 **Events** | Pointer to [**[]NodeEvent**](NodeEvent.md) |  | [optional] 
 **HTTPAddr** | Pointer to **string** |  | [optional] 
 **HostNetworks** | Pointer to [**map[string]HostNetworkInfo**](HostNetworkInfo.md) |  | [optional] 
 **HostVolumes** | Pointer to [**map[string]HostVolumeInfo**](HostVolumeInfo.md) |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
-**LastDrain** | Pointer to [**DrainMetadata**](DrainMetadata.md) |  | [optional] 
+**LastDrain** | Pointer to [**NullableDrainMetadata**](DrainMetadata.md) |  | [optional] 
 **Links** | Pointer to **map[string]string** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NodeClass** | Pointer to **string** |  | [optional] 
-**NodeResources** | Pointer to [**NodeResources**](NodeResources.md) |  | [optional] 
-**Reserved** | Pointer to [**Resources**](Resources.md) |  | [optional] 
-**ReservedResources** | Pointer to [**NodeReservedResources**](NodeReservedResources.md) |  | [optional] 
-**Resources** | Pointer to [**Resources**](Resources.md) |  | [optional] 
+**NodeResources** | Pointer to [**NullableNodeResources**](NodeResources.md) |  | [optional] 
+**Reserved** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
+**ReservedResources** | Pointer to [**NullableNodeReservedResources**](NodeReservedResources.md) |  | [optional] 
+**Resources** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
 **SchedulingEligibility** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDescription** | Pointer to **string** |  | [optional] 
@@ -253,6 +253,16 @@ SetDrainStrategy sets DrainStrategy field to given value.
 
 HasDrainStrategy returns a boolean if a field has been set.
 
+### SetDrainStrategyNil
+
+`func (o *Node) SetDrainStrategyNil(b bool)`
+
+ SetDrainStrategyNil sets the value for DrainStrategy to be an explicit nil
+
+### UnsetDrainStrategy
+`func (o *Node) UnsetDrainStrategy()`
+
+UnsetDrainStrategy ensures that no value is present for DrainStrategy, not even an explicit nil
 ### GetDrivers
 
 `func (o *Node) GetDrivers() map[string]DriverInfo`
@@ -428,6 +438,16 @@ SetLastDrain sets LastDrain field to given value.
 
 HasLastDrain returns a boolean if a field has been set.
 
+### SetLastDrainNil
+
+`func (o *Node) SetLastDrainNil(b bool)`
+
+ SetLastDrainNil sets the value for LastDrain to be an explicit nil
+
+### UnsetLastDrain
+`func (o *Node) UnsetLastDrain()`
+
+UnsetLastDrain ensures that no value is present for LastDrain, not even an explicit nil
 ### GetLinks
 
 `func (o *Node) GetLinks() map[string]string`
@@ -578,6 +598,16 @@ SetNodeResources sets NodeResources field to given value.
 
 HasNodeResources returns a boolean if a field has been set.
 
+### SetNodeResourcesNil
+
+`func (o *Node) SetNodeResourcesNil(b bool)`
+
+ SetNodeResourcesNil sets the value for NodeResources to be an explicit nil
+
+### UnsetNodeResources
+`func (o *Node) UnsetNodeResources()`
+
+UnsetNodeResources ensures that no value is present for NodeResources, not even an explicit nil
 ### GetReserved
 
 `func (o *Node) GetReserved() Resources`
@@ -603,6 +633,16 @@ SetReserved sets Reserved field to given value.
 
 HasReserved returns a boolean if a field has been set.
 
+### SetReservedNil
+
+`func (o *Node) SetReservedNil(b bool)`
+
+ SetReservedNil sets the value for Reserved to be an explicit nil
+
+### UnsetReserved
+`func (o *Node) UnsetReserved()`
+
+UnsetReserved ensures that no value is present for Reserved, not even an explicit nil
 ### GetReservedResources
 
 `func (o *Node) GetReservedResources() NodeReservedResources`
@@ -628,6 +668,16 @@ SetReservedResources sets ReservedResources field to given value.
 
 HasReservedResources returns a boolean if a field has been set.
 
+### SetReservedResourcesNil
+
+`func (o *Node) SetReservedResourcesNil(b bool)`
+
+ SetReservedResourcesNil sets the value for ReservedResources to be an explicit nil
+
+### UnsetReservedResources
+`func (o *Node) UnsetReservedResources()`
+
+UnsetReservedResources ensures that no value is present for ReservedResources, not even an explicit nil
 ### GetResources
 
 `func (o *Node) GetResources() Resources`
@@ -653,6 +703,16 @@ SetResources sets Resources field to given value.
 
 HasResources returns a boolean if a field has been set.
 
+### SetResourcesNil
+
+`func (o *Node) SetResourcesNil(b bool)`
+
+ SetResourcesNil sets the value for Resources to be an explicit nil
+
+### UnsetResources
+`func (o *Node) UnsetResources()`
+
+UnsetResources ensures that no value is present for Resources, not even an explicit nil
 ### GetSchedulingEligibility
 
 `func (o *Node) GetSchedulingEligibility() string`

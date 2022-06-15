@@ -56,7 +56,7 @@ export class OneTimeToken {
     static getAttributeTypeMap() {
         return OneTimeToken.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

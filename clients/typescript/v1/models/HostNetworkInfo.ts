@@ -49,7 +49,7 @@ export class HostNetworkInfo {
     static getAttributeTypeMap() {
         return HostNetworkInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

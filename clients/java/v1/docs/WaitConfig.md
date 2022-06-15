@@ -5,10 +5,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**max** | **Long** |  |  [optional]
-**min** | **Long** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**max** | **Long** |  |  [optional] |
+|**min** | **Long** |  |  [optional] |
 
 
 

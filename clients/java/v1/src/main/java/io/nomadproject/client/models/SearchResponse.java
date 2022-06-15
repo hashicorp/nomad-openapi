@@ -27,6 +27,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * SearchResponse
  */
@@ -60,6 +80,8 @@ public class SearchResponse {
   @SerializedName(SERIALIZED_NAME_TRUNCATIONS)
   private Map<String, Boolean> truncations = null;
 
+  public SearchResponse() { 
+  }
 
   public SearchResponse knownLeader(Boolean knownLeader) {
     
@@ -140,7 +162,7 @@ public class SearchResponse {
 
   public SearchResponse putMatchesItem(String key, List<String> matchesItem) {
     if (this.matches == null) {
-      this.matches = new HashMap<String, List<String>>();
+      this.matches = new HashMap<>();
     }
     this.matches.put(key, matchesItem);
     return this;
@@ -217,7 +239,7 @@ public class SearchResponse {
 
   public SearchResponse putTruncationsItem(String key, Boolean truncationsItem) {
     if (this.truncations == null) {
-      this.truncations = new HashMap<String, Boolean>();
+      this.truncations = new HashMap<>();
     }
     this.truncations.put(key, truncationsItem);
     return this;
@@ -238,6 +260,7 @@ public class SearchResponse {
   public void setTruncations(Map<String, Boolean> truncations) {
     this.truncations = truncations;
   }
+
 
 
   @Override
@@ -289,5 +312,99 @@ public class SearchResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("KnownLeader");
+    openapiFields.add("LastContact");
+    openapiFields.add("LastIndex");
+    openapiFields.add("Matches");
+    openapiFields.add("NextToken");
+    openapiFields.add("RequestTime");
+    openapiFields.add("Truncations");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SearchResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (SearchResponse.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SearchResponse is not found in the empty JSON string", SearchResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SearchResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SearchResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextToken").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SearchResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SearchResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SearchResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SearchResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SearchResponse>() {
+           @Override
+           public void write(JsonWriter out, SearchResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SearchResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SearchResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SearchResponse
+  * @throws IOException if the JSON string is invalid with respect to SearchResponse
+  */
+  public static SearchResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SearchResponse.class);
+  }
+
+ /**
+  * Convert an instance of SearchResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

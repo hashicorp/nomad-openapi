@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://127.0.0.1:4646/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getMetricsSummary**](MetricsApi.md#getMetricsSummary) | **GET** /metrics | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getMetricsSummary**](MetricsApi.md#getMetricsSummary) | **GET** /metrics |  |
 
 
 <a name="getMetricsSummary"></a>
@@ -52,9 +52,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **format** | **String**| The format the user requested for the metrics summary (e.g. prometheus) | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **format** | **String**| The format the user requested for the metrics summary (e.g. prometheus) | [optional] |
 
 ### Return type
 
@@ -72,9 +72,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  -  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 

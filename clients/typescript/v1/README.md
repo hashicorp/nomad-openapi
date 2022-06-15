@@ -1,6 +1,6 @@
 ## @
 
-This generator creates TypeScript/JavaScript client that utilizes fetch-api. 
+This generator creates TypeScript/JavaScript client that utilizes fetch-api.
 
 ### Building
 

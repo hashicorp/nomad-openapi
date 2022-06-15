@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessibleTopology** | Pointer to [**CSITopology**](CSITopology.md) |  | [optional] 
+**AccessibleTopology** | Pointer to [**NullableCSITopology**](CSITopology.md) |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **MaxVolumes** | Pointer to **int64** |  | [optional] 
 **RequiresNodeStageVolume** | Pointer to **bool** |  | [optional] 
@@ -56,6 +56,16 @@ SetAccessibleTopology sets AccessibleTopology field to given value.
 
 HasAccessibleTopology returns a boolean if a field has been set.
 
+### SetAccessibleTopologyNil
+
+`func (o *CSINodeInfo) SetAccessibleTopologyNil(b bool)`
+
+ SetAccessibleTopologyNil sets the value for AccessibleTopology to be an explicit nil
+
+### UnsetAccessibleTopology
+`func (o *CSINodeInfo) UnsetAccessibleTopology()`
+
+UnsetAccessibleTopology ensures that no value is present for AccessibleTopology, not even an explicit nil
 ### GetID
 
 `func (o *CSINodeInfo) GetID() string`

@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AllocatedResources {
     #[serde(rename = "Shared", skip_serializing_if = "Option::is_none")]
     pub shared: Option<Box<crate::models::AllocatedSharedResources>>,

@@ -63,7 +63,7 @@ export class RaftServer {
     static getAttributeTypeMap() {
         return RaftServer.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

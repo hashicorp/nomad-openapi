@@ -24,6 +24,27 @@ import io.nomadproject.client.models.SchedulerConfiguration;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * SchedulerConfigurationResponse
@@ -54,6 +75,8 @@ public class SchedulerConfigurationResponse {
   @SerializedName(SERIALIZED_NAME_SCHEDULER_CONFIG)
   private SchedulerConfiguration schedulerConfig;
 
+  public SchedulerConfigurationResponse() { 
+  }
 
   public SchedulerConfigurationResponse knownLeader(Boolean knownLeader) {
     
@@ -195,6 +218,7 @@ public class SchedulerConfigurationResponse {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -212,9 +236,20 @@ public class SchedulerConfigurationResponse {
         Objects.equals(this.schedulerConfig, schedulerConfigurationResponse.schedulerConfig);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(knownLeader, lastContact, lastIndex, nextToken, requestTime, schedulerConfig);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -242,5 +277,102 @@ public class SchedulerConfigurationResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("KnownLeader");
+    openapiFields.add("LastContact");
+    openapiFields.add("LastIndex");
+    openapiFields.add("NextToken");
+    openapiFields.add("RequestTime");
+    openapiFields.add("SchedulerConfig");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SchedulerConfigurationResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (SchedulerConfigurationResponse.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SchedulerConfigurationResponse is not found in the empty JSON string", SchedulerConfigurationResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SchedulerConfigurationResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SchedulerConfigurationResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextToken").toString()));
+      }
+      // validate the optional field `SchedulerConfig`
+      if (jsonObj.getAsJsonObject("SchedulerConfig") != null) {
+        SchedulerConfiguration.validateJsonObject(jsonObj.getAsJsonObject("SchedulerConfig"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SchedulerConfigurationResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SchedulerConfigurationResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SchedulerConfigurationResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SchedulerConfigurationResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SchedulerConfigurationResponse>() {
+           @Override
+           public void write(JsonWriter out, SchedulerConfigurationResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SchedulerConfigurationResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SchedulerConfigurationResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SchedulerConfigurationResponse
+  * @throws IOException if the JSON string is invalid with respect to SchedulerConfigurationResponse
+  */
+  public static SchedulerConfigurationResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SchedulerConfigurationResponse.class);
+  }
+
+ /**
+  * Convert an instance of SchedulerConfigurationResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

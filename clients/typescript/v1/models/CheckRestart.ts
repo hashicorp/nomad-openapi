@@ -42,7 +42,7 @@ export class CheckRestart {
     static getAttributeTypeMap() {
         return CheckRestart.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

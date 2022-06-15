@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**fuzzy_search_request** | [**FuzzySearchRequest**](FuzzySearchRequest.md) |  | [required] |
+**fuzzy_search_request** | Option<[**FuzzySearchRequest**](FuzzySearchRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **index** | Option<**i32**> | If set, wait until query exceeds given index. Must be provided with WaitParam. |  |
@@ -56,7 +56,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**search_request** | [**SearchRequest**](SearchRequest.md) |  | [required] |
+**search_request** | Option<[**SearchRequest**](SearchRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **index** | Option<**i32**> | If set, wait until query exceeds given index. Must be provided with WaitParam. |  |

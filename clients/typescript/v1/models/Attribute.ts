@@ -56,7 +56,7 @@ export class Attribute {
     static getAttributeTypeMap() {
         return Attribute.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

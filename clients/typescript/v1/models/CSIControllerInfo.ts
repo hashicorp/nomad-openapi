@@ -105,7 +105,7 @@ export class CSIControllerInfo {
     static getAttributeTypeMap() {
         return CSIControllerInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

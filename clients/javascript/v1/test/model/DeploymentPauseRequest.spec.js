@@ -50,7 +50,7 @@
   describe('DeploymentPauseRequest', function() {
     it('should create an instance of DeploymentPauseRequest', function() {
       // uncomment below and update the code to test DeploymentPauseRequest
-      //var instane = new nomad-client.DeploymentPauseRequest();
+      //var instance = new nomad-client.DeploymentPauseRequest();
       //expect(instance).to.be.a(nomad-client.DeploymentPauseRequest);
     });
 

@@ -49,7 +49,7 @@ export class ACLPolicyListStub {
     static getAttributeTypeMap() {
         return ACLPolicyListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

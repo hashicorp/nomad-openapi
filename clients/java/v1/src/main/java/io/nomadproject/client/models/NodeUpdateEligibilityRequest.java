@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * NodeUpdateEligibilityRequest
  */
@@ -37,6 +57,8 @@ public class NodeUpdateEligibilityRequest {
   @SerializedName(SERIALIZED_NAME_NODE_I_D)
   private String nodeID;
 
+  public NodeUpdateEligibilityRequest() { 
+  }
 
   public NodeUpdateEligibilityRequest eligibility(String eligibility) {
     
@@ -84,6 +106,7 @@ public class NodeUpdateEligibilityRequest {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,5 +146,97 @@ public class NodeUpdateEligibilityRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Eligibility");
+    openapiFields.add("NodeID");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NodeUpdateEligibilityRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (NodeUpdateEligibilityRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NodeUpdateEligibilityRequest is not found in the empty JSON string", NodeUpdateEligibilityRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NodeUpdateEligibilityRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NodeUpdateEligibilityRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Eligibility") != null && !jsonObj.get("Eligibility").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Eligibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Eligibility").toString()));
+      }
+      if (jsonObj.get("NodeID") != null && !jsonObj.get("NodeID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NodeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NodeID").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NodeUpdateEligibilityRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NodeUpdateEligibilityRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NodeUpdateEligibilityRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NodeUpdateEligibilityRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NodeUpdateEligibilityRequest>() {
+           @Override
+           public void write(JsonWriter out, NodeUpdateEligibilityRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NodeUpdateEligibilityRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NodeUpdateEligibilityRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NodeUpdateEligibilityRequest
+  * @throws IOException if the JSON string is invalid with respect to NodeUpdateEligibilityRequest
+  */
+  public static NodeUpdateEligibilityRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NodeUpdateEligibilityRequest.class);
+  }
+
+ /**
+  * Convert an instance of NodeUpdateEligibilityRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

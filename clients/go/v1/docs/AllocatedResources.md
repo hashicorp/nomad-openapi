@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Shared** | Pointer to [**AllocatedSharedResources**](AllocatedSharedResources.md) |  | [optional] 
+**Shared** | Pointer to [**NullableAllocatedSharedResources**](AllocatedSharedResources.md) |  | [optional] 
 **Tasks** | Pointer to [**map[string]AllocatedTaskResources**](AllocatedTaskResources.md) |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetShared sets Shared field to given value.
 
 HasShared returns a boolean if a field has been set.
 
+### SetSharedNil
+
+`func (o *AllocatedResources) SetSharedNil(b bool)`
+
+ SetSharedNil sets the value for Shared to be an explicit nil
+
+### UnsetShared
+`func (o *AllocatedResources) UnsetShared()`
+
+UnsetShared ensures that no value is present for Shared, not even an explicit nil
 ### GetTasks
 
 `func (o *AllocatedResources) GetTasks() map[string]AllocatedTaskResources`

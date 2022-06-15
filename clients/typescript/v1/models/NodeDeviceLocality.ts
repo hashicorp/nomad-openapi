@@ -28,7 +28,7 @@ export class NodeDeviceLocality {
     static getAttributeTypeMap() {
         return NodeDeviceLocality.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

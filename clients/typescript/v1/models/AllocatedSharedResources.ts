@@ -44,7 +44,7 @@ export class AllocatedSharedResources {
     static getAttributeTypeMap() {
         return AllocatedSharedResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

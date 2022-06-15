@@ -27,6 +27,27 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * ConsulIngressConfigEntry
@@ -41,6 +62,8 @@ public class ConsulIngressConfigEntry {
   @SerializedName(SERIALIZED_NAME_T_L_S)
   private ConsulGatewayTLSConfig TLS;
 
+  public ConsulIngressConfigEntry() { 
+  }
 
   public ConsulIngressConfigEntry listeners(List<ConsulIngressListener> listeners) {
     
@@ -50,7 +73,7 @@ public class ConsulIngressConfigEntry {
 
   public ConsulIngressConfigEntry addListenersItem(ConsulIngressListener listenersItem) {
     if (this.listeners == null) {
-      this.listeners = new ArrayList<ConsulIngressListener>();
+      this.listeners = new ArrayList<>();
     }
     this.listeners.add(listenersItem);
     return this;
@@ -96,6 +119,7 @@ public class ConsulIngressConfigEntry {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -109,9 +133,20 @@ public class ConsulIngressConfigEntry {
         Objects.equals(this.TLS, consulIngressConfigEntry.TLS);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(listeners, TLS);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -135,5 +170,107 @@ public class ConsulIngressConfigEntry {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Listeners");
+    openapiFields.add("TLS");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsulIngressConfigEntry
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ConsulIngressConfigEntry.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsulIngressConfigEntry is not found in the empty JSON string", ConsulIngressConfigEntry.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsulIngressConfigEntry.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsulIngressConfigEntry` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraylisteners = jsonObj.getAsJsonArray("Listeners");
+      if (jsonArraylisteners != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Listeners").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Listeners` to be an array in the JSON string but got `%s`", jsonObj.get("Listeners").toString()));
+        }
+
+        // validate the optional field `Listeners` (array)
+        for (int i = 0; i < jsonArraylisteners.size(); i++) {
+          ConsulIngressListener.validateJsonObject(jsonArraylisteners.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `TLS`
+      if (jsonObj.getAsJsonObject("TLS") != null) {
+        ConsulGatewayTLSConfig.validateJsonObject(jsonObj.getAsJsonObject("TLS"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsulIngressConfigEntry.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsulIngressConfigEntry' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsulIngressConfigEntry> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsulIngressConfigEntry.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsulIngressConfigEntry>() {
+           @Override
+           public void write(JsonWriter out, ConsulIngressConfigEntry value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsulIngressConfigEntry read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsulIngressConfigEntry given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsulIngressConfigEntry
+  * @throws IOException if the JSON string is invalid with respect to ConsulIngressConfigEntry
+  */
+  public static ConsulIngressConfigEntry fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsulIngressConfigEntry.class);
+  }
+
+ /**
+  * Convert an instance of ConsulIngressConfigEntry to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

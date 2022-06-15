@@ -41,72 +41,7 @@ class OperatorApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __delete_operator_raft_peer(
-            self,
-            **kwargs
-        ):
-            """delete_operator_raft_peer  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.delete_operator_raft_peer(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.delete_operator_raft_peer = _Endpoint(
+        self.delete_operator_raft_peer_endpoint = _Endpoint(
             settings={
                 'response_type': None,
                 'auth': [
@@ -166,80 +101,9 @@ class OperatorApi(object):
                 'accept': [],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__delete_operator_raft_peer
+            api_client=api_client
         )
-
-        def __get_operator_autopilot_configuration(
-            self,
-            **kwargs
-        ):
-            """get_operator_autopilot_configuration  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_operator_autopilot_configuration(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                AutopilotConfiguration
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_operator_autopilot_configuration = _Endpoint(
+        self.get_operator_autopilot_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (AutopilotConfiguration,),
                 'auth': [
@@ -326,80 +190,9 @@ class OperatorApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_operator_autopilot_configuration
+            api_client=api_client
         )
-
-        def __get_operator_autopilot_health(
-            self,
-            **kwargs
-        ):
-            """get_operator_autopilot_health  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_operator_autopilot_health(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                OperatorHealthReply
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_operator_autopilot_health = _Endpoint(
+        self.get_operator_autopilot_health_endpoint = _Endpoint(
             settings={
                 'response_type': (OperatorHealthReply,),
                 'auth': [
@@ -486,80 +279,9 @@ class OperatorApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_operator_autopilot_health
+            api_client=api_client
         )
-
-        def __get_operator_raft_configuration(
-            self,
-            **kwargs
-        ):
-            """get_operator_raft_configuration  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_operator_raft_configuration(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                RaftConfiguration
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_operator_raft_configuration = _Endpoint(
+        self.get_operator_raft_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (RaftConfiguration,),
                 'auth': [
@@ -646,80 +368,9 @@ class OperatorApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_operator_raft_configuration
+            api_client=api_client
         )
-
-        def __get_operator_scheduler_configuration(
-            self,
-            **kwargs
-        ):
-            """get_operator_scheduler_configuration  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_operator_scheduler_configuration(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                SchedulerConfigurationResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_operator_scheduler_configuration = _Endpoint(
+        self.get_operator_scheduler_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (SchedulerConfigurationResponse,),
                 'auth': [
@@ -806,80 +457,9 @@ class OperatorApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_operator_scheduler_configuration
+            api_client=api_client
         )
-
-        def __post_operator_scheduler_configuration(
-            self,
-            scheduler_configuration,
-            **kwargs
-        ):
-            """post_operator_scheduler_configuration  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_operator_scheduler_configuration(scheduler_configuration, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                scheduler_configuration (SchedulerConfiguration):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                SchedulerSetConfigurationResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['scheduler_configuration'] = \
-                scheduler_configuration
-            return self.call_with_http_info(**kwargs)
-
-        self.post_operator_scheduler_configuration = _Endpoint(
+        self.post_operator_scheduler_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (SchedulerSetConfigurationResponse,),
                 'auth': [
@@ -902,6 +482,7 @@ class OperatorApi(object):
                     'scheduler_configuration',
                 ],
                 'nullable': [
+                    'scheduler_configuration',
                 ],
                 'enum': [
                 ],
@@ -949,80 +530,9 @@ class OperatorApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_operator_scheduler_configuration
+            api_client=api_client
         )
-
-        def __put_operator_autopilot_configuration(
-            self,
-            autopilot_configuration,
-            **kwargs
-        ):
-            """put_operator_autopilot_configuration  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.put_operator_autopilot_configuration(autopilot_configuration, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                autopilot_configuration (AutopilotConfiguration):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                bool
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['autopilot_configuration'] = \
-                autopilot_configuration
-            return self.call_with_http_info(**kwargs)
-
-        self.put_operator_autopilot_configuration = _Endpoint(
+        self.put_operator_autopilot_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (bool,),
                 'auth': [
@@ -1045,6 +555,7 @@ class OperatorApi(object):
                     'autopilot_configuration',
                 ],
                 'nullable': [
+                    'autopilot_configuration',
                 ],
                 'enum': [
                 ],
@@ -1092,6 +603,603 @@ class OperatorApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__put_operator_autopilot_configuration
+            api_client=api_client
         )
+
+    def delete_operator_raft_peer(
+        self,
+        **kwargs
+    ):
+        """delete_operator_raft_peer  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_operator_raft_peer(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.delete_operator_raft_peer_endpoint.call_with_http_info(**kwargs)
+
+    def get_operator_autopilot_configuration(
+        self,
+        **kwargs
+    ):
+        """get_operator_autopilot_configuration  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_operator_autopilot_configuration(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AutopilotConfiguration
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_operator_autopilot_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def get_operator_autopilot_health(
+        self,
+        **kwargs
+    ):
+        """get_operator_autopilot_health  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_operator_autopilot_health(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            OperatorHealthReply
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_operator_autopilot_health_endpoint.call_with_http_info(**kwargs)
+
+    def get_operator_raft_configuration(
+        self,
+        **kwargs
+    ):
+        """get_operator_raft_configuration  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_operator_raft_configuration(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            RaftConfiguration
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_operator_raft_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def get_operator_scheduler_configuration(
+        self,
+        **kwargs
+    ):
+        """get_operator_scheduler_configuration  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_operator_scheduler_configuration(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SchedulerConfigurationResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_operator_scheduler_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def post_operator_scheduler_configuration(
+        self,
+        scheduler_configuration,
+        **kwargs
+    ):
+        """post_operator_scheduler_configuration  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_operator_scheduler_configuration(scheduler_configuration, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            scheduler_configuration (SchedulerConfiguration):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SchedulerSetConfigurationResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['scheduler_configuration'] = \
+            scheduler_configuration
+        return self.post_operator_scheduler_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def put_operator_autopilot_configuration(
+        self,
+        autopilot_configuration,
+        **kwargs
+    ):
+        """put_operator_autopilot_configuration  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.put_operator_autopilot_configuration(autopilot_configuration, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            autopilot_configuration (AutopilotConfiguration):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            bool
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['autopilot_configuration'] = \
+            autopilot_configuration
+        return self.put_operator_autopilot_configuration_endpoint.call_with_http_info(**kwargs)
+

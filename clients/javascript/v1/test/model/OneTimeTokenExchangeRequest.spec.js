@@ -50,7 +50,7 @@
   describe('OneTimeTokenExchangeRequest', function() {
     it('should create an instance of OneTimeTokenExchangeRequest', function() {
       // uncomment below and update the code to test OneTimeTokenExchangeRequest
-      //var instane = new nomad-client.OneTimeTokenExchangeRequest();
+      //var instance = new nomad-client.OneTimeTokenExchangeRequest();
       //expect(instance).to.be.a(nomad-client.OneTimeTokenExchangeRequest);
     });
 

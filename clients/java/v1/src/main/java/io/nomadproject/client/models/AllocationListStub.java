@@ -31,6 +31,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * AllocationListStub
@@ -137,6 +158,8 @@ public class AllocationListStub {
   @SerializedName(SERIALIZED_NAME_TASK_STATES)
   private Map<String, TaskState> taskStates = null;
 
+  public AllocationListStub() { 
+  }
 
   public AllocationListStub allocatedResources(AllocatedResources allocatedResources) {
     
@@ -612,7 +635,7 @@ public class AllocationListStub {
 
   public AllocationListStub addPreemptedAllocationsItem(String preemptedAllocationsItem) {
     if (this.preemptedAllocations == null) {
-      this.preemptedAllocations = new ArrayList<String>();
+      this.preemptedAllocations = new ArrayList<>();
     }
     this.preemptedAllocations.add(preemptedAllocationsItem);
     return this;
@@ -712,7 +735,7 @@ public class AllocationListStub {
 
   public AllocationListStub putTaskStatesItem(String key, TaskState taskStatesItem) {
     if (this.taskStates == null) {
-      this.taskStates = new HashMap<String, TaskState>();
+      this.taskStates = new HashMap<>();
     }
     this.taskStates.put(key, taskStatesItem);
     return this;
@@ -733,6 +756,7 @@ public class AllocationListStub {
   public void setTaskStates(Map<String, TaskState> taskStates) {
     this.taskStates = taskStates;
   }
+
 
 
   @Override
@@ -771,9 +795,20 @@ public class AllocationListStub {
         Objects.equals(this.taskStates, allocationListStub.taskStates);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(allocatedResources, clientDescription, clientStatus, createIndex, createTime, deploymentStatus, desiredDescription, desiredStatus, evalID, followupEvalID, ID, jobID, jobType, jobVersion, modifyIndex, modifyTime, name, namespace, nodeID, nodeName, preemptedAllocations, preemptedByAllocation, rescheduleTracker, taskGroup, taskStates);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -820,5 +855,175 @@ public class AllocationListStub {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AllocatedResources");
+    openapiFields.add("ClientDescription");
+    openapiFields.add("ClientStatus");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("CreateTime");
+    openapiFields.add("DeploymentStatus");
+    openapiFields.add("DesiredDescription");
+    openapiFields.add("DesiredStatus");
+    openapiFields.add("EvalID");
+    openapiFields.add("FollowupEvalID");
+    openapiFields.add("ID");
+    openapiFields.add("JobID");
+    openapiFields.add("JobType");
+    openapiFields.add("JobVersion");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("ModifyTime");
+    openapiFields.add("Name");
+    openapiFields.add("Namespace");
+    openapiFields.add("NodeID");
+    openapiFields.add("NodeName");
+    openapiFields.add("PreemptedAllocations");
+    openapiFields.add("PreemptedByAllocation");
+    openapiFields.add("RescheduleTracker");
+    openapiFields.add("TaskGroup");
+    openapiFields.add("TaskStates");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AllocationListStub
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (AllocationListStub.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AllocationListStub is not found in the empty JSON string", AllocationListStub.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!AllocationListStub.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AllocationListStub` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `AllocatedResources`
+      if (jsonObj.getAsJsonObject("AllocatedResources") != null) {
+        AllocatedResources.validateJsonObject(jsonObj.getAsJsonObject("AllocatedResources"));
+      }
+      if (jsonObj.get("ClientDescription") != null && !jsonObj.get("ClientDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientDescription").toString()));
+      }
+      if (jsonObj.get("ClientStatus") != null && !jsonObj.get("ClientStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientStatus").toString()));
+      }
+      // validate the optional field `DeploymentStatus`
+      if (jsonObj.getAsJsonObject("DeploymentStatus") != null) {
+        AllocDeploymentStatus.validateJsonObject(jsonObj.getAsJsonObject("DeploymentStatus"));
+      }
+      if (jsonObj.get("DesiredDescription") != null && !jsonObj.get("DesiredDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DesiredDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DesiredDescription").toString()));
+      }
+      if (jsonObj.get("DesiredStatus") != null && !jsonObj.get("DesiredStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DesiredStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DesiredStatus").toString()));
+      }
+      if (jsonObj.get("EvalID") != null && !jsonObj.get("EvalID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `EvalID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("EvalID").toString()));
+      }
+      if (jsonObj.get("FollowupEvalID") != null && !jsonObj.get("FollowupEvalID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FollowupEvalID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FollowupEvalID").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      if (jsonObj.get("JobID") != null && !jsonObj.get("JobID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JobID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JobID").toString()));
+      }
+      if (jsonObj.get("JobType") != null && !jsonObj.get("JobType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JobType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JobType").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("NodeID") != null && !jsonObj.get("NodeID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NodeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NodeID").toString()));
+      }
+      if (jsonObj.get("NodeName") != null && !jsonObj.get("NodeName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NodeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NodeName").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("PreemptedAllocations") != null && !jsonObj.get("PreemptedAllocations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PreemptedAllocations` to be an array in the JSON string but got `%s`", jsonObj.get("PreemptedAllocations").toString()));
+      }
+      if (jsonObj.get("PreemptedByAllocation") != null && !jsonObj.get("PreemptedByAllocation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PreemptedByAllocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PreemptedByAllocation").toString()));
+      }
+      // validate the optional field `RescheduleTracker`
+      if (jsonObj.getAsJsonObject("RescheduleTracker") != null) {
+        RescheduleTracker.validateJsonObject(jsonObj.getAsJsonObject("RescheduleTracker"));
+      }
+      if (jsonObj.get("TaskGroup") != null && !jsonObj.get("TaskGroup").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskGroup").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!AllocationListStub.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AllocationListStub' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<AllocationListStub> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AllocationListStub.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<AllocationListStub>() {
+           @Override
+           public void write(JsonWriter out, AllocationListStub value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public AllocationListStub read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of AllocationListStub given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AllocationListStub
+  * @throws IOException if the JSON string is invalid with respect to AllocationListStub
+  */
+  public static AllocationListStub fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AllocationListStub.class);
+  }
+
+ /**
+  * Convert an instance of AllocationListStub to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

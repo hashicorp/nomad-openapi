@@ -26,6 +26,27 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * JobListStub
@@ -100,6 +121,8 @@ public class JobListStub {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public JobListStub() { 
+  }
 
   public JobListStub createIndex(Integer createIndex) {
     
@@ -134,7 +157,7 @@ public class JobListStub {
 
   public JobListStub addDatacentersItem(String datacentersItem) {
     if (this.datacenters == null) {
-      this.datacenters = new ArrayList<String>();
+      this.datacenters = new ArrayList<>();
     }
     this.datacenters.add(datacentersItem);
     return this;
@@ -506,6 +529,7 @@ public class JobListStub {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -534,9 +558,20 @@ public class JobListStub {
         Objects.equals(this.type, jobListStub.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(createIndex, datacenters, ID, jobModifyIndex, jobSummary, modifyIndex, name, namespace, parameterizedJob, parentID, periodic, priority, status, statusDescription, stop, submitTime, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -575,5 +610,135 @@ public class JobListStub {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CreateIndex");
+    openapiFields.add("Datacenters");
+    openapiFields.add("ID");
+    openapiFields.add("JobModifyIndex");
+    openapiFields.add("JobSummary");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("Name");
+    openapiFields.add("Namespace");
+    openapiFields.add("ParameterizedJob");
+    openapiFields.add("ParentID");
+    openapiFields.add("Periodic");
+    openapiFields.add("Priority");
+    openapiFields.add("Status");
+    openapiFields.add("StatusDescription");
+    openapiFields.add("Stop");
+    openapiFields.add("SubmitTime");
+    openapiFields.add("Type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to JobListStub
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (JobListStub.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in JobListStub is not found in the empty JSON string", JobListStub.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!JobListStub.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JobListStub` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Datacenters") != null && !jsonObj.get("Datacenters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Datacenters` to be an array in the JSON string but got `%s`", jsonObj.get("Datacenters").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      // validate the optional field `JobSummary`
+      if (jsonObj.getAsJsonObject("JobSummary") != null) {
+        JobSummary.validateJsonObject(jsonObj.getAsJsonObject("JobSummary"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("ParentID") != null && !jsonObj.get("ParentID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ParentID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ParentID").toString()));
+      }
+      if (jsonObj.get("Status") != null && !jsonObj.get("Status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Status").toString()));
+      }
+      if (jsonObj.get("StatusDescription") != null && !jsonObj.get("StatusDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StatusDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StatusDescription").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!JobListStub.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'JobListStub' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<JobListStub> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(JobListStub.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<JobListStub>() {
+           @Override
+           public void write(JsonWriter out, JobListStub value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public JobListStub read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of JobListStub given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of JobListStub
+  * @throws IOException if the JSON string is invalid with respect to JobListStub
+  */
+  public static JobListStub fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, JobListStub.class);
+  }
+
+ /**
+  * Convert an instance of JobListStub to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

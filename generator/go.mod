@@ -2,8 +2,10 @@ module github.com/hashicorp/nomad-openapi/generator
 
 go 1.17
 
+replace github.com/getkin/kin-openapi => ../../kin-openapi
+
 require (
-	github.com/getkin/kin-openapi v0.74.0
+	github.com/getkin/kin-openapi v0.96.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-hclog v1.2.0
 	github.com/hashicorp/nomad v1.3.2
@@ -156,6 +158,7 @@ require (
 	github.com/hpcloud/tail v1.0.1-0.20170814160653-37f427138745 // indirect
 	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
+	github.com/invopop/yaml v0.1.0 // indirect
 	github.com/ishidawataru/sctp v0.0.0-20191218070446-00ab2ac2db07 // indirect
 	github.com/jefferai/isbadcipher v0.0.0-20190226160619-51d2077c035f // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect

@@ -50,7 +50,7 @@ export class CSIVolumeRegisterRequest {
     static getAttributeTypeMap() {
         return CSIVolumeRegisterRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

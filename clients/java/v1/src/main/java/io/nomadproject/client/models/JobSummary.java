@@ -28,6 +28,27 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * JobSummary
@@ -58,6 +79,8 @@ public class JobSummary {
   @SerializedName(SERIALIZED_NAME_SUMMARY)
   private Map<String, TaskGroupSummary> summary = null;
 
+  public JobSummary() { 
+  }
 
   public JobSummary children(JobChildrenSummary children) {
     
@@ -186,7 +209,7 @@ public class JobSummary {
 
   public JobSummary putSummaryItem(String key, TaskGroupSummary summaryItem) {
     if (this.summary == null) {
-      this.summary = new HashMap<String, TaskGroupSummary>();
+      this.summary = new HashMap<>();
     }
     this.summary.put(key, summaryItem);
     return this;
@@ -209,6 +232,7 @@ public class JobSummary {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -226,9 +250,20 @@ public class JobSummary {
         Objects.equals(this.summary, jobSummary.summary);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(children, createIndex, jobID, modifyIndex, namespace, summary);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -256,5 +291,105 @@ public class JobSummary {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Children");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("JobID");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("Namespace");
+    openapiFields.add("Summary");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to JobSummary
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (JobSummary.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in JobSummary is not found in the empty JSON string", JobSummary.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!JobSummary.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JobSummary` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `Children`
+      if (jsonObj.getAsJsonObject("Children") != null) {
+        JobChildrenSummary.validateJsonObject(jsonObj.getAsJsonObject("Children"));
+      }
+      if (jsonObj.get("JobID") != null && !jsonObj.get("JobID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JobID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JobID").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!JobSummary.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'JobSummary' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<JobSummary> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(JobSummary.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<JobSummary>() {
+           @Override
+           public void write(JsonWriter out, JobSummary value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public JobSummary read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of JobSummary given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of JobSummary
+  * @throws IOException if the JSON string is invalid with respect to JobSummary
+  */
+  public static JobSummary fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, JobSummary.class);
+  }
+
+ /**
+  * Convert an instance of JobSummary to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

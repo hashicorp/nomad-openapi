@@ -16,6 +16,7 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (X-Nomad-Token):
+
 ```python
 import time
 import nomad_client
@@ -122,6 +123,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |
@@ -140,6 +142,7 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (X-Nomad-Token):
+
 ```python
 import time
 import nomad_client
@@ -245,6 +248,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  * X-Nomad-Index - A unique identifier representing the current state of the requested resource. On a new Nomad cluster the value of this index starts at 1. <br>  * X-Nomad-KnownLeader - Boolean indicating if there is a known cluster leader. <br>  * X-Nomad-LastContact - The time in milliseconds that a server was last contacted by the leader node. <br>  |

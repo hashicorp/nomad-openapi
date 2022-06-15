@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `delete_acl_policy`
+/// struct for typed errors of method [`delete_acl_policy`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteAclPolicyError {
@@ -26,7 +26,7 @@ pub enum DeleteAclPolicyError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `delete_acl_token`
+/// struct for typed errors of method [`delete_acl_token`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteAclTokenError {
@@ -37,7 +37,7 @@ pub enum DeleteAclTokenError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_acl_policies`
+/// struct for typed errors of method [`get_acl_policies`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAclPoliciesError {
@@ -48,7 +48,7 @@ pub enum GetAclPoliciesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_acl_policy`
+/// struct for typed errors of method [`get_acl_policy`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAclPolicyError {
@@ -59,7 +59,7 @@ pub enum GetAclPolicyError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_acl_token`
+/// struct for typed errors of method [`get_acl_token`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAclTokenError {
@@ -70,7 +70,7 @@ pub enum GetAclTokenError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_acl_token_self`
+/// struct for typed errors of method [`get_acl_token_self`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAclTokenSelfError {
@@ -81,7 +81,7 @@ pub enum GetAclTokenSelfError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_acl_tokens`
+/// struct for typed errors of method [`get_acl_tokens`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAclTokensError {
@@ -92,7 +92,7 @@ pub enum GetAclTokensError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_acl_bootstrap`
+/// struct for typed errors of method [`post_acl_bootstrap`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAclBootstrapError {
@@ -103,7 +103,7 @@ pub enum PostAclBootstrapError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_acl_policy`
+/// struct for typed errors of method [`post_acl_policy`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAclPolicyError {
@@ -114,7 +114,7 @@ pub enum PostAclPolicyError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_acl_token`
+/// struct for typed errors of method [`post_acl_token`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAclTokenError {
@@ -125,7 +125,7 @@ pub enum PostAclTokenError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_acl_token_onetime`
+/// struct for typed errors of method [`post_acl_token_onetime`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAclTokenOnetimeError {
@@ -136,7 +136,7 @@ pub enum PostAclTokenOnetimeError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_acl_token_onetime_exchange`
+/// struct for typed errors of method [`post_acl_token_onetime_exchange`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAclTokenOnetimeExchangeError {
@@ -149,10 +149,11 @@ pub enum PostAclTokenOnetimeExchangeError {
 
 
 pub async fn delete_acl_policy(configuration: &configuration::Configuration, policy_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteAclPolicyError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/policy/{policyName}", configuration.base_path, policyName=crate::apis::urlencode(policy_name));
+    let local_var_uri_str = format!("{}/acl/policy/{policyName}", local_var_configuration.base_path, policyName=crate::apis::urlencode(policy_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -164,13 +165,13 @@ pub async fn delete_acl_policy(configuration: &configuration::Configuration, pol
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -195,10 +196,11 @@ pub async fn delete_acl_policy(configuration: &configuration::Configuration, pol
 }
 
 pub async fn delete_acl_token(configuration: &configuration::Configuration, token_accessor: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteAclTokenError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
+    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", local_var_configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -210,13 +212,13 @@ pub async fn delete_acl_token(configuration: &configuration::Configuration, toke
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -241,10 +243,11 @@ pub async fn delete_acl_token(configuration: &configuration::Configuration, toke
 }
 
 pub async fn get_acl_policies(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::AclPolicyListStub>, Error<GetAclPoliciesError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/policies", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/policies", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -268,7 +271,7 @@ pub async fn get_acl_policies(configuration: &configuration::Configuration, regi
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -277,7 +280,7 @@ pub async fn get_acl_policies(configuration: &configuration::Configuration, regi
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -302,10 +305,11 @@ pub async fn get_acl_policies(configuration: &configuration::Configuration, regi
 }
 
 pub async fn get_acl_policy(configuration: &configuration::Configuration, policy_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::AclPolicy, Error<GetAclPolicyError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/policy/{policyName}", configuration.base_path, policyName=crate::apis::urlencode(policy_name));
+    let local_var_uri_str = format!("{}/acl/policy/{policyName}", local_var_configuration.base_path, policyName=crate::apis::urlencode(policy_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -329,7 +333,7 @@ pub async fn get_acl_policy(configuration: &configuration::Configuration, policy
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -338,7 +342,7 @@ pub async fn get_acl_policy(configuration: &configuration::Configuration, policy
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -363,10 +367,11 @@ pub async fn get_acl_policy(configuration: &configuration::Configuration, policy
 }
 
 pub async fn get_acl_token(configuration: &configuration::Configuration, token_accessor: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::AclToken, Error<GetAclTokenError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
+    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", local_var_configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -390,7 +395,7 @@ pub async fn get_acl_token(configuration: &configuration::Configuration, token_a
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -399,7 +404,7 @@ pub async fn get_acl_token(configuration: &configuration::Configuration, token_a
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -424,10 +429,11 @@ pub async fn get_acl_token(configuration: &configuration::Configuration, token_a
 }
 
 pub async fn get_acl_token_self(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::AclToken, Error<GetAclTokenSelfError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/token", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -451,7 +457,7 @@ pub async fn get_acl_token_self(configuration: &configuration::Configuration, re
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -460,7 +466,7 @@ pub async fn get_acl_token_self(configuration: &configuration::Configuration, re
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -485,10 +491,11 @@ pub async fn get_acl_token_self(configuration: &configuration::Configuration, re
 }
 
 pub async fn get_acl_tokens(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::AclTokenListStub>, Error<GetAclTokensError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/tokens", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/tokens", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -512,7 +519,7 @@ pub async fn get_acl_tokens(configuration: &configuration::Configuration, region
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -521,7 +528,7 @@ pub async fn get_acl_tokens(configuration: &configuration::Configuration, region
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -546,10 +553,11 @@ pub async fn get_acl_tokens(configuration: &configuration::Configuration, region
 }
 
 pub async fn post_acl_bootstrap(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclBootstrapError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/bootstrap", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/bootstrap", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -561,13 +569,13 @@ pub async fn post_acl_bootstrap(configuration: &configuration::Configuration, re
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -591,11 +599,12 @@ pub async fn post_acl_bootstrap(configuration: &configuration::Configuration, re
     }
 }
 
-pub async fn post_acl_policy(configuration: &configuration::Configuration, policy_name: &str, acl_policy: crate::models::AclPolicy, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostAclPolicyError>> {
+pub async fn post_acl_policy(configuration: &configuration::Configuration, policy_name: &str, acl_policy: Option<crate::models::AclPolicy>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostAclPolicyError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/policy/{policyName}", configuration.base_path, policyName=crate::apis::urlencode(policy_name));
+    let local_var_uri_str = format!("{}/acl/policy/{policyName}", local_var_configuration.base_path, policyName=crate::apis::urlencode(policy_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -607,13 +616,13 @@ pub async fn post_acl_policy(configuration: &configuration::Configuration, polic
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -638,11 +647,12 @@ pub async fn post_acl_policy(configuration: &configuration::Configuration, polic
     }
 }
 
-pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: crate::models::AclToken, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenError>> {
+pub async fn post_acl_token(configuration: &configuration::Configuration, token_accessor: &str, acl_token: Option<crate::models::AclToken>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
+    let local_var_uri_str = format!("{}/acl/token/{tokenAccessor}", local_var_configuration.base_path, tokenAccessor=crate::apis::urlencode(token_accessor));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -654,13 +664,13 @@ pub async fn post_acl_token(configuration: &configuration::Configuration, token_
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -686,10 +696,11 @@ pub async fn post_acl_token(configuration: &configuration::Configuration, token_
 }
 
 pub async fn post_acl_token_onetime(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::OneTimeToken, Error<PostAclTokenOnetimeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token/onetime", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/token/onetime", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -701,13 +712,13 @@ pub async fn post_acl_token_onetime(configuration: &configuration::Configuration
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -731,11 +742,12 @@ pub async fn post_acl_token_onetime(configuration: &configuration::Configuration
     }
 }
 
-pub async fn post_acl_token_onetime_exchange(configuration: &configuration::Configuration, one_time_token_exchange_request: crate::models::OneTimeTokenExchangeRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenOnetimeExchangeError>> {
+pub async fn post_acl_token_onetime_exchange(configuration: &configuration::Configuration, one_time_token_exchange_request: Option<crate::models::OneTimeTokenExchangeRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::AclToken, Error<PostAclTokenOnetimeExchangeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/acl/token/onetime/exchange", configuration.base_path);
+    let local_var_uri_str = format!("{}/acl/token/onetime/exchange", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -747,13 +759,13 @@ pub async fn post_acl_token_onetime_exchange(configuration: &configuration::Conf
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

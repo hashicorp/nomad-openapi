@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * HostNetworkInfo
  */
@@ -45,6 +65,8 @@ public class HostNetworkInfo {
   @SerializedName(SERIALIZED_NAME_RESERVED_PORTS)
   private String reservedPorts;
 
+  public HostNetworkInfo() { 
+  }
 
   public HostNetworkInfo CIDR(String CIDR) {
     
@@ -138,6 +160,7 @@ public class HostNetworkInfo {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -181,5 +204,105 @@ public class HostNetworkInfo {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CIDR");
+    openapiFields.add("Interface");
+    openapiFields.add("Name");
+    openapiFields.add("ReservedPorts");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to HostNetworkInfo
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (HostNetworkInfo.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in HostNetworkInfo is not found in the empty JSON string", HostNetworkInfo.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!HostNetworkInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HostNetworkInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("CIDR") != null && !jsonObj.get("CIDR").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CIDR` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CIDR").toString()));
+      }
+      if (jsonObj.get("Interface") != null && !jsonObj.get("Interface").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Interface` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Interface").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("ReservedPorts") != null && !jsonObj.get("ReservedPorts").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ReservedPorts` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ReservedPorts").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!HostNetworkInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'HostNetworkInfo' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<HostNetworkInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(HostNetworkInfo.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<HostNetworkInfo>() {
+           @Override
+           public void write(JsonWriter out, HostNetworkInfo value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public HostNetworkInfo read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of HostNetworkInfo given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of HostNetworkInfo
+  * @throws IOException if the JSON string is invalid with respect to HostNetworkInfo
+  */
+  public static HostNetworkInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, HostNetworkInfo.class);
+  }
+
+ /**
+  * Convert an instance of HostNetworkInfo to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

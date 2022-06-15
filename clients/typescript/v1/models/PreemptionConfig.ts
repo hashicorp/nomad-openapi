@@ -49,7 +49,7 @@ export class PreemptionConfig {
     static getAttributeTypeMap() {
         return PreemptionConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

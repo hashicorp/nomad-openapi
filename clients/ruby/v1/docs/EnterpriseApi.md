@@ -258,7 +258,7 @@ end
 
 ## get_quotas
 
-> <Array<AnyType>> get_quotas(opts)
+> Array&lt;Object&gt; get_quotas(opts)
 
 
 
@@ -301,7 +301,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<AnyType>>, Integer, Hash)> get_quotas_with_http_info(opts)
+> <Array(Array&lt;Object&gt;, Integer, Hash)> get_quotas_with_http_info(opts)
 
 ```ruby
 begin
@@ -309,7 +309,7 @@ begin
   data, status_code, headers = api_instance.get_quotas_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<AnyType>>
+  p data # => Array&lt;Object&gt;
 rescue NomadClient::ApiError => e
   puts "Error when calling EnterpriseApi->get_quotas_with_http_info: #{e}"
 end
@@ -331,7 +331,7 @@ end
 
 ### Return type
 
-[**Array&lt;AnyType&gt;**](AnyType.md)
+**Array&lt;Object&gt;**
 
 ### Authorization
 

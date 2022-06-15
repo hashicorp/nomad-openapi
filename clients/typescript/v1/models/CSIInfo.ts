@@ -86,7 +86,7 @@ export class CSIInfo {
     static getAttributeTypeMap() {
         return CSIInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

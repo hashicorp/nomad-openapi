@@ -26,6 +26,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * FieldDiff
  */
@@ -51,6 +71,8 @@ public class FieldDiff {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public FieldDiff() { 
+  }
 
   public FieldDiff annotations(List<String> annotations) {
     
@@ -60,7 +82,7 @@ public class FieldDiff {
 
   public FieldDiff addAnnotationsItem(String annotationsItem) {
     if (this.annotations == null) {
-      this.annotations = new ArrayList<String>();
+      this.annotations = new ArrayList<>();
     }
     this.annotations.add(annotationsItem);
     return this;
@@ -175,6 +197,7 @@ public class FieldDiff {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -220,5 +243,110 @@ public class FieldDiff {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Annotations");
+    openapiFields.add("Name");
+    openapiFields.add("New");
+    openapiFields.add("Old");
+    openapiFields.add("Type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FieldDiff
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (FieldDiff.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FieldDiff is not found in the empty JSON string", FieldDiff.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FieldDiff.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FieldDiff` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Annotations") != null && !jsonObj.get("Annotations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Annotations` to be an array in the JSON string but got `%s`", jsonObj.get("Annotations").toString()));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("New") != null && !jsonObj.get("New").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `New` to be a primitive type in the JSON string but got `%s`", jsonObj.get("New").toString()));
+      }
+      if (jsonObj.get("Old") != null && !jsonObj.get("Old").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Old` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Old").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FieldDiff.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FieldDiff' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FieldDiff> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FieldDiff.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FieldDiff>() {
+           @Override
+           public void write(JsonWriter out, FieldDiff value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FieldDiff read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FieldDiff given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FieldDiff
+  * @throws IOException if the JSON string is invalid with respect to FieldDiff
+  */
+  public static FieldDiff fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FieldDiff.class);
+  }
+
+ /**
+  * Convert an instance of FieldDiff to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

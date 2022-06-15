@@ -28,6 +28,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * CSIVolumeExternalStub
  */
@@ -65,6 +85,8 @@ public class CSIVolumeExternalStub {
   @SerializedName(SERIALIZED_NAME_VOLUME_CONTEXT)
   private Map<String, String> volumeContext = null;
 
+  public CSIVolumeExternalStub() { 
+  }
 
   public CSIVolumeExternalStub capacityBytes(Long capacityBytes) {
     
@@ -166,7 +188,7 @@ public class CSIVolumeExternalStub {
 
   public CSIVolumeExternalStub addPublishedExternalNodeIDsItem(String publishedExternalNodeIDsItem) {
     if (this.publishedExternalNodeIDs == null) {
-      this.publishedExternalNodeIDs = new ArrayList<String>();
+      this.publishedExternalNodeIDs = new ArrayList<>();
     }
     this.publishedExternalNodeIDs.add(publishedExternalNodeIDsItem);
     return this;
@@ -243,7 +265,7 @@ public class CSIVolumeExternalStub {
 
   public CSIVolumeExternalStub putVolumeContextItem(String key, String volumeContextItem) {
     if (this.volumeContext == null) {
-      this.volumeContext = new HashMap<String, String>();
+      this.volumeContext = new HashMap<>();
     }
     this.volumeContext.put(key, volumeContextItem);
     return this;
@@ -264,6 +286,7 @@ public class CSIVolumeExternalStub {
   public void setVolumeContext(Map<String, String> volumeContext) {
     this.volumeContext = volumeContext;
   }
+
 
 
   @Override
@@ -317,5 +340,113 @@ public class CSIVolumeExternalStub {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CapacityBytes");
+    openapiFields.add("CloneID");
+    openapiFields.add("ExternalID");
+    openapiFields.add("IsAbnormal");
+    openapiFields.add("PublishedExternalNodeIDs");
+    openapiFields.add("SnapshotID");
+    openapiFields.add("Status");
+    openapiFields.add("VolumeContext");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CSIVolumeExternalStub
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CSIVolumeExternalStub.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CSIVolumeExternalStub is not found in the empty JSON string", CSIVolumeExternalStub.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CSIVolumeExternalStub.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CSIVolumeExternalStub` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("CloneID") != null && !jsonObj.get("CloneID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CloneID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CloneID").toString()));
+      }
+      if (jsonObj.get("ExternalID") != null && !jsonObj.get("ExternalID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ExternalID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ExternalID").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("PublishedExternalNodeIDs") != null && !jsonObj.get("PublishedExternalNodeIDs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublishedExternalNodeIDs` to be an array in the JSON string but got `%s`", jsonObj.get("PublishedExternalNodeIDs").toString()));
+      }
+      if (jsonObj.get("SnapshotID") != null && !jsonObj.get("SnapshotID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SnapshotID").toString()));
+      }
+      if (jsonObj.get("Status") != null && !jsonObj.get("Status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Status").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CSIVolumeExternalStub.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CSIVolumeExternalStub' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CSIVolumeExternalStub> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CSIVolumeExternalStub.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CSIVolumeExternalStub>() {
+           @Override
+           public void write(JsonWriter out, CSIVolumeExternalStub value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CSIVolumeExternalStub read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CSIVolumeExternalStub given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CSIVolumeExternalStub
+  * @throws IOException if the JSON string is invalid with respect to CSIVolumeExternalStub
+  */
+  public static CSIVolumeExternalStub fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CSIVolumeExternalStub.class);
+  }
+
+ /**
+  * Convert an instance of CSIVolumeExternalStub to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

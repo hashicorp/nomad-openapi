@@ -30,6 +30,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * AllocationMetric
  */
@@ -91,6 +111,8 @@ public class AllocationMetric {
   @SerializedName(SERIALIZED_NAME_SCORES)
   private Map<String, Double> scores = null;
 
+  public AllocationMetric() { 
+  }
 
   public AllocationMetric allocationTime(Long allocationTime) {
     
@@ -123,7 +145,7 @@ public class AllocationMetric {
 
   public AllocationMetric putClassExhaustedItem(String key, Integer classExhaustedItem) {
     if (this.classExhausted == null) {
-      this.classExhausted = new HashMap<String, Integer>();
+      this.classExhausted = new HashMap<>();
     }
     this.classExhausted.put(key, classExhaustedItem);
     return this;
@@ -154,7 +176,7 @@ public class AllocationMetric {
 
   public AllocationMetric putClassFilteredItem(String key, Integer classFilteredItem) {
     if (this.classFiltered == null) {
-      this.classFiltered = new HashMap<String, Integer>();
+      this.classFiltered = new HashMap<>();
     }
     this.classFiltered.put(key, classFilteredItem);
     return this;
@@ -208,7 +230,7 @@ public class AllocationMetric {
 
   public AllocationMetric putConstraintFilteredItem(String key, Integer constraintFilteredItem) {
     if (this.constraintFiltered == null) {
-      this.constraintFiltered = new HashMap<String, Integer>();
+      this.constraintFiltered = new HashMap<>();
     }
     this.constraintFiltered.put(key, constraintFilteredItem);
     return this;
@@ -239,7 +261,7 @@ public class AllocationMetric {
 
   public AllocationMetric putDimensionExhaustedItem(String key, Integer dimensionExhaustedItem) {
     if (this.dimensionExhausted == null) {
-      this.dimensionExhausted = new HashMap<String, Integer>();
+      this.dimensionExhausted = new HashMap<>();
     }
     this.dimensionExhausted.put(key, dimensionExhaustedItem);
     return this;
@@ -270,7 +292,7 @@ public class AllocationMetric {
 
   public AllocationMetric putNodesAvailableItem(String key, Integer nodesAvailableItem) {
     if (this.nodesAvailable == null) {
-      this.nodesAvailable = new HashMap<String, Integer>();
+      this.nodesAvailable = new HashMap<>();
     }
     this.nodesAvailable.put(key, nodesAvailableItem);
     return this;
@@ -370,7 +392,7 @@ public class AllocationMetric {
 
   public AllocationMetric addQuotaExhaustedItem(String quotaExhaustedItem) {
     if (this.quotaExhausted == null) {
-      this.quotaExhausted = new ArrayList<String>();
+      this.quotaExhausted = new ArrayList<>();
     }
     this.quotaExhausted.add(quotaExhaustedItem);
     return this;
@@ -401,7 +423,7 @@ public class AllocationMetric {
 
   public AllocationMetric putResourcesExhaustedItem(String key, Resources resourcesExhaustedItem) {
     if (this.resourcesExhausted == null) {
-      this.resourcesExhausted = new HashMap<String, Resources>();
+      this.resourcesExhausted = new HashMap<>();
     }
     this.resourcesExhausted.put(key, resourcesExhaustedItem);
     return this;
@@ -432,7 +454,7 @@ public class AllocationMetric {
 
   public AllocationMetric addScoreMetaDataItem(NodeScoreMeta scoreMetaDataItem) {
     if (this.scoreMetaData == null) {
-      this.scoreMetaData = new ArrayList<NodeScoreMeta>();
+      this.scoreMetaData = new ArrayList<>();
     }
     this.scoreMetaData.add(scoreMetaDataItem);
     return this;
@@ -463,7 +485,7 @@ public class AllocationMetric {
 
   public AllocationMetric putScoresItem(String key, Double scoresItem) {
     if (this.scores == null) {
-      this.scores = new HashMap<String, Double>();
+      this.scores = new HashMap<>();
     }
     this.scores.put(key, scoresItem);
     return this;
@@ -484,6 +506,7 @@ public class AllocationMetric {
   public void setScores(Map<String, Double> scores) {
     this.scores = scores;
   }
+
 
 
   @Override
@@ -549,5 +572,119 @@ public class AllocationMetric {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AllocationTime");
+    openapiFields.add("ClassExhausted");
+    openapiFields.add("ClassFiltered");
+    openapiFields.add("CoalescedFailures");
+    openapiFields.add("ConstraintFiltered");
+    openapiFields.add("DimensionExhausted");
+    openapiFields.add("NodesAvailable");
+    openapiFields.add("NodesEvaluated");
+    openapiFields.add("NodesExhausted");
+    openapiFields.add("NodesFiltered");
+    openapiFields.add("QuotaExhausted");
+    openapiFields.add("ResourcesExhausted");
+    openapiFields.add("ScoreMetaData");
+    openapiFields.add("Scores");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AllocationMetric
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (AllocationMetric.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AllocationMetric is not found in the empty JSON string", AllocationMetric.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!AllocationMetric.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AllocationMetric` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("QuotaExhausted") != null && !jsonObj.get("QuotaExhausted").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QuotaExhausted` to be an array in the JSON string but got `%s`", jsonObj.get("QuotaExhausted").toString()));
+      }
+      JsonArray jsonArrayscoreMetaData = jsonObj.getAsJsonArray("ScoreMetaData");
+      if (jsonArrayscoreMetaData != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("ScoreMetaData").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `ScoreMetaData` to be an array in the JSON string but got `%s`", jsonObj.get("ScoreMetaData").toString()));
+        }
+
+        // validate the optional field `ScoreMetaData` (array)
+        for (int i = 0; i < jsonArrayscoreMetaData.size(); i++) {
+          NodeScoreMeta.validateJsonObject(jsonArrayscoreMetaData.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!AllocationMetric.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AllocationMetric' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<AllocationMetric> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AllocationMetric.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<AllocationMetric>() {
+           @Override
+           public void write(JsonWriter out, AllocationMetric value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public AllocationMetric read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of AllocationMetric given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AllocationMetric
+  * @throws IOException if the JSON string is invalid with respect to AllocationMetric
+  */
+  public static AllocationMetric fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AllocationMetric.class);
+  }
+
+ /**
+  * Convert an instance of AllocationMetric to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

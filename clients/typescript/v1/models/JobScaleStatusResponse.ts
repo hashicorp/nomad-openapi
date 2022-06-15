@@ -64,7 +64,7 @@ export class JobScaleStatusResponse {
     static getAttributeTypeMap() {
         return JobScaleStatusResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

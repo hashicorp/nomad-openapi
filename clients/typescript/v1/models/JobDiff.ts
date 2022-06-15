@@ -59,7 +59,7 @@ export class JobDiff {
     static getAttributeTypeMap() {
         return JobDiff.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

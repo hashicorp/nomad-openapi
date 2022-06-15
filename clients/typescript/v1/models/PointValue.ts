@@ -35,7 +35,7 @@ export class PointValue {
     static getAttributeTypeMap() {
         return PointValue.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

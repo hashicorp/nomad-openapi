@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Events** | Pointer to [**[]TaskEvent**](TaskEvent.md) |  | [optional] 
 **Failed** | Pointer to **bool** |  | [optional] 
-**FinishedAt** | Pointer to **time.Time** |  | [optional] 
-**LastRestart** | Pointer to **time.Time** |  | [optional] 
+**FinishedAt** | Pointer to **NullableTime** |  | [optional] 
+**LastRestart** | Pointer to **NullableTime** |  | [optional] 
 **Restarts** | Pointer to **int32** |  | [optional] 
-**StartedAt** | Pointer to **time.Time** |  | [optional] 
+**StartedAt** | Pointer to **NullableTime** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
-**TaskHandle** | Pointer to [**TaskHandle**](TaskHandle.md) |  | [optional] 
+**TaskHandle** | Pointer to [**NullableTaskHandle**](TaskHandle.md) |  | [optional] 
 
 ## Methods
 
@@ -107,6 +107,16 @@ SetFinishedAt sets FinishedAt field to given value.
 
 HasFinishedAt returns a boolean if a field has been set.
 
+### SetFinishedAtNil
+
+`func (o *TaskState) SetFinishedAtNil(b bool)`
+
+ SetFinishedAtNil sets the value for FinishedAt to be an explicit nil
+
+### UnsetFinishedAt
+`func (o *TaskState) UnsetFinishedAt()`
+
+UnsetFinishedAt ensures that no value is present for FinishedAt, not even an explicit nil
 ### GetLastRestart
 
 `func (o *TaskState) GetLastRestart() time.Time`
@@ -132,6 +142,16 @@ SetLastRestart sets LastRestart field to given value.
 
 HasLastRestart returns a boolean if a field has been set.
 
+### SetLastRestartNil
+
+`func (o *TaskState) SetLastRestartNil(b bool)`
+
+ SetLastRestartNil sets the value for LastRestart to be an explicit nil
+
+### UnsetLastRestart
+`func (o *TaskState) UnsetLastRestart()`
+
+UnsetLastRestart ensures that no value is present for LastRestart, not even an explicit nil
 ### GetRestarts
 
 `func (o *TaskState) GetRestarts() int32`
@@ -182,6 +202,16 @@ SetStartedAt sets StartedAt field to given value.
 
 HasStartedAt returns a boolean if a field has been set.
 
+### SetStartedAtNil
+
+`func (o *TaskState) SetStartedAtNil(b bool)`
+
+ SetStartedAtNil sets the value for StartedAt to be an explicit nil
+
+### UnsetStartedAt
+`func (o *TaskState) UnsetStartedAt()`
+
+UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
 ### GetState
 
 `func (o *TaskState) GetState() string`
@@ -232,6 +262,16 @@ SetTaskHandle sets TaskHandle field to given value.
 
 HasTaskHandle returns a boolean if a field has been set.
 
+### SetTaskHandleNil
+
+`func (o *TaskState) SetTaskHandleNil(b bool)`
+
+ SetTaskHandleNil sets the value for TaskHandle to be an explicit nil
+
+### UnsetTaskHandle
+`func (o *TaskState) UnsetTaskHandle()`
+
+UnsetTaskHandle ensures that no value is present for TaskHandle, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

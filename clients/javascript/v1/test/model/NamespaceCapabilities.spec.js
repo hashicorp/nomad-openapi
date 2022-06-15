@@ -50,7 +50,7 @@
   describe('NamespaceCapabilities', function() {
     it('should create an instance of NamespaceCapabilities', function() {
       // uncomment below and update the code to test NamespaceCapabilities
-      //var instane = new nomad-client.NamespaceCapabilities();
+      //var instance = new nomad-client.NamespaceCapabilities();
       //expect(instance).to.be.a(nomad-client.NamespaceCapabilities);
     });
 

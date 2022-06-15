@@ -1,4 +1,3 @@
-// typings for btoa are incorrect
 import { RequestContext } from "../http/http";
 
 /**
@@ -44,6 +43,7 @@ export class XNomadTokenAuthentication implements SecurityAuthentication {
 
 
 export type AuthMethods = {
+    "default"?: SecurityAuthentication,
     "X-Nomad-Token"?: SecurityAuthentication
 }
 
@@ -53,6 +53,7 @@ export type HttpBearerConfiguration = { tokenProvider: TokenProvider };
 export type OAuth2Configuration = { accessToken: string };
 
 export type AuthMethodsConfiguration = {
+    "default"?: SecurityAuthentication,
     "X-Nomad-Token"?: ApiKeyConfiguration
 }
 
@@ -66,6 +67,7 @@ export function configureAuthMethods(config: AuthMethodsConfiguration | undefine
     if (!config) {
         return authMethods;
     }
+    authMethods["default"] = config["default"]
 
     if (config["X-Nomad-Token"]) {
         authMethods["X-Nomad-Token"] = new XNomadTokenAuthentication(

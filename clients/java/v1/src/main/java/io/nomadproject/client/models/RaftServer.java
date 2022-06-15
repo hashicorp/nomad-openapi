@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * RaftServer
  */
@@ -53,6 +73,8 @@ public class RaftServer {
   @SerializedName(SERIALIZED_NAME_VOTER)
   private Boolean voter;
 
+  public RaftServer() { 
+  }
 
   public RaftServer address(String address) {
     
@@ -192,6 +214,7 @@ public class RaftServer {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -239,5 +262,107 @@ public class RaftServer {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Address");
+    openapiFields.add("ID");
+    openapiFields.add("Leader");
+    openapiFields.add("Node");
+    openapiFields.add("RaftProtocol");
+    openapiFields.add("Voter");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RaftServer
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (RaftServer.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RaftServer is not found in the empty JSON string", RaftServer.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!RaftServer.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RaftServer` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Address") != null && !jsonObj.get("Address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Address").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      if (jsonObj.get("Node") != null && !jsonObj.get("Node").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Node` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Node").toString()));
+      }
+      if (jsonObj.get("RaftProtocol") != null && !jsonObj.get("RaftProtocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RaftProtocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RaftProtocol").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RaftServer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RaftServer' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RaftServer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RaftServer.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RaftServer>() {
+           @Override
+           public void write(JsonWriter out, RaftServer value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RaftServer read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of RaftServer given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RaftServer
+  * @throws IOException if the JSON string is invalid with respect to RaftServer
+  */
+  public static RaftServer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RaftServer.class);
+  }
+
+ /**
+  * Convert an instance of RaftServer to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

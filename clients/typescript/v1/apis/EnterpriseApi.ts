@@ -1,12 +1,13 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
 
-import { AnyType } from '../models/AnyType';
+
 import { QuotaSpec } from '../models/QuotaSpec';
 
 /**
@@ -26,7 +27,7 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'quotaSpec' is not null or undefined
         if (quotaSpec === null || quotaSpec === undefined) {
-            throw new RequiredError('Required parameter quotaSpec was null or undefined when calling createQuotaSpec.');
+            throw new RequiredError("EnterpriseApi", "createQuotaSpec", "quotaSpec");
         }
 
 
@@ -45,17 +46,19 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -69,11 +72,16 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -91,7 +99,7 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'specName' is not null or undefined
         if (specName === null || specName === undefined) {
-            throw new RequiredError('Required parameter specName was null or undefined when calling deleteQuotaSpec.');
+            throw new RequiredError("EnterpriseApi", "deleteQuotaSpec", "specName");
         }
 
 
@@ -111,9 +119,13 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -121,16 +133,17 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -153,7 +166,7 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'specName' is not null or undefined
         if (specName === null || specName === undefined) {
-            throw new RequiredError('Required parameter specName was null or undefined when calling getQuotaSpec.');
+            throw new RequiredError("EnterpriseApi", "getQuotaSpec", "specName");
         }
 
 
@@ -178,39 +191,54 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -250,39 +278,54 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -301,13 +344,13 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'specName' is not null or undefined
         if (specName === null || specName === undefined) {
-            throw new RequiredError('Required parameter specName was null or undefined when calling postQuotaSpec.');
+            throw new RequiredError("EnterpriseApi", "postQuotaSpec", "specName");
         }
 
 
         // verify required parameter 'quotaSpec' is not null or undefined
         if (quotaSpec === null || quotaSpec === undefined) {
-            throw new RequiredError('Required parameter quotaSpec was null or undefined when calling postQuotaSpec.');
+            throw new RequiredError("EnterpriseApi", "postQuotaSpec", "quotaSpec");
         }
 
 
@@ -327,17 +370,19 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -351,11 +396,16 @@ export class EnterpriseApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -378,16 +428,16 @@ export class EnterpriseApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -399,8 +449,7 @@ export class EnterpriseApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -416,16 +465,16 @@ export class EnterpriseApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -437,8 +486,7 @@ export class EnterpriseApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -458,16 +506,16 @@ export class EnterpriseApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -479,8 +527,7 @@ export class EnterpriseApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -490,39 +537,38 @@ export class EnterpriseApiResponseProcessor {
      * @params response Response returned by the server for a request to getQuotas
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getQuotas(response: ResponseContext): Promise<Array<AnyType> > {
+     public async getQuotas(response: ResponseContext): Promise<Array<any> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<AnyType> = ObjectSerializer.deserialize(
+            const body: Array<any> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<AnyType>", ""
-            ) as Array<AnyType>;
+                "Array<any>", ""
+            ) as Array<any>;
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<AnyType> = ObjectSerializer.deserialize(
+            const body: Array<any> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<AnyType>", ""
-            ) as Array<AnyType>;
+                "Array<any>", ""
+            ) as Array<any>;
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -538,16 +584,16 @@ export class EnterpriseApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -559,8 +605,7 @@ export class EnterpriseApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

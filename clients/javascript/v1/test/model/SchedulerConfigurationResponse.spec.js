@@ -50,7 +50,7 @@
   describe('SchedulerConfigurationResponse', function() {
     it('should create an instance of SchedulerConfigurationResponse', function() {
       // uncomment below and update the code to test SchedulerConfigurationResponse
-      //var instane = new nomad-client.SchedulerConfigurationResponse();
+      //var instance = new nomad-client.SchedulerConfigurationResponse();
       //expect(instance).to.be.a(nomad-client.SchedulerConfigurationResponse);
     });
 

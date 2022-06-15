@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cpu** | Pointer to [**AllocatedCpuResources**](AllocatedCpuResources.md) |  | [optional] 
+**Cpu** | Pointer to [**NullableAllocatedCpuResources**](AllocatedCpuResources.md) |  | [optional] 
 **Devices** | Pointer to [**[]AllocatedDeviceResource**](AllocatedDeviceResource.md) |  | [optional] 
-**Memory** | Pointer to [**AllocatedMemoryResources**](AllocatedMemoryResources.md) |  | [optional] 
+**Memory** | Pointer to [**NullableAllocatedMemoryResources**](AllocatedMemoryResources.md) |  | [optional] 
 **Networks** | Pointer to [**[]NetworkResource**](NetworkResource.md) |  | [optional] 
 
 ## Methods
@@ -53,6 +53,16 @@ SetCpu sets Cpu field to given value.
 
 HasCpu returns a boolean if a field has been set.
 
+### SetCpuNil
+
+`func (o *AllocatedTaskResources) SetCpuNil(b bool)`
+
+ SetCpuNil sets the value for Cpu to be an explicit nil
+
+### UnsetCpu
+`func (o *AllocatedTaskResources) UnsetCpu()`
+
+UnsetCpu ensures that no value is present for Cpu, not even an explicit nil
 ### GetDevices
 
 `func (o *AllocatedTaskResources) GetDevices() []AllocatedDeviceResource`
@@ -103,6 +113,16 @@ SetMemory sets Memory field to given value.
 
 HasMemory returns a boolean if a field has been set.
 
+### SetMemoryNil
+
+`func (o *AllocatedTaskResources) SetMemoryNil(b bool)`
+
+ SetMemoryNil sets the value for Memory to be an explicit nil
+
+### UnsetMemory
+`func (o *AllocatedTaskResources) UnsetMemory()`
+
+UnsetMemory ensures that no value is present for Memory, not even an explicit nil
 ### GetNetworks
 
 `func (o *AllocatedTaskResources) GetNetworks() []NetworkResource`

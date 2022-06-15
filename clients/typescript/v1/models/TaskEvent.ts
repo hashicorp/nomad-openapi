@@ -196,7 +196,7 @@ export class TaskEvent {
     static getAttributeTypeMap() {
         return TaskEvent.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

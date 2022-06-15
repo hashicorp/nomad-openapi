@@ -56,7 +56,7 @@ export class DeploymentPauseRequest {
     static getAttributeTypeMap() {
         return DeploymentPauseRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

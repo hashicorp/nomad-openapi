@@ -23,11 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.OffsetDateTime;
-import org.threeten.bp.format.DateTimeFormatter;
 
-import io.nomadproject.client.models.*;
 import okio.ByteString;
 
 import java.io.IOException;
@@ -36,19 +32,28 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
+/*
+ * A JSON utility class
+ *
+ * NOTE: in the future, this class may be converted to static, which may break
+ *       backward-compatibility
+ */
 public class JSON {
-    private Gson gson;
-    private boolean isLenientOnJson = false;
-    private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
-    private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
-    private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
-    private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private static Gson gson;
+    private static boolean isLenientOnJson = false;
+    private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
+    private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
+    private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
+    private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
 
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
@@ -81,13 +86,203 @@ public class JSON {
         return clazz;
     }
 
-    public JSON() {
+    {
         gson = createGson()
             .registerTypeAdapter(Date.class, dateTypeAdapter)
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
             .registerTypeAdapter(byte[].class, byteArrayAdapter)
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ACLPolicy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ACLPolicyListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ACLToken.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ACLTokenListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Affinity.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocDeploymentStatus.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocStopResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedCpuResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedDeviceResource.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedMemoryResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedSharedResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocatedTaskResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Allocation.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocationListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AllocationMetric.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Attribute.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.AutopilotConfiguration.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIControllerInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIMountOptions.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSINodeInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIPlugin.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIPluginListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSISnapshot.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSISnapshotCreateRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSISnapshotCreateResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSISnapshotListResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSITopology.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSITopologyRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolume.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeCapability.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeCreateRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeExternalStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeListExternalResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CSIVolumeRegisterRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.CheckRestart.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Constraint.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Consul.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulConnect.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulExposeConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulExposePath.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulGateway.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulGatewayBindAddress.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulGatewayProxy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulGatewayTLSConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulIngressConfigEntry.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulIngressListener.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulIngressService.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulLinkedService.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulMeshGateway.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulProxy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulSidecarService.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulTerminatingConfigEntry.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ConsulUpstream.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DNSConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Deployment.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentAllocHealthRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentPauseRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentPromoteRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentState.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentUnblockRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DeploymentUpdateResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DesiredTransition.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DesiredUpdates.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DispatchPayloadConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DrainMetadata.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DrainSpec.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DrainStrategy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.DriverInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.EphemeralDisk.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.EvalOptions.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Evaluation.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.EvaluationStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.FieldDiff.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.FuzzyMatch.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.FuzzySearchRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.FuzzySearchResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.GaugeValue.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.HostNetworkInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.HostVolumeInfo.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Job.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobChildrenSummary.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobDeregisterResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobDiff.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobDispatchRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobDispatchResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobEvaluateRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobPlanRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobPlanResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobRegisterRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobRegisterResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobRevertRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobScaleStatusResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobStabilityRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobStabilityResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobSummary.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobValidateRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobValidateResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobVersionsResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.JobsParseRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.LogConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.MetricsSummary.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.MigrateStrategy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Multiregion.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.MultiregionRegion.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.MultiregionStrategy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Namespace.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NamespaceCapabilities.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NetworkResource.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Node.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeCpuResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeDevice.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeDeviceLocality.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeDeviceResource.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeDiskResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeDrainUpdateResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeEligibilityUpdateResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeEvent.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeMemoryResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodePurgeResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeReservedCpuResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeReservedDiskResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeReservedMemoryResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeReservedNetworkResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeReservedResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeResources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeScoreMeta.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeUpdateDrainRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.NodeUpdateEligibilityRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ObjectDiff.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.OneTimeToken.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.OneTimeTokenExchangeRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.OperatorHealthReply.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ParameterizedJobConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PeriodicConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PeriodicForceResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PlanAnnotations.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PointValue.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Port.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PortMapping.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.PreemptionConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.QuotaLimit.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.QuotaSpec.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RaftConfiguration.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RaftServer.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RequestedDevice.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RescheduleEvent.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ReschedulePolicy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RescheduleTracker.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Resources.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.RestartPolicy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SampledValue.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ScalingEvent.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ScalingPolicy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ScalingPolicyListStub.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ScalingRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SchedulerConfiguration.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SchedulerConfigurationResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SchedulerSetConfigurationResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SearchRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SearchResponse.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ServerHealth.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Service.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ServiceCheck.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.ServiceRegistration.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SidecarTask.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Spread.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.SpreadTarget.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Task.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskArtifact.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskCSIPluginConfig.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskDiff.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskEvent.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskGroup.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskGroupDiff.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskGroupScaleStatus.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskGroupSummary.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskHandle.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskLifecycle.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.TaskState.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Template.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.UpdateStrategy.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.Vault.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.VolumeMount.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.VolumeRequest.CustomTypeAdapterFactory())
+            .registerTypeAdapterFactory(new io.nomadproject.client.models.WaitConfig.CustomTypeAdapterFactory())
             .create();
     }
 
@@ -96,7 +291,7 @@ public class JSON {
      *
      * @return Gson
      */
-    public Gson getGson() {
+    public static Gson getGson() {
         return gson;
     }
 
@@ -104,16 +299,13 @@ public class JSON {
      * Set Gson.
      *
      * @param gson Gson
-     * @return JSON
      */
-    public JSON setGson(Gson gson) {
-        this.gson = gson;
-        return this;
+    public static void setGson(Gson gson) {
+        JSON.gson = gson;
     }
 
-    public JSON setLenientOnJson(boolean lenientOnJson) {
+    public static void setLenientOnJson(boolean lenientOnJson) {
         isLenientOnJson = lenientOnJson;
-        return this;
     }
 
     /**
@@ -122,7 +314,7 @@ public class JSON {
      * @param obj Object
      * @return String representation of the JSON
      */
-    public String serialize(Object obj) {
+    public static String serialize(Object obj) {
         return gson.toJson(obj);
     }
 
@@ -135,7 +327,7 @@ public class JSON {
      * @return The deserialized Java object
      */
     @SuppressWarnings("unchecked")
-    public <T> T deserialize(String body, Type returnType) {
+    public static <T> T deserialize(String body, Type returnType) {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
@@ -159,7 +351,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for Byte Array type
      */
-    public class ByteArrayAdapter extends TypeAdapter<byte[]> {
+    public static class ByteArrayAdapter extends TypeAdapter<byte[]> {
 
         @Override
         public void write(JsonWriter out, byte[] value) throws IOException {
@@ -231,7 +423,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for JSR310 LocalDate type
      */
-    public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
+    public static class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
 
@@ -269,14 +461,12 @@ public class JSON {
         }
     }
 
-    public JSON setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public static void setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         offsetDateTimeTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public static void setLocalDateFormat(DateTimeFormatter dateFormat) {
         localDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
     /**
@@ -390,14 +580,11 @@ public class JSON {
         }
     }
 
-    public JSON setDateFormat(DateFormat dateFormat) {
+    public static void setDateFormat(DateFormat dateFormat) {
         dateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setSqlDateFormat(DateFormat dateFormat) {
+    public static void setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
-
 }

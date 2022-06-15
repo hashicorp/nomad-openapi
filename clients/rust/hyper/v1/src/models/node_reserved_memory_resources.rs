@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct NodeReservedMemoryResources {
     #[serde(rename = "MemoryMB", skip_serializing_if = "Option::is_none")]
     pub memory_mb: Option<i32>,

@@ -42,82 +42,7 @@ class DeploymentsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-
-        def __get_deployment(
-            self,
-            deployment_id,
-            **kwargs
-        ):
-            """get_deployment  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_deployment(deployment_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                Deployment
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_deployment = _Endpoint(
+        self.get_deployment_endpoint = _Endpoint(
             settings={
                 'response_type': (Deployment,),
                 'auth': [
@@ -211,85 +136,9 @@ class DeploymentsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_deployment
+            api_client=api_client
         )
-
-        def __get_deployment_allocations(
-            self,
-            deployment_id,
-            **kwargs
-        ):
-            """get_deployment_allocations  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_deployment_allocations(deployment_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [AllocationListStub]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            return self.call_with_http_info(**kwargs)
-
-        self.get_deployment_allocations = _Endpoint(
+        self.get_deployment_allocations_endpoint = _Endpoint(
             settings={
                 'response_type': ([AllocationListStub],),
                 'auth': [
@@ -383,80 +232,9 @@ class DeploymentsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_deployment_allocations
+            api_client=api_client
         )
-
-        def __get_deployments(
-            self,
-            **kwargs
-        ):
-            """get_deployments  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.get_deployments(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
-                wait (str): Provided with IndexParam to wait for change.. [optional]
-                stale (str): If present, results will include stale reads.. [optional]
-                prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                per_page (int): Maximum number of results to return.. [optional]
-                next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                [Deployment]
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.get_deployments = _Endpoint(
+        self.get_deployments_endpoint = _Endpoint(
             settings={
                 'response_type': ([Deployment],),
                 'auth': [
@@ -543,84 +321,9 @@ class DeploymentsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__get_deployments
+            api_client=api_client
         )
-
-        def __post_deployment_allocation_health(
-            self,
-            deployment_id,
-            deployment_alloc_health_request,
-            **kwargs
-        ):
-            """post_deployment_allocation_health  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_deployment_allocation_health(deployment_id, deployment_alloc_health_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-                deployment_alloc_health_request (DeploymentAllocHealthRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                DeploymentUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            kwargs['deployment_alloc_health_request'] = \
-                deployment_alloc_health_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_deployment_allocation_health = _Endpoint(
+        self.post_deployment_allocation_health_endpoint = _Endpoint(
             settings={
                 'response_type': (DeploymentUpdateResponse,),
                 'auth': [
@@ -645,6 +348,7 @@ class DeploymentsApi(object):
                     'deployment_alloc_health_request',
                 ],
                 'nullable': [
+                    'deployment_alloc_health_request',
                 ],
                 'enum': [
                 ],
@@ -696,80 +400,9 @@ class DeploymentsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_deployment_allocation_health
+            api_client=api_client
         )
-
-        def __post_deployment_fail(
-            self,
-            deployment_id,
-            **kwargs
-        ):
-            """post_deployment_fail  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_deployment_fail(deployment_id, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                DeploymentUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            return self.call_with_http_info(**kwargs)
-
-        self.post_deployment_fail = _Endpoint(
+        self.post_deployment_fail_endpoint = _Endpoint(
             settings={
                 'response_type': (DeploymentUpdateResponse,),
                 'auth': [
@@ -838,84 +471,9 @@ class DeploymentsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client,
-            callable=__post_deployment_fail
+            api_client=api_client
         )
-
-        def __post_deployment_pause(
-            self,
-            deployment_id,
-            deployment_pause_request,
-            **kwargs
-        ):
-            """post_deployment_pause  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_deployment_pause(deployment_id, deployment_pause_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-                deployment_pause_request (DeploymentPauseRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                DeploymentUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            kwargs['deployment_pause_request'] = \
-                deployment_pause_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_deployment_pause = _Endpoint(
+        self.post_deployment_pause_endpoint = _Endpoint(
             settings={
                 'response_type': (DeploymentUpdateResponse,),
                 'auth': [
@@ -940,6 +498,7 @@ class DeploymentsApi(object):
                     'deployment_pause_request',
                 ],
                 'nullable': [
+                    'deployment_pause_request',
                 ],
                 'enum': [
                 ],
@@ -991,84 +550,9 @@ class DeploymentsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_deployment_pause
+            api_client=api_client
         )
-
-        def __post_deployment_promote(
-            self,
-            deployment_id,
-            deployment_promote_request,
-            **kwargs
-        ):
-            """post_deployment_promote  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_deployment_promote(deployment_id, deployment_promote_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-                deployment_promote_request (DeploymentPromoteRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                DeploymentUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            kwargs['deployment_promote_request'] = \
-                deployment_promote_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_deployment_promote = _Endpoint(
+        self.post_deployment_promote_endpoint = _Endpoint(
             settings={
                 'response_type': (DeploymentUpdateResponse,),
                 'auth': [
@@ -1093,6 +577,7 @@ class DeploymentsApi(object):
                     'deployment_promote_request',
                 ],
                 'nullable': [
+                    'deployment_promote_request',
                 ],
                 'enum': [
                 ],
@@ -1144,84 +629,9 @@ class DeploymentsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_deployment_promote
+            api_client=api_client
         )
-
-        def __post_deployment_unblock(
-            self,
-            deployment_id,
-            deployment_unblock_request,
-            **kwargs
-        ):
-            """post_deployment_unblock  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.post_deployment_unblock(deployment_id, deployment_unblock_request, async_req=True)
-            >>> result = thread.get()
-
-            Args:
-                deployment_id (str): Deployment ID.
-                deployment_unblock_request (DeploymentUnblockRequest):
-
-            Keyword Args:
-                region (str): Filters results based on the specified region.. [optional]
-                namespace (str): Filters results based on the specified namespace.. [optional]
-                x_nomad_token (str): A Nomad ACL token.. [optional]
-                idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                DeploymentUpdateResponse
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['deployment_id'] = \
-                deployment_id
-            kwargs['deployment_unblock_request'] = \
-                deployment_unblock_request
-            return self.call_with_http_info(**kwargs)
-
-        self.post_deployment_unblock = _Endpoint(
+        self.post_deployment_unblock_endpoint = _Endpoint(
             settings={
                 'response_type': (DeploymentUpdateResponse,),
                 'auth': [
@@ -1246,6 +656,7 @@ class DeploymentsApi(object):
                     'deployment_unblock_request',
                 ],
                 'nullable': [
+                    'deployment_unblock_request',
                 ],
                 'enum': [
                 ],
@@ -1297,6 +708,720 @@ class DeploymentsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client,
-            callable=__post_deployment_unblock
+            api_client=api_client
         )
+
+    def get_deployment(
+        self,
+        deployment_id,
+        **kwargs
+    ):
+        """get_deployment  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_deployment(deployment_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Deployment
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        return self.get_deployment_endpoint.call_with_http_info(**kwargs)
+
+    def get_deployment_allocations(
+        self,
+        deployment_id,
+        **kwargs
+    ):
+        """get_deployment_allocations  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_deployment_allocations(deployment_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [AllocationListStub]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        return self.get_deployment_allocations_endpoint.call_with_http_info(**kwargs)
+
+    def get_deployments(
+        self,
+        **kwargs
+    ):
+        """get_deployments  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_deployments(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            index (int): If set, wait until query exceeds given index. Must be provided with WaitParam.. [optional]
+            wait (str): Provided with IndexParam to wait for change.. [optional]
+            stale (str): If present, results will include stale reads.. [optional]
+            prefix (str): Constrains results to jobs that start with the defined prefix. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            per_page (int): Maximum number of results to return.. [optional]
+            next_token (str): Indicates where to start paging for queries that support pagination.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [Deployment]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_deployments_endpoint.call_with_http_info(**kwargs)
+
+    def post_deployment_allocation_health(
+        self,
+        deployment_id,
+        deployment_alloc_health_request,
+        **kwargs
+    ):
+        """post_deployment_allocation_health  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_deployment_allocation_health(deployment_id, deployment_alloc_health_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+            deployment_alloc_health_request (DeploymentAllocHealthRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeploymentUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        kwargs['deployment_alloc_health_request'] = \
+            deployment_alloc_health_request
+        return self.post_deployment_allocation_health_endpoint.call_with_http_info(**kwargs)
+
+    def post_deployment_fail(
+        self,
+        deployment_id,
+        **kwargs
+    ):
+        """post_deployment_fail  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_deployment_fail(deployment_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeploymentUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        return self.post_deployment_fail_endpoint.call_with_http_info(**kwargs)
+
+    def post_deployment_pause(
+        self,
+        deployment_id,
+        deployment_pause_request,
+        **kwargs
+    ):
+        """post_deployment_pause  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_deployment_pause(deployment_id, deployment_pause_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+            deployment_pause_request (DeploymentPauseRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeploymentUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        kwargs['deployment_pause_request'] = \
+            deployment_pause_request
+        return self.post_deployment_pause_endpoint.call_with_http_info(**kwargs)
+
+    def post_deployment_promote(
+        self,
+        deployment_id,
+        deployment_promote_request,
+        **kwargs
+    ):
+        """post_deployment_promote  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_deployment_promote(deployment_id, deployment_promote_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+            deployment_promote_request (DeploymentPromoteRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeploymentUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        kwargs['deployment_promote_request'] = \
+            deployment_promote_request
+        return self.post_deployment_promote_endpoint.call_with_http_info(**kwargs)
+
+    def post_deployment_unblock(
+        self,
+        deployment_id,
+        deployment_unblock_request,
+        **kwargs
+    ):
+        """post_deployment_unblock  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_deployment_unblock(deployment_id, deployment_unblock_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            deployment_id (str): Deployment ID.
+            deployment_unblock_request (DeploymentUnblockRequest):
+
+        Keyword Args:
+            region (str): Filters results based on the specified region.. [optional]
+            namespace (str): Filters results based on the specified namespace.. [optional]
+            x_nomad_token (str): A Nomad ACL token.. [optional]
+            idempotency_token (str): Can be used to ensure operations are only run once.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeploymentUpdateResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['deployment_id'] = \
+            deployment_id
+        kwargs['deployment_unblock_request'] = \
+            deployment_unblock_request
+        return self.post_deployment_unblock_endpoint.call_with_http_info(**kwargs)
+

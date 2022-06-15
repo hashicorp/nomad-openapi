@@ -35,7 +35,7 @@ export class WaitConfig {
     static getAttributeTypeMap() {
         return WaitConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

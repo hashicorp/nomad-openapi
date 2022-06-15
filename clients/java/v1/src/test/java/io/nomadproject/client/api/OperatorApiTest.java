@@ -20,8 +20,8 @@ import io.nomadproject.client.models.RaftConfiguration;
 import io.nomadproject.client.models.SchedulerConfiguration;
 import io.nomadproject.client.models.SchedulerConfigurationResponse;
 import io.nomadproject.client.models.SchedulerSetConfigurationResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,19 +31,13 @@ import java.util.Map;
 /**
  * API tests for OperatorApi
  */
-@Ignore
+@Disabled
 public class OperatorApiTest {
 
     private final OperatorApi api = new OperatorApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteOperatorRaftPeerTest() throws ApiException {
@@ -52,17 +46,11 @@ public class OperatorApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getOperatorAutopilotConfigurationTest() throws ApiException {
@@ -76,17 +64,11 @@ public class OperatorApiTest {
         Integer perPage = null;
         String nextToken = null;
         AutopilotConfiguration response = api.getOperatorAutopilotConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getOperatorAutopilotHealthTest() throws ApiException {
@@ -100,17 +82,11 @@ public class OperatorApiTest {
         Integer perPage = null;
         String nextToken = null;
         OperatorHealthReply response = api.getOperatorAutopilotHealth(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getOperatorRaftConfigurationTest() throws ApiException {
@@ -124,17 +100,11 @@ public class OperatorApiTest {
         Integer perPage = null;
         String nextToken = null;
         RaftConfiguration response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getOperatorSchedulerConfigurationTest() throws ApiException {
@@ -148,17 +118,11 @@ public class OperatorApiTest {
         Integer perPage = null;
         String nextToken = null;
         SchedulerConfigurationResponse response = api.getOperatorSchedulerConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void postOperatorSchedulerConfigurationTest() throws ApiException {
@@ -168,17 +132,11 @@ public class OperatorApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         SchedulerSetConfigurationResponse response = api.postOperatorSchedulerConfiguration(schedulerConfiguration, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void putOperatorAutopilotConfigurationTest() throws ApiException {
@@ -188,8 +146,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         Boolean response = api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
 }

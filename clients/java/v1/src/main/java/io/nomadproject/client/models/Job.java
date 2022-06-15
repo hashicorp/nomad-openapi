@@ -37,6 +37,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * Job
@@ -191,6 +212,8 @@ public class Job {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Integer version;
 
+  public Job() { 
+  }
 
   public Job affinities(List<Affinity> affinities) {
     
@@ -200,7 +223,7 @@ public class Job {
 
   public Job addAffinitiesItem(Affinity affinitiesItem) {
     if (this.affinities == null) {
-      this.affinities = new ArrayList<Affinity>();
+      this.affinities = new ArrayList<>();
     }
     this.affinities.add(affinitiesItem);
     return this;
@@ -254,7 +277,7 @@ public class Job {
 
   public Job addConstraintsItem(Constraint constraintsItem) {
     if (this.constraints == null) {
-      this.constraints = new ArrayList<Constraint>();
+      this.constraints = new ArrayList<>();
     }
     this.constraints.add(constraintsItem);
     return this;
@@ -356,7 +379,7 @@ public class Job {
 
   public Job addDatacentersItem(String datacentersItem) {
     if (this.datacenters == null) {
-      this.datacenters = new ArrayList<String>();
+      this.datacenters = new ArrayList<>();
     }
     this.datacenters.add(datacentersItem);
     return this;
@@ -481,7 +504,7 @@ public class Job {
 
   public Job putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -813,7 +836,7 @@ public class Job {
 
   public Job addSpreadsItem(Spread spreadsItem) {
     if (this.spreads == null) {
-      this.spreads = new ArrayList<Spread>();
+      this.spreads = new ArrayList<>();
     }
     this.spreads.add(spreadsItem);
     return this;
@@ -959,7 +982,7 @@ public class Job {
 
   public Job addTaskGroupsItem(TaskGroup taskGroupsItem) {
     if (this.taskGroups == null) {
-      this.taskGroups = new ArrayList<TaskGroup>();
+      this.taskGroups = new ArrayList<>();
     }
     this.taskGroups.add(taskGroupsItem);
     return this;
@@ -1099,6 +1122,7 @@ public class Job {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1147,9 +1171,20 @@ public class Job {
         Objects.equals(this.version, job.version);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(affinities, allAtOnce, constraints, consulNamespace, consulToken, createIndex, datacenters, dispatchIdempotencyToken, dispatched, ID, jobModifyIndex, meta, migrate, modifyIndex, multiregion, name, namespace, nomadTokenID, parameterizedJob, parentID, Arrays.hashCode(payload), periodic, priority, region, reschedule, spreads, stable, status, statusDescription, stop, submitTime, taskGroups, type, update, vaultNamespace, vaultToken, version);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1208,5 +1243,244 @@ public class Job {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Affinities");
+    openapiFields.add("AllAtOnce");
+    openapiFields.add("Constraints");
+    openapiFields.add("ConsulNamespace");
+    openapiFields.add("ConsulToken");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("Datacenters");
+    openapiFields.add("DispatchIdempotencyToken");
+    openapiFields.add("Dispatched");
+    openapiFields.add("ID");
+    openapiFields.add("JobModifyIndex");
+    openapiFields.add("Meta");
+    openapiFields.add("Migrate");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("Multiregion");
+    openapiFields.add("Name");
+    openapiFields.add("Namespace");
+    openapiFields.add("NomadTokenID");
+    openapiFields.add("ParameterizedJob");
+    openapiFields.add("ParentID");
+    openapiFields.add("Payload");
+    openapiFields.add("Periodic");
+    openapiFields.add("Priority");
+    openapiFields.add("Region");
+    openapiFields.add("Reschedule");
+    openapiFields.add("Spreads");
+    openapiFields.add("Stable");
+    openapiFields.add("Status");
+    openapiFields.add("StatusDescription");
+    openapiFields.add("Stop");
+    openapiFields.add("SubmitTime");
+    openapiFields.add("TaskGroups");
+    openapiFields.add("Type");
+    openapiFields.add("Update");
+    openapiFields.add("VaultNamespace");
+    openapiFields.add("VaultToken");
+    openapiFields.add("Version");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Job
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Job.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Job is not found in the empty JSON string", Job.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Job.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Job` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayaffinities = jsonObj.getAsJsonArray("Affinities");
+      if (jsonArrayaffinities != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Affinities").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Affinities` to be an array in the JSON string but got `%s`", jsonObj.get("Affinities").toString()));
+        }
+
+        // validate the optional field `Affinities` (array)
+        for (int i = 0; i < jsonArrayaffinities.size(); i++) {
+          Affinity.validateJsonObject(jsonArrayaffinities.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayconstraints = jsonObj.getAsJsonArray("Constraints");
+      if (jsonArrayconstraints != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Constraints").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Constraints` to be an array in the JSON string but got `%s`", jsonObj.get("Constraints").toString()));
+        }
+
+        // validate the optional field `Constraints` (array)
+        for (int i = 0; i < jsonArrayconstraints.size(); i++) {
+          Constraint.validateJsonObject(jsonArrayconstraints.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("ConsulNamespace") != null && !jsonObj.get("ConsulNamespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConsulNamespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConsulNamespace").toString()));
+      }
+      if (jsonObj.get("ConsulToken") != null && !jsonObj.get("ConsulToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConsulToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConsulToken").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Datacenters") != null && !jsonObj.get("Datacenters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Datacenters` to be an array in the JSON string but got `%s`", jsonObj.get("Datacenters").toString()));
+      }
+      if (jsonObj.get("DispatchIdempotencyToken") != null && !jsonObj.get("DispatchIdempotencyToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DispatchIdempotencyToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DispatchIdempotencyToken").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      // validate the optional field `Migrate`
+      if (jsonObj.getAsJsonObject("Migrate") != null) {
+        MigrateStrategy.validateJsonObject(jsonObj.getAsJsonObject("Migrate"));
+      }
+      // validate the optional field `Multiregion`
+      if (jsonObj.getAsJsonObject("Multiregion") != null) {
+        Multiregion.validateJsonObject(jsonObj.getAsJsonObject("Multiregion"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("NomadTokenID") != null && !jsonObj.get("NomadTokenID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NomadTokenID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NomadTokenID").toString()));
+      }
+      // validate the optional field `ParameterizedJob`
+      if (jsonObj.getAsJsonObject("ParameterizedJob") != null) {
+        ParameterizedJobConfig.validateJsonObject(jsonObj.getAsJsonObject("ParameterizedJob"));
+      }
+      if (jsonObj.get("ParentID") != null && !jsonObj.get("ParentID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ParentID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ParentID").toString()));
+      }
+      // validate the optional field `Periodic`
+      if (jsonObj.getAsJsonObject("Periodic") != null) {
+        PeriodicConfig.validateJsonObject(jsonObj.getAsJsonObject("Periodic"));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      // validate the optional field `Reschedule`
+      if (jsonObj.getAsJsonObject("Reschedule") != null) {
+        ReschedulePolicy.validateJsonObject(jsonObj.getAsJsonObject("Reschedule"));
+      }
+      JsonArray jsonArrayspreads = jsonObj.getAsJsonArray("Spreads");
+      if (jsonArrayspreads != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Spreads").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Spreads` to be an array in the JSON string but got `%s`", jsonObj.get("Spreads").toString()));
+        }
+
+        // validate the optional field `Spreads` (array)
+        for (int i = 0; i < jsonArrayspreads.size(); i++) {
+          Spread.validateJsonObject(jsonArrayspreads.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("Status") != null && !jsonObj.get("Status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Status").toString()));
+      }
+      if (jsonObj.get("StatusDescription") != null && !jsonObj.get("StatusDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StatusDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StatusDescription").toString()));
+      }
+      JsonArray jsonArraytaskGroups = jsonObj.getAsJsonArray("TaskGroups");
+      if (jsonArraytaskGroups != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("TaskGroups").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `TaskGroups` to be an array in the JSON string but got `%s`", jsonObj.get("TaskGroups").toString()));
+        }
+
+        // validate the optional field `TaskGroups` (array)
+        for (int i = 0; i < jsonArraytaskGroups.size(); i++) {
+          TaskGroup.validateJsonObject(jsonArraytaskGroups.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+      // validate the optional field `Update`
+      if (jsonObj.getAsJsonObject("Update") != null) {
+        UpdateStrategy.validateJsonObject(jsonObj.getAsJsonObject("Update"));
+      }
+      if (jsonObj.get("VaultNamespace") != null && !jsonObj.get("VaultNamespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VaultNamespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VaultNamespace").toString()));
+      }
+      if (jsonObj.get("VaultToken") != null && !jsonObj.get("VaultToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VaultToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VaultToken").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Job.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Job' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Job> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Job.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Job>() {
+           @Override
+           public void write(JsonWriter out, Job value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Job read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Job given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Job
+  * @throws IOException if the JSON string is invalid with respect to Job
+  */
+  public static Job fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Job.class);
+  }
+
+ /**
+  * Convert an instance of Job to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

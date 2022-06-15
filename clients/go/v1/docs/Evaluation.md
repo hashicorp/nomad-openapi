@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **TriggeredBy** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Wait** | Pointer to **int64** |  | [optional] 
-**WaitUntil** | Pointer to **time.Time** |  | [optional] 
+**WaitUntil** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -778,6 +778,16 @@ SetWaitUntil sets WaitUntil field to given value.
 
 HasWaitUntil returns a boolean if a field has been set.
 
+### SetWaitUntilNil
+
+`func (o *Evaluation) SetWaitUntilNil(b bool)`
+
+ SetWaitUntilNil sets the value for WaitUntil to be an explicit nil
+
+### UnsetWaitUntil
+`func (o *Evaluation) UnsetWaitUntil()`
+
+UnsetWaitUntil ensures that no value is present for WaitUntil, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

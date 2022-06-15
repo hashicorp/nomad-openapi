@@ -41,6 +41,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * TaskGroup
@@ -127,6 +148,8 @@ public class TaskGroup {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private Map<String, VolumeRequest> volumes = null;
 
+  public TaskGroup() { 
+  }
 
   public TaskGroup affinities(List<Affinity> affinities) {
     
@@ -136,7 +159,7 @@ public class TaskGroup {
 
   public TaskGroup addAffinitiesItem(Affinity affinitiesItem) {
     if (this.affinities == null) {
-      this.affinities = new ArrayList<Affinity>();
+      this.affinities = new ArrayList<>();
     }
     this.affinities.add(affinitiesItem);
     return this;
@@ -167,7 +190,7 @@ public class TaskGroup {
 
   public TaskGroup addConstraintsItem(Constraint constraintsItem) {
     if (this.constraints == null) {
-      this.constraints = new ArrayList<Constraint>();
+      this.constraints = new ArrayList<>();
     }
     this.constraints.add(constraintsItem);
     return this;
@@ -290,7 +313,7 @@ public class TaskGroup {
 
   public TaskGroup putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<String, String>();
+      this.meta = new HashMap<>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -367,7 +390,7 @@ public class TaskGroup {
 
   public TaskGroup addNetworksItem(NetworkResource networksItem) {
     if (this.networks == null) {
-      this.networks = new ArrayList<NetworkResource>();
+      this.networks = new ArrayList<>();
     }
     this.networks.add(networksItem);
     return this;
@@ -467,7 +490,7 @@ public class TaskGroup {
 
   public TaskGroup addServicesItem(Service servicesItem) {
     if (this.services == null) {
-      this.services = new ArrayList<Service>();
+      this.services = new ArrayList<>();
     }
     this.services.add(servicesItem);
     return this;
@@ -521,7 +544,7 @@ public class TaskGroup {
 
   public TaskGroup addSpreadsItem(Spread spreadsItem) {
     if (this.spreads == null) {
-      this.spreads = new ArrayList<Spread>();
+      this.spreads = new ArrayList<>();
     }
     this.spreads.add(spreadsItem);
     return this;
@@ -575,7 +598,7 @@ public class TaskGroup {
 
   public TaskGroup addTasksItem(Task tasksItem) {
     if (this.tasks == null) {
-      this.tasks = new ArrayList<Task>();
+      this.tasks = new ArrayList<>();
     }
     this.tasks.add(tasksItem);
     return this;
@@ -629,7 +652,7 @@ public class TaskGroup {
 
   public TaskGroup putVolumesItem(String key, VolumeRequest volumesItem) {
     if (this.volumes == null) {
-      this.volumes = new HashMap<String, VolumeRequest>();
+      this.volumes = new HashMap<>();
     }
     this.volumes.put(key, volumesItem);
     return this;
@@ -650,6 +673,7 @@ public class TaskGroup {
   public void setVolumes(Map<String, VolumeRequest> volumes) {
     this.volumes = volumes;
   }
+
 
 
   @Override
@@ -683,9 +707,20 @@ public class TaskGroup {
         Objects.equals(this.volumes, taskGroup.volumes);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(affinities, constraints, consul, count, ephemeralDisk, maxClientDisconnect, meta, migrate, name, networks, reschedulePolicy, restartPolicy, scaling, services, shutdownDelay, spreads, stopAfterClientDisconnect, tasks, update, volumes);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -727,5 +762,212 @@ public class TaskGroup {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Affinities");
+    openapiFields.add("Constraints");
+    openapiFields.add("Consul");
+    openapiFields.add("Count");
+    openapiFields.add("EphemeralDisk");
+    openapiFields.add("MaxClientDisconnect");
+    openapiFields.add("Meta");
+    openapiFields.add("Migrate");
+    openapiFields.add("Name");
+    openapiFields.add("Networks");
+    openapiFields.add("ReschedulePolicy");
+    openapiFields.add("RestartPolicy");
+    openapiFields.add("Scaling");
+    openapiFields.add("Services");
+    openapiFields.add("ShutdownDelay");
+    openapiFields.add("Spreads");
+    openapiFields.add("StopAfterClientDisconnect");
+    openapiFields.add("Tasks");
+    openapiFields.add("Update");
+    openapiFields.add("Volumes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGroup
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGroup.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGroup is not found in the empty JSON string", TaskGroup.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TaskGroup.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGroup` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayaffinities = jsonObj.getAsJsonArray("Affinities");
+      if (jsonArrayaffinities != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Affinities").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Affinities` to be an array in the JSON string but got `%s`", jsonObj.get("Affinities").toString()));
+        }
+
+        // validate the optional field `Affinities` (array)
+        for (int i = 0; i < jsonArrayaffinities.size(); i++) {
+          Affinity.validateJsonObject(jsonArrayaffinities.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayconstraints = jsonObj.getAsJsonArray("Constraints");
+      if (jsonArrayconstraints != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Constraints").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Constraints` to be an array in the JSON string but got `%s`", jsonObj.get("Constraints").toString()));
+        }
+
+        // validate the optional field `Constraints` (array)
+        for (int i = 0; i < jsonArrayconstraints.size(); i++) {
+          Constraint.validateJsonObject(jsonArrayconstraints.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `Consul`
+      if (jsonObj.getAsJsonObject("Consul") != null) {
+        Consul.validateJsonObject(jsonObj.getAsJsonObject("Consul"));
+      }
+      // validate the optional field `EphemeralDisk`
+      if (jsonObj.getAsJsonObject("EphemeralDisk") != null) {
+        EphemeralDisk.validateJsonObject(jsonObj.getAsJsonObject("EphemeralDisk"));
+      }
+      // validate the optional field `Migrate`
+      if (jsonObj.getAsJsonObject("Migrate") != null) {
+        MigrateStrategy.validateJsonObject(jsonObj.getAsJsonObject("Migrate"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      JsonArray jsonArraynetworks = jsonObj.getAsJsonArray("Networks");
+      if (jsonArraynetworks != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Networks").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Networks` to be an array in the JSON string but got `%s`", jsonObj.get("Networks").toString()));
+        }
+
+        // validate the optional field `Networks` (array)
+        for (int i = 0; i < jsonArraynetworks.size(); i++) {
+          NetworkResource.validateJsonObject(jsonArraynetworks.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `ReschedulePolicy`
+      if (jsonObj.getAsJsonObject("ReschedulePolicy") != null) {
+        ReschedulePolicy.validateJsonObject(jsonObj.getAsJsonObject("ReschedulePolicy"));
+      }
+      // validate the optional field `RestartPolicy`
+      if (jsonObj.getAsJsonObject("RestartPolicy") != null) {
+        RestartPolicy.validateJsonObject(jsonObj.getAsJsonObject("RestartPolicy"));
+      }
+      // validate the optional field `Scaling`
+      if (jsonObj.getAsJsonObject("Scaling") != null) {
+        ScalingPolicy.validateJsonObject(jsonObj.getAsJsonObject("Scaling"));
+      }
+      JsonArray jsonArrayservices = jsonObj.getAsJsonArray("Services");
+      if (jsonArrayservices != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Services").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Services` to be an array in the JSON string but got `%s`", jsonObj.get("Services").toString()));
+        }
+
+        // validate the optional field `Services` (array)
+        for (int i = 0; i < jsonArrayservices.size(); i++) {
+          Service.validateJsonObject(jsonArrayservices.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayspreads = jsonObj.getAsJsonArray("Spreads");
+      if (jsonArrayspreads != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Spreads").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Spreads` to be an array in the JSON string but got `%s`", jsonObj.get("Spreads").toString()));
+        }
+
+        // validate the optional field `Spreads` (array)
+        for (int i = 0; i < jsonArrayspreads.size(); i++) {
+          Spread.validateJsonObject(jsonArrayspreads.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraytasks = jsonObj.getAsJsonArray("Tasks");
+      if (jsonArraytasks != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Tasks").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Tasks` to be an array in the JSON string but got `%s`", jsonObj.get("Tasks").toString()));
+        }
+
+        // validate the optional field `Tasks` (array)
+        for (int i = 0; i < jsonArraytasks.size(); i++) {
+          Task.validateJsonObject(jsonArraytasks.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `Update`
+      if (jsonObj.getAsJsonObject("Update") != null) {
+        UpdateStrategy.validateJsonObject(jsonObj.getAsJsonObject("Update"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TaskGroup.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskGroup' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TaskGroup> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskGroup.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TaskGroup>() {
+           @Override
+           public void write(JsonWriter out, TaskGroup value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TaskGroup read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TaskGroup given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGroup
+  * @throws IOException if the JSON string is invalid with respect to TaskGroup
+  */
+  public static TaskGroup fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskGroup.class);
+  }
+
+ /**
+  * Convert an instance of TaskGroup to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

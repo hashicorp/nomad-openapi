@@ -27,6 +27,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * SearchRequest
  */
@@ -88,6 +108,8 @@ public class SearchRequest {
   @SerializedName(SERIALIZED_NAME_WAIT_TIME)
   private Long waitTime;
 
+  public SearchRequest() { 
+  }
 
   public SearchRequest allowStale(Boolean allowStale) {
     
@@ -189,7 +211,7 @@ public class SearchRequest {
 
   public SearchRequest putHeadersItem(String key, String headersItem) {
     if (this.headers == null) {
-      this.headers = new HashMap<String, String>();
+      this.headers = new HashMap<>();
     }
     this.headers.put(key, headersItem);
     return this;
@@ -266,7 +288,7 @@ public class SearchRequest {
 
   public SearchRequest putParamsItem(String key, String paramsItem) {
     if (this.params == null) {
-      this.params = new HashMap<String, String>();
+      this.params = new HashMap<>();
     }
     this.params.put(key, paramsItem);
     return this;
@@ -429,6 +451,7 @@ public class SearchRequest {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -492,5 +515,124 @@ public class SearchRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AllowStale");
+    openapiFields.add("AuthToken");
+    openapiFields.add("Context");
+    openapiFields.add("Filter");
+    openapiFields.add("Headers");
+    openapiFields.add("Namespace");
+    openapiFields.add("NextToken");
+    openapiFields.add("Params");
+    openapiFields.add("PerPage");
+    openapiFields.add("Prefix");
+    openapiFields.add("Region");
+    openapiFields.add("Reverse");
+    openapiFields.add("WaitIndex");
+    openapiFields.add("WaitTime");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SearchRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (SearchRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SearchRequest is not found in the empty JSON string", SearchRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SearchRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("AuthToken") != null && !jsonObj.get("AuthToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AuthToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AuthToken").toString()));
+      }
+      if (jsonObj.get("Context") != null && !jsonObj.get("Context").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Context` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Context").toString()));
+      }
+      if (jsonObj.get("Filter") != null && !jsonObj.get("Filter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Filter").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextToken").toString()));
+      }
+      if (jsonObj.get("Prefix") != null && !jsonObj.get("Prefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Prefix").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SearchRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SearchRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SearchRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SearchRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SearchRequest>() {
+           @Override
+           public void write(JsonWriter out, SearchRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SearchRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SearchRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SearchRequest
+  * @throws IOException if the JSON string is invalid with respect to SearchRequest
+  */
+  public static SearchRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SearchRequest.class);
+  }
+
+ /**
+  * Convert an instance of SearchRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

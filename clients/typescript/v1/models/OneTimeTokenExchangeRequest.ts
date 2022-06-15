@@ -28,7 +28,7 @@ export class OneTimeTokenExchangeRequest {
     static getAttributeTypeMap() {
         return OneTimeTokenExchangeRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

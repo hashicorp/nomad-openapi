@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 .gitignore
 README.md
 api/openapi.yaml
@@ -256,6 +257,7 @@ src/main/java/io/nomadproject/client/models/ACLPolicy.java
 src/main/java/io/nomadproject/client/models/ACLPolicyListStub.java
 src/main/java/io/nomadproject/client/models/ACLToken.java
 src/main/java/io/nomadproject/client/models/ACLTokenListStub.java
+src/main/java/io/nomadproject/client/models/AbstractOpenApiSchema.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
 src/main/java/io/nomadproject/client/models/AllocStopResponse.java

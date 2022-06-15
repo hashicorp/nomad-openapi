@@ -28,7 +28,7 @@ export class NodeReservedDiskResources {
     static getAttributeTypeMap() {
         return NodeReservedDiskResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

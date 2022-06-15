@@ -290,7 +290,7 @@ export class Job {
     static getAttributeTypeMap() {
         return Job.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

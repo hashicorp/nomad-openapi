@@ -7,7 +7,7 @@
 | **count** | **Integer** |  | [optional] |
 | **error** | **Boolean** |  | [optional] |
 | **message** | **String** |  | [optional] |
-| **meta** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **meta** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **namespace** | **String** |  | [optional] |
 | **policy_override** | **Boolean** |  | [optional] |
 | **region** | **String** |  | [optional] |

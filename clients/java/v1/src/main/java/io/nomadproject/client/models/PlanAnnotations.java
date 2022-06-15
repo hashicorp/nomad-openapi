@@ -30,6 +30,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * PlanAnnotations
  */
@@ -43,6 +63,8 @@ public class PlanAnnotations {
   @SerializedName(SERIALIZED_NAME_PREEMPTED_ALLOCS)
   private List<AllocationListStub> preemptedAllocs = null;
 
+  public PlanAnnotations() { 
+  }
 
   public PlanAnnotations desiredTGUpdates(Map<String, DesiredUpdates> desiredTGUpdates) {
     
@@ -52,7 +74,7 @@ public class PlanAnnotations {
 
   public PlanAnnotations putDesiredTGUpdatesItem(String key, DesiredUpdates desiredTGUpdatesItem) {
     if (this.desiredTGUpdates == null) {
-      this.desiredTGUpdates = new HashMap<String, DesiredUpdates>();
+      this.desiredTGUpdates = new HashMap<>();
     }
     this.desiredTGUpdates.put(key, desiredTGUpdatesItem);
     return this;
@@ -83,7 +105,7 @@ public class PlanAnnotations {
 
   public PlanAnnotations addPreemptedAllocsItem(AllocationListStub preemptedAllocsItem) {
     if (this.preemptedAllocs == null) {
-      this.preemptedAllocs = new ArrayList<AllocationListStub>();
+      this.preemptedAllocs = new ArrayList<>();
     }
     this.preemptedAllocs.add(preemptedAllocsItem);
     return this;
@@ -104,6 +126,7 @@ public class PlanAnnotations {
   public void setPreemptedAllocs(List<AllocationListStub> preemptedAllocs) {
     this.preemptedAllocs = preemptedAllocs;
   }
+
 
 
   @Override
@@ -145,5 +168,103 @@ public class PlanAnnotations {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DesiredTGUpdates");
+    openapiFields.add("PreemptedAllocs");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to PlanAnnotations
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (PlanAnnotations.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PlanAnnotations is not found in the empty JSON string", PlanAnnotations.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!PlanAnnotations.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PlanAnnotations` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraypreemptedAllocs = jsonObj.getAsJsonArray("PreemptedAllocs");
+      if (jsonArraypreemptedAllocs != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("PreemptedAllocs").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `PreemptedAllocs` to be an array in the JSON string but got `%s`", jsonObj.get("PreemptedAllocs").toString()));
+        }
+
+        // validate the optional field `PreemptedAllocs` (array)
+        for (int i = 0; i < jsonArraypreemptedAllocs.size(); i++) {
+          AllocationListStub.validateJsonObject(jsonArraypreemptedAllocs.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PlanAnnotations.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PlanAnnotations' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PlanAnnotations> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PlanAnnotations.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PlanAnnotations>() {
+           @Override
+           public void write(JsonWriter out, PlanAnnotations value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PlanAnnotations read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of PlanAnnotations given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of PlanAnnotations
+  * @throws IOException if the JSON string is invalid with respect to PlanAnnotations
+  */
+  public static PlanAnnotations fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PlanAnnotations.class);
+  }
+
+ /**
+  * Convert an instance of PlanAnnotations to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

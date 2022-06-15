@@ -200,7 +200,7 @@ export class AllocationListStub {
     static getAttributeTypeMap() {
         return AllocationListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

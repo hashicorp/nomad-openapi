@@ -42,7 +42,7 @@ export class DNSConfig {
     static getAttributeTypeMap() {
         return DNSConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

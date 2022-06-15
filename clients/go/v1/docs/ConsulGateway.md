@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ingress** | Pointer to [**ConsulIngressConfigEntry**](ConsulIngressConfigEntry.md) |  | [optional] 
+**Ingress** | Pointer to [**NullableConsulIngressConfigEntry**](ConsulIngressConfigEntry.md) |  | [optional] 
 **Mesh** | Pointer to **interface{}** |  | [optional] 
-**Proxy** | Pointer to [**ConsulGatewayProxy**](ConsulGatewayProxy.md) |  | [optional] 
-**Terminating** | Pointer to [**ConsulTerminatingConfigEntry**](ConsulTerminatingConfigEntry.md) |  | [optional] 
+**Proxy** | Pointer to [**NullableConsulGatewayProxy**](ConsulGatewayProxy.md) |  | [optional] 
+**Terminating** | Pointer to [**NullableConsulTerminatingConfigEntry**](ConsulTerminatingConfigEntry.md) |  | [optional] 
 
 ## Methods
 
@@ -53,6 +53,16 @@ SetIngress sets Ingress field to given value.
 
 HasIngress returns a boolean if a field has been set.
 
+### SetIngressNil
+
+`func (o *ConsulGateway) SetIngressNil(b bool)`
+
+ SetIngressNil sets the value for Ingress to be an explicit nil
+
+### UnsetIngress
+`func (o *ConsulGateway) UnsetIngress()`
+
+UnsetIngress ensures that no value is present for Ingress, not even an explicit nil
 ### GetMesh
 
 `func (o *ConsulGateway) GetMesh() interface{}`
@@ -113,6 +123,16 @@ SetProxy sets Proxy field to given value.
 
 HasProxy returns a boolean if a field has been set.
 
+### SetProxyNil
+
+`func (o *ConsulGateway) SetProxyNil(b bool)`
+
+ SetProxyNil sets the value for Proxy to be an explicit nil
+
+### UnsetProxy
+`func (o *ConsulGateway) UnsetProxy()`
+
+UnsetProxy ensures that no value is present for Proxy, not even an explicit nil
 ### GetTerminating
 
 `func (o *ConsulGateway) GetTerminating() ConsulTerminatingConfigEntry`
@@ -138,6 +158,16 @@ SetTerminating sets Terminating field to given value.
 
 HasTerminating returns a boolean if a field has been set.
 
+### SetTerminatingNil
+
+`func (o *ConsulGateway) SetTerminatingNil(b bool)`
+
+ SetTerminatingNil sets the value for Terminating to be an explicit nil
+
+### UnsetTerminating
+`func (o *ConsulGateway) UnsetTerminating()`
+
+UnsetTerminating ensures that no value is present for Terminating, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

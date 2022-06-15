@@ -37,7 +37,7 @@ export class Multiregion {
     static getAttributeTypeMap() {
         return Multiregion.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -42,7 +42,7 @@ export class JobChildrenSummary {
     static getAttributeTypeMap() {
         return JobChildrenSummary.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

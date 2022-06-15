@@ -28,7 +28,7 @@ export class CSITopology {
     static getAttributeTypeMap() {
         return CSITopology.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

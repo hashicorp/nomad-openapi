@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct MetricsApiClient<C: hyper::client::Connect> {
+pub struct MetricsApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> MetricsApiClient<C> {
+impl<C: hyper::client::connect::Connect> MetricsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> MetricsApiClient<C> {
         MetricsApiClient {
             configuration,
@@ -33,12 +35,14 @@ impl<C: hyper::client::Connect> MetricsApiClient<C> {
 }
 
 pub trait MetricsApi {
-    fn get_metrics_summary(&self, format: Option<&str>) -> Box<dyn Future<Item = crate::models::MetricsSummary, Error = Error<serde_json::Value>>>;
+    fn get_metrics_summary(&self, format: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::MetricsSummary, Error>>>>;
 }
 
-impl<C: hyper::client::Connect>MetricsApi for MetricsApiClient<C> {
-    fn get_metrics_summary(&self, format: Option<&str>) -> Box<dyn Future<Item = crate::models::MetricsSummary, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/metrics".to_string())
+impl<C: hyper::client::connect::Connect>MetricsApi for MetricsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn get_metrics_summary(&self, format: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::MetricsSummary, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/metrics".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -46,7 +50,8 @@ impl<C: hyper::client::Connect>MetricsApi for MetricsApiClient<C> {
             }))
         ;
         if let Some(ref s) = format {
-            req = req.with_query_param("format".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("format".to_string(), query_value);
         }
 
         req.execute(self.configuration.borrow())

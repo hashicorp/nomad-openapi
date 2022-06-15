@@ -49,7 +49,7 @@ export class Port {
     static getAttributeTypeMap() {
         return Port.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

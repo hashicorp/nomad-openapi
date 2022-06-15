@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `create_volume`
+/// struct for typed errors of method [`create_volume`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CreateVolumeError {
@@ -26,7 +26,7 @@ pub enum CreateVolumeError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `delete_snapshot`
+/// struct for typed errors of method [`delete_snapshot`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteSnapshotError {
@@ -37,7 +37,7 @@ pub enum DeleteSnapshotError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `delete_volume_registration`
+/// struct for typed errors of method [`delete_volume_registration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteVolumeRegistrationError {
@@ -48,7 +48,7 @@ pub enum DeleteVolumeRegistrationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `detach_or_delete_volume`
+/// struct for typed errors of method [`detach_or_delete_volume`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DetachOrDeleteVolumeError {
@@ -59,7 +59,7 @@ pub enum DetachOrDeleteVolumeError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_external_volumes`
+/// struct for typed errors of method [`get_external_volumes`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetExternalVolumesError {
@@ -70,7 +70,7 @@ pub enum GetExternalVolumesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_snapshots`
+/// struct for typed errors of method [`get_snapshots`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetSnapshotsError {
@@ -81,7 +81,7 @@ pub enum GetSnapshotsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_volume`
+/// struct for typed errors of method [`get_volume`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetVolumeError {
@@ -92,7 +92,7 @@ pub enum GetVolumeError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_volumes`
+/// struct for typed errors of method [`get_volumes`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetVolumesError {
@@ -103,7 +103,7 @@ pub enum GetVolumesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_snapshot`
+/// struct for typed errors of method [`post_snapshot`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostSnapshotError {
@@ -114,7 +114,7 @@ pub enum PostSnapshotError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_volume`
+/// struct for typed errors of method [`post_volume`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostVolumeError {
@@ -125,7 +125,7 @@ pub enum PostVolumeError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_volume_registration`
+/// struct for typed errors of method [`post_volume_registration`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostVolumeRegistrationError {
@@ -137,11 +137,12 @@ pub enum PostVolumeRegistrationError {
 }
 
 
-pub async fn create_volume(configuration: &configuration::Configuration, volume_id: &str, action: &str, csi_volume_create_request: crate::models::CsiVolumeCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<CreateVolumeError>> {
+pub async fn create_volume(configuration: &configuration::Configuration, volume_id: &str, action: &str, csi_volume_create_request: Option<crate::models::CsiVolumeCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<CreateVolumeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volume/csi/{volumeId}/{action}", configuration.base_path, volumeId=crate::apis::urlencode(volume_id), action=crate::apis::urlencode(action));
+    let local_var_uri_str = format!("{}/volume/csi/{volumeId}/{action}", local_var_configuration.base_path, volumeId=crate::apis::urlencode(volume_id), action=crate::apis::urlencode(action));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -153,13 +154,13 @@ pub async fn create_volume(configuration: &configuration::Configuration, volume_
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -185,10 +186,11 @@ pub async fn create_volume(configuration: &configuration::Configuration, volume_
 }
 
 pub async fn delete_snapshot(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, plugin_id: Option<&str>, snapshot_id: Option<&str>) -> Result<(), Error<DeleteSnapshotError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes/snapshot", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes/snapshot", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -206,13 +208,13 @@ pub async fn delete_snapshot(configuration: &configuration::Configuration, regio
     if let Some(ref local_var_str) = snapshot_id {
         local_var_req_builder = local_var_req_builder.query(&[("snapshot_id", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -237,10 +239,11 @@ pub async fn delete_snapshot(configuration: &configuration::Configuration, regio
 }
 
 pub async fn delete_volume_registration(configuration: &configuration::Configuration, volume_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, force: Option<&str>) -> Result<(), Error<DeleteVolumeRegistrationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
+    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", local_var_configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -255,13 +258,13 @@ pub async fn delete_volume_registration(configuration: &configuration::Configura
     if let Some(ref local_var_str) = force {
         local_var_req_builder = local_var_req_builder.query(&[("force", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -286,10 +289,11 @@ pub async fn delete_volume_registration(configuration: &configuration::Configura
 }
 
 pub async fn detach_or_delete_volume(configuration: &configuration::Configuration, volume_id: &str, action: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, node: Option<&str>) -> Result<(), Error<DetachOrDeleteVolumeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volume/csi/{volumeId}/{action}", configuration.base_path, volumeId=crate::apis::urlencode(volume_id), action=crate::apis::urlencode(action));
+    let local_var_uri_str = format!("{}/volume/csi/{volumeId}/{action}", local_var_configuration.base_path, volumeId=crate::apis::urlencode(volume_id), action=crate::apis::urlencode(action));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -304,13 +308,13 @@ pub async fn detach_or_delete_volume(configuration: &configuration::Configuratio
     if let Some(ref local_var_str) = node {
         local_var_req_builder = local_var_req_builder.query(&[("node", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -335,10 +339,11 @@ pub async fn detach_or_delete_volume(configuration: &configuration::Configuratio
 }
 
 pub async fn get_external_volumes(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Result<crate::models::CsiVolumeListExternalResponse, Error<GetExternalVolumesError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes/external", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes/external", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -365,7 +370,7 @@ pub async fn get_external_volumes(configuration: &configuration::Configuration, 
     if let Some(ref local_var_str) = plugin_id {
         local_var_req_builder = local_var_req_builder.query(&[("plugin_id", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -374,7 +379,7 @@ pub async fn get_external_volumes(configuration: &configuration::Configuration, 
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -399,10 +404,11 @@ pub async fn get_external_volumes(configuration: &configuration::Configuration, 
 }
 
 pub async fn get_snapshots(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Result<crate::models::CsiSnapshotListResponse, Error<GetSnapshotsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes/snapshot", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes/snapshot", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -429,7 +435,7 @@ pub async fn get_snapshots(configuration: &configuration::Configuration, region:
     if let Some(ref local_var_str) = plugin_id {
         local_var_req_builder = local_var_req_builder.query(&[("plugin_id", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -438,7 +444,7 @@ pub async fn get_snapshots(configuration: &configuration::Configuration, region:
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -463,10 +469,11 @@ pub async fn get_snapshots(configuration: &configuration::Configuration, region:
 }
 
 pub async fn get_volume(configuration: &configuration::Configuration, volume_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::CsiVolume, Error<GetVolumeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
+    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", local_var_configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -490,7 +497,7 @@ pub async fn get_volume(configuration: &configuration::Configuration, volume_id:
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -499,7 +506,7 @@ pub async fn get_volume(configuration: &configuration::Configuration, volume_id:
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -524,10 +531,11 @@ pub async fn get_volume(configuration: &configuration::Configuration, volume_id:
 }
 
 pub async fn get_volumes(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, node_id: Option<&str>, plugin_id: Option<&str>, _type: Option<&str>) -> Result<Vec<crate::models::CsiVolumeListStub>, Error<GetVolumesError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -560,7 +568,7 @@ pub async fn get_volumes(configuration: &configuration::Configuration, region: O
     if let Some(ref local_var_str) = _type {
         local_var_req_builder = local_var_req_builder.query(&[("type", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -569,7 +577,7 @@ pub async fn get_volumes(configuration: &configuration::Configuration, region: O
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -593,11 +601,12 @@ pub async fn get_volumes(configuration: &configuration::Configuration, region: O
     }
 }
 
-pub async fn post_snapshot(configuration: &configuration::Configuration, csi_snapshot_create_request: crate::models::CsiSnapshotCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::CsiSnapshotCreateResponse, Error<PostSnapshotError>> {
+pub async fn post_snapshot(configuration: &configuration::Configuration, csi_snapshot_create_request: Option<crate::models::CsiSnapshotCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::CsiSnapshotCreateResponse, Error<PostSnapshotError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes/snapshot", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes/snapshot", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -609,13 +618,13 @@ pub async fn post_snapshot(configuration: &configuration::Configuration, csi_sna
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -640,11 +649,12 @@ pub async fn post_snapshot(configuration: &configuration::Configuration, csi_sna
     }
 }
 
-pub async fn post_volume(configuration: &configuration::Configuration, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostVolumeError>> {
+pub async fn post_volume(configuration: &configuration::Configuration, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostVolumeError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volumes", configuration.base_path);
+    let local_var_uri_str = format!("{}/volumes", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -656,13 +666,13 @@ pub async fn post_volume(configuration: &configuration::Configuration, csi_volum
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -687,11 +697,12 @@ pub async fn post_volume(configuration: &configuration::Configuration, csi_volum
     }
 }
 
-pub async fn post_volume_registration(configuration: &configuration::Configuration, volume_id: &str, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostVolumeRegistrationError>> {
+pub async fn post_volume_registration(configuration: &configuration::Configuration, volume_id: &str, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostVolumeRegistrationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
+    let local_var_uri_str = format!("{}/volume/csi/{volumeId}", local_var_configuration.base_path, volumeId=crate::apis::urlencode(volume_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -703,13 +714,13 @@ pub async fn post_volume_registration(configuration: &configuration::Configurati
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

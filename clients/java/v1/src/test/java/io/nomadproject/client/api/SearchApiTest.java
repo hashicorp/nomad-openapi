@@ -18,8 +18,8 @@ import io.nomadproject.client.models.FuzzySearchRequest;
 import io.nomadproject.client.models.FuzzySearchResponse;
 import io.nomadproject.client.models.SearchRequest;
 import io.nomadproject.client.models.SearchResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,19 +29,13 @@ import java.util.Map;
 /**
  * API tests for SearchApi
  */
-@Ignore
+@Disabled
 public class SearchApiTest {
 
     private final SearchApi api = new SearchApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getFuzzySearchTest() throws ApiException {
@@ -56,17 +50,11 @@ public class SearchApiTest {
         Integer perPage = null;
         String nextToken = null;
         FuzzySearchResponse response = api.getFuzzySearch(fuzzySearchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getSearchTest() throws ApiException {
@@ -81,8 +69,7 @@ public class SearchApiTest {
         Integer perPage = null;
         String nextToken = null;
         SearchResponse response = api.getSearch(searchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
 }

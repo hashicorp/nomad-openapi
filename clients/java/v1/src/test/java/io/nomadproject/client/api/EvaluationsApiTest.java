@@ -16,8 +16,8 @@ package io.nomadproject.client.api;
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.Evaluation;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,19 +27,13 @@ import java.util.Map;
 /**
  * API tests for EvaluationsApi
  */
-@Ignore
+@Disabled
 public class EvaluationsApiTest {
 
     private final EvaluationsApi api = new EvaluationsApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getEvaluationTest() throws ApiException {
@@ -54,17 +48,11 @@ public class EvaluationsApiTest {
         Integer perPage = null;
         String nextToken = null;
         Evaluation response = api.getEvaluation(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getEvaluationAllocationsTest() throws ApiException {
@@ -79,17 +67,11 @@ public class EvaluationsApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<AllocationListStub> response = api.getEvaluationAllocations(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getEvaluationsTest() throws ApiException {
@@ -103,8 +85,7 @@ public class EvaluationsApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<Evaluation> response = api.getEvaluations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
 }

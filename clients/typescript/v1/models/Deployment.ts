@@ -113,7 +113,7 @@ export class Deployment {
     static getAttributeTypeMap() {
         return Deployment.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

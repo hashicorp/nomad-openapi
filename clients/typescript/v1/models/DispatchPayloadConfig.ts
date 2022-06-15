@@ -28,7 +28,7 @@ export class DispatchPayloadConfig {
     static getAttributeTypeMap() {
         return DispatchPayloadConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

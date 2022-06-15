@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * DesiredUpdates
  */
@@ -61,6 +81,8 @@ public class DesiredUpdates {
   @SerializedName(SERIALIZED_NAME_STOP)
   private Integer stop;
 
+  public DesiredUpdates() { 
+  }
 
   public DesiredUpdates canary(Integer canary) {
     
@@ -262,6 +284,7 @@ public class DesiredUpdates {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -313,5 +336,97 @@ public class DesiredUpdates {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Canary");
+    openapiFields.add("DestructiveUpdate");
+    openapiFields.add("Ignore");
+    openapiFields.add("InPlaceUpdate");
+    openapiFields.add("Migrate");
+    openapiFields.add("Place");
+    openapiFields.add("Preemptions");
+    openapiFields.add("Stop");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DesiredUpdates
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (DesiredUpdates.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DesiredUpdates is not found in the empty JSON string", DesiredUpdates.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DesiredUpdates.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DesiredUpdates` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DesiredUpdates.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DesiredUpdates' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DesiredUpdates> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DesiredUpdates.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DesiredUpdates>() {
+           @Override
+           public void write(JsonWriter out, DesiredUpdates value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DesiredUpdates read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DesiredUpdates given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DesiredUpdates
+  * @throws IOException if the JSON string is invalid with respect to DesiredUpdates
+  */
+  public static DesiredUpdates fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DesiredUpdates.class);
+  }
+
+ /**
+  * Convert an instance of DesiredUpdates to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

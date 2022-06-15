@@ -30,7 +30,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **volume_id** | **String** | Volume unique identifier. | [required] |
 **action** | **String** | The action to perform on the Volume (create, detach, delete). | [required] |
-**csi_volume_create_request** | [**CsiVolumeCreateRequest**](CsiVolumeCreateRequest.md) |  | [required] |
+**csi_volume_create_request** | Option<[**CsiVolumeCreateRequest**](CsiVolumeCreateRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -312,7 +312,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**csi_snapshot_create_request** | [**CsiSnapshotCreateRequest**](CsiSnapshotCreateRequest.md) |  | [required] |
+**csi_snapshot_create_request** | Option<[**CsiSnapshotCreateRequest**](CsiSnapshotCreateRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -344,7 +344,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**csi_volume_register_request** | [**CsiVolumeRegisterRequest**](CsiVolumeRegisterRequest.md) |  | [required] |
+**csi_volume_register_request** | Option<[**CsiVolumeRegisterRequest**](CsiVolumeRegisterRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -377,7 +377,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **volume_id** | **String** | Volume unique identifier. | [required] |
-**csi_volume_register_request** | [**CsiVolumeRegisterRequest**](CsiVolumeRegisterRequest.md) |  | [required] |
+**csi_volume_register_request** | Option<[**CsiVolumeRegisterRequest**](CsiVolumeRegisterRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

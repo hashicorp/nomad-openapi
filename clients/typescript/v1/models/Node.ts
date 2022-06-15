@@ -234,7 +234,7 @@ export class Node {
     static getAttributeTypeMap() {
         return Node.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

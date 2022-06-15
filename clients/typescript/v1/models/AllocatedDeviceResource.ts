@@ -49,7 +49,7 @@ export class AllocatedDeviceResource {
     static getAttributeTypeMap() {
         return AllocatedDeviceResource.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -14,8 +14,8 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,19 +25,13 @@ import java.util.Map;
 /**
  * API tests for StatusApi
  */
-@Ignore
+@Disabled
 public class StatusApiTest {
 
     private final StatusApi api = new StatusApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getStatusLeaderTest() throws ApiException {
@@ -51,17 +45,11 @@ public class StatusApiTest {
         Integer perPage = null;
         String nextToken = null;
         String response = api.getStatusLeader(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getStatusPeersTest() throws ApiException {
@@ -75,8 +63,7 @@ public class StatusApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<String> response = api.getStatusPeers(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
 }

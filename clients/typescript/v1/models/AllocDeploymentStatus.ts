@@ -49,7 +49,7 @@ export class AllocDeploymentStatus {
     static getAttributeTypeMap() {
         return AllocDeploymentStatus.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

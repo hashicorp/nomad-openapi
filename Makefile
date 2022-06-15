@@ -1,5 +1,5 @@
-VERSION=v5.2.0
-DOCKER_IMAGE="openapitools/openapi-generator-cli:$(VERSION)"
+OPENAPI_GEN_VERSION=v6.0.0
+DOCKER_IMAGE="openapitools/openapi-generator-cli:$(OPENAPI_GEN_VERSION)"
 THIS_OS := $(shell go env GOOS)
 
 CGO_ENABLED = 1

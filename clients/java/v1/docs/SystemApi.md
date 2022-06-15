@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://127.0.0.1:4646/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**putSystemGC**](SystemApi.md#putSystemGC) | **PUT** /system/gc | 
-[**putSystemReconcileSummaries**](SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**putSystemGC**](SystemApi.md#putSystemGC) | **PUT** /system/gc |  |
+| [**putSystemReconcileSummaries**](SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries |  |
 
 
 <a name="putSystemGC"></a>
@@ -55,12 +55,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **idempotencyToken** | **String**| Can be used to ensure operations are only run once. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **idempotencyToken** | **String**| Can be used to ensure operations are only run once. | [optional] |
 
 ### Return type
 
@@ -78,11 +78,11 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  -  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 
 <a name="putSystemReconcileSummaries"></a>
 # **putSystemReconcileSummaries**
@@ -131,12 +131,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region** | **String**| Filters results based on the specified region. | [optional]
- **namespace** | **String**| Filters results based on the specified namespace. | [optional]
- **xNomadToken** | **String**| A Nomad ACL token. | [optional]
- **idempotencyToken** | **String**| Can be used to ensure operations are only run once. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **region** | **String**| Filters results based on the specified region. | [optional] |
+| **namespace** | **String**| Filters results based on the specified namespace. | [optional] |
+| **xNomadToken** | **String**| A Nomad ACL token. | [optional] |
+| **idempotencyToken** | **String**| Can be used to ensure operations are only run once. | [optional] |
 
 ### Return type
 
@@ -154,9 +154,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  -  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 

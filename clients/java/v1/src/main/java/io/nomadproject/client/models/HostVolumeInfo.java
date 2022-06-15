@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * HostVolumeInfo
  */
@@ -37,6 +57,8 @@ public class HostVolumeInfo {
   @SerializedName(SERIALIZED_NAME_READ_ONLY)
   private Boolean readOnly;
 
+  public HostVolumeInfo() { 
+  }
 
   public HostVolumeInfo path(String path) {
     
@@ -84,6 +106,7 @@ public class HostVolumeInfo {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,5 +146,94 @@ public class HostVolumeInfo {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Path");
+    openapiFields.add("ReadOnly");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to HostVolumeInfo
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (HostVolumeInfo.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in HostVolumeInfo is not found in the empty JSON string", HostVolumeInfo.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!HostVolumeInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HostVolumeInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Path") != null && !jsonObj.get("Path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Path").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!HostVolumeInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'HostVolumeInfo' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<HostVolumeInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(HostVolumeInfo.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<HostVolumeInfo>() {
+           @Override
+           public void write(JsonWriter out, HostVolumeInfo value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public HostVolumeInfo read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of HostVolumeInfo given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of HostVolumeInfo
+  * @throws IOException if the JSON string is invalid with respect to HostVolumeInfo
+  */
+  public static HostVolumeInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, HostVolumeInfo.class);
+  }
+
+ /**
+  * Convert an instance of HostVolumeInfo to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

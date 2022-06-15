@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://127.0.0.1:4646/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getRegions**](RegionsApi.md#getRegions) | **GET** /regions | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getRegions**](RegionsApi.md#getRegions) | **GET** /regions |  |
 
 
 <a name="getRegions"></a>
@@ -68,9 +68,9 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**400** | Bad request |  -  |
-**403** | Forbidden |  -  |
-**405** | Method not allowed |  -  |
-**500** | Internal server error |  -  |
+| **200** |  |  -  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
+| **405** | Method not allowed |  -  |
+| **500** | Internal server error |  -  |
 

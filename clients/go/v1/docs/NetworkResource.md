@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CIDR** | Pointer to **string** |  | [optional] 
-**DNS** | Pointer to [**DNSConfig**](DNSConfig.md) |  | [optional] 
+**DNS** | Pointer to [**NullableDNSConfig**](DNSConfig.md) |  | [optional] 
 **Device** | Pointer to **string** |  | [optional] 
 **DynamicPorts** | Pointer to [**[]Port**](Port.md) |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
@@ -83,6 +83,16 @@ SetDNS sets DNS field to given value.
 
 HasDNS returns a boolean if a field has been set.
 
+### SetDNSNil
+
+`func (o *NetworkResource) SetDNSNil(b bool)`
+
+ SetDNSNil sets the value for DNS to be an explicit nil
+
+### UnsetDNS
+`func (o *NetworkResource) UnsetDNS()`
+
+UnsetDNS ensures that no value is present for DNS, not even an explicit nil
 ### GetDevice
 
 `func (o *NetworkResource) GetDevice() string`

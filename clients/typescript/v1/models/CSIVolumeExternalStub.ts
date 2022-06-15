@@ -77,7 +77,7 @@ export class CSIVolumeExternalStub {
     static getAttributeTypeMap() {
         return CSIVolumeExternalStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

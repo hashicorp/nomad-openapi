@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Migrate** | Pointer to [**MigrateStrategy**](MigrateStrategy.md) |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
-**Multiregion** | Pointer to [**Multiregion**](Multiregion.md) |  | [optional] 
+**Multiregion** | Pointer to [**NullableMultiregion**](Multiregion.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **NomadTokenID** | Pointer to **string** |  | [optional] 
-**ParameterizedJob** | Pointer to [**ParameterizedJobConfig**](ParameterizedJobConfig.md) |  | [optional] 
+**ParameterizedJob** | Pointer to [**NullableParameterizedJobConfig**](ParameterizedJobConfig.md) |  | [optional] 
 **ParentID** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **Periodic** | Pointer to [**PeriodicConfig**](PeriodicConfig.md) |  | [optional] 
@@ -436,6 +436,16 @@ SetMultiregion sets Multiregion field to given value.
 
 HasMultiregion returns a boolean if a field has been set.
 
+### SetMultiregionNil
+
+`func (o *Job) SetMultiregionNil(b bool)`
+
+ SetMultiregionNil sets the value for Multiregion to be an explicit nil
+
+### UnsetMultiregion
+`func (o *Job) UnsetMultiregion()`
+
+UnsetMultiregion ensures that no value is present for Multiregion, not even an explicit nil
 ### GetName
 
 `func (o *Job) GetName() string`
@@ -536,6 +546,16 @@ SetParameterizedJob sets ParameterizedJob field to given value.
 
 HasParameterizedJob returns a boolean if a field has been set.
 
+### SetParameterizedJobNil
+
+`func (o *Job) SetParameterizedJobNil(b bool)`
+
+ SetParameterizedJobNil sets the value for ParameterizedJob to be an explicit nil
+
+### UnsetParameterizedJob
+`func (o *Job) UnsetParameterizedJob()`
+
+UnsetParameterizedJob ensures that no value is present for ParameterizedJob, not even an explicit nil
 ### GetParentID
 
 `func (o *Job) GetParentID() string`

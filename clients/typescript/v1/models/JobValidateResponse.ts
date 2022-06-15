@@ -49,7 +49,7 @@ export class JobValidateResponse {
     static getAttributeTypeMap() {
         return JobValidateResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

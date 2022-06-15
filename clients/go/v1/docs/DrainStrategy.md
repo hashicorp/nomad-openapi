@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Deadline** | Pointer to **int64** |  | [optional] 
-**ForceDeadline** | Pointer to **time.Time** |  | [optional] 
+**ForceDeadline** | Pointer to **NullableTime** |  | [optional] 
 **IgnoreSystemJobs** | Pointer to **bool** |  | [optional] 
-**StartedAt** | Pointer to **time.Time** |  | [optional] 
+**StartedAt** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -78,6 +78,16 @@ SetForceDeadline sets ForceDeadline field to given value.
 
 HasForceDeadline returns a boolean if a field has been set.
 
+### SetForceDeadlineNil
+
+`func (o *DrainStrategy) SetForceDeadlineNil(b bool)`
+
+ SetForceDeadlineNil sets the value for ForceDeadline to be an explicit nil
+
+### UnsetForceDeadline
+`func (o *DrainStrategy) UnsetForceDeadline()`
+
+UnsetForceDeadline ensures that no value is present for ForceDeadline, not even an explicit nil
 ### GetIgnoreSystemJobs
 
 `func (o *DrainStrategy) GetIgnoreSystemJobs() bool`
@@ -128,6 +138,16 @@ SetStartedAt sets StartedAt field to given value.
 
 HasStartedAt returns a boolean if a field has been set.
 
+### SetStartedAtNil
+
+`func (o *DrainStrategy) SetStartedAtNil(b bool)`
+
+ SetStartedAtNil sets the value for StartedAt to be an explicit nil
+
+### UnsetStartedAt
+`func (o *DrainStrategy) UnsetStartedAt()`
+
+UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

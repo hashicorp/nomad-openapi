@@ -77,7 +77,7 @@ export class JobRevertRequest {
     static getAttributeTypeMap() {
         return JobRevertRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -35,7 +35,7 @@ export class MultiregionStrategy {
     static getAttributeTypeMap() {
         return MultiregionStrategy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

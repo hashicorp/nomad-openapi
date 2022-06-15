@@ -26,6 +26,27 @@ import io.nomadproject.client.models.SidecarTask;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * ConsulConnect
@@ -48,6 +69,8 @@ public class ConsulConnect {
   @SerializedName(SERIALIZED_NAME_SIDECAR_TASK)
   private SidecarTask sidecarTask;
 
+  public ConsulConnect() { 
+  }
 
   public ConsulConnect gateway(ConsulGateway gateway) {
     
@@ -141,6 +164,7 @@ public class ConsulConnect {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -156,9 +180,20 @@ public class ConsulConnect {
         Objects.equals(this.sidecarTask, consulConnect.sidecarTask);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(gateway, _native, sidecarService, sidecarTask);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -184,5 +219,105 @@ public class ConsulConnect {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Gateway");
+    openapiFields.add("Native");
+    openapiFields.add("SidecarService");
+    openapiFields.add("SidecarTask");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsulConnect
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ConsulConnect.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsulConnect is not found in the empty JSON string", ConsulConnect.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsulConnect.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsulConnect` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `Gateway`
+      if (jsonObj.getAsJsonObject("Gateway") != null) {
+        ConsulGateway.validateJsonObject(jsonObj.getAsJsonObject("Gateway"));
+      }
+      // validate the optional field `SidecarService`
+      if (jsonObj.getAsJsonObject("SidecarService") != null) {
+        ConsulSidecarService.validateJsonObject(jsonObj.getAsJsonObject("SidecarService"));
+      }
+      // validate the optional field `SidecarTask`
+      if (jsonObj.getAsJsonObject("SidecarTask") != null) {
+        SidecarTask.validateJsonObject(jsonObj.getAsJsonObject("SidecarTask"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsulConnect.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsulConnect' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsulConnect> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsulConnect.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsulConnect>() {
+           @Override
+           public void write(JsonWriter out, ConsulConnect value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsulConnect read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsulConnect given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsulConnect
+  * @throws IOException if the JSON string is invalid with respect to ConsulConnect
+  */
+  public static ConsulConnect fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsulConnect.class);
+  }
+
+ /**
+  * Convert an instance of ConsulConnect to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

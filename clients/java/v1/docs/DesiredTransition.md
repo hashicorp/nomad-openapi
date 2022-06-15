@@ -5,10 +5,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**migrate** | **Boolean** |  |  [optional]
-**reschedule** | **Boolean** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**migrate** | **Boolean** |  |  [optional] |
+|**reschedule** | **Boolean** |  |  [optional] |
 
 
 

@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * CSIControllerInfo
  */
@@ -77,6 +97,8 @@ public class CSIControllerInfo {
   @SerializedName(SERIALIZED_NAME_SUPPORTS_READ_ONLY_ATTACH)
   private Boolean supportsReadOnlyAttach;
 
+  public CSIControllerInfo() { 
+  }
 
   public CSIControllerInfo supportsAttachDetach(Boolean supportsAttachDetach) {
     
@@ -354,6 +376,7 @@ public class CSIControllerInfo {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -413,5 +436,101 @@ public class CSIControllerInfo {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("SupportsAttachDetach");
+    openapiFields.add("SupportsClone");
+    openapiFields.add("SupportsCondition");
+    openapiFields.add("SupportsCreateDelete");
+    openapiFields.add("SupportsCreateDeleteSnapshot");
+    openapiFields.add("SupportsExpand");
+    openapiFields.add("SupportsGet");
+    openapiFields.add("SupportsGetCapacity");
+    openapiFields.add("SupportsListSnapshots");
+    openapiFields.add("SupportsListVolumes");
+    openapiFields.add("SupportsListVolumesAttachedNodes");
+    openapiFields.add("SupportsReadOnlyAttach");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CSIControllerInfo
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CSIControllerInfo.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CSIControllerInfo is not found in the empty JSON string", CSIControllerInfo.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CSIControllerInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CSIControllerInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CSIControllerInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CSIControllerInfo' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CSIControllerInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CSIControllerInfo.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CSIControllerInfo>() {
+           @Override
+           public void write(JsonWriter out, CSIControllerInfo value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CSIControllerInfo read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CSIControllerInfo given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CSIControllerInfo
+  * @throws IOException if the JSON string is invalid with respect to CSIControllerInfo
+  */
+  public static CSIControllerInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CSIControllerInfo.class);
+  }
+
+ /**
+  * Convert an instance of CSIControllerInfo to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

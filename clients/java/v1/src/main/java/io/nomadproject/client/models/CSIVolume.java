@@ -29,11 +29,32 @@ import io.nomadproject.client.models.CSIVolumeCapability;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.threeten.bp.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
 
 /**
  * CSIVolume
@@ -172,6 +193,8 @@ public class CSIVolume {
   @SerializedName(SERIALIZED_NAME_WRITE_ALLOCS)
   private Map<String, Allocation> writeAllocs = null;
 
+  public CSIVolume() { 
+  }
 
   public CSIVolume accessMode(String accessMode) {
     
@@ -204,7 +227,7 @@ public class CSIVolume {
 
   public CSIVolume addAllocationsItem(AllocationListStub allocationsItem) {
     if (this.allocations == null) {
-      this.allocations = new ArrayList<AllocationListStub>();
+      this.allocations = new ArrayList<>();
     }
     this.allocations.add(allocationsItem);
     return this;
@@ -304,7 +327,7 @@ public class CSIVolume {
 
   public CSIVolume putContextItem(String key, String contextItem) {
     if (this.context == null) {
-      this.context = new HashMap<String, String>();
+      this.context = new HashMap<>();
     }
     this.context.put(key, contextItem);
     return this;
@@ -615,7 +638,7 @@ public class CSIVolume {
 
   public CSIVolume putParametersItem(String key, String parametersItem) {
     if (this.parameters == null) {
-      this.parameters = new HashMap<String, String>();
+      this.parameters = new HashMap<>();
     }
     this.parameters.put(key, parametersItem);
     return this;
@@ -715,7 +738,7 @@ public class CSIVolume {
 
   public CSIVolume putReadAllocsItem(String key, Allocation readAllocsItem) {
     if (this.readAllocs == null) {
-      this.readAllocs = new HashMap<String, Allocation>();
+      this.readAllocs = new HashMap<>();
     }
     this.readAllocs.put(key, readAllocsItem);
     return this;
@@ -746,7 +769,7 @@ public class CSIVolume {
 
   public CSIVolume addRequestedCapabilitiesItem(CSIVolumeCapability requestedCapabilitiesItem) {
     if (this.requestedCapabilities == null) {
-      this.requestedCapabilities = new ArrayList<CSIVolumeCapability>();
+      this.requestedCapabilities = new ArrayList<>();
     }
     this.requestedCapabilities.add(requestedCapabilitiesItem);
     return this;
@@ -892,7 +915,7 @@ public class CSIVolume {
 
   public CSIVolume putSecretsItem(String key, String secretsItem) {
     if (this.secrets == null) {
-      this.secrets = new HashMap<String, String>();
+      this.secrets = new HashMap<>();
     }
     this.secrets.put(key, secretsItem);
     return this;
@@ -946,7 +969,7 @@ public class CSIVolume {
 
   public CSIVolume addTopologiesItem(CSITopology topologiesItem) {
     if (this.topologies == null) {
-      this.topologies = new ArrayList<CSITopology>();
+      this.topologies = new ArrayList<>();
     }
     this.topologies.add(topologiesItem);
     return this;
@@ -977,7 +1000,7 @@ public class CSIVolume {
 
   public CSIVolume putWriteAllocsItem(String key, Allocation writeAllocsItem) {
     if (this.writeAllocs == null) {
-      this.writeAllocs = new HashMap<String, Allocation>();
+      this.writeAllocs = new HashMap<>();
     }
     this.writeAllocs.put(key, writeAllocsItem);
     return this;
@@ -998,6 +1021,7 @@ public class CSIVolume {
   public void setWriteAllocs(Map<String, Allocation> writeAllocs) {
     this.writeAllocs = writeAllocs;
   }
+
 
 
   @Override
@@ -1044,9 +1068,20 @@ public class CSIVolume {
         Objects.equals(this.writeAllocs, csIVolume.writeAllocs);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accessMode, allocations, attachmentMode, capacity, cloneID, context, controllerRequired, controllersExpected, controllersHealthy, createIndex, externalID, ID, modifyIndex, mountOptions, name, namespace, nodesExpected, nodesHealthy, parameters, pluginID, provider, providerVersion, readAllocs, requestedCapabilities, requestedCapacityMax, requestedCapacityMin, requestedTopologies, resourceExhausted, schedulable, secrets, snapshotID, topologies, writeAllocs);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1101,5 +1136,199 @@ public class CSIVolume {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessMode");
+    openapiFields.add("Allocations");
+    openapiFields.add("AttachmentMode");
+    openapiFields.add("Capacity");
+    openapiFields.add("CloneID");
+    openapiFields.add("Context");
+    openapiFields.add("ControllerRequired");
+    openapiFields.add("ControllersExpected");
+    openapiFields.add("ControllersHealthy");
+    openapiFields.add("CreateIndex");
+    openapiFields.add("ExternalID");
+    openapiFields.add("ID");
+    openapiFields.add("ModifyIndex");
+    openapiFields.add("MountOptions");
+    openapiFields.add("Name");
+    openapiFields.add("Namespace");
+    openapiFields.add("NodesExpected");
+    openapiFields.add("NodesHealthy");
+    openapiFields.add("Parameters");
+    openapiFields.add("PluginID");
+    openapiFields.add("Provider");
+    openapiFields.add("ProviderVersion");
+    openapiFields.add("ReadAllocs");
+    openapiFields.add("RequestedCapabilities");
+    openapiFields.add("RequestedCapacityMax");
+    openapiFields.add("RequestedCapacityMin");
+    openapiFields.add("RequestedTopologies");
+    openapiFields.add("ResourceExhausted");
+    openapiFields.add("Schedulable");
+    openapiFields.add("Secrets");
+    openapiFields.add("SnapshotID");
+    openapiFields.add("Topologies");
+    openapiFields.add("WriteAllocs");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CSIVolume
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CSIVolume.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CSIVolume is not found in the empty JSON string", CSIVolume.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CSIVolume.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CSIVolume` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("AccessMode") != null && !jsonObj.get("AccessMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccessMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccessMode").toString()));
+      }
+      JsonArray jsonArrayallocations = jsonObj.getAsJsonArray("Allocations");
+      if (jsonArrayallocations != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Allocations").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Allocations` to be an array in the JSON string but got `%s`", jsonObj.get("Allocations").toString()));
+        }
+
+        // validate the optional field `Allocations` (array)
+        for (int i = 0; i < jsonArrayallocations.size(); i++) {
+          AllocationListStub.validateJsonObject(jsonArrayallocations.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("AttachmentMode") != null && !jsonObj.get("AttachmentMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AttachmentMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AttachmentMode").toString()));
+      }
+      if (jsonObj.get("CloneID") != null && !jsonObj.get("CloneID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CloneID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CloneID").toString()));
+      }
+      if (jsonObj.get("ExternalID") != null && !jsonObj.get("ExternalID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ExternalID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ExternalID").toString()));
+      }
+      if (jsonObj.get("ID") != null && !jsonObj.get("ID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      }
+      // validate the optional field `MountOptions`
+      if (jsonObj.getAsJsonObject("MountOptions") != null) {
+        CSIMountOptions.validateJsonObject(jsonObj.getAsJsonObject("MountOptions"));
+      }
+      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("PluginID") != null && !jsonObj.get("PluginID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PluginID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PluginID").toString()));
+      }
+      if (jsonObj.get("Provider") != null && !jsonObj.get("Provider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Provider").toString()));
+      }
+      if (jsonObj.get("ProviderVersion") != null && !jsonObj.get("ProviderVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ProviderVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ProviderVersion").toString()));
+      }
+      JsonArray jsonArrayrequestedCapabilities = jsonObj.getAsJsonArray("RequestedCapabilities");
+      if (jsonArrayrequestedCapabilities != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("RequestedCapabilities").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `RequestedCapabilities` to be an array in the JSON string but got `%s`", jsonObj.get("RequestedCapabilities").toString()));
+        }
+
+        // validate the optional field `RequestedCapabilities` (array)
+        for (int i = 0; i < jsonArrayrequestedCapabilities.size(); i++) {
+          CSIVolumeCapability.validateJsonObject(jsonArrayrequestedCapabilities.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `RequestedTopologies`
+      if (jsonObj.getAsJsonObject("RequestedTopologies") != null) {
+        CSITopologyRequest.validateJsonObject(jsonObj.getAsJsonObject("RequestedTopologies"));
+      }
+      if (jsonObj.get("SnapshotID") != null && !jsonObj.get("SnapshotID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SnapshotID").toString()));
+      }
+      JsonArray jsonArraytopologies = jsonObj.getAsJsonArray("Topologies");
+      if (jsonArraytopologies != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Topologies").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Topologies` to be an array in the JSON string but got `%s`", jsonObj.get("Topologies").toString()));
+        }
+
+        // validate the optional field `Topologies` (array)
+        for (int i = 0; i < jsonArraytopologies.size(); i++) {
+          CSITopology.validateJsonObject(jsonArraytopologies.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CSIVolume.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CSIVolume' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CSIVolume> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CSIVolume.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CSIVolume>() {
+           @Override
+           public void write(JsonWriter out, CSIVolume value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CSIVolume read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CSIVolume given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CSIVolume
+  * @throws IOException if the JSON string is invalid with respect to CSIVolume
+  */
+  public static CSIVolume fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CSIVolume.class);
+  }
+
+ /**
+  * Convert an instance of CSIVolume to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

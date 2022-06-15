@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisableDefaultTCPCheck** | Pointer to **bool** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
-**Proxy** | Pointer to [**ConsulProxy**](ConsulProxy.md) |  | [optional] 
+**Proxy** | Pointer to [**NullableConsulProxy**](ConsulProxy.md) |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -103,6 +103,16 @@ SetProxy sets Proxy field to given value.
 
 HasProxy returns a boolean if a field has been set.
 
+### SetProxyNil
+
+`func (o *ConsulSidecarService) SetProxyNil(b bool)`
+
+ SetProxyNil sets the value for Proxy to be an explicit nil
+
+### UnsetProxy
+`func (o *ConsulSidecarService) UnsetProxy()`
+
+UnsetProxy ensures that no value is present for Proxy, not even an explicit nil
 ### GetTags
 
 `func (o *ConsulSidecarService) GetTags() []string`

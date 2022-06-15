@@ -24,6 +24,26 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * TaskGroupSummary
  */
@@ -57,6 +77,8 @@ public class TaskGroupSummary {
   @SerializedName(SERIALIZED_NAME_UNKNOWN)
   private Integer unknown;
 
+  public TaskGroupSummary() { 
+  }
 
   public TaskGroupSummary complete(Integer complete) {
     
@@ -219,6 +241,7 @@ public class TaskGroupSummary {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -268,5 +291,96 @@ public class TaskGroupSummary {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Complete");
+    openapiFields.add("Failed");
+    openapiFields.add("Lost");
+    openapiFields.add("Queued");
+    openapiFields.add("Running");
+    openapiFields.add("Starting");
+    openapiFields.add("Unknown");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGroupSummary
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGroupSummary.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGroupSummary is not found in the empty JSON string", TaskGroupSummary.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TaskGroupSummary.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGroupSummary` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TaskGroupSummary.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskGroupSummary' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TaskGroupSummary> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskGroupSummary.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TaskGroupSummary>() {
+           @Override
+           public void write(JsonWriter out, TaskGroupSummary value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TaskGroupSummary read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TaskGroupSummary given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGroupSummary
+  * @throws IOException if the JSON string is invalid with respect to TaskGroupSummary
+  */
+  public static TaskGroupSummary fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskGroupSummary.class);
+  }
+
+ /**
+  * Convert an instance of TaskGroupSummary to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

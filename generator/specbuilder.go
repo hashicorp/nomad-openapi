@@ -52,7 +52,26 @@ type specBuilder struct {
 
 func (b *specBuilder) buildSpec() (*spec, error) {
 	b.logger = hclog.Default()
-	b.kingen = openapi3gen.NewGenerator(openapi3gen.UseAllExportedFields())
+
+	requiredCustomizerFn := func(name string, ft reflect.Type, tag reflect.StructTag, schema *openapi3.Schema) error {
+		if ft.Kind() == reflect.Ptr {
+			schema.Nullable = true
+			return nil
+		}
+
+		if ft.Kind() != reflect.Struct {
+			return nil
+		}
+
+		for i := 0; i < ft.NumField(); i++ {
+			if ft.Field(i).Type.Kind() != reflect.Ptr {
+				schema.Nullable = true
+			}
+		}
+		return nil
+	}
+
+	b.kingen = openapi3gen.NewGenerator(openapi3gen.UseAllExportedFields(), openapi3gen.SchemaCustomizer(requiredCustomizerFn))
 	// TODO: Eventually may need to support multiple OpenAPI versions, but pushing
 	// that off for now.
 	b.spec = &spec{
@@ -232,6 +251,10 @@ func (b *specBuilder) getOrCreateResponses(configs []*responseConfig) (openapi3.
 			continue
 		}
 		// if it isn't the global map, add it
+		if strings.Contains(cfg.Response.Name, "Search") {
+			fmt.Print("foo")
+		}
+
 		responseRef, ok := b.spec.Model.Components.Responses[cfg.Response.Name]
 		if !ok {
 			responseRef = &openapi3.ResponseRef{
@@ -414,6 +437,7 @@ func (b *specBuilder) getOrCreateSchemaRef(model reflect.Type) (*openapi3.Schema
 }
 
 func (b *specBuilder) resolveRefPaths() {
+	// DEBUG NOTE: These are maps with schema and property names
 	for _, schemaRef := range b.spec.Model.Components.Schemas {
 		// Next make sure the refs point to other schemas, if not already done.
 		for _, propertyRef := range schemaRef.Value.Properties {
@@ -430,7 +454,12 @@ func (b *specBuilder) resolveRefPaths() {
 				if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
 					propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
 				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
-					propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
+					if isBasic(propertyRef.Value.AdditionalProperties.Value.Items.Ref) {
+						propertyRef.Value.AdditionalProperties.Value.Items.Value.Type = propertyRef.Value.AdditionalProperties.Value.Items.Ref
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = ""
+					} else {
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
+					}
 				} else if len(propertyRef.Ref) != 0 {
 					propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
 				}

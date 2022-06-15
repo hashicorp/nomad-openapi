@@ -28,7 +28,7 @@ export class Consul {
     static getAttributeTypeMap() {
         return Consul.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -106,7 +106,7 @@ export class Template {
     static getAttributeTypeMap() {
         return Template.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

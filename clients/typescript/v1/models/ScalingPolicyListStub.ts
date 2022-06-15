@@ -63,7 +63,7 @@ export class ScalingPolicyListStub {
     static getAttributeTypeMap() {
         return ScalingPolicyListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

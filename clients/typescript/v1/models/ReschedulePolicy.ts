@@ -63,7 +63,7 @@ export class ReschedulePolicy {
     static getAttributeTypeMap() {
         return ReschedulePolicy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

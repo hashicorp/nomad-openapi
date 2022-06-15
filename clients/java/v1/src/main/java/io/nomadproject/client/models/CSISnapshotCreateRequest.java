@@ -27,6 +27,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * CSISnapshotCreateRequest
  */
@@ -48,6 +68,8 @@ public class CSISnapshotCreateRequest {
   @SerializedName(SERIALIZED_NAME_SNAPSHOTS)
   private List<CSISnapshot> snapshots = null;
 
+  public CSISnapshotCreateRequest() { 
+  }
 
   public CSISnapshotCreateRequest namespace(String namespace) {
     
@@ -126,7 +148,7 @@ public class CSISnapshotCreateRequest {
 
   public CSISnapshotCreateRequest addSnapshotsItem(CSISnapshot snapshotsItem) {
     if (this.snapshots == null) {
-      this.snapshots = new ArrayList<CSISnapshot>();
+      this.snapshots = new ArrayList<>();
     }
     this.snapshots.add(snapshotsItem);
     return this;
@@ -147,6 +169,7 @@ public class CSISnapshotCreateRequest {
   public void setSnapshots(List<CSISnapshot> snapshots) {
     this.snapshots = snapshots;
   }
+
 
 
   @Override
@@ -192,5 +215,114 @@ public class CSISnapshotCreateRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Namespace");
+    openapiFields.add("Region");
+    openapiFields.add("SecretID");
+    openapiFields.add("Snapshots");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CSISnapshotCreateRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (CSISnapshotCreateRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CSISnapshotCreateRequest is not found in the empty JSON string", CSISnapshotCreateRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CSISnapshotCreateRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CSISnapshotCreateRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      if (jsonObj.get("Region") != null && !jsonObj.get("Region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Region").toString()));
+      }
+      if (jsonObj.get("SecretID") != null && !jsonObj.get("SecretID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretID").toString()));
+      }
+      JsonArray jsonArraysnapshots = jsonObj.getAsJsonArray("Snapshots");
+      if (jsonArraysnapshots != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Snapshots").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Snapshots` to be an array in the JSON string but got `%s`", jsonObj.get("Snapshots").toString()));
+        }
+
+        // validate the optional field `Snapshots` (array)
+        for (int i = 0; i < jsonArraysnapshots.size(); i++) {
+          CSISnapshot.validateJsonObject(jsonArraysnapshots.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CSISnapshotCreateRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CSISnapshotCreateRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CSISnapshotCreateRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CSISnapshotCreateRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CSISnapshotCreateRequest>() {
+           @Override
+           public void write(JsonWriter out, CSISnapshotCreateRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CSISnapshotCreateRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CSISnapshotCreateRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CSISnapshotCreateRequest
+  * @throws IOException if the JSON string is invalid with respect to CSISnapshotCreateRequest
+  */
+  public static CSISnapshotCreateRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CSISnapshotCreateRequest.class);
+  }
+
+ /**
+  * Convert an instance of CSISnapshotCreateRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

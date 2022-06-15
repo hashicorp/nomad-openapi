@@ -77,7 +77,7 @@ export class ACLTokenListStub {
     static getAttributeTypeMap() {
         return ACLTokenListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

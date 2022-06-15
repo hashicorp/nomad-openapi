@@ -190,7 +190,7 @@ export class ServiceCheck {
     static getAttributeTypeMap() {
         return ServiceCheck.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

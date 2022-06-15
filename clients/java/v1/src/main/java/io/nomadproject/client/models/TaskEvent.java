@@ -27,6 +27,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * TaskEvent
  */
@@ -132,6 +152,8 @@ public class TaskEvent {
   @SerializedName(SERIALIZED_NAME_VAULT_ERROR)
   private String vaultError;
 
+  public TaskEvent() { 
+  }
 
   public TaskEvent details(Map<String, String> details) {
     
@@ -141,7 +163,7 @@ public class TaskEvent {
 
   public TaskEvent putDetailsItem(String key, String detailsItem) {
     if (this.details == null) {
-      this.details = new HashMap<String, String>();
+      this.details = new HashMap<>();
     }
     this.details.put(key, detailsItem);
     return this;
@@ -716,6 +738,7 @@ public class TaskEvent {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -801,5 +824,162 @@ public class TaskEvent {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Details");
+    openapiFields.add("DiskLimit");
+    openapiFields.add("DiskSize");
+    openapiFields.add("DisplayMessage");
+    openapiFields.add("DownloadError");
+    openapiFields.add("DriverError");
+    openapiFields.add("DriverMessage");
+    openapiFields.add("ExitCode");
+    openapiFields.add("FailedSibling");
+    openapiFields.add("FailsTask");
+    openapiFields.add("GenericSource");
+    openapiFields.add("KillError");
+    openapiFields.add("KillReason");
+    openapiFields.add("KillTimeout");
+    openapiFields.add("Message");
+    openapiFields.add("RestartReason");
+    openapiFields.add("SetupError");
+    openapiFields.add("Signal");
+    openapiFields.add("StartDelay");
+    openapiFields.add("TaskSignal");
+    openapiFields.add("TaskSignalReason");
+    openapiFields.add("Time");
+    openapiFields.add("Type");
+    openapiFields.add("ValidationError");
+    openapiFields.add("VaultError");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskEvent
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskEvent.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskEvent is not found in the empty JSON string", TaskEvent.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TaskEvent.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskEvent` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("DisplayMessage") != null && !jsonObj.get("DisplayMessage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DisplayMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DisplayMessage").toString()));
+      }
+      if (jsonObj.get("DownloadError") != null && !jsonObj.get("DownloadError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DownloadError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DownloadError").toString()));
+      }
+      if (jsonObj.get("DriverError") != null && !jsonObj.get("DriverError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DriverError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DriverError").toString()));
+      }
+      if (jsonObj.get("DriverMessage") != null && !jsonObj.get("DriverMessage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DriverMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DriverMessage").toString()));
+      }
+      if (jsonObj.get("FailedSibling") != null && !jsonObj.get("FailedSibling").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FailedSibling` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FailedSibling").toString()));
+      }
+      if (jsonObj.get("GenericSource") != null && !jsonObj.get("GenericSource").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `GenericSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("GenericSource").toString()));
+      }
+      if (jsonObj.get("KillError") != null && !jsonObj.get("KillError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KillError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KillError").toString()));
+      }
+      if (jsonObj.get("KillReason") != null && !jsonObj.get("KillReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KillReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KillReason").toString()));
+      }
+      if (jsonObj.get("Message") != null && !jsonObj.get("Message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Message").toString()));
+      }
+      if (jsonObj.get("RestartReason") != null && !jsonObj.get("RestartReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RestartReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RestartReason").toString()));
+      }
+      if (jsonObj.get("SetupError") != null && !jsonObj.get("SetupError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SetupError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SetupError").toString()));
+      }
+      if (jsonObj.get("TaskSignal") != null && !jsonObj.get("TaskSignal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskSignal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskSignal").toString()));
+      }
+      if (jsonObj.get("TaskSignalReason") != null && !jsonObj.get("TaskSignalReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskSignalReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskSignalReason").toString()));
+      }
+      if (jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+      if (jsonObj.get("ValidationError") != null && !jsonObj.get("ValidationError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ValidationError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ValidationError").toString()));
+      }
+      if (jsonObj.get("VaultError") != null && !jsonObj.get("VaultError").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VaultError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VaultError").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TaskEvent.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskEvent' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TaskEvent> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskEvent.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TaskEvent>() {
+           @Override
+           public void write(JsonWriter out, TaskEvent value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TaskEvent read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TaskEvent given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskEvent
+  * @throws IOException if the JSON string is invalid with respect to TaskEvent
+  */
+  public static TaskEvent fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskEvent.class);
+  }
+
+ /**
+  * Convert an instance of TaskEvent to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

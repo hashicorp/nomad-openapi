@@ -42,7 +42,7 @@ export class NodeScoreMeta {
     static getAttributeTypeMap() {
         return NodeScoreMeta.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

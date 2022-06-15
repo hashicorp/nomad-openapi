@@ -43,7 +43,7 @@ export class OperatorHealthReply {
     static getAttributeTypeMap() {
         return OperatorHealthReply.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

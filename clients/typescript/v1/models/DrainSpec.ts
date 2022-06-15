@@ -35,7 +35,7 @@ export class DrainSpec {
     static getAttributeTypeMap() {
         return DrainSpec.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -26,6 +26,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * Vault
  */
@@ -51,6 +71,8 @@ public class Vault {
   @SerializedName(SERIALIZED_NAME_POLICIES)
   private List<String> policies = null;
 
+  public Vault() { 
+  }
 
   public Vault changeMode(String changeMode) {
     
@@ -152,7 +174,7 @@ public class Vault {
 
   public Vault addPoliciesItem(String policiesItem) {
     if (this.policies == null) {
-      this.policies = new ArrayList<String>();
+      this.policies = new ArrayList<>();
     }
     this.policies.add(policiesItem);
     return this;
@@ -173,6 +195,7 @@ public class Vault {
   public void setPolicies(List<String> policies) {
     this.policies = policies;
   }
+
 
 
   @Override
@@ -220,5 +243,107 @@ public class Vault {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ChangeMode");
+    openapiFields.add("ChangeSignal");
+    openapiFields.add("Env");
+    openapiFields.add("Namespace");
+    openapiFields.add("Policies");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Vault
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Vault.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Vault is not found in the empty JSON string", Vault.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Vault.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Vault` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("ChangeMode") != null && !jsonObj.get("ChangeMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ChangeMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ChangeMode").toString()));
+      }
+      if (jsonObj.get("ChangeSignal") != null && !jsonObj.get("ChangeSignal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ChangeSignal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ChangeSignal").toString()));
+      }
+      if (jsonObj.get("Namespace") != null && !jsonObj.get("Namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Namespace").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("Policies") != null && !jsonObj.get("Policies").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Policies` to be an array in the JSON string but got `%s`", jsonObj.get("Policies").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Vault.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Vault' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Vault> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Vault.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Vault>() {
+           @Override
+           public void write(JsonWriter out, Vault value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Vault read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Vault given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Vault
+  * @throws IOException if the JSON string is invalid with respect to Vault
+  */
+  public static Vault fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Vault.class);
+  }
+
+ /**
+  * Convert an instance of Vault to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

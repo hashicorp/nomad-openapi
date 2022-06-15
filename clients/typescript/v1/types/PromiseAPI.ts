@@ -665,7 +665,7 @@ export class PromiseEnterpriseApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getQuotas(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<AnyType>> {
+    public getQuotas(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<any>> {
         const result = this.api.getQuotas(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
         return result.toPromise();
     }

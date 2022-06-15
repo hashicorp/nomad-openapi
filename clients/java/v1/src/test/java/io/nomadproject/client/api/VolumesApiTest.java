@@ -22,8 +22,8 @@ import io.nomadproject.client.models.CSIVolumeCreateRequest;
 import io.nomadproject.client.models.CSIVolumeListExternalResponse;
 import io.nomadproject.client.models.CSIVolumeListStub;
 import io.nomadproject.client.models.CSIVolumeRegisterRequest;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,19 +33,13 @@ import java.util.Map;
 /**
  * API tests for VolumesApi
  */
-@Ignore
+@Disabled
 public class VolumesApiTest {
 
     private final VolumesApi api = new VolumesApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createVolumeTest() throws ApiException {
@@ -57,17 +51,11 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.createVolume(volumeId, action, csIVolumeCreateRequest, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSnapshotTest() throws ApiException {
@@ -78,17 +66,11 @@ public class VolumesApiTest {
         String pluginId = null;
         String snapshotId = null;
         api.deleteSnapshot(region, namespace, xNomadToken, idempotencyToken, pluginId, snapshotId);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteVolumeRegistrationTest() throws ApiException {
@@ -99,17 +81,11 @@ public class VolumesApiTest {
         String idempotencyToken = null;
         String force = null;
         api.deleteVolumeRegistration(volumeId, region, namespace, xNomadToken, idempotencyToken, force);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void detachOrDeleteVolumeTest() throws ApiException {
@@ -121,17 +97,11 @@ public class VolumesApiTest {
         String idempotencyToken = null;
         String node = null;
         api.detachOrDeleteVolume(volumeId, action, region, namespace, xNomadToken, idempotencyToken, node);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getExternalVolumesTest() throws ApiException {
@@ -146,17 +116,11 @@ public class VolumesApiTest {
         String nextToken = null;
         String pluginId = null;
         CSIVolumeListExternalResponse response = api.getExternalVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getSnapshotsTest() throws ApiException {
@@ -171,17 +135,11 @@ public class VolumesApiTest {
         String nextToken = null;
         String pluginId = null;
         CSISnapshotListResponse response = api.getSnapshots(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getVolumeTest() throws ApiException {
@@ -196,17 +154,11 @@ public class VolumesApiTest {
         Integer perPage = null;
         String nextToken = null;
         CSIVolume response = api.getVolume(volumeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getVolumesTest() throws ApiException {
@@ -223,17 +175,11 @@ public class VolumesApiTest {
         String pluginId = null;
         String type = null;
         List<CSIVolumeListStub> response = api.getVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, nodeId, pluginId, type);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void postSnapshotTest() throws ApiException {
@@ -243,17 +189,11 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         CSISnapshotCreateResponse response = api.postSnapshot(csISnapshotCreateRequest, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void postVolumeTest() throws ApiException {
@@ -263,17 +203,11 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.postVolume(csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void postVolumeRegistrationTest() throws ApiException {
@@ -284,8 +218,7 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.postVolumeRegistration(volumeId, csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
 }

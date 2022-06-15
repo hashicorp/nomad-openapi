@@ -28,6 +28,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import io.nomadproject.client.JSON;
+
 /**
  * Multiregion
  */
@@ -41,6 +61,8 @@ public class Multiregion {
   @SerializedName(SERIALIZED_NAME_STRATEGY)
   private MultiregionStrategy strategy;
 
+  public Multiregion() { 
+  }
 
   public Multiregion regions(List<MultiregionRegion> regions) {
     
@@ -50,7 +72,7 @@ public class Multiregion {
 
   public Multiregion addRegionsItem(MultiregionRegion regionsItem) {
     if (this.regions == null) {
-      this.regions = new ArrayList<MultiregionRegion>();
+      this.regions = new ArrayList<>();
     }
     this.regions.add(regionsItem);
     return this;
@@ -96,6 +118,7 @@ public class Multiregion {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -135,5 +158,107 @@ public class Multiregion {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Regions");
+    openapiFields.add("Strategy");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Multiregion
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Multiregion.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Multiregion is not found in the empty JSON string", Multiregion.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Multiregion.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Multiregion` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayregions = jsonObj.getAsJsonArray("Regions");
+      if (jsonArrayregions != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("Regions").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `Regions` to be an array in the JSON string but got `%s`", jsonObj.get("Regions").toString()));
+        }
+
+        // validate the optional field `Regions` (array)
+        for (int i = 0; i < jsonArrayregions.size(); i++) {
+          MultiregionRegion.validateJsonObject(jsonArrayregions.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `Strategy`
+      if (jsonObj.getAsJsonObject("Strategy") != null) {
+        MultiregionStrategy.validateJsonObject(jsonObj.getAsJsonObject("Strategy"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Multiregion.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Multiregion' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Multiregion> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Multiregion.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Multiregion>() {
+           @Override
+           public void write(JsonWriter out, Multiregion value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Multiregion read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Multiregion given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Multiregion
+  * @throws IOException if the JSON string is invalid with respect to Multiregion
+  */
+  public static Multiregion fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Multiregion.class);
+  }
+
+ /**
+  * Convert an instance of Multiregion to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

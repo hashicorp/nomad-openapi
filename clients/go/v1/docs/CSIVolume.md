@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **ExternalID** | Pointer to **string** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
-**MountOptions** | Pointer to [**CSIMountOptions**](CSIMountOptions.md) |  | [optional] 
+**MountOptions** | Pointer to [**NullableCSIMountOptions**](CSIMountOptions.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **NodesExpected** | Pointer to **int32** |  | [optional] 
@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **RequestedCapabilities** | Pointer to [**[]CSIVolumeCapability**](CSIVolumeCapability.md) |  | [optional] 
 **RequestedCapacityMax** | Pointer to **int64** |  | [optional] 
 **RequestedCapacityMin** | Pointer to **int64** |  | [optional] 
-**RequestedTopologies** | Pointer to [**CSITopologyRequest**](CSITopologyRequest.md) |  | [optional] 
-**ResourceExhausted** | Pointer to **time.Time** |  | [optional] 
+**RequestedTopologies** | Pointer to [**NullableCSITopologyRequest**](CSITopologyRequest.md) |  | [optional] 
+**ResourceExhausted** | Pointer to **NullableTime** |  | [optional] 
 **Schedulable** | Pointer to **bool** |  | [optional] 
 **Secrets** | Pointer to **map[string]string** |  | [optional] 
 **SnapshotID** | Pointer to **string** |  | [optional] 
@@ -407,6 +407,16 @@ SetMountOptions sets MountOptions field to given value.
 
 HasMountOptions returns a boolean if a field has been set.
 
+### SetMountOptionsNil
+
+`func (o *CSIVolume) SetMountOptionsNil(b bool)`
+
+ SetMountOptionsNil sets the value for MountOptions to be an explicit nil
+
+### UnsetMountOptions
+`func (o *CSIVolume) UnsetMountOptions()`
+
+UnsetMountOptions ensures that no value is present for MountOptions, not even an explicit nil
 ### GetName
 
 `func (o *CSIVolume) GetName() string`
@@ -732,6 +742,16 @@ SetRequestedTopologies sets RequestedTopologies field to given value.
 
 HasRequestedTopologies returns a boolean if a field has been set.
 
+### SetRequestedTopologiesNil
+
+`func (o *CSIVolume) SetRequestedTopologiesNil(b bool)`
+
+ SetRequestedTopologiesNil sets the value for RequestedTopologies to be an explicit nil
+
+### UnsetRequestedTopologies
+`func (o *CSIVolume) UnsetRequestedTopologies()`
+
+UnsetRequestedTopologies ensures that no value is present for RequestedTopologies, not even an explicit nil
 ### GetResourceExhausted
 
 `func (o *CSIVolume) GetResourceExhausted() time.Time`
@@ -757,6 +777,16 @@ SetResourceExhausted sets ResourceExhausted field to given value.
 
 HasResourceExhausted returns a boolean if a field has been set.
 
+### SetResourceExhaustedNil
+
+`func (o *CSIVolume) SetResourceExhaustedNil(b bool)`
+
+ SetResourceExhaustedNil sets the value for ResourceExhausted to be an explicit nil
+
+### UnsetResourceExhausted
+`func (o *CSIVolume) UnsetResourceExhausted()`
+
+UnsetResourceExhausted ensures that no value is present for ResourceExhausted, not even an explicit nil
 ### GetSchedulable
 
 `func (o *CSIVolume) GetSchedulable() bool`

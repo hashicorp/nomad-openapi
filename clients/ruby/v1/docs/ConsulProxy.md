@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **config** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **config** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **expose_config** | [**ConsulExposeConfig**](ConsulExposeConfig.md) |  | [optional] |
 | **local_service_address** | **String** |  | [optional] |
 | **local_service_port** | **Integer** |  | [optional] |

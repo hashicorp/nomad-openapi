@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Datacenters** | Pointer to **[]string** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
-**JobSummary** | Pointer to [**JobSummary**](JobSummary.md) |  | [optional] 
+**JobSummary** | Pointer to [**NullableJobSummary**](JobSummary.md) |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
@@ -166,6 +166,16 @@ SetJobSummary sets JobSummary field to given value.
 
 HasJobSummary returns a boolean if a field has been set.
 
+### SetJobSummaryNil
+
+`func (o *JobListStub) SetJobSummaryNil(b bool)`
+
+ SetJobSummaryNil sets the value for JobSummary to be an explicit nil
+
+### UnsetJobSummary
+`func (o *JobListStub) UnsetJobSummary()`
+
+UnsetJobSummary ensures that no value is present for JobSummary, not even an explicit nil
 ### GetModifyIndex
 
 `func (o *JobListStub) GetModifyIndex() int32`

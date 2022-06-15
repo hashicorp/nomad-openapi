@@ -42,7 +42,7 @@ export class EphemeralDisk {
     static getAttributeTypeMap() {
         return EphemeralDisk.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

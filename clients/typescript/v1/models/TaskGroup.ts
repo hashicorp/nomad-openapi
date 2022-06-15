@@ -175,7 +175,7 @@ export class TaskGroup {
     static getAttributeTypeMap() {
         return TaskGroup.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

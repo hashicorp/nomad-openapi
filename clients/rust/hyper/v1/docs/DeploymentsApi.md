@@ -136,7 +136,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **deployment_id** | **String** | Deployment ID. | [required] |
-**deployment_alloc_health_request** | [**DeploymentAllocHealthRequest**](DeploymentAllocHealthRequest.md) |  | [required] |
+**deployment_alloc_health_request** | Option<[**DeploymentAllocHealthRequest**](DeploymentAllocHealthRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -201,7 +201,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **deployment_id** | **String** | Deployment ID. | [required] |
-**deployment_pause_request** | [**DeploymentPauseRequest**](DeploymentPauseRequest.md) |  | [required] |
+**deployment_pause_request** | Option<[**DeploymentPauseRequest**](DeploymentPauseRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -234,7 +234,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **deployment_id** | **String** | Deployment ID. | [required] |
-**deployment_promote_request** | [**DeploymentPromoteRequest**](DeploymentPromoteRequest.md) |  | [required] |
+**deployment_promote_request** | Option<[**DeploymentPromoteRequest**](DeploymentPromoteRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -267,7 +267,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **deployment_id** | **String** | Deployment ID. | [required] |
-**deployment_unblock_request** | [**DeploymentUnblockRequest**](DeploymentUnblockRequest.md) |  | [required] |
+**deployment_unblock_request** | Option<[**DeploymentUnblockRequest**](DeploymentUnblockRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

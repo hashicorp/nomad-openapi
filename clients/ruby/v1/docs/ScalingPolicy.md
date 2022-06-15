@@ -11,7 +11,7 @@
 | **min** | **Integer** |  | [optional] |
 | **modify_index** | **Integer** |  | [optional] |
 | **namespace** | **String** |  | [optional] |
-| **policy** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **policy** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **target** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **type** | **String** |  | [optional] |
 

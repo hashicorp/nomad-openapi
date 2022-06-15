@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `get_allocation`
+/// struct for typed errors of method [`get_allocation`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAllocationError {
@@ -26,7 +26,7 @@ pub enum GetAllocationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_allocation_services`
+/// struct for typed errors of method [`get_allocation_services`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAllocationServicesError {
@@ -37,7 +37,7 @@ pub enum GetAllocationServicesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_allocations`
+/// struct for typed errors of method [`get_allocations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAllocationsError {
@@ -48,7 +48,7 @@ pub enum GetAllocationsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_allocation_stop`
+/// struct for typed errors of method [`post_allocation_stop`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostAllocationStopError {
@@ -61,10 +61,11 @@ pub enum PostAllocationStopError {
 
 
 pub async fn get_allocation(configuration: &configuration::Configuration, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Allocation, Error<GetAllocationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/allocation/{allocID}", configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
+    let local_var_uri_str = format!("{}/allocation/{allocID}", local_var_configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -88,7 +89,7 @@ pub async fn get_allocation(configuration: &configuration::Configuration, alloc_
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -97,7 +98,7 @@ pub async fn get_allocation(configuration: &configuration::Configuration, alloc_
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -122,10 +123,11 @@ pub async fn get_allocation(configuration: &configuration::Configuration, alloc_
 }
 
 pub async fn get_allocation_services(configuration: &configuration::Configuration, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::ServiceRegistration>, Error<GetAllocationServicesError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/allocation/{allocID}/services", configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
+    let local_var_uri_str = format!("{}/allocation/{allocID}/services", local_var_configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -149,7 +151,7 @@ pub async fn get_allocation_services(configuration: &configuration::Configuratio
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -158,7 +160,7 @@ pub async fn get_allocation_services(configuration: &configuration::Configuratio
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -183,10 +185,11 @@ pub async fn get_allocation_services(configuration: &configuration::Configuratio
 }
 
 pub async fn get_allocations(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, resources: Option<bool>, task_states: Option<bool>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/allocations", configuration.base_path);
+    let local_var_uri_str = format!("{}/allocations", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -216,7 +219,7 @@ pub async fn get_allocations(configuration: &configuration::Configuration, regio
     if let Some(ref local_var_str) = task_states {
         local_var_req_builder = local_var_req_builder.query(&[("task_states", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -225,7 +228,7 @@ pub async fn get_allocations(configuration: &configuration::Configuration, regio
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -250,10 +253,11 @@ pub async fn get_allocations(configuration: &configuration::Configuration, regio
 }
 
 pub async fn post_allocation_stop(configuration: &configuration::Configuration, alloc_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, no_shutdown_delay: Option<bool>) -> Result<crate::models::AllocStopResponse, Error<PostAllocationStopError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/allocation/{allocID}/stop", configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
+    let local_var_uri_str = format!("{}/allocation/{allocID}/stop", local_var_configuration.base_path, allocID=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -280,7 +284,7 @@ pub async fn post_allocation_stop(configuration: &configuration::Configuration, 
     if let Some(ref local_var_str) = no_shutdown_delay {
         local_var_req_builder = local_var_req_builder.query(&[("no_shutdown_delay", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -289,7 +293,7 @@ pub async fn post_allocation_stop(configuration: &configuration::Configuration, 
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

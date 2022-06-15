@@ -50,7 +50,7 @@
   describe('DeploymentPromoteRequest', function() {
     it('should create an instance of DeploymentPromoteRequest', function() {
       // uncomment below and update the code to test DeploymentPromoteRequest
-      //var instane = new nomad-client.DeploymentPromoteRequest();
+      //var instance = new nomad-client.DeploymentPromoteRequest();
       //expect(instance).to.be.a(nomad-client.DeploymentPromoteRequest);
     });
 

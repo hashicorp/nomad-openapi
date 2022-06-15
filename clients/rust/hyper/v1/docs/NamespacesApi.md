@@ -159,7 +159,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **namespace_name** | **String** | The namespace identifier. | [required] |
-**namespace2** | [**Namespace**](Namespace.md) |  | [required] |
+**namespace2** | Option<[**Namespace**](Namespace.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

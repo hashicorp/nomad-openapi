@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | Pointer to **string** |  | [optional] 
 **AttachmentMode** | Pointer to **string** |  | [optional] 
-**MountOptions** | Pointer to [**CSIMountOptions**](CSIMountOptions.md) |  | [optional] 
+**MountOptions** | Pointer to [**NullableCSIMountOptions**](CSIMountOptions.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **PerAlloc** | Pointer to **bool** |  | [optional] 
 **ReadOnly** | Pointer to **bool** |  | [optional] 
@@ -107,6 +107,16 @@ SetMountOptions sets MountOptions field to given value.
 
 HasMountOptions returns a boolean if a field has been set.
 
+### SetMountOptionsNil
+
+`func (o *VolumeRequest) SetMountOptionsNil(b bool)`
+
+ SetMountOptionsNil sets the value for MountOptions to be an explicit nil
+
+### UnsetMountOptions
+`func (o *VolumeRequest) UnsetMountOptions()`
+
+UnsetMountOptions ensures that no value is present for MountOptions, not even an explicit nil
 ### GetName
 
 `func (o *VolumeRequest) GetName() string`

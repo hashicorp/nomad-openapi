@@ -15,8 +15,8 @@ package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.Namespace;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,19 +26,13 @@ import java.util.Map;
 /**
  * API tests for NamespacesApi
  */
-@Ignore
+@Disabled
 public class NamespacesApiTest {
 
     private final NamespacesApi api = new NamespacesApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createNamespaceTest() throws ApiException {
@@ -47,17 +41,11 @@ public class NamespacesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.createNamespace(region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteNamespaceTest() throws ApiException {
@@ -67,17 +55,11 @@ public class NamespacesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.deleteNamespace(namespaceName, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getNamespaceTest() throws ApiException {
@@ -92,17 +74,11 @@ public class NamespacesApiTest {
         Integer perPage = null;
         String nextToken = null;
         Namespace response = api.getNamespace(namespaceName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void getNamespacesTest() throws ApiException {
@@ -116,17 +92,11 @@ public class NamespacesApiTest {
         Integer perPage = null;
         String nextToken = null;
         List<Namespace> response = api.getNamespaces(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void postNamespaceTest() throws ApiException {
@@ -137,8 +107,7 @@ public class NamespacesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         api.postNamespace(namespaceName, namespace2, region, namespace, xNomadToken, idempotencyToken);
-
         // TODO: test validations
     }
-    
+
 }

@@ -84,7 +84,7 @@ export class ACLToken {
     static getAttributeTypeMap() {
         return ACLToken.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

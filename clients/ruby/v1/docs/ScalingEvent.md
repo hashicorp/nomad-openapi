@@ -9,7 +9,7 @@
 | **error** | **Boolean** |  | [optional] |
 | **eval_id** | **String** |  | [optional] |
 | **message** | **String** |  | [optional] |
-| **meta** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **meta** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **previous_count** | **Integer** |  | [optional] |
 | **time** | **Integer** |  | [optional] |
 

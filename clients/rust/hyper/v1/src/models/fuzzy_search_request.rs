@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct FuzzySearchRequest {
     #[serde(rename = "AllowStale", skip_serializing_if = "Option::is_none")]
     pub allow_stale: Option<bool>,

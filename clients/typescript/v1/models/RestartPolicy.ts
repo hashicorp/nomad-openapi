@@ -49,7 +49,7 @@ export class RestartPolicy {
     static getAttributeTypeMap() {
         return RestartPolicy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

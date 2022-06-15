@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct NodeUpdateDrainRequest {
     #[serde(rename = "DrainSpec", skip_serializing_if = "Option::is_none")]
     pub drain_spec: Option<Box<crate::models::DrainSpec>>,

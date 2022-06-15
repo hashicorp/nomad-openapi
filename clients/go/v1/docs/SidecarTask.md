@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **LogConfig** | Pointer to [**LogConfig**](LogConfig.md) |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Resources** | Pointer to [**Resources**](Resources.md) |  | [optional] 
+**Resources** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
 **ShutdownDelay** | Pointer to **int64** |  | [optional] 
 **User** | Pointer to **string** |  | [optional] 
 
@@ -260,6 +260,16 @@ SetResources sets Resources field to given value.
 
 HasResources returns a boolean if a field has been set.
 
+### SetResourcesNil
+
+`func (o *SidecarTask) SetResourcesNil(b bool)`
+
+ SetResourcesNil sets the value for Resources to be an explicit nil
+
+### UnsetResources
+`func (o *SidecarTask) UnsetResources()`
+
+UnsetResources ensures that no value is present for Resources, not even an explicit nil
 ### GetShutdownDelay
 
 `func (o *SidecarTask) GetShutdownDelay() int64`

@@ -260,7 +260,7 @@ export class Allocation {
     static getAttributeTypeMap() {
         return Allocation.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -28,7 +28,7 @@ export class AllocatedCpuResources {
     static getAttributeTypeMap() {
         return AllocatedCpuResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

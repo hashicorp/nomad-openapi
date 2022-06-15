@@ -50,7 +50,7 @@ export class NodeUpdateDrainRequest {
     static getAttributeTypeMap() {
         return NodeUpdateDrainRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

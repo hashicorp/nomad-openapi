@@ -42,7 +42,7 @@ export class JobsParseRequest {
     static getAttributeTypeMap() {
         return JobsParseRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -70,7 +70,7 @@ export class SearchResponse {
     static getAttributeTypeMap() {
         return SearchResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }
