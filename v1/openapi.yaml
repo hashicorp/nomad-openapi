@@ -1271,7 +1271,8 @@ components:
       content:
         application/json:
           schema:
-            items: {}
+            items:
+              $ref: '#/components/schemas/Quotas'
             type: array
       description: ""
       headers:
@@ -2165,25 +2166,25 @@ components:
           type: integer
         ClassExhausted:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         ClassFiltered:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         CoalescedFailures:
           type: integer
         ConstraintFiltered:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         DimensionExhausted:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         NodesAvailable:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         NodesEvaluated:
           type: integer
@@ -2205,8 +2206,7 @@ components:
           type: array
         Scores:
           additionalProperties:
-            format: double
-            type: number
+            $ref: '#/components/schemas/float64'
           type: object
       type: object
     Attribute:
@@ -2430,7 +2430,7 @@ components:
         PluginID:
           type: string
         Secrets:
-          $ref: CSISecrets
+          $ref: '#/components/schemas/CSISecrets'
         SizeBytes:
           format: int64
           type: integer
@@ -2596,7 +2596,7 @@ components:
         Schedulable:
           type: boolean
         Secrets:
-          $ref: CSISecrets
+          $ref: '#/components/schemas/CSISecrets'
         SnapshotID:
           type: string
         Topologies:
@@ -2794,7 +2794,8 @@ components:
       properties:
         Ingress:
           $ref: '#/components/schemas/ConsulIngressConfigEntry'
-        Mesh: {}
+        Mesh:
+          $ref: '#/components/schemas/ConsulMeshConfigEntry'
         Proxy:
           $ref: '#/components/schemas/ConsulGatewayProxy'
         Terminating:
@@ -3322,7 +3323,7 @@ components:
           type: integer
         QueuedAllocations:
           additionalProperties:
-            type: integer
+            $ref: '#/components/schemas/int'
           type: object
         QuotaLimitReached:
           type: string
@@ -4528,8 +4529,7 @@ components:
           type: number
         Scores:
           additionalProperties:
-            format: double
-            type: number
+            $ref: '#/components/schemas/float64'
           type: object
       type: object
     NodeUpdateDrainRequest:
@@ -5628,9 +5628,7 @@ components:
           type: string
         Updates:
           additionalProperties:
-            maximum: 1.8446744073709552e+19
-            minimum: 0
-            type: integer
+            $ref: '#/components/schemas/uint64'
           type: object
       type: object
     TaskGroupScaleStatus:
