@@ -248,34 +248,33 @@ func (c *Client) makeTLSConfig() (*tls.Config, error) {
 		c.keyFile = os.Getenv(EnvNomadClientKey)
 	}
 
-	// If environment is not configured for TLS, return
-	if c.caFile == "" || c.certFile == "" || c.keyFile == "" {
-		return nil, nil
-	}
-
 	return c.tlsConfig()
 }
 
 func (c *Client) tlsConfig() (*tls.Config, error) {
 	cfg := &tls.Config{}
 
-	// Load the certificate authority certificate bytes
-	serverCABytes, err := os.ReadFile(c.caFile)
-	if err != nil {
-		return nil, fmt.Errorf("error reading CA certificate: %w", err)
+	if c.caFile != "" {
+		// Load the certificate authority certificate bytes
+		serverCABytes, err := os.ReadFile(c.caFile)
+		if err != nil {
+			return nil, fmt.Errorf("error reading CA certificate: %w", err)
+		}
+
+		// Set the root CA from the server cert
+		cfg.RootCAs = x509.NewCertPool()
+		cfg.RootCAs.AppendCertsFromPEM(serverCABytes)
 	}
 
-	// Load a client certificate from the client settings
-	clientCert, err := tls.LoadX509KeyPair(c.certFile, c.keyFile)
-	if err != nil {
-		return nil, fmt.Errorf("error loading key pair: %w", err)
+	if c.certFile != "" && c.keyFile != "" {
+		// Load a client certificate from the client settings
+		clientCert, err := tls.LoadX509KeyPair(c.certFile, c.keyFile)
+		if err != nil {
+			return nil, fmt.Errorf("error loading key pair: %w", err)
+		}
+		// Set the client certificate
+		cfg.Certificates = []tls.Certificate{clientCert}
 	}
-
-	// Set the root CA from the server cert
-	cfg.RootCAs = x509.NewCertPool()
-	cfg.RootCAs.AppendCertsFromPEM(serverCABytes)
-	// Set the client certificate
-	cfg.Certificates = []tls.Certificate{clientCert}
 
 	cfg.ServerName = fmt.Sprintf("server.%s.nomad", c.region)
 	if c.tlsServerName != "" {
