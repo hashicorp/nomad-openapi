@@ -448,16 +448,16 @@ func (b *specBuilder) resolveRefPaths() {
 
 			if isBasic(propertyRef.Value.Type) {
 				propertyRef.Ref = ""
-				firedHandlers["basic handler"] = firedHandlers["basic handler"]++
+				firedHandlers["basic handler"] += firedHandlers["basic handler"]
 			} else if propertyRef.Value.Type == "array" {
 				propertyRef.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.Items, propertyRef.Value.Items.Ref)
-				firedHandlers["array handler"]++
+				firedHandlers["array handler"] += firedHandlers["array handler"]
 			} else if propertyRef.Value.AdditionalProperties != nil {
 				// This handles maps
 				// If the property has a ref, then format it.
 				if len(propertyRef.Ref) != 0 {
 					propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
-					firedHandlers["map set set property ref handler"]++
+					firedHandlers["map set set property ref handler"] += firedHandlers["map set set property ref handler"]
 				}
 
 				// TODO: Keeping this previous version until we prove this empty string check removal from isBasic is valid.
@@ -465,39 +465,39 @@ func (b *specBuilder) resolveRefPaths() {
 				// if the map element is for a basic type, clear it so that built in types are handled.
 				if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
 					propertyRef.Value.AdditionalProperties.Ref = ""
-					firedHandlers["map basic handler"]++
+					firedHandlers["map basic handler"] += firedHandlers["map basic handler"]
 				} else if propertyRef.Value.AdditionalProperties.Value.Type == "object" {
 					// Handle mapping of map of maps.
 					if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
 						propertyRef.Value.AdditionalProperties.Value.Type = propertyRef.Value.AdditionalProperties.Ref
 						propertyRef.Value.AdditionalProperties.Ref = ""
-						firedHandlers["map clear embedded map basic handler"]++
+						firedHandlers["map clear embedded map basic handler"] += firedHandlers["map clear embedded map basic handler"]
 					} else {
 						propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
-						firedHandlers["map set embedded map complex handler"]++
+						firedHandlers["map set embedded map complex handler"] += firedHandlers["map set embedded map complex handler"]
 					}
 				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
 					if isBasic(propertyRef.Value.AdditionalProperties.Value.Items.Ref) {
 						propertyRef.Value.AdditionalProperties.Value.Items.Value.Type = propertyRef.Value.AdditionalProperties.Value.Items.Ref
 						propertyRef.Value.AdditionalProperties.Value.Items.Ref = ""
-						firedHandlers["map clear embedded array basic handler"]++
+						firedHandlers["map clear embedded array basic handler"] += firedHandlers["map clear embedded array basic handler"]
 					} else {
 						propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
-						firedHandlers["map set embedded array complex handler"]++
+						firedHandlers["map set embedded array complex handler"] += firedHandlers["map set embedded array complex handler"]
 					}
 				} else if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
 					propertyRef.Value.AdditionalProperties.Ref = fmt.Sprintf("#/components/schemas/%s", propertyRef.Value.AdditionalProperties.Ref)
-					firedHandlers["map set embedded map ref handler"]++
+					firedHandlers["map set embedded map ref handler"] += firedHandlers["map set embedded map ref handler"]
 				}
 			} else {
 				propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
-				firedHandlers["set property ref handler"]++
+				firedHandlers["set property ref handler"] += firedHandlers["set property ref handler"]
 			}
 		}
 	}
 
 	for handler, count := range firedHandlers {
-		fmt.Println(handler + ": " + string(count))
+		fmt.Println(handler + ": " + fmt.Sprint(count))
 	}
 }
 
