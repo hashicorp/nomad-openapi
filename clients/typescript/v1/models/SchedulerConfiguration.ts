@@ -17,6 +17,7 @@ export class SchedulerConfiguration {
     'createIndex'?: number;
     'memoryOversubscriptionEnabled'?: boolean;
     'modifyIndex'?: number;
+    'pauseEvalBroker'?: boolean;
     'preemptionConfig'?: PreemptionConfig;
     'rejectJobRegistration'?: boolean;
     'schedulerAlgorithm'?: string;
@@ -40,6 +41,12 @@ export class SchedulerConfiguration {
             "name": "modifyIndex",
             "baseName": "ModifyIndex",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "pauseEvalBroker",
+            "baseName": "PauseEvalBroker",
+            "type": "boolean",
             "format": ""
         },
         {

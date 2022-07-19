@@ -16,6 +16,7 @@ import { HttpFile } from '../http/http';
 export class ConsulUpstream {
     'datacenter'?: string;
     'destinationName'?: string;
+    'destinationNamespace'?: string;
     'localBindAddress'?: string;
     'localBindPort'?: number;
     'meshGateway'?: ConsulMeshGateway;
@@ -32,6 +33,12 @@ export class ConsulUpstream {
         {
             "name": "destinationName",
             "baseName": "DestinationName",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "destinationNamespace",
+            "baseName": "DestinationNamespace",
             "type": "string",
             "format": ""
         },

@@ -42,6 +42,10 @@ public class SchedulerConfiguration {
   @SerializedName(SERIALIZED_NAME_MODIFY_INDEX)
   private Integer modifyIndex;
 
+  public static final String SERIALIZED_NAME_PAUSE_EVAL_BROKER = "PauseEvalBroker";
+  @SerializedName(SERIALIZED_NAME_PAUSE_EVAL_BROKER)
+  private Boolean pauseEvalBroker;
+
   public static final String SERIALIZED_NAME_PREEMPTION_CONFIG = "PreemptionConfig";
   @SerializedName(SERIALIZED_NAME_PREEMPTION_CONFIG)
   private PreemptionConfig preemptionConfig;
@@ -128,6 +132,29 @@ public class SchedulerConfiguration {
   }
 
 
+  public SchedulerConfiguration pauseEvalBroker(Boolean pauseEvalBroker) {
+    
+    this.pauseEvalBroker = pauseEvalBroker;
+    return this;
+  }
+
+   /**
+   * Get pauseEvalBroker
+   * @return pauseEvalBroker
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getPauseEvalBroker() {
+    return pauseEvalBroker;
+  }
+
+
+  public void setPauseEvalBroker(Boolean pauseEvalBroker) {
+    this.pauseEvalBroker = pauseEvalBroker;
+  }
+
+
   public SchedulerConfiguration preemptionConfig(PreemptionConfig preemptionConfig) {
     
     this.preemptionConfig = preemptionConfig;
@@ -209,6 +236,7 @@ public class SchedulerConfiguration {
     return Objects.equals(this.createIndex, schedulerConfiguration.createIndex) &&
         Objects.equals(this.memoryOversubscriptionEnabled, schedulerConfiguration.memoryOversubscriptionEnabled) &&
         Objects.equals(this.modifyIndex, schedulerConfiguration.modifyIndex) &&
+        Objects.equals(this.pauseEvalBroker, schedulerConfiguration.pauseEvalBroker) &&
         Objects.equals(this.preemptionConfig, schedulerConfiguration.preemptionConfig) &&
         Objects.equals(this.rejectJobRegistration, schedulerConfiguration.rejectJobRegistration) &&
         Objects.equals(this.schedulerAlgorithm, schedulerConfiguration.schedulerAlgorithm);
@@ -216,7 +244,7 @@ public class SchedulerConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createIndex, memoryOversubscriptionEnabled, modifyIndex, preemptionConfig, rejectJobRegistration, schedulerAlgorithm);
+    return Objects.hash(createIndex, memoryOversubscriptionEnabled, modifyIndex, pauseEvalBroker, preemptionConfig, rejectJobRegistration, schedulerAlgorithm);
   }
 
   @Override
@@ -226,6 +254,7 @@ public class SchedulerConfiguration {
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    memoryOversubscriptionEnabled: ").append(toIndentedString(memoryOversubscriptionEnabled)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
+    sb.append("    pauseEvalBroker: ").append(toIndentedString(pauseEvalBroker)).append("\n");
     sb.append("    preemptionConfig: ").append(toIndentedString(preemptionConfig)).append("\n");
     sb.append("    rejectJobRegistration: ").append(toIndentedString(rejectJobRegistration)).append("\n");
     sb.append("    schedulerAlgorithm: ").append(toIndentedString(schedulerAlgorithm)).append("\n");

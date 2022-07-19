@@ -19,6 +19,8 @@ module NomadClient
 
     attr_accessor :destination_name
 
+    attr_accessor :destination_namespace
+
     attr_accessor :local_bind_address
 
     attr_accessor :local_bind_port
@@ -30,6 +32,7 @@ module NomadClient
       {
         :'datacenter' => :'Datacenter',
         :'destination_name' => :'DestinationName',
+        :'destination_namespace' => :'DestinationNamespace',
         :'local_bind_address' => :'LocalBindAddress',
         :'local_bind_port' => :'LocalBindPort',
         :'mesh_gateway' => :'MeshGateway'
@@ -46,6 +49,7 @@ module NomadClient
       {
         :'datacenter' => :'String',
         :'destination_name' => :'String',
+        :'destination_namespace' => :'String',
         :'local_bind_address' => :'String',
         :'local_bind_port' => :'Integer',
         :'mesh_gateway' => :'ConsulMeshGateway'
@@ -81,6 +85,10 @@ module NomadClient
         self.destination_name = attributes[:'destination_name']
       end
 
+      if attributes.key?(:'destination_namespace')
+        self.destination_namespace = attributes[:'destination_namespace']
+      end
+
       if attributes.key?(:'local_bind_address')
         self.local_bind_address = attributes[:'local_bind_address']
       end
@@ -114,6 +122,7 @@ module NomadClient
       self.class == o.class &&
           datacenter == o.datacenter &&
           destination_name == o.destination_name &&
+          destination_namespace == o.destination_namespace &&
           local_bind_address == o.local_bind_address &&
           local_bind_port == o.local_bind_port &&
           mesh_gateway == o.mesh_gateway
@@ -128,7 +137,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [datacenter, destination_name, local_bind_address, local_bind_port, mesh_gateway].hash
+      [datacenter, destination_name, destination_namespace, local_bind_address, local_bind_port, mesh_gateway].hash
     end
 
     # Builds the object from hash

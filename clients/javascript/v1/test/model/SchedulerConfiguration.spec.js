@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property pauseEvalBroker (base name: "PauseEvalBroker")', function() {
+      // uncomment below and update the code to test the property pauseEvalBroker
+      //var instance = new nomad-client.SchedulerConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property preemptionConfig (base name: "PreemptionConfig")', function() {
       // uncomment below and update the code to test the property preemptionConfig
       //var instance = new nomad-client.SchedulerConfiguration();

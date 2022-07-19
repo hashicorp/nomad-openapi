@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **on_update** | Option<**String**> |  | [optional]
 **port_label** | Option<**String**> |  | [optional]
 **provider** | Option<**String**> |  | [optional]
+**tagged_addresses** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **tags** | Option<**Vec<String>**> |  | [optional]
 **task_name** | Option<**String**> |  | [optional]
 

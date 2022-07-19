@@ -20,6 +20,7 @@ type SchedulerConfiguration struct {
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	MemoryOversubscriptionEnabled *bool `json:"MemoryOversubscriptionEnabled,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
+	PauseEvalBroker *bool `json:"PauseEvalBroker,omitempty"`
 	PreemptionConfig *PreemptionConfig `json:"PreemptionConfig,omitempty"`
 	RejectJobRegistration *bool `json:"RejectJobRegistration,omitempty"`
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitempty"`
@@ -138,6 +139,38 @@ func (o *SchedulerConfiguration) SetModifyIndex(v int32) {
 	o.ModifyIndex = &v
 }
 
+// GetPauseEvalBroker returns the PauseEvalBroker field value if set, zero value otherwise.
+func (o *SchedulerConfiguration) GetPauseEvalBroker() bool {
+	if o == nil || o.PauseEvalBroker == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PauseEvalBroker
+}
+
+// GetPauseEvalBrokerOk returns a tuple with the PauseEvalBroker field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchedulerConfiguration) GetPauseEvalBrokerOk() (*bool, bool) {
+	if o == nil || o.PauseEvalBroker == nil {
+		return nil, false
+	}
+	return o.PauseEvalBroker, true
+}
+
+// HasPauseEvalBroker returns a boolean if a field has been set.
+func (o *SchedulerConfiguration) HasPauseEvalBroker() bool {
+	if o != nil && o.PauseEvalBroker != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPauseEvalBroker gets a reference to the given bool and assigns it to the PauseEvalBroker field.
+func (o *SchedulerConfiguration) SetPauseEvalBroker(v bool) {
+	o.PauseEvalBroker = &v
+}
+
 // GetPreemptionConfig returns the PreemptionConfig field value if set, zero value otherwise.
 func (o *SchedulerConfiguration) GetPreemptionConfig() PreemptionConfig {
 	if o == nil || o.PreemptionConfig == nil {
@@ -244,6 +277,9 @@ func (o SchedulerConfiguration) MarshalJSON() ([]byte, error) {
 	}
 	if o.ModifyIndex != nil {
 		toSerialize["ModifyIndex"] = o.ModifyIndex
+	}
+	if o.PauseEvalBroker != nil {
+		toSerialize["PauseEvalBroker"] = o.PauseEvalBroker
 	}
 	if o.PreemptionConfig != nil {
 		toSerialize["PreemptionConfig"] = o.PreemptionConfig

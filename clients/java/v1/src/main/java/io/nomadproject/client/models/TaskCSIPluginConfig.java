@@ -29,6 +29,10 @@ import java.io.IOException;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TaskCSIPluginConfig {
+  public static final String SERIALIZED_NAME_HEALTH_TIMEOUT = "HealthTimeout";
+  @SerializedName(SERIALIZED_NAME_HEALTH_TIMEOUT)
+  private Long healthTimeout;
+
   public static final String SERIALIZED_NAME_I_D = "ID";
   @SerializedName(SERIALIZED_NAME_I_D)
   private String ID;
@@ -40,6 +44,29 @@ public class TaskCSIPluginConfig {
   public static final String SERIALIZED_NAME_TYPE = "Type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
+
+
+  public TaskCSIPluginConfig healthTimeout(Long healthTimeout) {
+    
+    this.healthTimeout = healthTimeout;
+    return this;
+  }
+
+   /**
+   * Get healthTimeout
+   * @return healthTimeout
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getHealthTimeout() {
+    return healthTimeout;
+  }
+
+
+  public void setHealthTimeout(Long healthTimeout) {
+    this.healthTimeout = healthTimeout;
+  }
 
 
   public TaskCSIPluginConfig ID(String ID) {
@@ -120,20 +147,22 @@ public class TaskCSIPluginConfig {
       return false;
     }
     TaskCSIPluginConfig taskCSIPluginConfig = (TaskCSIPluginConfig) o;
-    return Objects.equals(this.ID, taskCSIPluginConfig.ID) &&
+    return Objects.equals(this.healthTimeout, taskCSIPluginConfig.healthTimeout) &&
+        Objects.equals(this.ID, taskCSIPluginConfig.ID) &&
         Objects.equals(this.mountDir, taskCSIPluginConfig.mountDir) &&
         Objects.equals(this.type, taskCSIPluginConfig.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ID, mountDir, type);
+    return Objects.hash(healthTimeout, ID, mountDir, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TaskCSIPluginConfig {\n");
+    sb.append("    healthTimeout: ").append(toIndentedString(healthTimeout)).append("\n");
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    mountDir: ").append(toIndentedString(mountDir)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

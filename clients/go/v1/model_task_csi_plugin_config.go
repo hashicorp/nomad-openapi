@@ -17,6 +17,7 @@ import (
 
 // TaskCSIPluginConfig struct for TaskCSIPluginConfig
 type TaskCSIPluginConfig struct {
+	HealthTimeout *int64 `json:"HealthTimeout,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	MountDir *string `json:"MountDir,omitempty"`
 	Type *string `json:"Type,omitempty"`
@@ -37,6 +38,38 @@ func NewTaskCSIPluginConfig() *TaskCSIPluginConfig {
 func NewTaskCSIPluginConfigWithDefaults() *TaskCSIPluginConfig {
 	this := TaskCSIPluginConfig{}
 	return &this
+}
+
+// GetHealthTimeout returns the HealthTimeout field value if set, zero value otherwise.
+func (o *TaskCSIPluginConfig) GetHealthTimeout() int64 {
+	if o == nil || o.HealthTimeout == nil {
+		var ret int64
+		return ret
+	}
+	return *o.HealthTimeout
+}
+
+// GetHealthTimeoutOk returns a tuple with the HealthTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaskCSIPluginConfig) GetHealthTimeoutOk() (*int64, bool) {
+	if o == nil || o.HealthTimeout == nil {
+		return nil, false
+	}
+	return o.HealthTimeout, true
+}
+
+// HasHealthTimeout returns a boolean if a field has been set.
+func (o *TaskCSIPluginConfig) HasHealthTimeout() bool {
+	if o != nil && o.HealthTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthTimeout gets a reference to the given int64 and assigns it to the HealthTimeout field.
+func (o *TaskCSIPluginConfig) SetHealthTimeout(v int64) {
+	o.HealthTimeout = &v
 }
 
 // GetID returns the ID field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *TaskCSIPluginConfig) SetType(v string) {
 
 func (o TaskCSIPluginConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.HealthTimeout != nil {
+		toSerialize["HealthTimeout"] = o.HealthTimeout
+	}
 	if o.ID != nil {
 		toSerialize["ID"] = o.ID
 	}

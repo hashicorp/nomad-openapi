@@ -57,6 +57,9 @@ class SchedulerConfiguration {
             if (data.hasOwnProperty('ModifyIndex')) {
                 obj['ModifyIndex'] = ApiClient.convertToType(data['ModifyIndex'], 'Number');
             }
+            if (data.hasOwnProperty('PauseEvalBroker')) {
+                obj['PauseEvalBroker'] = ApiClient.convertToType(data['PauseEvalBroker'], 'Boolean');
+            }
             if (data.hasOwnProperty('PreemptionConfig')) {
                 obj['PreemptionConfig'] = PreemptionConfig.constructFromObject(data['PreemptionConfig']);
             }
@@ -87,6 +90,11 @@ SchedulerConfiguration.prototype['MemoryOversubscriptionEnabled'] = undefined;
  * @member {Number} ModifyIndex
  */
 SchedulerConfiguration.prototype['ModifyIndex'] = undefined;
+
+/**
+ * @member {Boolean} PauseEvalBroker
+ */
+SchedulerConfiguration.prototype['PauseEvalBroker'] = undefined;
 
 /**
  * @member {module:model/PreemptionConfig} PreemptionConfig

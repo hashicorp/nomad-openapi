@@ -39,6 +39,8 @@ pub struct Service {
     pub port_label: Option<String>,
     #[serde(rename = "Provider", skip_serializing_if = "Option::is_none")]
     pub provider: Option<String>,
+    #[serde(rename = "TaggedAddresses", skip_serializing_if = "Option::is_none")]
+    pub tagged_addresses: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "Tags", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<String>>,
     #[serde(rename = "TaskName", skip_serializing_if = "Option::is_none")]
@@ -61,6 +63,7 @@ impl Service {
             on_update: None,
             port_label: None,
             provider: None,
+            tagged_addresses: None,
             tags: None,
             task_name: None,
         }

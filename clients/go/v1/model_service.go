@@ -30,6 +30,7 @@ type Service struct {
 	OnUpdate *string `json:"OnUpdate,omitempty"`
 	PortLabel *string `json:"PortLabel,omitempty"`
 	Provider *string `json:"Provider,omitempty"`
+	TaggedAddresses *map[string]string `json:"TaggedAddresses,omitempty"`
 	Tags *[]string `json:"Tags,omitempty"`
 	TaskName *string `json:"TaskName,omitempty"`
 }
@@ -467,6 +468,38 @@ func (o *Service) SetProvider(v string) {
 	o.Provider = &v
 }
 
+// GetTaggedAddresses returns the TaggedAddresses field value if set, zero value otherwise.
+func (o *Service) GetTaggedAddresses() map[string]string {
+	if o == nil || o.TaggedAddresses == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.TaggedAddresses
+}
+
+// GetTaggedAddressesOk returns a tuple with the TaggedAddresses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Service) GetTaggedAddressesOk() (*map[string]string, bool) {
+	if o == nil || o.TaggedAddresses == nil {
+		return nil, false
+	}
+	return o.TaggedAddresses, true
+}
+
+// HasTaggedAddresses returns a boolean if a field has been set.
+func (o *Service) HasTaggedAddresses() bool {
+	if o != nil && o.TaggedAddresses != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTaggedAddresses gets a reference to the given map[string]string and assigns it to the TaggedAddresses field.
+func (o *Service) SetTaggedAddresses(v map[string]string) {
+	o.TaggedAddresses = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Service) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -571,6 +604,9 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	}
 	if o.Provider != nil {
 		toSerialize["Provider"] = o.Provider
+	}
+	if o.TaggedAddresses != nil {
+		toSerialize["TaggedAddresses"] = o.TaggedAddresses
 	}
 	if o.Tags != nil {
 		toSerialize["Tags"] = o.Tags

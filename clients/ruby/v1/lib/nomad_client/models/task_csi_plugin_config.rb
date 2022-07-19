@@ -15,6 +15,8 @@ require 'time'
 
 module NomadClient
   class TaskCSIPluginConfig
+    attr_accessor :health_timeout
+
     attr_accessor :id
 
     attr_accessor :mount_dir
@@ -24,6 +26,7 @@ module NomadClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'health_timeout' => :'HealthTimeout',
         :'id' => :'ID',
         :'mount_dir' => :'MountDir',
         :'type' => :'Type'
@@ -38,6 +41,7 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'health_timeout' => :'Integer',
         :'id' => :'String',
         :'mount_dir' => :'String',
         :'type' => :'String'
@@ -64,6 +68,10 @@ module NomadClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'health_timeout')
+        self.health_timeout = attributes[:'health_timeout']
+      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -96,6 +104,7 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          health_timeout == o.health_timeout &&
           id == o.id &&
           mount_dir == o.mount_dir &&
           type == o.type
@@ -110,7 +119,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, mount_dir, type].hash
+      [health_timeout, id, mount_dir, type].hash
     end
 
     # Builds the object from hash

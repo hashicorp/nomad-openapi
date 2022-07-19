@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **datacenter** | **str** |  | [optional] 
 **destination_name** | **str** |  | [optional] 
+**destination_namespace** | **str** |  | [optional] 
 **local_bind_address** | **str** |  | [optional] 
 **local_bind_port** | **int** |  | [optional] 
 **mesh_gateway** | [**ConsulMeshGateway**](ConsulMeshGateway.md) |  | [optional] 

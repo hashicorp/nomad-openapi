@@ -90,6 +90,7 @@ class ConsulUpstream(ModelNormal):
         return {
             'datacenter': (str,),  # noqa: E501
             'destination_name': (str,),  # noqa: E501
+            'destination_namespace': (str,),  # noqa: E501
             'local_bind_address': (str,),  # noqa: E501
             'local_bind_port': (int,),  # noqa: E501
             'mesh_gateway': (ConsulMeshGateway,),  # noqa: E501
@@ -103,6 +104,7 @@ class ConsulUpstream(ModelNormal):
     attribute_map = {
         'datacenter': 'Datacenter',  # noqa: E501
         'destination_name': 'DestinationName',  # noqa: E501
+        'destination_namespace': 'DestinationNamespace',  # noqa: E501
         'local_bind_address': 'LocalBindAddress',  # noqa: E501
         'local_bind_port': 'LocalBindPort',  # noqa: E501
         'mesh_gateway': 'MeshGateway',  # noqa: E501
@@ -151,6 +153,7 @@ class ConsulUpstream(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             datacenter (str): [optional]  # noqa: E501
             destination_name (str): [optional]  # noqa: E501
+            destination_namespace (str): [optional]  # noqa: E501
             local_bind_address (str): [optional]  # noqa: E501
             local_bind_port (int): [optional]  # noqa: E501
             mesh_gateway (ConsulMeshGateway): [optional]  # noqa: E501
@@ -237,6 +240,7 @@ class ConsulUpstream(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             datacenter (str): [optional]  # noqa: E501
             destination_name (str): [optional]  # noqa: E501
+            destination_namespace (str): [optional]  # noqa: E501
             local_bind_address (str): [optional]  # noqa: E501
             local_bind_port (int): [optional]  # noqa: E501
             mesh_gateway (ConsulMeshGateway): [optional]  # noqa: E501

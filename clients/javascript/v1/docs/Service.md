@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **onUpdate** | **String** |  | [optional] 
 **portLabel** | **String** |  | [optional] 
 **provider** | **String** |  | [optional] 
+**taggedAddresses** | **{String: String}** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
 **taskName** | **String** |  | [optional] 
 

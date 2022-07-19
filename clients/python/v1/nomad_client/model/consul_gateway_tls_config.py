@@ -82,7 +82,10 @@ class ConsulGatewayTLSConfig(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'cipher_suites': ([str],),  # noqa: E501
             'enabled': (bool,),  # noqa: E501
+            'tls_max_version': (str,),  # noqa: E501
+            'tls_min_version': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -91,7 +94,10 @@ class ConsulGatewayTLSConfig(ModelNormal):
 
 
     attribute_map = {
+        'cipher_suites': 'CipherSuites',  # noqa: E501
         'enabled': 'Enabled',  # noqa: E501
+        'tls_max_version': 'TLSMaxVersion',  # noqa: E501
+        'tls_min_version': 'TLSMinVersion',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,7 +141,10 @@ class ConsulGatewayTLSConfig(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            cipher_suites ([str]): [optional]  # noqa: E501
             enabled (bool): [optional]  # noqa: E501
+            tls_max_version (str): [optional]  # noqa: E501
+            tls_min_version (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +226,10 @@ class ConsulGatewayTLSConfig(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            cipher_suites ([str]): [optional]  # noqa: E501
             enabled (bool): [optional]  # noqa: E501
+            tls_max_version (str): [optional]  # noqa: E501
+            tls_min_version (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

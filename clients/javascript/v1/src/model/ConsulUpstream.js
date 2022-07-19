@@ -54,6 +54,9 @@ class ConsulUpstream {
             if (data.hasOwnProperty('DestinationName')) {
                 obj['DestinationName'] = ApiClient.convertToType(data['DestinationName'], 'String');
             }
+            if (data.hasOwnProperty('DestinationNamespace')) {
+                obj['DestinationNamespace'] = ApiClient.convertToType(data['DestinationNamespace'], 'String');
+            }
             if (data.hasOwnProperty('LocalBindAddress')) {
                 obj['LocalBindAddress'] = ApiClient.convertToType(data['LocalBindAddress'], 'String');
             }
@@ -79,6 +82,11 @@ ConsulUpstream.prototype['Datacenter'] = undefined;
  * @member {String} DestinationName
  */
 ConsulUpstream.prototype['DestinationName'] = undefined;
+
+/**
+ * @member {String} DestinationNamespace
+ */
+ConsulUpstream.prototype['DestinationNamespace'] = undefined;
 
 /**
  * @member {String} LocalBindAddress

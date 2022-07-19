@@ -152,6 +152,14 @@ public class ServiceTest {
     }
 
     /**
+     * Test the property 'taggedAddresses'
+     */
+    @Test
+    public void taggedAddressesTest() {
+        // TODO: test taggedAddresses
+    }
+
+    /**
      * Test the property 'tags'
      */
     @Test

@@ -29,6 +29,7 @@ export class Service {
     'onUpdate'?: string;
     'portLabel'?: string;
     'provider'?: string;
+    'taggedAddresses'?: { [key: string]: string; };
     'tags'?: Array<string>;
     'taskName'?: string;
 
@@ -111,6 +112,12 @@ export class Service {
             "name": "provider",
             "baseName": "Provider",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "taggedAddresses",
+            "baseName": "TaggedAddresses",
+            "type": "{ [key: string]: string; }",
             "format": ""
         },
         {

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **OnUpdate** | Pointer to **string** |  | [optional] 
 **PortLabel** | Pointer to **string** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
+**TaggedAddresses** | Pointer to **map[string]string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **TaskName** | Pointer to **string** |  | [optional] 
 
@@ -363,6 +364,31 @@ SetProvider sets Provider field to given value.
 `func (o *Service) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+
+### GetTaggedAddresses
+
+`func (o *Service) GetTaggedAddresses() map[string]string`
+
+GetTaggedAddresses returns the TaggedAddresses field if non-nil, zero value otherwise.
+
+### GetTaggedAddressesOk
+
+`func (o *Service) GetTaggedAddressesOk() (*map[string]string, bool)`
+
+GetTaggedAddressesOk returns a tuple with the TaggedAddresses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaggedAddresses
+
+`func (o *Service) SetTaggedAddresses(v map[string]string)`
+
+SetTaggedAddresses sets TaggedAddresses field to given value.
+
+### HasTaggedAddresses
+
+`func (o *Service) HasTaggedAddresses() bool`
+
+HasTaggedAddresses returns a boolean if a field has been set.
 
 ### GetTags
 
