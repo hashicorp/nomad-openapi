@@ -21,7 +21,7 @@ spec:
 test:
 	(cd ./v1 && go test ./... -v -count=1)
 
-.PHONY: openapi
+.PHONY: v1
 v1: spec
 	@echo "==> Building v1 OpenAPI Specification and clients..."
 	@docker run \
@@ -57,6 +57,13 @@ v1: spec
 		--volume "$(shell pwd):/local" \
 		$(DOCKER_IMAGE) batch --clean /local/clients/typescript/v1/config.yaml
 
+.PHONY: csharp-netcore
+csharp-netcore:
+	@echo "==> Building v1 OpenAPI Specification and clients for csharp-netcore..."
+	@docker run \
+		--rm \
+		--volume "$(PWD):/local" \
+		 $(DOCKER_IMAGE) batch --clean /local/clients/csharp-netcore/v1/config.yaml
 
 .PHONY: update-nomad
 update-nomad:

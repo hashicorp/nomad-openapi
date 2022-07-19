@@ -1,0 +1,11 @@
+# Nomad.Client.Model.SpreadTarget
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Percent** | **int** |  | [optional] 
+**Value** | **string** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

@@ -1,0 +1,10 @@
+# File is used by the openapi-generator cli to generate a csharp-netcore client.
+generatorName: csharp-netcore
+gitUserId: hashicorp
+gitRepoId: nomad-openapi/clients/csharp-netcore/v1
+inputSpec: /local/v1/openapi.yaml
+outputDir: /local/clients/csharp-netcore/v1
+packageName: Nomad.Client
+packageVersion: 1.1.4
+hideGenerationTimestamp: true
+licenseId: Mozilla Public License Version 2.0
