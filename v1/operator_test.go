@@ -97,12 +97,12 @@ func testPostSchedulerConfiguration(t *testing.T, s *agent.TestAgent) {
 	schedulerOpts := &client.SchedulerConfiguration{
 		SchedulerAlgorithm:            helper.StringToPtr("spread"),
 		MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
-		PreemptionConfig: &client.PreemptionConfig{
+		PreemptionConfig: *client.NewNullablePreemptionConfig(&client.PreemptionConfig{
 			BatchSchedulerEnabled:    helper.BoolToPtr(true),
 			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
 			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
 			SystemSchedulerEnabled:   helper.BoolToPtr(true),
-		},
+		}),
 	}
 
 	result, meta, err := testClient.Operator().UpdateScheduler(writeOpts.Ctx(), schedulerOpts)

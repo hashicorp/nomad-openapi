@@ -107,7 +107,7 @@ func (o *Operator) UpdateScheduler(ctx context.Context, config *client.Scheduler
 	updateRequest := client.NewSchedulerConfiguration()
 	updateRequest.SetSchedulerAlgorithm(*config.SchedulerAlgorithm)
 	updateRequest.SetMemoryOversubscriptionEnabled(*config.MemoryOversubscriptionEnabled)
-	updateRequest.SetPreemptionConfig(*config.PreemptionConfig)
+	updateRequest.SetPreemptionConfig(*config.PreemptionConfig.Get())
 
 	request = request.SchedulerConfiguration(*updateRequest)
 

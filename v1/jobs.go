@@ -416,7 +416,7 @@ func (j *Jobs) GetLocation(job *client.Job) (*time.Location, error) {
 }
 
 func (j *Jobs) IsMultiRegion(job *client.Job) bool {
-	return job.Multiregion != nil && *job.Multiregion.Regions != nil && len(*job.Multiregion.Regions) > 0
+	return job.Multiregion.IsSet() && job.Multiregion.Get().Regions != nil && len(job.Multiregion.Get().Regions) > 0
 }
 
 func (j *Jobs) IsParameterized(job *client.Job) bool {
@@ -424,7 +424,7 @@ func (j *Jobs) IsParameterized(job *client.Job) bool {
 	if job.Dispatched != nil {
 		dispatched = *job.Dispatched
 	}
-	return job.ParameterizedJob != nil && !dispatched
+	return job.ParameterizedJob.IsSet() && !dispatched
 }
 
 func (j *Jobs) IsPeriodic(job *client.Job) bool {

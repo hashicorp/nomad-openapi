@@ -57,7 +57,7 @@ func testGetAllocations(t *testing.T, s *agent.TestAgent) {
 	require.NotNil(t, allocList)
 	taskStates := *allocList[0].TaskStates
 	require.NotNil(t, taskStates)
-	events := *taskStates["test"].Events
+	events := taskStates["test"].Events
 	require.NotNil(t, events)
 	displayMsg1 := *events[0].DisplayMessage
 	require.Equal(t, expectedMsg, displayMsg1, "DisplayMessage should be set")
