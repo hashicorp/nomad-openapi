@@ -15,12 +15,21 @@ require 'time'
 
 module NomadClient
   class ConsulGatewayTLSConfig
+    attr_accessor :cipher_suites
+
     attr_accessor :enabled
+
+    attr_accessor :tls_max_version
+
+    attr_accessor :tls_min_version
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'enabled' => :'Enabled'
+        :'cipher_suites' => :'CipherSuites',
+        :'enabled' => :'Enabled',
+        :'tls_max_version' => :'TLSMaxVersion',
+        :'tls_min_version' => :'TLSMinVersion'
       }
     end
 
@@ -32,7 +41,10 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'enabled' => :'Boolean'
+        :'cipher_suites' => :'Array<String>',
+        :'enabled' => :'Boolean',
+        :'tls_max_version' => :'String',
+        :'tls_min_version' => :'String'
       }
     end
 
@@ -57,8 +69,22 @@ module NomadClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'cipher_suites')
+        if (value = attributes[:'cipher_suites']).is_a?(Array)
+          self.cipher_suites = value
+        end
+      end
+
       if attributes.key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'tls_max_version')
+        self.tls_max_version = attributes[:'tls_max_version']
+      end
+
+      if attributes.key?(:'tls_min_version')
+        self.tls_min_version = attributes[:'tls_min_version']
       end
     end
 
@@ -80,7 +106,10 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          enabled == o.enabled
+          cipher_suites == o.cipher_suites &&
+          enabled == o.enabled &&
+          tls_max_version == o.tls_max_version &&
+          tls_min_version == o.tls_min_version
     end
 
     # @see the `==` method
@@ -92,7 +121,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [enabled].hash
+      [cipher_suites, enabled, tls_max_version, tls_min_version].hash
     end
 
     # Builds the object from hash

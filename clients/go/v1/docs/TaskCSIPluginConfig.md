@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**HealthTimeout** | Pointer to **int64** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **MountDir** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewTaskCSIPluginConfigWithDefaults instantiates a new TaskCSIPluginConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHealthTimeout
+
+`func (o *TaskCSIPluginConfig) GetHealthTimeout() int64`
+
+GetHealthTimeout returns the HealthTimeout field if non-nil, zero value otherwise.
+
+### GetHealthTimeoutOk
+
+`func (o *TaskCSIPluginConfig) GetHealthTimeoutOk() (*int64, bool)`
+
+GetHealthTimeoutOk returns a tuple with the HealthTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthTimeout
+
+`func (o *TaskCSIPluginConfig) SetHealthTimeout(v int64)`
+
+SetHealthTimeout sets HealthTimeout field to given value.
+
+### HasHealthTimeout
+
+`func (o *TaskCSIPluginConfig) HasHealthTimeout() bool`
+
+HasHealthTimeout returns a boolean if a field has been set.
 
 ### GetID
 

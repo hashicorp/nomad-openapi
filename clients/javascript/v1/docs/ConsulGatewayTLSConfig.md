@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**cipherSuites** | **[String]** |  | [optional] 
 **enabled** | **Boolean** |  | [optional] 
+**tLSMaxVersion** | **String** |  | [optional] 
+**tLSMinVersion** | **String** |  | [optional] 
 
 

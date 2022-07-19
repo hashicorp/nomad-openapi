@@ -17,7 +17,10 @@ import (
 
 // ConsulGatewayTLSConfig struct for ConsulGatewayTLSConfig
 type ConsulGatewayTLSConfig struct {
+	CipherSuites *[]string `json:"CipherSuites,omitempty"`
 	Enabled *bool `json:"Enabled,omitempty"`
+	TLSMaxVersion *string `json:"TLSMaxVersion,omitempty"`
+	TLSMinVersion *string `json:"TLSMinVersion,omitempty"`
 }
 
 // NewConsulGatewayTLSConfig instantiates a new ConsulGatewayTLSConfig object
@@ -35,6 +38,38 @@ func NewConsulGatewayTLSConfig() *ConsulGatewayTLSConfig {
 func NewConsulGatewayTLSConfigWithDefaults() *ConsulGatewayTLSConfig {
 	this := ConsulGatewayTLSConfig{}
 	return &this
+}
+
+// GetCipherSuites returns the CipherSuites field value if set, zero value otherwise.
+func (o *ConsulGatewayTLSConfig) GetCipherSuites() []string {
+	if o == nil || o.CipherSuites == nil {
+		var ret []string
+		return ret
+	}
+	return *o.CipherSuites
+}
+
+// GetCipherSuitesOk returns a tuple with the CipherSuites field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulGatewayTLSConfig) GetCipherSuitesOk() (*[]string, bool) {
+	if o == nil || o.CipherSuites == nil {
+		return nil, false
+	}
+	return o.CipherSuites, true
+}
+
+// HasCipherSuites returns a boolean if a field has been set.
+func (o *ConsulGatewayTLSConfig) HasCipherSuites() bool {
+	if o != nil && o.CipherSuites != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCipherSuites gets a reference to the given []string and assigns it to the CipherSuites field.
+func (o *ConsulGatewayTLSConfig) SetCipherSuites(v []string) {
+	o.CipherSuites = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -69,10 +104,83 @@ func (o *ConsulGatewayTLSConfig) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetTLSMaxVersion returns the TLSMaxVersion field value if set, zero value otherwise.
+func (o *ConsulGatewayTLSConfig) GetTLSMaxVersion() string {
+	if o == nil || o.TLSMaxVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.TLSMaxVersion
+}
+
+// GetTLSMaxVersionOk returns a tuple with the TLSMaxVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulGatewayTLSConfig) GetTLSMaxVersionOk() (*string, bool) {
+	if o == nil || o.TLSMaxVersion == nil {
+		return nil, false
+	}
+	return o.TLSMaxVersion, true
+}
+
+// HasTLSMaxVersion returns a boolean if a field has been set.
+func (o *ConsulGatewayTLSConfig) HasTLSMaxVersion() bool {
+	if o != nil && o.TLSMaxVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTLSMaxVersion gets a reference to the given string and assigns it to the TLSMaxVersion field.
+func (o *ConsulGatewayTLSConfig) SetTLSMaxVersion(v string) {
+	o.TLSMaxVersion = &v
+}
+
+// GetTLSMinVersion returns the TLSMinVersion field value if set, zero value otherwise.
+func (o *ConsulGatewayTLSConfig) GetTLSMinVersion() string {
+	if o == nil || o.TLSMinVersion == nil {
+		var ret string
+		return ret
+	}
+	return *o.TLSMinVersion
+}
+
+// GetTLSMinVersionOk returns a tuple with the TLSMinVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulGatewayTLSConfig) GetTLSMinVersionOk() (*string, bool) {
+	if o == nil || o.TLSMinVersion == nil {
+		return nil, false
+	}
+	return o.TLSMinVersion, true
+}
+
+// HasTLSMinVersion returns a boolean if a field has been set.
+func (o *ConsulGatewayTLSConfig) HasTLSMinVersion() bool {
+	if o != nil && o.TLSMinVersion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTLSMinVersion gets a reference to the given string and assigns it to the TLSMinVersion field.
+func (o *ConsulGatewayTLSConfig) SetTLSMinVersion(v string) {
+	o.TLSMinVersion = &v
+}
+
 func (o ConsulGatewayTLSConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CipherSuites != nil {
+		toSerialize["CipherSuites"] = o.CipherSuites
+	}
 	if o.Enabled != nil {
 		toSerialize["Enabled"] = o.Enabled
+	}
+	if o.TLSMaxVersion != nil {
+		toSerialize["TLSMaxVersion"] = o.TLSMaxVersion
+	}
+	if o.TLSMinVersion != nil {
+		toSerialize["TLSMinVersion"] = o.TLSMinVersion
 	}
 	return json.Marshal(toSerialize)
 }

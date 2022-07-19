@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,11 +43,35 @@ public class ConsulGatewayTLSConfigTest {
     }
 
     /**
+     * Test the property 'cipherSuites'
+     */
+    @Test
+    public void cipherSuitesTest() {
+        // TODO: test cipherSuites
+    }
+
+    /**
      * Test the property 'enabled'
      */
     @Test
     public void enabledTest() {
         // TODO: test enabled
+    }
+
+    /**
+     * Test the property 'tlSMaxVersion'
+     */
+    @Test
+    public void tlSMaxVersionTest() {
+        // TODO: test tlSMaxVersion
+    }
+
+    /**
+     * Test the property 'tlSMinVersion'
+     */
+    @Test
+    public void tlSMinVersionTest() {
+        // TODO: test tlSMinVersion
     }
 
 }

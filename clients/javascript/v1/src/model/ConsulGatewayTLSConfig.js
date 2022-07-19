@@ -47,8 +47,17 @@ class ConsulGatewayTLSConfig {
         if (data) {
             obj = obj || new ConsulGatewayTLSConfig();
 
+            if (data.hasOwnProperty('CipherSuites')) {
+                obj['CipherSuites'] = ApiClient.convertToType(data['CipherSuites'], ['String']);
+            }
             if (data.hasOwnProperty('Enabled')) {
                 obj['Enabled'] = ApiClient.convertToType(data['Enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('TLSMaxVersion')) {
+                obj['TLSMaxVersion'] = ApiClient.convertToType(data['TLSMaxVersion'], 'String');
+            }
+            if (data.hasOwnProperty('TLSMinVersion')) {
+                obj['TLSMinVersion'] = ApiClient.convertToType(data['TLSMinVersion'], 'String');
             }
         }
         return obj;
@@ -58,9 +67,24 @@ class ConsulGatewayTLSConfig {
 }
 
 /**
+ * @member {Array.<String>} CipherSuites
+ */
+ConsulGatewayTLSConfig.prototype['CipherSuites'] = undefined;
+
+/**
  * @member {Boolean} Enabled
  */
 ConsulGatewayTLSConfig.prototype['Enabled'] = undefined;
+
+/**
+ * @member {String} TLSMaxVersion
+ */
+ConsulGatewayTLSConfig.prototype['TLSMaxVersion'] = undefined;
+
+/**
+ * @member {String} TLSMinVersion
+ */
+ConsulGatewayTLSConfig.prototype['TLSMinVersion'] = undefined;
 
 
 

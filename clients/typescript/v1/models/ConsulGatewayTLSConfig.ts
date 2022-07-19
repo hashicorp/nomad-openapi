@@ -13,15 +13,36 @@
 import { HttpFile } from '../http/http';
 
 export class ConsulGatewayTLSConfig {
+    'cipherSuites'?: Array<string>;
     'enabled'?: boolean;
+    'tLSMaxVersion'?: string;
+    'tLSMinVersion'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "cipherSuites",
+            "baseName": "CipherSuites",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
             "name": "enabled",
             "baseName": "Enabled",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "tLSMaxVersion",
+            "baseName": "TLSMaxVersion",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "tLSMinVersion",
+            "baseName": "TLSMinVersion",
+            "type": "string",
             "format": ""
         }    ];
 

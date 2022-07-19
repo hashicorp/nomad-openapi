@@ -694,7 +694,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -750,6 +755,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -858,6 +864,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -902,6 +911,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -1100,7 +1110,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -1156,6 +1171,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -1264,6 +1280,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],
@@ -2114,7 +2133,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -2170,6 +2194,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -2278,6 +2303,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -2322,6 +2350,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -2520,7 +2549,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -2576,6 +2610,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -2684,6 +2719,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],
@@ -4606,7 +4644,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -4662,6 +4705,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -4770,6 +4814,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -4814,6 +4861,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -5012,7 +5060,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -5068,6 +5121,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -5176,6 +5230,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],
@@ -6026,7 +6083,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -6082,6 +6144,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -6190,6 +6253,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -6234,6 +6300,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -6432,7 +6499,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -6488,6 +6560,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -6596,6 +6669,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],
@@ -7734,7 +7810,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -7790,6 +7871,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -7898,6 +7980,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -7942,6 +8027,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -8140,7 +8226,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -8196,6 +8287,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -8304,6 +8396,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],
@@ -9154,7 +9249,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ),
                                                         ],
                                                         tls=ConsulGatewayTLSConfig(
+                                                            cipher_suites=[
+                                                                "cipher_suites_example",
+                                                            ],
                                                             enabled=True,
+                                                            tls_max_version="tls_max_version_example",
+                                                            tls_min_version="tls_min_version_example",
                                                         ),
                                                     ),
                                                     mesh=None,
@@ -9210,6 +9310,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                             ConsulUpstream(
                                                                 datacenter="datacenter_example",
                                                                 destination_name="destination_name_example",
+                                                                destination_namespace="destination_namespace_example",
                                                                 local_bind_address="local_bind_address_example",
                                                                 local_bind_port=1,
                                                                 mesh_gateway=ConsulMeshGateway(
@@ -9318,6 +9419,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             on_update="on_update_example",
                                             port_label="port_label_example",
                                             provider="provider_example",
+                                            tagged_addresses={
+                                                "key": "key_example",
+                                            },
                                             tags=[
                                                 "tags_example",
                                             ],
@@ -9362,6 +9466,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 ),
                                             ],
                                             csi_plugin_config=TaskCSIPluginConfig(
+                                                health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
                                                 type="type_example",
@@ -9560,7 +9665,12 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ),
                                                                 ],
                                                                 tls=ConsulGatewayTLSConfig(
+                                                                    cipher_suites=[
+                                                                        "cipher_suites_example",
+                                                                    ],
                                                                     enabled=True,
+                                                                    tls_max_version="tls_max_version_example",
+                                                                    tls_min_version="tls_min_version_example",
                                                                 ),
                                                             ),
                                                             mesh=None,
@@ -9616,6 +9726,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                                     ConsulUpstream(
                                                                         datacenter="datacenter_example",
                                                                         destination_name="destination_name_example",
+                                                                        destination_namespace="destination_namespace_example",
                                                                         local_bind_address="local_bind_address_example",
                                                                         local_bind_port=1,
                                                                         mesh_gateway=ConsulMeshGateway(
@@ -9724,6 +9835,9 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                     on_update="on_update_example",
                                                     port_label="port_label_example",
                                                     provider="provider_example",
+                                                    tagged_addresses={
+                                                        "key": "key_example",
+                                                    },
                                                     tags=[
                                                         "tags_example",
                                                     ],

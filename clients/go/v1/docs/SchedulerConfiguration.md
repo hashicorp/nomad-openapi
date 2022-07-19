@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **MemoryOversubscriptionEnabled** | Pointer to **bool** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
+**PauseEvalBroker** | Pointer to **bool** |  | [optional] 
 **PreemptionConfig** | Pointer to [**PreemptionConfig**](PreemptionConfig.md) |  | [optional] 
 **RejectJobRegistration** | Pointer to **bool** |  | [optional] 
 **SchedulerAlgorithm** | Pointer to **string** |  | [optional] 
@@ -104,6 +105,31 @@ SetModifyIndex sets ModifyIndex field to given value.
 `func (o *SchedulerConfiguration) HasModifyIndex() bool`
 
 HasModifyIndex returns a boolean if a field has been set.
+
+### GetPauseEvalBroker
+
+`func (o *SchedulerConfiguration) GetPauseEvalBroker() bool`
+
+GetPauseEvalBroker returns the PauseEvalBroker field if non-nil, zero value otherwise.
+
+### GetPauseEvalBrokerOk
+
+`func (o *SchedulerConfiguration) GetPauseEvalBrokerOk() (*bool, bool)`
+
+GetPauseEvalBrokerOk returns a tuple with the PauseEvalBroker field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPauseEvalBroker
+
+`func (o *SchedulerConfiguration) SetPauseEvalBroker(v bool)`
+
+SetPauseEvalBroker sets PauseEvalBroker field to given value.
+
+### HasPauseEvalBroker
+
+`func (o *SchedulerConfiguration) HasPauseEvalBroker() bool`
+
+HasPauseEvalBroker returns a boolean if a field has been set.
 
 ### GetPreemptionConfig
 

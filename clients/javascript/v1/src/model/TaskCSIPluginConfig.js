@@ -47,6 +47,9 @@ class TaskCSIPluginConfig {
         if (data) {
             obj = obj || new TaskCSIPluginConfig();
 
+            if (data.hasOwnProperty('HealthTimeout')) {
+                obj['HealthTimeout'] = ApiClient.convertToType(data['HealthTimeout'], 'Number');
+            }
             if (data.hasOwnProperty('ID')) {
                 obj['ID'] = ApiClient.convertToType(data['ID'], 'String');
             }
@@ -62,6 +65,11 @@ class TaskCSIPluginConfig {
 
 
 }
+
+/**
+ * @member {Number} HealthTimeout
+ */
+TaskCSIPluginConfig.prototype['HealthTimeout'] = undefined;
 
 /**
  * @member {String} ID

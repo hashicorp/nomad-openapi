@@ -38,6 +38,10 @@ public class ConsulUpstream {
   @SerializedName(SERIALIZED_NAME_DESTINATION_NAME)
   private String destinationName;
 
+  public static final String SERIALIZED_NAME_DESTINATION_NAMESPACE = "DestinationNamespace";
+  @SerializedName(SERIALIZED_NAME_DESTINATION_NAMESPACE)
+  private String destinationNamespace;
+
   public static final String SERIALIZED_NAME_LOCAL_BIND_ADDRESS = "LocalBindAddress";
   @SerializedName(SERIALIZED_NAME_LOCAL_BIND_ADDRESS)
   private String localBindAddress;
@@ -94,6 +98,29 @@ public class ConsulUpstream {
 
   public void setDestinationName(String destinationName) {
     this.destinationName = destinationName;
+  }
+
+
+  public ConsulUpstream destinationNamespace(String destinationNamespace) {
+    
+    this.destinationNamespace = destinationNamespace;
+    return this;
+  }
+
+   /**
+   * Get destinationNamespace
+   * @return destinationNamespace
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDestinationNamespace() {
+    return destinationNamespace;
+  }
+
+
+  public void setDestinationNamespace(String destinationNamespace) {
+    this.destinationNamespace = destinationNamespace;
   }
 
 
@@ -177,6 +204,7 @@ public class ConsulUpstream {
     ConsulUpstream consulUpstream = (ConsulUpstream) o;
     return Objects.equals(this.datacenter, consulUpstream.datacenter) &&
         Objects.equals(this.destinationName, consulUpstream.destinationName) &&
+        Objects.equals(this.destinationNamespace, consulUpstream.destinationNamespace) &&
         Objects.equals(this.localBindAddress, consulUpstream.localBindAddress) &&
         Objects.equals(this.localBindPort, consulUpstream.localBindPort) &&
         Objects.equals(this.meshGateway, consulUpstream.meshGateway);
@@ -184,7 +212,7 @@ public class ConsulUpstream {
 
   @Override
   public int hashCode() {
-    return Objects.hash(datacenter, destinationName, localBindAddress, localBindPort, meshGateway);
+    return Objects.hash(datacenter, destinationName, destinationNamespace, localBindAddress, localBindPort, meshGateway);
   }
 
   @Override
@@ -193,6 +221,7 @@ public class ConsulUpstream {
     sb.append("class ConsulUpstream {\n");
     sb.append("    datacenter: ").append(toIndentedString(datacenter)).append("\n");
     sb.append("    destinationName: ").append(toIndentedString(destinationName)).append("\n");
+    sb.append("    destinationNamespace: ").append(toIndentedString(destinationNamespace)).append("\n");
     sb.append("    localBindAddress: ").append(toIndentedString(localBindAddress)).append("\n");
     sb.append("    localBindPort: ").append(toIndentedString(localBindPort)).append("\n");
     sb.append("    meshGateway: ").append(toIndentedString(meshGateway)).append("\n");

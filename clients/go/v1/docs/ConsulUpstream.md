@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Datacenter** | Pointer to **string** |  | [optional] 
 **DestinationName** | Pointer to **string** |  | [optional] 
+**DestinationNamespace** | Pointer to **string** |  | [optional] 
 **LocalBindAddress** | Pointer to **string** |  | [optional] 
 **LocalBindPort** | Pointer to **int32** |  | [optional] 
 **MeshGateway** | Pointer to [**ConsulMeshGateway**](ConsulMeshGateway.md) |  | [optional] 
@@ -78,6 +79,31 @@ SetDestinationName sets DestinationName field to given value.
 `func (o *ConsulUpstream) HasDestinationName() bool`
 
 HasDestinationName returns a boolean if a field has been set.
+
+### GetDestinationNamespace
+
+`func (o *ConsulUpstream) GetDestinationNamespace() string`
+
+GetDestinationNamespace returns the DestinationNamespace field if non-nil, zero value otherwise.
+
+### GetDestinationNamespaceOk
+
+`func (o *ConsulUpstream) GetDestinationNamespaceOk() (*string, bool)`
+
+GetDestinationNamespaceOk returns a tuple with the DestinationNamespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationNamespace
+
+`func (o *ConsulUpstream) SetDestinationNamespace(v string)`
+
+SetDestinationNamespace sets DestinationNamespace field to given value.
+
+### HasDestinationNamespace
+
+`func (o *ConsulUpstream) HasDestinationNamespace() bool`
+
+HasDestinationNamespace returns a boolean if a field has been set.
 
 ### GetLocalBindAddress
 

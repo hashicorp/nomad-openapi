@@ -13,6 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TaskCsiPluginConfig {
+    #[serde(rename = "HealthTimeout", skip_serializing_if = "Option::is_none")]
+    pub health_timeout: Option<i64>,
     #[serde(rename = "ID", skip_serializing_if = "Option::is_none")]
     pub ID: Option<String>,
     #[serde(rename = "MountDir", skip_serializing_if = "Option::is_none")]
@@ -24,6 +26,7 @@ pub struct TaskCsiPluginConfig {
 impl TaskCsiPluginConfig {
     pub fn new() -> TaskCsiPluginConfig {
         TaskCsiPluginConfig {
+            health_timeout: None,
             ID: None,
             mount_dir: None,
             _type: None,

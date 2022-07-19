@@ -88,6 +88,10 @@ public class Service {
   @SerializedName(SERIALIZED_NAME_PROVIDER)
   private String provider;
 
+  public static final String SERIALIZED_NAME_TAGGED_ADDRESSES = "TaggedAddresses";
+  @SerializedName(SERIALIZED_NAME_TAGGED_ADDRESSES)
+  private Map<String, String> taggedAddresses = null;
+
   public static final String SERIALIZED_NAME_TAGS = "Tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
@@ -428,6 +432,37 @@ public class Service {
   }
 
 
+  public Service taggedAddresses(Map<String, String> taggedAddresses) {
+    
+    this.taggedAddresses = taggedAddresses;
+    return this;
+  }
+
+  public Service putTaggedAddressesItem(String key, String taggedAddressesItem) {
+    if (this.taggedAddresses == null) {
+      this.taggedAddresses = new HashMap<String, String>();
+    }
+    this.taggedAddresses.put(key, taggedAddressesItem);
+    return this;
+  }
+
+   /**
+   * Get taggedAddresses
+   * @return taggedAddresses
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Map<String, String> getTaggedAddresses() {
+    return taggedAddresses;
+  }
+
+
+  public void setTaggedAddresses(Map<String, String> taggedAddresses) {
+    this.taggedAddresses = taggedAddresses;
+  }
+
+
   public Service tags(List<String> tags) {
     
     this.tags = tags;
@@ -504,13 +539,14 @@ public class Service {
         Objects.equals(this.onUpdate, service.onUpdate) &&
         Objects.equals(this.portLabel, service.portLabel) &&
         Objects.equals(this.provider, service.provider) &&
+        Objects.equals(this.taggedAddresses, service.taggedAddresses) &&
         Objects.equals(this.tags, service.tags) &&
         Objects.equals(this.taskName, service.taskName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, meta, name, onUpdate, portLabel, provider, tags, taskName);
+    return Objects.hash(address, addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, meta, name, onUpdate, portLabel, provider, taggedAddresses, tags, taskName);
   }
 
   @Override
@@ -530,6 +566,7 @@ public class Service {
     sb.append("    onUpdate: ").append(toIndentedString(onUpdate)).append("\n");
     sb.append("    portLabel: ").append(toIndentedString(portLabel)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+    sb.append("    taggedAddresses: ").append(toIndentedString(taggedAddresses)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    taskName: ").append(toIndentedString(taskName)).append("\n");
     sb.append("}");

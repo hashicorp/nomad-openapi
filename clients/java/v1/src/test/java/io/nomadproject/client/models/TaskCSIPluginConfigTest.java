@@ -41,6 +41,14 @@ public class TaskCSIPluginConfigTest {
     }
 
     /**
+     * Test the property 'healthTimeout'
+     */
+    @Test
+    public void healthTimeoutTest() {
+        // TODO: test healthTimeout
+    }
+
+    /**
      * Test the property 'ID'
      */
     @Test

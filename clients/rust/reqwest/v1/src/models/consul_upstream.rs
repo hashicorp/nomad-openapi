@@ -17,6 +17,8 @@ pub struct ConsulUpstream {
     pub datacenter: Option<String>,
     #[serde(rename = "DestinationName", skip_serializing_if = "Option::is_none")]
     pub destination_name: Option<String>,
+    #[serde(rename = "DestinationNamespace", skip_serializing_if = "Option::is_none")]
+    pub destination_namespace: Option<String>,
     #[serde(rename = "LocalBindAddress", skip_serializing_if = "Option::is_none")]
     pub local_bind_address: Option<String>,
     #[serde(rename = "LocalBindPort", skip_serializing_if = "Option::is_none")]
@@ -30,6 +32,7 @@ impl ConsulUpstream {
         ConsulUpstream {
             datacenter: None,
             destination_name: None,
+            destination_namespace: None,
             local_bind_address: None,
             local_bind_port: None,
             mesh_gateway: None,

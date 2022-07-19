@@ -82,6 +82,7 @@ class TaskCSIPluginConfig(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'health_timeout': (int,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'mount_dir': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
@@ -93,6 +94,7 @@ class TaskCSIPluginConfig(ModelNormal):
 
 
     attribute_map = {
+        'health_timeout': 'HealthTimeout',  # noqa: E501
         'id': 'ID',  # noqa: E501
         'mount_dir': 'MountDir',  # noqa: E501
         'type': 'Type',  # noqa: E501
@@ -139,6 +141,7 @@ class TaskCSIPluginConfig(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            health_timeout (int): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             mount_dir (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
@@ -223,6 +226,7 @@ class TaskCSIPluginConfig(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            health_timeout (int): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             mount_dir (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501

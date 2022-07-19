@@ -19,6 +19,7 @@ import (
 type ConsulUpstream struct {
 	Datacenter *string `json:"Datacenter,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty"`
+	DestinationNamespace *string `json:"DestinationNamespace,omitempty"`
 	LocalBindAddress *string `json:"LocalBindAddress,omitempty"`
 	LocalBindPort *int32 `json:"LocalBindPort,omitempty"`
 	MeshGateway *ConsulMeshGateway `json:"MeshGateway,omitempty"`
@@ -103,6 +104,38 @@ func (o *ConsulUpstream) HasDestinationName() bool {
 // SetDestinationName gets a reference to the given string and assigns it to the DestinationName field.
 func (o *ConsulUpstream) SetDestinationName(v string) {
 	o.DestinationName = &v
+}
+
+// GetDestinationNamespace returns the DestinationNamespace field value if set, zero value otherwise.
+func (o *ConsulUpstream) GetDestinationNamespace() string {
+	if o == nil || o.DestinationNamespace == nil {
+		var ret string
+		return ret
+	}
+	return *o.DestinationNamespace
+}
+
+// GetDestinationNamespaceOk returns a tuple with the DestinationNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulUpstream) GetDestinationNamespaceOk() (*string, bool) {
+	if o == nil || o.DestinationNamespace == nil {
+		return nil, false
+	}
+	return o.DestinationNamespace, true
+}
+
+// HasDestinationNamespace returns a boolean if a field has been set.
+func (o *ConsulUpstream) HasDestinationNamespace() bool {
+	if o != nil && o.DestinationNamespace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationNamespace gets a reference to the given string and assigns it to the DestinationNamespace field.
+func (o *ConsulUpstream) SetDestinationNamespace(v string) {
+	o.DestinationNamespace = &v
 }
 
 // GetLocalBindAddress returns the LocalBindAddress field value if set, zero value otherwise.
@@ -208,6 +241,9 @@ func (o ConsulUpstream) MarshalJSON() ([]byte, error) {
 	}
 	if o.DestinationName != nil {
 		toSerialize["DestinationName"] = o.DestinationName
+	}
+	if o.DestinationNamespace != nil {
+		toSerialize["DestinationNamespace"] = o.DestinationNamespace
 	}
 	if o.LocalBindAddress != nil {
 		toSerialize["LocalBindAddress"] = o.LocalBindAddress

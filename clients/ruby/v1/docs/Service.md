@@ -17,6 +17,7 @@
 | **on_update** | **String** |  | [optional] |
 | **port_label** | **String** |  | [optional] |
 | **provider** | **String** |  | [optional] |
+| **tagged_addresses** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 | **task_name** | **String** |  | [optional] |
 
@@ -39,6 +40,7 @@ instance = NomadClient::Service.new(
   on_update: null,
   port_label: null,
   provider: null,
+  tagged_addresses: null,
   tags: null,
   task_name: null
 )

@@ -58,6 +58,14 @@ public class ConsulUpstreamTest {
     }
 
     /**
+     * Test the property 'destinationNamespace'
+     */
+    @Test
+    public void destinationNamespaceTest() {
+        // TODO: test destinationNamespace
+    }
+
+    /**
      * Test the property 'localBindAddress'
      */
     @Test

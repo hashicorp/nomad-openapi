@@ -2781,8 +2781,16 @@ components:
       type: object
     ConsulGatewayTLSConfig:
       properties:
+        CipherSuites:
+          items:
+            type: string
+          type: array
         Enabled:
           type: boolean
+        TLSMaxVersion:
+          type: string
+        TLSMinVersion:
+          type: string
       type: object
     ConsulIngressConfigEntry:
       properties:
@@ -2873,6 +2881,8 @@ components:
         Datacenter:
           type: string
         DestinationName:
+          type: string
+        DestinationNamespace:
           type: string
         LocalBindAddress:
           type: string
@@ -4834,6 +4844,8 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        PauseEvalBroker:
+          type: boolean
         PreemptionConfig:
           $ref: '#/components/schemas/PreemptionConfig'
         RejectJobRegistration:
@@ -5007,6 +5019,10 @@ components:
           type: string
         Provider:
           type: string
+        TaggedAddresses:
+          additionalProperties:
+            type: string
+          type: object
         Tags:
           items:
             type: string
@@ -5253,6 +5269,9 @@ components:
       type: object
     TaskCSIPluginConfig:
       properties:
+        HealthTimeout:
+          format: int64
+          type: integer
         ID:
           type: string
         MountDir:

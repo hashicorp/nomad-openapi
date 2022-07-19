@@ -66,6 +66,14 @@ public class SchedulerConfigurationTest {
     }
 
     /**
+     * Test the property 'pauseEvalBroker'
+     */
+    @Test
+    public void pauseEvalBrokerTest() {
+        // TODO: test pauseEvalBroker
+    }
+
+    /**
      * Test the property 'preemptionConfig'
      */
     @Test

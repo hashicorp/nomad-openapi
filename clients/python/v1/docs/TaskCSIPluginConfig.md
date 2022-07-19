@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**health_timeout** | **int** |  | [optional] 
 **id** | **str** |  | [optional] 
 **mount_dir** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 

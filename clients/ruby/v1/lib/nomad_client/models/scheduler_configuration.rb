@@ -21,6 +21,8 @@ module NomadClient
 
     attr_accessor :modify_index
 
+    attr_accessor :pause_eval_broker
+
     attr_accessor :preemption_config
 
     attr_accessor :reject_job_registration
@@ -33,6 +35,7 @@ module NomadClient
         :'create_index' => :'CreateIndex',
         :'memory_oversubscription_enabled' => :'MemoryOversubscriptionEnabled',
         :'modify_index' => :'ModifyIndex',
+        :'pause_eval_broker' => :'PauseEvalBroker',
         :'preemption_config' => :'PreemptionConfig',
         :'reject_job_registration' => :'RejectJobRegistration',
         :'scheduler_algorithm' => :'SchedulerAlgorithm'
@@ -50,6 +53,7 @@ module NomadClient
         :'create_index' => :'Integer',
         :'memory_oversubscription_enabled' => :'Boolean',
         :'modify_index' => :'Integer',
+        :'pause_eval_broker' => :'Boolean',
         :'preemption_config' => :'PreemptionConfig',
         :'reject_job_registration' => :'Boolean',
         :'scheduler_algorithm' => :'String'
@@ -87,6 +91,10 @@ module NomadClient
 
       if attributes.key?(:'modify_index')
         self.modify_index = attributes[:'modify_index']
+      end
+
+      if attributes.key?(:'pause_eval_broker')
+        self.pause_eval_broker = attributes[:'pause_eval_broker']
       end
 
       if attributes.key?(:'preemption_config')
@@ -171,6 +179,7 @@ module NomadClient
           create_index == o.create_index &&
           memory_oversubscription_enabled == o.memory_oversubscription_enabled &&
           modify_index == o.modify_index &&
+          pause_eval_broker == o.pause_eval_broker &&
           preemption_config == o.preemption_config &&
           reject_job_registration == o.reject_job_registration &&
           scheduler_algorithm == o.scheduler_algorithm
@@ -185,7 +194,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_index, memory_oversubscription_enabled, modify_index, preemption_config, reject_job_registration, scheduler_algorithm].hash
+      [create_index, memory_oversubscription_enabled, modify_index, pause_eval_broker, preemption_config, reject_job_registration, scheduler_algorithm].hash
     end
 
     # Builds the object from hash

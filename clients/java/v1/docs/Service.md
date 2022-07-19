@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **onUpdate** | **String** |  |  [optional]
 **portLabel** | **String** |  |  [optional]
 **provider** | **String** |  |  [optional]
+**taggedAddresses** | **Map&lt;String, String&gt;** |  |  [optional]
 **tags** | **List&lt;String&gt;** |  |  [optional]
 **taskName** | **String** |  |  [optional]
 

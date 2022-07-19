@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 export class TaskCSIPluginConfig {
+    'healthTimeout'?: number;
     'ID'?: string;
     'mountDir'?: string;
     'type'?: string;
@@ -20,6 +21,12 @@ export class TaskCSIPluginConfig {
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "healthTimeout",
+            "baseName": "HealthTimeout",
+            "type": "number",
+            "format": "int64"
+        },
         {
             "name": "ID",
             "baseName": "ID",

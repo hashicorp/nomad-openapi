@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **create_index** | **int** |  | [optional] 
 **memory_oversubscription_enabled** | **bool** |  | [optional] 
 **modify_index** | **int** |  | [optional] 
+**pause_eval_broker** | **bool** |  | [optional] 
 **preemption_config** | [**PreemptionConfig**](PreemptionConfig.md) |  | [optional] 
 **reject_job_registration** | **bool** |  | [optional] 
 **scheduler_algorithm** | **str** |  | [optional] 

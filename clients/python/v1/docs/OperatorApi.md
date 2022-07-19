@@ -511,6 +511,7 @@ with nomad_client.ApiClient(configuration) as api_client:
         create_index=0,
         memory_oversubscription_enabled=True,
         modify_index=0,
+        pause_eval_broker=True,
         preemption_config=PreemptionConfig(
             batch_scheduler_enabled=True,
             service_scheduler_enabled=True,

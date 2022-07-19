@@ -105,6 +105,7 @@ class Service(ModelNormal):
             'on_update': (str,),  # noqa: E501
             'port_label': (str,),  # noqa: E501
             'provider': (str,),  # noqa: E501
+            'tagged_addresses': ({str: (str,)},),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'task_name': (str,),  # noqa: E501
         }
@@ -128,6 +129,7 @@ class Service(ModelNormal):
         'on_update': 'OnUpdate',  # noqa: E501
         'port_label': 'PortLabel',  # noqa: E501
         'provider': 'Provider',  # noqa: E501
+        'tagged_addresses': 'TaggedAddresses',  # noqa: E501
         'tags': 'Tags',  # noqa: E501
         'task_name': 'TaskName',  # noqa: E501
     }
@@ -186,6 +188,7 @@ class Service(ModelNormal):
             on_update (str): [optional]  # noqa: E501
             port_label (str): [optional]  # noqa: E501
             provider (str): [optional]  # noqa: E501
+            tagged_addresses ({str: (str,)}): [optional]  # noqa: E501
             tags ([str]): [optional]  # noqa: E501
             task_name (str): [optional]  # noqa: E501
         """
@@ -282,6 +285,7 @@ class Service(ModelNormal):
             on_update (str): [optional]  # noqa: E501
             port_label (str): [optional]  # noqa: E501
             provider (str): [optional]  # noqa: E501
+            tagged_addresses ({str: (str,)}): [optional]  # noqa: E501
             tags ([str]): [optional]  # noqa: E501
             task_name (str): [optional]  # noqa: E501
         """
