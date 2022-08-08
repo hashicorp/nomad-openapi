@@ -139,6 +139,38 @@ func (o *SchedulerConfiguration) SetModifyIndex(v int32) {
 	o.ModifyIndex = &v
 }
 
+// GetPauseEvalBroker returns the PauseEvalBroker field value if set, zero value otherwise.
+func (o *SchedulerConfiguration) GetPauseEvalBroker() bool {
+	if o == nil || o.PauseEvalBroker == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PauseEvalBroker
+}
+
+// GetPauseEvalBrokerOk returns a tuple with the PauseEvalBroker field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchedulerConfiguration) GetPauseEvalBrokerOk() (*bool, bool) {
+	if o == nil || o.PauseEvalBroker == nil {
+		return nil, false
+	}
+	return o.PauseEvalBroker, true
+}
+
+// HasPauseEvalBroker returns a boolean if a field has been set.
+func (o *SchedulerConfiguration) HasPauseEvalBroker() bool {
+	if o != nil && o.PauseEvalBroker != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPauseEvalBroker gets a reference to the given bool and assigns it to the PauseEvalBroker field.
+func (o *SchedulerConfiguration) SetPauseEvalBroker(v bool) {
+	o.PauseEvalBroker = &v
+}
+
 // GetPreemptionConfig returns the PreemptionConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SchedulerConfiguration) GetPreemptionConfig() PreemptionConfig {
 	if o == nil || o.PreemptionConfig.Get() == nil {
@@ -152,7 +184,7 @@ func (o *SchedulerConfiguration) GetPreemptionConfig() PreemptionConfig {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SchedulerConfiguration) GetPreemptionConfigOk() (*PreemptionConfig, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.PreemptionConfig.Get(), o.PreemptionConfig.IsSet()

@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class DeploymentsApi {
     private ApiClient localVarApiClient;
@@ -106,6 +105,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call getDeploymentCall(String deploymentID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -321,6 +321,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call getDeploymentAllocationsCall(String deploymentID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -535,6 +536,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call getDeploymentsCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -737,6 +739,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call postDeploymentAllocationHealthCall(String deploymentID, DeploymentAllocHealthRequest deploymentAllocHealthRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -920,6 +923,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call postDeploymentFailCall(String deploymentID, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1096,6 +1100,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call postDeploymentPauseCall(String deploymentID, DeploymentPauseRequest deploymentPauseRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1280,6 +1285,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call postDeploymentPromoteCall(String deploymentID, DeploymentPromoteRequest deploymentPromoteRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1464,6 +1470,7 @@ public class DeploymentsApi {
      */
     public okhttp3.Call postDeploymentUnblockCall(String deploymentID, DeploymentUnblockRequest deploymentUnblockRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

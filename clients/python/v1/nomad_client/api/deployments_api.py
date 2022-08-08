@@ -762,10 +762,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -797,7 +793,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         return self.get_deployment_endpoint.call_with_http_info(**kwargs)
@@ -853,10 +848,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -888,7 +879,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         return self.get_deployment_allocations_endpoint.call_with_http_info(**kwargs)
@@ -941,10 +931,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -976,7 +962,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_deployments_endpoint.call_with_http_info(**kwargs)
 
     def post_deployment_allocation_health(
@@ -1027,10 +1012,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1062,7 +1043,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         kwargs['deployment_alloc_health_request'] = \
@@ -1115,10 +1095,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1150,7 +1126,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         return self.post_deployment_fail_endpoint.call_with_http_info(**kwargs)
@@ -1203,10 +1178,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1238,7 +1209,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         kwargs['deployment_pause_request'] = \
@@ -1293,10 +1263,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1328,7 +1294,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         kwargs['deployment_promote_request'] = \
@@ -1383,10 +1348,6 @@ class DeploymentsApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1418,7 +1379,6 @@ class DeploymentsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['deployment_id'] = \
             deployment_id
         kwargs['deployment_unblock_request'] = \

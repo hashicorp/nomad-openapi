@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class EnterpriseApi {
     private ApiClient localVarApiClient;
@@ -95,6 +94,7 @@ public class EnterpriseApi {
      */
     public okhttp3.Call createQuotaSpecCall(QuotaSpec quotaSpec, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -265,6 +265,7 @@ public class EnterpriseApi {
      */
     public okhttp3.Call deleteQuotaSpecCall(String specName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -441,6 +442,7 @@ public class EnterpriseApi {
      */
     public okhttp3.Call getQuotaSpecCall(String specName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -655,6 +657,7 @@ public class EnterpriseApi {
      */
     public okhttp3.Call getQuotasCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -857,6 +860,7 @@ public class EnterpriseApi {
      */
     public okhttp3.Call postQuotaSpecCall(String specName, QuotaSpec quotaSpec, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

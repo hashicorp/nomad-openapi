@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // SearchApiService SearchApi service
 type SearchApiService service
@@ -42,55 +46,46 @@ func (r ApiGetFuzzySearchRequest) FuzzySearchRequest(fuzzySearchRequest FuzzySea
 	r.fuzzySearchRequest = &fuzzySearchRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiGetFuzzySearchRequest) Region(region string) ApiGetFuzzySearchRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetFuzzySearchRequest) Namespace(namespace string) ApiGetFuzzySearchRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetFuzzySearchRequest) Index(index int32) ApiGetFuzzySearchRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetFuzzySearchRequest) Wait(wait string) ApiGetFuzzySearchRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetFuzzySearchRequest) Stale(stale string) ApiGetFuzzySearchRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetFuzzySearchRequest) Prefix(prefix string) ApiGetFuzzySearchRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetFuzzySearchRequest) XNomadToken(xNomadToken string) ApiGetFuzzySearchRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetFuzzySearchRequest) PerPage(perPage int32) ApiGetFuzzySearchRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetFuzzySearchRequest) NextToken(nextToken string) ApiGetFuzzySearchRequest {
 	r.nextToken = &nextToken
@@ -254,55 +249,46 @@ func (r ApiGetSearchRequest) SearchRequest(searchRequest SearchRequest) ApiGetSe
 	r.searchRequest = &searchRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiGetSearchRequest) Region(region string) ApiGetSearchRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetSearchRequest) Namespace(namespace string) ApiGetSearchRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetSearchRequest) Index(index int32) ApiGetSearchRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetSearchRequest) Wait(wait string) ApiGetSearchRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetSearchRequest) Stale(stale string) ApiGetSearchRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetSearchRequest) Prefix(prefix string) ApiGetSearchRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetSearchRequest) XNomadToken(xNomadToken string) ApiGetSearchRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetSearchRequest) PerPage(perPage int32) ApiGetSearchRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetSearchRequest) NextToken(nextToken string) ApiGetSearchRequest {
 	r.nextToken = &nextToken

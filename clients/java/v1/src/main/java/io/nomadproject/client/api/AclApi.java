@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class AclApi {
     private ApiClient localVarApiClient;
@@ -100,6 +99,7 @@ public class AclApi {
      */
     public okhttp3.Call deleteACLPolicyCall(String policyName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -271,6 +271,7 @@ public class AclApi {
      */
     public okhttp3.Call deleteACLTokenCall(String tokenAccessor, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -446,6 +447,7 @@ public class AclApi {
      */
     public okhttp3.Call getACLPoliciesCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -652,6 +654,7 @@ public class AclApi {
      */
     public okhttp3.Call getACLPolicyCall(String policyName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -867,6 +870,7 @@ public class AclApi {
      */
     public okhttp3.Call getACLTokenCall(String tokenAccessor, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1081,6 +1085,7 @@ public class AclApi {
      */
     public okhttp3.Call getACLTokenSelfCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1286,6 +1291,7 @@ public class AclApi {
      */
     public okhttp3.Call getACLTokensCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1486,6 +1492,7 @@ public class AclApi {
      */
     public okhttp3.Call postACLBootstrapCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1653,6 +1660,7 @@ public class AclApi {
      */
     public okhttp3.Call postACLPolicyCall(String policyName, ACLPolicy acLPolicy, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1833,6 +1841,7 @@ public class AclApi {
      */
     public okhttp3.Call postACLTokenCall(String tokenAccessor, ACLToken acLToken, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2015,6 +2024,7 @@ public class AclApi {
      */
     public okhttp3.Call postACLTokenOnetimeCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2181,6 +2191,7 @@ public class AclApi {
      */
     public okhttp3.Call postACLTokenOnetimeExchangeCall(OneTimeTokenExchangeRequest oneTimeTokenExchangeRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

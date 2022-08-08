@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // SystemApiService SystemApi service
 type SystemApiService service
@@ -37,19 +41,16 @@ func (r ApiPutSystemGCRequest) Region(region string) ApiPutSystemGCRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPutSystemGCRequest) Namespace(namespace string) ApiPutSystemGCRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPutSystemGCRequest) XNomadToken(xNomadToken string) ApiPutSystemGCRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPutSystemGCRequest) IdempotencyToken(idempotencyToken string) ApiPutSystemGCRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -177,19 +178,16 @@ func (r ApiPutSystemReconcileSummariesRequest) Region(region string) ApiPutSyste
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPutSystemReconcileSummariesRequest) Namespace(namespace string) ApiPutSystemReconcileSummariesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPutSystemReconcileSummariesRequest) XNomadToken(xNomadToken string) ApiPutSystemReconcileSummariesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPutSystemReconcileSummariesRequest) IdempotencyToken(idempotencyToken string) ApiPutSystemReconcileSummariesRequest {
 	r.idempotencyToken = &idempotencyToken

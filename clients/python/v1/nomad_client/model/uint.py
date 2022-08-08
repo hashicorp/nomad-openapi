@@ -161,18 +161,14 @@ class Uint(ModelSimple):
         _visited_composed_classes = kwargs.pop('_visited_composed_classes', ())
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            raise ApiTypeError(
+                "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                    args,
+                    self.__class__.__name__,
+                ),
+                path_to_item=_path_to_item,
+                valid_classes=(self.__class__,),
+            )
 
         self._data_store = {}
         self._check_type = _check_type
@@ -257,18 +253,14 @@ class Uint(ModelSimple):
         _visited_composed_classes = kwargs.pop('_visited_composed_classes', ())
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            raise ApiTypeError(
+                "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                    args,
+                    self.__class__.__name__,
+                ),
+                path_to_item=_path_to_item,
+                valid_classes=(self.__class__,),
+            )
 
         self._data_store = {}
         self._check_type = _check_type

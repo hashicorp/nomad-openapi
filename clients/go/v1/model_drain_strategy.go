@@ -86,7 +86,7 @@ func (o *DrainStrategy) GetForceDeadline() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DrainStrategy) GetForceDeadlineOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ForceDeadline.Get(), o.ForceDeadline.IsSet()
@@ -160,7 +160,7 @@ func (o *DrainStrategy) GetStartedAt() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DrainStrategy) GetStartedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.StartedAt.Get(), o.StartedAt.IsSet()

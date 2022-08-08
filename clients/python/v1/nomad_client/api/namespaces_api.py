@@ -473,10 +473,6 @@ class NamespacesApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -508,7 +504,6 @@ class NamespacesApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.create_namespace_endpoint.call_with_http_info(**kwargs)
 
     def delete_namespace(
@@ -557,10 +552,6 @@ class NamespacesApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -592,7 +583,6 @@ class NamespacesApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['namespace_name'] = \
             namespace_name
         return self.delete_namespace_endpoint.call_with_http_info(**kwargs)
@@ -648,10 +638,6 @@ class NamespacesApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -683,7 +669,6 @@ class NamespacesApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['namespace_name'] = \
             namespace_name
         return self.get_namespace_endpoint.call_with_http_info(**kwargs)
@@ -736,10 +721,6 @@ class NamespacesApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -771,7 +752,6 @@ class NamespacesApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_namespaces_endpoint.call_with_http_info(**kwargs)
 
     def post_namespace(
@@ -822,10 +802,6 @@ class NamespacesApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -857,7 +833,6 @@ class NamespacesApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['namespace_name'] = \
             namespace_name
         kwargs['namespace2'] = \

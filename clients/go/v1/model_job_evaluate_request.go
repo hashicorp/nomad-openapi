@@ -54,7 +54,7 @@ func (o *JobEvaluateRequest) GetEvalOptions() EvalOptions {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobEvaluateRequest) GetEvalOptionsOk() (*EvalOptions, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.EvalOptions.Get(), o.EvalOptions.IsSet()

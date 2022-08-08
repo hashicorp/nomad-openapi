@@ -1042,10 +1042,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1077,7 +1073,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['policy_name'] = \
             policy_name
         return self.delete_acl_policy_endpoint.call_with_http_info(**kwargs)
@@ -1128,10 +1123,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1163,7 +1154,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['token_accessor'] = \
             token_accessor
         return self.delete_acl_token_endpoint.call_with_http_info(**kwargs)
@@ -1216,10 +1206,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1251,7 +1237,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_acl_policies_endpoint.call_with_http_info(**kwargs)
 
     def get_acl_policy(
@@ -1305,10 +1290,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1340,7 +1321,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['policy_name'] = \
             policy_name
         return self.get_acl_policy_endpoint.call_with_http_info(**kwargs)
@@ -1396,10 +1376,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1431,7 +1407,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['token_accessor'] = \
             token_accessor
         return self.get_acl_token_endpoint.call_with_http_info(**kwargs)
@@ -1484,10 +1459,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1519,7 +1490,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_acl_token_self_endpoint.call_with_http_info(**kwargs)
 
     def get_acl_tokens(
@@ -1570,10 +1540,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1605,7 +1571,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_acl_tokens_endpoint.call_with_http_info(**kwargs)
 
     def post_acl_bootstrap(
@@ -1651,10 +1616,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1686,7 +1647,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.post_acl_bootstrap_endpoint.call_with_http_info(**kwargs)
 
     def post_acl_policy(
@@ -1737,10 +1697,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1772,7 +1728,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['policy_name'] = \
             policy_name
         kwargs['acl_policy'] = \
@@ -1827,10 +1782,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1862,7 +1813,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['token_accessor'] = \
             token_accessor
         kwargs['acl_token'] = \
@@ -1912,10 +1862,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1947,7 +1893,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.post_acl_token_onetime_endpoint.call_with_http_info(**kwargs)
 
     def post_acl_token_onetime_exchange(
@@ -1996,10 +1941,6 @@ class ACLApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -2031,7 +1972,6 @@ class ACLApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['one_time_token_exchange_request'] = \
             one_time_token_exchange_request
         return self.post_acl_token_onetime_exchange_endpoint.call_with_http_info(**kwargs)

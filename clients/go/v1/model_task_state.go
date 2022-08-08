@@ -122,7 +122,7 @@ func (o *TaskState) GetFinishedAt() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskState) GetFinishedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.FinishedAt.Get(), o.FinishedAt.IsSet()
@@ -164,7 +164,7 @@ func (o *TaskState) GetLastRestart() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskState) GetLastRestartOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.LastRestart.Get(), o.LastRestart.IsSet()
@@ -238,7 +238,7 @@ func (o *TaskState) GetStartedAt() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskState) GetStartedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.StartedAt.Get(), o.StartedAt.IsSet()
@@ -312,7 +312,7 @@ func (o *TaskState) GetTaskHandle() TaskHandle {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskState) GetTaskHandleOk() (*TaskHandle, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.TaskHandle.Get(), o.TaskHandle.IsSet()

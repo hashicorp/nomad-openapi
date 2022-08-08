@@ -21,8 +21,8 @@ import io.nomadproject.client.models.DeploymentPauseRequest;
 import io.nomadproject.client.models.DeploymentPromoteRequest;
 import io.nomadproject.client.models.DeploymentUnblockRequest;
 import io.nomadproject.client.models.DeploymentUpdateResponse;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,13 +32,19 @@ import java.util.Map;
 /**
  * API tests for DeploymentsApi
  */
-@Disabled
+@Ignore
 public class DeploymentsApiTest {
 
     private final DeploymentsApi api = new DeploymentsApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getDeploymentTest() throws ApiException {
@@ -52,12 +58,17 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Deployment response = api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                Deployment response = api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getDeploymentAllocationsTest() throws ApiException {
@@ -71,12 +82,17 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<AllocationListStub> response = api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<AllocationListStub> response = api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getDeploymentsTest() throws ApiException {
@@ -89,12 +105,17 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<Deployment> response = api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<Deployment> response = api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postDeploymentAllocationHealthTest() throws ApiException {
@@ -104,12 +125,17 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken);
+                DeploymentUpdateResponse response = api.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postDeploymentFailTest() throws ApiException {
@@ -118,12 +144,17 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken);
+                DeploymentUpdateResponse response = api.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postDeploymentPauseTest() throws ApiException {
@@ -133,12 +164,17 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken);
+                DeploymentUpdateResponse response = api.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postDeploymentPromoteTest() throws ApiException {
@@ -148,12 +184,17 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken);
+                DeploymentUpdateResponse response = api.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postDeploymentUnblockTest() throws ApiException {
@@ -163,8 +204,8 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken);
+                DeploymentUpdateResponse response = api.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
 }

@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class NodesApi {
     private ApiClient localVarApiClient;
@@ -107,6 +106,7 @@ public class NodesApi {
      */
     public okhttp3.Call getNodeCall(String nodeId, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -322,6 +322,7 @@ public class NodesApi {
      */
     public okhttp3.Call getNodeAllocationsCall(String nodeId, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -537,6 +538,7 @@ public class NodesApi {
      */
     public okhttp3.Call getNodesCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -751,6 +753,7 @@ public class NodesApi {
      */
     public okhttp3.Call updateNodeDrainCall(String nodeId, NodeUpdateDrainRequest nodeUpdateDrainRequest, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -975,6 +978,7 @@ public class NodesApi {
      */
     public okhttp3.Call updateNodeEligibilityCall(String nodeId, NodeUpdateEligibilityRequest nodeUpdateEligibilityRequest, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1198,6 +1202,7 @@ public class NodesApi {
      */
     public okhttp3.Call updateNodePurgeCall(String nodeId, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

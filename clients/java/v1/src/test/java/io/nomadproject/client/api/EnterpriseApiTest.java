@@ -15,8 +15,8 @@ package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.QuotaSpec;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,13 +26,19 @@ import java.util.Map;
 /**
  * API tests for EnterpriseApi
  */
-@Disabled
+@Ignore
 public class EnterpriseApiTest {
 
     private final EnterpriseApi api = new EnterpriseApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createQuotaSpecTest() throws ApiException {
@@ -41,12 +47,17 @@ public class EnterpriseApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.createQuotaSpec(quotaSpec, region, namespace, xNomadToken, idempotencyToken);
+                api.createQuotaSpec(quotaSpec, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteQuotaSpecTest() throws ApiException {
@@ -55,12 +66,17 @@ public class EnterpriseApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteQuotaSpec(specName, region, namespace, xNomadToken, idempotencyToken);
+                api.deleteQuotaSpec(specName, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getQuotaSpecTest() throws ApiException {
@@ -74,12 +90,17 @@ public class EnterpriseApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        QuotaSpec response = api.getQuotaSpec(specName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                QuotaSpec response = api.getQuotaSpec(specName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getQuotasTest() throws ApiException {
@@ -92,12 +113,17 @@ public class EnterpriseApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<Object> response = api.getQuotas(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<Object> response = api.getQuotas(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postQuotaSpecTest() throws ApiException {
@@ -107,8 +133,8 @@ public class EnterpriseApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postQuotaSpec(specName, quotaSpec, region, namespace, xNomadToken, idempotencyToken);
+                api.postQuotaSpec(specName, quotaSpec, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
 }

@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class RegionsApi {
     private ApiClient localVarApiClient;
@@ -89,6 +88,7 @@ public class RegionsApi {
      */
     public okhttp3.Call getRegionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

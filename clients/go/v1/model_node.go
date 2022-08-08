@@ -302,7 +302,7 @@ func (o *Node) GetDrainStrategy() DrainStrategy {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetDrainStrategyOk() (*DrainStrategy, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.DrainStrategy.Get(), o.DrainStrategy.IsSet()
@@ -536,7 +536,7 @@ func (o *Node) GetLastDrain() DrainMetadata {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetLastDrainOk() (*DrainMetadata, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.LastDrain.Get(), o.LastDrain.IsSet()
@@ -738,7 +738,7 @@ func (o *Node) GetNodeResources() NodeResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetNodeResourcesOk() (*NodeResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.NodeResources.Get(), o.NodeResources.IsSet()
@@ -780,7 +780,7 @@ func (o *Node) GetReserved() Resources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetReservedOk() (*Resources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Reserved.Get(), o.Reserved.IsSet()
@@ -822,7 +822,7 @@ func (o *Node) GetReservedResources() NodeReservedResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetReservedResourcesOk() (*NodeReservedResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ReservedResources.Get(), o.ReservedResources.IsSet()
@@ -864,7 +864,7 @@ func (o *Node) GetResources() Resources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Node) GetResourcesOk() (*Resources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Resources.Get(), o.Resources.IsSet()

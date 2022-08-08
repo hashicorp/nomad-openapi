@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // RegionsApiService RegionsApi service
 type RegionsApiService service
@@ -27,6 +31,7 @@ type ApiGetRegionsRequest struct {
 	ctx context.Context
 	ApiService *RegionsApiService
 }
+
 
 func (r ApiGetRegionsRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.GetRegionsExecute(r)

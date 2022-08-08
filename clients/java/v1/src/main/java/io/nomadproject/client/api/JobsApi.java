@@ -57,7 +57,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class JobsApi {
     private ApiClient localVarApiClient;
@@ -120,6 +119,7 @@ public class JobsApi {
      */
     public okhttp3.Call deleteJobCall(String jobName, String region, String namespace, String xNomadToken, String idempotencyToken, Boolean purge, Boolean global, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -314,6 +314,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -530,6 +531,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobAllocationsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean all, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -752,6 +754,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobDeploymentCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -968,6 +971,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobDeploymentsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Integer all, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1190,6 +1194,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobEvaluationsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1405,6 +1410,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobScaleStatusCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1620,6 +1626,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobSummaryCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1836,6 +1843,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobVersionsCall(String jobName, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean diffs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2057,6 +2065,7 @@ public class JobsApi {
      */
     public okhttp3.Call getJobsCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2259,6 +2268,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobCall(String jobName, JobRegisterRequest jobRegisterRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2443,6 +2453,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobDispatchCall(String jobName, JobDispatchRequest jobDispatchRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2627,6 +2638,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobEvaluateCall(String jobName, JobEvaluateRequest jobEvaluateRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2806,6 +2818,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobParseCall(JobsParseRequest jobsParseRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2952,6 +2965,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobPeriodicForceCall(String jobName, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3128,6 +3142,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobPlanCall(String jobName, JobPlanRequest jobPlanRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3312,6 +3327,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobRevertCall(String jobName, JobRevertRequest jobRevertRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3496,6 +3512,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobScalingRequestCall(String jobName, ScalingRequest scalingRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3680,6 +3697,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobStabilityCall(String jobName, JobStabilityRequest jobStabilityRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3863,6 +3881,7 @@ public class JobsApi {
      */
     public okhttp3.Call postJobValidateRequestCall(JobValidateRequest jobValidateRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4037,6 +4056,7 @@ public class JobsApi {
      */
     public okhttp3.Call registerJobCall(JobRegisterRequest jobRegisterRequest, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

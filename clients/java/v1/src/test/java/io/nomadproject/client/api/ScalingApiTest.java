@@ -16,8 +16,8 @@ package io.nomadproject.client.api;
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.ScalingPolicy;
 import io.nomadproject.client.models.ScalingPolicyListStub;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,13 +27,19 @@ import java.util.Map;
 /**
  * API tests for ScalingApi
  */
-@Disabled
+@Ignore
 public class ScalingApiTest {
 
     private final ScalingApi api = new ScalingApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getScalingPoliciesTest() throws ApiException {
@@ -46,12 +52,17 @@ public class ScalingApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ScalingPolicyListStub> response = api.getScalingPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<ScalingPolicyListStub> response = api.getScalingPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getScalingPolicyTest() throws ApiException {
@@ -65,8 +76,8 @@ public class ScalingApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ScalingPolicy response = api.getScalingPolicy(policyID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                ScalingPolicy response = api.getScalingPolicy(policyID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
 }

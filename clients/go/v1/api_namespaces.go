@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // NamespacesApiService NamespacesApi service
 type NamespacesApiService service
@@ -38,19 +42,16 @@ func (r ApiCreateNamespaceRequest) Region(region string) ApiCreateNamespaceReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiCreateNamespaceRequest) Namespace(namespace string) ApiCreateNamespaceRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiCreateNamespaceRequest) XNomadToken(xNomadToken string) ApiCreateNamespaceRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiCreateNamespaceRequest) IdempotencyToken(idempotencyToken string) ApiCreateNamespaceRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -179,19 +180,16 @@ func (r ApiDeleteNamespaceRequest) Region(region string) ApiDeleteNamespaceReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteNamespaceRequest) Namespace(namespace string) ApiDeleteNamespaceRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteNamespaceRequest) XNomadToken(xNomadToken string) ApiDeleteNamespaceRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteNamespaceRequest) IdempotencyToken(idempotencyToken string) ApiDeleteNamespaceRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -328,49 +326,41 @@ func (r ApiGetNamespaceRequest) Region(region string) ApiGetNamespaceRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetNamespaceRequest) Namespace(namespace string) ApiGetNamespaceRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetNamespaceRequest) Index(index int32) ApiGetNamespaceRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetNamespaceRequest) Wait(wait string) ApiGetNamespaceRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetNamespaceRequest) Stale(stale string) ApiGetNamespaceRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetNamespaceRequest) Prefix(prefix string) ApiGetNamespaceRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetNamespaceRequest) XNomadToken(xNomadToken string) ApiGetNamespaceRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetNamespaceRequest) PerPage(perPage int32) ApiGetNamespaceRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetNamespaceRequest) NextToken(nextToken string) ApiGetNamespaceRequest {
 	r.nextToken = &nextToken
@@ -532,49 +522,41 @@ func (r ApiGetNamespacesRequest) Region(region string) ApiGetNamespacesRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetNamespacesRequest) Namespace(namespace string) ApiGetNamespacesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetNamespacesRequest) Index(index int32) ApiGetNamespacesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetNamespacesRequest) Wait(wait string) ApiGetNamespacesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetNamespacesRequest) Stale(stale string) ApiGetNamespacesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetNamespacesRequest) Prefix(prefix string) ApiGetNamespacesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetNamespacesRequest) XNomadToken(xNomadToken string) ApiGetNamespacesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetNamespacesRequest) PerPage(perPage int32) ApiGetNamespacesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetNamespacesRequest) NextToken(nextToken string) ApiGetNamespacesRequest {
 	r.nextToken = &nextToken
@@ -729,25 +711,21 @@ func (r ApiPostNamespaceRequest) Namespace2(namespace2 Namespace) ApiPostNamespa
 	r.namespace2 = &namespace2
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostNamespaceRequest) Region(region string) ApiPostNamespaceRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostNamespaceRequest) Namespace(namespace string) ApiPostNamespaceRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostNamespaceRequest) XNomadToken(xNomadToken string) ApiPostNamespaceRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostNamespaceRequest) IdempotencyToken(idempotencyToken string) ApiPostNamespaceRequest {
 	r.idempotencyToken = &idempotencyToken

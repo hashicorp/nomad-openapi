@@ -20,8 +20,8 @@ import io.nomadproject.client.models.ACLToken;
 import io.nomadproject.client.models.ACLTokenListStub;
 import io.nomadproject.client.models.OneTimeToken;
 import io.nomadproject.client.models.OneTimeTokenExchangeRequest;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,13 +31,19 @@ import java.util.Map;
 /**
  * API tests for AclApi
  */
-@Disabled
+@Ignore
 public class AclApiTest {
 
     private final AclApi api = new AclApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteACLPolicyTest() throws ApiException {
@@ -46,12 +52,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
+                api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteACLTokenTest() throws ApiException {
@@ -60,12 +71,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
+                api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getACLPoliciesTest() throws ApiException {
@@ -78,12 +94,17 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ACLPolicyListStub> response = api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<ACLPolicyListStub> response = api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getACLPolicyTest() throws ApiException {
@@ -97,12 +118,17 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLPolicy response = api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                ACLPolicy response = api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getACLTokenTest() throws ApiException {
@@ -116,12 +142,17 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLToken response = api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                ACLToken response = api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getACLTokenSelfTest() throws ApiException {
@@ -134,12 +165,17 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLToken response = api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                ACLToken response = api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getACLTokensTest() throws ApiException {
@@ -152,12 +188,17 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ACLTokenListStub> response = api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<ACLTokenListStub> response = api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postACLBootstrapTest() throws ApiException {
@@ -165,12 +206,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
+                ACLToken response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postACLPolicyTest() throws ApiException {
@@ -180,12 +226,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postACLPolicy(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
+                api.postACLPolicy(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postACLTokenTest() throws ApiException {
@@ -195,12 +246,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
+                ACLToken response = api.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postACLTokenOnetimeTest() throws ApiException {
@@ -208,12 +264,17 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        OneTimeToken response = api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken);
+                OneTimeToken response = api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postACLTokenOnetimeExchangeTest() throws ApiException {
@@ -222,8 +283,8 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
+                ACLToken response = api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
 }

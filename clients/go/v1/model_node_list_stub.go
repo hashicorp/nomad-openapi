@@ -290,7 +290,7 @@ func (o *NodeListStub) GetLastDrain() DrainMetadata {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeListStub) GetLastDrainOk() (*DrainMetadata, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.LastDrain.Get(), o.LastDrain.IsSet()
@@ -428,7 +428,7 @@ func (o *NodeListStub) GetNodeResources() NodeResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeListStub) GetNodeResourcesOk() (*NodeResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.NodeResources.Get(), o.NodeResources.IsSet()
@@ -470,7 +470,7 @@ func (o *NodeListStub) GetReservedResources() NodeReservedResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeListStub) GetReservedResourcesOk() (*NodeReservedResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ReservedResources.Get(), o.ReservedResources.IsSet()

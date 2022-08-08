@@ -287,10 +287,6 @@ class SearchApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -322,7 +318,6 @@ class SearchApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['fuzzy_search_request'] = \
             fuzzy_search_request
         return self.get_fuzzy_search_endpoint.call_with_http_info(**kwargs)
@@ -378,10 +373,6 @@ class SearchApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -413,7 +404,6 @@ class SearchApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['search_request'] = \
             search_request
         return self.get_search_endpoint.call_with_http_info(**kwargs)

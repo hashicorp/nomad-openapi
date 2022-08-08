@@ -17,7 +17,7 @@ import (
 
 // ConsulGatewayTLSConfig struct for ConsulGatewayTLSConfig
 type ConsulGatewayTLSConfig struct {
-	CipherSuites *[]string `json:"CipherSuites,omitempty"`
+	CipherSuites []string `json:"CipherSuites,omitempty"`
 	Enabled *bool `json:"Enabled,omitempty"`
 	TLSMaxVersion *string `json:"TLSMaxVersion,omitempty"`
 	TLSMinVersion *string `json:"TLSMinVersion,omitempty"`
@@ -46,12 +46,12 @@ func (o *ConsulGatewayTLSConfig) GetCipherSuites() []string {
 		var ret []string
 		return ret
 	}
-	return *o.CipherSuites
+	return o.CipherSuites
 }
 
 // GetCipherSuitesOk returns a tuple with the CipherSuites field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConsulGatewayTLSConfig) GetCipherSuitesOk() (*[]string, bool) {
+func (o *ConsulGatewayTLSConfig) GetCipherSuitesOk() ([]string, bool) {
 	if o == nil || o.CipherSuites == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *ConsulGatewayTLSConfig) HasCipherSuites() bool {
 
 // SetCipherSuites gets a reference to the given []string and assigns it to the CipherSuites field.
 func (o *ConsulGatewayTLSConfig) SetCipherSuites(v []string) {
-	o.CipherSuites = &v
+	o.CipherSuites = v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.

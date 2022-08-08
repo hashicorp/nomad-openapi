@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // JobsApiService JobsApi service
 type JobsApiService service
@@ -41,31 +45,26 @@ func (r ApiDeleteJobRequest) Region(region string) ApiDeleteJobRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteJobRequest) Namespace(namespace string) ApiDeleteJobRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteJobRequest) XNomadToken(xNomadToken string) ApiDeleteJobRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteJobRequest) IdempotencyToken(idempotencyToken string) ApiDeleteJobRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
-
 // Boolean flag indicating whether to purge allocations of the job after deleting.
 func (r ApiDeleteJobRequest) Purge(purge bool) ApiDeleteJobRequest {
 	r.purge = &purge
 	return r
 }
-
 // Boolean flag indicating whether the operation should apply to all instances of the job globally.
 func (r ApiDeleteJobRequest) Global(global bool) ApiDeleteJobRequest {
 	r.global = &global
@@ -219,49 +218,41 @@ func (r ApiGetJobRequest) Region(region string) ApiGetJobRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobRequest) Namespace(namespace string) ApiGetJobRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobRequest) Index(index int32) ApiGetJobRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobRequest) Wait(wait string) ApiGetJobRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobRequest) Stale(stale string) ApiGetJobRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobRequest) Prefix(prefix string) ApiGetJobRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobRequest) XNomadToken(xNomadToken string) ApiGetJobRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobRequest) PerPage(perPage int32) ApiGetJobRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobRequest) NextToken(nextToken string) ApiGetJobRequest {
 	r.nextToken = &nextToken
@@ -425,55 +416,46 @@ func (r ApiGetJobAllocationsRequest) Region(region string) ApiGetJobAllocationsR
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobAllocationsRequest) Namespace(namespace string) ApiGetJobAllocationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobAllocationsRequest) Index(index int32) ApiGetJobAllocationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobAllocationsRequest) Wait(wait string) ApiGetJobAllocationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobAllocationsRequest) Stale(stale string) ApiGetJobAllocationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobAllocationsRequest) Prefix(prefix string) ApiGetJobAllocationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobAllocationsRequest) XNomadToken(xNomadToken string) ApiGetJobAllocationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobAllocationsRequest) PerPage(perPage int32) ApiGetJobAllocationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobAllocationsRequest) NextToken(nextToken string) ApiGetJobAllocationsRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered.
 func (r ApiGetJobAllocationsRequest) All(all bool) ApiGetJobAllocationsRequest {
 	r.all = &all
@@ -639,49 +621,41 @@ func (r ApiGetJobDeploymentRequest) Region(region string) ApiGetJobDeploymentReq
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobDeploymentRequest) Namespace(namespace string) ApiGetJobDeploymentRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobDeploymentRequest) Index(index int32) ApiGetJobDeploymentRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobDeploymentRequest) Wait(wait string) ApiGetJobDeploymentRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobDeploymentRequest) Stale(stale string) ApiGetJobDeploymentRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobDeploymentRequest) Prefix(prefix string) ApiGetJobDeploymentRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobDeploymentRequest) XNomadToken(xNomadToken string) ApiGetJobDeploymentRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobDeploymentRequest) PerPage(perPage int32) ApiGetJobDeploymentRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobDeploymentRequest) NextToken(nextToken string) ApiGetJobDeploymentRequest {
 	r.nextToken = &nextToken
@@ -845,55 +819,46 @@ func (r ApiGetJobDeploymentsRequest) Region(region string) ApiGetJobDeploymentsR
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobDeploymentsRequest) Namespace(namespace string) ApiGetJobDeploymentsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobDeploymentsRequest) Index(index int32) ApiGetJobDeploymentsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobDeploymentsRequest) Wait(wait string) ApiGetJobDeploymentsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobDeploymentsRequest) Stale(stale string) ApiGetJobDeploymentsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobDeploymentsRequest) Prefix(prefix string) ApiGetJobDeploymentsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobDeploymentsRequest) XNomadToken(xNomadToken string) ApiGetJobDeploymentsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobDeploymentsRequest) PerPage(perPage int32) ApiGetJobDeploymentsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobDeploymentsRequest) NextToken(nextToken string) ApiGetJobDeploymentsRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Flag indicating whether to constrain by job creation index or not.
 func (r ApiGetJobDeploymentsRequest) All(all int32) ApiGetJobDeploymentsRequest {
 	r.all = &all
@@ -1059,49 +1024,41 @@ func (r ApiGetJobEvaluationsRequest) Region(region string) ApiGetJobEvaluationsR
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobEvaluationsRequest) Namespace(namespace string) ApiGetJobEvaluationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobEvaluationsRequest) Index(index int32) ApiGetJobEvaluationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobEvaluationsRequest) Wait(wait string) ApiGetJobEvaluationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobEvaluationsRequest) Stale(stale string) ApiGetJobEvaluationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobEvaluationsRequest) Prefix(prefix string) ApiGetJobEvaluationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobEvaluationsRequest) XNomadToken(xNomadToken string) ApiGetJobEvaluationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobEvaluationsRequest) PerPage(perPage int32) ApiGetJobEvaluationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobEvaluationsRequest) NextToken(nextToken string) ApiGetJobEvaluationsRequest {
 	r.nextToken = &nextToken
@@ -1264,49 +1221,41 @@ func (r ApiGetJobScaleStatusRequest) Region(region string) ApiGetJobScaleStatusR
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobScaleStatusRequest) Namespace(namespace string) ApiGetJobScaleStatusRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobScaleStatusRequest) Index(index int32) ApiGetJobScaleStatusRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobScaleStatusRequest) Wait(wait string) ApiGetJobScaleStatusRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobScaleStatusRequest) Stale(stale string) ApiGetJobScaleStatusRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobScaleStatusRequest) Prefix(prefix string) ApiGetJobScaleStatusRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobScaleStatusRequest) XNomadToken(xNomadToken string) ApiGetJobScaleStatusRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobScaleStatusRequest) PerPage(perPage int32) ApiGetJobScaleStatusRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobScaleStatusRequest) NextToken(nextToken string) ApiGetJobScaleStatusRequest {
 	r.nextToken = &nextToken
@@ -1469,49 +1418,41 @@ func (r ApiGetJobSummaryRequest) Region(region string) ApiGetJobSummaryRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobSummaryRequest) Namespace(namespace string) ApiGetJobSummaryRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobSummaryRequest) Index(index int32) ApiGetJobSummaryRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobSummaryRequest) Wait(wait string) ApiGetJobSummaryRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobSummaryRequest) Stale(stale string) ApiGetJobSummaryRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobSummaryRequest) Prefix(prefix string) ApiGetJobSummaryRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobSummaryRequest) XNomadToken(xNomadToken string) ApiGetJobSummaryRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobSummaryRequest) PerPage(perPage int32) ApiGetJobSummaryRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobSummaryRequest) NextToken(nextToken string) ApiGetJobSummaryRequest {
 	r.nextToken = &nextToken
@@ -1675,55 +1616,46 @@ func (r ApiGetJobVersionsRequest) Region(region string) ApiGetJobVersionsRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobVersionsRequest) Namespace(namespace string) ApiGetJobVersionsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobVersionsRequest) Index(index int32) ApiGetJobVersionsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobVersionsRequest) Wait(wait string) ApiGetJobVersionsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobVersionsRequest) Stale(stale string) ApiGetJobVersionsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobVersionsRequest) Prefix(prefix string) ApiGetJobVersionsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobVersionsRequest) XNomadToken(xNomadToken string) ApiGetJobVersionsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobVersionsRequest) PerPage(perPage int32) ApiGetJobVersionsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobVersionsRequest) NextToken(nextToken string) ApiGetJobVersionsRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Boolean flag indicating whether to compute job diffs.
 func (r ApiGetJobVersionsRequest) Diffs(diffs bool) ApiGetJobVersionsRequest {
 	r.diffs = &diffs
@@ -1888,49 +1820,41 @@ func (r ApiGetJobsRequest) Region(region string) ApiGetJobsRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetJobsRequest) Namespace(namespace string) ApiGetJobsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetJobsRequest) Index(index int32) ApiGetJobsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetJobsRequest) Wait(wait string) ApiGetJobsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetJobsRequest) Stale(stale string) ApiGetJobsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetJobsRequest) Prefix(prefix string) ApiGetJobsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetJobsRequest) XNomadToken(xNomadToken string) ApiGetJobsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetJobsRequest) PerPage(perPage int32) ApiGetJobsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetJobsRequest) NextToken(nextToken string) ApiGetJobsRequest {
 	r.nextToken = &nextToken
@@ -2085,25 +2009,21 @@ func (r ApiPostJobRequest) JobRegisterRequest(jobRegisterRequest JobRegisterRequ
 	r.jobRegisterRequest = &jobRegisterRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobRequest) Region(region string) ApiPostJobRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobRequest) Namespace(namespace string) ApiPostJobRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobRequest) XNomadToken(xNomadToken string) ApiPostJobRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobRequest) IdempotencyToken(idempotencyToken string) ApiPostJobRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -2251,25 +2171,21 @@ func (r ApiPostJobDispatchRequest) JobDispatchRequest(jobDispatchRequest JobDisp
 	r.jobDispatchRequest = &jobDispatchRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobDispatchRequest) Region(region string) ApiPostJobDispatchRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobDispatchRequest) Namespace(namespace string) ApiPostJobDispatchRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobDispatchRequest) XNomadToken(xNomadToken string) ApiPostJobDispatchRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobDispatchRequest) IdempotencyToken(idempotencyToken string) ApiPostJobDispatchRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -2417,25 +2333,21 @@ func (r ApiPostJobEvaluateRequest) JobEvaluateRequest(jobEvaluateRequest JobEval
 	r.jobEvaluateRequest = &jobEvaluateRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobEvaluateRequest) Region(region string) ApiPostJobEvaluateRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobEvaluateRequest) Namespace(namespace string) ApiPostJobEvaluateRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobEvaluateRequest) XNomadToken(xNomadToken string) ApiPostJobEvaluateRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobEvaluateRequest) IdempotencyToken(idempotencyToken string) ApiPostJobEvaluateRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -2705,19 +2617,16 @@ func (r ApiPostJobPeriodicForceRequest) Region(region string) ApiPostJobPeriodic
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobPeriodicForceRequest) Namespace(namespace string) ApiPostJobPeriodicForceRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobPeriodicForceRequest) XNomadToken(xNomadToken string) ApiPostJobPeriodicForceRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobPeriodicForceRequest) IdempotencyToken(idempotencyToken string) ApiPostJobPeriodicForceRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -2860,25 +2769,21 @@ func (r ApiPostJobPlanRequest) JobPlanRequest(jobPlanRequest JobPlanRequest) Api
 	r.jobPlanRequest = &jobPlanRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobPlanRequest) Region(region string) ApiPostJobPlanRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobPlanRequest) Namespace(namespace string) ApiPostJobPlanRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobPlanRequest) XNomadToken(xNomadToken string) ApiPostJobPlanRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobPlanRequest) IdempotencyToken(idempotencyToken string) ApiPostJobPlanRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -3026,25 +2931,21 @@ func (r ApiPostJobRevertRequest) JobRevertRequest(jobRevertRequest JobRevertRequ
 	r.jobRevertRequest = &jobRevertRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobRevertRequest) Region(region string) ApiPostJobRevertRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobRevertRequest) Namespace(namespace string) ApiPostJobRevertRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobRevertRequest) XNomadToken(xNomadToken string) ApiPostJobRevertRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobRevertRequest) IdempotencyToken(idempotencyToken string) ApiPostJobRevertRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -3192,25 +3093,21 @@ func (r ApiPostJobScalingRequestRequest) ScalingRequest(scalingRequest ScalingRe
 	r.scalingRequest = &scalingRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobScalingRequestRequest) Region(region string) ApiPostJobScalingRequestRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobScalingRequestRequest) Namespace(namespace string) ApiPostJobScalingRequestRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobScalingRequestRequest) XNomadToken(xNomadToken string) ApiPostJobScalingRequestRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobScalingRequestRequest) IdempotencyToken(idempotencyToken string) ApiPostJobScalingRequestRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -3358,25 +3255,21 @@ func (r ApiPostJobStabilityRequest) JobStabilityRequest(jobStabilityRequest JobS
 	r.jobStabilityRequest = &jobStabilityRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobStabilityRequest) Region(region string) ApiPostJobStabilityRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobStabilityRequest) Namespace(namespace string) ApiPostJobStabilityRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobStabilityRequest) XNomadToken(xNomadToken string) ApiPostJobStabilityRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobStabilityRequest) IdempotencyToken(idempotencyToken string) ApiPostJobStabilityRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -3523,25 +3416,21 @@ func (r ApiPostJobValidateRequestRequest) JobValidateRequest(jobValidateRequest 
 	r.jobValidateRequest = &jobValidateRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostJobValidateRequestRequest) Region(region string) ApiPostJobValidateRequestRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostJobValidateRequestRequest) Namespace(namespace string) ApiPostJobValidateRequestRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostJobValidateRequestRequest) XNomadToken(xNomadToken string) ApiPostJobValidateRequestRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostJobValidateRequestRequest) IdempotencyToken(idempotencyToken string) ApiPostJobValidateRequestRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -3685,25 +3574,21 @@ func (r ApiRegisterJobRequest) JobRegisterRequest(jobRegisterRequest JobRegister
 	r.jobRegisterRequest = &jobRegisterRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiRegisterJobRequest) Region(region string) ApiRegisterJobRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiRegisterJobRequest) Namespace(namespace string) ApiRegisterJobRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiRegisterJobRequest) XNomadToken(xNomadToken string) ApiRegisterJobRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiRegisterJobRequest) IdempotencyToken(idempotencyToken string) ApiRegisterJobRequest {
 	r.idempotencyToken = &idempotencyToken

@@ -649,10 +649,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -684,7 +680,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.delete_operator_raft_peer_endpoint.call_with_http_info(**kwargs)
 
     def get_operator_autopilot_configuration(
@@ -735,10 +730,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -770,7 +761,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_operator_autopilot_configuration_endpoint.call_with_http_info(**kwargs)
 
     def get_operator_autopilot_health(
@@ -821,10 +811,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -856,7 +842,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_operator_autopilot_health_endpoint.call_with_http_info(**kwargs)
 
     def get_operator_raft_configuration(
@@ -907,10 +892,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -942,7 +923,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_operator_raft_configuration_endpoint.call_with_http_info(**kwargs)
 
     def get_operator_scheduler_configuration(
@@ -993,10 +973,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1028,7 +1004,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_operator_scheduler_configuration_endpoint.call_with_http_info(**kwargs)
 
     def post_operator_scheduler_configuration(
@@ -1077,10 +1052,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1112,7 +1083,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['scheduler_configuration'] = \
             scheduler_configuration
         return self.post_operator_scheduler_configuration_endpoint.call_with_http_info(**kwargs)
@@ -1163,10 +1133,6 @@ class OperatorApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -1198,7 +1164,6 @@ class OperatorApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['autopilot_configuration'] = \
             autopilot_configuration
         return self.put_operator_autopilot_configuration_endpoint.call_with_http_info(**kwargs)

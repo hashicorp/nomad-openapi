@@ -15,8 +15,8 @@ package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
 import io.nomadproject.client.models.MetricsSummary;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,19 +26,25 @@ import java.util.Map;
 /**
  * API tests for MetricsApi
  */
-@Disabled
+@Ignore
 public class MetricsApiTest {
 
     private final MetricsApi api = new MetricsApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getMetricsSummaryTest() throws ApiException {
         String format = null;
-        MetricsSummary response = api.getMetricsSummary(format);
+                MetricsSummary response = api.getMetricsSummary(format);
         // TODO: test validations
     }
-
+    
 }

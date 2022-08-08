@@ -534,7 +534,7 @@ func (o *Job) GetMultiregion() Multiregion {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Job) GetMultiregionOk() (*Multiregion, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Multiregion.Get(), o.Multiregion.IsSet()
@@ -672,7 +672,7 @@ func (o *Job) GetParameterizedJob() ParameterizedJobConfig {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Job) GetParameterizedJobOk() (*ParameterizedJobConfig, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ParameterizedJob.Get(), o.ParameterizedJob.IsSet()

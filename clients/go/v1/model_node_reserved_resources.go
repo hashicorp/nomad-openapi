@@ -53,7 +53,7 @@ func (o *NodeReservedResources) GetCpu() NodeReservedCpuResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeReservedResources) GetCpuOk() (*NodeReservedCpuResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Cpu.Get(), o.Cpu.IsSet()
@@ -95,7 +95,7 @@ func (o *NodeReservedResources) GetDisk() NodeReservedDiskResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeReservedResources) GetDiskOk() (*NodeReservedDiskResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Disk.Get(), o.Disk.IsSet()
@@ -137,7 +137,7 @@ func (o *NodeReservedResources) GetMemory() NodeReservedMemoryResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeReservedResources) GetMemoryOk() (*NodeReservedMemoryResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Memory.Get(), o.Memory.IsSet()
@@ -179,7 +179,7 @@ func (o *NodeReservedResources) GetNetworks() NodeReservedNetworkResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeReservedResources) GetNetworksOk() (*NodeReservedNetworkResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Networks.Get(), o.Networks.IsSet()

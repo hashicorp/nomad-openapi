@@ -26,26 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import io.nomadproject.client.JSON;
-
 /**
  * DNSConfig
  */
@@ -74,7 +54,7 @@ public class DNSConfig {
 
   public DNSConfig addOptionsItem(String optionsItem) {
     if (this.options == null) {
-      this.options = new ArrayList<>();
+      this.options = new ArrayList<String>();
     }
     this.options.add(optionsItem);
     return this;
@@ -105,7 +85,7 @@ public class DNSConfig {
 
   public DNSConfig addSearchesItem(String searchesItem) {
     if (this.searches == null) {
-      this.searches = new ArrayList<>();
+      this.searches = new ArrayList<String>();
     }
     this.searches.add(searchesItem);
     return this;
@@ -136,7 +116,7 @@ public class DNSConfig {
 
   public DNSConfig addServersItem(String serversItem) {
     if (this.servers == null) {
-      this.servers = new ArrayList<>();
+      this.servers = new ArrayList<String>();
     }
     this.servers.add(serversItem);
     return this;
@@ -157,7 +137,6 @@ public class DNSConfig {
   public void setServers(List<String> servers) {
     this.servers = servers;
   }
-
 
 
   @Override
@@ -201,104 +180,5 @@ public class DNSConfig {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Options");
-    openapiFields.add("Searches");
-    openapiFields.add("Servers");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DNSConfig
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (DNSConfig.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DNSConfig is not found in the empty JSON string", DNSConfig.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DNSConfig.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DNSConfig` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("Options") != null && !jsonObj.get("Options").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Options` to be an array in the JSON string but got `%s`", jsonObj.get("Options").toString()));
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("Searches") != null && !jsonObj.get("Searches").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Searches` to be an array in the JSON string but got `%s`", jsonObj.get("Searches").toString()));
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("Servers") != null && !jsonObj.get("Servers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Servers` to be an array in the JSON string but got `%s`", jsonObj.get("Servers").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DNSConfig.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DNSConfig' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DNSConfig> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DNSConfig.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<DNSConfig>() {
-           @Override
-           public void write(JsonWriter out, DNSConfig value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public DNSConfig read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of DNSConfig given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DNSConfig
-  * @throws IOException if the JSON string is invalid with respect to DNSConfig
-  */
-  public static DNSConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DNSConfig.class);
-  }
-
- /**
-  * Convert an instance of DNSConfig to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -56,7 +56,7 @@ func (o *NodeResources) GetCpu() NodeCpuResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeResources) GetCpuOk() (*NodeCpuResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Cpu.Get(), o.Cpu.IsSet()
@@ -130,7 +130,7 @@ func (o *NodeResources) GetDisk() NodeDiskResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeResources) GetDiskOk() (*NodeDiskResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Disk.Get(), o.Disk.IsSet()
@@ -204,7 +204,7 @@ func (o *NodeResources) GetMemory() NodeMemoryResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeResources) GetMemoryOk() (*NodeMemoryResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Memory.Get(), o.Memory.IsSet()

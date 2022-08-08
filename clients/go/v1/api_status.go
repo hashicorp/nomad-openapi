@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // StatusApiService StatusApi service
 type StatusApiService service
@@ -42,49 +46,41 @@ func (r ApiGetStatusLeaderRequest) Region(region string) ApiGetStatusLeaderReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetStatusLeaderRequest) Namespace(namespace string) ApiGetStatusLeaderRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetStatusLeaderRequest) Index(index int32) ApiGetStatusLeaderRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetStatusLeaderRequest) Wait(wait string) ApiGetStatusLeaderRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetStatusLeaderRequest) Stale(stale string) ApiGetStatusLeaderRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetStatusLeaderRequest) Prefix(prefix string) ApiGetStatusLeaderRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetStatusLeaderRequest) XNomadToken(xNomadToken string) ApiGetStatusLeaderRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetStatusLeaderRequest) PerPage(perPage int32) ApiGetStatusLeaderRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetStatusLeaderRequest) NextToken(nextToken string) ApiGetStatusLeaderRequest {
 	r.nextToken = &nextToken
@@ -243,49 +239,41 @@ func (r ApiGetStatusPeersRequest) Region(region string) ApiGetStatusPeersRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetStatusPeersRequest) Namespace(namespace string) ApiGetStatusPeersRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetStatusPeersRequest) Index(index int32) ApiGetStatusPeersRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetStatusPeersRequest) Wait(wait string) ApiGetStatusPeersRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetStatusPeersRequest) Stale(stale string) ApiGetStatusPeersRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetStatusPeersRequest) Prefix(prefix string) ApiGetStatusPeersRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetStatusPeersRequest) XNomadToken(xNomadToken string) ApiGetStatusPeersRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetStatusPeersRequest) PerPage(perPage int32) ApiGetStatusPeersRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetStatusPeersRequest) NextToken(nextToken string) ApiGetStatusPeersRequest {
 	r.nextToken = &nextToken

@@ -53,7 +53,7 @@ func (o *NodeUpdateDrainRequest) GetDrainSpec() DrainSpec {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeUpdateDrainRequest) GetDrainSpecOk() (*DrainSpec, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.DrainSpec.Get(), o.DrainSpec.IsSet()

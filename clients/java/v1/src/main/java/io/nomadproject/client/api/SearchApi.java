@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class SearchApi {
     private ApiClient localVarApiClient;
@@ -103,6 +102,7 @@ public class SearchApi {
      */
     public okhttp3.Call getFuzzySearchCall(FuzzySearchRequest fuzzySearchRequest, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -317,6 +317,7 @@ public class SearchApi {
      */
     public okhttp3.Call getSearchCall(SearchRequest searchRequest, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

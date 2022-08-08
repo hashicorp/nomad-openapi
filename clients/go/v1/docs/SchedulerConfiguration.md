@@ -2,14 +2,13 @@
 
 ## Properties
 
-| Name                              | Type                                                           | Description | Notes      |
-| --------------------------------- | -------------------------------------------------------------- | ----------- | ---------- |
-| **CreateIndex**                   | Pointer to **int32**                                           |             | [optional] |
-| **MemoryOversubscriptionEnabled** | Pointer to **bool**                                            |             | [optional] |
-| **ModifyIndex**                   | Pointer to **int32**                                           |             | [optional] |
-| **PauseEvalBroker**               | Pointer to **bool**                                            |             | [optional] |
-| **PreemptionConfig**              | Pointer to [**NullablePreemptionConfig**](PreemptionConfig.md) |             | [optional] |
->>>>>>> af4e01c (fix map spec generation and add nullable fields)
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CreateIndex** | Pointer to **int32** |  | [optional] 
+**MemoryOversubscriptionEnabled** | Pointer to **bool** |  | [optional] 
+**ModifyIndex** | Pointer to **int32** |  | [optional] 
+**PauseEvalBroker** | Pointer to **bool** |  | [optional] 
+**PreemptionConfig** | Pointer to [**NullablePreemptionConfig**](PreemptionConfig.md) |  | [optional] 
 **RejectJobRegistration** | Pointer to **bool** |  | [optional] 
 **SchedulerAlgorithm** | Pointer to **string** |  | [optional] 
 

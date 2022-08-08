@@ -74,7 +74,7 @@ func (o *AllocationListStub) GetAllocatedResources() AllocatedResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllocationListStub) GetAllocatedResourcesOk() (*AllocatedResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.AllocatedResources.Get(), o.AllocatedResources.IsSet()
@@ -244,7 +244,7 @@ func (o *AllocationListStub) GetDeploymentStatus() AllocDeploymentStatus {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllocationListStub) GetDeploymentStatusOk() (*AllocDeploymentStatus, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.DeploymentStatus.Get(), o.DeploymentStatus.IsSet()
@@ -798,7 +798,7 @@ func (o *AllocationListStub) GetRescheduleTracker() RescheduleTracker {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllocationListStub) GetRescheduleTrackerOk() (*RescheduleTracker, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.RescheduleTracker.Get(), o.RescheduleTracker.IsSet()

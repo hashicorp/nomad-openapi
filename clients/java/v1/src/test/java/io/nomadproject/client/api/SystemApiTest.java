@@ -14,8 +14,8 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,13 +25,19 @@ import java.util.Map;
 /**
  * API tests for SystemApi
  */
-@Disabled
+@Ignore
 public class SystemApiTest {
 
     private final SystemApi api = new SystemApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void putSystemGCTest() throws ApiException {
@@ -39,12 +45,17 @@ public class SystemApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
+                api.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void putSystemReconcileSummariesTest() throws ApiException {
@@ -52,8 +63,8 @@ public class SystemApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
+                api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
-
+    
 }

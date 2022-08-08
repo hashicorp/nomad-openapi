@@ -117,7 +117,7 @@ func (o *ConsulSidecarService) GetProxy() ConsulProxy {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulSidecarService) GetProxyOk() (*ConsulProxy, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Proxy.Get(), o.Proxy.IsSet()

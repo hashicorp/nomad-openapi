@@ -57,7 +57,7 @@ func (o *JobPlanResponse) GetAnnotations() PlanAnnotations {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobPlanResponse) GetAnnotationsOk() (*PlanAnnotations, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Annotations.Get(), o.Annotations.IsSet()
@@ -131,7 +131,7 @@ func (o *JobPlanResponse) GetDiff() JobDiff {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobPlanResponse) GetDiffOk() (*JobDiff, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Diff.Get(), o.Diff.IsSet()
@@ -237,7 +237,7 @@ func (o *JobPlanResponse) GetNextPeriodicLaunch() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobPlanResponse) GetNextPeriodicLaunchOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.NextPeriodicLaunch.Get(), o.NextPeriodicLaunch.IsSet()

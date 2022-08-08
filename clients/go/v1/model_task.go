@@ -138,7 +138,7 @@ func (o *Task) GetCSIPluginConfig() TaskCSIPluginConfig {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Task) GetCSIPluginConfigOk() (*TaskCSIPluginConfig, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.CSIPluginConfig.Get(), o.CSIPluginConfig.IsSet()
@@ -244,7 +244,7 @@ func (o *Task) GetDispatchPayload() DispatchPayloadConfig {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Task) GetDispatchPayloadOk() (*DispatchPayloadConfig, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.DispatchPayload.Get(), o.DispatchPayload.IsSet()
@@ -478,7 +478,7 @@ func (o *Task) GetLifecycle() TaskLifecycle {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Task) GetLifecycleOk() (*TaskLifecycle, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Lifecycle.Get(), o.Lifecycle.IsSet()
@@ -616,7 +616,7 @@ func (o *Task) GetResources() Resources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Task) GetResourcesOk() (*Resources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Resources.Get(), o.Resources.IsSet()
@@ -850,7 +850,7 @@ func (o *Task) GetVault() Vault {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Task) GetVaultOk() (*Vault, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Vault.Get(), o.Vault.IsSet()

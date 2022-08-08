@@ -14,8 +14,8 @@
 package io.nomadproject.client.api;
 
 import io.nomadproject.client.ApiException;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,18 +25,24 @@ import java.util.Map;
 /**
  * API tests for RegionsApi
  */
-@Disabled
+@Ignore
 public class RegionsApiTest {
 
     private final RegionsApi api = new RegionsApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getRegionsTest() throws ApiException {
-        List<String> response = api.getRegions();
+                List<String> response = api.getRegions();
         // TODO: test validations
     }
-
+    
 }

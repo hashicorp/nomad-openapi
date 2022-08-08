@@ -117,7 +117,7 @@ func (o *ConsulConnect) GetSidecarService() ConsulSidecarService {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulConnect) GetSidecarServiceOk() (*ConsulSidecarService, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.SidecarService.Get(), o.SidecarService.IsSet()
@@ -159,7 +159,7 @@ func (o *ConsulConnect) GetSidecarTask() SidecarTask {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulConnect) GetSidecarTaskOk() (*SidecarTask, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.SidecarTask.Get(), o.SidecarTask.IsSet()

@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // OperatorApiService OperatorApi service
 type OperatorApiService service
@@ -37,19 +41,16 @@ func (r ApiDeleteOperatorRaftPeerRequest) Region(region string) ApiDeleteOperato
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteOperatorRaftPeerRequest) Namespace(namespace string) ApiDeleteOperatorRaftPeerRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteOperatorRaftPeerRequest) XNomadToken(xNomadToken string) ApiDeleteOperatorRaftPeerRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteOperatorRaftPeerRequest) IdempotencyToken(idempotencyToken string) ApiDeleteOperatorRaftPeerRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -182,49 +183,41 @@ func (r ApiGetOperatorAutopilotConfigurationRequest) Region(region string) ApiGe
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetOperatorAutopilotConfigurationRequest) Namespace(namespace string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetOperatorAutopilotConfigurationRequest) Index(index int32) ApiGetOperatorAutopilotConfigurationRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetOperatorAutopilotConfigurationRequest) Wait(wait string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetOperatorAutopilotConfigurationRequest) Stale(stale string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetOperatorAutopilotConfigurationRequest) Prefix(prefix string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetOperatorAutopilotConfigurationRequest) XNomadToken(xNomadToken string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetOperatorAutopilotConfigurationRequest) PerPage(perPage int32) ApiGetOperatorAutopilotConfigurationRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetOperatorAutopilotConfigurationRequest) NextToken(nextToken string) ApiGetOperatorAutopilotConfigurationRequest {
 	r.nextToken = &nextToken
@@ -383,49 +376,41 @@ func (r ApiGetOperatorAutopilotHealthRequest) Region(region string) ApiGetOperat
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetOperatorAutopilotHealthRequest) Namespace(namespace string) ApiGetOperatorAutopilotHealthRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetOperatorAutopilotHealthRequest) Index(index int32) ApiGetOperatorAutopilotHealthRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetOperatorAutopilotHealthRequest) Wait(wait string) ApiGetOperatorAutopilotHealthRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetOperatorAutopilotHealthRequest) Stale(stale string) ApiGetOperatorAutopilotHealthRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetOperatorAutopilotHealthRequest) Prefix(prefix string) ApiGetOperatorAutopilotHealthRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetOperatorAutopilotHealthRequest) XNomadToken(xNomadToken string) ApiGetOperatorAutopilotHealthRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetOperatorAutopilotHealthRequest) PerPage(perPage int32) ApiGetOperatorAutopilotHealthRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetOperatorAutopilotHealthRequest) NextToken(nextToken string) ApiGetOperatorAutopilotHealthRequest {
 	r.nextToken = &nextToken
@@ -584,49 +569,41 @@ func (r ApiGetOperatorRaftConfigurationRequest) Region(region string) ApiGetOper
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetOperatorRaftConfigurationRequest) Namespace(namespace string) ApiGetOperatorRaftConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetOperatorRaftConfigurationRequest) Index(index int32) ApiGetOperatorRaftConfigurationRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetOperatorRaftConfigurationRequest) Wait(wait string) ApiGetOperatorRaftConfigurationRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetOperatorRaftConfigurationRequest) Stale(stale string) ApiGetOperatorRaftConfigurationRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetOperatorRaftConfigurationRequest) Prefix(prefix string) ApiGetOperatorRaftConfigurationRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetOperatorRaftConfigurationRequest) XNomadToken(xNomadToken string) ApiGetOperatorRaftConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetOperatorRaftConfigurationRequest) PerPage(perPage int32) ApiGetOperatorRaftConfigurationRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetOperatorRaftConfigurationRequest) NextToken(nextToken string) ApiGetOperatorRaftConfigurationRequest {
 	r.nextToken = &nextToken
@@ -785,49 +762,41 @@ func (r ApiGetOperatorSchedulerConfigurationRequest) Region(region string) ApiGe
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetOperatorSchedulerConfigurationRequest) Namespace(namespace string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetOperatorSchedulerConfigurationRequest) Index(index int32) ApiGetOperatorSchedulerConfigurationRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetOperatorSchedulerConfigurationRequest) Wait(wait string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetOperatorSchedulerConfigurationRequest) Stale(stale string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetOperatorSchedulerConfigurationRequest) Prefix(prefix string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetOperatorSchedulerConfigurationRequest) XNomadToken(xNomadToken string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetOperatorSchedulerConfigurationRequest) PerPage(perPage int32) ApiGetOperatorSchedulerConfigurationRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetOperatorSchedulerConfigurationRequest) NextToken(nextToken string) ApiGetOperatorSchedulerConfigurationRequest {
 	r.nextToken = &nextToken
@@ -981,25 +950,21 @@ func (r ApiPostOperatorSchedulerConfigurationRequest) SchedulerConfiguration(sch
 	r.schedulerConfiguration = &schedulerConfiguration
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostOperatorSchedulerConfigurationRequest) Region(region string) ApiPostOperatorSchedulerConfigurationRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostOperatorSchedulerConfigurationRequest) Namespace(namespace string) ApiPostOperatorSchedulerConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostOperatorSchedulerConfigurationRequest) XNomadToken(xNomadToken string) ApiPostOperatorSchedulerConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostOperatorSchedulerConfigurationRequest) IdempotencyToken(idempotencyToken string) ApiPostOperatorSchedulerConfigurationRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1143,25 +1108,21 @@ func (r ApiPutOperatorAutopilotConfigurationRequest) AutopilotConfiguration(auto
 	r.autopilotConfiguration = &autopilotConfiguration
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPutOperatorAutopilotConfigurationRequest) Region(region string) ApiPutOperatorAutopilotConfigurationRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPutOperatorAutopilotConfigurationRequest) Namespace(namespace string) ApiPutOperatorAutopilotConfigurationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPutOperatorAutopilotConfigurationRequest) XNomadToken(xNomadToken string) ApiPutOperatorAutopilotConfigurationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPutOperatorAutopilotConfigurationRequest) IdempotencyToken(idempotencyToken string) ApiPutOperatorAutopilotConfigurationRequest {
 	r.idempotencyToken = &idempotencyToken

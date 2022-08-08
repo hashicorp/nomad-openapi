@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // ACLApiService ACLApi service
 type ACLApiService service
@@ -39,19 +43,16 @@ func (r ApiDeleteACLPolicyRequest) Region(region string) ApiDeleteACLPolicyReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteACLPolicyRequest) Namespace(namespace string) ApiDeleteACLPolicyRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteACLPolicyRequest) XNomadToken(xNomadToken string) ApiDeleteACLPolicyRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteACLPolicyRequest) IdempotencyToken(idempotencyToken string) ApiDeleteACLPolicyRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -183,19 +184,16 @@ func (r ApiDeleteACLTokenRequest) Region(region string) ApiDeleteACLTokenRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteACLTokenRequest) Namespace(namespace string) ApiDeleteACLTokenRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteACLTokenRequest) XNomadToken(xNomadToken string) ApiDeleteACLTokenRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiDeleteACLTokenRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -331,49 +329,41 @@ func (r ApiGetACLPoliciesRequest) Region(region string) ApiGetACLPoliciesRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetACLPoliciesRequest) Namespace(namespace string) ApiGetACLPoliciesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetACLPoliciesRequest) Index(index int32) ApiGetACLPoliciesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetACLPoliciesRequest) Wait(wait string) ApiGetACLPoliciesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetACLPoliciesRequest) Stale(stale string) ApiGetACLPoliciesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetACLPoliciesRequest) Prefix(prefix string) ApiGetACLPoliciesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetACLPoliciesRequest) XNomadToken(xNomadToken string) ApiGetACLPoliciesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetACLPoliciesRequest) PerPage(perPage int32) ApiGetACLPoliciesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetACLPoliciesRequest) NextToken(nextToken string) ApiGetACLPoliciesRequest {
 	r.nextToken = &nextToken
@@ -533,49 +523,41 @@ func (r ApiGetACLPolicyRequest) Region(region string) ApiGetACLPolicyRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetACLPolicyRequest) Namespace(namespace string) ApiGetACLPolicyRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetACLPolicyRequest) Index(index int32) ApiGetACLPolicyRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetACLPolicyRequest) Wait(wait string) ApiGetACLPolicyRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetACLPolicyRequest) Stale(stale string) ApiGetACLPolicyRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetACLPolicyRequest) Prefix(prefix string) ApiGetACLPolicyRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetACLPolicyRequest) XNomadToken(xNomadToken string) ApiGetACLPolicyRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetACLPolicyRequest) PerPage(perPage int32) ApiGetACLPolicyRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetACLPolicyRequest) NextToken(nextToken string) ApiGetACLPolicyRequest {
 	r.nextToken = &nextToken
@@ -738,49 +720,41 @@ func (r ApiGetACLTokenRequest) Region(region string) ApiGetACLTokenRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetACLTokenRequest) Namespace(namespace string) ApiGetACLTokenRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetACLTokenRequest) Index(index int32) ApiGetACLTokenRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetACLTokenRequest) Wait(wait string) ApiGetACLTokenRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetACLTokenRequest) Stale(stale string) ApiGetACLTokenRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetACLTokenRequest) Prefix(prefix string) ApiGetACLTokenRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetACLTokenRequest) XNomadToken(xNomadToken string) ApiGetACLTokenRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetACLTokenRequest) PerPage(perPage int32) ApiGetACLTokenRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetACLTokenRequest) NextToken(nextToken string) ApiGetACLTokenRequest {
 	r.nextToken = &nextToken
@@ -942,49 +916,41 @@ func (r ApiGetACLTokenSelfRequest) Region(region string) ApiGetACLTokenSelfReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetACLTokenSelfRequest) Namespace(namespace string) ApiGetACLTokenSelfRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetACLTokenSelfRequest) Index(index int32) ApiGetACLTokenSelfRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetACLTokenSelfRequest) Wait(wait string) ApiGetACLTokenSelfRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetACLTokenSelfRequest) Stale(stale string) ApiGetACLTokenSelfRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetACLTokenSelfRequest) Prefix(prefix string) ApiGetACLTokenSelfRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetACLTokenSelfRequest) XNomadToken(xNomadToken string) ApiGetACLTokenSelfRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetACLTokenSelfRequest) PerPage(perPage int32) ApiGetACLTokenSelfRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetACLTokenSelfRequest) NextToken(nextToken string) ApiGetACLTokenSelfRequest {
 	r.nextToken = &nextToken
@@ -1143,49 +1109,41 @@ func (r ApiGetACLTokensRequest) Region(region string) ApiGetACLTokensRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetACLTokensRequest) Namespace(namespace string) ApiGetACLTokensRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetACLTokensRequest) Index(index int32) ApiGetACLTokensRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetACLTokensRequest) Wait(wait string) ApiGetACLTokensRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetACLTokensRequest) Stale(stale string) ApiGetACLTokensRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetACLTokensRequest) Prefix(prefix string) ApiGetACLTokensRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetACLTokensRequest) XNomadToken(xNomadToken string) ApiGetACLTokensRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetACLTokensRequest) PerPage(perPage int32) ApiGetACLTokensRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetACLTokensRequest) NextToken(nextToken string) ApiGetACLTokensRequest {
 	r.nextToken = &nextToken
@@ -1339,19 +1297,16 @@ func (r ApiPostACLBootstrapRequest) Region(region string) ApiPostACLBootstrapReq
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostACLBootstrapRequest) Namespace(namespace string) ApiPostACLBootstrapRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostACLBootstrapRequest) XNomadToken(xNomadToken string) ApiPostACLBootstrapRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostACLBootstrapRequest) IdempotencyToken(idempotencyToken string) ApiPostACLBootstrapRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1491,25 +1446,21 @@ func (r ApiPostACLPolicyRequest) ACLPolicy(aCLPolicy ACLPolicy) ApiPostACLPolicy
 	r.aCLPolicy = &aCLPolicy
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostACLPolicyRequest) Region(region string) ApiPostACLPolicyRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostACLPolicyRequest) Namespace(namespace string) ApiPostACLPolicyRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostACLPolicyRequest) XNomadToken(xNomadToken string) ApiPostACLPolicyRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostACLPolicyRequest) IdempotencyToken(idempotencyToken string) ApiPostACLPolicyRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1646,25 +1597,21 @@ func (r ApiPostACLTokenRequest) ACLToken(aCLToken ACLToken) ApiPostACLTokenReque
 	r.aCLToken = &aCLToken
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostACLTokenRequest) Region(region string) ApiPostACLTokenRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostACLTokenRequest) Namespace(namespace string) ApiPostACLTokenRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostACLTokenRequest) XNomadToken(xNomadToken string) ApiPostACLTokenRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostACLTokenRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1811,19 +1758,16 @@ func (r ApiPostACLTokenOnetimeRequest) Region(region string) ApiPostACLTokenOnet
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostACLTokenOnetimeRequest) Namespace(namespace string) ApiPostACLTokenOnetimeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostACLTokenOnetimeRequest) XNomadToken(xNomadToken string) ApiPostACLTokenOnetimeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostACLTokenOnetimeRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenOnetimeRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1962,25 +1906,21 @@ func (r ApiPostACLTokenOnetimeExchangeRequest) OneTimeTokenExchangeRequest(oneTi
 	r.oneTimeTokenExchangeRequest = &oneTimeTokenExchangeRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostACLTokenOnetimeExchangeRequest) Region(region string) ApiPostACLTokenOnetimeExchangeRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostACLTokenOnetimeExchangeRequest) Namespace(namespace string) ApiPostACLTokenOnetimeExchangeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostACLTokenOnetimeExchangeRequest) XNomadToken(xNomadToken string) ApiPostACLTokenOnetimeExchangeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostACLTokenOnetimeExchangeRequest) IdempotencyToken(idempotencyToken string) ApiPostACLTokenOnetimeExchangeRequest {
 	r.idempotencyToken = &idempotencyToken

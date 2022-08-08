@@ -11,7 +11,6 @@
 
 use reqwest;
 
-
 #[derive(Debug, Clone)]
 pub struct Configuration {
     pub base_path: String,
@@ -32,7 +31,6 @@ pub struct ApiKey {
     pub key: String,
 }
 
-
 impl Configuration {
     pub fn new() -> Configuration {
         Configuration::default()
@@ -49,7 +47,6 @@ impl Default for Configuration {
             oauth_access_token: None,
             bearer_access_token: None,
             api_key: None,
-
         }
     }
 }

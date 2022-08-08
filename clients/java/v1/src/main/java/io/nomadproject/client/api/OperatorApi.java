@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class OperatorApi {
     private ApiClient localVarApiClient;
@@ -99,6 +98,7 @@ public class OperatorApi {
      */
     public okhttp3.Call deleteOperatorRaftPeerCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -265,6 +265,7 @@ public class OperatorApi {
      */
     public okhttp3.Call getOperatorAutopilotConfigurationCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -470,6 +471,7 @@ public class OperatorApi {
      */
     public okhttp3.Call getOperatorAutopilotHealthCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -675,6 +677,7 @@ public class OperatorApi {
      */
     public okhttp3.Call getOperatorRaftConfigurationCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -880,6 +883,7 @@ public class OperatorApi {
      */
     public okhttp3.Call getOperatorSchedulerConfigurationCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1081,6 +1085,7 @@ public class OperatorApi {
      */
     public okhttp3.Call postOperatorSchedulerConfigurationCall(SchedulerConfiguration schedulerConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1255,6 +1260,7 @@ public class OperatorApi {
      */
     public okhttp3.Call putOperatorAutopilotConfigurationCall(AutopilotConfiguration autopilotConfiguration, String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

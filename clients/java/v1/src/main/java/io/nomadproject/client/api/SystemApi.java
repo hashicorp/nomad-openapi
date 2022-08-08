@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class SystemApi {
     private ApiClient localVarApiClient;
@@ -93,6 +92,7 @@ public class SystemApi {
      */
     public okhttp3.Call putSystemGCCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -254,6 +254,7 @@ public class SystemApi {
      */
     public okhttp3.Call putSystemReconcileSummariesCall(String region, String namespace, String xNomadToken, String idempotencyToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

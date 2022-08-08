@@ -114,7 +114,7 @@ func (o *Allocation) GetAllocatedResources() AllocatedResources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetAllocatedResourcesOk() (*AllocatedResources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.AllocatedResources.Get(), o.AllocatedResources.IsSet()
@@ -316,7 +316,7 @@ func (o *Allocation) GetDeploymentStatus() AllocDeploymentStatus {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetDeploymentStatusOk() (*AllocDeploymentStatus, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.DeploymentStatus.Get(), o.DeploymentStatus.IsSet()
@@ -550,7 +550,7 @@ func (o *Allocation) GetJob() Job {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetJobOk() (*Job, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Job.Get(), o.Job.IsSet()
@@ -624,7 +624,7 @@ func (o *Allocation) GetMetrics() AllocationMetric {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetMetricsOk() (*AllocationMetric, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Metrics.Get(), o.Metrics.IsSet()
@@ -986,7 +986,7 @@ func (o *Allocation) GetRescheduleTracker() RescheduleTracker {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetRescheduleTrackerOk() (*RescheduleTracker, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.RescheduleTracker.Get(), o.RescheduleTracker.IsSet()
@@ -1028,7 +1028,7 @@ func (o *Allocation) GetResources() Resources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Allocation) GetResourcesOk() (*Resources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Resources.Get(), o.Resources.IsSet()

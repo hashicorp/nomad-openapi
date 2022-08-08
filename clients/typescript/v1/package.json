@@ -3,10 +3,6 @@
   "version": "",
   "description": "OpenAPI client for ",
   "author": "OpenAPI-Generator Contributors",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hashicorp/nomad-openapi/clients/typescript/v1.git"
-  },
   "keywords": [
     "fetch",
     "typescript",
@@ -15,10 +11,6 @@
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
-  "type": "commonjs",
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
@@ -30,7 +22,6 @@
     "url-parse": "^1.4.3"
   },
   "devDependencies": {
-    "typescript": "^4.0",
-    "@types/url-parse": "1.4.4"
+    "typescript": "^3.9.3"
   }
 }

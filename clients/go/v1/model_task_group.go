@@ -133,7 +133,7 @@ func (o *TaskGroup) GetConsul() Consul {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskGroup) GetConsulOk() (*Consul, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Consul.Get(), o.Consul.IsSet()
@@ -463,7 +463,7 @@ func (o *TaskGroup) GetScaling() ScalingPolicy {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskGroup) GetScalingOk() (*ScalingPolicy, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Scaling.Get(), o.Scaling.IsSet()

@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // EnterpriseApiService EnterpriseApi service
 type EnterpriseApiService service
@@ -38,25 +42,21 @@ func (r ApiCreateQuotaSpecRequest) QuotaSpec(quotaSpec QuotaSpec) ApiCreateQuota
 	r.quotaSpec = &quotaSpec
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiCreateQuotaSpecRequest) Region(region string) ApiCreateQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiCreateQuotaSpecRequest) Namespace(namespace string) ApiCreateQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiCreateQuotaSpecRequest) XNomadToken(xNomadToken string) ApiCreateQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiCreateQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiCreateQuotaSpecRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -190,19 +190,16 @@ func (r ApiDeleteQuotaSpecRequest) Region(region string) ApiDeleteQuotaSpecReque
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteQuotaSpecRequest) Namespace(namespace string) ApiDeleteQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteQuotaSpecRequest) XNomadToken(xNomadToken string) ApiDeleteQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiDeleteQuotaSpecRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -339,49 +336,41 @@ func (r ApiGetQuotaSpecRequest) Region(region string) ApiGetQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetQuotaSpecRequest) Namespace(namespace string) ApiGetQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetQuotaSpecRequest) Index(index int32) ApiGetQuotaSpecRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetQuotaSpecRequest) Wait(wait string) ApiGetQuotaSpecRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetQuotaSpecRequest) Stale(stale string) ApiGetQuotaSpecRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetQuotaSpecRequest) Prefix(prefix string) ApiGetQuotaSpecRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetQuotaSpecRequest) XNomadToken(xNomadToken string) ApiGetQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetQuotaSpecRequest) PerPage(perPage int32) ApiGetQuotaSpecRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetQuotaSpecRequest) NextToken(nextToken string) ApiGetQuotaSpecRequest {
 	r.nextToken = &nextToken
@@ -543,49 +532,41 @@ func (r ApiGetQuotasRequest) Region(region string) ApiGetQuotasRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetQuotasRequest) Namespace(namespace string) ApiGetQuotasRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetQuotasRequest) Index(index int32) ApiGetQuotasRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetQuotasRequest) Wait(wait string) ApiGetQuotasRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetQuotasRequest) Stale(stale string) ApiGetQuotasRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetQuotasRequest) Prefix(prefix string) ApiGetQuotasRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetQuotasRequest) XNomadToken(xNomadToken string) ApiGetQuotasRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetQuotasRequest) PerPage(perPage int32) ApiGetQuotasRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetQuotasRequest) NextToken(nextToken string) ApiGetQuotasRequest {
 	r.nextToken = &nextToken
@@ -740,25 +721,21 @@ func (r ApiPostQuotaSpecRequest) QuotaSpec(quotaSpec QuotaSpec) ApiPostQuotaSpec
 	r.quotaSpec = &quotaSpec
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostQuotaSpecRequest) Region(region string) ApiPostQuotaSpecRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostQuotaSpecRequest) Namespace(namespace string) ApiPostQuotaSpecRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostQuotaSpecRequest) XNomadToken(xNomadToken string) ApiPostQuotaSpecRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostQuotaSpecRequest) IdempotencyToken(idempotencyToken string) ApiPostQuotaSpecRequest {
 	r.idempotencyToken = &idempotencyToken

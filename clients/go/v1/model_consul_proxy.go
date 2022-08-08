@@ -86,7 +86,7 @@ func (o *ConsulProxy) GetExposeConfig() ConsulExposeConfig {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulProxy) GetExposeConfigOk() (*ConsulExposeConfig, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ExposeConfig.Get(), o.ExposeConfig.IsSet()

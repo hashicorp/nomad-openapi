@@ -193,7 +193,7 @@ func (o *Service) GetCheckRestart() CheckRestart {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Service) GetCheckRestartOk() (*CheckRestart, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.CheckRestart.Get(), o.CheckRestart.IsSet()
@@ -267,7 +267,7 @@ func (o *Service) GetConnect() ConsulConnect {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Service) GetConnectOk() (*ConsulConnect, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Connect.Get(), o.Connect.IsSet()

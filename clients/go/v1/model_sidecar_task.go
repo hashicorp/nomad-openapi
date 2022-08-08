@@ -316,7 +316,7 @@ func (o *SidecarTask) GetResources() Resources {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SidecarTask) GetResourcesOk() (*Resources, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Resources.Get(), o.Resources.IsSet()

@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class AllocationsApi {
     private ApiClient localVarApiClient;
@@ -103,6 +102,7 @@ public class AllocationsApi {
      */
     public okhttp3.Call getAllocationCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -318,6 +318,7 @@ public class AllocationsApi {
      */
     public okhttp3.Call getAllocationServicesCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -534,6 +535,7 @@ public class AllocationsApi {
      */
     public okhttp3.Call getAllocationsCall(String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean resources, Boolean taskStates, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -755,6 +757,7 @@ public class AllocationsApi {
      */
     public okhttp3.Call postAllocationStopCall(String allocID, String region, String namespace, Integer index, String wait, String stale, String prefix, String xNomadToken, Integer perPage, String nextToken, Boolean noShutdownDelay, final ApiCallback _callback) throws ApiException {
         String basePath = null;
+
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

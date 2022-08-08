@@ -426,11 +426,11 @@ conf = nomad_client.Configuration(
                     'address': {
                         'description': "No description provided",
                         'default_value': "127.0.0.1",
-                    },
+                        },
                     'port': {
                         'description': "No description provided",
                         'default_value': "4646",
-                    },
+                        },
                     'scheme': {
                         'description': "No description provided",
                         'default_value': "https",
@@ -438,8 +438,8 @@ conf = nomad_client.Configuration(
                             "https",
                             "http"
                         ]
+                        }
                     }
-                }
             },
             {
                 'url': "{scheme}://{address}:{port}/v1",
@@ -448,11 +448,11 @@ conf = nomad_client.Configuration(
                     'address': {
                         'description': "No description provided",
                         'default_value': "127.0.0.1",
-                    },
+                        },
                     'port': {
                         'description': "No description provided",
                         'default_value': "4646",
-                    },
+                        },
                     'scheme': {
                         'description': "No description provided",
                         'default_value': "https",
@@ -460,8 +460,8 @@ conf = nomad_client.Configuration(
                             "https",
                             "http"
                         ]
+                        }
                     }
-                }
             }
         ]
 

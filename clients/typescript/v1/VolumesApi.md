@@ -677,7 +677,12 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -733,6 +738,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -841,6 +847,9 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -885,6 +894,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -1083,7 +1093,12 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -1139,6 +1154,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -1247,6 +1263,9 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],
@@ -2097,7 +2116,12 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -2153,6 +2177,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -2261,6 +2286,9 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -2305,6 +2333,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -2503,7 +2532,12 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -2559,6 +2593,7 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -2667,6 +2702,9 @@ let body:nomad-client.VolumesApiCreateVolumeRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],
@@ -4436,7 +4474,12 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -4492,6 +4535,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -4600,6 +4644,9 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -4644,6 +4691,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -4842,7 +4890,12 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -4898,6 +4951,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -5006,6 +5060,9 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],
@@ -5856,7 +5913,12 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -5912,6 +5974,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -6020,6 +6083,9 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -6064,6 +6130,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -6262,7 +6329,12 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -6318,6 +6390,7 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -6426,6 +6499,9 @@ let body:nomad-client.VolumesApiPostVolumeRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],
@@ -7543,7 +7619,12 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -7599,6 +7680,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -7707,6 +7789,9 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -7751,6 +7836,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -7949,7 +8035,12 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -8005,6 +8096,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -8113,6 +8205,9 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],
@@ -8963,7 +9058,12 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                               },
                             ],
                             TLS: {
+                              cipherSuites: [
+                                "cipherSuites_example",
+                              ],
                               enabled: true,
+                              tLSMaxVersion: "tLSMaxVersion_example",
+                              tLSMinVersion: "tLSMinVersion_example",
                             },
                           },
                           mesh: null,
@@ -9019,6 +9119,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                               {
                                 datacenter: "datacenter_example",
                                 destinationName: "destinationName_example",
+                                destinationNamespace: "destinationNamespace_example",
                                 localBindAddress: "localBindAddress_example",
                                 localBindPort: 1,
                                 meshGateway: {
@@ -9127,6 +9228,9 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                       onUpdate: "onUpdate_example",
                       portLabel: "portLabel_example",
                       provider: "provider_example",
+                      taggedAddresses: {
+                        "key": "key_example",
+                      },
                       tags: [
                         "tags_example",
                       ],
@@ -9171,6 +9275,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                         },
                       ],
                       cSIPluginConfig: {
+                        healthTimeout: 1,
                         ID: "ID_example",
                         mountDir: "mountDir_example",
                         type: "type_example",
@@ -9369,7 +9474,12 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                                   },
                                 ],
                                 TLS: {
+                                  cipherSuites: [
+                                    "cipherSuites_example",
+                                  ],
                                   enabled: true,
+                                  tLSMaxVersion: "tLSMaxVersion_example",
+                                  tLSMinVersion: "tLSMinVersion_example",
                                 },
                               },
                               mesh: null,
@@ -9425,6 +9535,7 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                                   {
                                     datacenter: "datacenter_example",
                                     destinationName: "destinationName_example",
+                                    destinationNamespace: "destinationNamespace_example",
                                     localBindAddress: "localBindAddress_example",
                                     localBindPort: 1,
                                     meshGateway: {
@@ -9533,6 +9644,9 @@ let body:nomad-client.VolumesApiPostVolumeRegistrationRequest = {
                           onUpdate: "onUpdate_example",
                           portLabel: "portLabel_example",
                           provider: "provider_example",
+                          taggedAddresses: {
+                            "key": "key_example",
+                          },
                           tags: [
                             "tags_example",
                           ],

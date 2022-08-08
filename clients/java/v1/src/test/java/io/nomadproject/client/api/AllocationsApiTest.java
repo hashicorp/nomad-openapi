@@ -18,8 +18,8 @@ import io.nomadproject.client.models.AllocStopResponse;
 import io.nomadproject.client.models.Allocation;
 import io.nomadproject.client.models.AllocationListStub;
 import io.nomadproject.client.models.ServiceRegistration;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,13 +29,19 @@ import java.util.Map;
 /**
  * API tests for AllocationsApi
  */
-@Disabled
+@Ignore
 public class AllocationsApiTest {
 
     private final AllocationsApi api = new AllocationsApi();
 
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getAllocationTest() throws ApiException {
@@ -49,12 +55,17 @@ public class AllocationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Allocation response = api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                Allocation response = api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getAllocationServicesTest() throws ApiException {
@@ -68,12 +79,17 @@ public class AllocationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ServiceRegistration> response = api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
+                List<ServiceRegistration> response = api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getAllocationsTest() throws ApiException {
@@ -88,12 +104,17 @@ public class AllocationsApiTest {
         String nextToken = null;
         Boolean resources = null;
         Boolean taskStates = null;
-        List<AllocationListStub> response = api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
+                List<AllocationListStub> response = api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
         // TODO: test validations
     }
-
+    
     /**
-     * @throws ApiException if the Api call fails
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void postAllocationStopTest() throws ApiException {
@@ -108,8 +129,8 @@ public class AllocationsApiTest {
         Integer perPage = null;
         String nextToken = null;
         Boolean noShutdownDelay = null;
-        AllocStopResponse response = api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
+                AllocStopResponse response = api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
         // TODO: test validations
     }
-
+    
 }

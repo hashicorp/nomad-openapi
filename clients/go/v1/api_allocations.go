@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // AllocationsApiService AllocationsApi service
 type AllocationsApiService service
@@ -44,49 +48,41 @@ func (r ApiGetAllocationRequest) Region(region string) ApiGetAllocationRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetAllocationRequest) Namespace(namespace string) ApiGetAllocationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetAllocationRequest) Index(index int32) ApiGetAllocationRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetAllocationRequest) Wait(wait string) ApiGetAllocationRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetAllocationRequest) Stale(stale string) ApiGetAllocationRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetAllocationRequest) Prefix(prefix string) ApiGetAllocationRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetAllocationRequest) XNomadToken(xNomadToken string) ApiGetAllocationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetAllocationRequest) PerPage(perPage int32) ApiGetAllocationRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetAllocationRequest) NextToken(nextToken string) ApiGetAllocationRequest {
 	r.nextToken = &nextToken
@@ -249,49 +245,41 @@ func (r ApiGetAllocationServicesRequest) Region(region string) ApiGetAllocationS
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetAllocationServicesRequest) Namespace(namespace string) ApiGetAllocationServicesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetAllocationServicesRequest) Index(index int32) ApiGetAllocationServicesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetAllocationServicesRequest) Wait(wait string) ApiGetAllocationServicesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetAllocationServicesRequest) Stale(stale string) ApiGetAllocationServicesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetAllocationServicesRequest) Prefix(prefix string) ApiGetAllocationServicesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetAllocationServicesRequest) XNomadToken(xNomadToken string) ApiGetAllocationServicesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetAllocationServicesRequest) PerPage(perPage int32) ApiGetAllocationServicesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetAllocationServicesRequest) NextToken(nextToken string) ApiGetAllocationServicesRequest {
 	r.nextToken = &nextToken
@@ -455,61 +443,51 @@ func (r ApiGetAllocationsRequest) Region(region string) ApiGetAllocationsRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetAllocationsRequest) Namespace(namespace string) ApiGetAllocationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetAllocationsRequest) Index(index int32) ApiGetAllocationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetAllocationsRequest) Wait(wait string) ApiGetAllocationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetAllocationsRequest) Stale(stale string) ApiGetAllocationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetAllocationsRequest) Prefix(prefix string) ApiGetAllocationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetAllocationsRequest) XNomadToken(xNomadToken string) ApiGetAllocationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetAllocationsRequest) PerPage(perPage int32) ApiGetAllocationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetAllocationsRequest) NextToken(nextToken string) ApiGetAllocationsRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Flag indicating whether to include resources in response.
 func (r ApiGetAllocationsRequest) Resources(resources bool) ApiGetAllocationsRequest {
 	r.resources = &resources
 	return r
 }
-
 // Flag indicating whether to include task states in response.
 func (r ApiGetAllocationsRequest) TaskStates(taskStates bool) ApiGetAllocationsRequest {
 	r.taskStates = &taskStates
@@ -676,55 +654,46 @@ func (r ApiPostAllocationStopRequest) Region(region string) ApiPostAllocationSto
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostAllocationStopRequest) Namespace(namespace string) ApiPostAllocationStopRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiPostAllocationStopRequest) Index(index int32) ApiPostAllocationStopRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiPostAllocationStopRequest) Wait(wait string) ApiPostAllocationStopRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiPostAllocationStopRequest) Stale(stale string) ApiPostAllocationStopRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiPostAllocationStopRequest) Prefix(prefix string) ApiPostAllocationStopRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostAllocationStopRequest) XNomadToken(xNomadToken string) ApiPostAllocationStopRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiPostAllocationStopRequest) PerPage(perPage int32) ApiPostAllocationStopRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiPostAllocationStopRequest) NextToken(nextToken string) ApiPostAllocationStopRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Flag indicating whether to delay shutdown when requesting an allocation stop.
 func (r ApiPostAllocationStopRequest) NoShutdownDelay(noShutdownDelay bool) ApiPostAllocationStopRequest {
 	r.noShutdownDelay = &noShutdownDelay

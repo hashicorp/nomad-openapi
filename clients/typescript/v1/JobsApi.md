@@ -1163,7 +1163,12 @@ let body:nomad-client.JobsApiPostJobRequest = {
                       },
                     ],
                     TLS: {
+                      cipherSuites: [
+                        "cipherSuites_example",
+                      ],
                       enabled: true,
+                      tLSMaxVersion: "tLSMaxVersion_example",
+                      tLSMinVersion: "tLSMinVersion_example",
                     },
                   },
                   mesh: null,
@@ -1219,6 +1224,7 @@ let body:nomad-client.JobsApiPostJobRequest = {
                       {
                         datacenter: "datacenter_example",
                         destinationName: "destinationName_example",
+                        destinationNamespace: "destinationNamespace_example",
                         localBindAddress: "localBindAddress_example",
                         localBindPort: 1,
                         meshGateway: {
@@ -1327,6 +1333,9 @@ let body:nomad-client.JobsApiPostJobRequest = {
               onUpdate: "onUpdate_example",
               portLabel: "portLabel_example",
               provider: "provider_example",
+              taggedAddresses: {
+                "key": "key_example",
+              },
               tags: [
                 "tags_example",
               ],
@@ -1371,6 +1380,7 @@ let body:nomad-client.JobsApiPostJobRequest = {
                 },
               ],
               cSIPluginConfig: {
+                healthTimeout: 1,
                 ID: "ID_example",
                 mountDir: "mountDir_example",
                 type: "type_example",
@@ -1569,7 +1579,12 @@ let body:nomad-client.JobsApiPostJobRequest = {
                           },
                         ],
                         TLS: {
+                          cipherSuites: [
+                            "cipherSuites_example",
+                          ],
                           enabled: true,
+                          tLSMaxVersion: "tLSMaxVersion_example",
+                          tLSMinVersion: "tLSMinVersion_example",
                         },
                       },
                       mesh: null,
@@ -1625,6 +1640,7 @@ let body:nomad-client.JobsApiPostJobRequest = {
                           {
                             datacenter: "datacenter_example",
                             destinationName: "destinationName_example",
+                            destinationNamespace: "destinationNamespace_example",
                             localBindAddress: "localBindAddress_example",
                             localBindPort: 1,
                             meshGateway: {
@@ -1733,6 +1749,9 @@ let body:nomad-client.JobsApiPostJobRequest = {
                   onUpdate: "onUpdate_example",
                   portLabel: "portLabel_example",
                   provider: "provider_example",
+                  taggedAddresses: {
+                    "key": "key_example",
+                  },
                   tags: [
                     "tags_example",
                   ],
@@ -2471,7 +2490,12 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                       },
                     ],
                     TLS: {
+                      cipherSuites: [
+                        "cipherSuites_example",
+                      ],
                       enabled: true,
+                      tLSMaxVersion: "tLSMaxVersion_example",
+                      tLSMinVersion: "tLSMinVersion_example",
                     },
                   },
                   mesh: null,
@@ -2527,6 +2551,7 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                       {
                         datacenter: "datacenter_example",
                         destinationName: "destinationName_example",
+                        destinationNamespace: "destinationNamespace_example",
                         localBindAddress: "localBindAddress_example",
                         localBindPort: 1,
                         meshGateway: {
@@ -2635,6 +2660,9 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
               onUpdate: "onUpdate_example",
               portLabel: "portLabel_example",
               provider: "provider_example",
+              taggedAddresses: {
+                "key": "key_example",
+              },
               tags: [
                 "tags_example",
               ],
@@ -2679,6 +2707,7 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                 },
               ],
               cSIPluginConfig: {
+                healthTimeout: 1,
                 ID: "ID_example",
                 mountDir: "mountDir_example",
                 type: "type_example",
@@ -2877,7 +2906,12 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                           },
                         ],
                         TLS: {
+                          cipherSuites: [
+                            "cipherSuites_example",
+                          ],
                           enabled: true,
+                          tLSMaxVersion: "tLSMaxVersion_example",
+                          tLSMinVersion: "tLSMinVersion_example",
                         },
                       },
                       mesh: null,
@@ -2933,6 +2967,7 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                           {
                             datacenter: "datacenter_example",
                             destinationName: "destinationName_example",
+                            destinationNamespace: "destinationNamespace_example",
                             localBindAddress: "localBindAddress_example",
                             localBindPort: 1,
                             meshGateway: {
@@ -3041,6 +3076,9 @@ let body:nomad-client.JobsApiPostJobPlanRequest = {
                   onUpdate: "onUpdate_example",
                   portLabel: "portLabel_example",
                   provider: "provider_example",
+                  taggedAddresses: {
+                    "key": "key_example",
+                  },
                   tags: [
                     "tags_example",
                   ],
@@ -3732,7 +3770,12 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                       },
                     ],
                     TLS: {
+                      cipherSuites: [
+                        "cipherSuites_example",
+                      ],
                       enabled: true,
+                      tLSMaxVersion: "tLSMaxVersion_example",
+                      tLSMinVersion: "tLSMinVersion_example",
                     },
                   },
                   mesh: null,
@@ -3788,6 +3831,7 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                       {
                         datacenter: "datacenter_example",
                         destinationName: "destinationName_example",
+                        destinationNamespace: "destinationNamespace_example",
                         localBindAddress: "localBindAddress_example",
                         localBindPort: 1,
                         meshGateway: {
@@ -3896,6 +3940,9 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
               onUpdate: "onUpdate_example",
               portLabel: "portLabel_example",
               provider: "provider_example",
+              taggedAddresses: {
+                "key": "key_example",
+              },
               tags: [
                 "tags_example",
               ],
@@ -3940,6 +3987,7 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                 },
               ],
               cSIPluginConfig: {
+                healthTimeout: 1,
                 ID: "ID_example",
                 mountDir: "mountDir_example",
                 type: "type_example",
@@ -4138,7 +4186,12 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                           },
                         ],
                         TLS: {
+                          cipherSuites: [
+                            "cipherSuites_example",
+                          ],
                           enabled: true,
+                          tLSMaxVersion: "tLSMaxVersion_example",
+                          tLSMinVersion: "tLSMinVersion_example",
                         },
                       },
                       mesh: null,
@@ -4194,6 +4247,7 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                           {
                             datacenter: "datacenter_example",
                             destinationName: "destinationName_example",
+                            destinationNamespace: "destinationNamespace_example",
                             localBindAddress: "localBindAddress_example",
                             localBindPort: 1,
                             meshGateway: {
@@ -4302,6 +4356,9 @@ let body:nomad-client.JobsApiPostJobValidateRequestRequest = {
                   onUpdate: "onUpdate_example",
                   portLabel: "portLabel_example",
                   provider: "provider_example",
+                  taggedAddresses: {
+                    "key": "key_example",
+                  },
                   tags: [
                     "tags_example",
                   ],
@@ -4747,7 +4804,12 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                       },
                     ],
                     TLS: {
+                      cipherSuites: [
+                        "cipherSuites_example",
+                      ],
                       enabled: true,
+                      tLSMaxVersion: "tLSMaxVersion_example",
+                      tLSMinVersion: "tLSMinVersion_example",
                     },
                   },
                   mesh: null,
@@ -4803,6 +4865,7 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                       {
                         datacenter: "datacenter_example",
                         destinationName: "destinationName_example",
+                        destinationNamespace: "destinationNamespace_example",
                         localBindAddress: "localBindAddress_example",
                         localBindPort: 1,
                         meshGateway: {
@@ -4911,6 +4974,9 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
               onUpdate: "onUpdate_example",
               portLabel: "portLabel_example",
               provider: "provider_example",
+              taggedAddresses: {
+                "key": "key_example",
+              },
               tags: [
                 "tags_example",
               ],
@@ -4955,6 +5021,7 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                 },
               ],
               cSIPluginConfig: {
+                healthTimeout: 1,
                 ID: "ID_example",
                 mountDir: "mountDir_example",
                 type: "type_example",
@@ -5153,7 +5220,12 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                           },
                         ],
                         TLS: {
+                          cipherSuites: [
+                            "cipherSuites_example",
+                          ],
                           enabled: true,
+                          tLSMaxVersion: "tLSMaxVersion_example",
+                          tLSMinVersion: "tLSMinVersion_example",
                         },
                       },
                       mesh: null,
@@ -5209,6 +5281,7 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                           {
                             datacenter: "datacenter_example",
                             destinationName: "destinationName_example",
+                            destinationNamespace: "destinationNamespace_example",
                             localBindAddress: "localBindAddress_example",
                             localBindPort: 1,
                             meshGateway: {
@@ -5317,6 +5390,9 @@ let body:nomad-client.JobsApiRegisterJobRequest = {
                   onUpdate: "onUpdate_example",
                   portLabel: "portLabel_example",
                   provider: "provider_example",
+                  taggedAddresses: {
+                    "key": "key_example",
+                  },
                   tags: [
                     "tags_example",
                   ],

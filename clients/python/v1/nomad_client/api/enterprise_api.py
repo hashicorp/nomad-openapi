@@ -274,7 +274,7 @@ class EnterpriseApi(object):
         )
         self.get_quotas_endpoint = _Endpoint(
             settings={
-                'response_type': ([bool, date, datetime, dict, float, int, list, str, none_type],),
+                'response_type': ([object],),
                 'auth': [
                     'X-Nomad-Token'
                 ],
@@ -485,10 +485,6 @@ class EnterpriseApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -520,7 +516,6 @@ class EnterpriseApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['quota_spec'] = \
             quota_spec
         return self.create_quota_spec_endpoint.call_with_http_info(**kwargs)
@@ -571,10 +566,6 @@ class EnterpriseApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -606,7 +597,6 @@ class EnterpriseApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['spec_name'] = \
             spec_name
         return self.delete_quota_spec_endpoint.call_with_http_info(**kwargs)
@@ -662,10 +652,6 @@ class EnterpriseApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -697,7 +683,6 @@ class EnterpriseApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['spec_name'] = \
             spec_name
         return self.get_quota_spec_endpoint.call_with_http_info(**kwargs)
@@ -750,14 +735,10 @@ class EnterpriseApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
-            [bool, date, datetime, dict, float, int, list, str, none_type]
+            [object]
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -785,7 +766,6 @@ class EnterpriseApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         return self.get_quotas_endpoint.call_with_http_info(**kwargs)
 
     def post_quota_spec(
@@ -836,10 +816,6 @@ class EnterpriseApi(object):
             _host_index (int/None): specifies the index of the server
                 that we want to use.
                 Default is read from the configuration.
-            _request_auths (list): set to override the auth_settings for an a single
-                request; this effectively ignores the authentication
-                in the spec for a single request.
-                Default is None
             async_req (bool): execute request asynchronously
 
         Returns:
@@ -871,7 +847,6 @@ class EnterpriseApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
         kwargs['spec_name'] = \
             spec_name
         kwargs['quota_spec'] = \

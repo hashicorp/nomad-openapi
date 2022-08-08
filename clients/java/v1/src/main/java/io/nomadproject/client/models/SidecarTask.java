@@ -30,26 +30,6 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import io.nomadproject.client.JSON;
-
 /**
  * SidecarTask
  */
@@ -110,7 +90,7 @@ public class SidecarTask {
 
   public SidecarTask putConfigItem(String key, Object configItem) {
     if (this.config == null) {
-      this.config = new HashMap<>();
+      this.config = new HashMap<String, Object>();
     }
     this.config.put(key, configItem);
     return this;
@@ -164,7 +144,7 @@ public class SidecarTask {
 
   public SidecarTask putEnvItem(String key, String envItem) {
     if (this.env == null) {
-      this.env = new HashMap<>();
+      this.env = new HashMap<String, String>();
     }
     this.env.put(key, envItem);
     return this;
@@ -264,7 +244,7 @@ public class SidecarTask {
 
   public SidecarTask putMetaItem(String key, String metaItem) {
     if (this.meta == null) {
-      this.meta = new HashMap<>();
+      this.meta = new HashMap<String, String>();
     }
     this.meta.put(key, metaItem);
     return this;
@@ -379,7 +359,6 @@ public class SidecarTask {
   }
 
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -448,120 +427,5 @@ public class SidecarTask {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Config");
-    openapiFields.add("Driver");
-    openapiFields.add("Env");
-    openapiFields.add("KillSignal");
-    openapiFields.add("KillTimeout");
-    openapiFields.add("LogConfig");
-    openapiFields.add("Meta");
-    openapiFields.add("Name");
-    openapiFields.add("Resources");
-    openapiFields.add("ShutdownDelay");
-    openapiFields.add("User");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SidecarTask
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (SidecarTask.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SidecarTask is not found in the empty JSON string", SidecarTask.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!SidecarTask.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SidecarTask` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("Driver") != null && !jsonObj.get("Driver").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Driver` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Driver").toString()));
-      }
-      if (jsonObj.get("KillSignal") != null && !jsonObj.get("KillSignal").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `KillSignal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KillSignal").toString()));
-      }
-      // validate the optional field `LogConfig`
-      if (jsonObj.getAsJsonObject("LogConfig") != null) {
-        LogConfig.validateJsonObject(jsonObj.getAsJsonObject("LogConfig"));
-      }
-      if (jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
-      }
-      // validate the optional field `Resources`
-      if (jsonObj.getAsJsonObject("Resources") != null) {
-        Resources.validateJsonObject(jsonObj.getAsJsonObject("Resources"));
-      }
-      if (jsonObj.get("User") != null && !jsonObj.get("User").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `User` to be a primitive type in the JSON string but got `%s`", jsonObj.get("User").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SidecarTask.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SidecarTask' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SidecarTask> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SidecarTask.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<SidecarTask>() {
-           @Override
-           public void write(JsonWriter out, SidecarTask value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public SidecarTask read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
-
- /**
-  * Create an instance of SidecarTask given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SidecarTask
-  * @throws IOException if the JSON string is invalid with respect to SidecarTask
-  */
-  public static SidecarTask fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SidecarTask.class);
-  }
-
- /**
-  * Convert an instance of SidecarTask to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -194,7 +194,7 @@ func (o *JobListStub) GetJobSummary() JobSummary {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobListStub) GetJobSummaryOk() (*JobSummary, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.JobSummary.Get(), o.JobSummary.IsSet()

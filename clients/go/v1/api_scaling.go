@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // ScalingApiService ScalingApi service
 type ScalingApiService service
@@ -43,49 +47,41 @@ func (r ApiGetScalingPoliciesRequest) Region(region string) ApiGetScalingPolicie
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetScalingPoliciesRequest) Namespace(namespace string) ApiGetScalingPoliciesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetScalingPoliciesRequest) Index(index int32) ApiGetScalingPoliciesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetScalingPoliciesRequest) Wait(wait string) ApiGetScalingPoliciesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetScalingPoliciesRequest) Stale(stale string) ApiGetScalingPoliciesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetScalingPoliciesRequest) Prefix(prefix string) ApiGetScalingPoliciesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetScalingPoliciesRequest) XNomadToken(xNomadToken string) ApiGetScalingPoliciesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetScalingPoliciesRequest) PerPage(perPage int32) ApiGetScalingPoliciesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetScalingPoliciesRequest) NextToken(nextToken string) ApiGetScalingPoliciesRequest {
 	r.nextToken = &nextToken
@@ -245,49 +241,41 @@ func (r ApiGetScalingPolicyRequest) Region(region string) ApiGetScalingPolicyReq
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetScalingPolicyRequest) Namespace(namespace string) ApiGetScalingPolicyRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetScalingPolicyRequest) Index(index int32) ApiGetScalingPolicyRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetScalingPolicyRequest) Wait(wait string) ApiGetScalingPolicyRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetScalingPolicyRequest) Stale(stale string) ApiGetScalingPolicyRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetScalingPolicyRequest) Prefix(prefix string) ApiGetScalingPolicyRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetScalingPolicyRequest) XNomadToken(xNomadToken string) ApiGetScalingPolicyRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetScalingPolicyRequest) PerPage(perPage int32) ApiGetScalingPolicyRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetScalingPolicyRequest) NextToken(nextToken string) ApiGetScalingPolicyRequest {
 	r.nextToken = &nextToken

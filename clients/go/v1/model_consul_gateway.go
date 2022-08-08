@@ -53,7 +53,7 @@ func (o *ConsulGateway) GetIngress() ConsulIngressConfigEntry {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulGateway) GetIngressOk() (*ConsulIngressConfigEntry, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Ingress.Get(), o.Ingress.IsSet()
@@ -84,7 +84,7 @@ func (o *ConsulGateway) UnsetIngress() {
 
 // GetMesh returns the Mesh field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConsulGateway) GetMesh() interface{} {
-	if o == nil {
+	if o == nil  {
 		var ret interface{}
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *ConsulGateway) GetProxy() ConsulGatewayProxy {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulGateway) GetProxyOk() (*ConsulGatewayProxy, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Proxy.Get(), o.Proxy.IsSet()
@@ -170,7 +170,7 @@ func (o *ConsulGateway) GetTerminating() ConsulTerminatingConfigEntry {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConsulGateway) GetTerminatingOk() (*ConsulTerminatingConfigEntry, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Terminating.Get(), o.Terminating.IsSet()

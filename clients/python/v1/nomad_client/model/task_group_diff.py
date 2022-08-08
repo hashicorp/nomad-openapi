@@ -34,9 +34,11 @@ def lazy_import():
     from nomad_client.model.field_diff import FieldDiff
     from nomad_client.model.object_diff import ObjectDiff
     from nomad_client.model.task_diff import TaskDiff
+    from nomad_client.model.uint64 import Uint64
     globals()['FieldDiff'] = FieldDiff
     globals()['ObjectDiff'] = ObjectDiff
     globals()['TaskDiff'] = TaskDiff
+    globals()['Uint64'] = Uint64
 
 
 class TaskGroupDiff(ModelNormal):
@@ -97,7 +99,7 @@ class TaskGroupDiff(ModelNormal):
             'objects': ([ObjectDiff],),  # noqa: E501
             'tasks': ([TaskDiff],),  # noqa: E501
             'type': (str,),  # noqa: E501
-            'updates': ({str: (int,)},),  # noqa: E501
+            'updates': ({str: (Uint64,)},),  # noqa: E501
         }
 
     @cached_property
@@ -160,11 +162,11 @@ class TaskGroupDiff(ModelNormal):
             objects ([ObjectDiff]): [optional]  # noqa: E501
             tasks ([TaskDiff]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            updates ({str: (int,)}): [optional]  # noqa: E501
+            updates ({str: (Uint64,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
-        _spec_property_naming = kwargs.pop('_spec_property_naming', True)
+        _spec_property_naming = kwargs.pop('_spec_property_naming', False)
         _path_to_item = kwargs.pop('_path_to_item', ())
         _configuration = kwargs.pop('_configuration', None)
         _visited_composed_classes = kwargs.pop('_visited_composed_classes', ())
@@ -172,18 +174,14 @@ class TaskGroupDiff(ModelNormal):
         self = super(OpenApiModel, cls).__new__(cls)
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            raise ApiTypeError(
+                "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                    args,
+                    self.__class__.__name__,
+                ),
+                path_to_item=_path_to_item,
+                valid_classes=(self.__class__,),
+            )
 
         self._data_store = {}
         self._check_type = _check_type
@@ -251,7 +249,7 @@ class TaskGroupDiff(ModelNormal):
             objects ([ObjectDiff]): [optional]  # noqa: E501
             tasks ([TaskDiff]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            updates ({str: (int,)}): [optional]  # noqa: E501
+            updates ({str: (Uint64,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -261,18 +259,14 @@ class TaskGroupDiff(ModelNormal):
         _visited_composed_classes = kwargs.pop('_visited_composed_classes', ())
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            raise ApiTypeError(
+                "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                    args,
+                    self.__class__.__name__,
+                ),
+                path_to_item=_path_to_item,
+                valid_classes=(self.__class__,),
+            )
 
         self._data_store = {}
         self._check_type = _check_type

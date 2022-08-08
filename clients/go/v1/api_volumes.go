@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // VolumesApiService VolumesApi service
 type VolumesApiService service
@@ -40,25 +44,21 @@ func (r ApiCreateVolumeRequest) CSIVolumeCreateRequest(cSIVolumeCreateRequest CS
 	r.cSIVolumeCreateRequest = &cSIVolumeCreateRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiCreateVolumeRequest) Region(region string) ApiCreateVolumeRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiCreateVolumeRequest) Namespace(namespace string) ApiCreateVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiCreateVolumeRequest) XNomadToken(xNomadToken string) ApiCreateVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiCreateVolumeRequest) IdempotencyToken(idempotencyToken string) ApiCreateVolumeRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -199,31 +199,26 @@ func (r ApiDeleteSnapshotRequest) Region(region string) ApiDeleteSnapshotRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteSnapshotRequest) Namespace(namespace string) ApiDeleteSnapshotRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteSnapshotRequest) XNomadToken(xNomadToken string) ApiDeleteSnapshotRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteSnapshotRequest) IdempotencyToken(idempotencyToken string) ApiDeleteSnapshotRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
-
 // Filters volume lists by plugin ID.
 func (r ApiDeleteSnapshotRequest) PluginId(pluginId string) ApiDeleteSnapshotRequest {
 	r.pluginId = &pluginId
 	return r
 }
-
 // The ID of the snapshot to target.
 func (r ApiDeleteSnapshotRequest) SnapshotId(snapshotId string) ApiDeleteSnapshotRequest {
 	r.snapshotId = &snapshotId
@@ -359,25 +354,21 @@ func (r ApiDeleteVolumeRegistrationRequest) Region(region string) ApiDeleteVolum
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDeleteVolumeRegistrationRequest) Namespace(namespace string) ApiDeleteVolumeRegistrationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDeleteVolumeRegistrationRequest) XNomadToken(xNomadToken string) ApiDeleteVolumeRegistrationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDeleteVolumeRegistrationRequest) IdempotencyToken(idempotencyToken string) ApiDeleteVolumeRegistrationRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
-
 // Used to force the de-registration of a volume.
 func (r ApiDeleteVolumeRegistrationRequest) Force(force string) ApiDeleteVolumeRegistrationRequest {
 	r.force = &force
@@ -514,25 +505,21 @@ func (r ApiDetachOrDeleteVolumeRequest) Region(region string) ApiDetachOrDeleteV
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiDetachOrDeleteVolumeRequest) Namespace(namespace string) ApiDetachOrDeleteVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiDetachOrDeleteVolumeRequest) XNomadToken(xNomadToken string) ApiDetachOrDeleteVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiDetachOrDeleteVolumeRequest) IdempotencyToken(idempotencyToken string) ApiDetachOrDeleteVolumeRequest {
 	r.idempotencyToken = &idempotencyToken
 	return r
 }
-
 // Specifies node to target volume operation for.
 func (r ApiDetachOrDeleteVolumeRequest) Node(node string) ApiDetachOrDeleteVolumeRequest {
 	r.node = &node
@@ -675,55 +662,46 @@ func (r ApiGetExternalVolumesRequest) Region(region string) ApiGetExternalVolume
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetExternalVolumesRequest) Namespace(namespace string) ApiGetExternalVolumesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetExternalVolumesRequest) Index(index int32) ApiGetExternalVolumesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetExternalVolumesRequest) Wait(wait string) ApiGetExternalVolumesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetExternalVolumesRequest) Stale(stale string) ApiGetExternalVolumesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetExternalVolumesRequest) Prefix(prefix string) ApiGetExternalVolumesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetExternalVolumesRequest) XNomadToken(xNomadToken string) ApiGetExternalVolumesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetExternalVolumesRequest) PerPage(perPage int32) ApiGetExternalVolumesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetExternalVolumesRequest) NextToken(nextToken string) ApiGetExternalVolumesRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Filters volume lists by plugin ID.
 func (r ApiGetExternalVolumesRequest) PluginId(pluginId string) ApiGetExternalVolumesRequest {
 	r.pluginId = &pluginId
@@ -886,55 +864,46 @@ func (r ApiGetSnapshotsRequest) Region(region string) ApiGetSnapshotsRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetSnapshotsRequest) Namespace(namespace string) ApiGetSnapshotsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetSnapshotsRequest) Index(index int32) ApiGetSnapshotsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetSnapshotsRequest) Wait(wait string) ApiGetSnapshotsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetSnapshotsRequest) Stale(stale string) ApiGetSnapshotsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetSnapshotsRequest) Prefix(prefix string) ApiGetSnapshotsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetSnapshotsRequest) XNomadToken(xNomadToken string) ApiGetSnapshotsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetSnapshotsRequest) PerPage(perPage int32) ApiGetSnapshotsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetSnapshotsRequest) NextToken(nextToken string) ApiGetSnapshotsRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Filters volume lists by plugin ID.
 func (r ApiGetSnapshotsRequest) PluginId(pluginId string) ApiGetSnapshotsRequest {
 	r.pluginId = &pluginId
@@ -1097,49 +1066,41 @@ func (r ApiGetVolumeRequest) Region(region string) ApiGetVolumeRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetVolumeRequest) Namespace(namespace string) ApiGetVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetVolumeRequest) Index(index int32) ApiGetVolumeRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetVolumeRequest) Wait(wait string) ApiGetVolumeRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetVolumeRequest) Stale(stale string) ApiGetVolumeRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetVolumeRequest) Prefix(prefix string) ApiGetVolumeRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetVolumeRequest) XNomadToken(xNomadToken string) ApiGetVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetVolumeRequest) PerPage(perPage int32) ApiGetVolumeRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetVolumeRequest) NextToken(nextToken string) ApiGetVolumeRequest {
 	r.nextToken = &nextToken
@@ -1304,67 +1265,56 @@ func (r ApiGetVolumesRequest) Region(region string) ApiGetVolumesRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetVolumesRequest) Namespace(namespace string) ApiGetVolumesRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetVolumesRequest) Index(index int32) ApiGetVolumesRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetVolumesRequest) Wait(wait string) ApiGetVolumesRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetVolumesRequest) Stale(stale string) ApiGetVolumesRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetVolumesRequest) Prefix(prefix string) ApiGetVolumesRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetVolumesRequest) XNomadToken(xNomadToken string) ApiGetVolumesRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetVolumesRequest) PerPage(perPage int32) ApiGetVolumesRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetVolumesRequest) NextToken(nextToken string) ApiGetVolumesRequest {
 	r.nextToken = &nextToken
 	return r
 }
-
 // Filters volume lists by node ID.
 func (r ApiGetVolumesRequest) NodeId(nodeId string) ApiGetVolumesRequest {
 	r.nodeId = &nodeId
 	return r
 }
-
 // Filters volume lists by plugin ID.
 func (r ApiGetVolumesRequest) PluginId(pluginId string) ApiGetVolumesRequest {
 	r.pluginId = &pluginId
 	return r
 }
-
 // Filters volume lists to a specific type.
 func (r ApiGetVolumesRequest) Type_(type_ string) ApiGetVolumesRequest {
 	r.type_ = &type_
@@ -1527,25 +1477,21 @@ func (r ApiPostSnapshotRequest) CSISnapshotCreateRequest(cSISnapshotCreateReques
 	r.cSISnapshotCreateRequest = &cSISnapshotCreateRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostSnapshotRequest) Region(region string) ApiPostSnapshotRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostSnapshotRequest) Namespace(namespace string) ApiPostSnapshotRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostSnapshotRequest) XNomadToken(xNomadToken string) ApiPostSnapshotRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostSnapshotRequest) IdempotencyToken(idempotencyToken string) ApiPostSnapshotRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1689,25 +1635,21 @@ func (r ApiPostVolumeRequest) CSIVolumeRegisterRequest(cSIVolumeRegisterRequest 
 	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostVolumeRequest) Region(region string) ApiPostVolumeRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostVolumeRequest) Namespace(namespace string) ApiPostVolumeRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostVolumeRequest) XNomadToken(xNomadToken string) ApiPostVolumeRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostVolumeRequest) IdempotencyToken(idempotencyToken string) ApiPostVolumeRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1841,25 +1783,21 @@ func (r ApiPostVolumeRegistrationRequest) CSIVolumeRegisterRequest(cSIVolumeRegi
 	r.cSIVolumeRegisterRequest = &cSIVolumeRegisterRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostVolumeRegistrationRequest) Region(region string) ApiPostVolumeRegistrationRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostVolumeRegistrationRequest) Namespace(namespace string) ApiPostVolumeRegistrationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostVolumeRegistrationRequest) XNomadToken(xNomadToken string) ApiPostVolumeRegistrationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostVolumeRegistrationRequest) IdempotencyToken(idempotencyToken string) ApiPostVolumeRegistrationRequest {
 	r.idempotencyToken = &idempotencyToken

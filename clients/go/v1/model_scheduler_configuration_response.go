@@ -215,7 +215,7 @@ func (o *SchedulerConfigurationResponse) GetSchedulerConfig() SchedulerConfigura
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SchedulerConfigurationResponse) GetSchedulerConfigOk() (*SchedulerConfiguration, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.SchedulerConfig.Get(), o.SchedulerConfig.IsSet()

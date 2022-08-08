@@ -548,7 +548,7 @@ func (o *CSIVolumeListStub) GetResourceExhausted() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CSIVolumeListStub) GetResourceExhaustedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ResourceExhausted.Get(), o.ResourceExhausted.IsSet()

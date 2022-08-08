@@ -122,7 +122,7 @@ func (o *JobRegisterRequest) GetJob() Job {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobRegisterRequest) GetJobOk() (*Job, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Job.Get(), o.Job.IsSet()

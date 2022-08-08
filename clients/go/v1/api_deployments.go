@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // DeploymentsApiService DeploymentsApi service
 type DeploymentsApiService service
@@ -44,49 +48,41 @@ func (r ApiGetDeploymentRequest) Region(region string) ApiGetDeploymentRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetDeploymentRequest) Namespace(namespace string) ApiGetDeploymentRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetDeploymentRequest) Index(index int32) ApiGetDeploymentRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetDeploymentRequest) Wait(wait string) ApiGetDeploymentRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetDeploymentRequest) Stale(stale string) ApiGetDeploymentRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetDeploymentRequest) Prefix(prefix string) ApiGetDeploymentRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetDeploymentRequest) XNomadToken(xNomadToken string) ApiGetDeploymentRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetDeploymentRequest) PerPage(perPage int32) ApiGetDeploymentRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetDeploymentRequest) NextToken(nextToken string) ApiGetDeploymentRequest {
 	r.nextToken = &nextToken
@@ -249,49 +245,41 @@ func (r ApiGetDeploymentAllocationsRequest) Region(region string) ApiGetDeployme
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetDeploymentAllocationsRequest) Namespace(namespace string) ApiGetDeploymentAllocationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetDeploymentAllocationsRequest) Index(index int32) ApiGetDeploymentAllocationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetDeploymentAllocationsRequest) Wait(wait string) ApiGetDeploymentAllocationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetDeploymentAllocationsRequest) Stale(stale string) ApiGetDeploymentAllocationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetDeploymentAllocationsRequest) Prefix(prefix string) ApiGetDeploymentAllocationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetDeploymentAllocationsRequest) XNomadToken(xNomadToken string) ApiGetDeploymentAllocationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetDeploymentAllocationsRequest) PerPage(perPage int32) ApiGetDeploymentAllocationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetDeploymentAllocationsRequest) NextToken(nextToken string) ApiGetDeploymentAllocationsRequest {
 	r.nextToken = &nextToken
@@ -453,49 +441,41 @@ func (r ApiGetDeploymentsRequest) Region(region string) ApiGetDeploymentsRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetDeploymentsRequest) Namespace(namespace string) ApiGetDeploymentsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetDeploymentsRequest) Index(index int32) ApiGetDeploymentsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetDeploymentsRequest) Wait(wait string) ApiGetDeploymentsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetDeploymentsRequest) Stale(stale string) ApiGetDeploymentsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetDeploymentsRequest) Prefix(prefix string) ApiGetDeploymentsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetDeploymentsRequest) XNomadToken(xNomadToken string) ApiGetDeploymentsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetDeploymentsRequest) PerPage(perPage int32) ApiGetDeploymentsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetDeploymentsRequest) NextToken(nextToken string) ApiGetDeploymentsRequest {
 	r.nextToken = &nextToken
@@ -650,25 +630,21 @@ func (r ApiPostDeploymentAllocationHealthRequest) DeploymentAllocHealthRequest(d
 	r.deploymentAllocHealthRequest = &deploymentAllocHealthRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostDeploymentAllocationHealthRequest) Region(region string) ApiPostDeploymentAllocationHealthRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostDeploymentAllocationHealthRequest) Namespace(namespace string) ApiPostDeploymentAllocationHealthRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostDeploymentAllocationHealthRequest) XNomadToken(xNomadToken string) ApiPostDeploymentAllocationHealthRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostDeploymentAllocationHealthRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentAllocationHealthRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -816,19 +792,16 @@ func (r ApiPostDeploymentFailRequest) Region(region string) ApiPostDeploymentFai
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostDeploymentFailRequest) Namespace(namespace string) ApiPostDeploymentFailRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostDeploymentFailRequest) XNomadToken(xNomadToken string) ApiPostDeploymentFailRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostDeploymentFailRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentFailRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -971,25 +944,21 @@ func (r ApiPostDeploymentPauseRequest) DeploymentPauseRequest(deploymentPauseReq
 	r.deploymentPauseRequest = &deploymentPauseRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostDeploymentPauseRequest) Region(region string) ApiPostDeploymentPauseRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostDeploymentPauseRequest) Namespace(namespace string) ApiPostDeploymentPauseRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostDeploymentPauseRequest) XNomadToken(xNomadToken string) ApiPostDeploymentPauseRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostDeploymentPauseRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentPauseRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1137,25 +1106,21 @@ func (r ApiPostDeploymentPromoteRequest) DeploymentPromoteRequest(deploymentProm
 	r.deploymentPromoteRequest = &deploymentPromoteRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostDeploymentPromoteRequest) Region(region string) ApiPostDeploymentPromoteRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostDeploymentPromoteRequest) Namespace(namespace string) ApiPostDeploymentPromoteRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostDeploymentPromoteRequest) XNomadToken(xNomadToken string) ApiPostDeploymentPromoteRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostDeploymentPromoteRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentPromoteRequest {
 	r.idempotencyToken = &idempotencyToken
@@ -1303,25 +1268,21 @@ func (r ApiPostDeploymentUnblockRequest) DeploymentUnblockRequest(deploymentUnbl
 	r.deploymentUnblockRequest = &deploymentUnblockRequest
 	return r
 }
-
 // Filters results based on the specified region.
 func (r ApiPostDeploymentUnblockRequest) Region(region string) ApiPostDeploymentUnblockRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiPostDeploymentUnblockRequest) Namespace(namespace string) ApiPostDeploymentUnblockRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiPostDeploymentUnblockRequest) XNomadToken(xNomadToken string) ApiPostDeploymentUnblockRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Can be used to ensure operations are only run once.
 func (r ApiPostDeploymentUnblockRequest) IdempotencyToken(idempotencyToken string) ApiPostDeploymentUnblockRequest {
 	r.idempotencyToken = &idempotencyToken

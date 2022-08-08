@@ -19,6 +19,10 @@ import (
 	"net/url"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // MetricsApiService MetricsApi service
 type MetricsApiService service

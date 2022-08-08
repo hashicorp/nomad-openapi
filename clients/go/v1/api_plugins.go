@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // PluginsApiService PluginsApi service
 type PluginsApiService service
@@ -44,49 +48,41 @@ func (r ApiGetPluginCSIRequest) Region(region string) ApiGetPluginCSIRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetPluginCSIRequest) Namespace(namespace string) ApiGetPluginCSIRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetPluginCSIRequest) Index(index int32) ApiGetPluginCSIRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetPluginCSIRequest) Wait(wait string) ApiGetPluginCSIRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetPluginCSIRequest) Stale(stale string) ApiGetPluginCSIRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetPluginCSIRequest) Prefix(prefix string) ApiGetPluginCSIRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetPluginCSIRequest) XNomadToken(xNomadToken string) ApiGetPluginCSIRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetPluginCSIRequest) PerPage(perPage int32) ApiGetPluginCSIRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetPluginCSIRequest) NextToken(nextToken string) ApiGetPluginCSIRequest {
 	r.nextToken = &nextToken
@@ -248,49 +244,41 @@ func (r ApiGetPluginsRequest) Region(region string) ApiGetPluginsRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetPluginsRequest) Namespace(namespace string) ApiGetPluginsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetPluginsRequest) Index(index int32) ApiGetPluginsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetPluginsRequest) Wait(wait string) ApiGetPluginsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetPluginsRequest) Stale(stale string) ApiGetPluginsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetPluginsRequest) Prefix(prefix string) ApiGetPluginsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetPluginsRequest) XNomadToken(xNomadToken string) ApiGetPluginsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetPluginsRequest) PerPage(perPage int32) ApiGetPluginsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetPluginsRequest) NextToken(nextToken string) ApiGetPluginsRequest {
 	r.nextToken = &nextToken

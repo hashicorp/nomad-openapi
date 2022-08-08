@@ -423,6 +423,7 @@ let body:nomad-client.OperatorApiPostOperatorSchedulerConfigurationRequest = {
     createIndex: 0,
     memoryOversubscriptionEnabled: true,
     modifyIndex: 0,
+    pauseEvalBroker: true,
     preemptionConfig: {
       batchSchedulerEnabled: true,
       serviceSchedulerEnabled: true,

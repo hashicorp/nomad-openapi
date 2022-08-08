@@ -499,7 +499,7 @@ func (o *CSIVolume) GetMountOptions() CSIMountOptions {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CSIVolume) GetMountOptionsOk() (*CSIMountOptions, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.MountOptions.Get(), o.MountOptions.IsSet()
@@ -925,7 +925,7 @@ func (o *CSIVolume) GetRequestedTopologies() CSITopologyRequest {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CSIVolume) GetRequestedTopologiesOk() (*CSITopologyRequest, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.RequestedTopologies.Get(), o.RequestedTopologies.IsSet()
@@ -967,7 +967,7 @@ func (o *CSIVolume) GetResourceExhausted() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CSIVolume) GetResourceExhaustedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.ResourceExhausted.Get(), o.ResourceExhausted.IsSet()

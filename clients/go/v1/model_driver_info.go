@@ -183,7 +183,7 @@ func (o *DriverInfo) GetUpdateTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DriverInfo) GetUpdateTimeOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.UpdateTime.Get(), o.UpdateTime.IsSet()

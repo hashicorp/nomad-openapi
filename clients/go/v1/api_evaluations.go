@@ -20,6 +20,10 @@ import (
 	"strings"
 )
 
+// Linger please
+var (
+	_ context.Context
+)
 
 // EvaluationsApiService EvaluationsApi service
 type EvaluationsApiService service
@@ -44,49 +48,41 @@ func (r ApiGetEvaluationRequest) Region(region string) ApiGetEvaluationRequest {
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetEvaluationRequest) Namespace(namespace string) ApiGetEvaluationRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetEvaluationRequest) Index(index int32) ApiGetEvaluationRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetEvaluationRequest) Wait(wait string) ApiGetEvaluationRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetEvaluationRequest) Stale(stale string) ApiGetEvaluationRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetEvaluationRequest) Prefix(prefix string) ApiGetEvaluationRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetEvaluationRequest) XNomadToken(xNomadToken string) ApiGetEvaluationRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetEvaluationRequest) PerPage(perPage int32) ApiGetEvaluationRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetEvaluationRequest) NextToken(nextToken string) ApiGetEvaluationRequest {
 	r.nextToken = &nextToken
@@ -249,49 +245,41 @@ func (r ApiGetEvaluationAllocationsRequest) Region(region string) ApiGetEvaluati
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetEvaluationAllocationsRequest) Namespace(namespace string) ApiGetEvaluationAllocationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetEvaluationAllocationsRequest) Index(index int32) ApiGetEvaluationAllocationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetEvaluationAllocationsRequest) Wait(wait string) ApiGetEvaluationAllocationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetEvaluationAllocationsRequest) Stale(stale string) ApiGetEvaluationAllocationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetEvaluationAllocationsRequest) Prefix(prefix string) ApiGetEvaluationAllocationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetEvaluationAllocationsRequest) XNomadToken(xNomadToken string) ApiGetEvaluationAllocationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetEvaluationAllocationsRequest) PerPage(perPage int32) ApiGetEvaluationAllocationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetEvaluationAllocationsRequest) NextToken(nextToken string) ApiGetEvaluationAllocationsRequest {
 	r.nextToken = &nextToken
@@ -453,49 +441,41 @@ func (r ApiGetEvaluationsRequest) Region(region string) ApiGetEvaluationsRequest
 	r.region = &region
 	return r
 }
-
 // Filters results based on the specified namespace.
 func (r ApiGetEvaluationsRequest) Namespace(namespace string) ApiGetEvaluationsRequest {
 	r.namespace = &namespace
 	return r
 }
-
 // If set, wait until query exceeds given index. Must be provided with WaitParam.
 func (r ApiGetEvaluationsRequest) Index(index int32) ApiGetEvaluationsRequest {
 	r.index = &index
 	return r
 }
-
 // Provided with IndexParam to wait for change.
 func (r ApiGetEvaluationsRequest) Wait(wait string) ApiGetEvaluationsRequest {
 	r.wait = &wait
 	return r
 }
-
 // If present, results will include stale reads.
 func (r ApiGetEvaluationsRequest) Stale(stale string) ApiGetEvaluationsRequest {
 	r.stale = &stale
 	return r
 }
-
 // Constrains results to jobs that start with the defined prefix
 func (r ApiGetEvaluationsRequest) Prefix(prefix string) ApiGetEvaluationsRequest {
 	r.prefix = &prefix
 	return r
 }
-
 // A Nomad ACL token.
 func (r ApiGetEvaluationsRequest) XNomadToken(xNomadToken string) ApiGetEvaluationsRequest {
 	r.xNomadToken = &xNomadToken
 	return r
 }
-
 // Maximum number of results to return.
 func (r ApiGetEvaluationsRequest) PerPage(perPage int32) ApiGetEvaluationsRequest {
 	r.perPage = &perPage
 	return r
 }
-
 // Indicates where to start paging for queries that support pagination.
 func (r ApiGetEvaluationsRequest) NextToken(nextToken string) ApiGetEvaluationsRequest {
 	r.nextToken = &nextToken
