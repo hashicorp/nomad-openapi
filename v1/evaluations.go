@@ -40,8 +40,8 @@ func (e *Evaluations) GetEvaluation(ctx context.Context, evalID string) (*client
 		return nil, nil, err
 	}
 
-	final := result.(client.Evaluation)
-	return &final, meta, nil
+	final := result.(*client.Evaluation)
+	return final, meta, nil
 }
 
 func (e *Evaluations) Allocations(ctx context.Context, evalID string) (*[]client.AllocationListStub, *QueryMeta, OpenAPIError) {

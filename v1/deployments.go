@@ -40,8 +40,8 @@ func (d *Deployments) GetDeployment(ctx context.Context, deploymentID string) (*
 		return nil, nil, err
 	}
 
-	final := result.(client.Deployment)
-	return &final, meta, nil
+	final := result.(*client.Deployment)
+	return final, meta, nil
 }
 
 func (d *Deployments) Allocations(ctx context.Context, deploymentID string) (*[]client.AllocationListStub, *QueryMeta, OpenAPIError) {
@@ -70,8 +70,8 @@ func (d *Deployments) Fail(ctx context.Context, deploymentID string) (*client.De
 		return nil, &APIError{error: err.Error()}
 	}
 
-	final := result.(client.DeploymentUpdateResponse)
-	return &final, nil
+	final := result.(*client.DeploymentUpdateResponse)
+	return final, nil
 }
 
 func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool) (*client.DeploymentUpdateResponse, OpenAPIError) {
@@ -92,8 +92,8 @@ func (d *Deployments) Pause(ctx context.Context, deploymentID string, pause bool
 		return nil, &APIError{error: err.Error()}
 	}
 
-	final := result.(client.DeploymentUpdateResponse)
-	return &final, nil
+	final := result.(*client.DeploymentUpdateResponse)
+	return final, nil
 }
 
 func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool, groups []string) (*client.DeploymentUpdateResponse, OpenAPIError) {
@@ -115,8 +115,8 @@ func (d *Deployments) Promote(ctx context.Context, deploymentID string, all bool
 		return nil, &APIError{error: err.Error()}
 	}
 
-	final := result.(client.DeploymentUpdateResponse)
-	return &final, nil
+	final := result.(*client.DeploymentUpdateResponse)
+	return final, nil
 }
 
 func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string, healthyallocs []string, unhealthyallocs []string) (*client.DeploymentUpdateResponse, OpenAPIError) {
@@ -138,8 +138,8 @@ func (d *Deployments) AllocationHealth(ctx context.Context, deploymentID string,
 		return nil, &APIError{error: err.Error()}
 	}
 
-	final := result.(client.DeploymentUpdateResponse)
-	return &final, nil
+	final := result.(*client.DeploymentUpdateResponse)
+	return final, nil
 }
 
 func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client.DeploymentUpdateResponse, OpenAPIError) {
@@ -159,6 +159,6 @@ func (d *Deployments) Unblock(ctx context.Context, deploymentID string) (*client
 		return nil, &APIError{error: err.Error()}
 	}
 
-	final := result.(client.DeploymentUpdateResponse)
-	return &final, nil
+	final := result.(*client.DeploymentUpdateResponse)
+	return final, nil
 }

@@ -43,8 +43,8 @@ func (n *Namespaces) GetNamespace(ctx context.Context, name string) (*client.Nam
 		return nil, nil, err
 	}
 
-	final := result.(client.Namespace)
-	return &final, meta, nil
+	final := result.(*client.Namespace)
+	return final, meta, nil
 }
 
 func (n *Namespaces) GetNamespaces(ctx context.Context) (*[]client.Namespace, *QueryMeta, OpenAPIError) {

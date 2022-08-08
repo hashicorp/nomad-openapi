@@ -40,6 +40,6 @@ func (s *Scaling) GetPolicy(ctx context.Context, policyID string) (*client.Scali
 		return nil, nil, err
 	}
 
-	final := result.(client.ScalingPolicy)
-	return &final, meta, nil
+	final := result.(*client.ScalingPolicy)
+	return final, meta, nil
 }

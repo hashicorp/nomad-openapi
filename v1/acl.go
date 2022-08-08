@@ -43,8 +43,8 @@ func (a *ACL) GetPolicy(ctx context.Context, policyName string) (*client.ACLPoli
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLPolicy)
-	return &final, meta, nil
+	final := result.(*client.ACLPolicy)
+	return final, meta, nil
 }
 
 // returns nilSchema
@@ -88,8 +88,8 @@ func (a *ACL) OnetimeToken(ctx context.Context) (*client.OneTimeToken, *WriteMet
 		return nil, nil, err
 	}
 
-	final := result.(client.OneTimeToken)
-	return &final, meta, nil
+	final := result.(*client.OneTimeToken)
+	return final, meta, nil
 }
 
 func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, OpenAPIError) {
@@ -99,8 +99,8 @@ func (a *ACL) Exchange(ctx context.Context) (*client.ACLToken, *WriteMeta, OpenA
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLToken)
-	return &final, meta, nil
+	final := result.(*client.ACLToken)
+	return final, meta, nil
 }
 
 func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, OpenAPIError) {
@@ -110,8 +110,8 @@ func (a *ACL) Bootstrap(ctx context.Context) (*client.ACLToken, *WriteMeta, Open
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLToken)
-	return &final, meta, nil
+	final := result.(*client.ACLToken)
+	return final, meta, nil
 }
 
 func (a *ACL) Tokens(ctx context.Context) (*[]client.ACLTokenListStub, *QueryMeta, OpenAPIError) {
@@ -132,8 +132,8 @@ func (a *ACL) Self(ctx context.Context) (*client.ACLToken, *QueryMeta, OpenAPIEr
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLToken)
-	return &final, meta, nil
+	final := result.(*client.ACLToken)
+	return final, meta, nil
 }
 
 func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLToken, *QueryMeta, OpenAPIError) {
@@ -147,8 +147,8 @@ func (a *ACL) GetToken(ctx context.Context, tokenAccessor string) (*client.ACLTo
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLToken)
-	return &final, meta, nil
+	final := result.(*client.ACLToken)
+	return final, meta, nil
 }
 
 func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.ACLToken, *WriteMeta, OpenAPIError) {
@@ -162,8 +162,8 @@ func (a *ACL) SaveToken(ctx context.Context, token *client.ACLToken) (*client.AC
 		return nil, nil, err
 	}
 
-	final := result.(client.ACLToken)
-	return &final, meta, nil
+	final := result.(*client.ACLToken)
+	return final, meta, nil
 }
 
 func (a *ACL) DeleteToken(ctx context.Context, tokenAccessor string) (*WriteMeta, OpenAPIError) {

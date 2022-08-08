@@ -6,5 +6,5 @@ func (todo *TODO) GetTODO(ctx context.Context) (*client.TODO, *QueryMeta, error)
 	}
 
 	final := result.(client.TODO)
-	return &final, meta, nil
+	return &final , meta, nil
 }

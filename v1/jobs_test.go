@@ -492,6 +492,8 @@ func mockPeriodicJob() *client.Job {
 	job := mockJob()
 	batch := structs.JobTypeBatch
 	job.Type = &batch
+	job.Update = nil
+	job.Migrate = nil
 
 	enabled := true
 	specType := structs.PeriodicSpecCron
@@ -553,7 +555,7 @@ func mockJob() *client.Job {
 		ParameterizedJob:         client.NullableParameterizedJobConfig{},
 		ParentID:                 new(string),
 		Payload:                  new(string),
-		Periodic:                 &client.PeriodicConfig{},
+		Periodic:                 nil,
 		Priority:                 &priority,
 		Region:                   &globalRegion,
 		Reschedule:               &client.ReschedulePolicy{},
