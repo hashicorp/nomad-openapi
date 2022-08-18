@@ -102,7 +102,7 @@ var serversModel = openapi3.Servers{
 		Variables: map[string]*openapi3.ServerVariable{
 			"address": {Default: "127.0.0.1"},
 			"port":    {Default: "4646"},
-			"scheme":  {Default: "https", Enum: []string{"https", "http"}},
+			"scheme":  {Default: "http", Enum: []string{"https", "http"}},
 		},
 	},
 	{
