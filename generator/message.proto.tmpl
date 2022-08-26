@@ -1,0 +1,8 @@
+syntax = "proto3";
+package nomad;
+
+message {{ .Name }} {
+{{range $val := .Fields -}}
+     {{"\t"}}{{ $val.Type }} {{ $val.Name }} = {{ $val.Number }};
+{{end}}
+}
