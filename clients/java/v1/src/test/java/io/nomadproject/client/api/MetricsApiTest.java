@@ -43,8 +43,7 @@ public class MetricsApiTest {
     @Test
     public void getMetricsSummaryTest() throws ApiException {
         String format = null;
-        MetricsSummary response = api.getMetricsSummary(format);
-
+                MetricsSummary response = api.getMetricsSummary(format);
         // TODO: test validations
     }
     

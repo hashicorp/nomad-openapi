@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct NamespacesApiClient<C: hyper::client::Connect> {
+pub struct NamespacesApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> NamespacesApiClient<C> {
+impl<C: hyper::client::connect::Connect> NamespacesApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> NamespacesApiClient<C> {
         NamespacesApiClient {
             configuration,
@@ -33,16 +35,18 @@ impl<C: hyper::client::Connect> NamespacesApiClient<C> {
 }
 
 pub trait NamespacesApi {
-    fn create_namespace(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn delete_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn get_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Namespace, Error = Error<serde_json::Value>>>;
-    fn get_namespaces(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Namespace>, Error = Error<serde_json::Value>>>;
-    fn post_namespace(&self, namespace_name: &str, namespace2: crate::models::Namespace, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn create_namespace(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn delete_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn get_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Namespace, Error>>>>;
+    fn get_namespaces(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Namespace>, Error>>>>;
+    fn post_namespace(&self, namespace_name: &str, namespace2: Option<crate::models::Namespace>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
 }
 
-impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
-    fn create_namespace(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/namespace".to_string())
+impl<C: hyper::client::connect::Connect>NamespacesApi for NamespacesApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn create_namespace(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/namespace".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -50,13 +54,16 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -66,8 +73,9 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn delete_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/namespace/{namespaceName}".to_string())
+    #[allow(unused_mut)]
+    fn delete_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/namespace/{namespaceName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -75,13 +83,16 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("namespaceName".to_string(), namespace_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -92,8 +103,9 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Namespace, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/namespace/{namespaceName}".to_string())
+    #[allow(unused_mut)]
+    fn get_namespace(&self, namespace_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Namespace, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/namespace/{namespaceName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -101,25 +113,32 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("namespaceName".to_string(), namespace_name.to_string());
         if let Some(param_value) = index {
@@ -132,8 +151,9 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_namespaces(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Namespace>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/namespaces".to_string())
+    #[allow(unused_mut)]
+    fn get_namespaces(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Namespace>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/namespaces".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -141,25 +161,32 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -171,8 +198,9 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_namespace(&self, namespace_name: &str, namespace2: crate::models::Namespace, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/namespace/{namespaceName}".to_string())
+    #[allow(unused_mut)]
+    fn post_namespace(&self, namespace_name: &str, namespace2: Option<crate::models::Namespace>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/namespace/{namespaceName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -180,13 +208,16 @@ impl<C: hyper::client::Connect>NamespacesApi for NamespacesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("namespaceName".to_string(), namespace_name.to_string());
         if let Some(param_value) = x_nomad_token {

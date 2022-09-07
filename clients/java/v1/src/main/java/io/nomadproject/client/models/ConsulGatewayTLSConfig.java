@@ -47,6 +47,8 @@ public class ConsulGatewayTLSConfig {
   @SerializedName(SERIALIZED_NAME_TL_S_MIN_VERSION)
   private String tlSMinVersion;
 
+  public ConsulGatewayTLSConfig() { 
+  }
 
   public ConsulGatewayTLSConfig cipherSuites(List<String> cipherSuites) {
     

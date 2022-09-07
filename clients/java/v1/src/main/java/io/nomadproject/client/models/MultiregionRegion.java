@@ -49,6 +49,8 @@ public class MultiregionRegion {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public MultiregionRegion() { 
+  }
 
   public MultiregionRegion count(Integer count) {
     

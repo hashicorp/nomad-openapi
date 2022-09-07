@@ -51,8 +51,7 @@ public class OperatorApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken);
-
+                api.deleteOperatorRaftPeer(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -75,8 +74,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        AutopilotConfiguration response = api.getOperatorAutopilotConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                AutopilotConfiguration response = api.getOperatorAutopilotConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -99,8 +97,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        OperatorHealthReply response = api.getOperatorAutopilotHealth(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                OperatorHealthReply response = api.getOperatorAutopilotHealth(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -123,8 +120,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        RaftConfiguration response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                RaftConfiguration response = api.getOperatorRaftConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -147,8 +143,7 @@ public class OperatorApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        SchedulerConfigurationResponse response = api.getOperatorSchedulerConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                SchedulerConfigurationResponse response = api.getOperatorSchedulerConfiguration(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -167,8 +162,7 @@ public class OperatorApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        SchedulerSetConfigurationResponse response = api.postOperatorSchedulerConfiguration(schedulerConfiguration, region, namespace, xNomadToken, idempotencyToken);
-
+                SchedulerSetConfigurationResponse response = api.postOperatorSchedulerConfiguration(schedulerConfiguration, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -187,8 +181,7 @@ public class OperatorApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        Boolean response = api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
-
+                Boolean response = api.putOperatorAutopilotConfiguration(autopilotConfiguration, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

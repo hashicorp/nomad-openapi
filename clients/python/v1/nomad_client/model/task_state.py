@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -80,7 +80,7 @@ class TaskState(ModelNormal):
         lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -96,10 +96,10 @@ class TaskState(ModelNormal):
         return {
             'events': ([TaskEvent],),  # noqa: E501
             'failed': (bool,),  # noqa: E501
-            'finished_at': (datetime,),  # noqa: E501
-            'last_restart': (datetime,),  # noqa: E501
+            'finished_at': (datetime, none_type,),  # noqa: E501
+            'last_restart': (datetime, none_type,),  # noqa: E501
             'restarts': (int,),  # noqa: E501
-            'started_at': (datetime,),  # noqa: E501
+            'started_at': (datetime, none_type,),  # noqa: E501
             'state': (str,),  # noqa: E501
             'task_handle': (TaskHandle,),  # noqa: E501
         }
@@ -163,10 +163,10 @@ class TaskState(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             events ([TaskEvent]): [optional]  # noqa: E501
             failed (bool): [optional]  # noqa: E501
-            finished_at (datetime): [optional]  # noqa: E501
-            last_restart (datetime): [optional]  # noqa: E501
+            finished_at (datetime, none_type): [optional]  # noqa: E501
+            last_restart (datetime, none_type): [optional]  # noqa: E501
             restarts (int): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
             state (str): [optional]  # noqa: E501
             task_handle (TaskHandle): [optional]  # noqa: E501
         """
@@ -252,10 +252,10 @@ class TaskState(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             events ([TaskEvent]): [optional]  # noqa: E501
             failed (bool): [optional]  # noqa: E501
-            finished_at (datetime): [optional]  # noqa: E501
-            last_restart (datetime): [optional]  # noqa: E501
+            finished_at (datetime, none_type): [optional]  # noqa: E501
+            last_restart (datetime, none_type): [optional]  # noqa: E501
             restarts (int): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
             state (str): [optional]  # noqa: E501
             task_handle (TaskHandle): [optional]  # noqa: E501
         """

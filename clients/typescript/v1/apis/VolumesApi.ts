@@ -1,10 +1,12 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
+
 
 import { CSISnapshotCreateRequest } from '../models/CSISnapshotCreateRequest';
 import { CSISnapshotCreateResponse } from '../models/CSISnapshotCreateResponse';
@@ -34,19 +36,19 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'volumeId' is not null or undefined
         if (volumeId === null || volumeId === undefined) {
-            throw new RequiredError('Required parameter volumeId was null or undefined when calling createVolume.');
+            throw new RequiredError("VolumesApi", "createVolume", "volumeId");
         }
 
 
         // verify required parameter 'action' is not null or undefined
         if (action === null || action === undefined) {
-            throw new RequiredError('Required parameter action was null or undefined when calling createVolume.');
+            throw new RequiredError("VolumesApi", "createVolume", "action");
         }
 
 
         // verify required parameter 'cSIVolumeCreateRequest' is not null or undefined
         if (cSIVolumeCreateRequest === null || cSIVolumeCreateRequest === undefined) {
-            throw new RequiredError('Required parameter cSIVolumeCreateRequest was null or undefined when calling createVolume.');
+            throw new RequiredError("VolumesApi", "createVolume", "cSIVolumeCreateRequest");
         }
 
 
@@ -67,17 +69,19 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -91,11 +95,16 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -129,15 +138,23 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
+
+        // Query Params
         if (pluginId !== undefined) {
             requestContext.setQueryParam("plugin_id", ObjectSerializer.serialize(pluginId, "string", ""));
         }
+
+        // Query Params
         if (snapshotId !== undefined) {
             requestContext.setQueryParam("snapshot_id", ObjectSerializer.serialize(snapshotId, "string", ""));
         }
@@ -145,16 +162,17 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -173,7 +191,7 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'volumeId' is not null or undefined
         if (volumeId === null || volumeId === undefined) {
-            throw new RequiredError('Required parameter volumeId was null or undefined when calling deleteVolumeRegistration.');
+            throw new RequiredError("VolumesApi", "deleteVolumeRegistration", "volumeId");
         }
 
 
@@ -194,12 +212,18 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
+
+        // Query Params
         if (force !== undefined) {
             requestContext.setQueryParam("force", ObjectSerializer.serialize(force, "string", ""));
         }
@@ -207,16 +231,17 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -236,13 +261,13 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'volumeId' is not null or undefined
         if (volumeId === null || volumeId === undefined) {
-            throw new RequiredError('Required parameter volumeId was null or undefined when calling detachOrDeleteVolume.');
+            throw new RequiredError("VolumesApi", "detachOrDeleteVolume", "volumeId");
         }
 
 
         // verify required parameter 'action' is not null or undefined
         if (action === null || action === undefined) {
-            throw new RequiredError('Required parameter action was null or undefined when calling detachOrDeleteVolume.');
+            throw new RequiredError("VolumesApi", "detachOrDeleteVolume", "action");
         }
 
 
@@ -264,12 +289,18 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
+
+        // Query Params
         if (node !== undefined) {
             requestContext.setQueryParam("node", ObjectSerializer.serialize(node, "string", ""));
         }
@@ -277,16 +308,17 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -328,42 +360,59 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (pluginId !== undefined) {
             requestContext.setQueryParam("plugin_id", ObjectSerializer.serialize(pluginId, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -405,42 +454,59 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (pluginId !== undefined) {
             requestContext.setQueryParam("plugin_id", ObjectSerializer.serialize(pluginId, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -463,7 +529,7 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'volumeId' is not null or undefined
         if (volumeId === null || volumeId === undefined) {
-            throw new RequiredError('Required parameter volumeId was null or undefined when calling getVolume.');
+            throw new RequiredError("VolumesApi", "getVolume", "volumeId");
         }
 
 
@@ -488,39 +554,54 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -566,48 +647,69 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (nodeId !== undefined) {
             requestContext.setQueryParam("node_id", ObjectSerializer.serialize(nodeId, "string", ""));
         }
+
+        // Query Params
         if (pluginId !== undefined) {
             requestContext.setQueryParam("plugin_id", ObjectSerializer.serialize(pluginId, "string", ""));
         }
+
+        // Query Params
         if (type !== undefined) {
             requestContext.setQueryParam("type", ObjectSerializer.serialize(type, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -625,7 +727,7 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'cSISnapshotCreateRequest' is not null or undefined
         if (cSISnapshotCreateRequest === null || cSISnapshotCreateRequest === undefined) {
-            throw new RequiredError('Required parameter cSISnapshotCreateRequest was null or undefined when calling postSnapshot.');
+            throw new RequiredError("VolumesApi", "postSnapshot", "cSISnapshotCreateRequest");
         }
 
 
@@ -644,17 +746,19 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -668,11 +772,16 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -690,7 +799,7 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'cSIVolumeRegisterRequest' is not null or undefined
         if (cSIVolumeRegisterRequest === null || cSIVolumeRegisterRequest === undefined) {
-            throw new RequiredError('Required parameter cSIVolumeRegisterRequest was null or undefined when calling postVolume.');
+            throw new RequiredError("VolumesApi", "postVolume", "cSIVolumeRegisterRequest");
         }
 
 
@@ -709,17 +818,19 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -733,11 +844,16 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -756,13 +872,13 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'volumeId' is not null or undefined
         if (volumeId === null || volumeId === undefined) {
-            throw new RequiredError('Required parameter volumeId was null or undefined when calling postVolumeRegistration.');
+            throw new RequiredError("VolumesApi", "postVolumeRegistration", "volumeId");
         }
 
 
         // verify required parameter 'cSIVolumeRegisterRequest' is not null or undefined
         if (cSIVolumeRegisterRequest === null || cSIVolumeRegisterRequest === undefined) {
-            throw new RequiredError('Required parameter cSIVolumeRegisterRequest was null or undefined when calling postVolumeRegistration.');
+            throw new RequiredError("VolumesApi", "postVolumeRegistration", "cSIVolumeRegisterRequest");
         }
 
 
@@ -782,17 +898,19 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -806,11 +924,16 @@ export class VolumesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -833,16 +956,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -854,8 +977,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -871,16 +993,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -892,8 +1014,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -909,16 +1030,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -930,8 +1051,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -947,16 +1067,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -968,8 +1088,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -989,16 +1108,16 @@ export class VolumesApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1010,8 +1129,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1031,16 +1149,16 @@ export class VolumesApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1052,8 +1170,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1073,16 +1190,16 @@ export class VolumesApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1094,8 +1211,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1115,16 +1231,16 @@ export class VolumesApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1136,8 +1252,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1157,16 +1272,16 @@ export class VolumesApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1178,8 +1293,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1195,16 +1309,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1216,8 +1330,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1233,16 +1346,16 @@ export class VolumesApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1254,8 +1367,7 @@ export class VolumesApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

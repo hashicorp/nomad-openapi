@@ -53,8 +53,7 @@ public class EvaluationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Evaluation response = api.getEvaluation(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                Evaluation response = api.getEvaluation(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -78,8 +77,7 @@ public class EvaluationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<AllocationListStub> response = api.getEvaluationAllocations(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<AllocationListStub> response = api.getEvaluationAllocations(evalID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -102,8 +100,7 @@ public class EvaluationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<Evaluation> response = api.getEvaluations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<Evaluation> response = api.getEvaluations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

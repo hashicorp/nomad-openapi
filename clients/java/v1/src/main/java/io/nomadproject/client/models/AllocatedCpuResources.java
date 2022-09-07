@@ -33,6 +33,8 @@ public class AllocatedCpuResources {
   @SerializedName(SERIALIZED_NAME_CPU_SHARES)
   private Long cpuShares;
 
+  public AllocatedCpuResources() { 
+  }
 
   public AllocatedCpuResources cpuShares(Long cpuShares) {
     

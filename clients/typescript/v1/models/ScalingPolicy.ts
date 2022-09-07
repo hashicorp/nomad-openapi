@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './AnyType';
 import { HttpFile } from '../http/http';
 
 export class ScalingPolicy {
@@ -21,7 +20,7 @@ export class ScalingPolicy {
     'min'?: number;
     'modifyIndex'?: number;
     'namespace'?: string;
-    'policy'?: { [key: string]: AnyType; };
+    'policy'?: { [key: string]: any; };
     'target'?: { [key: string]: string; };
     'type'?: string;
 
@@ -73,7 +72,7 @@ export class ScalingPolicy {
         {
             "name": "policy",
             "baseName": "Policy",
-            "type": "{ [key: string]: AnyType; }",
+            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {
@@ -92,7 +91,7 @@ export class ScalingPolicy {
     static getAttributeTypeMap() {
         return ScalingPolicy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

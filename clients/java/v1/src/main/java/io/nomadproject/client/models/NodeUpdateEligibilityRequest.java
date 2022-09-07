@@ -37,6 +37,8 @@ public class NodeUpdateEligibilityRequest {
   @SerializedName(SERIALIZED_NAME_NODE_I_D)
   private String nodeID;
 
+  public NodeUpdateEligibilityRequest() { 
+  }
 
   public NodeUpdateEligibilityRequest eligibility(String eligibility) {
     

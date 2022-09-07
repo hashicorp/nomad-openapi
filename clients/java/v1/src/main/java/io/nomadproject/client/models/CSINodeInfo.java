@@ -24,6 +24,7 @@ import io.nomadproject.client.models.CSITopology;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CSINodeInfo
@@ -58,6 +59,8 @@ public class CSINodeInfo {
   @SerializedName(SERIALIZED_NAME_SUPPORTS_STATS)
   private Boolean supportsStats;
 
+  public CSINodeInfo() { 
+  }
 
   public CSINodeInfo accessibleTopology(CSITopology accessibleTopology) {
     
@@ -238,9 +241,20 @@ public class CSINodeInfo {
         Objects.equals(this.supportsStats, csINodeInfo.supportsStats);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accessibleTopology, ID, maxVolumes, requiresNodeStageVolume, supportsCondition, supportsExpand, supportsStats);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **leader** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **serf_status** | **str** |  | [optional] 
-**stable_since** | **datetime** |  | [optional] 
+**stable_since** | **datetime, none_type** |  | [optional] 
 **version** | **str** |  | [optional] 
 **voter** | **bool** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

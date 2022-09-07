@@ -33,6 +33,8 @@ public class Consul {
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
 
+  public Consul() { 
+  }
 
   public Consul namespace(String namespace) {
     

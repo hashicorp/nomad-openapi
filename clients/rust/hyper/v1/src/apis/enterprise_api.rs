@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct EnterpriseApiClient<C: hyper::client::Connect> {
+pub struct EnterpriseApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> EnterpriseApiClient<C> {
+impl<C: hyper::client::connect::Connect> EnterpriseApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> EnterpriseApiClient<C> {
         EnterpriseApiClient {
             configuration,
@@ -33,16 +35,18 @@ impl<C: hyper::client::Connect> EnterpriseApiClient<C> {
 }
 
 pub trait EnterpriseApi {
-    fn create_quota_spec(&self, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn delete_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn get_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::QuotaSpec, Error = Error<serde_json::Value>>>;
-    fn get_quotas(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<serde_json::Value>, Error = Error<serde_json::Value>>>;
-    fn post_quota_spec(&self, spec_name: &str, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn create_quota_spec(&self, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn delete_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn get_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::QuotaSpec, Error>>>>;
+    fn get_quotas(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<serde_json::Value>, Error>>>>;
+    fn post_quota_spec(&self, spec_name: &str, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
 }
 
-impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
-    fn create_quota_spec(&self, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/quota".to_string())
+impl<C: hyper::client::connect::Connect>EnterpriseApi for EnterpriseApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn create_quota_spec(&self, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/quota".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -50,13 +54,16 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -67,8 +74,9 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn delete_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/quota/{specName}".to_string())
+    #[allow(unused_mut)]
+    fn delete_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/quota/{specName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -76,13 +84,16 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("specName".to_string(), spec_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -93,8 +104,9 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::QuotaSpec, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/quota/{specName}".to_string())
+    #[allow(unused_mut)]
+    fn get_quota_spec(&self, spec_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::QuotaSpec, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/quota/{specName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -102,25 +114,32 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("specName".to_string(), spec_name.to_string());
         if let Some(param_value) = index {
@@ -133,8 +152,9 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_quotas(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<serde_json::Value>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/quotas".to_string())
+    #[allow(unused_mut)]
+    fn get_quotas(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<serde_json::Value>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/quotas".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -142,25 +162,32 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -172,8 +199,9 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_quota_spec(&self, spec_name: &str, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/quota/{specName}".to_string())
+    #[allow(unused_mut)]
+    fn post_quota_spec(&self, spec_name: &str, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/quota/{specName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -181,13 +209,16 @@ impl<C: hyper::client::Connect>EnterpriseApi for EnterpriseApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("specName".to_string(), spec_name.to_string());
         if let Some(param_value) = x_nomad_token {

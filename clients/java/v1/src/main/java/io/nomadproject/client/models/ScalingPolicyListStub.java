@@ -56,6 +56,8 @@ public class ScalingPolicyListStub {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ScalingPolicyListStub() { 
+  }
 
   public ScalingPolicyListStub createIndex(Integer createIndex) {
     

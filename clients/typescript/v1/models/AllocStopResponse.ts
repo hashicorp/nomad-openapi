@@ -35,7 +35,7 @@ export class AllocStopResponse {
     static getAttributeTypeMap() {
         return AllocStopResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

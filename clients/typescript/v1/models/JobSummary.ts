@@ -65,7 +65,7 @@ export class JobSummary {
     static getAttributeTypeMap() {
         return JobSummary.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

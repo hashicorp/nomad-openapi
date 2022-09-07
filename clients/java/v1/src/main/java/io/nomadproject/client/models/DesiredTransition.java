@@ -37,6 +37,8 @@ public class DesiredTransition {
   @SerializedName(SERIALIZED_NAME_RESCHEDULE)
   private Boolean reschedule;
 
+  public DesiredTransition() { 
+  }
 
   public DesiredTransition migrate(Boolean migrate) {
     

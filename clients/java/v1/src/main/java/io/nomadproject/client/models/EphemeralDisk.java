@@ -41,6 +41,8 @@ public class EphemeralDisk {
   @SerializedName(SERIALIZED_NAME_STICKY)
   private Boolean sticky;
 
+  public EphemeralDisk() { 
+  }
 
   public EphemeralDisk migrate(Boolean migrate) {
     

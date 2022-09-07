@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Canary** | Pointer to **bool** |  | [optional] 
 **Healthy** | Pointer to **bool** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
-**Timestamp** | Pointer to **time.Time** |  | [optional] 
+**Timestamp** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetTimestamp sets Timestamp field to given value.
 
 HasTimestamp returns a boolean if a field has been set.
 
+### SetTimestampNil
+
+`func (o *AllocDeploymentStatus) SetTimestampNil(b bool)`
+
+ SetTimestampNil sets the value for Timestamp to be an explicit nil
+
+### UnsetTimestamp
+`func (o *AllocDeploymentStatus) UnsetTimestamp()`
+
+UnsetTimestamp ensures that no value is present for Timestamp, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

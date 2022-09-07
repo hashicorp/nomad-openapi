@@ -48,6 +48,8 @@ public class CSIVolumeRegisterRequest {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<CSIVolume> volumes = null;
 
+  public CSIVolumeRegisterRequest() { 
+  }
 
   public CSIVolumeRegisterRequest namespace(String namespace) {
     

@@ -36,6 +36,8 @@ public class ConsulExposeConfig {
   @SerializedName(SERIALIZED_NAME_PATH)
   private List<ConsulExposePath> path = null;
 
+  public ConsulExposeConfig() { 
+  }
 
   public ConsulExposeConfig path(List<ConsulExposePath> path) {
     

@@ -41,6 +41,8 @@ public class JobChildrenSummary {
   @SerializedName(SERIALIZED_NAME_RUNNING)
   private Long running;
 
+  public JobChildrenSummary() { 
+  }
 
   public JobChildrenSummary dead(Long dead) {
     

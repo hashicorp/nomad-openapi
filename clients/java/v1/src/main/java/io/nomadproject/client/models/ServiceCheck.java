@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ServiceCheck
@@ -130,6 +131,8 @@ public class ServiceCheck {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ServiceCheck() { 
+  }
 
   public ServiceCheck addressMode(String addressMode) {
     
@@ -734,9 +737,20 @@ public class ServiceCheck {
         Objects.equals(this.type, serviceCheck.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(addressMode, advertise, args, body, checkRestart, command, expose, failuresBeforeCritical, grPCService, grPCUseTLS, header, initialStatus, interval, method, name, onUpdate, path, portLabel, protocol, successBeforePassing, tlSSkipVerify, taskName, timeout, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

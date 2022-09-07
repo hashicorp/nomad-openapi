@@ -28,7 +28,7 @@ export class EvalOptions {
     static getAttributeTypeMap() {
         return EvalOptions.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

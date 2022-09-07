@@ -85,7 +85,7 @@ export class JobRegisterRequest {
     static getAttributeTypeMap() {
         return JobRegisterRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

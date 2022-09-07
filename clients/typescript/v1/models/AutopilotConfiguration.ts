@@ -91,7 +91,7 @@ export class AutopilotConfiguration {
     static getAttributeTypeMap() {
         return AutopilotConfiguration.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

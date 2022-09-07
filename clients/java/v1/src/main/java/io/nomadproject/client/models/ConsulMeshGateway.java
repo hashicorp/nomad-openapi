@@ -33,6 +33,8 @@ public class ConsulMeshGateway {
   @SerializedName(SERIALIZED_NAME_MODE)
   private String mode;
 
+  public ConsulMeshGateway() { 
+  }
 
   public ConsulMeshGateway mode(String mode) {
     

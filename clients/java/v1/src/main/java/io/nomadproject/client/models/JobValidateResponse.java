@@ -47,6 +47,8 @@ public class JobValidateResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private String warnings;
 
+  public JobValidateResponse() { 
+  }
 
   public JobValidateResponse driverConfigValidated(Boolean driverConfigValidated) {
     

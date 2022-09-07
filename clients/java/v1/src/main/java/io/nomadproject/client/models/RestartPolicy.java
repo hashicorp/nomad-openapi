@@ -45,6 +45,8 @@ public class RestartPolicy {
   @SerializedName(SERIALIZED_NAME_MODE)
   private String mode;
 
+  public RestartPolicy() { 
+  }
 
   public RestartPolicy attempts(Integer attempts) {
     

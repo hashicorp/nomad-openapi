@@ -54,6 +54,8 @@ public class JobDiff {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public JobDiff() { 
+  }
 
   public JobDiff fields(List<FieldDiff> fields) {
     

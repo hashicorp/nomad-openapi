@@ -57,6 +57,8 @@ public class ConsulGatewayProxy {
   @SerializedName(SERIALIZED_NAME_ENVOY_GATEWAY_NO_DEFAULT_BIND)
   private Boolean envoyGatewayNoDefaultBind;
 
+  public ConsulGatewayProxy() { 
+  }
 
   public ConsulGatewayProxy config(Map<String, Object> config) {
     

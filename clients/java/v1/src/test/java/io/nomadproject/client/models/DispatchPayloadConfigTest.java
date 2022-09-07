@@ -41,11 +41,11 @@ public class DispatchPayloadConfigTest {
     }
 
     /**
-     * Test the property 'file'
+     * Test the property '_file'
      */
     @Test
-    public void fileTest() {
-        // TODO: test file
+    public void _fileTest() {
+        // TODO: test _file
     }
 
 }

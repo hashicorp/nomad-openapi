@@ -35,7 +35,7 @@ export class LogConfig {
     static getAttributeTypeMap() {
         return LogConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -5,22 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllocModifyIndex** | Pointer to **int32** |  | [optional] 
-**AllocatedResources** | Pointer to [**AllocatedResources**](AllocatedResources.md) |  | [optional] 
+**AllocatedResources** | Pointer to [**NullableAllocatedResources**](AllocatedResources.md) |  | [optional] 
 **ClientDescription** | Pointer to **string** |  | [optional] 
 **ClientStatus** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **CreateTime** | Pointer to **int64** |  | [optional] 
 **DeploymentID** | Pointer to **string** |  | [optional] 
-**DeploymentStatus** | Pointer to [**AllocDeploymentStatus**](AllocDeploymentStatus.md) |  | [optional] 
+**DeploymentStatus** | Pointer to [**NullableAllocDeploymentStatus**](AllocDeploymentStatus.md) |  | [optional] 
 **DesiredDescription** | Pointer to **string** |  | [optional] 
 **DesiredStatus** | Pointer to **string** |  | [optional] 
 **DesiredTransition** | Pointer to [**DesiredTransition**](DesiredTransition.md) |  | [optional] 
 **EvalID** | Pointer to **string** |  | [optional] 
 **FollowupEvalID** | Pointer to **string** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
-**Job** | Pointer to [**Job**](Job.md) |  | [optional] 
+**Job** | Pointer to [**NullableJob**](Job.md) |  | [optional] 
 **JobID** | Pointer to **string** |  | [optional] 
-**Metrics** | Pointer to [**AllocationMetric**](AllocationMetric.md) |  | [optional] 
+**Metrics** | Pointer to [**NullableAllocationMetric**](AllocationMetric.md) |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **ModifyTime** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -31,8 +31,8 @@ Name | Type | Description | Notes
 **PreemptedAllocations** | Pointer to **[]string** |  | [optional] 
 **PreemptedByAllocation** | Pointer to **string** |  | [optional] 
 **PreviousAllocation** | Pointer to **string** |  | [optional] 
-**RescheduleTracker** | Pointer to [**RescheduleTracker**](RescheduleTracker.md) |  | [optional] 
-**Resources** | Pointer to [**Resources**](Resources.md) |  | [optional] 
+**RescheduleTracker** | Pointer to [**NullableRescheduleTracker**](RescheduleTracker.md) |  | [optional] 
+**Resources** | Pointer to [**NullableResources**](Resources.md) |  | [optional] 
 **Services** | Pointer to **map[string]string** |  | [optional] 
 **TaskGroup** | Pointer to **string** |  | [optional] 
 **TaskResources** | Pointer to [**map[string]Resources**](Resources.md) |  | [optional] 
@@ -107,6 +107,16 @@ SetAllocatedResources sets AllocatedResources field to given value.
 
 HasAllocatedResources returns a boolean if a field has been set.
 
+### SetAllocatedResourcesNil
+
+`func (o *Allocation) SetAllocatedResourcesNil(b bool)`
+
+ SetAllocatedResourcesNil sets the value for AllocatedResources to be an explicit nil
+
+### UnsetAllocatedResources
+`func (o *Allocation) UnsetAllocatedResources()`
+
+UnsetAllocatedResources ensures that no value is present for AllocatedResources, not even an explicit nil
 ### GetClientDescription
 
 `func (o *Allocation) GetClientDescription() string`
@@ -257,6 +267,16 @@ SetDeploymentStatus sets DeploymentStatus field to given value.
 
 HasDeploymentStatus returns a boolean if a field has been set.
 
+### SetDeploymentStatusNil
+
+`func (o *Allocation) SetDeploymentStatusNil(b bool)`
+
+ SetDeploymentStatusNil sets the value for DeploymentStatus to be an explicit nil
+
+### UnsetDeploymentStatus
+`func (o *Allocation) UnsetDeploymentStatus()`
+
+UnsetDeploymentStatus ensures that no value is present for DeploymentStatus, not even an explicit nil
 ### GetDesiredDescription
 
 `func (o *Allocation) GetDesiredDescription() string`
@@ -432,6 +452,16 @@ SetJob sets Job field to given value.
 
 HasJob returns a boolean if a field has been set.
 
+### SetJobNil
+
+`func (o *Allocation) SetJobNil(b bool)`
+
+ SetJobNil sets the value for Job to be an explicit nil
+
+### UnsetJob
+`func (o *Allocation) UnsetJob()`
+
+UnsetJob ensures that no value is present for Job, not even an explicit nil
 ### GetJobID
 
 `func (o *Allocation) GetJobID() string`
@@ -482,6 +512,16 @@ SetMetrics sets Metrics field to given value.
 
 HasMetrics returns a boolean if a field has been set.
 
+### SetMetricsNil
+
+`func (o *Allocation) SetMetricsNil(b bool)`
+
+ SetMetricsNil sets the value for Metrics to be an explicit nil
+
+### UnsetMetrics
+`func (o *Allocation) UnsetMetrics()`
+
+UnsetMetrics ensures that no value is present for Metrics, not even an explicit nil
 ### GetModifyIndex
 
 `func (o *Allocation) GetModifyIndex() int32`
@@ -757,6 +797,16 @@ SetRescheduleTracker sets RescheduleTracker field to given value.
 
 HasRescheduleTracker returns a boolean if a field has been set.
 
+### SetRescheduleTrackerNil
+
+`func (o *Allocation) SetRescheduleTrackerNil(b bool)`
+
+ SetRescheduleTrackerNil sets the value for RescheduleTracker to be an explicit nil
+
+### UnsetRescheduleTracker
+`func (o *Allocation) UnsetRescheduleTracker()`
+
+UnsetRescheduleTracker ensures that no value is present for RescheduleTracker, not even an explicit nil
 ### GetResources
 
 `func (o *Allocation) GetResources() Resources`
@@ -782,6 +832,16 @@ SetResources sets Resources field to given value.
 
 HasResources returns a boolean if a field has been set.
 
+### SetResourcesNil
+
+`func (o *Allocation) SetResourcesNil(b bool)`
+
+ SetResourcesNil sets the value for Resources to be an explicit nil
+
+### UnsetResources
+`func (o *Allocation) UnsetResources()`
+
+UnsetResources ensures that no value is present for Resources, not even an explicit nil
 ### GetServices
 
 `func (o *Allocation) GetServices() map[string]string`

@@ -24,6 +24,7 @@ import io.nomadproject.client.models.Job;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * JobPlanRequest
@@ -54,6 +55,8 @@ public class JobPlanRequest {
   @SerializedName(SERIALIZED_NAME_SECRET_I_D)
   private String secretID;
 
+  public JobPlanRequest() { 
+  }
 
   public JobPlanRequest diff(Boolean diff) {
     
@@ -210,9 +213,20 @@ public class JobPlanRequest {
         Objects.equals(this.secretID, jobPlanRequest.secretID);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(diff, job, namespace, policyOverride, region, secretID);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

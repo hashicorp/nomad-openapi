@@ -28,7 +28,7 @@ export class NodeReservedMemoryResources {
     static getAttributeTypeMap() {
         return NodeReservedMemoryResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -65,6 +65,8 @@ public class JobRegisterResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private String warnings;
 
+  public JobRegisterResponse() { 
+  }
 
   public JobRegisterResponse evalCreateIndex(Integer evalCreateIndex) {
     

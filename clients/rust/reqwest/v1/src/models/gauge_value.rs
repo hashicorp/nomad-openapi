@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct GaugeValue {
     #[serde(rename = "Labels", skip_serializing_if = "Option::is_none")]
     pub labels: Option<::std::collections::HashMap<String, String>>,

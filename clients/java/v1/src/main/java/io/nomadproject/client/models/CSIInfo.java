@@ -25,6 +25,7 @@ import io.nomadproject.client.models.CSINodeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -68,6 +69,8 @@ public class CSIInfo {
   @SerializedName(SERIALIZED_NAME_UPDATE_TIME)
   private OffsetDateTime updateTime;
 
+  public CSIInfo() { 
+  }
 
   public CSIInfo allocID(String allocID) {
     
@@ -296,9 +299,20 @@ public class CSIInfo {
         Objects.equals(this.updateTime, csIInfo.updateTime);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(allocID, controllerInfo, healthDescription, healthy, nodeInfo, pluginID, requiresControllerPlugin, requiresTopologies, updateTime);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

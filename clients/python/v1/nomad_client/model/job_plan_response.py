@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -84,7 +84,7 @@ class JobPlanResponse(ModelNormal):
         lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -103,7 +103,7 @@ class JobPlanResponse(ModelNormal):
             'diff': (JobDiff,),  # noqa: E501
             'failed_tg_allocs': ({str: (AllocationMetric,)},),  # noqa: E501
             'job_modify_index': (int,),  # noqa: E501
-            'next_periodic_launch': (datetime,),  # noqa: E501
+            'next_periodic_launch': (datetime, none_type,),  # noqa: E501
             'warnings': (str,),  # noqa: E501
         }
 
@@ -168,7 +168,7 @@ class JobPlanResponse(ModelNormal):
             diff (JobDiff): [optional]  # noqa: E501
             failed_tg_allocs ({str: (AllocationMetric,)}): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
-            next_periodic_launch (datetime): [optional]  # noqa: E501
+            next_periodic_launch (datetime, none_type): [optional]  # noqa: E501
             warnings (str): [optional]  # noqa: E501
         """
 
@@ -256,7 +256,7 @@ class JobPlanResponse(ModelNormal):
             diff (JobDiff): [optional]  # noqa: E501
             failed_tg_allocs ({str: (AllocationMetric,)}): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
-            next_periodic_launch (datetime): [optional]  # noqa: E501
+            next_periodic_launch (datetime, none_type): [optional]  # noqa: E501
             warnings (str): [optional]  # noqa: E501
         """
 

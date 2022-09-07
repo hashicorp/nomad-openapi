@@ -35,7 +35,7 @@ export class CSIVolumeCapability {
     static getAttributeTypeMap() {
         return CSIVolumeCapability.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

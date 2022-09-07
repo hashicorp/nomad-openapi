@@ -1,10 +1,12 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
+
 
 import { MetricsSummary } from '../models/MetricsSummary';
 
@@ -32,18 +34,17 @@ export class MetricsApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("format", ObjectSerializer.serialize(format, "string", ""));
         }
 
-        // Header Params
 
-        // Form Params
-
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -70,16 +71,16 @@ export class MetricsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -91,8 +92,7 @@ export class MetricsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

@@ -53,7 +53,7 @@ export class AllocatedTaskResources {
     static getAttributeTypeMap() {
         return AllocatedTaskResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **config** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **config** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **connect_timeout** | **Integer** |  | [optional] |
 | **envoy_dns_discovery_type** | **String** |  | [optional] |
 | **envoy_gateway_bind_addresses** | [**Hash&lt;String, ConsulGatewayBindAddress&gt;**](ConsulGatewayBindAddress.md) |  | [optional] |

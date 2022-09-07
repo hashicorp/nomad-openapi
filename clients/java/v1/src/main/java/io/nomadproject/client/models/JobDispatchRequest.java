@@ -44,6 +44,8 @@ public class JobDispatchRequest {
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private byte[] payload;
 
+  public JobDispatchRequest() { 
+  }
 
   public JobDispatchRequest jobID(String jobID) {
     

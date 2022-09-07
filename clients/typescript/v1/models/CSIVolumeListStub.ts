@@ -148,7 +148,7 @@ export class CSIVolumeListStub {
     static getAttributeTypeMap() {
         return CSIVolumeListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

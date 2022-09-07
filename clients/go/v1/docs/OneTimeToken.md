@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessorID** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
-**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
+**ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **OneTimeSecretID** | Pointer to **string** |  | [optional] 
 
@@ -104,6 +104,16 @@ SetExpiresAt sets ExpiresAt field to given value.
 
 HasExpiresAt returns a boolean if a field has been set.
 
+### SetExpiresAtNil
+
+`func (o *OneTimeToken) SetExpiresAtNil(b bool)`
+
+ SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
+
+### UnsetExpiresAt
+`func (o *OneTimeToken) UnsetExpiresAt()`
+
+UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetModifyIndex
 
 `func (o *OneTimeToken) GetModifyIndex() int32`

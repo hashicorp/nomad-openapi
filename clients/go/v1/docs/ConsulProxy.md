@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
-**ExposeConfig** | Pointer to [**ConsulExposeConfig**](ConsulExposeConfig.md) |  | [optional] 
+**ExposeConfig** | Pointer to [**NullableConsulExposeConfig**](ConsulExposeConfig.md) |  | [optional] 
 **LocalServiceAddress** | Pointer to **string** |  | [optional] 
 **LocalServicePort** | Pointer to **int32** |  | [optional] 
 **Upstreams** | Pointer to [**[]ConsulUpstream**](ConsulUpstream.md) |  | [optional] 
@@ -79,6 +79,16 @@ SetExposeConfig sets ExposeConfig field to given value.
 
 HasExposeConfig returns a boolean if a field has been set.
 
+### SetExposeConfigNil
+
+`func (o *ConsulProxy) SetExposeConfigNil(b bool)`
+
+ SetExposeConfigNil sets the value for ExposeConfig to be an explicit nil
+
+### UnsetExposeConfig
+`func (o *ConsulProxy) UnsetExposeConfig()`
+
+UnsetExposeConfig ensures that no value is present for ExposeConfig, not even an explicit nil
 ### GetLocalServiceAddress
 
 `func (o *ConsulProxy) GetLocalServiceAddress() string`

@@ -52,6 +52,8 @@ public class QuotaSpec {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public QuotaSpec() { 
+  }
 
   public QuotaSpec createIndex(Integer createIndex) {
     

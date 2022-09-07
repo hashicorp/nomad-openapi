@@ -50,7 +50,7 @@
   describe('EvaluationStub', function() {
     it('should create an instance of EvaluationStub', function() {
       // uncomment below and update the code to test EvaluationStub
-      //var instane = new nomad-client.EvaluationStub();
+      //var instance = new nomad-client.EvaluationStub();
       //expect(instance).to.be.a(nomad-client.EvaluationStub);
     });
 

@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllocID** | Pointer to **string** |  | [optional] 
-**ControllerInfo** | Pointer to [**CSIControllerInfo**](CSIControllerInfo.md) |  | [optional] 
+**ControllerInfo** | Pointer to [**NullableCSIControllerInfo**](CSIControllerInfo.md) |  | [optional] 
 **HealthDescription** | Pointer to **string** |  | [optional] 
 **Healthy** | Pointer to **bool** |  | [optional] 
-**NodeInfo** | Pointer to [**CSINodeInfo**](CSINodeInfo.md) |  | [optional] 
+**NodeInfo** | Pointer to [**NullableCSINodeInfo**](CSINodeInfo.md) |  | [optional] 
 **PluginID** | Pointer to **string** |  | [optional] 
 **RequiresControllerPlugin** | Pointer to **bool** |  | [optional] 
 **RequiresTopologies** | Pointer to **bool** |  | [optional] 
-**UpdateTime** | Pointer to **time.Time** |  | [optional] 
+**UpdateTime** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -83,6 +83,16 @@ SetControllerInfo sets ControllerInfo field to given value.
 
 HasControllerInfo returns a boolean if a field has been set.
 
+### SetControllerInfoNil
+
+`func (o *CSIInfo) SetControllerInfoNil(b bool)`
+
+ SetControllerInfoNil sets the value for ControllerInfo to be an explicit nil
+
+### UnsetControllerInfo
+`func (o *CSIInfo) UnsetControllerInfo()`
+
+UnsetControllerInfo ensures that no value is present for ControllerInfo, not even an explicit nil
 ### GetHealthDescription
 
 `func (o *CSIInfo) GetHealthDescription() string`
@@ -158,6 +168,16 @@ SetNodeInfo sets NodeInfo field to given value.
 
 HasNodeInfo returns a boolean if a field has been set.
 
+### SetNodeInfoNil
+
+`func (o *CSIInfo) SetNodeInfoNil(b bool)`
+
+ SetNodeInfoNil sets the value for NodeInfo to be an explicit nil
+
+### UnsetNodeInfo
+`func (o *CSIInfo) UnsetNodeInfo()`
+
+UnsetNodeInfo ensures that no value is present for NodeInfo, not even an explicit nil
 ### GetPluginID
 
 `func (o *CSIInfo) GetPluginID() string`
@@ -258,6 +278,16 @@ SetUpdateTime sets UpdateTime field to given value.
 
 HasUpdateTime returns a boolean if a field has been set.
 
+### SetUpdateTimeNil
+
+`func (o *CSIInfo) SetUpdateTimeNil(b bool)`
+
+ SetUpdateTimeNil sets the value for UpdateTime to be an explicit nil
+
+### UnsetUpdateTime
+`func (o *CSIInfo) UnsetUpdateTime()`
+
+UnsetUpdateTime ensures that no value is present for UpdateTime, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

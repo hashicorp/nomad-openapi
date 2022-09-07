@@ -59,8 +59,7 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Node response = api.getNode(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                Node response = api.getNode(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -84,8 +83,7 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<AllocationListStub> response = api.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<AllocationListStub> response = api.getNodeAllocations(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -109,8 +107,7 @@ public class NodesApiTest {
         Integer perPage = null;
         String nextToken = null;
         Boolean resources = null;
-        List<NodeListStub> response = api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
-
+                List<NodeListStub> response = api.getNodes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources);
         // TODO: test validations
     }
     
@@ -135,8 +132,7 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        NodeDrainUpdateResponse response = api.updateNodeDrain(nodeId, nodeUpdateDrainRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                NodeDrainUpdateResponse response = api.updateNodeDrain(nodeId, nodeUpdateDrainRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -161,8 +157,7 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        NodeEligibilityUpdateResponse response = api.updateNodeEligibility(nodeId, nodeUpdateEligibilityRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                NodeEligibilityUpdateResponse response = api.updateNodeEligibility(nodeId, nodeUpdateEligibilityRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -186,8 +181,7 @@ public class NodesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        NodePurgeResponse response = api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                NodePurgeResponse response = api.updateNodePurge(nodeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

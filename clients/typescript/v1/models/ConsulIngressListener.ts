@@ -43,7 +43,7 @@ export class ConsulIngressListener {
     static getAttributeTypeMap() {
         return ConsulIngressListener.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

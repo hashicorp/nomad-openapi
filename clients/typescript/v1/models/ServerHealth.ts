@@ -105,7 +105,7 @@ export class ServerHealth {
     static getAttributeTypeMap() {
         return ServerHealth.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

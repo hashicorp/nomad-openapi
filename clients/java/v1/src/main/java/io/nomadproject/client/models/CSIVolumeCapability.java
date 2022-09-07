@@ -37,6 +37,8 @@ public class CSIVolumeCapability {
   @SerializedName(SERIALIZED_NAME_ATTACHMENT_MODE)
   private String attachmentMode;
 
+  public CSIVolumeCapability() { 
+  }
 
   public CSIVolumeCapability accessMode(String accessMode) {
     

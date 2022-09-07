@@ -74,7 +74,7 @@ export class JobPlanResponse {
     static getAttributeTypeMap() {
         return JobPlanResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

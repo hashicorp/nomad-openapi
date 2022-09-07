@@ -56,8 +56,7 @@ public class VolumesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.createVolume(volumeId, action, csIVolumeCreateRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                api.createVolume(volumeId, action, csIVolumeCreateRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -77,8 +76,7 @@ public class VolumesApiTest {
         String idempotencyToken = null;
         String pluginId = null;
         String snapshotId = null;
-        api.deleteSnapshot(region, namespace, xNomadToken, idempotencyToken, pluginId, snapshotId);
-
+                api.deleteSnapshot(region, namespace, xNomadToken, idempotencyToken, pluginId, snapshotId);
         // TODO: test validations
     }
     
@@ -98,8 +96,7 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         String force = null;
-        api.deleteVolumeRegistration(volumeId, region, namespace, xNomadToken, idempotencyToken, force);
-
+                api.deleteVolumeRegistration(volumeId, region, namespace, xNomadToken, idempotencyToken, force);
         // TODO: test validations
     }
     
@@ -120,8 +117,7 @@ public class VolumesApiTest {
         String xNomadToken = null;
         String idempotencyToken = null;
         String node = null;
-        api.detachOrDeleteVolume(volumeId, action, region, namespace, xNomadToken, idempotencyToken, node);
-
+                api.detachOrDeleteVolume(volumeId, action, region, namespace, xNomadToken, idempotencyToken, node);
         // TODO: test validations
     }
     
@@ -145,8 +141,7 @@ public class VolumesApiTest {
         Integer perPage = null;
         String nextToken = null;
         String pluginId = null;
-        CSIVolumeListExternalResponse response = api.getExternalVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
-
+                CSIVolumeListExternalResponse response = api.getExternalVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
         // TODO: test validations
     }
     
@@ -170,8 +165,7 @@ public class VolumesApiTest {
         Integer perPage = null;
         String nextToken = null;
         String pluginId = null;
-        CSISnapshotListResponse response = api.getSnapshots(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
-
+                CSISnapshotListResponse response = api.getSnapshots(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, pluginId);
         // TODO: test validations
     }
     
@@ -195,8 +189,7 @@ public class VolumesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        CSIVolume response = api.getVolume(volumeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                CSIVolume response = api.getVolume(volumeId, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -222,8 +215,7 @@ public class VolumesApiTest {
         String nodeId = null;
         String pluginId = null;
         String type = null;
-        List<CSIVolumeListStub> response = api.getVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, nodeId, pluginId, type);
-
+                List<CSIVolumeListStub> response = api.getVolumes(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, nodeId, pluginId, type);
         // TODO: test validations
     }
     
@@ -242,8 +234,7 @@ public class VolumesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        CSISnapshotCreateResponse response = api.postSnapshot(csISnapshotCreateRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                CSISnapshotCreateResponse response = api.postSnapshot(csISnapshotCreateRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -262,8 +253,7 @@ public class VolumesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postVolume(csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                api.postVolume(csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -283,8 +273,7 @@ public class VolumesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postVolumeRegistration(volumeId, csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                api.postVolumeRegistration(volumeId, csIVolumeRegisterRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

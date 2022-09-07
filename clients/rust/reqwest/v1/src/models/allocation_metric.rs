@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AllocationMetric {
     #[serde(rename = "AllocationTime", skip_serializing_if = "Option::is_none")]
     pub allocation_time: Option<i64>,

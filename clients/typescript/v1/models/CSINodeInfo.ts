@@ -71,7 +71,7 @@ export class CSINodeInfo {
     static getAttributeTypeMap() {
         return CSINodeInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

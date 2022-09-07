@@ -50,7 +50,7 @@
   describe('ScalingPolicyListStub', function() {
     it('should create an instance of ScalingPolicyListStub', function() {
       // uncomment below and update the code to test ScalingPolicyListStub
-      //var instane = new nomad-client.ScalingPolicyListStub();
+      //var instance = new nomad-client.ScalingPolicyListStub();
       //expect(instance).to.be.a(nomad-client.ScalingPolicyListStub);
     });
 

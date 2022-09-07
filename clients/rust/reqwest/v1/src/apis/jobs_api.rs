@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `delete_job`
+/// struct for typed errors of method [`delete_job`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteJobError {
@@ -26,7 +26,7 @@ pub enum DeleteJobError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job`
+/// struct for typed errors of method [`get_job`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobError {
@@ -37,7 +37,7 @@ pub enum GetJobError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_allocations`
+/// struct for typed errors of method [`get_job_allocations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobAllocationsError {
@@ -48,7 +48,7 @@ pub enum GetJobAllocationsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_deployment`
+/// struct for typed errors of method [`get_job_deployment`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobDeploymentError {
@@ -59,7 +59,7 @@ pub enum GetJobDeploymentError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_deployments`
+/// struct for typed errors of method [`get_job_deployments`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobDeploymentsError {
@@ -70,7 +70,7 @@ pub enum GetJobDeploymentsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_evaluations`
+/// struct for typed errors of method [`get_job_evaluations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobEvaluationsError {
@@ -81,7 +81,7 @@ pub enum GetJobEvaluationsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_scale_status`
+/// struct for typed errors of method [`get_job_scale_status`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobScaleStatusError {
@@ -92,7 +92,7 @@ pub enum GetJobScaleStatusError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_summary`
+/// struct for typed errors of method [`get_job_summary`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobSummaryError {
@@ -103,7 +103,7 @@ pub enum GetJobSummaryError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_job_versions`
+/// struct for typed errors of method [`get_job_versions`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobVersionsError {
@@ -114,7 +114,7 @@ pub enum GetJobVersionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_jobs`
+/// struct for typed errors of method [`get_jobs`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetJobsError {
@@ -125,7 +125,7 @@ pub enum GetJobsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job`
+/// struct for typed errors of method [`post_job`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobError {
@@ -136,7 +136,7 @@ pub enum PostJobError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_dispatch`
+/// struct for typed errors of method [`post_job_dispatch`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobDispatchError {
@@ -147,7 +147,7 @@ pub enum PostJobDispatchError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_evaluate`
+/// struct for typed errors of method [`post_job_evaluate`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobEvaluateError {
@@ -158,7 +158,7 @@ pub enum PostJobEvaluateError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_parse`
+/// struct for typed errors of method [`post_job_parse`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobParseError {
@@ -169,7 +169,7 @@ pub enum PostJobParseError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_periodic_force`
+/// struct for typed errors of method [`post_job_periodic_force`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobPeriodicForceError {
@@ -180,7 +180,7 @@ pub enum PostJobPeriodicForceError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_plan`
+/// struct for typed errors of method [`post_job_plan`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobPlanError {
@@ -191,7 +191,7 @@ pub enum PostJobPlanError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_revert`
+/// struct for typed errors of method [`post_job_revert`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobRevertError {
@@ -202,7 +202,7 @@ pub enum PostJobRevertError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_scaling_request`
+/// struct for typed errors of method [`post_job_scaling_request`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobScalingRequestError {
@@ -213,7 +213,7 @@ pub enum PostJobScalingRequestError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_stability`
+/// struct for typed errors of method [`post_job_stability`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobStabilityError {
@@ -224,7 +224,7 @@ pub enum PostJobStabilityError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_job_validate_request`
+/// struct for typed errors of method [`post_job_validate_request`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostJobValidateRequestError {
@@ -235,7 +235,7 @@ pub enum PostJobValidateRequestError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `register_job`
+/// struct for typed errors of method [`register_job`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RegisterJobError {
@@ -248,10 +248,11 @@ pub enum RegisterJobError {
 
 
 pub async fn delete_job(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, purge: Option<bool>, global: Option<bool>) -> Result<crate::models::JobDeregisterResponse, Error<DeleteJobError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -269,13 +270,13 @@ pub async fn delete_job(configuration: &configuration::Configuration, job_name: 
     if let Some(ref local_var_str) = global {
         local_var_req_builder = local_var_req_builder.query(&[("global", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -300,10 +301,11 @@ pub async fn delete_job(configuration: &configuration::Configuration, job_name: 
 }
 
 pub async fn get_job(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Job, Error<GetJobError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -327,7 +329,7 @@ pub async fn get_job(configuration: &configuration::Configuration, job_name: &st
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -336,7 +338,7 @@ pub async fn get_job(configuration: &configuration::Configuration, job_name: &st
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -361,10 +363,11 @@ pub async fn get_job(configuration: &configuration::Configuration, job_name: &st
 }
 
 pub async fn get_job_allocations(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<bool>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetJobAllocationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/allocations", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/allocations", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -391,7 +394,7 @@ pub async fn get_job_allocations(configuration: &configuration::Configuration, j
     if let Some(ref local_var_str) = all {
         local_var_req_builder = local_var_req_builder.query(&[("all", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -400,7 +403,7 @@ pub async fn get_job_allocations(configuration: &configuration::Configuration, j
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -425,10 +428,11 @@ pub async fn get_job_allocations(configuration: &configuration::Configuration, j
 }
 
 pub async fn get_job_deployment(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Deployment, Error<GetJobDeploymentError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/deployment", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/deployment", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -452,7 +456,7 @@ pub async fn get_job_deployment(configuration: &configuration::Configuration, jo
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -461,7 +465,7 @@ pub async fn get_job_deployment(configuration: &configuration::Configuration, jo
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -486,10 +490,11 @@ pub async fn get_job_deployment(configuration: &configuration::Configuration, jo
 }
 
 pub async fn get_job_deployments(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<i32>) -> Result<Vec<crate::models::Deployment>, Error<GetJobDeploymentsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/deployments", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/deployments", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -516,7 +521,7 @@ pub async fn get_job_deployments(configuration: &configuration::Configuration, j
     if let Some(ref local_var_str) = all {
         local_var_req_builder = local_var_req_builder.query(&[("all", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -525,7 +530,7 @@ pub async fn get_job_deployments(configuration: &configuration::Configuration, j
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -550,10 +555,11 @@ pub async fn get_job_deployments(configuration: &configuration::Configuration, j
 }
 
 pub async fn get_job_evaluations(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::Evaluation>, Error<GetJobEvaluationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/evaluations", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/evaluations", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -577,7 +583,7 @@ pub async fn get_job_evaluations(configuration: &configuration::Configuration, j
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -586,7 +592,7 @@ pub async fn get_job_evaluations(configuration: &configuration::Configuration, j
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -611,10 +617,11 @@ pub async fn get_job_evaluations(configuration: &configuration::Configuration, j
 }
 
 pub async fn get_job_scale_status(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::JobScaleStatusResponse, Error<GetJobScaleStatusError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/scale", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/scale", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -638,7 +645,7 @@ pub async fn get_job_scale_status(configuration: &configuration::Configuration, 
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -647,7 +654,7 @@ pub async fn get_job_scale_status(configuration: &configuration::Configuration, 
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -672,10 +679,11 @@ pub async fn get_job_scale_status(configuration: &configuration::Configuration, 
 }
 
 pub async fn get_job_summary(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::JobSummary, Error<GetJobSummaryError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/summary", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/summary", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -699,7 +707,7 @@ pub async fn get_job_summary(configuration: &configuration::Configuration, job_n
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -708,7 +716,7 @@ pub async fn get_job_summary(configuration: &configuration::Configuration, job_n
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -733,10 +741,11 @@ pub async fn get_job_summary(configuration: &configuration::Configuration, job_n
 }
 
 pub async fn get_job_versions(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, diffs: Option<bool>) -> Result<crate::models::JobVersionsResponse, Error<GetJobVersionsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/versions", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/versions", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -763,7 +772,7 @@ pub async fn get_job_versions(configuration: &configuration::Configuration, job_
     if let Some(ref local_var_str) = diffs {
         local_var_req_builder = local_var_req_builder.query(&[("diffs", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -772,7 +781,7 @@ pub async fn get_job_versions(configuration: &configuration::Configuration, job_
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -797,10 +806,11 @@ pub async fn get_job_versions(configuration: &configuration::Configuration, job_
 }
 
 pub async fn get_jobs(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::JobListStub>, Error<GetJobsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/jobs", configuration.base_path);
+    let local_var_uri_str = format!("{}/jobs", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -824,7 +834,7 @@ pub async fn get_jobs(configuration: &configuration::Configuration, region: Opti
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -833,7 +843,7 @@ pub async fn get_jobs(configuration: &configuration::Configuration, region: Opti
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -857,11 +867,12 @@ pub async fn get_jobs(configuration: &configuration::Configuration, region: Opti
     }
 }
 
-pub async fn post_job(configuration: &configuration::Configuration, job_name: &str, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobError>> {
+pub async fn post_job(configuration: &configuration::Configuration, job_name: &str, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -873,13 +884,13 @@ pub async fn post_job(configuration: &configuration::Configuration, job_name: &s
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -904,11 +915,12 @@ pub async fn post_job(configuration: &configuration::Configuration, job_name: &s
     }
 }
 
-pub async fn post_job_dispatch(configuration: &configuration::Configuration, job_name: &str, job_dispatch_request: crate::models::JobDispatchRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobDispatchResponse, Error<PostJobDispatchError>> {
+pub async fn post_job_dispatch(configuration: &configuration::Configuration, job_name: &str, job_dispatch_request: Option<crate::models::JobDispatchRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobDispatchResponse, Error<PostJobDispatchError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/dispatch", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/dispatch", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -920,13 +932,13 @@ pub async fn post_job_dispatch(configuration: &configuration::Configuration, job
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -951,11 +963,12 @@ pub async fn post_job_dispatch(configuration: &configuration::Configuration, job
     }
 }
 
-pub async fn post_job_evaluate(configuration: &configuration::Configuration, job_name: &str, job_evaluate_request: crate::models::JobEvaluateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobEvaluateError>> {
+pub async fn post_job_evaluate(configuration: &configuration::Configuration, job_name: &str, job_evaluate_request: Option<crate::models::JobEvaluateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobEvaluateError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/evaluate", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/evaluate", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -967,13 +980,13 @@ pub async fn post_job_evaluate(configuration: &configuration::Configuration, job
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -998,17 +1011,18 @@ pub async fn post_job_evaluate(configuration: &configuration::Configuration, job
     }
 }
 
-pub async fn post_job_parse(configuration: &configuration::Configuration, jobs_parse_request: crate::models::JobsParseRequest) -> Result<crate::models::Job, Error<PostJobParseError>> {
+pub async fn post_job_parse(configuration: &configuration::Configuration, jobs_parse_request: Option<crate::models::JobsParseRequest>) -> Result<crate::models::Job, Error<PostJobParseError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/jobs/parse", configuration.base_path);
+    let local_var_uri_str = format!("{}/jobs/parse", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1034,10 +1048,11 @@ pub async fn post_job_parse(configuration: &configuration::Configuration, jobs_p
 }
 
 pub async fn post_job_periodic_force(configuration: &configuration::Configuration, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::PeriodicForceResponse, Error<PostJobPeriodicForceError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/periodic/force", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/periodic/force", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1049,13 +1064,13 @@ pub async fn post_job_periodic_force(configuration: &configuration::Configuratio
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1079,11 +1094,12 @@ pub async fn post_job_periodic_force(configuration: &configuration::Configuratio
     }
 }
 
-pub async fn post_job_plan(configuration: &configuration::Configuration, job_name: &str, job_plan_request: crate::models::JobPlanRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobPlanResponse, Error<PostJobPlanError>> {
+pub async fn post_job_plan(configuration: &configuration::Configuration, job_name: &str, job_plan_request: Option<crate::models::JobPlanRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobPlanResponse, Error<PostJobPlanError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/plan", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/plan", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1095,13 +1111,13 @@ pub async fn post_job_plan(configuration: &configuration::Configuration, job_nam
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1126,11 +1142,12 @@ pub async fn post_job_plan(configuration: &configuration::Configuration, job_nam
     }
 }
 
-pub async fn post_job_revert(configuration: &configuration::Configuration, job_name: &str, job_revert_request: crate::models::JobRevertRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobRevertError>> {
+pub async fn post_job_revert(configuration: &configuration::Configuration, job_name: &str, job_revert_request: Option<crate::models::JobRevertRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobRevertError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/revert", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/revert", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1142,13 +1159,13 @@ pub async fn post_job_revert(configuration: &configuration::Configuration, job_n
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1173,11 +1190,12 @@ pub async fn post_job_revert(configuration: &configuration::Configuration, job_n
     }
 }
 
-pub async fn post_job_scaling_request(configuration: &configuration::Configuration, job_name: &str, scaling_request: crate::models::ScalingRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobScalingRequestError>> {
+pub async fn post_job_scaling_request(configuration: &configuration::Configuration, job_name: &str, scaling_request: Option<crate::models::ScalingRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<PostJobScalingRequestError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/scale", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/scale", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1189,13 +1207,13 @@ pub async fn post_job_scaling_request(configuration: &configuration::Configurati
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1220,11 +1238,12 @@ pub async fn post_job_scaling_request(configuration: &configuration::Configurati
     }
 }
 
-pub async fn post_job_stability(configuration: &configuration::Configuration, job_name: &str, job_stability_request: crate::models::JobStabilityRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobStabilityResponse, Error<PostJobStabilityError>> {
+pub async fn post_job_stability(configuration: &configuration::Configuration, job_name: &str, job_stability_request: Option<crate::models::JobStabilityRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobStabilityResponse, Error<PostJobStabilityError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/job/{jobName}/stable", configuration.base_path, jobName=crate::apis::urlencode(job_name));
+    let local_var_uri_str = format!("{}/job/{jobName}/stable", local_var_configuration.base_path, jobName=crate::apis::urlencode(job_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1236,13 +1255,13 @@ pub async fn post_job_stability(configuration: &configuration::Configuration, jo
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1267,11 +1286,12 @@ pub async fn post_job_stability(configuration: &configuration::Configuration, jo
     }
 }
 
-pub async fn post_job_validate_request(configuration: &configuration::Configuration, job_validate_request: crate::models::JobValidateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobValidateResponse, Error<PostJobValidateRequestError>> {
+pub async fn post_job_validate_request(configuration: &configuration::Configuration, job_validate_request: Option<crate::models::JobValidateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobValidateResponse, Error<PostJobValidateRequestError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/validate/job", configuration.base_path);
+    let local_var_uri_str = format!("{}/validate/job", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1283,13 +1303,13 @@ pub async fn post_job_validate_request(configuration: &configuration::Configurat
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -1314,11 +1334,12 @@ pub async fn post_job_validate_request(configuration: &configuration::Configurat
     }
 }
 
-pub async fn register_job(configuration: &configuration::Configuration, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<RegisterJobError>> {
+pub async fn register_job(configuration: &configuration::Configuration, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<crate::models::JobRegisterResponse, Error<RegisterJobError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/jobs", configuration.base_path);
+    let local_var_uri_str = format!("{}/jobs", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -1330,13 +1351,13 @@ pub async fn register_job(configuration: &configuration::Configuration, job_regi
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

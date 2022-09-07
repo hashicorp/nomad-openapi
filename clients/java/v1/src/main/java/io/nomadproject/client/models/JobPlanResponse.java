@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -66,6 +67,8 @@ public class JobPlanResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private String warnings;
 
+  public JobPlanResponse() { 
+  }
 
   public JobPlanResponse annotations(PlanAnnotations annotations) {
     
@@ -264,9 +267,20 @@ public class JobPlanResponse {
         Objects.equals(this.warnings, jobPlanResponse.warnings);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(annotations, createdEvals, diff, failedTGAllocs, jobModifyIndex, nextPeriodicLaunch, warnings);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

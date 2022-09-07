@@ -37,6 +37,8 @@ public class DrainSpec {
   @SerializedName(SERIALIZED_NAME_IGNORE_SYSTEM_JOBS)
   private Boolean ignoreSystemJobs;
 
+  public DrainSpec() { 
+  }
 
   public DrainSpec deadline(Long deadline) {
     

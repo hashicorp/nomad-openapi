@@ -45,6 +45,8 @@ public class MigrateStrategy {
   @SerializedName(SERIALIZED_NAME_MIN_HEALTHY_TIME)
   private Long minHealthyTime;
 
+  public MigrateStrategy() { 
+  }
 
   public MigrateStrategy healthCheck(String healthCheck) {
     

@@ -87,6 +87,8 @@ public class CSIPlugin {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public CSIPlugin() { 
+  }
 
   public CSIPlugin allocations(List<AllocationListStub> allocations) {
     

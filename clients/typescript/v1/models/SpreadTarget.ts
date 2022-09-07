@@ -35,7 +35,7 @@ export class SpreadTarget {
     static getAttributeTypeMap() {
         return SpreadTarget.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

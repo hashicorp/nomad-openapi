@@ -79,6 +79,8 @@ public class ServiceRegistration {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public ServiceRegistration() { 
+  }
 
   public ServiceRegistration address(String address) {
     

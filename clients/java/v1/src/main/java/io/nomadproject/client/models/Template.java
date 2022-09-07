@@ -78,6 +78,8 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_WAIT)
   private WaitConfig wait;
 
+  public Template() { 
+  }
 
   public Template changeMode(String changeMode) {
     

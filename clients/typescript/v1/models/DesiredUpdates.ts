@@ -77,7 +77,7 @@ export class DesiredUpdates {
     static getAttributeTypeMap() {
         return DesiredUpdates.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

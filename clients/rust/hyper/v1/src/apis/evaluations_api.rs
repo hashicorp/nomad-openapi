@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct EvaluationsApiClient<C: hyper::client::Connect> {
+pub struct EvaluationsApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> EvaluationsApiClient<C> {
+impl<C: hyper::client::connect::Connect> EvaluationsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> EvaluationsApiClient<C> {
         EvaluationsApiClient {
             configuration,
@@ -33,14 +35,16 @@ impl<C: hyper::client::Connect> EvaluationsApiClient<C> {
 }
 
 pub trait EvaluationsApi {
-    fn get_evaluation(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Evaluation, Error = Error<serde_json::Value>>>;
-    fn get_evaluation_allocations(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>>;
-    fn get_evaluations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Evaluation>, Error = Error<serde_json::Value>>>;
+    fn get_evaluation(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Evaluation, Error>>>>;
+    fn get_evaluation_allocations(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::AllocationListStub>, Error>>>>;
+    fn get_evaluations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Evaluation>, Error>>>>;
 }
 
-impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
-    fn get_evaluation(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Evaluation, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/evaluation/{evalID}".to_string())
+impl<C: hyper::client::connect::Connect>EvaluationsApi for EvaluationsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn get_evaluation(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Evaluation, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/evaluation/{evalID}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -48,25 +52,32 @@ impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("evalID".to_string(), eval_id.to_string());
         if let Some(param_value) = index {
@@ -79,8 +90,9 @@ impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_evaluation_allocations(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/evaluation/{evalID}/allocations".to_string())
+    #[allow(unused_mut)]
+    fn get_evaluation_allocations(&self, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::AllocationListStub>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/evaluation/{evalID}/allocations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -88,25 +100,32 @@ impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("evalID".to_string(), eval_id.to_string());
         if let Some(param_value) = index {
@@ -119,8 +138,9 @@ impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_evaluations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Evaluation>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/evaluations".to_string())
+    #[allow(unused_mut)]
+    fn get_evaluations(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Evaluation>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/evaluations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -128,25 +148,32 @@ impl<C: hyper::client::Connect>EvaluationsApi for EvaluationsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());

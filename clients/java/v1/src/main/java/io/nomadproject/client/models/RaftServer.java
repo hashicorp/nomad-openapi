@@ -53,6 +53,8 @@ public class RaftServer {
   @SerializedName(SERIALIZED_NAME_VOTER)
   private Boolean voter;
 
+  public RaftServer() { 
+  }
 
   public RaftServer address(String address) {
     

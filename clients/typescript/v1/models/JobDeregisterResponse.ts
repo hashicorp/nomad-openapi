@@ -77,7 +77,7 @@ export class JobDeregisterResponse {
     static getAttributeTypeMap() {
         return JobDeregisterResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

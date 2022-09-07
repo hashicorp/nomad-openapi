@@ -49,6 +49,8 @@ public class Attribute {
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
+  public Attribute() { 
+  }
 
   public Attribute bool(Boolean bool) {
     

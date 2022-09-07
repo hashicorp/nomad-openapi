@@ -75,7 +75,7 @@ export class NodeResources {
     static getAttributeTypeMap() {
         return NodeResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

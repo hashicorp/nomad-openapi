@@ -42,7 +42,7 @@ export class NodePurgeResponse {
     static getAttributeTypeMap() {
         return NodePurgeResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -37,6 +37,8 @@ public class LogConfig {
   @SerializedName(SERIALIZED_NAME_MAX_FILES)
   private Integer maxFiles;
 
+  public LogConfig() { 
+  }
 
   public LogConfig maxFileSizeMB(Integer maxFileSizeMB) {
     

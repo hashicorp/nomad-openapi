@@ -65,6 +65,8 @@ public class UpdateStrategy {
   @SerializedName(SERIALIZED_NAME_STAGGER)
   private Long stagger;
 
+  public UpdateStrategy() { 
+  }
 
   public UpdateStrategy autoPromote(Boolean autoPromote) {
     

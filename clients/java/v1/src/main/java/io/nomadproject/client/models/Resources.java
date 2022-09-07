@@ -65,6 +65,8 @@ public class Resources {
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private List<NetworkResource> networks = null;
 
+  public Resources() { 
+  }
 
   public Resources CPU(Integer CPU) {
     

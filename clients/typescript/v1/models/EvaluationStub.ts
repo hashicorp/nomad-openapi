@@ -147,7 +147,7 @@ export class EvaluationStub {
     static getAttributeTypeMap() {
         return EvaluationStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

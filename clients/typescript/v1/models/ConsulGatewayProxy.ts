@@ -10,12 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './AnyType';
 import { ConsulGatewayBindAddress } from './ConsulGatewayBindAddress';
 import { HttpFile } from '../http/http';
 
 export class ConsulGatewayProxy {
-    'config'?: { [key: string]: AnyType; };
+    'config'?: { [key: string]: any; };
     'connectTimeout'?: number;
     'envoyDNSDiscoveryType'?: string;
     'envoyGatewayBindAddresses'?: { [key: string]: ConsulGatewayBindAddress; };
@@ -28,7 +27,7 @@ export class ConsulGatewayProxy {
         {
             "name": "config",
             "baseName": "Config",
-            "type": "{ [key: string]: AnyType; }",
+            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {
@@ -65,7 +64,7 @@ export class ConsulGatewayProxy {
     static getAttributeTypeMap() {
         return ConsulGatewayProxy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

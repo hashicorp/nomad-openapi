@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **config** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
+| **config** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **driver** | **String** |  | [optional] |
 | **env** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **kill_signal** | **String** |  | [optional] |

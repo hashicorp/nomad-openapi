@@ -31,5 +31,5 @@ func testMetrics(t *testing.T, s *agent.TestAgent) {
 	result, err := testClient.Metrics().GetMetricsSummary(queryOpts.Ctx())
 	require.NoError(t, err)
 
-	require.NotEqual(t, 0, *result.Gauges)
+	require.NotEqual(t, 0, result.Gauges)
 }

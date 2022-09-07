@@ -49,6 +49,8 @@ public class ConsulLinkedService {
   @SerializedName(SERIALIZED_NAME_S_N_I)
   private String SNI;
 
+  public ConsulLinkedService() { 
+  }
 
   public ConsulLinkedService caFile(String caFile) {
     

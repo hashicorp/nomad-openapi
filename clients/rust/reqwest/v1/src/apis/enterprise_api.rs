@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `create_quota_spec`
+/// struct for typed errors of method [`create_quota_spec`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CreateQuotaSpecError {
@@ -26,7 +26,7 @@ pub enum CreateQuotaSpecError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `delete_quota_spec`
+/// struct for typed errors of method [`delete_quota_spec`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteQuotaSpecError {
@@ -37,7 +37,7 @@ pub enum DeleteQuotaSpecError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_quota_spec`
+/// struct for typed errors of method [`get_quota_spec`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetQuotaSpecError {
@@ -48,7 +48,7 @@ pub enum GetQuotaSpecError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_quotas`
+/// struct for typed errors of method [`get_quotas`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetQuotasError {
@@ -59,7 +59,7 @@ pub enum GetQuotasError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `post_quota_spec`
+/// struct for typed errors of method [`post_quota_spec`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostQuotaSpecError {
@@ -71,11 +71,12 @@ pub enum PostQuotaSpecError {
 }
 
 
-pub async fn create_quota_spec(configuration: &configuration::Configuration, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<CreateQuotaSpecError>> {
+pub async fn create_quota_spec(configuration: &configuration::Configuration, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<CreateQuotaSpecError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/quota", configuration.base_path);
+    let local_var_uri_str = format!("{}/quota", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -87,13 +88,13 @@ pub async fn create_quota_spec(configuration: &configuration::Configuration, quo
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -119,10 +120,11 @@ pub async fn create_quota_spec(configuration: &configuration::Configuration, quo
 }
 
 pub async fn delete_quota_spec(configuration: &configuration::Configuration, spec_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<DeleteQuotaSpecError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/quota/{specName}", configuration.base_path, specName=crate::apis::urlencode(spec_name));
+    let local_var_uri_str = format!("{}/quota/{specName}", local_var_configuration.base_path, specName=crate::apis::urlencode(spec_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -134,13 +136,13 @@ pub async fn delete_quota_spec(configuration: &configuration::Configuration, spe
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -165,10 +167,11 @@ pub async fn delete_quota_spec(configuration: &configuration::Configuration, spe
 }
 
 pub async fn get_quota_spec(configuration: &configuration::Configuration, spec_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::QuotaSpec, Error<GetQuotaSpecError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/quota/{specName}", configuration.base_path, specName=crate::apis::urlencode(spec_name));
+    let local_var_uri_str = format!("{}/quota/{specName}", local_var_configuration.base_path, specName=crate::apis::urlencode(spec_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -192,7 +195,7 @@ pub async fn get_quota_spec(configuration: &configuration::Configuration, spec_n
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -201,7 +204,7 @@ pub async fn get_quota_spec(configuration: &configuration::Configuration, spec_n
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -226,10 +229,11 @@ pub async fn get_quota_spec(configuration: &configuration::Configuration, spec_n
 }
 
 pub async fn get_quotas(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<serde_json::Value>, Error<GetQuotasError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/quotas", configuration.base_path);
+    let local_var_uri_str = format!("{}/quotas", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -253,7 +257,7 @@ pub async fn get_quotas(configuration: &configuration::Configuration, region: Op
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -262,7 +266,7 @@ pub async fn get_quotas(configuration: &configuration::Configuration, region: Op
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -286,11 +290,12 @@ pub async fn get_quotas(configuration: &configuration::Configuration, region: Op
     }
 }
 
-pub async fn post_quota_spec(configuration: &configuration::Configuration, spec_name: &str, quota_spec: crate::models::QuotaSpec, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostQuotaSpecError>> {
+pub async fn post_quota_spec(configuration: &configuration::Configuration, spec_name: &str, quota_spec: Option<crate::models::QuotaSpec>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Result<(), Error<PostQuotaSpecError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/quota/{specName}", configuration.base_path, specName=crate::apis::urlencode(spec_name));
+    let local_var_uri_str = format!("{}/quota/{specName}", local_var_configuration.base_path, specName=crate::apis::urlencode(spec_name));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -302,13 +307,13 @@ pub async fn post_quota_spec(configuration: &configuration::Configuration, spec_
     if let Some(ref local_var_str) = idempotency_token {
         local_var_req_builder = local_var_req_builder.query(&[("idempotency_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

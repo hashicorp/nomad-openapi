@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -172,6 +173,8 @@ public class CSIVolume {
   @SerializedName(SERIALIZED_NAME_WRITE_ALLOCS)
   private Map<String, Allocation> writeAllocs = null;
 
+  public CSIVolume() { 
+  }
 
   public CSIVolume accessMode(String accessMode) {
     
@@ -1044,9 +1047,20 @@ public class CSIVolume {
         Objects.equals(this.writeAllocs, csIVolume.writeAllocs);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accessMode, allocations, attachmentMode, capacity, cloneID, context, controllerRequired, controllersExpected, controllersHealthy, createIndex, externalID, ID, modifyIndex, mountOptions, name, namespace, nodesExpected, nodesHealthy, parameters, pluginID, provider, providerVersion, readAllocs, requestedCapabilities, requestedCapacityMax, requestedCapacityMin, requestedTopologies, resourceExhausted, schedulable, secrets, snapshotID, topologies, writeAllocs);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

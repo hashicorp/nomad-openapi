@@ -226,7 +226,7 @@ export class Evaluation {
     static getAttributeTypeMap() {
         return Evaluation.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

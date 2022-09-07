@@ -91,7 +91,7 @@ export class CSISnapshot {
     static getAttributeTypeMap() {
         return CSISnapshot.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

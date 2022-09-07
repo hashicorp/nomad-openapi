@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -50,6 +51,8 @@ public class OneTimeToken {
   @SerializedName(SERIALIZED_NAME_ONE_TIME_SECRET_I_D)
   private String oneTimeSecretID;
 
+  public OneTimeToken() { 
+  }
 
   public OneTimeToken accessorID(String accessorID) {
     
@@ -186,9 +189,20 @@ public class OneTimeToken {
         Objects.equals(this.oneTimeSecretID, oneTimeToken.oneTimeSecretID);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accessorID, createIndex, expiresAt, modifyIndex, oneTimeSecretID);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

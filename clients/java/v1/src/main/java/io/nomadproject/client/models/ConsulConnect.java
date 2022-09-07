@@ -26,6 +26,7 @@ import io.nomadproject.client.models.SidecarTask;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ConsulConnect
@@ -48,6 +49,8 @@ public class ConsulConnect {
   @SerializedName(SERIALIZED_NAME_SIDECAR_TASK)
   private SidecarTask sidecarTask;
 
+  public ConsulConnect() { 
+  }
 
   public ConsulConnect gateway(ConsulGateway gateway) {
     
@@ -156,9 +159,20 @@ public class ConsulConnect {
         Objects.equals(this.sidecarTask, consulConnect.sidecarTask);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(gateway, _native, sidecarService, sidecarTask);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

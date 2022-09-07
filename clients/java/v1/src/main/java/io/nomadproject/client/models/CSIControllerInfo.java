@@ -77,6 +77,8 @@ public class CSIControllerInfo {
   @SerializedName(SERIALIZED_NAME_SUPPORTS_READ_ONLY_ATTACH)
   private Boolean supportsReadOnlyAttach;
 
+  public CSIControllerInfo() { 
+  }
 
   public CSIControllerInfo supportsAttachDetach(Boolean supportsAttachDetach) {
     

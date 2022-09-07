@@ -68,6 +68,8 @@ public class ScalingRequest {
   @SerializedName(SERIALIZED_NAME_TARGET)
   private Map<String, String> target = null;
 
+  public ScalingRequest() { 
+  }
 
   public ScalingRequest count(Long count) {
     

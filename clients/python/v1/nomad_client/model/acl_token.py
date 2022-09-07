@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -77,7 +77,7 @@ class ACLToken(ModelNormal):
         """
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -92,7 +92,7 @@ class ACLToken(ModelNormal):
         return {
             'accessor_id': (str,),  # noqa: E501
             'create_index': (int,),  # noqa: E501
-            'create_time': (datetime,),  # noqa: E501
+            'create_time': (datetime, none_type,),  # noqa: E501
             '_global': (bool,),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
             'name': (str,),  # noqa: E501
@@ -161,7 +161,7 @@ class ACLToken(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accessor_id (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
-            create_time (datetime): [optional]  # noqa: E501
+            create_time (datetime, none_type): [optional]  # noqa: E501
             _global (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
@@ -251,7 +251,7 @@ class ACLToken(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accessor_id (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
-            create_time (datetime): [optional]  # noqa: E501
+            create_time (datetime, none_type): [optional]  # noqa: E501
             _global (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501

@@ -37,7 +37,7 @@ export class ConsulIngressConfigEntry {
     static getAttributeTypeMap() {
         return ConsulIngressConfigEntry.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

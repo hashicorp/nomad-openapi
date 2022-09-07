@@ -50,8 +50,7 @@ public class StatusApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        String response = api.getStatusLeader(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                String response = api.getStatusLeader(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -74,8 +73,7 @@ public class StatusApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<String> response = api.getStatusPeers(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<String> response = api.getStatusPeers(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

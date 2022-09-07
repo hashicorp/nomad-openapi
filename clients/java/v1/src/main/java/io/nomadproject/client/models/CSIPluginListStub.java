@@ -65,6 +65,8 @@ public class CSIPluginListStub {
   @SerializedName(SERIALIZED_NAME_PROVIDER)
   private String provider;
 
+  public CSIPluginListStub() { 
+  }
 
   public CSIPluginListStub controllerRequired(Boolean controllerRequired) {
     

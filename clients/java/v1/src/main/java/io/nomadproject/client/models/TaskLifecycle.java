@@ -37,6 +37,8 @@ public class TaskLifecycle {
   @SerializedName(SERIALIZED_NAME_SIDECAR)
   private Boolean sidecar;
 
+  public TaskLifecycle() { 
+  }
 
   public TaskLifecycle hook(String hook) {
     

@@ -408,7 +408,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_register_request** | [**JobRegisterRequest**](JobRegisterRequest.md) |  | [required] |
+**job_register_request** | Option<[**JobRegisterRequest**](JobRegisterRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -441,7 +441,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_dispatch_request** | [**JobDispatchRequest**](JobDispatchRequest.md) |  | [required] |
+**job_dispatch_request** | Option<[**JobDispatchRequest**](JobDispatchRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -474,7 +474,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_evaluate_request** | [**JobEvaluateRequest**](JobEvaluateRequest.md) |  | [required] |
+**job_evaluate_request** | Option<[**JobEvaluateRequest**](JobEvaluateRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -506,7 +506,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**jobs_parse_request** | [**JobsParseRequest**](JobsParseRequest.md) |  | [required] |
+**jobs_parse_request** | Option<[**JobsParseRequest**](JobsParseRequest.md)> |  | [required] |
 
 ### Return type
 
@@ -567,7 +567,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_plan_request** | [**JobPlanRequest**](JobPlanRequest.md) |  | [required] |
+**job_plan_request** | Option<[**JobPlanRequest**](JobPlanRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -600,7 +600,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_revert_request** | [**JobRevertRequest**](JobRevertRequest.md) |  | [required] |
+**job_revert_request** | Option<[**JobRevertRequest**](JobRevertRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -633,7 +633,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**scaling_request** | [**ScalingRequest**](ScalingRequest.md) |  | [required] |
+**scaling_request** | Option<[**ScalingRequest**](ScalingRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -666,7 +666,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_name** | **String** | The job identifier. | [required] |
-**job_stability_request** | [**JobStabilityRequest**](JobStabilityRequest.md) |  | [required] |
+**job_stability_request** | Option<[**JobStabilityRequest**](JobStabilityRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -698,7 +698,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**job_validate_request** | [**JobValidateRequest**](JobValidateRequest.md) |  | [required] |
+**job_validate_request** | Option<[**JobValidateRequest**](JobValidateRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -730,7 +730,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**job_register_request** | [**JobRegisterRequest**](JobRegisterRequest.md) |  | [required] |
+**job_register_request** | Option<[**JobRegisterRequest**](JobRegisterRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

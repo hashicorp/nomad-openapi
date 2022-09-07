@@ -43,7 +43,7 @@ export class QuotaLimit {
     static getAttributeTypeMap() {
         return QuotaLimit.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

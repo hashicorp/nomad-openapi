@@ -39,6 +39,8 @@ public class NamespaceCapabilities {
   @SerializedName(SERIALIZED_NAME_ENABLED_TASK_DRIVERS)
   private List<String> enabledTaskDrivers = null;
 
+  public NamespaceCapabilities() { 
+  }
 
   public NamespaceCapabilities disabledTaskDrivers(List<String> disabledTaskDrivers) {
     

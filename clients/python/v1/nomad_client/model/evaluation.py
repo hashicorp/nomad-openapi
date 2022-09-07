@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -96,7 +96,7 @@ class Evaluation(ModelNormal):
         lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -138,7 +138,7 @@ class Evaluation(ModelNormal):
             'triggered_by': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
             'wait': (int,),  # noqa: E501
-            'wait_until': (datetime,),  # noqa: E501
+            'wait_until': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -247,7 +247,7 @@ class Evaluation(ModelNormal):
             triggered_by (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
             wait (int): [optional]  # noqa: E501
-            wait_until (datetime): [optional]  # noqa: E501
+            wait_until (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -357,7 +357,7 @@ class Evaluation(ModelNormal):
             triggered_by (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
             wait (int): [optional]  # noqa: E501
-            wait_until (datetime): [optional]  # noqa: E501
+            wait_until (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

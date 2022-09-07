@@ -57,6 +57,8 @@ public class TaskGroupSummary {
   @SerializedName(SERIALIZED_NAME_UNKNOWN)
   private Integer unknown;
 
+  public TaskGroupSummary() { 
+  }
 
   public TaskGroupSummary complete(Integer complete) {
     

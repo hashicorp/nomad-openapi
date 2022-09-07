@@ -53,8 +53,7 @@ public class PluginsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<CSIPlugin> response = api.getPluginCSI(pluginID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -77,8 +76,7 @@ public class PluginsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<CSIPluginListStub> response = api.getPlugins(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<CSIPluginListStub> response = api.getPlugins(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

@@ -748,7 +748,7 @@ export class ObjectACLApi {
     /**
      * @param param the request object
      */
-    public getACLPolicies(param: ACLApiGetACLPoliciesRequest, options?: Configuration): Promise<Array<ACLPolicyListStub>> {
+    public getACLPolicies(param: ACLApiGetACLPoliciesRequest = {}, options?: Configuration): Promise<Array<ACLPolicyListStub>> {
         return this.api.getACLPolicies(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -769,21 +769,21 @@ export class ObjectACLApi {
     /**
      * @param param the request object
      */
-    public getACLTokenSelf(param: ACLApiGetACLTokenSelfRequest, options?: Configuration): Promise<ACLToken> {
+    public getACLTokenSelf(param: ACLApiGetACLTokenSelfRequest = {}, options?: Configuration): Promise<ACLToken> {
         return this.api.getACLTokenSelf(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getACLTokens(param: ACLApiGetACLTokensRequest, options?: Configuration): Promise<Array<ACLTokenListStub>> {
+    public getACLTokens(param: ACLApiGetACLTokensRequest = {}, options?: Configuration): Promise<Array<ACLTokenListStub>> {
         return this.api.getACLTokens(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public postACLBootstrap(param: ACLApiPostACLBootstrapRequest, options?: Configuration): Promise<ACLToken> {
+    public postACLBootstrap(param: ACLApiPostACLBootstrapRequest = {}, options?: Configuration): Promise<ACLToken> {
         return this.api.postACLBootstrap(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
@@ -804,7 +804,7 @@ export class ObjectACLApi {
     /**
      * @param param the request object
      */
-    public postACLTokenOnetime(param: ACLApiPostACLTokenOnetimeRequest, options?: Configuration): Promise<OneTimeToken> {
+    public postACLTokenOnetime(param: ACLApiPostACLTokenOnetimeRequest = {}, options?: Configuration): Promise<OneTimeToken> {
         return this.api.postACLTokenOnetime(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
@@ -1108,7 +1108,7 @@ export class ObjectAllocationsApi {
     /**
      * @param param the request object
      */
-    public getAllocations(param: AllocationsApiGetAllocationsRequest, options?: Configuration): Promise<Array<AllocationListStub>> {
+    public getAllocations(param: AllocationsApiGetAllocationsRequest = {}, options?: Configuration): Promise<Array<AllocationListStub>> {
         return this.api.getAllocations(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.resources, param.taskStates,  options).toPromise();
     }
 
@@ -1520,7 +1520,7 @@ export class ObjectDeploymentsApi {
     /**
      * @param param the request object
      */
-    public getDeployments(param: DeploymentsApiGetDeploymentsRequest, options?: Configuration): Promise<Array<Deployment>> {
+    public getDeployments(param: DeploymentsApiGetDeploymentsRequest = {}, options?: Configuration): Promise<Array<Deployment>> {
         return this.api.getDeployments(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -1820,7 +1820,7 @@ export class ObjectEnterpriseApi {
     /**
      * @param param the request object
      */
-    public getQuotas(param: EnterpriseApiGetQuotasRequest, options?: Configuration): Promise<Array<AnyType>> {
+    public getQuotas(param: EnterpriseApiGetQuotasRequest = {}, options?: Configuration): Promise<Array<any>> {
         return this.api.getQuotas(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -2043,7 +2043,7 @@ export class ObjectEvaluationsApi {
     /**
      * @param param the request object
      */
-    public getEvaluations(param: EvaluationsApiGetEvaluationsRequest, options?: Configuration): Promise<Array<Evaluation>> {
+    public getEvaluations(param: EvaluationsApiGetEvaluationsRequest = {}, options?: Configuration): Promise<Array<Evaluation>> {
         return this.api.getEvaluations(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -3130,7 +3130,7 @@ export class ObjectJobsApi {
     /**
      * @param param the request object
      */
-    public getJobs(param: JobsApiGetJobsRequest, options?: Configuration): Promise<Array<JobListStub>> {
+    public getJobs(param: JobsApiGetJobsRequest = {}, options?: Configuration): Promise<Array<JobListStub>> {
         return this.api.getJobs(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -3235,7 +3235,7 @@ export class ObjectMetricsApi {
     /**
      * @param param the request object
      */
-    public getMetricsSummary(param: MetricsApiGetMetricsSummaryRequest, options?: Configuration): Promise<MetricsSummary> {
+    public getMetricsSummary(param: MetricsApiGetMetricsSummaryRequest = {}, options?: Configuration): Promise<MetricsSummary> {
         return this.api.getMetricsSummary(param.format,  options).toPromise();
     }
 
@@ -3473,7 +3473,7 @@ export class ObjectNamespacesApi {
     /**
      * @param param the request object
      */
-    public createNamespace(param: NamespacesApiCreateNamespaceRequest, options?: Configuration): Promise<void> {
+    public createNamespace(param: NamespacesApiCreateNamespaceRequest = {}, options?: Configuration): Promise<void> {
         return this.api.createNamespace(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
@@ -3494,7 +3494,7 @@ export class ObjectNamespacesApi {
     /**
      * @param param the request object
      */
-    public getNamespaces(param: NamespacesApiGetNamespacesRequest, options?: Configuration): Promise<Array<Namespace>> {
+    public getNamespaces(param: NamespacesApiGetNamespacesRequest = {}, options?: Configuration): Promise<Array<Namespace>> {
         return this.api.getNamespaces(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -3924,7 +3924,7 @@ export class ObjectNodesApi {
     /**
      * @param param the request object
      */
-    public getNodes(param: NodesApiGetNodesRequest, options?: Configuration): Promise<Array<NodeListStub>> {
+    public getNodes(param: NodesApiGetNodesRequest = {}, options?: Configuration): Promise<Array<NodeListStub>> {
         return this.api.getNodes(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.resources,  options).toPromise();
     }
 
@@ -4285,35 +4285,35 @@ export class ObjectOperatorApi {
     /**
      * @param param the request object
      */
-    public deleteOperatorRaftPeer(param: OperatorApiDeleteOperatorRaftPeerRequest, options?: Configuration): Promise<void> {
+    public deleteOperatorRaftPeer(param: OperatorApiDeleteOperatorRaftPeerRequest = {}, options?: Configuration): Promise<void> {
         return this.api.deleteOperatorRaftPeer(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOperatorAutopilotConfiguration(param: OperatorApiGetOperatorAutopilotConfigurationRequest, options?: Configuration): Promise<AutopilotConfiguration> {
+    public getOperatorAutopilotConfiguration(param: OperatorApiGetOperatorAutopilotConfigurationRequest = {}, options?: Configuration): Promise<AutopilotConfiguration> {
         return this.api.getOperatorAutopilotConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOperatorAutopilotHealth(param: OperatorApiGetOperatorAutopilotHealthRequest, options?: Configuration): Promise<OperatorHealthReply> {
+    public getOperatorAutopilotHealth(param: OperatorApiGetOperatorAutopilotHealthRequest = {}, options?: Configuration): Promise<OperatorHealthReply> {
         return this.api.getOperatorAutopilotHealth(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest, options?: Configuration): Promise<RaftConfiguration> {
+    public getOperatorRaftConfiguration(param: OperatorApiGetOperatorRaftConfigurationRequest = {}, options?: Configuration): Promise<RaftConfiguration> {
         return this.api.getOperatorRaftConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getOperatorSchedulerConfiguration(param: OperatorApiGetOperatorSchedulerConfigurationRequest, options?: Configuration): Promise<SchedulerConfigurationResponse> {
+    public getOperatorSchedulerConfiguration(param: OperatorApiGetOperatorSchedulerConfigurationRequest = {}, options?: Configuration): Promise<SchedulerConfigurationResponse> {
         return this.api.getOperatorSchedulerConfiguration(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -4473,7 +4473,7 @@ export class ObjectPluginsApi {
     /**
      * @param param the request object
      */
-    public getPlugins(param: PluginsApiGetPluginsRequest, options?: Configuration): Promise<Array<CSIPluginListStub>> {
+    public getPlugins(param: PluginsApiGetPluginsRequest = {}, options?: Configuration): Promise<Array<CSIPluginListStub>> {
         return this.api.getPlugins(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -4495,7 +4495,7 @@ export class ObjectRegionsApi {
     /**
      * @param param the request object
      */
-    public getRegions(param: RegionsApiGetRegionsRequest, options?: Configuration): Promise<Array<string>> {
+    public getRegions(param: RegionsApiGetRegionsRequest = {}, options?: Configuration): Promise<Array<string>> {
         return this.api.getRegions( options).toPromise();
     }
 
@@ -4634,7 +4634,7 @@ export class ObjectScalingApi {
     /**
      * @param param the request object
      */
-    public getScalingPolicies(param: ScalingApiGetScalingPoliciesRequest, options?: Configuration): Promise<Array<ScalingPolicyListStub>> {
+    public getScalingPolicies(param: ScalingApiGetScalingPoliciesRequest = {}, options?: Configuration): Promise<Array<ScalingPolicyListStub>> {
         return this.api.getScalingPolicies(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -4926,14 +4926,14 @@ export class ObjectStatusApi {
     /**
      * @param param the request object
      */
-    public getStatusLeader(param: StatusApiGetStatusLeaderRequest, options?: Configuration): Promise<string> {
+    public getStatusLeader(param: StatusApiGetStatusLeaderRequest = {}, options?: Configuration): Promise<string> {
         return this.api.getStatusLeader(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getStatusPeers(param: StatusApiGetStatusPeersRequest, options?: Configuration): Promise<Array<string>> {
+    public getStatusPeers(param: StatusApiGetStatusPeersRequest = {}, options?: Configuration): Promise<Array<string>> {
         return this.api.getStatusPeers(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken,  options).toPromise();
     }
 
@@ -5006,14 +5006,14 @@ export class ObjectSystemApi {
     /**
      * @param param the request object
      */
-    public putSystemGC(param: SystemApiPutSystemGCRequest, options?: Configuration): Promise<void> {
+    public putSystemGC(param: SystemApiPutSystemGCRequest = {}, options?: Configuration): Promise<void> {
         return this.api.putSystemGC(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public putSystemReconcileSummaries(param: SystemApiPutSystemReconcileSummariesRequest, options?: Configuration): Promise<void> {
+    public putSystemReconcileSummaries(param: SystemApiPutSystemReconcileSummariesRequest = {}, options?: Configuration): Promise<void> {
         return this.api.putSystemReconcileSummaries(param.region, param.namespace, param.xNomadToken, param.idempotencyToken,  options).toPromise();
     }
 
@@ -5576,7 +5576,7 @@ export class ObjectVolumesApi {
     /**
      * @param param the request object
      */
-    public deleteSnapshot(param: VolumesApiDeleteSnapshotRequest, options?: Configuration): Promise<void> {
+    public deleteSnapshot(param: VolumesApiDeleteSnapshotRequest = {}, options?: Configuration): Promise<void> {
         return this.api.deleteSnapshot(param.region, param.namespace, param.xNomadToken, param.idempotencyToken, param.pluginId, param.snapshotId,  options).toPromise();
     }
 
@@ -5597,14 +5597,14 @@ export class ObjectVolumesApi {
     /**
      * @param param the request object
      */
-    public getExternalVolumes(param: VolumesApiGetExternalVolumesRequest, options?: Configuration): Promise<CSIVolumeListExternalResponse> {
+    public getExternalVolumes(param: VolumesApiGetExternalVolumesRequest = {}, options?: Configuration): Promise<CSIVolumeListExternalResponse> {
         return this.api.getExternalVolumes(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.pluginId,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public getSnapshots(param: VolumesApiGetSnapshotsRequest, options?: Configuration): Promise<CSISnapshotListResponse> {
+    public getSnapshots(param: VolumesApiGetSnapshotsRequest = {}, options?: Configuration): Promise<CSISnapshotListResponse> {
         return this.api.getSnapshots(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.pluginId,  options).toPromise();
     }
 
@@ -5618,7 +5618,7 @@ export class ObjectVolumesApi {
     /**
      * @param param the request object
      */
-    public getVolumes(param: VolumesApiGetVolumesRequest, options?: Configuration): Promise<Array<CSIVolumeListStub>> {
+    public getVolumes(param: VolumesApiGetVolumesRequest = {}, options?: Configuration): Promise<Array<CSIVolumeListStub>> {
         return this.api.getVolumes(param.region, param.namespace, param.index, param.wait, param.stale, param.prefix, param.xNomadToken, param.perPage, param.nextToken, param.nodeId, param.pluginId, param.type,  options).toPromise();
     }
 

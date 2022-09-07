@@ -71,7 +71,7 @@ export class FuzzySearchResponse {
     static getAttributeTypeMap() {
         return FuzzySearchResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

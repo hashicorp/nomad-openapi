@@ -235,7 +235,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteACLPolicy(rsp)));
             }));
     }
- 
+
     /**
      * @param tokenAccessor The token accessor ID.
      * @param region Filters results based on the specified region.
@@ -261,7 +261,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteACLToken(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -291,7 +291,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLPolicies(rsp)));
             }));
     }
- 
+
     /**
      * @param policyName The ACL policy name.
      * @param region Filters results based on the specified region.
@@ -322,7 +322,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLPolicy(rsp)));
             }));
     }
- 
+
     /**
      * @param tokenAccessor The token accessor ID.
      * @param region Filters results based on the specified region.
@@ -353,7 +353,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLToken(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -383,7 +383,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLTokenSelf(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -413,7 +413,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getACLTokens(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -438,7 +438,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLBootstrap(rsp)));
             }));
     }
- 
+
     /**
      * @param policyName The ACL policy name.
      * @param aCLPolicy 
@@ -465,7 +465,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLPolicy(rsp)));
             }));
     }
- 
+
     /**
      * @param tokenAccessor The token accessor ID.
      * @param aCLToken 
@@ -492,7 +492,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLToken(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -517,7 +517,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLTokenOnetime(rsp)));
             }));
     }
- 
+
     /**
      * @param oneTimeTokenExchangeRequest 
      * @param region Filters results based on the specified region.
@@ -543,7 +543,7 @@ export class ObservableACLApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postACLTokenOnetimeExchange(rsp)));
             }));
     }
- 
+
 }
 
 import { AllocationsApiRequestFactory, AllocationsApiResponseProcessor} from "../apis/AllocationsApi";
@@ -592,7 +592,7 @@ export class ObservableAllocationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocation(rsp)));
             }));
     }
- 
+
     /**
      * @param allocID Allocation ID.
      * @param region Filters results based on the specified region.
@@ -623,7 +623,7 @@ export class ObservableAllocationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocationServices(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -655,7 +655,7 @@ export class ObservableAllocationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllocations(rsp)));
             }));
     }
- 
+
     /**
      * @param allocID Allocation ID.
      * @param region Filters results based on the specified region.
@@ -687,7 +687,7 @@ export class ObservableAllocationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postAllocationStop(rsp)));
             }));
     }
- 
+
 }
 
 import { DeploymentsApiRequestFactory, DeploymentsApiResponseProcessor} from "../apis/DeploymentsApi";
@@ -736,7 +736,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDeployment(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param region Filters results based on the specified region.
@@ -767,7 +767,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDeploymentAllocations(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -797,7 +797,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDeployments(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param deploymentAllocHealthRequest 
@@ -824,7 +824,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentAllocationHealth(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param region Filters results based on the specified region.
@@ -850,7 +850,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentFail(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param deploymentPauseRequest 
@@ -877,7 +877,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentPause(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param deploymentPromoteRequest 
@@ -904,7 +904,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentPromote(rsp)));
             }));
     }
- 
+
     /**
      * @param deploymentID Deployment ID.
      * @param deploymentUnblockRequest 
@@ -931,7 +931,7 @@ export class ObservableDeploymentsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postDeploymentUnblock(rsp)));
             }));
     }
- 
+
 }
 
 import { EnterpriseApiRequestFactory, EnterpriseApiResponseProcessor} from "../apis/EnterpriseApi";
@@ -975,7 +975,7 @@ export class ObservableEnterpriseApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createQuotaSpec(rsp)));
             }));
     }
- 
+
     /**
      * @param specName The quota spec identifier.
      * @param region Filters results based on the specified region.
@@ -1001,7 +1001,7 @@ export class ObservableEnterpriseApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteQuotaSpec(rsp)));
             }));
     }
- 
+
     /**
      * @param specName The quota spec identifier.
      * @param region Filters results based on the specified region.
@@ -1032,7 +1032,7 @@ export class ObservableEnterpriseApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getQuotaSpec(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -1044,7 +1044,7 @@ export class ObservableEnterpriseApi {
      * @param perPage Maximum number of results to return.
      * @param nextToken Indicates where to start paging for queries that support pagination.
      */
-    public getQuotas(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<AnyType>> {
+    public getQuotas(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Observable<Array<any>> {
         const requestContextPromise = this.requestFactory.getQuotas(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
 
         // build promise chain
@@ -1062,7 +1062,7 @@ export class ObservableEnterpriseApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getQuotas(rsp)));
             }));
     }
- 
+
     /**
      * @param specName The quota spec identifier.
      * @param quotaSpec 
@@ -1089,7 +1089,7 @@ export class ObservableEnterpriseApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postQuotaSpec(rsp)));
             }));
     }
- 
+
 }
 
 import { EvaluationsApiRequestFactory, EvaluationsApiResponseProcessor} from "../apis/EvaluationsApi";
@@ -1138,7 +1138,7 @@ export class ObservableEvaluationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluation(rsp)));
             }));
     }
- 
+
     /**
      * @param evalID Evaluation ID.
      * @param region Filters results based on the specified region.
@@ -1169,7 +1169,7 @@ export class ObservableEvaluationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluationAllocations(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -1199,7 +1199,7 @@ export class ObservableEvaluationsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEvaluations(rsp)));
             }));
     }
- 
+
 }
 
 import { JobsApiRequestFactory, JobsApiResponseProcessor} from "../apis/JobsApi";
@@ -1245,7 +1245,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteJob(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1276,7 +1276,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJob(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1308,7 +1308,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobAllocations(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1339,7 +1339,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobDeployment(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1371,7 +1371,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobDeployments(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1402,7 +1402,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobEvaluations(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1433,7 +1433,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobScaleStatus(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1464,7 +1464,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobSummary(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1496,7 +1496,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobVersions(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -1526,7 +1526,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getJobs(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobRegisterRequest 
@@ -1553,7 +1553,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJob(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobDispatchRequest 
@@ -1580,7 +1580,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobDispatch(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobEvaluateRequest 
@@ -1607,7 +1607,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobEvaluate(rsp)));
             }));
     }
- 
+
     /**
      * @param jobsParseRequest 
      */
@@ -1629,7 +1629,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobParse(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param region Filters results based on the specified region.
@@ -1655,7 +1655,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobPeriodicForce(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobPlanRequest 
@@ -1682,7 +1682,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobPlan(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobRevertRequest 
@@ -1709,7 +1709,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobRevert(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param scalingRequest 
@@ -1736,7 +1736,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobScalingRequest(rsp)));
             }));
     }
- 
+
     /**
      * @param jobName The job identifier.
      * @param jobStabilityRequest 
@@ -1763,7 +1763,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobStability(rsp)));
             }));
     }
- 
+
     /**
      * @param jobValidateRequest 
      * @param region Filters results based on the specified region.
@@ -1789,7 +1789,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postJobValidateRequest(rsp)));
             }));
     }
- 
+
     /**
      * @param jobRegisterRequest 
      * @param region Filters results based on the specified region.
@@ -1815,7 +1815,7 @@ export class ObservableJobsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.registerJob(rsp)));
             }));
     }
- 
+
 }
 
 import { MetricsApiRequestFactory, MetricsApiResponseProcessor} from "../apis/MetricsApi";
@@ -1855,7 +1855,7 @@ export class ObservableMetricsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getMetricsSummary(rsp)));
             }));
     }
- 
+
 }
 
 import { NamespacesApiRequestFactory, NamespacesApiResponseProcessor} from "../apis/NamespacesApi";
@@ -1898,7 +1898,7 @@ export class ObservableNamespacesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNamespace(rsp)));
             }));
     }
- 
+
     /**
      * @param namespaceName The namespace identifier.
      * @param region Filters results based on the specified region.
@@ -1924,7 +1924,7 @@ export class ObservableNamespacesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNamespace(rsp)));
             }));
     }
- 
+
     /**
      * @param namespaceName The namespace identifier.
      * @param region Filters results based on the specified region.
@@ -1955,7 +1955,7 @@ export class ObservableNamespacesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNamespace(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -1985,7 +1985,7 @@ export class ObservableNamespacesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNamespaces(rsp)));
             }));
     }
- 
+
     /**
      * @param namespaceName The namespace identifier.
      * @param namespace2 
@@ -2012,7 +2012,7 @@ export class ObservableNamespacesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postNamespace(rsp)));
             }));
     }
- 
+
 }
 
 import { NodesApiRequestFactory, NodesApiResponseProcessor} from "../apis/NodesApi";
@@ -2061,7 +2061,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNode(rsp)));
             }));
     }
- 
+
     /**
      * @param nodeId The ID of the node.
      * @param region Filters results based on the specified region.
@@ -2092,7 +2092,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNodeAllocations(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2123,7 +2123,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNodes(rsp)));
             }));
     }
- 
+
     /**
      * @param nodeId The ID of the node.
      * @param nodeUpdateDrainRequest 
@@ -2155,7 +2155,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNodeDrain(rsp)));
             }));
     }
- 
+
     /**
      * @param nodeId The ID of the node.
      * @param nodeUpdateEligibilityRequest 
@@ -2187,7 +2187,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNodeEligibility(rsp)));
             }));
     }
- 
+
     /**
      * @param nodeId The ID of the node.
      * @param region Filters results based on the specified region.
@@ -2218,7 +2218,7 @@ export class ObservableNodesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNodePurge(rsp)));
             }));
     }
- 
+
 }
 
 import { OperatorApiRequestFactory, OperatorApiResponseProcessor} from "../apis/OperatorApi";
@@ -2261,7 +2261,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOperatorRaftPeer(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2291,7 +2291,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorAutopilotConfiguration(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2321,7 +2321,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorAutopilotHealth(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2351,7 +2351,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorRaftConfiguration(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2381,7 +2381,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOperatorSchedulerConfiguration(rsp)));
             }));
     }
- 
+
     /**
      * @param schedulerConfiguration 
      * @param region Filters results based on the specified region.
@@ -2407,7 +2407,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postOperatorSchedulerConfiguration(rsp)));
             }));
     }
- 
+
     /**
      * @param autopilotConfiguration 
      * @param region Filters results based on the specified region.
@@ -2433,7 +2433,7 @@ export class ObservableOperatorApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.putOperatorAutopilotConfiguration(rsp)));
             }));
     }
- 
+
 }
 
 import { PluginsApiRequestFactory, PluginsApiResponseProcessor} from "../apis/PluginsApi";
@@ -2482,7 +2482,7 @@ export class ObservablePluginsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getPluginCSI(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2512,7 +2512,7 @@ export class ObservablePluginsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getPlugins(rsp)));
             }));
     }
- 
+
 }
 
 import { RegionsApiRequestFactory, RegionsApiResponseProcessor} from "../apis/RegionsApi";
@@ -2551,7 +2551,7 @@ export class ObservableRegionsApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRegions(rsp)));
             }));
     }
- 
+
 }
 
 import { ScalingApiRequestFactory, ScalingApiResponseProcessor} from "../apis/ScalingApi";
@@ -2599,7 +2599,7 @@ export class ObservableScalingApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getScalingPolicies(rsp)));
             }));
     }
- 
+
     /**
      * @param policyID The scaling policy identifier.
      * @param region Filters results based on the specified region.
@@ -2630,7 +2630,7 @@ export class ObservableScalingApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getScalingPolicy(rsp)));
             }));
     }
- 
+
 }
 
 import { SearchApiRequestFactory, SearchApiResponseProcessor} from "../apis/SearchApi";
@@ -2679,7 +2679,7 @@ export class ObservableSearchApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFuzzySearch(rsp)));
             }));
     }
- 
+
     /**
      * @param searchRequest 
      * @param region Filters results based on the specified region.
@@ -2710,7 +2710,7 @@ export class ObservableSearchApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSearch(rsp)));
             }));
     }
- 
+
 }
 
 import { StatusApiRequestFactory, StatusApiResponseProcessor} from "../apis/StatusApi";
@@ -2758,7 +2758,7 @@ export class ObservableStatusApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getStatusLeader(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2788,7 +2788,7 @@ export class ObservableStatusApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getStatusPeers(rsp)));
             }));
     }
- 
+
 }
 
 import { SystemApiRequestFactory, SystemApiResponseProcessor} from "../apis/SystemApi";
@@ -2831,7 +2831,7 @@ export class ObservableSystemApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.putSystemGC(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2856,7 +2856,7 @@ export class ObservableSystemApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.putSystemReconcileSummaries(rsp)));
             }));
     }
- 
+
 }
 
 import { VolumesApiRequestFactory, VolumesApiResponseProcessor} from "../apis/VolumesApi";
@@ -2902,7 +2902,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createVolume(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -2929,7 +2929,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSnapshot(rsp)));
             }));
     }
- 
+
     /**
      * @param volumeId Volume unique identifier.
      * @param region Filters results based on the specified region.
@@ -2956,7 +2956,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteVolumeRegistration(rsp)));
             }));
     }
- 
+
     /**
      * @param volumeId Volume unique identifier.
      * @param action The action to perform on the Volume (create, detach, delete).
@@ -2984,7 +2984,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.detachOrDeleteVolume(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -3015,7 +3015,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getExternalVolumes(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -3046,7 +3046,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSnapshots(rsp)));
             }));
     }
- 
+
     /**
      * @param volumeId Volume unique identifier.
      * @param region Filters results based on the specified region.
@@ -3077,7 +3077,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getVolume(rsp)));
             }));
     }
- 
+
     /**
      * @param region Filters results based on the specified region.
      * @param namespace Filters results based on the specified namespace.
@@ -3110,7 +3110,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getVolumes(rsp)));
             }));
     }
- 
+
     /**
      * @param cSISnapshotCreateRequest 
      * @param region Filters results based on the specified region.
@@ -3136,7 +3136,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postSnapshot(rsp)));
             }));
     }
- 
+
     /**
      * @param cSIVolumeRegisterRequest 
      * @param region Filters results based on the specified region.
@@ -3162,7 +3162,7 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postVolume(rsp)));
             }));
     }
- 
+
     /**
      * @param volumeId Volume unique identifier.
      * @param cSIVolumeRegisterRequest 
@@ -3189,5 +3189,5 @@ export class ObservableVolumesApi {
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.postVolumeRegistration(rsp)));
             }));
     }
- 
+
 }

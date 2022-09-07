@@ -64,6 +64,8 @@ public class ScalingEvent {
   @SerializedName(SERIALIZED_NAME_TIME)
   private Integer time;
 
+  public ScalingEvent() { 
+  }
 
   public ScalingEvent count(Long count) {
     

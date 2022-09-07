@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `get_evaluation`
+/// struct for typed errors of method [`get_evaluation`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetEvaluationError {
@@ -26,7 +26,7 @@ pub enum GetEvaluationError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_evaluation_allocations`
+/// struct for typed errors of method [`get_evaluation_allocations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetEvaluationAllocationsError {
@@ -37,7 +37,7 @@ pub enum GetEvaluationAllocationsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_evaluations`
+/// struct for typed errors of method [`get_evaluations`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetEvaluationsError {
@@ -50,10 +50,11 @@ pub enum GetEvaluationsError {
 
 
 pub async fn get_evaluation(configuration: &configuration::Configuration, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::Evaluation, Error<GetEvaluationError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/evaluation/{evalID}", configuration.base_path, evalID=crate::apis::urlencode(eval_id));
+    let local_var_uri_str = format!("{}/evaluation/{evalID}", local_var_configuration.base_path, evalID=crate::apis::urlencode(eval_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -77,7 +78,7 @@ pub async fn get_evaluation(configuration: &configuration::Configuration, eval_i
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -86,7 +87,7 @@ pub async fn get_evaluation(configuration: &configuration::Configuration, eval_i
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -111,10 +112,11 @@ pub async fn get_evaluation(configuration: &configuration::Configuration, eval_i
 }
 
 pub async fn get_evaluation_allocations(configuration: &configuration::Configuration, eval_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetEvaluationAllocationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/evaluation/{evalID}/allocations", configuration.base_path, evalID=crate::apis::urlencode(eval_id));
+    let local_var_uri_str = format!("{}/evaluation/{evalID}/allocations", local_var_configuration.base_path, evalID=crate::apis::urlencode(eval_id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -138,7 +140,7 @@ pub async fn get_evaluation_allocations(configuration: &configuration::Configura
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -147,7 +149,7 @@ pub async fn get_evaluation_allocations(configuration: &configuration::Configura
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -172,10 +174,11 @@ pub async fn get_evaluation_allocations(configuration: &configuration::Configura
 }
 
 pub async fn get_evaluations(configuration: &configuration::Configuration, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<Vec<crate::models::Evaluation>, Error<GetEvaluationsError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/evaluations", configuration.base_path);
+    let local_var_uri_str = format!("{}/evaluations", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -199,7 +202,7 @@ pub async fn get_evaluations(configuration: &configuration::Configuration, regio
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -208,7 +211,7 @@ pub async fn get_evaluations(configuration: &configuration::Configuration, regio
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

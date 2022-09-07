@@ -1,10 +1,12 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
+
 
 import { ACLPolicy } from '../models/ACLPolicy';
 import { ACLPolicyListStub } from '../models/ACLPolicyListStub';
@@ -30,7 +32,7 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'policyName' is not null or undefined
         if (policyName === null || policyName === undefined) {
-            throw new RequiredError('Required parameter policyName was null or undefined when calling deleteACLPolicy.');
+            throw new RequiredError("ACLApi", "deleteACLPolicy", "policyName");
         }
 
 
@@ -50,9 +52,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -60,16 +66,17 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -87,7 +94,7 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'tokenAccessor' is not null or undefined
         if (tokenAccessor === null || tokenAccessor === undefined) {
-            throw new RequiredError('Required parameter tokenAccessor was null or undefined when calling deleteACLToken.');
+            throw new RequiredError("ACLApi", "deleteACLToken", "tokenAccessor");
         }
 
 
@@ -107,9 +114,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -117,16 +128,17 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -166,39 +178,54 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -221,7 +248,7 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'policyName' is not null or undefined
         if (policyName === null || policyName === undefined) {
-            throw new RequiredError('Required parameter policyName was null or undefined when calling getACLPolicy.');
+            throw new RequiredError("ACLApi", "getACLPolicy", "policyName");
         }
 
 
@@ -246,39 +273,54 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -301,7 +343,7 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'tokenAccessor' is not null or undefined
         if (tokenAccessor === null || tokenAccessor === undefined) {
-            throw new RequiredError('Required parameter tokenAccessor was null or undefined when calling getACLToken.');
+            throw new RequiredError("ACLApi", "getACLToken", "tokenAccessor");
         }
 
 
@@ -326,39 +368,54 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -398,39 +455,54 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -470,39 +542,54 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -532,9 +619,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -542,16 +633,17 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -570,13 +662,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'policyName' is not null or undefined
         if (policyName === null || policyName === undefined) {
-            throw new RequiredError('Required parameter policyName was null or undefined when calling postACLPolicy.');
+            throw new RequiredError("ACLApi", "postACLPolicy", "policyName");
         }
 
 
         // verify required parameter 'aCLPolicy' is not null or undefined
         if (aCLPolicy === null || aCLPolicy === undefined) {
-            throw new RequiredError('Required parameter aCLPolicy was null or undefined when calling postACLPolicy.');
+            throw new RequiredError("ACLApi", "postACLPolicy", "aCLPolicy");
         }
 
 
@@ -596,17 +688,19 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -620,11 +714,16 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -643,13 +742,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'tokenAccessor' is not null or undefined
         if (tokenAccessor === null || tokenAccessor === undefined) {
-            throw new RequiredError('Required parameter tokenAccessor was null or undefined when calling postACLToken.');
+            throw new RequiredError("ACLApi", "postACLToken", "tokenAccessor");
         }
 
 
         // verify required parameter 'aCLToken' is not null or undefined
         if (aCLToken === null || aCLToken === undefined) {
-            throw new RequiredError('Required parameter aCLToken was null or undefined when calling postACLToken.');
+            throw new RequiredError("ACLApi", "postACLToken", "aCLToken");
         }
 
 
@@ -669,17 +768,19 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -693,11 +794,16 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -727,9 +833,13 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -737,16 +847,17 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -764,7 +875,7 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'oneTimeTokenExchangeRequest' is not null or undefined
         if (oneTimeTokenExchangeRequest === null || oneTimeTokenExchangeRequest === undefined) {
-            throw new RequiredError('Required parameter oneTimeTokenExchangeRequest was null or undefined when calling postACLTokenOnetimeExchange.');
+            throw new RequiredError("ACLApi", "postACLTokenOnetimeExchange", "oneTimeTokenExchangeRequest");
         }
 
 
@@ -783,17 +894,19 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -807,11 +920,16 @@ export class ACLApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -834,16 +952,16 @@ export class ACLApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -855,8 +973,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -872,16 +989,16 @@ export class ACLApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -893,8 +1010,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -914,16 +1030,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -935,8 +1051,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -956,16 +1071,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -977,8 +1092,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -998,16 +1112,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1019,8 +1133,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1040,16 +1153,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1061,8 +1174,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1082,16 +1194,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1103,8 +1215,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1124,16 +1235,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1145,8 +1256,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1162,16 +1272,16 @@ export class ACLApiResponseProcessor {
             return;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1183,8 +1293,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1204,16 +1313,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1225,8 +1334,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1246,16 +1354,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1267,8 +1375,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1288,16 +1395,16 @@ export class ACLApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1309,8 +1416,7 @@ export class ACLApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

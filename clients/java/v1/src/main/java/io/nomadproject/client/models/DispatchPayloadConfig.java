@@ -31,29 +31,31 @@ import java.io.IOException;
 public class DispatchPayloadConfig {
   public static final String SERIALIZED_NAME_FILE = "File";
   @SerializedName(SERIALIZED_NAME_FILE)
-  private String file;
+  private String _file;
 
+  public DispatchPayloadConfig() { 
+  }
 
-  public DispatchPayloadConfig file(String file) {
+  public DispatchPayloadConfig _file(String _file) {
     
-    this.file = file;
+    this._file = _file;
     return this;
   }
 
    /**
-   * Get file
-   * @return file
+   * Get _file
+   * @return _file
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
   public String getFile() {
-    return file;
+    return _file;
   }
 
 
-  public void setFile(String file) {
-    this.file = file;
+  public void setFile(String _file) {
+    this._file = _file;
   }
 
 
@@ -66,19 +68,19 @@ public class DispatchPayloadConfig {
       return false;
     }
     DispatchPayloadConfig dispatchPayloadConfig = (DispatchPayloadConfig) o;
-    return Objects.equals(this.file, dispatchPayloadConfig.file);
+    return Objects.equals(this._file, dispatchPayloadConfig._file);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(file);
+    return Objects.hash(_file);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DispatchPayloadConfig {\n");
-    sb.append("    file: ").append(toIndentedString(file)).append("\n");
+    sb.append("    _file: ").append(toIndentedString(_file)).append("\n");
     sb.append("}");
     return sb.toString();
   }

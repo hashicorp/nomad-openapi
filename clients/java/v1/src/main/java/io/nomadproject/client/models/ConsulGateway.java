@@ -26,6 +26,7 @@ import io.nomadproject.client.models.ConsulTerminatingConfigEntry;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ConsulGateway
@@ -48,6 +49,8 @@ public class ConsulGateway {
   @SerializedName(SERIALIZED_NAME_TERMINATING)
   private ConsulTerminatingConfigEntry terminating;
 
+  public ConsulGateway() { 
+  }
 
   public ConsulGateway ingress(ConsulIngressConfigEntry ingress) {
     
@@ -156,9 +159,20 @@ public class ConsulGateway {
         Objects.equals(this.terminating, consulGateway.terminating);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(ingress, mesh, proxy, terminating);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

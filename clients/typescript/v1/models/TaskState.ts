@@ -79,7 +79,7 @@ export class TaskState {
     static getAttributeTypeMap() {
         return TaskState.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

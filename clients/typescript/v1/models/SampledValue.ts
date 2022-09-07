@@ -84,7 +84,7 @@ export class SampledValue {
     static getAttributeTypeMap() {
         return SampledValue.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { AnyType } from './AnyType';
 import { ConsulGatewayProxy } from './ConsulGatewayProxy';
 import { ConsulIngressConfigEntry } from './ConsulIngressConfigEntry';
 import { ConsulTerminatingConfigEntry } from './ConsulTerminatingConfigEntry';
@@ -18,7 +17,7 @@ import { HttpFile } from '../http/http';
 
 export class ConsulGateway {
     'ingress'?: ConsulIngressConfigEntry;
-    'mesh'?: AnyType;
+    'mesh'?: any;
     'proxy'?: ConsulGatewayProxy;
     'terminating'?: ConsulTerminatingConfigEntry;
 
@@ -34,7 +33,7 @@ export class ConsulGateway {
         {
             "name": "mesh",
             "baseName": "Mesh",
-            "type": "AnyType",
+            "type": "any",
             "format": ""
         },
         {
@@ -53,7 +52,7 @@ export class ConsulGateway {
     static getAttributeTypeMap() {
         return ConsulGateway.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

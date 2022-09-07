@@ -141,8 +141,8 @@ func testJobParse(t *testing.T, s *agent.TestAgent) {
 	require.Equal(t, *result.Name, *expected.Name)
 
 	if result.Datacenters == nil {
-		expectedDatacenters := *expected.Datacenters
-		jobDatacenters := *result.Datacenters
+		expectedDatacenters := expected.Datacenters
+		jobDatacenters := result.Datacenters
 		require.NotEqual(t, jobDatacenters[0], expectedDatacenters[0])
 	}
 }
@@ -232,7 +232,7 @@ func testJobVersions(t *testing.T, s *agent.TestAgent) {
 	require.NoError(t, err)
 	require.NotNil(t, meta)
 
-	versions := *result.Versions
+	versions := result.Versions
 	require.Len(t, versions, 2)
 
 	v1 := versions[0]
@@ -240,7 +240,7 @@ func testJobVersions(t *testing.T, s *agent.TestAgent) {
 	require.Equal(t, int32(1), *v1.Version)
 	require.Equal(t, int32(100), *v1.Priority)
 	require.Equal(t, int32(0), *v0.Version)
-	require.Len(t, *result.Diffs, 1)
+	require.Len(t, result.Diffs, 1)
 }
 
 func testJobRevert(t *testing.T, s *agent.TestAgent) {
@@ -253,9 +253,9 @@ func testJobRevert(t *testing.T, s *agent.TestAgent) {
 	job, _, err := testClient.Jobs().GetJob(queryOpts.Ctx(), rpcJob.ID)
 	require.NoError(t, err)
 
-	dcs := *job.Datacenters
+	dcs := job.Datacenters
 	dcs = append(dcs, "foo")
-	job.Datacenters = &dcs
+	job.Datacenters = dcs
 	_, _, err = testClient.Jobs().Post(writeOpts.Ctx(), job)
 	require.NoError(t, err)
 
@@ -492,6 +492,8 @@ func mockPeriodicJob() *client.Job {
 	job := mockJob()
 	batch := structs.JobTypeBatch
 	job.Type = &batch
+	job.Update = nil
+	job.Migrate = nil
 
 	enabled := true
 	specType := structs.PeriodicSpecCron
@@ -505,7 +507,7 @@ func mockPeriodicJob() *client.Job {
 	}
 
 	job.Status = &running
-	tg := *job.TaskGroups
+	tg := job.TaskGroups
 	tg[0].Migrate = nil
 
 	return job
@@ -514,10 +516,10 @@ func mockPeriodicJob() *client.Job {
 func mockJobWithDiff() *client.Job {
 	job := mockJob()
 
-	tgs := *job.TaskGroups
-	tgs[0].Tasks = &[]client.Task{
+	tgs := job.TaskGroups
+	tgs[0].Tasks = []client.Task{
 		{
-			Config: &map[string]interface{}{
+			Config: map[string]interface{}{
 				"image": "redis:3.4",
 				"ports": []string{dbLabel},
 			},
@@ -532,107 +534,43 @@ func mockJobWithDiff() *client.Job {
 func mockJob() *client.Job {
 	jobID := fmt.Sprintf("%s-%s", id, uuid.Generate())
 	return &client.Job{
-		Region:      &globalRegion,
-		ID:          &jobID,
-		Name:        &jobName,
-		Namespace:   &defaultNamespace,
-		Type:        &jobTypeService,
-		Priority:    &priority,
-		AllAtOnce:   &allAtOnce,
-		Datacenters: &[]string{"dc1"},
-		Constraints: &[]client.Constraint{
-			{
-				LTarget: &lTarget,
-				RTarget: &rTarget,
-				Operand: &operand,
-			},
-		},
-		TaskGroups: &[]client.TaskGroup{
-			{
-				Name:  &web,
-				Count: &count,
-				EphemeralDisk: &client.EphemeralDisk{
-					SizeMB: &sizeMB,
-				},
-				RestartPolicy: &client.RestartPolicy{
-					Attempts: &restartPolicyAttempts,
-					Interval: &restartPolicyInterval,
-					Delay:    &restartPolicyDelay,
-					Mode:     &restartPolicyMode,
-				},
-				ReschedulePolicy: &client.ReschedulePolicy{
-					Attempts:      &reschedulePolicyAttempts,
-					Interval:      &reschedulePolicyInterval,
-					Delay:         &reschedulePolicyDelay,
-					DelayFunction: &reschedulePolicyDelayFunction,
-					Unlimited:     &notUnlimited,
-				},
-				Migrate: defaultMigrateStrategy,
-				Networks: &[]client.NetworkResource{
-					{
-						Mode: &hostMode,
-						DynamicPorts: &[]client.Port{
-							{Label: &httpLabel},
-							{Label: &adminLabel},
-						},
-					},
-				},
-				Tasks: &[]client.Task{
-					{
-						Name:   &web,
-						Driver: &execDriver,
-						Config: &map[string]interface{}{
-							"command": "/bin/date",
-						},
-						Env: &map[string]string{
-							"FOO": "bar",
-						},
-						Services: &[]client.Service{
-							{
-								Name:      &frontEndTaskName,
-								PortLabel: &httpLabel,
-								Tags:      &[]string{"pci:${meta.pci-dss}", "datacenter:${node.datacenter}"},
-								Checks: &[]client.ServiceCheck{
-									{
-										Name:     &serviceCheckName,
-										Type:     &serviceCheckType,
-										Command:  &serviceCheckCommand,
-										Args:     &[]string{"${meta.version}"},
-										Interval: &serviceCheckInterval,
-										Timeout:  &serviceCheckTimeout,
-									},
-								},
-							},
-							{
-								Name:      &adminTaskName,
-								PortLabel: &adminLabel,
-							},
-						},
-						LogConfig: defaultLogConfig,
-						Resources: &client.Resources{
-							CPU:      &resourcesCPU,
-							MemoryMB: &resourcesMemoryMB,
-						},
-						Meta: &map[string]string{
-							"foo": "bar",
-						},
-					},
-				},
-				Meta: &map[string]string{
-					"elb_check_type":     "http",
-					"elb_check_interval": "30s",
-					"elb_check_min":      "3",
-				},
-			},
-		},
-		Meta: &map[string]string{
-			"owner": "armon",
-		},
-		Status:         &pendingStatus,
-		Version:        &version,
-		CreateIndex:    &createIndex,
-		ModifyIndex:    &modifyIndex,
-		JobModifyIndex: &jobModifyIndex,
+		Affinities:               []client.Affinity{},
+		AllAtOnce:                &allAtOnce,
+		Constraints:              []client.Constraint{{LTarget: &lTarget, RTarget: &rTarget, Operand: &operand}},
+		ConsulNamespace:          new(string),
+		ConsulToken:              new(string),
+		CreateIndex:              &createIndex,
+		Datacenters:              []string{"dc1"},
+		DispatchIdempotencyToken: new(string),
+		Dispatched:               new(bool),
+		ID:                       &jobID,
+		JobModifyIndex:           &jobModifyIndex,
+		Meta:                     &map[string]string{},
+		Migrate:                  defaultMigrateStrategy,
+		ModifyIndex:              &modifyIndex,
+		Multiregion:              client.NullableMultiregion{},
+		Name:                     &jobName,
+		Namespace:                &defaultNamespace,
+		NomadTokenID:             new(string),
+		ParameterizedJob:         client.NullableParameterizedJobConfig{},
+		ParentID:                 new(string),
+		Payload:                  new(string),
+		Periodic:                 nil,
+		Priority:                 &priority,
+		Region:                   &globalRegion,
+		Reschedule:               &client.ReschedulePolicy{},
+		Spreads:                  []client.Spread{},
+		Stable:                   new(bool),
+		Status:                   &pendingStatus,
+		StatusDescription:        new(string),
+		Stop:                     new(bool),
+		SubmitTime:               new(int64),
+		TaskGroups:               []client.TaskGroup{{Name: &web, Count: &count, EphemeralDisk: &client.EphemeralDisk{SizeMB: &sizeMB}, RestartPolicy: &client.RestartPolicy{Attempts: &restartPolicyAttempts, Interval: &restartPolicyInterval, Delay: &restartPolicyDelay, Mode: &restartPolicyMode}, ReschedulePolicy: &client.ReschedulePolicy{Attempts: &reschedulePolicyAttempts, Interval: &reschedulePolicyInterval, Delay: &reschedulePolicyDelay, DelayFunction: &reschedulePolicyDelayFunction, Unlimited: &notUnlimited}, Migrate: defaultMigrateStrategy, Networks: []client.NetworkResource{{Mode: &hostMode, DynamicPorts: []client.Port{{Label: &httpLabel}, {Label: &adminLabel}}}}, Tasks: []client.Task{{Name: &web, Driver: &execDriver, Config: map[string]interface{}{"command": "/bin/date"}, Env: &map[string]string{"FOO": "bar"}, Services: []client.Service{{Name: &frontEndTaskName, PortLabel: &httpLabel, Tags: []string{"pci:${meta.pci-dss}", "datacenter:${node.datacenter}"}, Checks: []client.ServiceCheck{{Name: &serviceCheckName, Type: &serviceCheckType, Command: &serviceCheckCommand, Args: []string{"${meta.version}"}, Interval: &serviceCheckInterval, Timeout: &serviceCheckTimeout}}}, {Name: &adminTaskName, PortLabel: &adminLabel}}, LogConfig: defaultLogConfig, Resources: *client.NewNullableResources(&client.Resources{CPU: &resourcesCPU, MemoryMB: &resourcesMemoryMB}), Meta: &map[string]string{"foo": "bar"}}}, Meta: &map[string]string{"elb_check_type": "http", "elb_check_interval": "30s", "elb_check_min": "3"}}},
+		Type:                     &jobTypeService,
+		Update:                   &client.UpdateStrategy{},
+		VaultNamespace:           new(string),
+		VaultToken:               new(string),
+		Version:                  &version,
 	}
 }
 

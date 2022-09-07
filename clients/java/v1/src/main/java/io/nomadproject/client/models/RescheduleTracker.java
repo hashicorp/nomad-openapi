@@ -36,6 +36,8 @@ public class RescheduleTracker {
   @SerializedName(SERIALIZED_NAME_EVENTS)
   private List<RescheduleEvent> events = null;
 
+  public RescheduleTracker() { 
+  }
 
   public RescheduleTracker events(List<RescheduleEvent> events) {
     

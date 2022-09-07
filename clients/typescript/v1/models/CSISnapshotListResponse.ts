@@ -64,7 +64,7 @@ export class CSISnapshotListResponse {
     static getAttributeTypeMap() {
         return CSISnapshotListResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

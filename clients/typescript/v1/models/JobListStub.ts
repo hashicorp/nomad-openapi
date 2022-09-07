@@ -141,7 +141,7 @@ export class JobListStub {
     static getAttributeTypeMap() {
         return JobListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -44,6 +44,8 @@ public class NodeScoreMeta {
   @SerializedName(SERIALIZED_NAME_SCORES)
   private Map<String, Double> scores = null;
 
+  public NodeScoreMeta() { 
+  }
 
   public NodeScoreMeta nodeID(String nodeID) {
     

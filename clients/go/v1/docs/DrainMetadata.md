@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessorID** | Pointer to **string** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
-**StartedAt** | Pointer to **time.Time** |  | [optional] 
+**StartedAt** | Pointer to **NullableTime** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**UpdatedAt** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -104,6 +104,16 @@ SetStartedAt sets StartedAt field to given value.
 
 HasStartedAt returns a boolean if a field has been set.
 
+### SetStartedAtNil
+
+`func (o *DrainMetadata) SetStartedAtNil(b bool)`
+
+ SetStartedAtNil sets the value for StartedAt to be an explicit nil
+
+### UnsetStartedAt
+`func (o *DrainMetadata) UnsetStartedAt()`
+
+UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
 ### GetStatus
 
 `func (o *DrainMetadata) GetStatus() string`
@@ -154,6 +164,16 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### SetUpdatedAtNil
+
+`func (o *DrainMetadata) SetUpdatedAtNil(b bool)`
+
+ SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
+
+### UnsetUpdatedAt
+`func (o *DrainMetadata) UnsetUpdatedAt()`
+
+UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

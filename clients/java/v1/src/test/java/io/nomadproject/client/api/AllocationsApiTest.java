@@ -55,8 +55,7 @@ public class AllocationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Allocation response = api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                Allocation response = api.getAllocation(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -80,8 +79,7 @@ public class AllocationsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ServiceRegistration> response = api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<ServiceRegistration> response = api.getAllocationServices(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -106,8 +104,7 @@ public class AllocationsApiTest {
         String nextToken = null;
         Boolean resources = null;
         Boolean taskStates = null;
-        List<AllocationListStub> response = api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
-
+                List<AllocationListStub> response = api.getAllocations(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, resources, taskStates);
         // TODO: test validations
     }
     
@@ -132,8 +129,7 @@ public class AllocationsApiTest {
         Integer perPage = null;
         String nextToken = null;
         Boolean noShutdownDelay = null;
-        AllocStopResponse response = api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
-
+                AllocStopResponse response = api.postAllocationStop(allocID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, noShutdownDelay);
         // TODO: test validations
     }
     

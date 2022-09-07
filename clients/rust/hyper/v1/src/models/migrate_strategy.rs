@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct MigrateStrategy {
     #[serde(rename = "HealthCheck", skip_serializing_if = "Option::is_none")]
     pub health_check: Option<String>,

@@ -53,6 +53,8 @@ public class DeploymentUpdateResponse {
   @SerializedName(SERIALIZED_NAME_REVERTED_JOB_VERSION)
   private Integer revertedJobVersion;
 
+  public DeploymentUpdateResponse() { 
+  }
 
   public DeploymentUpdateResponse deploymentModifyIndex(Integer deploymentModifyIndex) {
     

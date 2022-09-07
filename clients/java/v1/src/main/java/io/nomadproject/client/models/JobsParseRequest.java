@@ -41,6 +41,8 @@ public class JobsParseRequest {
   @SerializedName(SERIALIZED_NAME_HCLV1)
   private Boolean hclv1;
 
+  public JobsParseRequest() { 
+  }
 
   public JobsParseRequest canonicalize(Boolean canonicalize) {
     

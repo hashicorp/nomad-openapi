@@ -45,6 +45,8 @@ public class Affinity {
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private Integer weight;
 
+  public Affinity() { 
+  }
 
   public Affinity ltarget(String ltarget) {
     

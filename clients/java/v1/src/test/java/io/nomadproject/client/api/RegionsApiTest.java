@@ -41,8 +41,7 @@ public class RegionsApiTest {
      */
     @Test
     public void getRegionsTest() throws ApiException {
-        List<String> response = api.getRegions();
-
+                List<String> response = api.getRegions();
         // TODO: test validations
     }
     

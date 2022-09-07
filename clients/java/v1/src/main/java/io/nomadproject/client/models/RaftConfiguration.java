@@ -40,6 +40,8 @@ public class RaftConfiguration {
   @SerializedName(SERIALIZED_NAME_SERVERS)
   private List<RaftServer> servers = null;
 
+  public RaftConfiguration() { 
+  }
 
   public RaftConfiguration index(Integer index) {
     

@@ -33,6 +33,8 @@ public class JobStabilityResponse {
   @SerializedName(SERIALIZED_NAME_INDEX)
   private Integer index;
 
+  public JobStabilityResponse() { 
+  }
 
   public JobStabilityResponse index(Integer index) {
     

@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Task
@@ -147,6 +148,8 @@ public class Task {
   @SerializedName(SERIALIZED_NAME_VOLUME_MOUNTS)
   private List<VolumeMount> volumeMounts = null;
 
+  public Task() { 
+  }
 
   public Task affinities(List<Affinity> affinities) {
     
@@ -839,9 +842,20 @@ public class Task {
         Objects.equals(this.volumeMounts, task.volumeMounts);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(affinities, artifacts, csIPluginConfig, config, constraints, dispatchPayload, driver, env, killSignal, killTimeout, kind, leader, lifecycle, logConfig, meta, name, resources, restartPolicy, scalingPolicies, services, shutdownDelay, templates, user, vault, volumeMounts);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

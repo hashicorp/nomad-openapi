@@ -60,6 +60,8 @@ public class SearchResponse {
   @SerializedName(SERIALIZED_NAME_TRUNCATIONS)
   private Map<String, Boolean> truncations = null;
 
+  public SearchResponse() { 
+  }
 
   public SearchResponse knownLeader(Boolean knownLeader) {
     

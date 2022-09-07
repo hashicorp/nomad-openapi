@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct Multiregion {
     #[serde(rename = "Regions", skip_serializing_if = "Option::is_none")]
     pub regions: Option<Vec<crate::models::MultiregionRegion>>,

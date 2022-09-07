@@ -33,6 +33,8 @@ public class NodeReservedCpuResources {
   @SerializedName(SERIALIZED_NAME_CPU_SHARES)
   private Integer cpuShares;
 
+  public NodeReservedCpuResources() { 
+  }
 
   public NodeReservedCpuResources cpuShares(Integer cpuShares) {
     

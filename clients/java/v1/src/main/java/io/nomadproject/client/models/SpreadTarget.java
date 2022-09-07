@@ -37,6 +37,8 @@ public class SpreadTarget {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
+  public SpreadTarget() { 
+  }
 
   public SpreadTarget percent(Integer percent) {
     

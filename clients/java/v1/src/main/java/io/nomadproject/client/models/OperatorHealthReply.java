@@ -44,6 +44,8 @@ public class OperatorHealthReply {
   @SerializedName(SERIALIZED_NAME_SERVERS)
   private List<ServerHealth> servers = null;
 
+  public OperatorHealthReply() { 
+  }
 
   public OperatorHealthReply failureTolerance(Integer failureTolerance) {
     

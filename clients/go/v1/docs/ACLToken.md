@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessorID** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
-**CreateTime** | Pointer to **time.Time** |  | [optional] 
+**CreateTime** | Pointer to **NullableTime** |  | [optional] 
 **Global** | Pointer to **bool** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -108,6 +108,16 @@ SetCreateTime sets CreateTime field to given value.
 
 HasCreateTime returns a boolean if a field has been set.
 
+### SetCreateTimeNil
+
+`func (o *ACLToken) SetCreateTimeNil(b bool)`
+
+ SetCreateTimeNil sets the value for CreateTime to be an explicit nil
+
+### UnsetCreateTime
+`func (o *ACLToken) UnsetCreateTime()`
+
+UnsetCreateTime ensures that no value is present for CreateTime, not even an explicit nil
 ### GetGlobal
 
 `func (o *ACLToken) GetGlobal() bool`

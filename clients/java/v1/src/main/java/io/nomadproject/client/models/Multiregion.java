@@ -41,6 +41,8 @@ public class Multiregion {
   @SerializedName(SERIALIZED_NAME_STRATEGY)
   private MultiregionStrategy strategy;
 
+  public Multiregion() { 
+  }
 
   public Multiregion regions(List<MultiregionRegion> regions) {
     

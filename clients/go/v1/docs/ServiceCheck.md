@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Advertise** | Pointer to **string** |  | [optional] 
 **Args** | Pointer to **[]string** |  | [optional] 
 **Body** | Pointer to **string** |  | [optional] 
-**CheckRestart** | Pointer to [**CheckRestart**](CheckRestart.md) |  | [optional] 
+**CheckRestart** | Pointer to [**NullableCheckRestart**](CheckRestart.md) |  | [optional] 
 **Command** | Pointer to **string** |  | [optional] 
 **Expose** | Pointer to **bool** |  | [optional] 
 **FailuresBeforeCritical** | Pointer to **int32** |  | [optional] 
@@ -173,6 +173,16 @@ SetCheckRestart sets CheckRestart field to given value.
 
 HasCheckRestart returns a boolean if a field has been set.
 
+### SetCheckRestartNil
+
+`func (o *ServiceCheck) SetCheckRestartNil(b bool)`
+
+ SetCheckRestartNil sets the value for CheckRestart to be an explicit nil
+
+### UnsetCheckRestart
+`func (o *ServiceCheck) UnsetCheckRestart()`
+
+UnsetCheckRestart ensures that no value is present for CheckRestart, not even an explicit nil
 ### GetCommand
 
 `func (o *ServiceCheck) GetCommand() string`

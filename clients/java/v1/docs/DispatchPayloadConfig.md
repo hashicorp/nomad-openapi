@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file** | **String** |  |  [optional]
+**_file** | **String** |  |  [optional]
 
 
 

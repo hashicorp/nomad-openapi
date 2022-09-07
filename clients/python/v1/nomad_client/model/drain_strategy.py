@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -69,7 +69,7 @@ class DrainStrategy(ModelNormal):
         """
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -83,9 +83,9 @@ class DrainStrategy(ModelNormal):
         """
         return {
             'deadline': (int,),  # noqa: E501
-            'force_deadline': (datetime,),  # noqa: E501
+            'force_deadline': (datetime, none_type,),  # noqa: E501
             'ignore_system_jobs': (bool,),  # noqa: E501
-            'started_at': (datetime,),  # noqa: E501
+            'started_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -142,9 +142,9 @@ class DrainStrategy(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             deadline (int): [optional]  # noqa: E501
-            force_deadline (datetime): [optional]  # noqa: E501
+            force_deadline (datetime, none_type): [optional]  # noqa: E501
             ignore_system_jobs (bool): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,9 +227,9 @@ class DrainStrategy(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             deadline (int): [optional]  # noqa: E501
-            force_deadline (datetime): [optional]  # noqa: E501
+            force_deadline (datetime, none_type): [optional]  # noqa: E501
             ignore_system_jobs (bool): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

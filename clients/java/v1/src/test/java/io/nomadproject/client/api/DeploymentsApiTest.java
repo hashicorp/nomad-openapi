@@ -58,8 +58,7 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Deployment response = api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                Deployment response = api.getDeployment(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -83,8 +82,7 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<AllocationListStub> response = api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<AllocationListStub> response = api.getDeploymentAllocations(deploymentID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -107,8 +105,7 @@ public class DeploymentsApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<Deployment> response = api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<Deployment> response = api.getDeployments(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -128,8 +125,7 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                DeploymentUpdateResponse response = api.postDeploymentAllocationHealth(deploymentID, deploymentAllocHealthRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -148,8 +144,7 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken);
-
+                DeploymentUpdateResponse response = api.postDeploymentFail(deploymentID, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -169,8 +164,7 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                DeploymentUpdateResponse response = api.postDeploymentPause(deploymentID, deploymentPauseRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -190,8 +184,7 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                DeploymentUpdateResponse response = api.postDeploymentPromote(deploymentID, deploymentPromoteRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -211,8 +204,7 @@ public class DeploymentsApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        DeploymentUpdateResponse response = api.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                DeploymentUpdateResponse response = api.postDeploymentUnblock(deploymentID, deploymentUnblockRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

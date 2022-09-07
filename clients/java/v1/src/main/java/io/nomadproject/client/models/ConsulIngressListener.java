@@ -44,6 +44,8 @@ public class ConsulIngressListener {
   @SerializedName(SERIALIZED_NAME_SERVICES)
   private List<ConsulIngressService> services = null;
 
+  public ConsulIngressListener() { 
+  }
 
   public ConsulIngressListener port(Integer port) {
     

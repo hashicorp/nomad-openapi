@@ -24,6 +24,7 @@ import io.nomadproject.client.models.ConsulMeshGateway;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ConsulUpstream
@@ -54,6 +55,8 @@ public class ConsulUpstream {
   @SerializedName(SERIALIZED_NAME_MESH_GATEWAY)
   private ConsulMeshGateway meshGateway;
 
+  public ConsulUpstream() { 
+  }
 
   public ConsulUpstream datacenter(String datacenter) {
     
@@ -210,9 +213,20 @@ public class ConsulUpstream {
         Objects.equals(this.meshGateway, consulUpstream.meshGateway);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(datacenter, destinationName, destinationNamespace, localBindAddress, localBindPort, meshGateway);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

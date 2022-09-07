@@ -28,7 +28,7 @@ export class NodeReservedCpuResources {
     static getAttributeTypeMap() {
         return NodeReservedCpuResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

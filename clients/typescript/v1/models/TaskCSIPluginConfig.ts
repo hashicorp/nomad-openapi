@@ -49,7 +49,7 @@ export class TaskCSIPluginConfig {
     static getAttributeTypeMap() {
         return TaskCSIPluginConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

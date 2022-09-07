@@ -26,8 +26,8 @@ func (o *Operator) Raft(ctx context.Context) (*client.RaftConfiguration, error) 
 		return nil, err
 	}
 
-	final := result.(client.RaftConfiguration)
-	return &final, nil
+	final := result.(*client.RaftConfiguration)
+	return final, nil
 }
 
 func (o *Operator) Peer(ctx context.Context) error {
@@ -49,8 +49,8 @@ func (o *Operator) Autopilot(ctx context.Context) (*client.AutopilotConfiguratio
 		return nil, err
 	}
 
-	final := result.(client.AutopilotConfiguration)
-	return &final, nil
+	final := result.(*client.AutopilotConfiguration)
+	return final, nil
 }
 
 func (o *Operator) UpdateAutopilot(ctx context.Context, config *client.AutopilotConfiguration) (*bool, error) {
@@ -84,8 +84,8 @@ func (o *Operator) AutopilotHealth(ctx context.Context) (*client.OperatorHealthR
 		return nil, err
 	}
 
-	final := result.(client.OperatorHealthReply)
-	return &final, nil
+	final := result.(*client.OperatorHealthReply)
+	return final, nil
 }
 
 func (o *Operator) Scheduler(ctx context.Context) (*client.SchedulerConfigurationResponse, *QueryMeta, error) {
@@ -96,8 +96,8 @@ func (o *Operator) Scheduler(ctx context.Context) (*client.SchedulerConfiguratio
 		return nil, nil, err
 	}
 
-	final := result.(client.SchedulerConfigurationResponse)
-	return &final, meta, nil
+	final := result.(*client.SchedulerConfigurationResponse)
+	return final, meta, nil
 }
 
 // TODO: update Nomad version to pick up new fields (i.e. RejectJobRegistration)
@@ -107,7 +107,7 @@ func (o *Operator) UpdateScheduler(ctx context.Context, config *client.Scheduler
 	updateRequest := client.NewSchedulerConfiguration()
 	updateRequest.SetSchedulerAlgorithm(*config.SchedulerAlgorithm)
 	updateRequest.SetMemoryOversubscriptionEnabled(*config.MemoryOversubscriptionEnabled)
-	updateRequest.SetPreemptionConfig(*config.PreemptionConfig)
+	updateRequest.SetPreemptionConfig(*config.PreemptionConfig.Get())
 
 	request = request.SchedulerConfiguration(*updateRequest)
 
@@ -116,6 +116,6 @@ func (o *Operator) UpdateScheduler(ctx context.Context, config *client.Scheduler
 		return nil, nil, err
 	}
 
-	final := result.(client.SchedulerSetConfigurationResponse)
-	return &final, meta, nil
+	final := result.(*client.SchedulerSetConfigurationResponse)
+	return final, meta, nil
 }

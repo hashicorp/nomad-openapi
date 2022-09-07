@@ -50,7 +50,7 @@
   describe('OperatorHealthReply', function() {
     it('should create an instance of OperatorHealthReply', function() {
       // uncomment below and update the code to test OperatorHealthReply
-      //var instane = new nomad-client.OperatorHealthReply();
+      //var instance = new nomad-client.OperatorHealthReply();
       //expect(instance).to.be.a(nomad-client.OperatorHealthReply);
     });
 

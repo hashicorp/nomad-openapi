@@ -63,7 +63,7 @@ export class DeploymentAllocHealthRequest {
     static getAttributeTypeMap() {
         return DeploymentAllocHealthRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

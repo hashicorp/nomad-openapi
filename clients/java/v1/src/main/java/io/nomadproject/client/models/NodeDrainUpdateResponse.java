@@ -51,6 +51,8 @@ public class NodeDrainUpdateResponse {
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
 
+  public NodeDrainUpdateResponse() { 
+  }
 
   public NodeDrainUpdateResponse evalCreateIndex(Integer evalCreateIndex) {
     

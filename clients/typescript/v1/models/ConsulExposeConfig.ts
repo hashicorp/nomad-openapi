@@ -29,7 +29,7 @@ export class ConsulExposeConfig {
     static getAttributeTypeMap() {
         return ConsulExposeConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -41,6 +41,8 @@ public class ConsulGatewayBindAddress {
   @SerializedName(SERIALIZED_NAME_PORT)
   private Integer port;
 
+  public ConsulGatewayBindAddress() { 
+  }
 
   public ConsulGatewayBindAddress address(String address) {
     

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnforceIndex** | Pointer to **bool** |  | [optional] 
 **EvalPriority** | Pointer to **int32** |  | [optional] 
-**Job** | Pointer to [**Job**](Job.md) |  | [optional] 
+**Job** | Pointer to [**NullableJob**](Job.md) |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **PolicyOverride** | Pointer to **bool** |  | [optional] 
@@ -108,6 +108,16 @@ SetJob sets Job field to given value.
 
 HasJob returns a boolean if a field has been set.
 
+### SetJobNil
+
+`func (o *JobRegisterRequest) SetJobNil(b bool)`
+
+ SetJobNil sets the value for Job to be an explicit nil
+
+### UnsetJob
+`func (o *JobRegisterRequest) UnsetJob()`
+
+UnsetJob ensures that no value is present for Job, not even an explicit nil
 ### GetJobModifyIndex
 
 `func (o *JobRegisterRequest) GetJobModifyIndex() int32`

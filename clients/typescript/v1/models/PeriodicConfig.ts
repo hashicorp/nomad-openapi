@@ -56,7 +56,7 @@ export class PeriodicConfig {
     static getAttributeTypeMap() {
         return PeriodicConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

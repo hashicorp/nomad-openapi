@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -72,6 +73,8 @@ public class DeploymentState {
   @SerializedName(SERIALIZED_NAME_UNHEALTHY_ALLOCS)
   private Integer unhealthyAllocs;
 
+  public DeploymentState() { 
+  }
 
   public DeploymentState autoRevert(Boolean autoRevert) {
     
@@ -332,9 +335,20 @@ public class DeploymentState {
         Objects.equals(this.unhealthyAllocs, deploymentState.unhealthyAllocs);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(autoRevert, desiredCanaries, desiredTotal, healthyAllocs, placedAllocs, placedCanaries, progressDeadline, promoted, requireProgressBy, unhealthyAllocs);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

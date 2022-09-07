@@ -1,10 +1,12 @@
 // TODO: better import syntax?
-import { BaseAPIRequestFactory, RequiredError } from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import { RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
+import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {isCodeInRange} from '../util';
+import {canConsumeForm, isCodeInRange} from '../util';
+import {SecurityAuthentication} from '../auth/auth';
+
 
 import { AllocationListStub } from '../models/AllocationListStub';
 import { Deployment } from '../models/Deployment';
@@ -50,7 +52,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling deleteJob.');
+            throw new RequiredError("JobsApi", "deleteJob", "jobName");
         }
 
 
@@ -72,15 +74,23 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
+
+        // Query Params
         if (purge !== undefined) {
             requestContext.setQueryParam("purge", ObjectSerializer.serialize(purge, "boolean", ""));
         }
+
+        // Query Params
         if (global !== undefined) {
             requestContext.setQueryParam("global", ObjectSerializer.serialize(global, "boolean", ""));
         }
@@ -88,16 +98,17 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -120,7 +131,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJob.');
+            throw new RequiredError("JobsApi", "getJob", "jobName");
         }
 
 
@@ -145,39 +156,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -201,7 +227,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobAllocations.');
+            throw new RequiredError("JobsApi", "getJobAllocations", "jobName");
         }
 
 
@@ -227,42 +253,59 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (all !== undefined) {
             requestContext.setQueryParam("all", ObjectSerializer.serialize(all, "boolean", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -285,7 +328,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobDeployment.');
+            throw new RequiredError("JobsApi", "getJobDeployment", "jobName");
         }
 
 
@@ -310,39 +353,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -366,7 +424,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobDeployments.');
+            throw new RequiredError("JobsApi", "getJobDeployments", "jobName");
         }
 
 
@@ -392,42 +450,59 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (all !== undefined) {
             requestContext.setQueryParam("all", ObjectSerializer.serialize(all, "number", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -450,7 +525,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobEvaluations.');
+            throw new RequiredError("JobsApi", "getJobEvaluations", "jobName");
         }
 
 
@@ -475,39 +550,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -530,7 +620,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobScaleStatus.');
+            throw new RequiredError("JobsApi", "getJobScaleStatus", "jobName");
         }
 
 
@@ -555,39 +645,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -610,7 +715,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobSummary.');
+            throw new RequiredError("JobsApi", "getJobSummary", "jobName");
         }
 
 
@@ -635,39 +740,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -691,7 +811,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling getJobVersions.');
+            throw new RequiredError("JobsApi", "getJobVersions", "jobName");
         }
 
 
@@ -717,42 +837,59 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
+
+        // Query Params
         if (diffs !== undefined) {
             requestContext.setQueryParam("diffs", ObjectSerializer.serialize(diffs, "boolean", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -792,39 +929,54 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (wait !== undefined) {
             requestContext.setQueryParam("wait", ObjectSerializer.serialize(wait, "string", ""));
         }
+
+        // Query Params
         if (stale !== undefined) {
             requestContext.setQueryParam("stale", ObjectSerializer.serialize(stale, "string", ""));
         }
+
+        // Query Params
         if (prefix !== undefined) {
             requestContext.setQueryParam("prefix", ObjectSerializer.serialize(prefix, "string", ""));
         }
+
+        // Query Params
         if (perPage !== undefined) {
             requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
+
+        // Query Params
         if (nextToken !== undefined) {
             requestContext.setQueryParam("next_token", ObjectSerializer.serialize(nextToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("index", ObjectSerializer.serialize(index, "number", ""));
+
+        // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -843,13 +995,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJob.');
+            throw new RequiredError("JobsApi", "postJob", "jobName");
         }
 
 
         // verify required parameter 'jobRegisterRequest' is not null or undefined
         if (jobRegisterRequest === null || jobRegisterRequest === undefined) {
-            throw new RequiredError('Required parameter jobRegisterRequest was null or undefined when calling postJob.');
+            throw new RequiredError("JobsApi", "postJob", "jobRegisterRequest");
         }
 
 
@@ -869,17 +1021,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -893,11 +1047,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -916,13 +1075,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobDispatch.');
+            throw new RequiredError("JobsApi", "postJobDispatch", "jobName");
         }
 
 
         // verify required parameter 'jobDispatchRequest' is not null or undefined
         if (jobDispatchRequest === null || jobDispatchRequest === undefined) {
-            throw new RequiredError('Required parameter jobDispatchRequest was null or undefined when calling postJobDispatch.');
+            throw new RequiredError("JobsApi", "postJobDispatch", "jobDispatchRequest");
         }
 
 
@@ -942,17 +1101,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -966,11 +1127,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -989,13 +1155,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobEvaluate.');
+            throw new RequiredError("JobsApi", "postJobEvaluate", "jobName");
         }
 
 
         // verify required parameter 'jobEvaluateRequest' is not null or undefined
         if (jobEvaluateRequest === null || jobEvaluateRequest === undefined) {
-            throw new RequiredError('Required parameter jobEvaluateRequest was null or undefined when calling postJobEvaluate.');
+            throw new RequiredError("JobsApi", "postJobEvaluate", "jobEvaluateRequest");
         }
 
 
@@ -1015,17 +1181,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1039,11 +1207,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1057,7 +1230,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobsParseRequest' is not null or undefined
         if (jobsParseRequest === null || jobsParseRequest === undefined) {
-            throw new RequiredError('Required parameter jobsParseRequest was null or undefined when calling postJobParse.');
+            throw new RequiredError("JobsApi", "postJobParse", "jobsParseRequest");
         }
 
 
@@ -1067,12 +1240,6 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-
-        // Header Params
-
-        // Form Params
 
 
         // Body Params
@@ -1086,11 +1253,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1108,7 +1280,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobPeriodicForce.');
+            throw new RequiredError("JobsApi", "postJobPeriodicForce", "jobName");
         }
 
 
@@ -1128,9 +1300,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
@@ -1138,16 +1314,17 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
 
-        // Form Params
 
-
-        // Body Params
-
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1166,13 +1343,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobPlan.');
+            throw new RequiredError("JobsApi", "postJobPlan", "jobName");
         }
 
 
         // verify required parameter 'jobPlanRequest' is not null or undefined
         if (jobPlanRequest === null || jobPlanRequest === undefined) {
-            throw new RequiredError('Required parameter jobPlanRequest was null or undefined when calling postJobPlan.');
+            throw new RequiredError("JobsApi", "postJobPlan", "jobPlanRequest");
         }
 
 
@@ -1192,17 +1369,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1216,11 +1395,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1239,13 +1423,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobRevert.');
+            throw new RequiredError("JobsApi", "postJobRevert", "jobName");
         }
 
 
         // verify required parameter 'jobRevertRequest' is not null or undefined
         if (jobRevertRequest === null || jobRevertRequest === undefined) {
-            throw new RequiredError('Required parameter jobRevertRequest was null or undefined when calling postJobRevert.');
+            throw new RequiredError("JobsApi", "postJobRevert", "jobRevertRequest");
         }
 
 
@@ -1265,17 +1449,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1289,11 +1475,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1312,13 +1503,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobScalingRequest.');
+            throw new RequiredError("JobsApi", "postJobScalingRequest", "jobName");
         }
 
 
         // verify required parameter 'scalingRequest' is not null or undefined
         if (scalingRequest === null || scalingRequest === undefined) {
-            throw new RequiredError('Required parameter scalingRequest was null or undefined when calling postJobScalingRequest.');
+            throw new RequiredError("JobsApi", "postJobScalingRequest", "scalingRequest");
         }
 
 
@@ -1338,17 +1529,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1362,11 +1555,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1385,13 +1583,13 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobName' is not null or undefined
         if (jobName === null || jobName === undefined) {
-            throw new RequiredError('Required parameter jobName was null or undefined when calling postJobStability.');
+            throw new RequiredError("JobsApi", "postJobStability", "jobName");
         }
 
 
         // verify required parameter 'jobStabilityRequest' is not null or undefined
         if (jobStabilityRequest === null || jobStabilityRequest === undefined) {
-            throw new RequiredError('Required parameter jobStabilityRequest was null or undefined when calling postJobStability.');
+            throw new RequiredError("JobsApi", "postJobStability", "jobStabilityRequest");
         }
 
 
@@ -1411,17 +1609,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1435,11 +1635,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1457,7 +1662,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobValidateRequest' is not null or undefined
         if (jobValidateRequest === null || jobValidateRequest === undefined) {
-            throw new RequiredError('Required parameter jobValidateRequest was null or undefined when calling postJobValidateRequest.');
+            throw new RequiredError("JobsApi", "postJobValidateRequest", "jobValidateRequest");
         }
 
 
@@ -1476,17 +1681,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1500,11 +1707,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1522,7 +1734,7 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
 
         // verify required parameter 'jobRegisterRequest' is not null or undefined
         if (jobRegisterRequest === null || jobRegisterRequest === undefined) {
-            throw new RequiredError('Required parameter jobRegisterRequest was null or undefined when calling registerJob.');
+            throw new RequiredError("JobsApi", "registerJob", "jobRegisterRequest");
         }
 
 
@@ -1541,17 +1753,19 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
+
+        // Query Params
         if (namespace !== undefined) {
             requestContext.setQueryParam("namespace", ObjectSerializer.serialize(namespace, "string", ""));
         }
+
+        // Query Params
         if (idempotencyToken !== undefined) {
             requestContext.setQueryParam("idempotency_token", ObjectSerializer.serialize(idempotencyToken, "string", ""));
         }
 
         // Header Params
         requestContext.setHeaderParam("X-Nomad-Token", ObjectSerializer.serialize(xNomadToken, "string", ""));
-
-        // Form Params
 
 
         // Body Params
@@ -1565,11 +1779,16 @@ export class JobsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
-        let authMethod = null;
+        let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["X-Nomad-Token"]
-        if (authMethod) {
-            await authMethod.applySecurityAuthentication(requestContext);
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
         }
 
         return requestContext;
@@ -1596,16 +1815,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1617,8 +1836,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1638,16 +1856,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1659,8 +1877,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1680,16 +1897,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1701,8 +1918,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1722,16 +1938,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1743,8 +1959,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1764,16 +1979,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1785,8 +2000,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1806,16 +2020,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1827,8 +2041,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1848,16 +2061,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1869,8 +2082,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1890,16 +2102,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1911,8 +2123,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1932,16 +2143,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1953,8 +2164,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -1974,16 +2184,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1995,8 +2205,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2016,16 +2225,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2037,8 +2246,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2058,16 +2266,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2079,8 +2287,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2100,16 +2307,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2121,8 +2328,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2142,16 +2348,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2163,8 +2369,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2184,16 +2389,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2205,8 +2410,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2226,16 +2430,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2247,8 +2451,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2268,16 +2471,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2289,8 +2492,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2310,16 +2512,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2331,8 +2533,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2352,16 +2553,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2373,8 +2574,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2394,16 +2594,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2415,8 +2615,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
     /**
@@ -2436,16 +2635,16 @@ export class JobsApiResponseProcessor {
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Bad request");
+            throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Forbidden");
+            throw new ApiException<undefined>(response.httpStatusCode, "Forbidden", undefined, response.headers);
         }
         if (isCodeInRange("405", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Method not allowed");
+            throw new ApiException<undefined>(response.httpStatusCode, "Method not allowed", undefined, response.headers);
         }
         if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<string>(response.httpStatusCode, "Internal server error");
+            throw new ApiException<undefined>(response.httpStatusCode, "Internal server error", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -2457,8 +2656,7 @@ export class JobsApiResponseProcessor {
             return body;
         }
 
-        let body = response.body || "";
-        throw new ApiException<string>(response.httpStatusCode, "Unknown API Status Code!\nBody: \"" + body + "\"");
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
 }

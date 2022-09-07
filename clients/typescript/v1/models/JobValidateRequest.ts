@@ -50,7 +50,7 @@ export class JobValidateRequest {
     static getAttributeTypeMap() {
         return JobValidateRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

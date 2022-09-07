@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * AllocatedResources
@@ -42,6 +43,8 @@ public class AllocatedResources {
   @SerializedName(SERIALIZED_NAME_TASKS)
   private Map<String, AllocatedTaskResources> tasks = null;
 
+  public AllocatedResources() { 
+  }
 
   public AllocatedResources shared(AllocatedSharedResources shared) {
     
@@ -110,9 +113,20 @@ public class AllocatedResources {
         Objects.equals(this.tasks, allocatedResources.tasks);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(shared, tasks);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

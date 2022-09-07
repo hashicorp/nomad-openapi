@@ -45,6 +45,8 @@ public class AllocatedSharedResources {
   @SerializedName(SERIALIZED_NAME_PORTS)
   private List<PortMapping> ports = null;
 
+  public AllocatedSharedResources() { 
+  }
 
   public AllocatedSharedResources diskMB(Long diskMB) {
     

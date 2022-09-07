@@ -52,6 +52,8 @@ public class TaskArtifact {
   @SerializedName(SERIALIZED_NAME_RELATIVE_DEST)
   private String relativeDest;
 
+  public TaskArtifact() { 
+  }
 
   public TaskArtifact getterHeaders(Map<String, String> getterHeaders) {
     

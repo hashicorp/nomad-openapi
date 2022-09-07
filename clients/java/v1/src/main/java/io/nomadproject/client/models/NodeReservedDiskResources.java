@@ -33,6 +33,8 @@ public class NodeReservedDiskResources {
   @SerializedName(SERIALIZED_NAME_DISK_M_B)
   private Integer diskMB;
 
+  public NodeReservedDiskResources() { 
+  }
 
   public NodeReservedDiskResources diskMB(Integer diskMB) {
     

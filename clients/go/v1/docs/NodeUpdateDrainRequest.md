@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DrainSpec** | Pointer to [**DrainSpec**](DrainSpec.md) |  | [optional] 
+**DrainSpec** | Pointer to [**NullableDrainSpec**](DrainSpec.md) |  | [optional] 
 **MarkEligible** | Pointer to **bool** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **NodeID** | Pointer to **string** |  | [optional] 
@@ -53,6 +53,16 @@ SetDrainSpec sets DrainSpec field to given value.
 
 HasDrainSpec returns a boolean if a field has been set.
 
+### SetDrainSpecNil
+
+`func (o *NodeUpdateDrainRequest) SetDrainSpecNil(b bool)`
+
+ SetDrainSpecNil sets the value for DrainSpec to be an explicit nil
+
+### UnsetDrainSpec
+`func (o *NodeUpdateDrainRequest) UnsetDrainSpec()`
+
+UnsetDrainSpec ensures that no value is present for DrainSpec, not even an explicit nil
 ### GetMarkEligible
 
 `func (o *NodeUpdateDrainRequest) GetMarkEligible() bool`

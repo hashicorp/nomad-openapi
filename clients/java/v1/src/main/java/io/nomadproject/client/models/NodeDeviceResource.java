@@ -55,6 +55,8 @@ public class NodeDeviceResource {
   @SerializedName(SERIALIZED_NAME_VENDOR)
   private String vendor;
 
+  public NodeDeviceResource() { 
+  }
 
   public NodeDeviceResource attributes(Map<String, Attribute> attributes) {
     

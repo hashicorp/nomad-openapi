@@ -37,6 +37,8 @@ public class TaskHandle {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Integer version;
 
+  public TaskHandle() { 
+  }
 
   public TaskHandle driverState(byte[] driverState) {
     

@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct Allocation {
     #[serde(rename = "AllocModifyIndex", skip_serializing_if = "Option::is_none")]
     pub alloc_modify_index: Option<i32>,

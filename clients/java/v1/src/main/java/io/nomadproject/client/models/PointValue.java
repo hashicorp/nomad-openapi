@@ -39,6 +39,8 @@ public class PointValue {
   @SerializedName(SERIALIZED_NAME_POINTS)
   private List<Float> points = null;
 
+  public PointValue() { 
+  }
 
   public PointValue name(String name) {
     

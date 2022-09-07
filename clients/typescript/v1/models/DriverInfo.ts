@@ -56,7 +56,7 @@ export class DriverInfo {
     static getAttributeTypeMap() {
         return DriverInfo.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -50,7 +50,7 @@
   describe('DeploymentUnblockRequest', function() {
     it('should create an instance of DeploymentUnblockRequest', function() {
       // uncomment below and update the code to test DeploymentUnblockRequest
-      //var instane = new nomad-client.DeploymentUnblockRequest();
+      //var instance = new nomad-client.DeploymentUnblockRequest();
       //expect(instance).to.be.a(nomad-client.DeploymentUnblockRequest);
     });
 

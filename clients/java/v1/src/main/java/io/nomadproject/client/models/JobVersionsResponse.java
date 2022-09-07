@@ -61,6 +61,8 @@ public class JobVersionsResponse {
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   private List<Job> versions = null;
 
+  public JobVersionsResponse() { 
+  }
 
   public JobVersionsResponse diffs(List<JobDiff> diffs) {
     

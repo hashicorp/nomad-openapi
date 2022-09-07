@@ -49,6 +49,8 @@ public class RequestedDevice {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public RequestedDevice() { 
+  }
 
   public RequestedDevice affinities(List<Affinity> affinities) {
     

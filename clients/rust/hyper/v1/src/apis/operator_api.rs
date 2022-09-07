@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct OperatorApiClient<C: hyper::client::Connect> {
+pub struct OperatorApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> OperatorApiClient<C> {
+impl<C: hyper::client::connect::Connect> OperatorApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> OperatorApiClient<C> {
         OperatorApiClient {
             configuration,
@@ -33,18 +35,20 @@ impl<C: hyper::client::Connect> OperatorApiClient<C> {
 }
 
 pub trait OperatorApi {
-    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn get_operator_autopilot_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AutopilotConfiguration, Error = Error<serde_json::Value>>>;
-    fn get_operator_autopilot_health(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::OperatorHealthReply, Error = Error<serde_json::Value>>>;
-    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::RaftConfiguration, Error = Error<serde_json::Value>>>;
-    fn get_operator_scheduler_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerConfigurationResponse, Error = Error<serde_json::Value>>>;
-    fn post_operator_scheduler_configuration(&self, scheduler_configuration: crate::models::SchedulerConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerSetConfigurationResponse, Error = Error<serde_json::Value>>>;
-    fn put_operator_autopilot_configuration(&self, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = bool, Error = Error<serde_json::Value>>>;
+    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn get_operator_autopilot_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::AutopilotConfiguration, Error>>>>;
+    fn get_operator_autopilot_health(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::OperatorHealthReply, Error>>>>;
+    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::RaftConfiguration, Error>>>>;
+    fn get_operator_scheduler_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::SchedulerConfigurationResponse, Error>>>>;
+    fn post_operator_scheduler_configuration(&self, scheduler_configuration: Option<crate::models::SchedulerConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::SchedulerSetConfigurationResponse, Error>>>>;
+    fn put_operator_autopilot_configuration(&self, autopilot_configuration: Option<crate::models::AutopilotConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<bool, Error>>>>;
 }
 
-impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
-    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/operator/raft/peer".to_string())
+impl<C: hyper::client::connect::Connect>OperatorApi for OperatorApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn delete_operator_raft_peer(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/operator/raft/peer".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -52,13 +56,16 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -68,8 +75,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_operator_autopilot_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::AutopilotConfiguration, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/autopilot/configuration".to_string())
+    #[allow(unused_mut)]
+    fn get_operator_autopilot_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::AutopilotConfiguration, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/operator/autopilot/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -77,25 +85,32 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -107,8 +122,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_operator_autopilot_health(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::OperatorHealthReply, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/autopilot/health".to_string())
+    #[allow(unused_mut)]
+    fn get_operator_autopilot_health(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::OperatorHealthReply, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/operator/autopilot/health".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -116,25 +132,32 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -146,8 +169,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::RaftConfiguration, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/raft/configuration".to_string())
+    #[allow(unused_mut)]
+    fn get_operator_raft_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::RaftConfiguration, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/operator/raft/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -155,25 +179,32 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -185,8 +216,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_operator_scheduler_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerConfigurationResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/operator/scheduler/configuration".to_string())
+    #[allow(unused_mut)]
+    fn get_operator_scheduler_configuration(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::SchedulerConfigurationResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/operator/scheduler/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -194,25 +226,32 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -224,8 +263,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_operator_scheduler_configuration(&self, scheduler_configuration: crate::models::SchedulerConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::SchedulerSetConfigurationResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/operator/scheduler/configuration".to_string())
+    #[allow(unused_mut)]
+    fn post_operator_scheduler_configuration(&self, scheduler_configuration: Option<crate::models::SchedulerConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::SchedulerSetConfigurationResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/operator/scheduler/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -233,13 +273,16 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -249,8 +292,9 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn put_operator_autopilot_configuration(&self, autopilot_configuration: crate::models::AutopilotConfiguration, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = bool, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Put, "/operator/autopilot/configuration".to_string())
+    #[allow(unused_mut)]
+    fn put_operator_autopilot_configuration(&self, autopilot_configuration: Option<crate::models::AutopilotConfiguration>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<bool, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::PUT, "/operator/autopilot/configuration".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -258,13 +302,16 @@ impl<C: hyper::client::Connect>OperatorApi for OperatorApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());

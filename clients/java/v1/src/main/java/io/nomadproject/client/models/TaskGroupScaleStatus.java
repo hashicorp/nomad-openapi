@@ -56,6 +56,8 @@ public class TaskGroupScaleStatus {
   @SerializedName(SERIALIZED_NAME_UNHEALTHY)
   private Integer unhealthy;
 
+  public TaskGroupScaleStatus() { 
+  }
 
   public TaskGroupScaleStatus desired(Integer desired) {
     

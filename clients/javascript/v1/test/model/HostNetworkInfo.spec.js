@@ -50,7 +50,7 @@
   describe('HostNetworkInfo', function() {
     it('should create an instance of HostNetworkInfo', function() {
       // uncomment below and update the code to test HostNetworkInfo
-      //var instane = new nomad-client.HostNetworkInfo();
+      //var instance = new nomad-client.HostNetworkInfo();
       //expect(instance).to.be.a(nomad-client.HostNetworkInfo);
     });
 

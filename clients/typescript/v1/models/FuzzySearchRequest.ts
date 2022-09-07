@@ -126,7 +126,7 @@ export class FuzzySearchRequest {
     static getAttributeTypeMap() {
         return FuzzySearchRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

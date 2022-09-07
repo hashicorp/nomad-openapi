@@ -11,7 +11,6 @@
  */
 
 import { Affinity } from './Affinity';
-import { AnyType } from './AnyType';
 import { Constraint } from './Constraint';
 import { DispatchPayloadConfig } from './DispatchPayloadConfig';
 import { LogConfig } from './LogConfig';
@@ -31,7 +30,7 @@ export class Task {
     'affinities'?: Array<Affinity>;
     'artifacts'?: Array<TaskArtifact>;
     'cSIPluginConfig'?: TaskCSIPluginConfig;
-    'config'?: { [key: string]: AnyType; };
+    'config'?: { [key: string]: any; };
     'constraints'?: Array<Constraint>;
     'dispatchPayload'?: DispatchPayloadConfig;
     'driver'?: string;
@@ -78,7 +77,7 @@ export class Task {
         {
             "name": "config",
             "baseName": "Config",
-            "type": "{ [key: string]: AnyType; }",
+            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {
@@ -211,7 +210,7 @@ export class Task {
     static getAttributeTypeMap() {
         return Task.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

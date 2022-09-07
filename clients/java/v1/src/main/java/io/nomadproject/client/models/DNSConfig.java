@@ -43,6 +43,8 @@ public class DNSConfig {
   @SerializedName(SERIALIZED_NAME_SERVERS)
   private List<String> servers = null;
 
+  public DNSConfig() { 
+  }
 
   public DNSConfig options(List<String> options) {
     

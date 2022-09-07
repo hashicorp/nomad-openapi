@@ -40,6 +40,8 @@ public class CSIVolumeListExternalResponse {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<CSIVolumeExternalStub> volumes = null;
 
+  public CSIVolumeListExternalResponse() { 
+  }
 
   public CSIVolumeListExternalResponse nextToken(String nextToken) {
     

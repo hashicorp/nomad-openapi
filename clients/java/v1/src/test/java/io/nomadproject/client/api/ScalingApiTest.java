@@ -52,8 +52,7 @@ public class ScalingApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ScalingPolicyListStub> response = api.getScalingPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<ScalingPolicyListStub> response = api.getScalingPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -77,8 +76,7 @@ public class ScalingApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ScalingPolicy response = api.getScalingPolicy(policyID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                ScalingPolicy response = api.getScalingPolicy(policyID, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

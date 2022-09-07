@@ -56,7 +56,7 @@ export class TaskArtifact {
     static getAttributeTypeMap() {
         return TaskArtifact.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

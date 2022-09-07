@@ -33,6 +33,8 @@ public class NodeReservedNetworkResources {
   @SerializedName(SERIALIZED_NAME_RESERVED_HOST_PORTS)
   private String reservedHostPorts;
 
+  public NodeReservedNetworkResources() { 
+  }
 
   public NodeReservedNetworkResources reservedHostPorts(String reservedHostPorts) {
     

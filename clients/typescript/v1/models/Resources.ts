@@ -79,7 +79,7 @@ export class Resources {
     static getAttributeTypeMap() {
         return Resources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -42,7 +42,7 @@ export class ParameterizedJobConfig {
     static getAttributeTypeMap() {
         return ParameterizedJobConfig.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

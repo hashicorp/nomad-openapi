@@ -49,7 +49,7 @@ export class ConsulExposePath {
     static getAttributeTypeMap() {
         return ConsulExposePath.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

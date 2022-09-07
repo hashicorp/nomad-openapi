@@ -42,7 +42,7 @@ export class ConsulGatewayBindAddress {
     static getAttributeTypeMap() {
         return ConsulGatewayBindAddress.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

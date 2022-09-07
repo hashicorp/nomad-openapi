@@ -71,7 +71,7 @@ export class Namespace {
     static getAttributeTypeMap() {
         return Namespace.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

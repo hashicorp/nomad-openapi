@@ -69,6 +69,8 @@ public class AutopilotConfiguration {
   @SerializedName(SERIALIZED_NAME_SERVER_STABILIZATION_TIME)
   private String serverStabilizationTime;
 
+  public AutopilotConfiguration() { 
+  }
 
   public AutopilotConfiguration cleanupDeadServers(Boolean cleanupDeadServers) {
     

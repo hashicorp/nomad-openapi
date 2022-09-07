@@ -49,6 +49,8 @@ public class ACLPolicy {
   @SerializedName(SERIALIZED_NAME_RULES)
   private String rules;
 
+  public ACLPolicy() { 
+  }
 
   public ACLPolicy createIndex(Integer createIndex) {
     

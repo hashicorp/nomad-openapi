@@ -55,6 +55,8 @@ public class DeploymentPromoteRequest {
   @SerializedName(SERIALIZED_NAME_SECRET_I_D)
   private String secretID;
 
+  public DeploymentPromoteRequest() { 
+  }
 
   public DeploymentPromoteRequest all(Boolean all) {
     

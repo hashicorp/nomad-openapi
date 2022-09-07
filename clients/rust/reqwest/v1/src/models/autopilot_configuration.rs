@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AutopilotConfiguration {
     #[serde(rename = "CleanupDeadServers", skip_serializing_if = "Option::is_none")]
     pub cleanup_dead_servers: Option<bool>,

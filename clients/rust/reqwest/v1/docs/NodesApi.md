@@ -135,7 +135,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **node_id** | **String** | The ID of the node. | [required] |
-**node_update_drain_request** | [**NodeUpdateDrainRequest**](NodeUpdateDrainRequest.md) |  | [required] |
+**node_update_drain_request** | Option<[**NodeUpdateDrainRequest**](NodeUpdateDrainRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **index** | Option<**i32**> | If set, wait until query exceeds given index. Must be provided with WaitParam. |  |
@@ -173,7 +173,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **node_id** | **String** | The ID of the node. | [required] |
-**node_update_eligibility_request** | [**NodeUpdateEligibilityRequest**](NodeUpdateEligibilityRequest.md) |  | [required] |
+**node_update_eligibility_request** | Option<[**NodeUpdateEligibilityRequest**](NodeUpdateEligibilityRequest.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **index** | Option<**i32**> | If set, wait until query exceeds given index. Must be provided with WaitParam. |  |

@@ -41,6 +41,8 @@ public class CheckRestart {
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private Integer limit;
 
+  public CheckRestart() { 
+  }
 
   public CheckRestart grace(Long grace) {
     

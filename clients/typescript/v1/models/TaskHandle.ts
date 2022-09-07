@@ -35,7 +35,7 @@ export class TaskHandle {
     static getAttributeTypeMap() {
         return TaskHandle.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

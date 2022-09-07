@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Diff** | Pointer to **bool** |  | [optional] 
-**Job** | Pointer to [**Job**](Job.md) |  | [optional] 
+**Job** | Pointer to [**NullableJob**](Job.md) |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **PolicyOverride** | Pointer to **bool** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
@@ -80,6 +80,16 @@ SetJob sets Job field to given value.
 
 HasJob returns a boolean if a field has been set.
 
+### SetJobNil
+
+`func (o *JobPlanRequest) SetJobNil(b bool)`
+
+ SetJobNil sets the value for Job to be an explicit nil
+
+### UnsetJob
+`func (o *JobPlanRequest) UnsetJob()`
+
+UnsetJob ensures that no value is present for Job, not even an explicit nil
 ### GetNamespace
 
 `func (o *JobPlanRequest) GetNamespace() string`

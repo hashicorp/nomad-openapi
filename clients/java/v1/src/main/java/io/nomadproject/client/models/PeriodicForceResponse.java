@@ -41,6 +41,8 @@ public class PeriodicForceResponse {
   @SerializedName(SERIALIZED_NAME_INDEX)
   private Integer index;
 
+  public PeriodicForceResponse() { 
+  }
 
   public PeriodicForceResponse evalCreateIndex(Integer evalCreateIndex) {
     

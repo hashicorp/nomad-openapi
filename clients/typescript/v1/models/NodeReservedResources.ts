@@ -53,7 +53,7 @@ export class NodeReservedResources {
     static getAttributeTypeMap() {
         return NodeReservedResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -45,6 +45,8 @@ public class TaskCSIPluginConfig {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public TaskCSIPluginConfig() { 
+  }
 
   public TaskCSIPluginConfig healthTimeout(Long healthTimeout) {
     

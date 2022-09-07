@@ -41,6 +41,8 @@ public class SchedulerSetConfigurationResponse {
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private Boolean updated;
 
+  public SchedulerSetConfigurationResponse() { 
+  }
 
   public SchedulerSetConfigurationResponse lastIndex(Integer lastIndex) {
     

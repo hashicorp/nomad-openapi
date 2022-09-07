@@ -24,6 +24,7 @@ import io.nomadproject.client.models.Job;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * JobRegisterRequest
@@ -66,6 +67,8 @@ public class JobRegisterRequest {
   @SerializedName(SERIALIZED_NAME_SECRET_I_D)
   private String secretID;
 
+  public JobRegisterRequest() { 
+  }
 
   public JobRegisterRequest enforceIndex(Boolean enforceIndex) {
     
@@ -296,9 +299,20 @@ public class JobRegisterRequest {
         Objects.equals(this.secretID, jobRegisterRequest.secretID);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(enforceIndex, evalPriority, job, jobModifyIndex, namespace, policyOverride, preserveCounts, region, secretID);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

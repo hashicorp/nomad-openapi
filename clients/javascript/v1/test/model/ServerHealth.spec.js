@@ -50,7 +50,7 @@
   describe('ServerHealth', function() {
     it('should create an instance of ServerHealth', function() {
       // uncomment below and update the code to test ServerHealth
-      //var instane = new nomad-client.ServerHealth();
+      //var instance = new nomad-client.ServerHealth();
       //expect(instance).to.be.a(nomad-client.ServerHealth);
     });
 

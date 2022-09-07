@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * NetworkResource
@@ -69,6 +70,8 @@ public class NetworkResource {
   @SerializedName(SERIALIZED_NAME_RESERVED_PORTS)
   private List<Port> reservedPorts = null;
 
+  public NetworkResource() { 
+  }
 
   public NetworkResource CIDR(String CIDR) {
     
@@ -313,9 +316,20 @@ public class NetworkResource {
         Objects.equals(this.reservedPorts, networkResource.reservedPorts);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(CIDR, DNS, device, dynamicPorts, hostname, IP, mbits, mode, reservedPorts);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

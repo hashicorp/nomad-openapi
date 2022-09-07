@@ -114,7 +114,7 @@ export class CSIPlugin {
     static getAttributeTypeMap() {
         return CSIPlugin.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

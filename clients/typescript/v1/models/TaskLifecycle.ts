@@ -35,7 +35,7 @@ export class TaskLifecycle {
     static getAttributeTypeMap() {
         return TaskLifecycle.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

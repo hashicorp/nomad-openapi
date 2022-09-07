@@ -45,8 +45,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.DeleteACLPolicy(context.Background(), policyName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.DeleteACLPolicy(context.Background(), policyName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.DeleteACLPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,8 +119,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.DeleteACLToken(context.Background(), tokenAccessor).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.DeleteACLToken(context.Background(), tokenAccessor).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.DeleteACLToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,8 +197,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.GetACLPolicies(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.GetACLPolicies(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.GetACLPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.GetACLPolicy(context.Background(), policyName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.GetACLPolicy(context.Background(), policyName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.GetACLPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -364,8 +364,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.GetACLToken(context.Background(), tokenAccessor).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.GetACLToken(context.Background(), tokenAccessor).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.GetACLToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -449,8 +449,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.GetACLTokenSelf(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.GetACLTokenSelf(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.GetACLTokenSelf``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -529,8 +529,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.GetACLTokens(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.GetACLTokens(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.GetACLTokens``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -604,8 +604,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.PostACLBootstrap(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.PostACLBootstrap(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLBootstrap``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -676,8 +676,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.PostACLPolicy(context.Background(), policyName).ACLPolicy(aCLPolicy).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.PostACLPolicy(context.Background(), policyName).ACLPolicy(aCLPolicy).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -752,8 +752,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.PostACLToken(context.Background(), tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.PostACLToken(context.Background(), tokenAccessor).ACLToken(aCLToken).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -828,8 +828,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.PostACLTokenOnetime(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.PostACLTokenOnetime(context.Background()).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLTokenOnetime``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -899,8 +899,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ACLApi.PostACLTokenOnetimeExchange(context.Background()).OneTimeTokenExchangeRequest(oneTimeTokenExchangeRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ACLApi.PostACLTokenOnetimeExchange(context.Background()).OneTimeTokenExchangeRequest(oneTimeTokenExchangeRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ACLApi.PostACLTokenOnetimeExchange``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

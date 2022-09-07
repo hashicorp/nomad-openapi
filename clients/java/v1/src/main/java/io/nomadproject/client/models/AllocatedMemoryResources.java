@@ -37,6 +37,8 @@ public class AllocatedMemoryResources {
   @SerializedName(SERIALIZED_NAME_MEMORY_MAX_M_B)
   private Long memoryMaxMB;
 
+  public AllocatedMemoryResources() { 
+  }
 
   public AllocatedMemoryResources memoryMB(Long memoryMB) {
     

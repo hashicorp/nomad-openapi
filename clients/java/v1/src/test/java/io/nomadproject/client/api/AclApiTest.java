@@ -52,8 +52,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
-
+                api.deleteACLPolicy(policyName, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -72,8 +71,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
-
+                api.deleteACLToken(tokenAccessor, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -96,8 +94,7 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ACLPolicyListStub> response = api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<ACLPolicyListStub> response = api.getACLPolicies(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -121,8 +118,7 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLPolicy response = api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                ACLPolicy response = api.getACLPolicy(policyName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -146,8 +142,7 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLToken response = api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                ACLToken response = api.getACLToken(tokenAccessor, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -170,8 +165,7 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        ACLToken response = api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                ACLToken response = api.getACLTokenSelf(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -194,8 +188,7 @@ public class AclApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<ACLTokenListStub> response = api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<ACLTokenListStub> response = api.getACLTokens(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -213,8 +206,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
-
+                ACLToken response = api.postACLBootstrap(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -234,8 +226,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postACLPolicy(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
-
+                api.postACLPolicy(policyName, acLPolicy, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -255,8 +246,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
-
+                ACLToken response = api.postACLToken(tokenAccessor, acLToken, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -274,8 +264,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        OneTimeToken response = api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken);
-
+                OneTimeToken response = api.postACLTokenOnetime(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -294,8 +283,7 @@ public class AclApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        ACLToken response = api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
-
+                ACLToken response = api.postACLTokenOnetimeExchange(oneTimeTokenExchangeRequest, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

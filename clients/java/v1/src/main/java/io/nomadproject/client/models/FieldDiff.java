@@ -51,6 +51,8 @@ public class FieldDiff {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public FieldDiff() { 
+  }
 
   public FieldDiff annotations(List<String> annotations) {
     

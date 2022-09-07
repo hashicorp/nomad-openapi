@@ -49,7 +49,7 @@ export class Affinity {
     static getAttributeTypeMap() {
         return Affinity.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

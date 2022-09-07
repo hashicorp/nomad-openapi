@@ -43,7 +43,7 @@ export class Spread {
     static getAttributeTypeMap() {
         return Spread.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

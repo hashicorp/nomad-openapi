@@ -44,6 +44,8 @@ public class GaugeValue {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Float value;
 
+  public GaugeValue() { 
+  }
 
   public GaugeValue labels(Map<String, String> labels) {
     

@@ -44,6 +44,8 @@ public class Spread {
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private Integer weight;
 
+  public Spread() { 
+  }
 
   public Spread attribute(String attribute) {
     

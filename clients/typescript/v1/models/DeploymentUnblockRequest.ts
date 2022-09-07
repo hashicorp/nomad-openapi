@@ -49,7 +49,7 @@ export class DeploymentUnblockRequest {
     static getAttributeTypeMap() {
         return DeploymentUnblockRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

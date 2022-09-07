@@ -64,7 +64,7 @@ export class TaskGroupScaleStatus {
     static getAttributeTypeMap() {
         return TaskGroupScaleStatus.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

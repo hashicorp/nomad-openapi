@@ -37,6 +37,8 @@ public class MultiregionStrategy {
   @SerializedName(SERIALIZED_NAME_ON_FAILURE)
   private String onFailure;
 
+  public MultiregionStrategy() { 
+  }
 
   public MultiregionStrategy maxParallel(Integer maxParallel) {
     

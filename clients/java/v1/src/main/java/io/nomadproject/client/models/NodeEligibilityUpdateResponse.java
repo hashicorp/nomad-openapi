@@ -51,6 +51,8 @@ public class NodeEligibilityUpdateResponse {
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
 
+  public NodeEligibilityUpdateResponse() { 
+  }
 
   public NodeEligibilityUpdateResponse evalCreateIndex(Integer evalCreateIndex) {
     

@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct CsiPlugin {
     #[serde(rename = "Allocations", skip_serializing_if = "Option::is_none")]
     pub allocations: Option<Vec<crate::models::AllocationListStub>>,

@@ -15,7 +15,7 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `get_fuzzy_search`
+/// struct for typed errors of method [`get_fuzzy_search`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetFuzzySearchError {
@@ -26,7 +26,7 @@ pub enum GetFuzzySearchError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `get_search`
+/// struct for typed errors of method [`get_search`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetSearchError {
@@ -38,11 +38,12 @@ pub enum GetSearchError {
 }
 
 
-pub async fn get_fuzzy_search(configuration: &configuration::Configuration, fuzzy_search_request: crate::models::FuzzySearchRequest, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::FuzzySearchResponse, Error<GetFuzzySearchError>> {
+pub async fn get_fuzzy_search(configuration: &configuration::Configuration, fuzzy_search_request: Option<crate::models::FuzzySearchRequest>, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::FuzzySearchResponse, Error<GetFuzzySearchError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/search/fuzzy", configuration.base_path);
+    let local_var_uri_str = format!("{}/search/fuzzy", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -66,7 +67,7 @@ pub async fn get_fuzzy_search(configuration: &configuration::Configuration, fuzz
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -75,7 +76,7 @@ pub async fn get_fuzzy_search(configuration: &configuration::Configuration, fuzz
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
@@ -100,11 +101,12 @@ pub async fn get_fuzzy_search(configuration: &configuration::Configuration, fuzz
     }
 }
 
-pub async fn get_search(configuration: &configuration::Configuration, search_request: crate::models::SearchRequest, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::SearchResponse, Error<GetSearchError>> {
+pub async fn get_search(configuration: &configuration::Configuration, search_request: Option<crate::models::SearchRequest>, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Result<crate::models::SearchResponse, Error<GetSearchError>> {
+    let local_var_configuration = configuration;
 
-    let local_var_client = &configuration.client;
+    let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/search", configuration.base_path);
+    let local_var_uri_str = format!("{}/search", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = region {
@@ -128,7 +130,7 @@ pub async fn get_search(configuration: &configuration::Configuration, search_req
     if let Some(ref local_var_str) = next_token {
         local_var_req_builder = local_var_req_builder.query(&[("next_token", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
     if let Some(local_var_param_value) = index {
@@ -137,7 +139,7 @@ pub async fn get_search(configuration: &configuration::Configuration, search_req
     if let Some(local_var_param_value) = x_nomad_token {
         local_var_req_builder = local_var_req_builder.header("X-Nomad-Token", local_var_param_value.to_string());
     }
-    if let Some(ref local_var_apikey) = configuration.api_key {
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),

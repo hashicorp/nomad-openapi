@@ -27,6 +27,7 @@ import io.nomadproject.client.models.NodeReservedNetworkResources;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * NodeReservedResources
@@ -49,6 +50,8 @@ public class NodeReservedResources {
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   private NodeReservedNetworkResources networks;
 
+  public NodeReservedResources() { 
+  }
 
   public NodeReservedResources cpu(NodeReservedCpuResources cpu) {
     
@@ -157,9 +160,20 @@ public class NodeReservedResources {
         Objects.equals(this.networks, nodeReservedResources.networks);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(cpu, disk, memory, networks);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

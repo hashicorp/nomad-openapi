@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * JobListStub
@@ -100,6 +101,8 @@ public class JobListStub {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public JobListStub() { 
+  }
 
   public JobListStub createIndex(Integer createIndex) {
     
@@ -534,9 +537,20 @@ public class JobListStub {
         Objects.equals(this.type, jobListStub.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(createIndex, datacenters, ID, jobModifyIndex, jobSummary, modifyIndex, name, namespace, parameterizedJob, parentID, periodic, priority, status, statusDescription, stop, submitTime, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

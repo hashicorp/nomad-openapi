@@ -91,6 +91,8 @@ public class AllocationMetric {
   @SerializedName(SERIALIZED_NAME_SCORES)
   private Map<String, Double> scores = null;
 
+  public AllocationMetric() { 
+  }
 
   public AllocationMetric allocationTime(Long allocationTime) {
     

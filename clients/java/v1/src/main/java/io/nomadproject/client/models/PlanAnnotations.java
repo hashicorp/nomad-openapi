@@ -43,6 +43,8 @@ public class PlanAnnotations {
   @SerializedName(SERIALIZED_NAME_PREEMPTED_ALLOCS)
   private List<AllocationListStub> preemptedAllocs = null;
 
+  public PlanAnnotations() { 
+  }
 
   public PlanAnnotations desiredTGUpdates(Map<String, DesiredUpdates> desiredTGUpdates) {
     

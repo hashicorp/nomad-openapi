@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct OperatorHealthReply {
     #[serde(rename = "FailureTolerance", skip_serializing_if = "Option::is_none")]
     pub failure_tolerance: Option<i32>,

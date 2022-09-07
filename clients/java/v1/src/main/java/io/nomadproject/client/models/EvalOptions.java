@@ -33,6 +33,8 @@ public class EvalOptions {
   @SerializedName(SERIALIZED_NAME_FORCE_RESCHEDULE)
   private Boolean forceReschedule;
 
+  public EvalOptions() { 
+  }
 
   public EvalOptions forceReschedule(Boolean forceReschedule) {
     

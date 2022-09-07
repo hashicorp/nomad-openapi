@@ -36,6 +36,8 @@ public class ConsulTerminatingConfigEntry {
   @SerializedName(SERIALIZED_NAME_SERVICES)
   private List<ConsulLinkedService> services = null;
 
+  public ConsulTerminatingConfigEntry() { 
+  }
 
   public ConsulTerminatingConfigEntry services(List<ConsulLinkedService> services) {
     

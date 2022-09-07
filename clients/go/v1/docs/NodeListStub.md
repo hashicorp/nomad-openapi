@@ -11,12 +11,12 @@ Name | Type | Description | Notes
 **Drain** | Pointer to **bool** |  | [optional] 
 **Drivers** | Pointer to [**map[string]DriverInfo**](DriverInfo.md) |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
-**LastDrain** | Pointer to [**DrainMetadata**](DrainMetadata.md) |  | [optional] 
+**LastDrain** | Pointer to [**NullableDrainMetadata**](DrainMetadata.md) |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NodeClass** | Pointer to **string** |  | [optional] 
-**NodeResources** | Pointer to [**NodeResources**](NodeResources.md) |  | [optional] 
-**ReservedResources** | Pointer to [**NodeReservedResources**](NodeReservedResources.md) |  | [optional] 
+**NodeResources** | Pointer to [**NullableNodeResources**](NodeResources.md) |  | [optional] 
+**ReservedResources** | Pointer to [**NullableNodeReservedResources**](NodeReservedResources.md) |  | [optional] 
 **SchedulingEligibility** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDescription** | Pointer to **string** |  | [optional] 
@@ -241,6 +241,16 @@ SetLastDrain sets LastDrain field to given value.
 
 HasLastDrain returns a boolean if a field has been set.
 
+### SetLastDrainNil
+
+`func (o *NodeListStub) SetLastDrainNil(b bool)`
+
+ SetLastDrainNil sets the value for LastDrain to be an explicit nil
+
+### UnsetLastDrain
+`func (o *NodeListStub) UnsetLastDrain()`
+
+UnsetLastDrain ensures that no value is present for LastDrain, not even an explicit nil
 ### GetModifyIndex
 
 `func (o *NodeListStub) GetModifyIndex() int32`
@@ -341,6 +351,16 @@ SetNodeResources sets NodeResources field to given value.
 
 HasNodeResources returns a boolean if a field has been set.
 
+### SetNodeResourcesNil
+
+`func (o *NodeListStub) SetNodeResourcesNil(b bool)`
+
+ SetNodeResourcesNil sets the value for NodeResources to be an explicit nil
+
+### UnsetNodeResources
+`func (o *NodeListStub) UnsetNodeResources()`
+
+UnsetNodeResources ensures that no value is present for NodeResources, not even an explicit nil
 ### GetReservedResources
 
 `func (o *NodeListStub) GetReservedResources() NodeReservedResources`
@@ -366,6 +386,16 @@ SetReservedResources sets ReservedResources field to given value.
 
 HasReservedResources returns a boolean if a field has been set.
 
+### SetReservedResourcesNil
+
+`func (o *NodeListStub) SetReservedResourcesNil(b bool)`
+
+ SetReservedResourcesNil sets the value for ReservedResources to be an explicit nil
+
+### UnsetReservedResources
+`func (o *NodeListStub) UnsetReservedResources()`
+
+UnsetReservedResources ensures that no value is present for ReservedResources, not even an explicit nil
 ### GetSchedulingEligibility
 
 `func (o *NodeListStub) GetSchedulingEligibility() string`

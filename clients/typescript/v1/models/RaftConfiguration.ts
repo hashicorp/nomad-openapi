@@ -36,7 +36,7 @@ export class RaftConfiguration {
     static getAttributeTypeMap() {
         return RaftConfiguration.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -33,6 +33,8 @@ public class NodeDiskResources {
   @SerializedName(SERIALIZED_NAME_DISK_M_B)
   private Long diskMB;
 
+  public NodeDiskResources() { 
+  }
 
   public NodeDiskResources diskMB(Long diskMB) {
     

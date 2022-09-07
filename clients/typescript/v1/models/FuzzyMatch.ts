@@ -35,7 +35,7 @@ export class FuzzyMatch {
     static getAttributeTypeMap() {
         return FuzzyMatch.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

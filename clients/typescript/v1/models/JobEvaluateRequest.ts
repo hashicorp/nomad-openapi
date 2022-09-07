@@ -57,7 +57,7 @@ export class JobEvaluateRequest {
     static getAttributeTypeMap() {
         return JobEvaluateRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -61,6 +61,8 @@ public class JobDeregisterResponse {
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
 
+  public JobDeregisterResponse() { 
+  }
 
   public JobDeregisterResponse evalCreateIndex(Integer evalCreateIndex) {
     

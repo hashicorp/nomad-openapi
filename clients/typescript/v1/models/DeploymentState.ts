@@ -91,7 +91,7 @@ export class DeploymentState {
     static getAttributeTypeMap() {
         return DeploymentState.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

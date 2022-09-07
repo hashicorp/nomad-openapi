@@ -45,8 +45,7 @@ public class SystemApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
-
+                api.putSystemGC(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -64,8 +63,7 @@ public class SystemApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
-
+                api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

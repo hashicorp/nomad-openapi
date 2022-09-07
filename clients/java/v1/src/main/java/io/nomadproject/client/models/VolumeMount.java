@@ -45,6 +45,8 @@ public class VolumeMount {
   @SerializedName(SERIALIZED_NAME_VOLUME)
   private String volume;
 
+  public VolumeMount() { 
+  }
 
   public VolumeMount destination(String destination) {
     

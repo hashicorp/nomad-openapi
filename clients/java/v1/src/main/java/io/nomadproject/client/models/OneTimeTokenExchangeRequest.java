@@ -33,6 +33,8 @@ public class OneTimeTokenExchangeRequest {
   @SerializedName(SERIALIZED_NAME_ONE_TIME_SECRET_I_D)
   private String oneTimeSecretID;
 
+  public OneTimeTokenExchangeRequest() { 
+  }
 
   public OneTimeTokenExchangeRequest oneTimeSecretID(String oneTimeSecretID) {
     

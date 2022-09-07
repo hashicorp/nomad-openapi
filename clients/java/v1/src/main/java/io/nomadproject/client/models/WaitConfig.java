@@ -37,6 +37,8 @@ public class WaitConfig {
   @SerializedName(SERIALIZED_NAME_MIN)
   private Long min;
 
+  public WaitConfig() { 
+  }
 
   public WaitConfig max(Long max) {
     

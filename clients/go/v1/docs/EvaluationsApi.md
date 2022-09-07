@@ -41,8 +41,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EvaluationsApi.GetEvaluation(context.Background(), evalID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EvaluationsApi.GetEvaluation(context.Background(), evalID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EvaluationsApi.GetEvaluation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,8 +127,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EvaluationsApi.GetEvaluationAllocations(context.Background(), evalID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EvaluationsApi.GetEvaluationAllocations(context.Background(), evalID).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EvaluationsApi.GetEvaluationAllocations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EvaluationsApi.GetEvaluations(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EvaluationsApi.GetEvaluations(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EvaluationsApi.GetEvaluations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

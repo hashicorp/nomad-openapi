@@ -37,6 +37,8 @@ public class HostVolumeInfo {
   @SerializedName(SERIALIZED_NAME_READ_ONLY)
   private Boolean readOnly;
 
+  public HostVolumeInfo() { 
+  }
 
   public HostVolumeInfo path(String path) {
     

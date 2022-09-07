@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct LogConfig {
     #[serde(rename = "MaxFileSizeMB", skip_serializing_if = "Option::is_none")]
     pub max_file_size_mb: Option<i32>,

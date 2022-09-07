@@ -53,6 +53,8 @@ public class JobDispatchResponse {
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
   private Long requestTime;
 
+  public JobDispatchResponse() { 
+  }
 
   public JobDispatchResponse dispatchedJobID(String dispatchedJobID) {
     

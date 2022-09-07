@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SchedulerConfigurationResponse {
     #[serde(rename = "KnownLeader", skip_serializing_if = "Option::is_none")]
     pub known_leader: Option<bool>,

@@ -39,6 +39,8 @@ public class ConsulIngressService {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public ConsulIngressService() { 
+  }
 
   public ConsulIngressService hosts(List<String> hosts) {
     

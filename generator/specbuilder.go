@@ -52,7 +52,26 @@ type specBuilder struct {
 
 func (b *specBuilder) buildSpec() (*spec, error) {
 	b.logger = hclog.Default()
-	b.kingen = openapi3gen.NewGenerator(openapi3gen.UseAllExportedFields())
+
+	requiredCustomizerFn := func(name string, ft reflect.Type, tag reflect.StructTag, schema *openapi3.Schema) error {
+		if ft.Kind() == reflect.Ptr {
+			schema.Nullable = true
+			return nil
+		}
+
+		if ft.Kind() != reflect.Struct {
+			return nil
+		}
+
+		for i := 0; i < ft.NumField(); i++ {
+			if ft.Field(i).Type.Kind() != reflect.Ptr {
+				schema.Nullable = true
+			}
+		}
+		return nil
+	}
+
+	b.kingen = openapi3gen.NewGenerator(openapi3gen.UseAllExportedFields(), openapi3gen.SchemaCustomizer(requiredCustomizerFn))
 	// TODO: Eventually may need to support multiple OpenAPI versions, but pushing
 	// that off for now.
 	b.spec = &spec{
@@ -414,35 +433,78 @@ func (b *specBuilder) getOrCreateSchemaRef(model reflect.Type) (*openapi3.Schema
 }
 
 func (b *specBuilder) resolveRefPaths() {
-	for _, schemaRef := range b.spec.Model.Components.Schemas {
+	firedHandlers := map[string]int{}
+	// DEBUG NOTE: These are maps with schema and property names
+	for schemaName, schemaRef := range b.spec.Model.Components.Schemas {
 		// Next make sure the refs point to other schemas, if not already done.
-		for _, propertyRef := range schemaRef.Value.Properties {
+		for propertyName, propertyRef := range schemaRef.Value.Properties {
 			if strings.Contains(propertyRef.Ref, schemaPath) {
 				continue
 			}
 
+			if schemaName == "SearchResponse" && propertyName == "Matches" {
+				fmt.Println("got here")
+			}
+
 			if isBasic(propertyRef.Value.Type) {
 				propertyRef.Ref = ""
+				firedHandlers["basic handler"] += firedHandlers["basic handler"]
 			} else if propertyRef.Value.Type == "array" {
 				propertyRef.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.Items, propertyRef.Value.Items.Ref)
+				firedHandlers["array handler"] += firedHandlers["array handler"]
 			} else if propertyRef.Value.AdditionalProperties != nil {
 				// This handles maps
-				if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
-					propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
-				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
-					propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
-				} else if len(propertyRef.Ref) != 0 {
+				// If the property has a ref, then format it.
+				if len(propertyRef.Ref) != 0 {
 					propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
+					firedHandlers["map set set property ref handler"] += firedHandlers["map set set property ref handler"]
+				}
+
+				// TODO: Keeping this previous version until we prove this empty string check removal from isBasic is valid.
+				// isBasic(propertyRef.Value.AdditionalProperties.Ref) && propertyRef.Value.AdditionalProperties.Ref != "" {
+				// if the map element is for a basic type, clear it so that built in types are handled.
+				if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
+					propertyRef.Value.AdditionalProperties.Ref = ""
+					firedHandlers["map basic handler"] += firedHandlers["map basic handler"]
+				} else if propertyRef.Value.AdditionalProperties.Value.Type == "object" {
+					// Handle mapping of map of maps.
+					if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
+						propertyRef.Value.AdditionalProperties.Value.Type = propertyRef.Value.AdditionalProperties.Ref
+						propertyRef.Value.AdditionalProperties.Ref = ""
+						firedHandlers["map clear embedded map basic handler"] += firedHandlers["map clear embedded map basic handler"]
+					} else {
+						propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
+						firedHandlers["map set embedded map complex handler"] += firedHandlers["map set embedded map complex handler"]
+					}
+				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
+					if isBasic(propertyRef.Value.AdditionalProperties.Value.Items.Ref) {
+						propertyRef.Value.AdditionalProperties.Value.Items.Value.Type = propertyRef.Value.AdditionalProperties.Value.Items.Ref
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = ""
+						firedHandlers["map clear embedded array basic handler"] += firedHandlers["map clear embedded array basic handler"]
+					} else {
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
+						firedHandlers["map set embedded array complex handler"] += firedHandlers["map set embedded array complex handler"]
+					}
+				} else if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
+					propertyRef.Value.AdditionalProperties.Ref = fmt.Sprintf("#/components/schemas/%s", propertyRef.Value.AdditionalProperties.Ref)
+					firedHandlers["map set embedded map ref handler"] += firedHandlers["map set embedded map ref handler"]
 				}
 			} else {
 				propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
+				firedHandlers["set property ref handler"] += firedHandlers["set property ref handler"]
 			}
 		}
+	}
+
+	for handler, count := range firedHandlers {
+		fmt.Println(handler + ": " + fmt.Sprint(count))
 	}
 }
 
 func isBasic(typ string) bool {
-	return typ == "" || typ == "integer" || typ == "number" || typ == "string" || typ == "boolean" || typ == "bool"
+	return typ == "integer" || typ == "number" || typ == "string" || typ == "boolean" || typ == "bool"
+	// TODO: Keeping this previous version until we prove that removing the empty string check is valid.
+	// return typ == "" || typ == "integer" || typ == "number" || typ == "string" || typ == "boolean" || typ == "bool"
 }
 
 func formatSchemaRefPath(ref *openapi3.SchemaRef, modelName string) string {

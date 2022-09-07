@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -152,6 +153,8 @@ public class Evaluation {
   @SerializedName(SERIALIZED_NAME_WAIT_UNTIL)
   private OffsetDateTime waitUntil;
 
+  public Evaluation() { 
+  }
 
   public Evaluation annotatePlan(Boolean annotatePlan) {
     
@@ -902,9 +905,20 @@ public class Evaluation {
         Objects.equals(this.waitUntil, evaluation.waitUntil);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(annotatePlan, blockedEval, classEligibility, createIndex, createTime, deploymentID, escapedComputedClass, failedTGAllocs, ID, jobID, jobModifyIndex, modifyIndex, modifyTime, namespace, nextEval, nodeID, nodeModifyIndex, previousEval, priority, queuedAllocations, quotaLimitReached, relatedEvals, snapshotIndex, status, statusDescription, triggeredBy, type, wait, waitUntil);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

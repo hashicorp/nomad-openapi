@@ -60,6 +60,8 @@ public class TaskGroupDiff {
   @SerializedName(SERIALIZED_NAME_UPDATES)
   private Map<String, Integer> updates = null;
 
+  public TaskGroupDiff() { 
+  }
 
   public TaskGroupDiff fields(List<FieldDiff> fields) {
     

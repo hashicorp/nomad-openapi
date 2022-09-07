@@ -35,7 +35,7 @@ export class AllocatedMemoryResources {
     static getAttributeTypeMap() {
         return AllocatedMemoryResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

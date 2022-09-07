@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **diff** | [**JobDiff**](JobDiff.md) |  | [optional] 
 **failed_tg_allocs** | [**{str: (AllocationMetric,)}**](AllocationMetric.md) |  | [optional] 
 **job_modify_index** | **int** |  | [optional] 
-**next_periodic_launch** | **datetime** |  | [optional] 
+**next_periodic_launch** | **datetime, none_type** |  | [optional] 
 **warnings** | **str** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

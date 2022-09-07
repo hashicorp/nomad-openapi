@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Listeners** | Pointer to [**[]ConsulIngressListener**](ConsulIngressListener.md) |  | [optional] 
-**TLS** | Pointer to [**ConsulGatewayTLSConfig**](ConsulGatewayTLSConfig.md) |  | [optional] 
+**TLS** | Pointer to [**NullableConsulGatewayTLSConfig**](ConsulGatewayTLSConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -76,6 +76,16 @@ SetTLS sets TLS field to given value.
 
 HasTLS returns a boolean if a field has been set.
 
+### SetTLSNil
+
+`func (o *ConsulIngressConfigEntry) SetTLSNil(b bool)`
+
+ SetTLSNil sets the value for TLS to be an explicit nil
+
+### UnsetTLS
+`func (o *ConsulIngressConfigEntry) UnsetTLS()`
+
+UnsetTLS ensures that no value is present for TLS, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

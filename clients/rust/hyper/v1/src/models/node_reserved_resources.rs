@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct NodeReservedResources {
     #[serde(rename = "Cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<Box<crate::models::NodeReservedCpuResources>>,

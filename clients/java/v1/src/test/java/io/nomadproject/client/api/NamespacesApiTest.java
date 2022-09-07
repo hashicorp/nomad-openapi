@@ -46,8 +46,7 @@ public class NamespacesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.createNamespace(region, namespace, xNomadToken, idempotencyToken);
-
+                api.createNamespace(region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -66,8 +65,7 @@ public class NamespacesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.deleteNamespace(namespaceName, region, namespace, xNomadToken, idempotencyToken);
-
+                api.deleteNamespace(namespaceName, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     
@@ -91,8 +89,7 @@ public class NamespacesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        Namespace response = api.getNamespace(namespaceName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                Namespace response = api.getNamespace(namespaceName, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -115,8 +112,7 @@ public class NamespacesApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        List<Namespace> response = api.getNamespaces(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                List<Namespace> response = api.getNamespaces(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -136,8 +132,7 @@ public class NamespacesApiTest {
         String namespace = null;
         String xNomadToken = null;
         String idempotencyToken = null;
-        api.postNamespace(namespaceName, namespace2, region, namespace, xNomadToken, idempotencyToken);
-
+                api.postNamespace(namespaceName, namespace2, region, namespace, xNomadToken, idempotencyToken);
         // TODO: test validations
     }
     

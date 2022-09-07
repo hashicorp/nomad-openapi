@@ -33,6 +33,8 @@ public class NodeDeviceLocality {
   @SerializedName(SERIALIZED_NAME_PCI_BUS_I_D)
   private String pciBusID;
 
+  public NodeDeviceLocality() { 
+  }
 
   public NodeDeviceLocality pciBusID(String pciBusID) {
     

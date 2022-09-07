@@ -53,6 +53,8 @@ public class TaskDiff {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public TaskDiff() { 
+  }
 
   public TaskDiff annotations(List<String> annotations) {
     

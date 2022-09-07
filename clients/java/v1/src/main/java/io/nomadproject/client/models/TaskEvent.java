@@ -132,6 +132,8 @@ public class TaskEvent {
   @SerializedName(SERIALIZED_NAME_VAULT_ERROR)
   private String vaultError;
 
+  public TaskEvent() { 
+  }
 
   public TaskEvent details(Map<String, String> details) {
     

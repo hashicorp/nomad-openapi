@@ -52,8 +52,8 @@ func (j *Jobs) Delete(ctx context.Context, jobName string, purge, global bool) (
 		return nil, nil, err
 	}
 
-	final := result.(client.JobDeregisterResponse)
-	return &final, meta, nil
+	final := result.(*client.JobDeregisterResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Deployment(ctx context.Context, jobName string) (*client.Deployment, *QueryMeta, OpenAPIError) {
@@ -68,8 +68,8 @@ func (j *Jobs) Deployment(ctx context.Context, jobName string) (*client.Deployme
 		return nil, nil, err
 	}
 
-	final := result.(client.Deployment)
-	return &final, meta, nil
+	final := result.(*client.Deployment)
+	return final, meta, nil
 }
 
 func (j *Jobs) Deployments(ctx context.Context, jobName string) (*[]client.Deployment, *QueryMeta, OpenAPIError) {
@@ -106,8 +106,8 @@ func (j *Jobs) Dispatch(ctx context.Context, jobName string, payload string, met
 		return nil, nil, err
 	}
 
-	final := result.(client.JobDispatchResponse)
-	return &final, writeMeta, nil
+	final := result.(*client.JobDispatchResponse)
+	return final, writeMeta, nil
 }
 
 func (j *Jobs) EnforceRegister(ctx context.Context, job *client.Job, modifyIndex uint64) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
@@ -137,8 +137,8 @@ func (j *Jobs) Evaluate(ctx context.Context, jobName string, forceReschedule boo
 		return nil, nil, err
 	}
 
-	final := result.(client.JobRegisterResponse)
-	return &final, meta, nil
+	final := result.(*client.JobRegisterResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) GetJob(ctx context.Context, jobName string) (*client.Job, *QueryMeta, OpenAPIError) {
@@ -153,8 +153,8 @@ func (j *Jobs) GetJob(ctx context.Context, jobName string) (*client.Job, *QueryM
 		return nil, nil, err
 	}
 
-	final := result.(client.Job)
-	return &final, meta, nil
+	final := result.(*client.Job)
+	return final, meta, nil
 }
 
 func (j *Jobs) GetJobs(ctx context.Context) (*[]client.JobListStub, *QueryMeta, OpenAPIError) {
@@ -188,8 +188,8 @@ func (j *Jobs) Parse(ctx context.Context, hcl string, canonicalize, hclV1 bool) 
 		return nil, err
 	}
 
-	final := result.(client.Job)
-	return &final, nil
+	final := result.(*client.Job)
+	return final, nil
 }
 
 type PlanOpts struct {
@@ -209,8 +209,8 @@ func (j *Jobs) PeriodicForce(ctx context.Context, jobName string) (*client.Perio
 		return nil, nil, err
 	}
 
-	final := result.(client.PeriodicForceResponse)
-	return &final, meta, nil
+	final := result.(*client.PeriodicForceResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Plan(ctx context.Context, job *client.Job, diff bool) (*client.JobPlanResponse, *WriteMeta, OpenAPIError) {
@@ -233,8 +233,8 @@ func (j *Jobs) PlanOpts(ctx context.Context, job *client.Job, opts *PlanOpts) (*
 		return nil, nil, err
 	}
 
-	final := result.(client.JobPlanResponse)
-	return &final, meta, nil
+	final := result.(*client.JobPlanResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Post(ctx context.Context, job *client.Job) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
@@ -274,8 +274,8 @@ func (j *Jobs) Register(ctx context.Context, job *client.Job, registerOpts *Regi
 		return nil, nil, err
 	}
 
-	final := result.(client.JobRegisterResponse)
-	return &final, meta, nil
+	final := result.(*client.JobRegisterResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Revert(ctx context.Context, jobName string, versionNumber, enforcePriorVersion int32, consulToken, vaultToken string) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
@@ -308,8 +308,8 @@ func (j *Jobs) Revert(ctx context.Context, jobName string, versionNumber, enforc
 		return nil, nil, err
 	}
 
-	final := result.(client.JobRegisterResponse)
-	return &final, meta, nil
+	final := result.(*client.JobRegisterResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Scale(ctx context.Context, jobName string, count int64, msg string, target map[string]string) (*client.JobRegisterResponse, *WriteMeta, OpenAPIError) {
@@ -331,8 +331,8 @@ func (j *Jobs) Scale(ctx context.Context, jobName string, count int64, msg strin
 		return nil, nil, err
 	}
 
-	final := result.(client.JobRegisterResponse)
-	return &final, meta, nil
+	final := result.(*client.JobRegisterResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) ScaleStatus(ctx context.Context, jobName string) (*client.JobScaleStatusResponse, *QueryMeta, OpenAPIError) {
@@ -347,8 +347,8 @@ func (j *Jobs) ScaleStatus(ctx context.Context, jobName string) (*client.JobScal
 		return nil, nil, err
 	}
 
-	final := result.(client.JobScaleStatusResponse)
-	return &final, meta, nil
+	final := result.(*client.JobScaleStatusResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Stability(ctx context.Context, jobName string, versionNumber int32, stable bool) (*client.JobStabilityResponse, *WriteMeta, OpenAPIError) {
@@ -370,8 +370,8 @@ func (j *Jobs) Stability(ctx context.Context, jobName string, versionNumber int3
 		return nil, nil, err
 	}
 
-	final := result.(client.JobStabilityResponse)
-	return &final, meta, nil
+	final := result.(*client.JobStabilityResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) Summary(ctx context.Context, jobName string) (*client.JobSummary, *QueryMeta, OpenAPIError) {
@@ -386,8 +386,8 @@ func (j *Jobs) Summary(ctx context.Context, jobName string) (*client.JobSummary,
 		return nil, nil, err
 	}
 
-	final := result.(client.JobSummary)
-	return &final, meta, nil
+	final := result.(*client.JobSummary)
+	return final, meta, nil
 }
 
 func (j *Jobs) Versions(ctx context.Context, jobName string, withDiffs bool) (*client.JobVersionsResponse, *QueryMeta, OpenAPIError) {
@@ -402,8 +402,8 @@ func (j *Jobs) Versions(ctx context.Context, jobName string, withDiffs bool) (*c
 		return nil, nil, err
 	}
 
-	final := result.(client.JobVersionsResponse)
-	return &final, meta, nil
+	final := result.(*client.JobVersionsResponse)
+	return final, meta, nil
 }
 
 func (j *Jobs) GetLocation(job *client.Job) (*time.Location, error) {
@@ -416,7 +416,7 @@ func (j *Jobs) GetLocation(job *client.Job) (*time.Location, error) {
 }
 
 func (j *Jobs) IsMultiRegion(job *client.Job) bool {
-	return job.Multiregion != nil && *job.Multiregion.Regions != nil && len(*job.Multiregion.Regions) > 0
+	return job.Multiregion.IsSet() && job.Multiregion.Get().Regions != nil && len(job.Multiregion.Get().Regions) > 0
 }
 
 func (j *Jobs) IsParameterized(job *client.Job) bool {
@@ -424,7 +424,7 @@ func (j *Jobs) IsParameterized(job *client.Job) bool {
 	if job.Dispatched != nil {
 		dispatched = *job.Dispatched
 	}
-	return job.ParameterizedJob != nil && !dispatched
+	return job.ParameterizedJob.IsSet() && !dispatched
 }
 
 func (j *Jobs) IsPeriodic(job *client.Job) bool {

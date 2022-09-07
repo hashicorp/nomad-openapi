@@ -33,6 +33,8 @@ public class NodeReservedMemoryResources {
   @SerializedName(SERIALIZED_NAME_MEMORY_M_B)
   private Integer memoryMB;
 
+  public NodeReservedMemoryResources() { 
+  }
 
   public NodeReservedMemoryResources memoryMB(Integer memoryMB) {
     

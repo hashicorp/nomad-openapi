@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -34,9 +34,11 @@ def lazy_import():
     from nomad_client.model.field_diff import FieldDiff
     from nomad_client.model.object_diff import ObjectDiff
     from nomad_client.model.task_diff import TaskDiff
+    from nomad_client.model.uint64 import Uint64
     globals()['FieldDiff'] = FieldDiff
     globals()['ObjectDiff'] = ObjectDiff
     globals()['TaskDiff'] = TaskDiff
+    globals()['Uint64'] = Uint64
 
 
 class TaskGroupDiff(ModelNormal):
@@ -78,7 +80,7 @@ class TaskGroupDiff(ModelNormal):
         lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -97,7 +99,7 @@ class TaskGroupDiff(ModelNormal):
             'objects': ([ObjectDiff],),  # noqa: E501
             'tasks': ([TaskDiff],),  # noqa: E501
             'type': (str,),  # noqa: E501
-            'updates': ({str: (int,)},),  # noqa: E501
+            'updates': ({str: (Uint64,)},),  # noqa: E501
         }
 
     @cached_property
@@ -160,7 +162,7 @@ class TaskGroupDiff(ModelNormal):
             objects ([ObjectDiff]): [optional]  # noqa: E501
             tasks ([TaskDiff]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            updates ({str: (int,)}): [optional]  # noqa: E501
+            updates ({str: (Uint64,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -247,7 +249,7 @@ class TaskGroupDiff(ModelNormal):
             objects ([ObjectDiff]): [optional]  # noqa: E501
             tasks ([TaskDiff]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            updates ({str: (int,)}): [optional]  # noqa: E501
+            updates ({str: (Uint64,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -92,6 +92,8 @@ public class FuzzySearchRequest {
   @SerializedName(SERIALIZED_NAME_WAIT_TIME)
   private Long waitTime;
 
+  public FuzzySearchRequest() { 
+  }
 
   public FuzzySearchRequest allowStale(Boolean allowStale) {
     

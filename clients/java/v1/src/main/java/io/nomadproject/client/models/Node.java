@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Node
@@ -159,6 +160,8 @@ public class Node {
   @SerializedName(SERIALIZED_NAME_TL_S_ENABLED)
   private Boolean tlSEnabled;
 
+  public Node() { 
+  }
 
   public Node attributes(Map<String, String> attributes) {
     
@@ -943,9 +946,20 @@ public class Node {
         Objects.equals(this.tlSEnabled, node.tlSEnabled);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(attributes, csIControllerPlugins, csINodePlugins, cgroupParent, createIndex, datacenter, drain, drainStrategy, drivers, events, htTPAddr, hostNetworks, hostVolumes, ID, lastDrain, links, meta, modifyIndex, name, nodeClass, nodeResources, reserved, reservedResources, resources, schedulingEligibility, status, statusDescription, statusUpdatedAt, tlSEnabled);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

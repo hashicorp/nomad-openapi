@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -69,7 +69,7 @@ class DrainMetadata(ModelNormal):
         """
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -84,9 +84,9 @@ class DrainMetadata(ModelNormal):
         return {
             'accessor_id': (str,),  # noqa: E501
             'meta': ({str: (str,)},),  # noqa: E501
-            'started_at': (datetime,),  # noqa: E501
+            'started_at': (datetime, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'updated_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -145,9 +145,9 @@ class DrainMetadata(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accessor_id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            updated_at (datetime): [optional]  # noqa: E501
+            updated_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -231,9 +231,9 @@ class DrainMetadata(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accessor_id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
-            started_at (datetime): [optional]  # noqa: E501
+            started_at (datetime, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            updated_at (datetime): [optional]  # noqa: E501
+            updated_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

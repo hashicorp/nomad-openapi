@@ -51,6 +51,8 @@ public class Vault {
   @SerializedName(SERIALIZED_NAME_POLICIES)
   private List<String> policies = null;
 
+  public Vault() { 
+  }
 
   public Vault changeMode(String changeMode) {
     

@@ -35,7 +35,7 @@ export class NodeUpdateEligibilityRequest {
     static getAttributeTypeMap() {
         return NodeUpdateEligibilityRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -45,6 +45,8 @@ public class Port {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Integer value;
 
+  public Port() { 
+  }
 
   public Port hostNetwork(String hostNetwork) {
     

@@ -61,6 +61,8 @@ public class FuzzySearchResponse {
   @SerializedName(SERIALIZED_NAME_TRUNCATIONS)
   private Map<String, Boolean> truncations = null;
 
+  public FuzzySearchResponse() { 
+  }
 
   public FuzzySearchResponse knownLeader(Boolean knownLeader) {
     

@@ -26,6 +26,6 @@ func (m *Metrics) GetMetricsSummary(ctx context.Context) (*client.MetricsSummary
 		return nil, err
 	}
 
-	final := result.(client.MetricsSummary)
-	return &final, nil
+	final := result.(*client.MetricsSummary)
+	return final, nil
 }

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **accessor_id** | **str** |  | [optional] 
 **create_index** | **int** |  | [optional] 
-**create_time** | **datetime** |  | [optional] 
+**create_time** | **datetime, none_type** |  | [optional] 
 **_global** | **bool** |  | [optional] 
 **modify_index** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 

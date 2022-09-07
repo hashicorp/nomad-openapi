@@ -56,7 +56,7 @@ export class DrainMetadata {
     static getAttributeTypeMap() {
         return DrainMetadata.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

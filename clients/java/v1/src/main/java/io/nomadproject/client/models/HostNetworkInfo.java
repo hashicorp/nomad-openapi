@@ -45,6 +45,8 @@ public class HostNetworkInfo {
   @SerializedName(SERIALIZED_NAME_RESERVED_PORTS)
   private String reservedPorts;
 
+  public HostNetworkInfo() { 
+  }
 
   public HostNetworkInfo CIDR(String CIDR) {
     

@@ -56,7 +56,7 @@ export class FieldDiff {
     static getAttributeTypeMap() {
         return FieldDiff.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

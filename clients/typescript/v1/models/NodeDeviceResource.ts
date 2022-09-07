@@ -58,7 +58,7 @@ export class NodeDeviceResource {
     static getAttributeTypeMap() {
         return NodeDeviceResource.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

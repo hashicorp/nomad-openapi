@@ -47,6 +47,8 @@ public class AllocatedDeviceResource {
   @SerializedName(SERIALIZED_NAME_VENDOR)
   private String vendor;
 
+  public AllocatedDeviceResource() { 
+  }
 
   public AllocatedDeviceResource deviceIDs(List<String> deviceIDs) {
     

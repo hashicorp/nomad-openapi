@@ -43,6 +43,8 @@ public class ParameterizedJobConfig {
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private String payload;
 
+  public ParameterizedJobConfig() { 
+  }
 
   public ParameterizedJobConfig metaOptional(List<String> metaOptional) {
     

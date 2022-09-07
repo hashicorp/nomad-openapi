@@ -50,7 +50,7 @@
   describe('CSIPlugin', function() {
     it('should create an instance of CSIPlugin', function() {
       // uncomment below and update the code to test CSIPlugin
-      //var instane = new nomad-client.CSIPlugin();
+      //var instance = new nomad-client.CSIPlugin();
       //expect(instance).to.be.a(nomad-client.CSIPlugin);
     });
 

@@ -66,7 +66,7 @@ export class TaskGroupDiff {
     static getAttributeTypeMap() {
         return TaskGroupDiff.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

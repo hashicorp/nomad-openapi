@@ -68,6 +68,8 @@ public class SampledValue {
   @SerializedName(SERIALIZED_NAME_SUM)
   private Double sum;
 
+  public SampledValue() { 
+  }
 
   public SampledValue count(Integer count) {
     

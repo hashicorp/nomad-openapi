@@ -55,6 +55,8 @@ public class DeploymentAllocHealthRequest {
   @SerializedName(SERIALIZED_NAME_UNHEALTHY_ALLOCATION_I_DS)
   private List<String> unhealthyAllocationIDs = null;
 
+  public DeploymentAllocHealthRequest() { 
+  }
 
   public DeploymentAllocHealthRequest deploymentID(String deploymentID) {
     

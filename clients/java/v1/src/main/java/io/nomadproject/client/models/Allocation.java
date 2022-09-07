@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Allocation
@@ -173,6 +174,8 @@ public class Allocation {
   @SerializedName(SERIALIZED_NAME_TASK_STATES)
   private Map<String, TaskState> taskStates = null;
 
+  public Allocation() { 
+  }
 
   public Allocation allocModifyIndex(Integer allocModifyIndex) {
     
@@ -1015,9 +1018,20 @@ public class Allocation {
         Objects.equals(this.taskStates, allocation.taskStates);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(allocModifyIndex, allocatedResources, clientDescription, clientStatus, createIndex, createTime, deploymentID, deploymentStatus, desiredDescription, desiredStatus, desiredTransition, evalID, followupEvalID, ID, job, jobID, metrics, modifyIndex, modifyTime, name, namespace, nextAllocation, nodeID, nodeName, preemptedAllocations, preemptedByAllocation, previousAllocation, rescheduleTracker, resources, services, taskGroup, taskResources, taskStates);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -43,6 +43,8 @@ public class NodeCpuResources {
   @SerializedName(SERIALIZED_NAME_TOTAL_CPU_CORES)
   private Integer totalCpuCores;
 
+  public NodeCpuResources() { 
+  }
 
   public NodeCpuResources cpuShares(Long cpuShares) {
     

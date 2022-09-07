@@ -65,6 +65,8 @@ public class CSIVolumeExternalStub {
   @SerializedName(SERIALIZED_NAME_VOLUME_CONTEXT)
   private Map<String, String> volumeContext = null;
 
+  public CSIVolumeExternalStub() { 
+  }
 
   public CSIVolumeExternalStub capacityBytes(Long capacityBytes) {
     

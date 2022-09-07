@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct JobsApiClient<C: hyper::client::Connect> {
+pub struct JobsApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> JobsApiClient<C> {
+impl<C: hyper::client::connect::Connect> JobsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> JobsApiClient<C> {
         JobsApiClient {
             configuration,
@@ -33,32 +35,34 @@ impl<C: hyper::client::Connect> JobsApiClient<C> {
 }
 
 pub trait JobsApi {
-    fn delete_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, purge: Option<bool>, global: Option<bool>) -> Box<dyn Future<Item = crate::models::JobDeregisterResponse, Error = Error<serde_json::Value>>>;
-    fn get_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Job, Error = Error<serde_json::Value>>>;
-    fn get_job_allocations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<bool>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>>;
-    fn get_job_deployment(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Deployment, Error = Error<serde_json::Value>>>;
-    fn get_job_deployments(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<i32>) -> Box<dyn Future<Item = Vec<crate::models::Deployment>, Error = Error<serde_json::Value>>>;
-    fn get_job_evaluations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Evaluation>, Error = Error<serde_json::Value>>>;
-    fn get_job_scale_status(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobScaleStatusResponse, Error = Error<serde_json::Value>>>;
-    fn get_job_summary(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobSummary, Error = Error<serde_json::Value>>>;
-    fn get_job_versions(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, diffs: Option<bool>) -> Box<dyn Future<Item = crate::models::JobVersionsResponse, Error = Error<serde_json::Value>>>;
-    fn get_jobs(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::JobListStub>, Error = Error<serde_json::Value>>>;
-    fn post_job(&self, job_name: &str, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_dispatch(&self, job_name: &str, job_dispatch_request: crate::models::JobDispatchRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobDispatchResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_evaluate(&self, job_name: &str, job_evaluate_request: crate::models::JobEvaluateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_parse(&self, jobs_parse_request: crate::models::JobsParseRequest) -> Box<dyn Future<Item = crate::models::Job, Error = Error<serde_json::Value>>>;
-    fn post_job_periodic_force(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::PeriodicForceResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_plan(&self, job_name: &str, job_plan_request: crate::models::JobPlanRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobPlanResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_revert(&self, job_name: &str, job_revert_request: crate::models::JobRevertRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_scaling_request(&self, job_name: &str, scaling_request: crate::models::ScalingRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_stability(&self, job_name: &str, job_stability_request: crate::models::JobStabilityRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobStabilityResponse, Error = Error<serde_json::Value>>>;
-    fn post_job_validate_request(&self, job_validate_request: crate::models::JobValidateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobValidateResponse, Error = Error<serde_json::Value>>>;
-    fn register_job(&self, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>>;
+    fn delete_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, purge: Option<bool>, global: Option<bool>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobDeregisterResponse, Error>>>>;
+    fn get_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Job, Error>>>>;
+    fn get_job_allocations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<bool>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::AllocationListStub>, Error>>>>;
+    fn get_job_deployment(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Deployment, Error>>>>;
+    fn get_job_deployments(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<i32>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Deployment>, Error>>>>;
+    fn get_job_evaluations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Evaluation>, Error>>>>;
+    fn get_job_scale_status(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobScaleStatusResponse, Error>>>>;
+    fn get_job_summary(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobSummary, Error>>>>;
+    fn get_job_versions(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, diffs: Option<bool>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobVersionsResponse, Error>>>>;
+    fn get_jobs(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::JobListStub>, Error>>>>;
+    fn post_job(&self, job_name: &str, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>>;
+    fn post_job_dispatch(&self, job_name: &str, job_dispatch_request: Option<crate::models::JobDispatchRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobDispatchResponse, Error>>>>;
+    fn post_job_evaluate(&self, job_name: &str, job_evaluate_request: Option<crate::models::JobEvaluateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>>;
+    fn post_job_parse(&self, jobs_parse_request: Option<crate::models::JobsParseRequest>) -> Pin<Box<dyn Future<Output = Result<crate::models::Job, Error>>>>;
+    fn post_job_periodic_force(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::PeriodicForceResponse, Error>>>>;
+    fn post_job_plan(&self, job_name: &str, job_plan_request: Option<crate::models::JobPlanRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobPlanResponse, Error>>>>;
+    fn post_job_revert(&self, job_name: &str, job_revert_request: Option<crate::models::JobRevertRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>>;
+    fn post_job_scaling_request(&self, job_name: &str, scaling_request: Option<crate::models::ScalingRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>>;
+    fn post_job_stability(&self, job_name: &str, job_stability_request: Option<crate::models::JobStabilityRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobStabilityResponse, Error>>>>;
+    fn post_job_validate_request(&self, job_validate_request: Option<crate::models::JobValidateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobValidateResponse, Error>>>>;
+    fn register_job(&self, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>>;
 }
 
-impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
-    fn delete_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, purge: Option<bool>, global: Option<bool>) -> Box<dyn Future<Item = crate::models::JobDeregisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/job/{jobName}".to_string())
+impl<C: hyper::client::connect::Connect>JobsApi for JobsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn delete_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, purge: Option<bool>, global: Option<bool>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobDeregisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/job/{jobName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -66,19 +70,24 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(ref s) = purge {
-            req = req.with_query_param("purge".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("purge".to_string(), query_value);
         }
         if let Some(ref s) = global {
-            req = req.with_query_param("global".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("global".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -88,8 +97,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Job, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}".to_string())
+    #[allow(unused_mut)]
+    fn get_job(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Job, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -97,25 +107,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -128,8 +145,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_allocations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<bool>) -> Box<dyn Future<Item = Vec<crate::models::AllocationListStub>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/allocations".to_string())
+    #[allow(unused_mut)]
+    fn get_job_allocations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<bool>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::AllocationListStub>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/allocations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -137,28 +155,36 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = all {
-            req = req.with_query_param("all".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("all".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -171,8 +197,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_deployment(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::Deployment, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/deployment".to_string())
+    #[allow(unused_mut)]
+    fn get_job_deployment(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::Deployment, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/deployment".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -180,25 +207,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -211,8 +245,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_deployments(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<i32>) -> Box<dyn Future<Item = Vec<crate::models::Deployment>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/deployments".to_string())
+    #[allow(unused_mut)]
+    fn get_job_deployments(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, all: Option<i32>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Deployment>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/deployments".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -220,28 +255,36 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = all {
-            req = req.with_query_param("all".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("all".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -254,8 +297,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_evaluations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::Evaluation>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/evaluations".to_string())
+    #[allow(unused_mut)]
+    fn get_job_evaluations(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::Evaluation>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/evaluations".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -263,25 +307,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -294,8 +345,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_scale_status(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobScaleStatusResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/scale".to_string())
+    #[allow(unused_mut)]
+    fn get_job_scale_status(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobScaleStatusResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/scale".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -303,25 +355,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -334,8 +393,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_summary(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobSummary, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/summary".to_string())
+    #[allow(unused_mut)]
+    fn get_job_summary(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobSummary, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/summary".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -343,25 +403,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -374,8 +441,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_job_versions(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, diffs: Option<bool>) -> Box<dyn Future<Item = crate::models::JobVersionsResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/job/{jobName}/versions".to_string())
+    #[allow(unused_mut)]
+    fn get_job_versions(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, diffs: Option<bool>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobVersionsResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/job/{jobName}/versions".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -383,28 +451,36 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = diffs {
-            req = req.with_query_param("diffs".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("diffs".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = index {
@@ -417,8 +493,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_jobs(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::JobListStub>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/jobs".to_string())
+    #[allow(unused_mut)]
+    fn get_jobs(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::JobListStub>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/jobs".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -426,25 +503,32 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -456,8 +540,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job(&self, job_name: &str, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}".to_string())
+    #[allow(unused_mut)]
+    fn post_job(&self, job_name: &str, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -465,13 +550,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -482,8 +570,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_dispatch(&self, job_name: &str, job_dispatch_request: crate::models::JobDispatchRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobDispatchResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/dispatch".to_string())
+    #[allow(unused_mut)]
+    fn post_job_dispatch(&self, job_name: &str, job_dispatch_request: Option<crate::models::JobDispatchRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobDispatchResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/dispatch".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -491,13 +580,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -508,8 +600,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_evaluate(&self, job_name: &str, job_evaluate_request: crate::models::JobEvaluateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/evaluate".to_string())
+    #[allow(unused_mut)]
+    fn post_job_evaluate(&self, job_name: &str, job_evaluate_request: Option<crate::models::JobEvaluateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/evaluate".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -517,13 +610,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -534,8 +630,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_parse(&self, jobs_parse_request: crate::models::JobsParseRequest) -> Box<dyn Future<Item = crate::models::Job, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/jobs/parse".to_string())
+    #[allow(unused_mut)]
+    fn post_job_parse(&self, jobs_parse_request: Option<crate::models::JobsParseRequest>) -> Pin<Box<dyn Future<Output = Result<crate::models::Job, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/jobs/parse".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -547,8 +644,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_periodic_force(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::PeriodicForceResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/periodic/force".to_string())
+    #[allow(unused_mut)]
+    fn post_job_periodic_force(&self, job_name: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::PeriodicForceResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/periodic/force".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -556,13 +654,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -572,8 +673,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_plan(&self, job_name: &str, job_plan_request: crate::models::JobPlanRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobPlanResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/plan".to_string())
+    #[allow(unused_mut)]
+    fn post_job_plan(&self, job_name: &str, job_plan_request: Option<crate::models::JobPlanRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobPlanResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/plan".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -581,13 +683,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -598,8 +703,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_revert(&self, job_name: &str, job_revert_request: crate::models::JobRevertRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/revert".to_string())
+    #[allow(unused_mut)]
+    fn post_job_revert(&self, job_name: &str, job_revert_request: Option<crate::models::JobRevertRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/revert".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -607,13 +713,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -624,8 +733,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_scaling_request(&self, job_name: &str, scaling_request: crate::models::ScalingRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/scale".to_string())
+    #[allow(unused_mut)]
+    fn post_job_scaling_request(&self, job_name: &str, scaling_request: Option<crate::models::ScalingRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/scale".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -633,13 +743,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -650,8 +763,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_stability(&self, job_name: &str, job_stability_request: crate::models::JobStabilityRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobStabilityResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/job/{jobName}/stable".to_string())
+    #[allow(unused_mut)]
+    fn post_job_stability(&self, job_name: &str, job_stability_request: Option<crate::models::JobStabilityRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobStabilityResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/job/{jobName}/stable".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -659,13 +773,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("jobName".to_string(), job_name.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -676,8 +793,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_job_validate_request(&self, job_validate_request: crate::models::JobValidateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobValidateResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/validate/job".to_string())
+    #[allow(unused_mut)]
+    fn post_job_validate_request(&self, job_validate_request: Option<crate::models::JobValidateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobValidateResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/validate/job".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -685,13 +803,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -701,8 +822,9 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn register_job(&self, job_register_request: crate::models::JobRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRegisterResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/jobs".to_string())
+    #[allow(unused_mut)]
+    fn register_job(&self, job_register_request: Option<crate::models::JobRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::JobRegisterResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/jobs".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -710,13 +832,16 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());

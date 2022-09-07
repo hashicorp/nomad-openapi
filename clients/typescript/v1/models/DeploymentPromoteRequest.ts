@@ -63,7 +63,7 @@ export class DeploymentPromoteRequest {
     static getAttributeTypeMap() {
         return DeploymentPromoteRequest.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

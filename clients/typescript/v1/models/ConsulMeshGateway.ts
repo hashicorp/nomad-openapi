@@ -28,7 +28,7 @@ export class ConsulMeshGateway {
     static getAttributeTypeMap() {
         return ConsulMeshGateway.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

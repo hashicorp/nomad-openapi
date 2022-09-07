@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -73,7 +73,7 @@ class NodeEvent(ModelNormal):
         """
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -90,7 +90,7 @@ class NodeEvent(ModelNormal):
             'details': ({str: (str,)},),  # noqa: E501
             'message': (str,),  # noqa: E501
             'subsystem': (str,),  # noqa: E501
-            'timestamp': (datetime,),  # noqa: E501
+            'timestamp': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -151,7 +151,7 @@ class NodeEvent(ModelNormal):
             details ({str: (str,)}): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             subsystem (str): [optional]  # noqa: E501
-            timestamp (datetime): [optional]  # noqa: E501
+            timestamp (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -237,7 +237,7 @@ class NodeEvent(ModelNormal):
             details ({str: (str,)}): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             subsystem (str): [optional]  # noqa: E501
-            timestamp (datetime): [optional]  # noqa: E501
+            timestamp (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

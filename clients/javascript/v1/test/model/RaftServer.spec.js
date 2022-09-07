@@ -50,7 +50,7 @@
   describe('RaftServer', function() {
     it('should create an instance of RaftServer', function() {
       // uncomment below and update the code to test RaftServer
-      //var instane = new nomad-client.RaftServer();
+      //var instance = new nomad-client.RaftServer();
       //expect(instance).to.be.a(nomad-client.RaftServer);
     });
 

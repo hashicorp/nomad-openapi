@@ -55,8 +55,7 @@ public class SearchApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        FuzzySearchResponse response = api.getFuzzySearch(fuzzySearchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                FuzzySearchResponse response = api.getFuzzySearch(fuzzySearchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     
@@ -80,8 +79,7 @@ public class SearchApiTest {
         String xNomadToken = null;
         Integer perPage = null;
         String nextToken = null;
-        SearchResponse response = api.getSearch(searchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
-
+                SearchResponse response = api.getSearch(searchRequest, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken);
         // TODO: test validations
     }
     

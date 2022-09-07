@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ConsulIngressConfigEntry
@@ -41,6 +42,8 @@ public class ConsulIngressConfigEntry {
   @SerializedName(SERIALIZED_NAME_T_L_S)
   private ConsulGatewayTLSConfig TLS;
 
+  public ConsulIngressConfigEntry() { 
+  }
 
   public ConsulIngressConfigEntry listeners(List<ConsulIngressListener> listeners) {
     
@@ -109,9 +112,20 @@ public class ConsulIngressConfigEntry {
         Objects.equals(this.TLS, consulIngressConfigEntry.TLS);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(listeners, TLS);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

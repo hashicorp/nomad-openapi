@@ -85,6 +85,8 @@ public class Deployment {
   @SerializedName(SERIALIZED_NAME_TASK_GROUPS)
   private Map<String, DeploymentState> taskGroups = null;
 
+  public Deployment() { 
+  }
 
   public Deployment createIndex(Integer createIndex) {
     

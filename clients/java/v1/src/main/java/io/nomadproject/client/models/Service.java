@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Service
@@ -100,6 +101,8 @@ public class Service {
   @SerializedName(SERIALIZED_NAME_TASK_NAME)
   private String taskName;
 
+  public Service() { 
+  }
 
   public Service address(String address) {
     
@@ -544,9 +547,20 @@ public class Service {
         Objects.equals(this.taskName, service.taskName);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(address, addressMode, canaryMeta, canaryTags, checkRestart, checks, connect, enableTagOverride, meta, name, onUpdate, portLabel, provider, taggedAddresses, tags, taskName);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

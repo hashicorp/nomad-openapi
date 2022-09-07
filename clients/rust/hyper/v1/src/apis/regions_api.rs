@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct RegionsApiClient<C: hyper::client::Connect> {
+pub struct RegionsApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> RegionsApiClient<C> {
+impl<C: hyper::client::connect::Connect> RegionsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> RegionsApiClient<C> {
         RegionsApiClient {
             configuration,
@@ -33,12 +35,14 @@ impl<C: hyper::client::Connect> RegionsApiClient<C> {
 }
 
 pub trait RegionsApi {
-    fn get_regions(&self, ) -> Box<dyn Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
+    fn get_regions(&self, ) -> Pin<Box<dyn Future<Output = Result<Vec<String>, Error>>>>;
 }
 
-impl<C: hyper::client::Connect>RegionsApi for RegionsApiClient<C> {
-    fn get_regions(&self, ) -> Box<dyn Future<Item = Vec<String>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/regions".to_string())
+impl<C: hyper::client::connect::Connect>RegionsApi for RegionsApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn get_regions(&self, ) -> Pin<Box<dyn Future<Output = Result<Vec<String>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/regions".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,

@@ -50,7 +50,7 @@
   describe('PreemptionConfig', function() {
     it('should create an instance of PreemptionConfig', function() {
       // uncomment below and update the code to test PreemptionConfig
-      //var instane = new nomad-client.PreemptionConfig();
+      //var instance = new nomad-client.PreemptionConfig();
       //expect(instance).to.be.a(nomad-client.PreemptionConfig);
     });
 

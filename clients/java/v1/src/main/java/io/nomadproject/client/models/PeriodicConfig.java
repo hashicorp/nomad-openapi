@@ -49,6 +49,8 @@ public class PeriodicConfig {
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
   private String timeZone;
 
+  public PeriodicConfig() { 
+  }
 
   public PeriodicConfig enabled(Boolean enabled) {
     

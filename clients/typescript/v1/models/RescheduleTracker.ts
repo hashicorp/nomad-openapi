@@ -29,7 +29,7 @@ export class RescheduleTracker {
     static getAttributeTypeMap() {
         return RescheduleTracker.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

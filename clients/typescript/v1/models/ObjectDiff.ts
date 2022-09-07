@@ -50,7 +50,7 @@ export class ObjectDiff {
     static getAttributeTypeMap() {
         return ObjectDiff.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

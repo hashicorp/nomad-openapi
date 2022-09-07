@@ -33,6 +33,8 @@ public class NodeMemoryResources {
   @SerializedName(SERIALIZED_NAME_MEMORY_M_B)
   private Long memoryMB;
 
+  public NodeMemoryResources() { 
+  }
 
   public NodeMemoryResources memoryMB(Long memoryMB) {
     

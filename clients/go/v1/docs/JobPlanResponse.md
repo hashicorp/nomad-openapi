@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Annotations** | Pointer to [**PlanAnnotations**](PlanAnnotations.md) |  | [optional] 
+**Annotations** | Pointer to [**NullablePlanAnnotations**](PlanAnnotations.md) |  | [optional] 
 **CreatedEvals** | Pointer to [**[]Evaluation**](Evaluation.md) |  | [optional] 
-**Diff** | Pointer to [**JobDiff**](JobDiff.md) |  | [optional] 
+**Diff** | Pointer to [**NullableJobDiff**](JobDiff.md) |  | [optional] 
 **FailedTGAllocs** | Pointer to [**map[string]AllocationMetric**](AllocationMetric.md) |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
-**NextPeriodicLaunch** | Pointer to **time.Time** |  | [optional] 
+**NextPeriodicLaunch** | Pointer to **NullableTime** |  | [optional] 
 **Warnings** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -56,6 +56,16 @@ SetAnnotations sets Annotations field to given value.
 
 HasAnnotations returns a boolean if a field has been set.
 
+### SetAnnotationsNil
+
+`func (o *JobPlanResponse) SetAnnotationsNil(b bool)`
+
+ SetAnnotationsNil sets the value for Annotations to be an explicit nil
+
+### UnsetAnnotations
+`func (o *JobPlanResponse) UnsetAnnotations()`
+
+UnsetAnnotations ensures that no value is present for Annotations, not even an explicit nil
 ### GetCreatedEvals
 
 `func (o *JobPlanResponse) GetCreatedEvals() []Evaluation`
@@ -106,6 +116,16 @@ SetDiff sets Diff field to given value.
 
 HasDiff returns a boolean if a field has been set.
 
+### SetDiffNil
+
+`func (o *JobPlanResponse) SetDiffNil(b bool)`
+
+ SetDiffNil sets the value for Diff to be an explicit nil
+
+### UnsetDiff
+`func (o *JobPlanResponse) UnsetDiff()`
+
+UnsetDiff ensures that no value is present for Diff, not even an explicit nil
 ### GetFailedTGAllocs
 
 `func (o *JobPlanResponse) GetFailedTGAllocs() map[string]AllocationMetric`
@@ -181,6 +201,16 @@ SetNextPeriodicLaunch sets NextPeriodicLaunch field to given value.
 
 HasNextPeriodicLaunch returns a boolean if a field has been set.
 
+### SetNextPeriodicLaunchNil
+
+`func (o *JobPlanResponse) SetNextPeriodicLaunchNil(b bool)`
+
+ SetNextPeriodicLaunchNil sets the value for NextPeriodicLaunch to be an explicit nil
+
+### UnsetNextPeriodicLaunch
+`func (o *JobPlanResponse) UnsetNextPeriodicLaunch()`
+
+UnsetNextPeriodicLaunch ensures that no value is present for NextPeriodicLaunch, not even an explicit nil
 ### GetWarnings
 
 `func (o *JobPlanResponse) GetWarnings() string`

@@ -41,6 +41,8 @@ public class Constraint {
   @SerializedName(SERIALIZED_NAME_RTARGET)
   private String rtarget;
 
+  public Constraint() { 
+  }
 
   public Constraint ltarget(String ltarget) {
     

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Detected** | Pointer to **bool** |  | [optional] 
 **HealthDescription** | Pointer to **string** |  | [optional] 
 **Healthy** | Pointer to **bool** |  | [optional] 
-**UpdateTime** | Pointer to **time.Time** |  | [optional] 
+**UpdateTime** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -154,6 +154,16 @@ SetUpdateTime sets UpdateTime field to given value.
 
 HasUpdateTime returns a boolean if a field has been set.
 
+### SetUpdateTimeNil
+
+`func (o *DriverInfo) SetUpdateTimeNil(b bool)`
+
+ SetUpdateTimeNil sets the value for UpdateTime to be an explicit nil
+
+### UnsetUpdateTime
+`func (o *DriverInfo) UnsetUpdateTime()`
+
+UnsetUpdateTime ensures that no value is present for UpdateTime, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -42,7 +42,7 @@ export class NodeCpuResources {
     static getAttributeTypeMap() {
         return NodeCpuResources.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

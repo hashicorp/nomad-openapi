@@ -48,6 +48,8 @@ public class CSISnapshotCreateRequest {
   @SerializedName(SERIALIZED_NAME_SNAPSHOTS)
   private List<CSISnapshot> snapshots = null;
 
+  public CSISnapshotCreateRequest() { 
+  }
 
   public CSISnapshotCreateRequest namespace(String namespace) {
     

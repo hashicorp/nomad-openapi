@@ -30,8 +30,8 @@ func main() {
     format := "format_example" // string | The format the user requested for the metrics summary (e.g. prometheus) (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.GetMetricsSummary(context.Background()).Format(format).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.GetMetricsSummary(context.Background()).Format(format).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.GetMetricsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

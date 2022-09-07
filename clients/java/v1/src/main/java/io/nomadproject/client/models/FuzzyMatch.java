@@ -39,6 +39,8 @@ public class FuzzyMatch {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private List<String> scope = null;
 
+  public FuzzyMatch() { 
+  }
 
   public FuzzyMatch ID(String ID) {
     

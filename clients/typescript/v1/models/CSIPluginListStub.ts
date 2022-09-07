@@ -84,7 +84,7 @@ export class CSIPluginListStub {
     static getAttributeTypeMap() {
         return CSIPluginListStub.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

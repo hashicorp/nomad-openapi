@@ -72,6 +72,8 @@ public class CSISnapshot {
   @SerializedName(SERIALIZED_NAME_SOURCE_VOLUME_I_D)
   private String sourceVolumeID;
 
+  public CSISnapshot() { 
+  }
 
   public CSISnapshot createTime(Long createTime) {
     

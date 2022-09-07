@@ -36,6 +36,8 @@ public class CSITopology {
   @SerializedName(SERIALIZED_NAME_SEGMENTS)
   private Map<String, String> segments = null;
 
+  public CSITopology() { 
+  }
 
   public CSITopology segments(Map<String, String> segments) {
     

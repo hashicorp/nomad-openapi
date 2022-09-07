@@ -45,6 +45,8 @@ public class ACLPolicyListStub {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public ACLPolicyListStub() { 
+  }
 
   public ACLPolicyListStub createIndex(Integer createIndex) {
     

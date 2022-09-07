@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct WaitConfig {
     #[serde(rename = "Max", skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,

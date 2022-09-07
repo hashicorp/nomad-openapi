@@ -50,7 +50,7 @@
   describe('DeploymentUpdateResponse', function() {
     it('should create an instance of DeploymentUpdateResponse', function() {
       // uncomment below and update the code to test DeploymentUpdateResponse
-      //var instane = new nomad-client.DeploymentUpdateResponse();
+      //var instance = new nomad-client.DeploymentUpdateResponse();
       //expect(instance).to.be.a(nomad-client.DeploymentUpdateResponse);
     });
 

@@ -68,6 +68,7 @@ func TestSchemaRefs(t *testing.T) {
 
 var jobResponseSchema = `
     JobRegisterResponse:
+      nullable: true
       properties:
         EvalCreateIndex:
           maximum: 1.8446744073709552e+19
@@ -88,6 +89,8 @@ var jobResponseSchema = `
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        NextToken:
+          type: string
         RequestTime:
           format: int64
           type: integer

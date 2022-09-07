@@ -36,7 +36,7 @@ export class CSIVolumeListExternalResponse {
     static getAttributeTypeMap() {
         return CSIVolumeListExternalResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

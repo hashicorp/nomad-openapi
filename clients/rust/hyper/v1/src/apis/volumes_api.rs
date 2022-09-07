@@ -10,21 +10,23 @@
 
 use std::rc::Rc;
 use std::borrow::Borrow;
+use std::pin::Pin;
 #[allow(unused_imports)]
 use std::option::Option;
 
 use hyper;
-use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
 use super::request as __internal_request;
 
-pub struct VolumesApiClient<C: hyper::client::Connect> {
+pub struct VolumesApiClient<C: hyper::client::connect::Connect>
+    where C: Clone + std::marker::Send + Sync + 'static {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> VolumesApiClient<C> {
+impl<C: hyper::client::connect::Connect> VolumesApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
     pub fn new(configuration: Rc<configuration::Configuration<C>>) -> VolumesApiClient<C> {
         VolumesApiClient {
             configuration,
@@ -33,22 +35,24 @@ impl<C: hyper::client::Connect> VolumesApiClient<C> {
 }
 
 pub trait VolumesApi {
-    fn create_volume(&self, volume_id: &str, action: &str, csi_volume_create_request: crate::models::CsiVolumeCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn delete_snapshot(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, plugin_id: Option<&str>, snapshot_id: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn delete_volume_registration(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, force: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn detach_or_delete_volume(&self, volume_id: &str, action: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, node: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn get_external_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiVolumeListExternalResponse, Error = Error<serde_json::Value>>>;
-    fn get_snapshots(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiSnapshotListResponse, Error = Error<serde_json::Value>>>;
-    fn get_volume(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiVolume, Error = Error<serde_json::Value>>>;
-    fn get_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, node_id: Option<&str>, plugin_id: Option<&str>, _type: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::CsiVolumeListStub>, Error = Error<serde_json::Value>>>;
-    fn post_snapshot(&self, csi_snapshot_create_request: crate::models::CsiSnapshotCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiSnapshotCreateResponse, Error = Error<serde_json::Value>>>;
-    fn post_volume(&self, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn post_volume_registration(&self, volume_id: &str, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn create_volume(&self, volume_id: &str, action: &str, csi_volume_create_request: Option<crate::models::CsiVolumeCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn delete_snapshot(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, plugin_id: Option<&str>, snapshot_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn delete_volume_registration(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, force: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn detach_or_delete_volume(&self, volume_id: &str, action: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, node: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn get_external_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiVolumeListExternalResponse, Error>>>>;
+    fn get_snapshots(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiSnapshotListResponse, Error>>>>;
+    fn get_volume(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiVolume, Error>>>>;
+    fn get_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, node_id: Option<&str>, plugin_id: Option<&str>, _type: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::CsiVolumeListStub>, Error>>>>;
+    fn post_snapshot(&self, csi_snapshot_create_request: Option<crate::models::CsiSnapshotCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiSnapshotCreateResponse, Error>>>>;
+    fn post_volume(&self, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
+    fn post_volume_registration(&self, volume_id: &str, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>>;
 }
 
-impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
-    fn create_volume(&self, volume_id: &str, action: &str, csi_volume_create_request: crate::models::CsiVolumeCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/volume/csi/{volumeId}/{action}".to_string())
+impl<C: hyper::client::connect::Connect>VolumesApi for VolumesApiClient<C>
+    where C: Clone + std::marker::Send + Sync {
+    #[allow(unused_mut)]
+    fn create_volume(&self, volume_id: &str, action: &str, csi_volume_create_request: Option<crate::models::CsiVolumeCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/volume/csi/{volumeId}/{action}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -56,13 +60,16 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("volumeId".to_string(), volume_id.to_string());
         req = req.with_path_param("action".to_string(), action.to_string());
@@ -75,8 +82,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn delete_snapshot(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, plugin_id: Option<&str>, snapshot_id: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/volumes/snapshot".to_string())
+    #[allow(unused_mut)]
+    fn delete_snapshot(&self, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, plugin_id: Option<&str>, snapshot_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/volumes/snapshot".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -84,19 +92,24 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(ref s) = plugin_id {
-            req = req.with_query_param("plugin_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("plugin_id".to_string(), query_value);
         }
         if let Some(ref s) = snapshot_id {
-            req = req.with_query_param("snapshot_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("snapshot_id".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -106,8 +119,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn delete_volume_registration(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, force: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/volume/csi/{volumeId}".to_string())
+    #[allow(unused_mut)]
+    fn delete_volume_registration(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, force: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/volume/csi/{volumeId}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -115,16 +129,20 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(ref s) = force {
-            req = req.with_query_param("force".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("force".to_string(), query_value);
         }
         req = req.with_path_param("volumeId".to_string(), volume_id.to_string());
         if let Some(param_value) = x_nomad_token {
@@ -135,8 +153,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn detach_or_delete_volume(&self, volume_id: &str, action: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, node: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Delete, "/volume/csi/{volumeId}/{action}".to_string())
+    #[allow(unused_mut)]
+    fn detach_or_delete_volume(&self, volume_id: &str, action: &str, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>, node: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::DELETE, "/volume/csi/{volumeId}/{action}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -144,16 +163,20 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(ref s) = node {
-            req = req.with_query_param("node".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("node".to_string(), query_value);
         }
         req = req.with_path_param("volumeId".to_string(), volume_id.to_string());
         req = req.with_path_param("action".to_string(), action.to_string());
@@ -165,8 +188,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_external_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiVolumeListExternalResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/volumes/external".to_string())
+    #[allow(unused_mut)]
+    fn get_external_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiVolumeListExternalResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/volumes/external".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -174,28 +198,36 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = plugin_id {
-            req = req.with_query_param("plugin_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("plugin_id".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -207,8 +239,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_snapshots(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiSnapshotListResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/volumes/snapshot".to_string())
+    #[allow(unused_mut)]
+    fn get_snapshots(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, plugin_id: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiSnapshotListResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/volumes/snapshot".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -216,28 +249,36 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = plugin_id {
-            req = req.with_query_param("plugin_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("plugin_id".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -249,8 +290,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_volume(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiVolume, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/volume/csi/{volumeId}".to_string())
+    #[allow(unused_mut)]
+    fn get_volume(&self, volume_id: &str, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiVolume, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/volume/csi/{volumeId}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -258,25 +300,32 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         req = req.with_path_param("volumeId".to_string(), volume_id.to_string());
         if let Some(param_value) = index {
@@ -289,8 +338,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, node_id: Option<&str>, plugin_id: Option<&str>, _type: Option<&str>) -> Box<dyn Future<Item = Vec<crate::models::CsiVolumeListStub>, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Get, "/volumes".to_string())
+    #[allow(unused_mut)]
+    fn get_volumes(&self, region: Option<&str>, namespace: Option<&str>, index: Option<i32>, wait: Option<&str>, stale: Option<&str>, prefix: Option<&str>, x_nomad_token: Option<&str>, per_page: Option<i32>, next_token: Option<&str>, node_id: Option<&str>, plugin_id: Option<&str>, _type: Option<&str>) -> Pin<Box<dyn Future<Output = Result<Vec<crate::models::CsiVolumeListStub>, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::GET, "/volumes".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -298,34 +348,44 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = wait {
-            req = req.with_query_param("wait".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("wait".to_string(), query_value);
         }
         if let Some(ref s) = stale {
-            req = req.with_query_param("stale".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("stale".to_string(), query_value);
         }
         if let Some(ref s) = prefix {
-            req = req.with_query_param("prefix".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("prefix".to_string(), query_value);
         }
         if let Some(ref s) = per_page {
-            req = req.with_query_param("per_page".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("per_page".to_string(), query_value);
         }
         if let Some(ref s) = next_token {
-            req = req.with_query_param("next_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("next_token".to_string(), query_value);
         }
         if let Some(ref s) = node_id {
-            req = req.with_query_param("node_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("node_id".to_string(), query_value);
         }
         if let Some(ref s) = plugin_id {
-            req = req.with_query_param("plugin_id".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("plugin_id".to_string(), query_value);
         }
         if let Some(ref s) = _type {
-            req = req.with_query_param("type".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("type".to_string(), query_value);
         }
         if let Some(param_value) = index {
             req = req.with_header_param("index".to_string(), param_value.to_string());
@@ -337,8 +397,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_snapshot(&self, csi_snapshot_create_request: crate::models::CsiSnapshotCreateRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = crate::models::CsiSnapshotCreateResponse, Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/volumes/snapshot".to_string())
+    #[allow(unused_mut)]
+    fn post_snapshot(&self, csi_snapshot_create_request: Option<crate::models::CsiSnapshotCreateRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<crate::models::CsiSnapshotCreateResponse, Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/volumes/snapshot".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -346,13 +407,16 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -362,8 +426,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_volume(&self, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/volumes".to_string())
+    #[allow(unused_mut)]
+    fn post_volume(&self, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/volumes".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -371,13 +436,16 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         if let Some(param_value) = x_nomad_token {
             req = req.with_header_param("X-Nomad-Token".to_string(), param_value.to_string());
@@ -388,8 +456,9 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn post_volume_registration(&self, volume_id: &str, csi_volume_register_request: crate::models::CsiVolumeRegisterRequest, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
-        let mut req = __internal_request::Request::new(hyper::Method::Post, "/volume/csi/{volumeId}".to_string())
+    #[allow(unused_mut)]
+    fn post_volume_registration(&self, volume_id: &str, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>, region: Option<&str>, namespace: Option<&str>, x_nomad_token: Option<&str>, idempotency_token: Option<&str>) -> Pin<Box<dyn Future<Output = Result<(), Error>>>> {
+        let mut req = __internal_request::Request::new(hyper::Method::POST, "/volume/csi/{volumeId}".to_string())
             .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
@@ -397,13 +466,16 @@ impl<C: hyper::client::Connect>VolumesApi for VolumesApiClient<C> {
             }))
         ;
         if let Some(ref s) = region {
-            req = req.with_query_param("region".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("region".to_string(), query_value);
         }
         if let Some(ref s) = namespace {
-            req = req.with_query_param("namespace".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("namespace".to_string(), query_value);
         }
         if let Some(ref s) = idempotency_token {
-            req = req.with_query_param("idempotency_token".to_string(), s.to_string());
+            let query_value = s.to_string();
+            req = req.with_query_param("idempotency_token".to_string(), query_value);
         }
         req = req.with_path_param("volumeId".to_string(), volume_id.to_string());
         if let Some(param_value) = x_nomad_token {

@@ -56,8 +56,8 @@ func main() {
     global := true // bool | Boolean flag indicating whether the operation should apply to all instances of the job globally. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.DeleteJob(context.Background(), jobName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Purge(purge).Global(global).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.DeleteJob(context.Background(), jobName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Purge(purge).Global(global).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.DeleteJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJob(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJob(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,8 +226,8 @@ func main() {
     all := true // bool | Specifies whether the list of allocations should include allocations from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobAllocations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobAllocations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobAllocations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -313,8 +313,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobDeployment(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobDeployment(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobDeployment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
     all := int32(56) // int32 | Flag indicating whether to constrain by job creation index or not. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobDeployments(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobDeployments(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).All(all).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobDeployments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,8 +487,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobEvaluations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobEvaluations(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobEvaluations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -573,8 +573,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobScaleStatus(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobScaleStatus(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobScaleStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -659,8 +659,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobSummary(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobSummary(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -746,8 +746,8 @@ func main() {
     diffs := true // bool | Boolean flag indicating whether to compute job diffs. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobVersions(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Diffs(diffs).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobVersions(context.Background(), jobName).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Diffs(diffs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobVersions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -832,8 +832,8 @@ func main() {
     nextToken := "nextToken_example" // string | Indicates where to start paging for queries that support pagination. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.GetJobs(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetJobs(context.Background()).Region(region).Namespace(namespace).Index(index).Wait(wait).Stale(stale).Prefix(prefix).XNomadToken(xNomadToken).PerPage(perPage).NextToken(nextToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetJobs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -909,8 +909,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJob(context.Background(), jobName).JobRegisterRequest(jobRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJob(context.Background(), jobName).JobRegisterRequest(jobRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -987,8 +987,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobDispatch(context.Background(), jobName).JobDispatchRequest(jobDispatchRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobDispatch(context.Background(), jobName).JobDispatchRequest(jobDispatchRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobDispatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1065,8 +1065,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobEvaluate(context.Background(), jobName).JobEvaluateRequest(jobEvaluateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobEvaluate(context.Background(), jobName).JobEvaluateRequest(jobEvaluateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobEvaluate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1138,8 +1138,8 @@ func main() {
     jobsParseRequest := *openapiclient.NewJobsParseRequest() // JobsParseRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobParse(context.Background()).JobsParseRequest(jobsParseRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobParse(context.Background()).JobsParseRequest(jobsParseRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobParse``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1206,8 +1206,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobPeriodicForce(context.Background(), jobName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobPeriodicForce(context.Background(), jobName).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobPeriodicForce``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1283,8 +1283,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobPlan(context.Background(), jobName).JobPlanRequest(jobPlanRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobPlan(context.Background(), jobName).JobPlanRequest(jobPlanRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobPlan``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1361,8 +1361,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobRevert(context.Background(), jobName).JobRevertRequest(jobRevertRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobRevert(context.Background(), jobName).JobRevertRequest(jobRevertRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobRevert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1439,8 +1439,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobScalingRequest(context.Background(), jobName).ScalingRequest(scalingRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobScalingRequest(context.Background(), jobName).ScalingRequest(scalingRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobScalingRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1517,8 +1517,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobStability(context.Background(), jobName).JobStabilityRequest(jobStabilityRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobStability(context.Background(), jobName).JobStabilityRequest(jobStabilityRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobStability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1594,8 +1594,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.PostJobValidateRequest(context.Background()).JobValidateRequest(jobValidateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.PostJobValidateRequest(context.Background()).JobValidateRequest(jobValidateRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.PostJobValidateRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1666,8 +1666,8 @@ func main() {
     idempotencyToken := "idempotencyToken_example" // string | Can be used to ensure operations are only run once. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JobsApi.RegisterJob(context.Background()).JobRegisterRequest(jobRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.RegisterJob(context.Background()).JobRegisterRequest(jobRegisterRequest).Region(region).Namespace(namespace).XNomadToken(xNomadToken).IdempotencyToken(idempotencyToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.RegisterJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

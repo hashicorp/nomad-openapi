@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **nodes_healthy** | **int** |  | [optional] 
 **plugin_id** | **str** |  | [optional] 
 **provider** | **str** |  | [optional] 
-**resource_exhausted** | **datetime** |  | [optional] 
+**resource_exhausted** | **datetime, none_type** |  | [optional] 
 **schedulable** | **bool** |  | [optional] 
 **topologies** | [**[CSITopology]**](CSITopology.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

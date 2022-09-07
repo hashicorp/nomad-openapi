@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Capabilities** | Pointer to [**NamespaceCapabilities**](NamespaceCapabilities.md) |  | [optional] 
+**Capabilities** | Pointer to [**NullableNamespaceCapabilities**](NamespaceCapabilities.md) |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
@@ -56,6 +56,16 @@ SetCapabilities sets Capabilities field to given value.
 
 HasCapabilities returns a boolean if a field has been set.
 
+### SetCapabilitiesNil
+
+`func (o *Namespace) SetCapabilitiesNil(b bool)`
+
+ SetCapabilitiesNil sets the value for Capabilities to be an explicit nil
+
+### UnsetCapabilities
+`func (o *Namespace) UnsetCapabilities()`
+
+UnsetCapabilities ensures that no value is present for Capabilities, not even an explicit nil
 ### GetCreateIndex
 
 `func (o *Namespace) GetCreateIndex() int32`

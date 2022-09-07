@@ -48,6 +48,8 @@ public class ObjectDiff {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ObjectDiff() { 
+  }
 
   public ObjectDiff fields(List<FieldDiff> fields) {
     

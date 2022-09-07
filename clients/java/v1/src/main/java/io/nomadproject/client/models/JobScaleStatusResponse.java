@@ -57,6 +57,8 @@ public class JobScaleStatusResponse {
   @SerializedName(SERIALIZED_NAME_TASK_GROUPS)
   private Map<String, TaskGroupScaleStatus> taskGroups = null;
 
+  public JobScaleStatusResponse() { 
+  }
 
   public JobScaleStatusResponse jobCreateIndex(Integer jobCreateIndex) {
     

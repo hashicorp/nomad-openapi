@@ -41,6 +41,8 @@ public class RescheduleEvent {
   @SerializedName(SERIALIZED_NAME_RESCHEDULE_TIME)
   private Long rescheduleTime;
 
+  public RescheduleEvent() { 
+  }
 
   public RescheduleEvent prevAllocID(String prevAllocID) {
     

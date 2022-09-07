@@ -61,6 +61,8 @@ public class JobRevertRequest {
   @SerializedName(SERIALIZED_NAME_VAULT_TOKEN)
   private String vaultToken;
 
+  public JobRevertRequest() { 
+  }
 
   public JobRevertRequest consulToken(String consulToken) {
     

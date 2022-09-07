@@ -52,7 +52,7 @@ export class ConsulConnect {
     static getAttributeTypeMap() {
         return ConsulConnect.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

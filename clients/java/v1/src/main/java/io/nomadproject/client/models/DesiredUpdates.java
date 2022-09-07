@@ -61,6 +61,8 @@ public class DesiredUpdates {
   @SerializedName(SERIALIZED_NAME_STOP)
   private Integer stop;
 
+  public DesiredUpdates() { 
+  }
 
   public DesiredUpdates canary(Integer canary) {
     

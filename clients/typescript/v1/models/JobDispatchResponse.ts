@@ -63,7 +63,7 @@ export class JobDispatchResponse {
     static getAttributeTypeMap() {
         return JobDispatchResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

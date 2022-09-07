@@ -56,6 +56,8 @@ public class CSISnapshotListResponse {
   @SerializedName(SERIALIZED_NAME_SNAPSHOTS)
   private List<CSISnapshot> snapshots = null;
 
+  public CSISnapshotListResponse() { 
+  }
 
   public CSISnapshotListResponse knownLeader(Boolean knownLeader) {
     

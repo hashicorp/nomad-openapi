@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Leader** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **SerfStatus** | Pointer to **string** |  | [optional] 
-**StableSince** | Pointer to **time.Time** |  | [optional] 
+**StableSince** | Pointer to **NullableTime** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **Voter** | Pointer to **bool** |  | [optional] 
 
@@ -286,6 +286,16 @@ SetStableSince sets StableSince field to given value.
 
 HasStableSince returns a boolean if a field has been set.
 
+### SetStableSinceNil
+
+`func (o *ServerHealth) SetStableSinceNil(b bool)`
+
+ SetStableSinceNil sets the value for StableSince to be an explicit nil
+
+### UnsetStableSince
+`func (o *ServerHealth) UnsetStableSince()`
+
+UnsetStableSince ensures that no value is present for StableSince, not even an explicit nil
 ### GetVersion
 
 `func (o *ServerHealth) GetVersion() string`

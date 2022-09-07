@@ -88,6 +88,8 @@ public class SearchRequest {
   @SerializedName(SERIALIZED_NAME_WAIT_TIME)
   private Long waitTime;
 
+  public SearchRequest() { 
+  }
 
   public SearchRequest allowStale(Boolean allowStale) {
     

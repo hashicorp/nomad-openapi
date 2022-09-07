@@ -53,6 +53,8 @@ public class ReschedulePolicy {
   @SerializedName(SERIALIZED_NAME_UNLIMITED)
   private Boolean unlimited;
 
+  public ReschedulePolicy() { 
+  }
 
   public ReschedulePolicy attempts(Integer attempts) {
     

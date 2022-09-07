@@ -121,7 +121,7 @@ export class AllocationMetric {
     static getAttributeTypeMap() {
         return AllocationMetric.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

@@ -45,6 +45,8 @@ public class PortMapping {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Integer value;
 
+  public PortMapping() { 
+  }
 
   public PortMapping hostIP(String hostIP) {
     

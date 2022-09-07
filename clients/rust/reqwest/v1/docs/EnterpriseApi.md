@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**quota_spec** | [**QuotaSpec**](QuotaSpec.md) |  | [required] |
+**quota_spec** | Option<[**QuotaSpec**](QuotaSpec.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -160,7 +160,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **spec_name** | **String** | The quota spec identifier. | [required] |
-**quota_spec** | [**QuotaSpec**](QuotaSpec.md) |  | [required] |
+**quota_spec** | Option<[**QuotaSpec**](QuotaSpec.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

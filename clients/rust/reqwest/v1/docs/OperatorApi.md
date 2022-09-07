@@ -199,7 +199,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**scheduler_configuration** | [**SchedulerConfiguration**](SchedulerConfiguration.md) |  | [required] |
+**scheduler_configuration** | Option<[**SchedulerConfiguration**](SchedulerConfiguration.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |
@@ -231,7 +231,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**autopilot_configuration** | [**AutopilotConfiguration**](AutopilotConfiguration.md) |  | [required] |
+**autopilot_configuration** | Option<[**AutopilotConfiguration**](AutopilotConfiguration.md)> |  | [required] |
 **region** | Option<**String**> | Filters results based on the specified region. |  |
 **namespace** | Option<**String**> | Filters results based on the specified namespace. |  |
 **x_nomad_token** | Option<**String**> | A Nomad ACL token. |  |

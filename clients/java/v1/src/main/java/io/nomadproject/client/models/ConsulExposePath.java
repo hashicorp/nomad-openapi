@@ -45,6 +45,8 @@ public class ConsulExposePath {
   @SerializedName(SERIALIZED_NAME_PROTOCOL)
   private String protocol;
 
+  public ConsulExposePath() { 
+  }
 
   public ConsulExposePath listenerPort(String listenerPort) {
     

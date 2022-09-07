@@ -25,8 +25,8 @@ from nomad_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
+    OpenApiModel
 )
-from ..model_utils import OpenApiModel
 from nomad_client.exceptions import ApiAttributeError
 
 
@@ -69,7 +69,7 @@ class DeploymentState(ModelNormal):
         """
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -90,7 +90,7 @@ class DeploymentState(ModelNormal):
             'placed_canaries': ([str],),  # noqa: E501
             'progress_deadline': (int,),  # noqa: E501
             'promoted': (bool,),  # noqa: E501
-            'require_progress_by': (datetime,),  # noqa: E501
+            'require_progress_by': (datetime, none_type,),  # noqa: E501
             'unhealthy_allocs': (int,),  # noqa: E501
         }
 
@@ -161,7 +161,7 @@ class DeploymentState(ModelNormal):
             placed_canaries ([str]): [optional]  # noqa: E501
             progress_deadline (int): [optional]  # noqa: E501
             promoted (bool): [optional]  # noqa: E501
-            require_progress_by (datetime): [optional]  # noqa: E501
+            require_progress_by (datetime, none_type): [optional]  # noqa: E501
             unhealthy_allocs (int): [optional]  # noqa: E501
         """
 
@@ -252,7 +252,7 @@ class DeploymentState(ModelNormal):
             placed_canaries ([str]): [optional]  # noqa: E501
             progress_deadline (int): [optional]  # noqa: E501
             promoted (bool): [optional]  # noqa: E501
-            require_progress_by (datetime): [optional]  # noqa: E501
+            require_progress_by (datetime, none_type): [optional]  # noqa: E501
             unhealthy_allocs (int): [optional]  # noqa: E501
         """
 

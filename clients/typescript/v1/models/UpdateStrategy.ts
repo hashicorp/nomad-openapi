@@ -84,7 +84,7 @@ export class UpdateStrategy {
     static getAttributeTypeMap() {
         return UpdateStrategy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

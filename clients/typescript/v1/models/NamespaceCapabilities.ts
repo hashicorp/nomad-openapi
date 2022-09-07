@@ -35,7 +35,7 @@ export class NamespaceCapabilities {
     static getAttributeTypeMap() {
         return NamespaceCapabilities.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

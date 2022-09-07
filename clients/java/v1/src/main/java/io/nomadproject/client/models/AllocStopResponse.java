@@ -37,6 +37,8 @@ public class AllocStopResponse {
   @SerializedName(SERIALIZED_NAME_INDEX)
   private Integer index;
 
+  public AllocStopResponse() { 
+  }
 
   public AllocStopResponse evalID(String evalID) {
     

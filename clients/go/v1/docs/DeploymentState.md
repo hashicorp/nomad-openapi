@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **PlacedCanaries** | Pointer to **[]string** |  | [optional] 
 **ProgressDeadline** | Pointer to **int64** |  | [optional] 
 **Promoted** | Pointer to **bool** |  | [optional] 
-**RequireProgressBy** | Pointer to **time.Time** |  | [optional] 
+**RequireProgressBy** | Pointer to **NullableTime** |  | [optional] 
 **UnhealthyAllocs** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -259,6 +259,16 @@ SetRequireProgressBy sets RequireProgressBy field to given value.
 
 HasRequireProgressBy returns a boolean if a field has been set.
 
+### SetRequireProgressByNil
+
+`func (o *DeploymentState) SetRequireProgressByNil(b bool)`
+
+ SetRequireProgressByNil sets the value for RequireProgressBy to be an explicit nil
+
+### UnsetRequireProgressBy
+`func (o *DeploymentState) UnsetRequireProgressBy()`
+
+UnsetRequireProgressBy ensures that no value is present for RequireProgressBy, not even an explicit nil
 ### GetUnhealthyAllocs
 
 `func (o *DeploymentState) GetUnhealthyAllocs() int32`

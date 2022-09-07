@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cpu** | Pointer to [**NodeCpuResources**](NodeCpuResources.md) |  | [optional] 
+**Cpu** | Pointer to [**NullableNodeCpuResources**](NodeCpuResources.md) |  | [optional] 
 **Devices** | Pointer to [**[]NodeDeviceResource**](NodeDeviceResource.md) |  | [optional] 
-**Disk** | Pointer to [**NodeDiskResources**](NodeDiskResources.md) |  | [optional] 
+**Disk** | Pointer to [**NullableNodeDiskResources**](NodeDiskResources.md) |  | [optional] 
 **MaxDynamicPort** | Pointer to **int32** |  | [optional] 
-**Memory** | Pointer to [**NodeMemoryResources**](NodeMemoryResources.md) |  | [optional] 
+**Memory** | Pointer to [**NullableNodeMemoryResources**](NodeMemoryResources.md) |  | [optional] 
 **MinDynamicPort** | Pointer to **int32** |  | [optional] 
 **Networks** | Pointer to [**[]NetworkResource**](NetworkResource.md) |  | [optional] 
 
@@ -56,6 +56,16 @@ SetCpu sets Cpu field to given value.
 
 HasCpu returns a boolean if a field has been set.
 
+### SetCpuNil
+
+`func (o *NodeResources) SetCpuNil(b bool)`
+
+ SetCpuNil sets the value for Cpu to be an explicit nil
+
+### UnsetCpu
+`func (o *NodeResources) UnsetCpu()`
+
+UnsetCpu ensures that no value is present for Cpu, not even an explicit nil
 ### GetDevices
 
 `func (o *NodeResources) GetDevices() []NodeDeviceResource`
@@ -106,6 +116,16 @@ SetDisk sets Disk field to given value.
 
 HasDisk returns a boolean if a field has been set.
 
+### SetDiskNil
+
+`func (o *NodeResources) SetDiskNil(b bool)`
+
+ SetDiskNil sets the value for Disk to be an explicit nil
+
+### UnsetDisk
+`func (o *NodeResources) UnsetDisk()`
+
+UnsetDisk ensures that no value is present for Disk, not even an explicit nil
 ### GetMaxDynamicPort
 
 `func (o *NodeResources) GetMaxDynamicPort() int32`
@@ -156,6 +176,16 @@ SetMemory sets Memory field to given value.
 
 HasMemory returns a boolean if a field has been set.
 
+### SetMemoryNil
+
+`func (o *NodeResources) SetMemoryNil(b bool)`
+
+ SetMemoryNil sets the value for Memory to be an explicit nil
+
+### UnsetMemory
+`func (o *NodeResources) UnsetMemory()`
+
+UnsetMemory ensures that no value is present for Memory, not even an explicit nil
 ### GetMinDynamicPort
 
 `func (o *NodeResources) GetMinDynamicPort() int32`

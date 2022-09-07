@@ -49,7 +49,7 @@ export class DrainStrategy {
     static getAttributeTypeMap() {
         return DrainStrategy.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

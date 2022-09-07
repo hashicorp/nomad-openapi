@@ -45,6 +45,8 @@ public class PreemptionConfig {
   @SerializedName(SERIALIZED_NAME_SYSTEM_SCHEDULER_ENABLED)
   private Boolean systemSchedulerEnabled;
 
+  public PreemptionConfig() { 
+  }
 
   public PreemptionConfig batchSchedulerEnabled(Boolean batchSchedulerEnabled) {
     

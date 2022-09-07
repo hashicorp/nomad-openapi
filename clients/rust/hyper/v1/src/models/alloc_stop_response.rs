@@ -11,7 +11,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AllocStopResponse {
     #[serde(rename = "EvalID", skip_serializing_if = "Option::is_none")]
     pub eval_id: Option<String>,

@@ -39,6 +39,8 @@ public class CSIMountOptions {
   @SerializedName(SERIALIZED_NAME_MOUNT_FLAGS)
   private List<String> mountFlags = null;
 
+  public CSIMountOptions() { 
+  }
 
   public CSIMountOptions fsType(String fsType) {
     

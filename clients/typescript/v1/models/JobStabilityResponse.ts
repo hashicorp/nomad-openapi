@@ -28,7 +28,7 @@ export class JobStabilityResponse {
     static getAttributeTypeMap() {
         return JobStabilityResponse.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

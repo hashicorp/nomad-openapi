@@ -53,6 +53,8 @@ public class JobStabilityRequest {
   @SerializedName(SERIALIZED_NAME_STABLE)
   private Boolean stable;
 
+  public JobStabilityRequest() { 
+  }
 
   public JobStabilityRequest jobID(String jobID) {
     

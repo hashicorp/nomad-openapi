@@ -35,7 +35,7 @@ export class CSIMountOptions {
     static getAttributeTypeMap() {
         return CSIMountOptions.attributeTypeMap;
     }
-    
+
     public constructor() {
     }
 }

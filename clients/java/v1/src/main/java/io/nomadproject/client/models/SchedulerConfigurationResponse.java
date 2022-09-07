@@ -24,6 +24,7 @@ import io.nomadproject.client.models.SchedulerConfiguration;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SchedulerConfigurationResponse
@@ -54,6 +55,8 @@ public class SchedulerConfigurationResponse {
   @SerializedName(SERIALIZED_NAME_SCHEDULER_CONFIG)
   private SchedulerConfiguration schedulerConfig;
 
+  public SchedulerConfigurationResponse() { 
+  }
 
   public SchedulerConfigurationResponse knownLeader(Boolean knownLeader) {
     
@@ -212,9 +215,20 @@ public class SchedulerConfigurationResponse {
         Objects.equals(this.schedulerConfig, schedulerConfigurationResponse.schedulerConfig);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(knownLeader, lastContact, lastIndex, nextToken, requestTime, schedulerConfig);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

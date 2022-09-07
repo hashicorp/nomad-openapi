@@ -40,6 +40,8 @@ public class CSITopologyRequest {
   @SerializedName(SERIALIZED_NAME_REQUIRED)
   private List<CSITopology> required = null;
 
+  public CSITopologyRequest() { 
+  }
 
   public CSITopologyRequest preferred(List<CSITopology> preferred) {
     

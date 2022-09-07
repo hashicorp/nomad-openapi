@@ -50,7 +50,7 @@
   describe('AllocStopResponse', function() {
     it('should create an instance of AllocStopResponse', function() {
       // uncomment below and update the code to test AllocStopResponse
-      //var instane = new nomad-client.AllocStopResponse();
+      //var instance = new nomad-client.AllocStopResponse();
       //expect(instance).to.be.a(nomad-client.AllocStopResponse);
     });
 

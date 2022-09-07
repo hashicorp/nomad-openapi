@@ -43,6 +43,8 @@ public class NodePurgeResponse {
   @SerializedName(SERIALIZED_NAME_NODE_MODIFY_INDEX)
   private Integer nodeModifyIndex;
 
+  public NodePurgeResponse() { 
+  }
 
   public NodePurgeResponse evalCreateIndex(Integer evalCreateIndex) {
     

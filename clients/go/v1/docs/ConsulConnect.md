@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Gateway** | Pointer to [**ConsulGateway**](ConsulGateway.md) |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
-**SidecarService** | Pointer to [**ConsulSidecarService**](ConsulSidecarService.md) |  | [optional] 
-**SidecarTask** | Pointer to [**SidecarTask**](SidecarTask.md) |  | [optional] 
+**SidecarService** | Pointer to [**NullableConsulSidecarService**](ConsulSidecarService.md) |  | [optional] 
+**SidecarTask** | Pointer to [**NullableSidecarTask**](SidecarTask.md) |  | [optional] 
 
 ## Methods
 
@@ -103,6 +103,16 @@ SetSidecarService sets SidecarService field to given value.
 
 HasSidecarService returns a boolean if a field has been set.
 
+### SetSidecarServiceNil
+
+`func (o *ConsulConnect) SetSidecarServiceNil(b bool)`
+
+ SetSidecarServiceNil sets the value for SidecarService to be an explicit nil
+
+### UnsetSidecarService
+`func (o *ConsulConnect) UnsetSidecarService()`
+
+UnsetSidecarService ensures that no value is present for SidecarService, not even an explicit nil
 ### GetSidecarTask
 
 `func (o *ConsulConnect) GetSidecarTask() SidecarTask`
@@ -128,6 +138,16 @@ SetSidecarTask sets SidecarTask field to given value.
 
 HasSidecarTask returns a boolean if a field has been set.
 
+### SetSidecarTaskNil
+
+`func (o *ConsulConnect) SetSidecarTaskNil(b bool)`
+
+ SetSidecarTaskNil sets the value for SidecarTask to be an explicit nil
+
+### UnsetSidecarTask
+`func (o *ConsulConnect) UnsetSidecarTask()`
+
+UnsetSidecarTask ensures that no value is present for SidecarTask, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

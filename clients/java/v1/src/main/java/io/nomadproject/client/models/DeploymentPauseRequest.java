@@ -49,6 +49,8 @@ public class DeploymentPauseRequest {
   @SerializedName(SERIALIZED_NAME_SECRET_I_D)
   private String secretID;
 
+  public DeploymentPauseRequest() { 
+  }
 
   public DeploymentPauseRequest deploymentID(String deploymentID) {
     

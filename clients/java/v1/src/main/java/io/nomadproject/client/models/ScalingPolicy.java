@@ -72,6 +72,8 @@ public class ScalingPolicy {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public ScalingPolicy() { 
+  }
 
   public ScalingPolicy createIndex(Integer createIndex) {
     

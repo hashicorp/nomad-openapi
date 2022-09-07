@@ -54,6 +54,8 @@ public class MetricsSummary {
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
   private String timestamp;
 
+  public MetricsSummary() { 
+  }
 
   public MetricsSummary counters(List<SampledValue> counters) {
     
