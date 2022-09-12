@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChangeMode** | Pointer to **string** |  | [optional] 
+**ChangeScript** | Pointer to [**ChangeScript**](ChangeScript.md) |  | [optional] 
 **ChangeSignal** | Pointer to **string** |  | [optional] 
 **DestPath** | Pointer to **string** |  | [optional] 
 **EmbeddedTmpl** | Pointer to **string** |  | [optional] 
 **Envvars** | Pointer to **bool** |  | [optional] 
+**Gid** | Pointer to **int32** |  | [optional] 
 **LeftDelim** | Pointer to **string** |  | [optional] 
 **Perms** | Pointer to **string** |  | [optional] 
 **RightDelim** | Pointer to **string** |  | [optional] 
 **SourcePath** | Pointer to **string** |  | [optional] 
 **Splay** | Pointer to **int64** |  | [optional] 
+**Uid** | Pointer to **int32** |  | [optional] 
 **VaultGrace** | Pointer to **int64** |  | [optional] 
 **Wait** | Pointer to [**WaitConfig**](WaitConfig.md) |  | [optional] 
 
@@ -60,6 +63,31 @@ SetChangeMode sets ChangeMode field to given value.
 `func (o *Template) HasChangeMode() bool`
 
 HasChangeMode returns a boolean if a field has been set.
+
+### GetChangeScript
+
+`func (o *Template) GetChangeScript() ChangeScript`
+
+GetChangeScript returns the ChangeScript field if non-nil, zero value otherwise.
+
+### GetChangeScriptOk
+
+`func (o *Template) GetChangeScriptOk() (*ChangeScript, bool)`
+
+GetChangeScriptOk returns a tuple with the ChangeScript field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeScript
+
+`func (o *Template) SetChangeScript(v ChangeScript)`
+
+SetChangeScript sets ChangeScript field to given value.
+
+### HasChangeScript
+
+`func (o *Template) HasChangeScript() bool`
+
+HasChangeScript returns a boolean if a field has been set.
 
 ### GetChangeSignal
 
@@ -160,6 +188,31 @@ SetEnvvars sets Envvars field to given value.
 `func (o *Template) HasEnvvars() bool`
 
 HasEnvvars returns a boolean if a field has been set.
+
+### GetGid
+
+`func (o *Template) GetGid() int32`
+
+GetGid returns the Gid field if non-nil, zero value otherwise.
+
+### GetGidOk
+
+`func (o *Template) GetGidOk() (*int32, bool)`
+
+GetGidOk returns a tuple with the Gid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGid
+
+`func (o *Template) SetGid(v int32)`
+
+SetGid sets Gid field to given value.
+
+### HasGid
+
+`func (o *Template) HasGid() bool`
+
+HasGid returns a boolean if a field has been set.
 
 ### GetLeftDelim
 
@@ -285,6 +338,31 @@ SetSplay sets Splay field to given value.
 `func (o *Template) HasSplay() bool`
 
 HasSplay returns a boolean if a field has been set.
+
+### GetUid
+
+`func (o *Template) GetUid() int32`
+
+GetUid returns the Uid field if non-nil, zero value otherwise.
+
+### GetUidOk
+
+`func (o *Template) GetUidOk() (*int32, bool)`
+
+GetUidOk returns a tuple with the Uid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUid
+
+`func (o *Template) SetUid(v int32)`
+
+SetUid sets Uid field to given value.
+
+### HasUid
+
+`func (o *Template) HasUid() bool`
+
+HasUid returns a boolean if a field has been set.
 
 ### GetVaultGrace
 

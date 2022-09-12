@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **controllersExpected** | **Integer** |  |  [optional]
 **controllersHealthy** | **Integer** |  |  [optional]
 **createIndex** | **Integer** |  |  [optional]
+**currentReaders** | **Integer** |  |  [optional]
+**currentWriters** | **Integer** |  |  [optional]
 **externalID** | **String** |  |  [optional]
 **ID** | **String** |  |  [optional]
 **modifyIndex** | **Integer** |  |  [optional]

@@ -17,6 +17,8 @@ pub struct AclPolicy {
     pub create_index: Option<i32>,
     #[serde(rename = "Description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(rename = "JobACL", skip_serializing_if = "Option::is_none")]
+    pub job_acl: Option<Box<crate::models::JobAcl>>,
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
     pub modify_index: Option<i32>,
     #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
@@ -30,6 +32,7 @@ impl AclPolicy {
         AclPolicy {
             create_index: None,
             description: None,
+            job_acl: None,
             modify_index: None,
             name: None,
             rules: None,

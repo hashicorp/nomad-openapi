@@ -1,6 +1,6 @@
 # nomad_client.VolumesApi
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_create_request import CSIVolumeCreateRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -914,6 +914,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -1293,15 +1294,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,
@@ -2353,6 +2364,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -2732,15 +2744,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,
@@ -3199,10 +3221,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3285,10 +3307,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3377,10 +3399,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3472,10 +3494,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_list_external_response import CSIVolumeListExternalResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3568,10 +3590,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_snapshot_list_response import CSISnapshotListResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3664,10 +3686,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume import CSIVolume
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3767,10 +3789,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_list_stub import CSIVolumeListStub
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3868,10 +3890,10 @@ from nomad_client.api import volumes_api
 from nomad_client.model.csi_snapshot_create_request import CSISnapshotCreateRequest
 from nomad_client.model.csi_snapshot_create_response import CSISnapshotCreateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3983,10 +4005,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_register_request import CSIVolumeRegisterRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4864,6 +4886,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -5243,15 +5266,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,
@@ -6303,6 +6336,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -6682,15 +6716,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,
@@ -7148,10 +7192,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_register_request import CSIVolumeRegisterRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8030,6 +8074,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -8409,15 +8454,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,
@@ -9469,6 +9524,7 @@ with nomad_client.ApiClient(configuration) as api_client:
                                                 health_timeout=1,
                                                 id="id_example",
                                                 mount_dir="mount_dir_example",
+                                                stage_publish_base_dir="stage_publish_base_dir_example",
                                                 type="type_example",
                                             ),
                                             config={
@@ -9848,15 +9904,25 @@ with nomad_client.ApiClient(configuration) as api_client:
                                             templates=[
                                                 Template(
                                                     change_mode="change_mode_example",
+                                                    change_script=ChangeScript(
+                                                        args=[
+                                                            "args_example",
+                                                        ],
+                                                        command="command_example",
+                                                        fail_on_error=True,
+                                                        timeout=1,
+                                                    ),
                                                     change_signal="change_signal_example",
                                                     dest_path="dest_path_example",
                                                     embedded_tmpl="embedded_tmpl_example",
                                                     envvars=True,
+                                                    gid=1,
                                                     left_delim="left_delim_example",
                                                     perms="perms_example",
                                                     right_delim="right_delim_example",
                                                     source_path="source_path_example",
                                                     splay=1,
+                                                    uid=1,
                                                     vault_grace=1,
                                                     wait=WaitConfig(
                                                         max=1,

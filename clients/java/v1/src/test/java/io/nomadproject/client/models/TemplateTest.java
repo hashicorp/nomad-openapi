@@ -18,6 +18,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.ChangeScript;
 import io.nomadproject.client.models.WaitConfig;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -50,6 +51,14 @@ public class TemplateTest {
     }
 
     /**
+     * Test the property 'changeScript'
+     */
+    @Test
+    public void changeScriptTest() {
+        // TODO: test changeScript
+    }
+
+    /**
      * Test the property 'changeSignal'
      */
     @Test
@@ -79,6 +88,14 @@ public class TemplateTest {
     @Test
     public void envvarsTest() {
         // TODO: test envvars
+    }
+
+    /**
+     * Test the property 'gid'
+     */
+    @Test
+    public void gidTest() {
+        // TODO: test gid
     }
 
     /**
@@ -119,6 +136,14 @@ public class TemplateTest {
     @Test
     public void splayTest() {
         // TODO: test splay
+    }
+
+    /**
+     * Test the property 'uid'
+     */
+    @Test
+    public void uidTest() {
+        // TODO: test uid
     }
 
     /**

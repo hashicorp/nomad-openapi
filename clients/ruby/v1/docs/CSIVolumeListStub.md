@@ -10,6 +10,8 @@
 | **controllers_expected** | **Integer** |  | [optional] |
 | **controllers_healthy** | **Integer** |  | [optional] |
 | **create_index** | **Integer** |  | [optional] |
+| **current_readers** | **Integer** |  | [optional] |
+| **current_writers** | **Integer** |  | [optional] |
 | **external_id** | **String** |  | [optional] |
 | **id** | **String** |  | [optional] |
 | **modify_index** | **Integer** |  | [optional] |
@@ -35,6 +37,8 @@ instance = NomadClient::CSIVolumeListStub.new(
   controllers_expected: null,
   controllers_healthy: null,
   create_index: null,
+  current_readers: null,
+  current_writers: null,
   external_id: null,
   id: null,
   modify_index: null,

@@ -17,6 +17,8 @@ module NomadClient
   class Template
     attr_accessor :change_mode
 
+    attr_accessor :change_script
+
     attr_accessor :change_signal
 
     attr_accessor :dest_path
@@ -24,6 +26,8 @@ module NomadClient
     attr_accessor :embedded_tmpl
 
     attr_accessor :envvars
+
+    attr_accessor :gid
 
     attr_accessor :left_delim
 
@@ -35,6 +39,8 @@ module NomadClient
 
     attr_accessor :splay
 
+    attr_accessor :uid
+
     attr_accessor :vault_grace
 
     attr_accessor :wait
@@ -43,15 +49,18 @@ module NomadClient
     def self.attribute_map
       {
         :'change_mode' => :'ChangeMode',
+        :'change_script' => :'ChangeScript',
         :'change_signal' => :'ChangeSignal',
         :'dest_path' => :'DestPath',
         :'embedded_tmpl' => :'EmbeddedTmpl',
         :'envvars' => :'Envvars',
+        :'gid' => :'Gid',
         :'left_delim' => :'LeftDelim',
         :'perms' => :'Perms',
         :'right_delim' => :'RightDelim',
         :'source_path' => :'SourcePath',
         :'splay' => :'Splay',
+        :'uid' => :'Uid',
         :'vault_grace' => :'VaultGrace',
         :'wait' => :'Wait'
       }
@@ -66,15 +75,18 @@ module NomadClient
     def self.openapi_types
       {
         :'change_mode' => :'String',
+        :'change_script' => :'ChangeScript',
         :'change_signal' => :'String',
         :'dest_path' => :'String',
         :'embedded_tmpl' => :'String',
         :'envvars' => :'Boolean',
+        :'gid' => :'Integer',
         :'left_delim' => :'String',
         :'perms' => :'String',
         :'right_delim' => :'String',
         :'source_path' => :'String',
         :'splay' => :'Integer',
+        :'uid' => :'Integer',
         :'vault_grace' => :'Integer',
         :'wait' => :'WaitConfig'
       }
@@ -105,6 +117,10 @@ module NomadClient
         self.change_mode = attributes[:'change_mode']
       end
 
+      if attributes.key?(:'change_script')
+        self.change_script = attributes[:'change_script']
+      end
+
       if attributes.key?(:'change_signal')
         self.change_signal = attributes[:'change_signal']
       end
@@ -119,6 +135,10 @@ module NomadClient
 
       if attributes.key?(:'envvars')
         self.envvars = attributes[:'envvars']
+      end
+
+      if attributes.key?(:'gid')
+        self.gid = attributes[:'gid']
       end
 
       if attributes.key?(:'left_delim')
@@ -139,6 +159,10 @@ module NomadClient
 
       if attributes.key?(:'splay')
         self.splay = attributes[:'splay']
+      end
+
+      if attributes.key?(:'uid')
+        self.uid = attributes[:'uid']
       end
 
       if attributes.key?(:'vault_grace')
@@ -169,15 +193,18 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           change_mode == o.change_mode &&
+          change_script == o.change_script &&
           change_signal == o.change_signal &&
           dest_path == o.dest_path &&
           embedded_tmpl == o.embedded_tmpl &&
           envvars == o.envvars &&
+          gid == o.gid &&
           left_delim == o.left_delim &&
           perms == o.perms &&
           right_delim == o.right_delim &&
           source_path == o.source_path &&
           splay == o.splay &&
+          uid == o.uid &&
           vault_grace == o.vault_grace &&
           wait == o.wait
     end
@@ -191,7 +218,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [change_mode, change_signal, dest_path, embedded_tmpl, envvars, left_delim, perms, right_delim, source_path, splay, vault_grace, wait].hash
+      [change_mode, change_script, change_signal, dest_path, embedded_tmpl, envvars, gid, left_delim, perms, right_delim, source_path, splay, uid, vault_grace, wait].hash
     end
 
     # Builds the object from hash

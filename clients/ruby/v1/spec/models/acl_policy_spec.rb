@@ -37,6 +37,12 @@ describe NomadClient::ACLPolicy do
     end
   end
 
+  describe 'test attribute "job_acl"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "modify_index"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

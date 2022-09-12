@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.JobACL;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -36,6 +37,10 @@ public class ACLPolicy {
   public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_JOB_A_C_L = "JobACL";
+  @SerializedName(SERIALIZED_NAME_JOB_A_C_L)
+  private JobACL jobACL;
 
   public static final String SERIALIZED_NAME_MODIFY_INDEX = "ModifyIndex";
   @SerializedName(SERIALIZED_NAME_MODIFY_INDEX)
@@ -95,6 +100,29 @@ public class ACLPolicy {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public ACLPolicy jobACL(JobACL jobACL) {
+    
+    this.jobACL = jobACL;
+    return this;
+  }
+
+   /**
+   * Get jobACL
+   * @return jobACL
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public JobACL getJobACL() {
+    return jobACL;
+  }
+
+
+  public void setJobACL(JobACL jobACL) {
+    this.jobACL = jobACL;
   }
 
 
@@ -180,6 +208,7 @@ public class ACLPolicy {
     ACLPolicy acLPolicy = (ACLPolicy) o;
     return Objects.equals(this.createIndex, acLPolicy.createIndex) &&
         Objects.equals(this.description, acLPolicy.description) &&
+        Objects.equals(this.jobACL, acLPolicy.jobACL) &&
         Objects.equals(this.modifyIndex, acLPolicy.modifyIndex) &&
         Objects.equals(this.name, acLPolicy.name) &&
         Objects.equals(this.rules, acLPolicy.rules);
@@ -187,7 +216,7 @@ public class ACLPolicy {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createIndex, description, modifyIndex, name, rules);
+    return Objects.hash(createIndex, description, jobACL, modifyIndex, name, rules);
   }
 
   @Override
@@ -196,6 +225,7 @@ public class ACLPolicy {
     sb.append("class ACLPolicy {\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    jobACL: ").append(toIndentedString(jobACL)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");

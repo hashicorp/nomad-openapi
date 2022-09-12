@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **controllers_expected** | **int** |  | [optional] 
 **controllers_healthy** | **int** |  | [optional] 
 **create_index** | **int** |  | [optional] 
+**current_readers** | **int** |  | [optional] 
+**current_writers** | **int** |  | [optional] 
 **external_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **modify_index** | **int** |  | [optional] 

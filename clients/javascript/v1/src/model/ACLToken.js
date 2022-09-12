@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ACLTokenRoleLink from './ACLTokenRoleLink';
 
 /**
  * The ACLToken model module.
@@ -56,6 +57,12 @@ class ACLToken {
             if (data.hasOwnProperty('CreateTime')) {
                 obj['CreateTime'] = ApiClient.convertToType(data['CreateTime'], 'Date');
             }
+            if (data.hasOwnProperty('ExpirationTTL')) {
+                obj['ExpirationTTL'] = ApiClient.convertToType(data['ExpirationTTL'], 'Number');
+            }
+            if (data.hasOwnProperty('ExpirationTime')) {
+                obj['ExpirationTime'] = ApiClient.convertToType(data['ExpirationTime'], 'Date');
+            }
             if (data.hasOwnProperty('Global')) {
                 obj['Global'] = ApiClient.convertToType(data['Global'], 'Boolean');
             }
@@ -67,6 +74,9 @@ class ACLToken {
             }
             if (data.hasOwnProperty('Policies')) {
                 obj['Policies'] = ApiClient.convertToType(data['Policies'], ['String']);
+            }
+            if (data.hasOwnProperty('Roles')) {
+                obj['Roles'] = ApiClient.convertToType(data['Roles'], [ACLTokenRoleLink]);
             }
             if (data.hasOwnProperty('SecretID')) {
                 obj['SecretID'] = ApiClient.convertToType(data['SecretID'], 'String');
@@ -97,6 +107,16 @@ ACLToken.prototype['CreateIndex'] = undefined;
 ACLToken.prototype['CreateTime'] = undefined;
 
 /**
+ * @member {Number} ExpirationTTL
+ */
+ACLToken.prototype['ExpirationTTL'] = undefined;
+
+/**
+ * @member {Date} ExpirationTime
+ */
+ACLToken.prototype['ExpirationTime'] = undefined;
+
+/**
  * @member {Boolean} Global
  */
 ACLToken.prototype['Global'] = undefined;
@@ -115,6 +135,11 @@ ACLToken.prototype['Name'] = undefined;
  * @member {Array.<String>} Policies
  */
 ACLToken.prototype['Policies'] = undefined;
+
+/**
+ * @member {Array.<module:model/ACLTokenRoleLink>} Roles
+ */
+ACLToken.prototype['Roles'] = undefined;
 
 /**
  * @member {String} SecretID

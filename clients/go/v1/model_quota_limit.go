@@ -20,6 +20,7 @@ type QuotaLimit struct {
 	Hash *string `json:"Hash,omitempty"`
 	Region *string `json:"Region,omitempty"`
 	RegionLimit *Resources `json:"RegionLimit,omitempty"`
+	VariablesLimit *int32 `json:"VariablesLimit,omitempty"`
 }
 
 // NewQuotaLimit instantiates a new QuotaLimit object
@@ -135,6 +136,38 @@ func (o *QuotaLimit) SetRegionLimit(v Resources) {
 	o.RegionLimit = &v
 }
 
+// GetVariablesLimit returns the VariablesLimit field value if set, zero value otherwise.
+func (o *QuotaLimit) GetVariablesLimit() int32 {
+	if o == nil || o.VariablesLimit == nil {
+		var ret int32
+		return ret
+	}
+	return *o.VariablesLimit
+}
+
+// GetVariablesLimitOk returns a tuple with the VariablesLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QuotaLimit) GetVariablesLimitOk() (*int32, bool) {
+	if o == nil || o.VariablesLimit == nil {
+		return nil, false
+	}
+	return o.VariablesLimit, true
+}
+
+// HasVariablesLimit returns a boolean if a field has been set.
+func (o *QuotaLimit) HasVariablesLimit() bool {
+	if o != nil && o.VariablesLimit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVariablesLimit gets a reference to the given int32 and assigns it to the VariablesLimit field.
+func (o *QuotaLimit) SetVariablesLimit(v int32) {
+	o.VariablesLimit = &v
+}
+
 func (o QuotaLimit) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Hash != nil {
@@ -145,6 +178,9 @@ func (o QuotaLimit) MarshalJSON() ([]byte, error) {
 	}
 	if o.RegionLimit != nil {
 		toSerialize["RegionLimit"] = o.RegionLimit
+	}
+	if o.VariablesLimit != nil {
+		toSerialize["VariablesLimit"] = o.VariablesLimit
 	}
 	return json.Marshal(toSerialize)
 }

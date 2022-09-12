@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **modify_index** | Option<**i32**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **policies** | Option<**Vec<String>**> |  | [optional]
+**roles** | Option<[**Vec<crate::models::AclTokenRoleLink>**](ACLTokenRoleLink.md)> |  | [optional]
 **_type** | Option<**String**> |  | [optional]
+**expiration_time** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

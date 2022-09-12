@@ -19,6 +19,8 @@ pub struct QuotaLimit {
     pub region: Option<String>,
     #[serde(rename = "RegionLimit", skip_serializing_if = "Option::is_none")]
     pub region_limit: Option<Box<crate::models::Resources>>,
+    #[serde(rename = "VariablesLimit", skip_serializing_if = "Option::is_none")]
+    pub variables_limit: Option<i32>,
 }
 
 impl QuotaLimit {
@@ -27,6 +29,7 @@ impl QuotaLimit {
             hash: None,
             region: None,
             region_limit: None,
+            variables_limit: None,
         }
     }
 }

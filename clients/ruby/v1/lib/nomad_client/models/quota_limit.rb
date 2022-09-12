@@ -21,12 +21,15 @@ module NomadClient
 
     attr_accessor :region_limit
 
+    attr_accessor :variables_limit
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'hash' => :'Hash',
         :'region' => :'Region',
-        :'region_limit' => :'RegionLimit'
+        :'region_limit' => :'RegionLimit',
+        :'variables_limit' => :'VariablesLimit'
       }
     end
 
@@ -40,7 +43,8 @@ module NomadClient
       {
         :'hash' => :'String',
         :'region' => :'String',
-        :'region_limit' => :'Resources'
+        :'region_limit' => :'Resources',
+        :'variables_limit' => :'Integer'
       }
     end
 
@@ -76,6 +80,10 @@ module NomadClient
       if attributes.key?(:'region_limit')
         self.region_limit = attributes[:'region_limit']
       end
+
+      if attributes.key?(:'variables_limit')
+        self.variables_limit = attributes[:'variables_limit']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -98,7 +106,8 @@ module NomadClient
       self.class == o.class &&
           hash == o.hash &&
           region == o.region &&
-          region_limit == o.region_limit
+          region_limit == o.region_limit &&
+          variables_limit == o.variables_limit
     end
 
     # @see the `==` method
@@ -110,7 +119,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hash, region, region_limit].hash
+      [hash, region, region_limit, variables_limit].hash
     end
 
     # Builds the object from hash

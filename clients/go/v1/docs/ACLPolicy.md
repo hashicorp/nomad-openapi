@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**JobACL** | Pointer to [**JobACL**](JobACL.md) |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to **string** |  | [optional] 
@@ -78,6 +79,31 @@ SetDescription sets Description field to given value.
 `func (o *ACLPolicy) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetJobACL
+
+`func (o *ACLPolicy) GetJobACL() JobACL`
+
+GetJobACL returns the JobACL field if non-nil, zero value otherwise.
+
+### GetJobACLOk
+
+`func (o *ACLPolicy) GetJobACLOk() (*JobACL, bool)`
+
+GetJobACLOk returns a tuple with the JobACL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobACL
+
+`func (o *ACLPolicy) SetJobACL(v JobACL)`
+
+SetJobACL sets JobACL field to given value.
+
+### HasJobACL
+
+`func (o *ACLPolicy) HasJobACL() bool`
+
+HasJobACL returns a boolean if a field has been set.
 
 ### GetModifyIndex
 

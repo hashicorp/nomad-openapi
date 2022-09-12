@@ -21,7 +21,7 @@ nomad_client = { path = "./nomad_client" }
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
  - [AclPolicyListStub](docs/AclPolicyListStub.md)
  - [AclToken](docs/AclToken.md)
  - [AclTokenListStub](docs/AclTokenListStub.md)
+ - [AclTokenRoleLink](docs/AclTokenRoleLink.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocStopResponse](docs/AllocStopResponse.md)
@@ -141,6 +142,7 @@ Class | Method | HTTP request | Description
  - [AllocationMetric](docs/AllocationMetric.md)
  - [Attribute](docs/Attribute.md)
  - [AutopilotConfiguration](docs/AutopilotConfiguration.md)
+ - [ChangeScript](docs/ChangeScript.md)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -206,6 +208,7 @@ Class | Method | HTTP request | Description
  - [HostNetworkInfo](docs/HostNetworkInfo.md)
  - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
+ - [JobAcl](docs/JobAcl.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)

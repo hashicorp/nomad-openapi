@@ -7,10 +7,13 @@ Name | Type | Description | Notes
 **AccessorID** | Pointer to **string** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
 **CreateTime** | Pointer to **time.Time** |  | [optional] 
+**ExpirationTTL** | Pointer to **int64** |  | [optional] 
+**ExpirationTime** | Pointer to **time.Time** |  | [optional] 
 **Global** | Pointer to **bool** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Policies** | Pointer to **[]string** |  | [optional] 
+**Roles** | Pointer to [**[]ACLTokenRoleLink**](ACLTokenRoleLink.md) |  | [optional] 
 **SecretID** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -107,6 +110,56 @@ SetCreateTime sets CreateTime field to given value.
 `func (o *ACLToken) HasCreateTime() bool`
 
 HasCreateTime returns a boolean if a field has been set.
+
+### GetExpirationTTL
+
+`func (o *ACLToken) GetExpirationTTL() int64`
+
+GetExpirationTTL returns the ExpirationTTL field if non-nil, zero value otherwise.
+
+### GetExpirationTTLOk
+
+`func (o *ACLToken) GetExpirationTTLOk() (*int64, bool)`
+
+GetExpirationTTLOk returns a tuple with the ExpirationTTL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationTTL
+
+`func (o *ACLToken) SetExpirationTTL(v int64)`
+
+SetExpirationTTL sets ExpirationTTL field to given value.
+
+### HasExpirationTTL
+
+`func (o *ACLToken) HasExpirationTTL() bool`
+
+HasExpirationTTL returns a boolean if a field has been set.
+
+### GetExpirationTime
+
+`func (o *ACLToken) GetExpirationTime() time.Time`
+
+GetExpirationTime returns the ExpirationTime field if non-nil, zero value otherwise.
+
+### GetExpirationTimeOk
+
+`func (o *ACLToken) GetExpirationTimeOk() (*time.Time, bool)`
+
+GetExpirationTimeOk returns a tuple with the ExpirationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationTime
+
+`func (o *ACLToken) SetExpirationTime(v time.Time)`
+
+SetExpirationTime sets ExpirationTime field to given value.
+
+### HasExpirationTime
+
+`func (o *ACLToken) HasExpirationTime() bool`
+
+HasExpirationTime returns a boolean if a field has been set.
 
 ### GetGlobal
 
@@ -207,6 +260,31 @@ SetPolicies sets Policies field to given value.
 `func (o *ACLToken) HasPolicies() bool`
 
 HasPolicies returns a boolean if a field has been set.
+
+### GetRoles
+
+`func (o *ACLToken) GetRoles() []ACLTokenRoleLink`
+
+GetRoles returns the Roles field if non-nil, zero value otherwise.
+
+### GetRolesOk
+
+`func (o *ACLToken) GetRolesOk() (*[]ACLTokenRoleLink, bool)`
+
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoles
+
+`func (o *ACLToken) SetRoles(v []ACLTokenRoleLink)`
+
+SetRoles sets Roles field to given value.
+
+### HasRoles
+
+`func (o *ACLToken) HasRoles() bool`
+
+HasRoles returns a boolean if a field has been set.
 
 ### GetSecretID
 

@@ -11,7 +11,9 @@
 | **modify_index** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **policies** | **Array&lt;String&gt;** |  | [optional] |
+| **roles** | [**Array&lt;ACLTokenRoleLink&gt;**](ACLTokenRoleLink.md) |  | [optional] |
 | **type** | **String** |  | [optional] |
+| **expiration_time** | **Time** |  | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = NomadClient::ACLTokenListStub.new(
   modify_index: null,
   name: null,
   policies: null,
-  type: null
+  roles: null,
+  type: null,
+  expiration_time: null
 )
 ```
 

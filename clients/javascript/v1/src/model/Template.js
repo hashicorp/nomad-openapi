@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ChangeScript from './ChangeScript';
 import WaitConfig from './WaitConfig';
 
 /**
@@ -51,6 +52,9 @@ class Template {
             if (data.hasOwnProperty('ChangeMode')) {
                 obj['ChangeMode'] = ApiClient.convertToType(data['ChangeMode'], 'String');
             }
+            if (data.hasOwnProperty('ChangeScript')) {
+                obj['ChangeScript'] = ChangeScript.constructFromObject(data['ChangeScript']);
+            }
             if (data.hasOwnProperty('ChangeSignal')) {
                 obj['ChangeSignal'] = ApiClient.convertToType(data['ChangeSignal'], 'String');
             }
@@ -62,6 +66,9 @@ class Template {
             }
             if (data.hasOwnProperty('Envvars')) {
                 obj['Envvars'] = ApiClient.convertToType(data['Envvars'], 'Boolean');
+            }
+            if (data.hasOwnProperty('Gid')) {
+                obj['Gid'] = ApiClient.convertToType(data['Gid'], 'Number');
             }
             if (data.hasOwnProperty('LeftDelim')) {
                 obj['LeftDelim'] = ApiClient.convertToType(data['LeftDelim'], 'String');
@@ -77,6 +84,9 @@ class Template {
             }
             if (data.hasOwnProperty('Splay')) {
                 obj['Splay'] = ApiClient.convertToType(data['Splay'], 'Number');
+            }
+            if (data.hasOwnProperty('Uid')) {
+                obj['Uid'] = ApiClient.convertToType(data['Uid'], 'Number');
             }
             if (data.hasOwnProperty('VaultGrace')) {
                 obj['VaultGrace'] = ApiClient.convertToType(data['VaultGrace'], 'Number');
@@ -97,6 +107,11 @@ class Template {
 Template.prototype['ChangeMode'] = undefined;
 
 /**
+ * @member {module:model/ChangeScript} ChangeScript
+ */
+Template.prototype['ChangeScript'] = undefined;
+
+/**
  * @member {String} ChangeSignal
  */
 Template.prototype['ChangeSignal'] = undefined;
@@ -115,6 +130,11 @@ Template.prototype['EmbeddedTmpl'] = undefined;
  * @member {Boolean} Envvars
  */
 Template.prototype['Envvars'] = undefined;
+
+/**
+ * @member {Number} Gid
+ */
+Template.prototype['Gid'] = undefined;
 
 /**
  * @member {String} LeftDelim
@@ -140,6 +160,11 @@ Template.prototype['SourcePath'] = undefined;
  * @member {Number} Splay
  */
 Template.prototype['Splay'] = undefined;
+
+/**
+ * @member {Number} Uid
+ */
+Template.prototype['Uid'] = undefined;
 
 /**
  * @member {Number} VaultGrace

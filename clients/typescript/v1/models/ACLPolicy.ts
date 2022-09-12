@@ -10,11 +10,13 @@
  * Do not edit the class manually.
  */
 
+import { JobACL } from './JobACL';
 import { HttpFile } from '../http/http';
 
 export class ACLPolicy {
     'createIndex'?: number;
     'description'?: string;
+    'jobACL'?: JobACL;
     'modifyIndex'?: number;
     'name'?: string;
     'rules'?: string;
@@ -32,6 +34,12 @@ export class ACLPolicy {
             "name": "description",
             "baseName": "Description",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "jobACL",
+            "baseName": "JobACL",
+            "type": "JobACL",
             "format": ""
         },
         {

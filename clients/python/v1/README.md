@@ -56,10 +56,10 @@ from nomad_client.model.acl_token import ACLToken
 from nomad_client.model.acl_token_list_stub import ACLTokenListStub
 from nomad_client.model.one_time_token import OneTimeToken
 from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -92,7 +92,7 @@ idempotency_token = "idempotency_token_example" # str | Can be used to ensure op
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [ACLToken](docs/ACLToken.md)
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [ACLTokenRoleLink](docs/ACLTokenRoleLink.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocStopResponse](docs/AllocStopResponse.md)
@@ -232,6 +233,7 @@ Class | Method | HTTP request | Description
  - [CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
  - [CSIVolumeListStub](docs/CSIVolumeListStub.md)
  - [CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [ChangeScript](docs/ChangeScript.md)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -279,6 +281,7 @@ Class | Method | HTTP request | Description
  - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Int8](docs/Int8.md)
  - [Job](docs/Job.md)
+ - [JobACL](docs/JobACL.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)

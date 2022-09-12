@@ -21,10 +21,13 @@ type ACLToken struct {
 	AccessorID *string `json:"AccessorID,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	CreateTime *time.Time `json:"CreateTime,omitempty"`
+	ExpirationTTL *int64 `json:"ExpirationTTL,omitempty"`
+	ExpirationTime *time.Time `json:"ExpirationTime,omitempty"`
 	Global *bool `json:"Global,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Policies *[]string `json:"Policies,omitempty"`
+	Roles *[]ACLTokenRoleLink `json:"Roles,omitempty"`
 	SecretID *string `json:"SecretID,omitempty"`
 	Type *string `json:"Type,omitempty"`
 }
@@ -140,6 +143,70 @@ func (o *ACLToken) HasCreateTime() bool {
 // SetCreateTime gets a reference to the given time.Time and assigns it to the CreateTime field.
 func (o *ACLToken) SetCreateTime(v time.Time) {
 	o.CreateTime = &v
+}
+
+// GetExpirationTTL returns the ExpirationTTL field value if set, zero value otherwise.
+func (o *ACLToken) GetExpirationTTL() int64 {
+	if o == nil || o.ExpirationTTL == nil {
+		var ret int64
+		return ret
+	}
+	return *o.ExpirationTTL
+}
+
+// GetExpirationTTLOk returns a tuple with the ExpirationTTL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ACLToken) GetExpirationTTLOk() (*int64, bool) {
+	if o == nil || o.ExpirationTTL == nil {
+		return nil, false
+	}
+	return o.ExpirationTTL, true
+}
+
+// HasExpirationTTL returns a boolean if a field has been set.
+func (o *ACLToken) HasExpirationTTL() bool {
+	if o != nil && o.ExpirationTTL != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationTTL gets a reference to the given int64 and assigns it to the ExpirationTTL field.
+func (o *ACLToken) SetExpirationTTL(v int64) {
+	o.ExpirationTTL = &v
+}
+
+// GetExpirationTime returns the ExpirationTime field value if set, zero value otherwise.
+func (o *ACLToken) GetExpirationTime() time.Time {
+	if o == nil || o.ExpirationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpirationTime
+}
+
+// GetExpirationTimeOk returns a tuple with the ExpirationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ACLToken) GetExpirationTimeOk() (*time.Time, bool) {
+	if o == nil || o.ExpirationTime == nil {
+		return nil, false
+	}
+	return o.ExpirationTime, true
+}
+
+// HasExpirationTime returns a boolean if a field has been set.
+func (o *ACLToken) HasExpirationTime() bool {
+	if o != nil && o.ExpirationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationTime gets a reference to the given time.Time and assigns it to the ExpirationTime field.
+func (o *ACLToken) SetExpirationTime(v time.Time) {
+	o.ExpirationTime = &v
 }
 
 // GetGlobal returns the Global field value if set, zero value otherwise.
@@ -270,6 +337,38 @@ func (o *ACLToken) SetPolicies(v []string) {
 	o.Policies = &v
 }
 
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *ACLToken) GetRoles() []ACLTokenRoleLink {
+	if o == nil || o.Roles == nil {
+		var ret []ACLTokenRoleLink
+		return ret
+	}
+	return *o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ACLToken) GetRolesOk() (*[]ACLTokenRoleLink, bool) {
+	if o == nil || o.Roles == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *ACLToken) HasRoles() bool {
+	if o != nil && o.Roles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []ACLTokenRoleLink and assigns it to the Roles field.
+func (o *ACLToken) SetRoles(v []ACLTokenRoleLink) {
+	o.Roles = &v
+}
+
 // GetSecretID returns the SecretID field value if set, zero value otherwise.
 func (o *ACLToken) GetSecretID() string {
 	if o == nil || o.SecretID == nil {
@@ -345,6 +444,12 @@ func (o ACLToken) MarshalJSON() ([]byte, error) {
 	if o.CreateTime != nil {
 		toSerialize["CreateTime"] = o.CreateTime
 	}
+	if o.ExpirationTTL != nil {
+		toSerialize["ExpirationTTL"] = o.ExpirationTTL
+	}
+	if o.ExpirationTime != nil {
+		toSerialize["ExpirationTime"] = o.ExpirationTime
+	}
 	if o.Global != nil {
 		toSerialize["Global"] = o.Global
 	}
@@ -356,6 +461,9 @@ func (o ACLToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.Policies != nil {
 		toSerialize["Policies"] = o.Policies
+	}
+	if o.Roles != nil {
+		toSerialize["Roles"] = o.Roles
 	}
 	if o.SecretID != nil {
 		toSerialize["SecretID"] = o.SecretID

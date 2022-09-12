@@ -6,6 +6,7 @@ docs/AclPolicy.md
 docs/AclPolicyListStub.md
 docs/AclToken.md
 docs/AclTokenListStub.md
+docs/AclTokenRoleLink.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocStopResponse.md
@@ -21,6 +22,7 @@ docs/AllocationMetric.md
 docs/AllocationsApi.md
 docs/Attribute.md
 docs/AutopilotConfiguration.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -89,6 +91,7 @@ docs/GaugeValue.md
 docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
+docs/JobAcl.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -232,6 +235,7 @@ src/models/acl_policy.rs
 src/models/acl_policy_list_stub.rs
 src/models/acl_token.rs
 src/models/acl_token_list_stub.rs
+src/models/acl_token_role_link.rs
 src/models/affinity.rs
 src/models/alloc_deployment_status.rs
 src/models/alloc_stop_response.rs
@@ -246,6 +250,7 @@ src/models/allocation_list_stub.rs
 src/models/allocation_metric.rs
 src/models/attribute.rs
 src/models/autopilot_configuration.rs
+src/models/change_script.rs
 src/models/check_restart.rs
 src/models/constraint.rs
 src/models/consul.rs
@@ -311,6 +316,7 @@ src/models/gauge_value.rs
 src/models/host_network_info.rs
 src/models/host_volume_info.rs
 src/models/job.rs
+src/models/job_acl.rs
 src/models/job_children_summary.rs
 src/models/job_deregister_response.rs
 src/models/job_diff.rs

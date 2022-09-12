@@ -15,6 +15,8 @@
 pub struct Template {
     #[serde(rename = "ChangeMode", skip_serializing_if = "Option::is_none")]
     pub change_mode: Option<String>,
+    #[serde(rename = "ChangeScript", skip_serializing_if = "Option::is_none")]
+    pub change_script: Option<Box<crate::models::ChangeScript>>,
     #[serde(rename = "ChangeSignal", skip_serializing_if = "Option::is_none")]
     pub change_signal: Option<String>,
     #[serde(rename = "DestPath", skip_serializing_if = "Option::is_none")]
@@ -23,6 +25,8 @@ pub struct Template {
     pub embedded_tmpl: Option<String>,
     #[serde(rename = "Envvars", skip_serializing_if = "Option::is_none")]
     pub envvars: Option<bool>,
+    #[serde(rename = "Gid", skip_serializing_if = "Option::is_none")]
+    pub gid: Option<i32>,
     #[serde(rename = "LeftDelim", skip_serializing_if = "Option::is_none")]
     pub left_delim: Option<String>,
     #[serde(rename = "Perms", skip_serializing_if = "Option::is_none")]
@@ -33,6 +37,8 @@ pub struct Template {
     pub source_path: Option<String>,
     #[serde(rename = "Splay", skip_serializing_if = "Option::is_none")]
     pub splay: Option<i64>,
+    #[serde(rename = "Uid", skip_serializing_if = "Option::is_none")]
+    pub uid: Option<i32>,
     #[serde(rename = "VaultGrace", skip_serializing_if = "Option::is_none")]
     pub vault_grace: Option<i64>,
     #[serde(rename = "Wait", skip_serializing_if = "Option::is_none")]
@@ -43,15 +49,18 @@ impl Template {
     pub fn new() -> Template {
         Template {
             change_mode: None,
+            change_script: None,
             change_signal: None,
             dest_path: None,
             embedded_tmpl: None,
             envvars: None,
+            gid: None,
             left_delim: None,
             perms: None,
             right_delim: None,
             source_path: None,
             splay: None,
+            uid: None,
             vault_grace: None,
             wait: None,
         }

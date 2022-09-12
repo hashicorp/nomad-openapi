@@ -10,20 +10,24 @@
  * Do not edit the class manually.
  */
 
+import { ChangeScript } from './ChangeScript';
 import { WaitConfig } from './WaitConfig';
 import { HttpFile } from '../http/http';
 
 export class Template {
     'changeMode'?: string;
+    'changeScript'?: ChangeScript;
     'changeSignal'?: string;
     'destPath'?: string;
     'embeddedTmpl'?: string;
     'envvars'?: boolean;
+    'gid'?: number;
     'leftDelim'?: string;
     'perms'?: string;
     'rightDelim'?: string;
     'sourcePath'?: string;
     'splay'?: number;
+    'uid'?: number;
     'vaultGrace'?: number;
     'wait'?: WaitConfig;
 
@@ -34,6 +38,12 @@ export class Template {
             "name": "changeMode",
             "baseName": "ChangeMode",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "changeScript",
+            "baseName": "ChangeScript",
+            "type": "ChangeScript",
             "format": ""
         },
         {
@@ -58,6 +68,12 @@ export class Template {
             "name": "envvars",
             "baseName": "Envvars",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "gid",
+            "baseName": "Gid",
+            "type": "number",
             "format": ""
         },
         {
@@ -89,6 +105,12 @@ export class Template {
             "baseName": "Splay",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "uid",
+            "baseName": "Uid",
+            "type": "number",
+            "format": ""
         },
         {
             "name": "vaultGrace",

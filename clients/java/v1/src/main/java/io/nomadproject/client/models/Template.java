@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.ChangeScript;
 import io.nomadproject.client.models.WaitConfig;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,6 +34,10 @@ public class Template {
   public static final String SERIALIZED_NAME_CHANGE_MODE = "ChangeMode";
   @SerializedName(SERIALIZED_NAME_CHANGE_MODE)
   private String changeMode;
+
+  public static final String SERIALIZED_NAME_CHANGE_SCRIPT = "ChangeScript";
+  @SerializedName(SERIALIZED_NAME_CHANGE_SCRIPT)
+  private ChangeScript changeScript;
 
   public static final String SERIALIZED_NAME_CHANGE_SIGNAL = "ChangeSignal";
   @SerializedName(SERIALIZED_NAME_CHANGE_SIGNAL)
@@ -49,6 +54,10 @@ public class Template {
   public static final String SERIALIZED_NAME_ENVVARS = "Envvars";
   @SerializedName(SERIALIZED_NAME_ENVVARS)
   private Boolean envvars;
+
+  public static final String SERIALIZED_NAME_GID = "Gid";
+  @SerializedName(SERIALIZED_NAME_GID)
+  private Integer gid;
 
   public static final String SERIALIZED_NAME_LEFT_DELIM = "LeftDelim";
   @SerializedName(SERIALIZED_NAME_LEFT_DELIM)
@@ -69,6 +78,10 @@ public class Template {
   public static final String SERIALIZED_NAME_SPLAY = "Splay";
   @SerializedName(SERIALIZED_NAME_SPLAY)
   private Long splay;
+
+  public static final String SERIALIZED_NAME_UID = "Uid";
+  @SerializedName(SERIALIZED_NAME_UID)
+  private Integer uid;
 
   public static final String SERIALIZED_NAME_VAULT_GRACE = "VaultGrace";
   @SerializedName(SERIALIZED_NAME_VAULT_GRACE)
@@ -99,6 +112,29 @@ public class Template {
 
   public void setChangeMode(String changeMode) {
     this.changeMode = changeMode;
+  }
+
+
+  public Template changeScript(ChangeScript changeScript) {
+    
+    this.changeScript = changeScript;
+    return this;
+  }
+
+   /**
+   * Get changeScript
+   * @return changeScript
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ChangeScript getChangeScript() {
+    return changeScript;
+  }
+
+
+  public void setChangeScript(ChangeScript changeScript) {
+    this.changeScript = changeScript;
   }
 
 
@@ -191,6 +227,29 @@ public class Template {
 
   public void setEnvvars(Boolean envvars) {
     this.envvars = envvars;
+  }
+
+
+  public Template gid(Integer gid) {
+    
+    this.gid = gid;
+    return this;
+  }
+
+   /**
+   * Get gid
+   * @return gid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getGid() {
+    return gid;
+  }
+
+
+  public void setGid(Integer gid) {
+    this.gid = gid;
   }
 
 
@@ -309,6 +368,29 @@ public class Template {
   }
 
 
+  public Template uid(Integer uid) {
+    
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * Get uid
+   * @return uid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getUid() {
+    return uid;
+  }
+
+
+  public void setUid(Integer uid) {
+    this.uid = uid;
+  }
+
+
   public Template vaultGrace(Long vaultGrace) {
     
     this.vaultGrace = vaultGrace;
@@ -365,22 +447,25 @@ public class Template {
     }
     Template template = (Template) o;
     return Objects.equals(this.changeMode, template.changeMode) &&
+        Objects.equals(this.changeScript, template.changeScript) &&
         Objects.equals(this.changeSignal, template.changeSignal) &&
         Objects.equals(this.destPath, template.destPath) &&
         Objects.equals(this.embeddedTmpl, template.embeddedTmpl) &&
         Objects.equals(this.envvars, template.envvars) &&
+        Objects.equals(this.gid, template.gid) &&
         Objects.equals(this.leftDelim, template.leftDelim) &&
         Objects.equals(this.perms, template.perms) &&
         Objects.equals(this.rightDelim, template.rightDelim) &&
         Objects.equals(this.sourcePath, template.sourcePath) &&
         Objects.equals(this.splay, template.splay) &&
+        Objects.equals(this.uid, template.uid) &&
         Objects.equals(this.vaultGrace, template.vaultGrace) &&
         Objects.equals(this.wait, template.wait);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(changeMode, changeSignal, destPath, embeddedTmpl, envvars, leftDelim, perms, rightDelim, sourcePath, splay, vaultGrace, wait);
+    return Objects.hash(changeMode, changeScript, changeSignal, destPath, embeddedTmpl, envvars, gid, leftDelim, perms, rightDelim, sourcePath, splay, uid, vaultGrace, wait);
   }
 
   @Override
@@ -388,15 +473,18 @@ public class Template {
     StringBuilder sb = new StringBuilder();
     sb.append("class Template {\n");
     sb.append("    changeMode: ").append(toIndentedString(changeMode)).append("\n");
+    sb.append("    changeScript: ").append(toIndentedString(changeScript)).append("\n");
     sb.append("    changeSignal: ").append(toIndentedString(changeSignal)).append("\n");
     sb.append("    destPath: ").append(toIndentedString(destPath)).append("\n");
     sb.append("    embeddedTmpl: ").append(toIndentedString(embeddedTmpl)).append("\n");
     sb.append("    envvars: ").append(toIndentedString(envvars)).append("\n");
+    sb.append("    gid: ").append(toIndentedString(gid)).append("\n");
     sb.append("    leftDelim: ").append(toIndentedString(leftDelim)).append("\n");
     sb.append("    perms: ").append(toIndentedString(perms)).append("\n");
     sb.append("    rightDelim: ").append(toIndentedString(rightDelim)).append("\n");
     sb.append("    sourcePath: ").append(toIndentedString(sourcePath)).append("\n");
     sb.append("    splay: ").append(toIndentedString(splay)).append("\n");
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    vaultGrace: ").append(toIndentedString(vaultGrace)).append("\n");
     sb.append("    wait: ").append(toIndentedString(wait)).append("\n");
     sb.append("}");

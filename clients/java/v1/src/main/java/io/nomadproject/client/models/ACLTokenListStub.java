@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.ACLTokenRoleLink;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -60,9 +61,17 @@ public class ACLTokenListStub {
   @SerializedName(SERIALIZED_NAME_POLICIES)
   private List<String> policies = null;
 
+  public static final String SERIALIZED_NAME_ROLES = "Roles";
+  @SerializedName(SERIALIZED_NAME_ROLES)
+  private List<ACLTokenRoleLink> roles = null;
+
   public static final String SERIALIZED_NAME_TYPE = "Type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_TIME = "expiration_time";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_TIME)
+  private OffsetDateTime expirationTime;
 
 
   public ACLTokenListStub accessorID(String accessorID) {
@@ -238,6 +247,37 @@ public class ACLTokenListStub {
   }
 
 
+  public ACLTokenListStub roles(List<ACLTokenRoleLink> roles) {
+    
+    this.roles = roles;
+    return this;
+  }
+
+  public ACLTokenListStub addRolesItem(ACLTokenRoleLink rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<ACLTokenRoleLink>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<ACLTokenRoleLink> getRoles() {
+    return roles;
+  }
+
+
+  public void setRoles(List<ACLTokenRoleLink> roles) {
+    this.roles = roles;
+  }
+
+
   public ACLTokenListStub type(String type) {
     
     this.type = type;
@@ -261,6 +301,29 @@ public class ACLTokenListStub {
   }
 
 
+  public ACLTokenListStub expirationTime(OffsetDateTime expirationTime) {
+    
+    this.expirationTime = expirationTime;
+    return this;
+  }
+
+   /**
+   * Get expirationTime
+   * @return expirationTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getExpirationTime() {
+    return expirationTime;
+  }
+
+
+  public void setExpirationTime(OffsetDateTime expirationTime) {
+    this.expirationTime = expirationTime;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -277,12 +340,14 @@ public class ACLTokenListStub {
         Objects.equals(this.modifyIndex, acLTokenListStub.modifyIndex) &&
         Objects.equals(this.name, acLTokenListStub.name) &&
         Objects.equals(this.policies, acLTokenListStub.policies) &&
-        Objects.equals(this.type, acLTokenListStub.type);
+        Objects.equals(this.roles, acLTokenListStub.roles) &&
+        Objects.equals(this.type, acLTokenListStub.type) &&
+        Objects.equals(this.expirationTime, acLTokenListStub.expirationTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessorID, createIndex, createTime, global, modifyIndex, name, policies, type);
+    return Objects.hash(accessorID, createIndex, createTime, global, modifyIndex, name, policies, roles, type, expirationTime);
   }
 
   @Override
@@ -296,7 +361,9 @@ public class ACLTokenListStub {
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,6 +20,8 @@ export class CSIVolumeListStub {
     'controllersExpected'?: number;
     'controllersHealthy'?: number;
     'createIndex'?: number;
+    'currentReaders'?: number;
+    'currentWriters'?: number;
     'externalID'?: string;
     'ID'?: string;
     'modifyIndex'?: number;
@@ -69,6 +71,18 @@ export class CSIVolumeListStub {
         {
             "name": "createIndex",
             "baseName": "CreateIndex",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "currentReaders",
+            "baseName": "CurrentReaders",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "currentWriters",
+            "baseName": "CurrentWriters",
             "type": "number",
             "format": ""
         },

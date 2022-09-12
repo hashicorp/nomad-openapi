@@ -2,6 +2,7 @@ export * from './ACLPolicy';
 export * from './ACLPolicyListStub';
 export * from './ACLToken';
 export * from './ACLTokenListStub';
+export * from './ACLTokenRoleLink';
 export * from './Affinity';
 export * from './AllocDeploymentStatus';
 export * from './AllocStopResponse';
@@ -35,6 +36,7 @@ export * from './CSIVolumeExternalStub';
 export * from './CSIVolumeListExternalResponse';
 export * from './CSIVolumeListStub';
 export * from './CSIVolumeRegisterRequest';
+export * from './ChangeScript';
 export * from './CheckRestart';
 export * from './Constraint';
 export * from './Consul';
@@ -81,6 +83,7 @@ export * from './GaugeValue';
 export * from './HostNetworkInfo';
 export * from './HostVolumeInfo';
 export * from './Job';
+export * from './JobACL';
 export * from './JobChildrenSummary';
 export * from './JobDeregisterResponse';
 export * from './JobDiff';
@@ -193,6 +196,7 @@ import { ACLPolicy } from './ACLPolicy';
 import { ACLPolicyListStub } from './ACLPolicyListStub';
 import { ACLToken } from './ACLToken';
 import { ACLTokenListStub } from './ACLTokenListStub';
+import { ACLTokenRoleLink } from './ACLTokenRoleLink';
 import { Affinity } from './Affinity';
 import { AllocDeploymentStatus } from './AllocDeploymentStatus';
 import { AllocStopResponse } from './AllocStopResponse';
@@ -226,6 +230,7 @@ import { CSIVolumeExternalStub } from './CSIVolumeExternalStub';
 import { CSIVolumeListExternalResponse } from './CSIVolumeListExternalResponse';
 import { CSIVolumeListStub } from './CSIVolumeListStub';
 import { CSIVolumeRegisterRequest } from './CSIVolumeRegisterRequest';
+import { ChangeScript } from './ChangeScript';
 import { CheckRestart } from './CheckRestart';
 import { Constraint } from './Constraint';
 import { Consul } from './Consul';
@@ -272,6 +277,7 @@ import { GaugeValue } from './GaugeValue';
 import { HostNetworkInfo } from './HostNetworkInfo';
 import { HostVolumeInfo } from './HostVolumeInfo';
 import { Job } from './Job';
+import { JobACL } from './JobACL';
 import { JobChildrenSummary } from './JobChildrenSummary';
 import { JobDeregisterResponse } from './JobDeregisterResponse';
 import { JobDiff } from './JobDiff';
@@ -406,6 +412,7 @@ let typeMap: {[index: string]: any} = {
     "ACLPolicyListStub": ACLPolicyListStub,
     "ACLToken": ACLToken,
     "ACLTokenListStub": ACLTokenListStub,
+    "ACLTokenRoleLink": ACLTokenRoleLink,
     "Affinity": Affinity,
     "AllocDeploymentStatus": AllocDeploymentStatus,
     "AllocStopResponse": AllocStopResponse,
@@ -439,6 +446,7 @@ let typeMap: {[index: string]: any} = {
     "CSIVolumeListExternalResponse": CSIVolumeListExternalResponse,
     "CSIVolumeListStub": CSIVolumeListStub,
     "CSIVolumeRegisterRequest": CSIVolumeRegisterRequest,
+    "ChangeScript": ChangeScript,
     "CheckRestart": CheckRestart,
     "Constraint": Constraint,
     "Consul": Consul,
@@ -485,6 +493,7 @@ let typeMap: {[index: string]: any} = {
     "HostNetworkInfo": HostNetworkInfo,
     "HostVolumeInfo": HostVolumeInfo,
     "Job": Job,
+    "JobACL": JobACL,
     "JobChildrenSummary": JobChildrenSummary,
     "JobDeregisterResponse": JobDeregisterResponse,
     "JobDiff": JobDiff,

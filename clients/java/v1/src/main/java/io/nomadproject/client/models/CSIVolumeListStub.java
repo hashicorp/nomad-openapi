@@ -57,6 +57,14 @@ public class CSIVolumeListStub {
   @SerializedName(SERIALIZED_NAME_CREATE_INDEX)
   private Integer createIndex;
 
+  public static final String SERIALIZED_NAME_CURRENT_READERS = "CurrentReaders";
+  @SerializedName(SERIALIZED_NAME_CURRENT_READERS)
+  private Integer currentReaders;
+
+  public static final String SERIALIZED_NAME_CURRENT_WRITERS = "CurrentWriters";
+  @SerializedName(SERIALIZED_NAME_CURRENT_WRITERS)
+  private Integer currentWriters;
+
   public static final String SERIALIZED_NAME_EXTERNAL_I_D = "ExternalID";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_I_D)
   private String externalID;
@@ -243,6 +251,52 @@ public class CSIVolumeListStub {
 
   public void setCreateIndex(Integer createIndex) {
     this.createIndex = createIndex;
+  }
+
+
+  public CSIVolumeListStub currentReaders(Integer currentReaders) {
+    
+    this.currentReaders = currentReaders;
+    return this;
+  }
+
+   /**
+   * Get currentReaders
+   * @return currentReaders
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getCurrentReaders() {
+    return currentReaders;
+  }
+
+
+  public void setCurrentReaders(Integer currentReaders) {
+    this.currentReaders = currentReaders;
+  }
+
+
+  public CSIVolumeListStub currentWriters(Integer currentWriters) {
+    
+    this.currentWriters = currentWriters;
+    return this;
+  }
+
+   /**
+   * Get currentWriters
+   * @return currentWriters
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getCurrentWriters() {
+    return currentWriters;
+  }
+
+
+  public void setCurrentWriters(Integer currentWriters) {
+    this.currentWriters = currentWriters;
   }
 
 
@@ -547,6 +601,8 @@ public class CSIVolumeListStub {
         Objects.equals(this.controllersExpected, csIVolumeListStub.controllersExpected) &&
         Objects.equals(this.controllersHealthy, csIVolumeListStub.controllersHealthy) &&
         Objects.equals(this.createIndex, csIVolumeListStub.createIndex) &&
+        Objects.equals(this.currentReaders, csIVolumeListStub.currentReaders) &&
+        Objects.equals(this.currentWriters, csIVolumeListStub.currentWriters) &&
         Objects.equals(this.externalID, csIVolumeListStub.externalID) &&
         Objects.equals(this.ID, csIVolumeListStub.ID) &&
         Objects.equals(this.modifyIndex, csIVolumeListStub.modifyIndex) &&
@@ -563,7 +619,7 @@ public class CSIVolumeListStub {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessMode, attachmentMode, controllerRequired, controllersExpected, controllersHealthy, createIndex, externalID, ID, modifyIndex, name, namespace, nodesExpected, nodesHealthy, pluginID, provider, resourceExhausted, schedulable, topologies);
+    return Objects.hash(accessMode, attachmentMode, controllerRequired, controllersExpected, controllersHealthy, createIndex, currentReaders, currentWriters, externalID, ID, modifyIndex, name, namespace, nodesExpected, nodesHealthy, pluginID, provider, resourceExhausted, schedulable, topologies);
   }
 
   @Override
@@ -576,6 +632,8 @@ public class CSIVolumeListStub {
     sb.append("    controllersExpected: ").append(toIndentedString(controllersExpected)).append("\n");
     sb.append("    controllersHealthy: ").append(toIndentedString(controllersHealthy)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
+    sb.append("    currentReaders: ").append(toIndentedString(currentReaders)).append("\n");
+    sb.append("    currentWriters: ").append(toIndentedString(currentWriters)).append("\n");
     sb.append("    externalID: ").append(toIndentedString(externalID)).append("\n");
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");

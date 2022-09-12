@@ -29,7 +29,11 @@ module NomadClient
 
     attr_accessor :policies
 
+    attr_accessor :roles
+
     attr_accessor :type
+
+    attr_accessor :expiration_time
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -41,7 +45,9 @@ module NomadClient
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'policies' => :'Policies',
-        :'type' => :'Type'
+        :'roles' => :'Roles',
+        :'type' => :'Type',
+        :'expiration_time' => :'expiration_time'
       }
     end
 
@@ -60,7 +66,9 @@ module NomadClient
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'policies' => :'Array<String>',
-        :'type' => :'String'
+        :'roles' => :'Array<ACLTokenRoleLink>',
+        :'type' => :'String',
+        :'expiration_time' => :'Time'
       }
     end
 
@@ -115,8 +123,18 @@ module NomadClient
         end
       end
 
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      end
+
       if attributes.key?(:'type')
         self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'expiration_time')
+        self.expiration_time = attributes[:'expiration_time']
       end
     end
 
@@ -193,7 +211,9 @@ module NomadClient
           modify_index == o.modify_index &&
           name == o.name &&
           policies == o.policies &&
-          type == o.type
+          roles == o.roles &&
+          type == o.type &&
+          expiration_time == o.expiration_time
     end
 
     # @see the `==` method
@@ -205,7 +225,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessor_id, create_index, create_time, global, modify_index, name, policies, type].hash
+      [accessor_id, create_index, create_time, global, modify_index, name, policies, roles, type, expiration_time].hash
     end
 
     # Builds the object from hash

@@ -9,6 +9,7 @@ docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
 docs/ACLToken.md
 docs/ACLTokenListStub.md
+docs/ACLTokenRoleLink.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocStopResponse.md
@@ -43,6 +44,7 @@ docs/CSIVolumeExternalStub.md
 docs/CSIVolumeListExternalResponse.md
 docs/CSIVolumeListStub.md
 docs/CSIVolumeRegisterRequest.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -92,6 +94,7 @@ docs/GaugeValue.md
 docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
+docs/JobACL.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -236,6 +239,7 @@ lib/nomad_client/models/acl_policy.rb
 lib/nomad_client/models/acl_policy_list_stub.rb
 lib/nomad_client/models/acl_token.rb
 lib/nomad_client/models/acl_token_list_stub.rb
+lib/nomad_client/models/acl_token_role_link.rb
 lib/nomad_client/models/affinity.rb
 lib/nomad_client/models/alloc_deployment_status.rb
 lib/nomad_client/models/alloc_stop_response.rb
@@ -250,6 +254,7 @@ lib/nomad_client/models/allocation_list_stub.rb
 lib/nomad_client/models/allocation_metric.rb
 lib/nomad_client/models/attribute.rb
 lib/nomad_client/models/autopilot_configuration.rb
+lib/nomad_client/models/change_script.rb
 lib/nomad_client/models/check_restart.rb
 lib/nomad_client/models/constraint.rb
 lib/nomad_client/models/consul.rb
@@ -315,6 +320,7 @@ lib/nomad_client/models/gauge_value.rb
 lib/nomad_client/models/host_network_info.rb
 lib/nomad_client/models/host_volume_info.rb
 lib/nomad_client/models/job.rb
+lib/nomad_client/models/job_acl.rb
 lib/nomad_client/models/job_children_summary.rb
 lib/nomad_client/models/job_deregister_response.rb
 lib/nomad_client/models/job_diff.rb
@@ -446,6 +452,7 @@ spec/configuration_spec.rb
 spec/models/acl_policy_list_stub_spec.rb
 spec/models/acl_policy_spec.rb
 spec/models/acl_token_list_stub_spec.rb
+spec/models/acl_token_role_link_spec.rb
 spec/models/acl_token_spec.rb
 spec/models/affinity_spec.rb
 spec/models/alloc_deployment_status_spec.rb
@@ -461,6 +468,7 @@ spec/models/allocation_metric_spec.rb
 spec/models/allocation_spec.rb
 spec/models/attribute_spec.rb
 spec/models/autopilot_configuration_spec.rb
+spec/models/change_script_spec.rb
 spec/models/check_restart_spec.rb
 spec/models/constraint_spec.rb
 spec/models/consul_connect_spec.rb
@@ -525,6 +533,7 @@ spec/models/fuzzy_search_response_spec.rb
 spec/models/gauge_value_spec.rb
 spec/models/host_network_info_spec.rb
 spec/models/host_volume_info_spec.rb
+spec/models/job_acl_spec.rb
 spec/models/job_children_summary_spec.rb
 spec/models/job_deregister_response_spec.rb
 spec/models/job_diff_spec.rb

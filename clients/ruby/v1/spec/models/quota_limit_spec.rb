@@ -43,4 +43,10 @@ describe NomadClient::QuotaLimit do
     end
   end
 
+  describe 'test attribute "variables_limit"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

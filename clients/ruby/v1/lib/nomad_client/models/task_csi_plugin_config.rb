@@ -21,6 +21,8 @@ module NomadClient
 
     attr_accessor :mount_dir
 
+    attr_accessor :stage_publish_base_dir
+
     attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -29,6 +31,7 @@ module NomadClient
         :'health_timeout' => :'HealthTimeout',
         :'id' => :'ID',
         :'mount_dir' => :'MountDir',
+        :'stage_publish_base_dir' => :'StagePublishBaseDir',
         :'type' => :'Type'
       }
     end
@@ -44,6 +47,7 @@ module NomadClient
         :'health_timeout' => :'Integer',
         :'id' => :'String',
         :'mount_dir' => :'String',
+        :'stage_publish_base_dir' => :'String',
         :'type' => :'String'
       }
     end
@@ -81,6 +85,10 @@ module NomadClient
         self.mount_dir = attributes[:'mount_dir']
       end
 
+      if attributes.key?(:'stage_publish_base_dir')
+        self.stage_publish_base_dir = attributes[:'stage_publish_base_dir']
+      end
+
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
@@ -107,6 +115,7 @@ module NomadClient
           health_timeout == o.health_timeout &&
           id == o.id &&
           mount_dir == o.mount_dir &&
+          stage_publish_base_dir == o.stage_publish_base_dir &&
           type == o.type
     end
 
@@ -119,7 +128,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [health_timeout, id, mount_dir, type].hash
+      [health_timeout, id, mount_dir, stage_publish_base_dir, type].hash
     end
 
     # Builds the object from hash

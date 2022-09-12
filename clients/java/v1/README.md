@@ -82,7 +82,7 @@ import io.nomadproject.client.api.AclApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -112,7 +112,7 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -218,6 +218,7 @@ Class | Method | HTTP request | Description
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [ACLToken](docs/ACLToken.md)
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [ACLTokenRoleLink](docs/ACLTokenRoleLink.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocStopResponse](docs/AllocStopResponse.md)
@@ -251,6 +252,7 @@ Class | Method | HTTP request | Description
  - [CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
  - [CSIVolumeListStub](docs/CSIVolumeListStub.md)
  - [CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [ChangeScript](docs/ChangeScript.md)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -297,6 +299,7 @@ Class | Method | HTTP request | Description
  - [HostNetworkInfo](docs/HostNetworkInfo.md)
  - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
+ - [JobACL](docs/JobACL.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)

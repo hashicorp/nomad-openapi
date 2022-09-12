@@ -21,6 +21,10 @@ module NomadClient
 
     attr_accessor :create_time
 
+    attr_accessor :expiration_ttl
+
+    attr_accessor :expiration_time
+
     attr_accessor :global
 
     attr_accessor :modify_index
@@ -28,6 +32,8 @@ module NomadClient
     attr_accessor :name
 
     attr_accessor :policies
+
+    attr_accessor :roles
 
     attr_accessor :secret_id
 
@@ -39,10 +45,13 @@ module NomadClient
         :'accessor_id' => :'AccessorID',
         :'create_index' => :'CreateIndex',
         :'create_time' => :'CreateTime',
+        :'expiration_ttl' => :'ExpirationTTL',
+        :'expiration_time' => :'ExpirationTime',
         :'global' => :'Global',
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'policies' => :'Policies',
+        :'roles' => :'Roles',
         :'secret_id' => :'SecretID',
         :'type' => :'Type'
       }
@@ -59,10 +68,13 @@ module NomadClient
         :'accessor_id' => :'String',
         :'create_index' => :'Integer',
         :'create_time' => :'Time',
+        :'expiration_ttl' => :'Integer',
+        :'expiration_time' => :'Time',
         :'global' => :'Boolean',
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'policies' => :'Array<String>',
+        :'roles' => :'Array<ACLTokenRoleLink>',
         :'secret_id' => :'String',
         :'type' => :'String'
       }
@@ -101,6 +113,14 @@ module NomadClient
         self.create_time = attributes[:'create_time']
       end
 
+      if attributes.key?(:'expiration_ttl')
+        self.expiration_ttl = attributes[:'expiration_ttl']
+      end
+
+      if attributes.key?(:'expiration_time')
+        self.expiration_time = attributes[:'expiration_time']
+      end
+
       if attributes.key?(:'global')
         self.global = attributes[:'global']
       end
@@ -116,6 +136,12 @@ module NomadClient
       if attributes.key?(:'policies')
         if (value = attributes[:'policies']).is_a?(Array)
           self.policies = value
+        end
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
         end
       end
 
@@ -197,10 +223,13 @@ module NomadClient
           accessor_id == o.accessor_id &&
           create_index == o.create_index &&
           create_time == o.create_time &&
+          expiration_ttl == o.expiration_ttl &&
+          expiration_time == o.expiration_time &&
           global == o.global &&
           modify_index == o.modify_index &&
           name == o.name &&
           policies == o.policies &&
+          roles == o.roles &&
           secret_id == o.secret_id &&
           type == o.type
     end
@@ -214,7 +243,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessor_id, create_index, create_time, global, modify_index, name, policies, secret_id, type].hash
+      [accessor_id, create_index, create_time, expiration_ttl, expiration_time, global, modify_index, name, policies, roles, secret_id, type].hash
     end
 
     # Builds the object from hash

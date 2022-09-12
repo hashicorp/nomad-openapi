@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.nomadproject.client.models.ACLTokenRoleLink;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -44,6 +45,14 @@ public class ACLToken {
   @SerializedName(SERIALIZED_NAME_CREATE_TIME)
   private OffsetDateTime createTime;
 
+  public static final String SERIALIZED_NAME_EXPIRATION_T_T_L = "ExpirationTTL";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_T_T_L)
+  private Long expirationTTL;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_TIME = "ExpirationTime";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_TIME)
+  private OffsetDateTime expirationTime;
+
   public static final String SERIALIZED_NAME_GLOBAL = "Global";
   @SerializedName(SERIALIZED_NAME_GLOBAL)
   private Boolean global;
@@ -59,6 +68,10 @@ public class ACLToken {
   public static final String SERIALIZED_NAME_POLICIES = "Policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)
   private List<String> policies = null;
+
+  public static final String SERIALIZED_NAME_ROLES = "Roles";
+  @SerializedName(SERIALIZED_NAME_ROLES)
+  private List<ACLTokenRoleLink> roles = null;
 
   public static final String SERIALIZED_NAME_SECRET_I_D = "SecretID";
   @SerializedName(SERIALIZED_NAME_SECRET_I_D)
@@ -137,6 +150,52 @@ public class ACLToken {
 
   public void setCreateTime(OffsetDateTime createTime) {
     this.createTime = createTime;
+  }
+
+
+  public ACLToken expirationTTL(Long expirationTTL) {
+    
+    this.expirationTTL = expirationTTL;
+    return this;
+  }
+
+   /**
+   * Get expirationTTL
+   * @return expirationTTL
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getExpirationTTL() {
+    return expirationTTL;
+  }
+
+
+  public void setExpirationTTL(Long expirationTTL) {
+    this.expirationTTL = expirationTTL;
+  }
+
+
+  public ACLToken expirationTime(OffsetDateTime expirationTime) {
+    
+    this.expirationTime = expirationTime;
+    return this;
+  }
+
+   /**
+   * Get expirationTime
+   * @return expirationTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getExpirationTime() {
+    return expirationTime;
+  }
+
+
+  public void setExpirationTime(OffsetDateTime expirationTime) {
+    this.expirationTime = expirationTime;
   }
 
 
@@ -242,6 +301,37 @@ public class ACLToken {
   }
 
 
+  public ACLToken roles(List<ACLTokenRoleLink> roles) {
+    
+    this.roles = roles;
+    return this;
+  }
+
+  public ACLToken addRolesItem(ACLTokenRoleLink rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<ACLTokenRoleLink>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<ACLTokenRoleLink> getRoles() {
+    return roles;
+  }
+
+
+  public void setRoles(List<ACLTokenRoleLink> roles) {
+    this.roles = roles;
+  }
+
+
   public ACLToken secretID(String secretID) {
     
     this.secretID = secretID;
@@ -300,17 +390,20 @@ public class ACLToken {
     return Objects.equals(this.accessorID, acLToken.accessorID) &&
         Objects.equals(this.createIndex, acLToken.createIndex) &&
         Objects.equals(this.createTime, acLToken.createTime) &&
+        Objects.equals(this.expirationTTL, acLToken.expirationTTL) &&
+        Objects.equals(this.expirationTime, acLToken.expirationTime) &&
         Objects.equals(this.global, acLToken.global) &&
         Objects.equals(this.modifyIndex, acLToken.modifyIndex) &&
         Objects.equals(this.name, acLToken.name) &&
         Objects.equals(this.policies, acLToken.policies) &&
+        Objects.equals(this.roles, acLToken.roles) &&
         Objects.equals(this.secretID, acLToken.secretID) &&
         Objects.equals(this.type, acLToken.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessorID, createIndex, createTime, global, modifyIndex, name, policies, secretID, type);
+    return Objects.hash(accessorID, createIndex, createTime, expirationTTL, expirationTime, global, modifyIndex, name, policies, roles, secretID, type);
   }
 
   @Override
@@ -320,10 +413,13 @@ public class ACLToken {
     sb.append("    accessorID: ").append(toIndentedString(accessorID)).append("\n");
     sb.append("    createIndex: ").append(toIndentedString(createIndex)).append("\n");
     sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
+    sb.append("    expirationTTL: ").append(toIndentedString(expirationTTL)).append("\n");
+    sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
     sb.append("    global: ").append(toIndentedString(global)).append("\n");
     sb.append("    modifyIndex: ").append(toIndentedString(modifyIndex)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    secretID: ").append(toIndentedString(secretID)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

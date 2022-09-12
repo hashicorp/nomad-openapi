@@ -32,9 +32,9 @@ class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://127.0.0.1:4646/v1
+         * @default http://127.0.0.1:4646/v1
          */
-        this.basePath = 'https://127.0.0.1:4646/v1'.replace(/\/+$/, '');
+        this.basePath = 'http://127.0.0.1:4646/v1'.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
@@ -601,7 +601,7 @@ class ApiClient {
                   },
                 scheme: {
                     'description': "No description provided",
-                    'default_value': "https",
+                    'default_value': "http",
                     'enum_values': [
                       "https",
                       "http"

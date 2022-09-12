@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **controllers_expected** | Option<**i32**> |  | [optional]
 **controllers_healthy** | Option<**i32**> |  | [optional]
 **create_index** | Option<**i32**> |  | [optional]
+**current_readers** | Option<**i32**> |  | [optional]
+**current_writers** | Option<**i32**> |  | [optional]
 **external_id** | Option<**String**> |  | [optional]
 **ID** | Option<**String**> |  | [optional]
 **modify_index** | Option<**i32**> |  | [optional]

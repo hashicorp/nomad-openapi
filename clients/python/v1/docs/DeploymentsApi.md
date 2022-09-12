@@ -1,6 +1,6 @@
 # nomad_client.DeploymentsApi
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,10 +28,10 @@ import nomad_client
 from nomad_client.api import deployments_api
 from nomad_client.model.deployment import Deployment
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -131,10 +131,10 @@ import nomad_client
 from nomad_client.api import deployments_api
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -234,10 +234,10 @@ import nomad_client
 from nomad_client.api import deployments_api
 from nomad_client.model.deployment import Deployment
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -329,10 +329,10 @@ from nomad_client.api import deployments_api
 from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from nomad_client.model.deployment_alloc_health_request import DeploymentAllocHealthRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -435,10 +435,10 @@ import nomad_client
 from nomad_client.api import deployments_api
 from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -529,10 +529,10 @@ from nomad_client.api import deployments_api
 from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from nomad_client.model.deployment_pause_request import DeploymentPauseRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -631,10 +631,10 @@ from nomad_client.api import deployments_api
 from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from nomad_client.model.deployment_promote_request import DeploymentPromoteRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -736,10 +736,10 @@ from nomad_client.api import deployments_api
 from nomad_client.model.deployment_update_response import DeploymentUpdateResponse
 from nomad_client.model.deployment_unblock_request import DeploymentUnblockRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters

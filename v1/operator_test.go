@@ -5,7 +5,7 @@ import (
 
 	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
-	"github.com/hashicorp/nomad/helper"
+	"github.com/hashicorp/nomad/helper/pointer"
 	"github.com/stretchr/testify/require"
 )
 
@@ -57,13 +57,13 @@ func testPutAutopilotConfiguration(t *testing.T, s *agent.TestAgent) {
 	require.NoError(t, err)
 
 	autopilotOpts := &client.AutopilotConfiguration{
-		CleanupDeadServers:      helper.BoolToPtr(true),
-		LastContactThreshold:    helper.StringToPtr("200ms"),
+		CleanupDeadServers:      pointer.Of(true),
+		LastContactThreshold:    pointer.Of("200ms"),
 		MaxTrailingLogs:         Int32ToPtr(250),
-		ServerStabilizationTime: helper.StringToPtr("10s"),
-		EnableRedundancyZones:   helper.BoolToPtr(false),
-		DisableUpgradeMigration: helper.BoolToPtr(false),
-		EnableCustomUpgrades:    helper.BoolToPtr(false),
+		ServerStabilizationTime: pointer.Of("10s"),
+		EnableRedundancyZones:   pointer.Of(false),
+		DisableUpgradeMigration: pointer.Of(false),
+		EnableCustomUpgrades:    pointer.Of(false),
 	}
 
 	result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)
@@ -95,13 +95,13 @@ func testPostSchedulerConfiguration(t *testing.T, s *agent.TestAgent) {
 	require.NoError(t, err)
 
 	schedulerOpts := &client.SchedulerConfiguration{
-		SchedulerAlgorithm:            helper.StringToPtr("spread"),
-		MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
+		SchedulerAlgorithm:            pointer.Of("spread"),
+		MemoryOversubscriptionEnabled: pointer.Of(false),
 		PreemptionConfig: &client.PreemptionConfig{
-			BatchSchedulerEnabled:    helper.BoolToPtr(true),
-			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
-			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
-			SystemSchedulerEnabled:   helper.BoolToPtr(true),
+			BatchSchedulerEnabled:    pointer.Of(true),
+			ServiceSchedulerEnabled:  pointer.Of(true),
+			SysBatchSchedulerEnabled: pointer.Of(true),
+			SystemSchedulerEnabled:   pointer.Of(true),
 		},
 	}
 

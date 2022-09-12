@@ -7,6 +7,7 @@ docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
 docs/ACLToken.md
 docs/ACLTokenListStub.md
+docs/ACLTokenRoleLink.md
 docs/AclApi.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
@@ -42,6 +43,7 @@ docs/CSIVolumeExternalStub.md
 docs/CSIVolumeListExternalResponse.md
 docs/CSIVolumeListStub.md
 docs/CSIVolumeRegisterRequest.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -91,6 +93,7 @@ docs/GaugeValue.md
 docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
+docs/JobACL.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -256,6 +259,7 @@ src/main/java/io/nomadproject/client/models/ACLPolicy.java
 src/main/java/io/nomadproject/client/models/ACLPolicyListStub.java
 src/main/java/io/nomadproject/client/models/ACLToken.java
 src/main/java/io/nomadproject/client/models/ACLTokenListStub.java
+src/main/java/io/nomadproject/client/models/ACLTokenRoleLink.java
 src/main/java/io/nomadproject/client/models/Affinity.java
 src/main/java/io/nomadproject/client/models/AllocDeploymentStatus.java
 src/main/java/io/nomadproject/client/models/AllocStopResponse.java
@@ -289,6 +293,7 @@ src/main/java/io/nomadproject/client/models/CSIVolumeExternalStub.java
 src/main/java/io/nomadproject/client/models/CSIVolumeListExternalResponse.java
 src/main/java/io/nomadproject/client/models/CSIVolumeListStub.java
 src/main/java/io/nomadproject/client/models/CSIVolumeRegisterRequest.java
+src/main/java/io/nomadproject/client/models/ChangeScript.java
 src/main/java/io/nomadproject/client/models/CheckRestart.java
 src/main/java/io/nomadproject/client/models/Constraint.java
 src/main/java/io/nomadproject/client/models/Consul.java
@@ -335,6 +340,7 @@ src/main/java/io/nomadproject/client/models/GaugeValue.java
 src/main/java/io/nomadproject/client/models/HostNetworkInfo.java
 src/main/java/io/nomadproject/client/models/HostVolumeInfo.java
 src/main/java/io/nomadproject/client/models/Job.java
+src/main/java/io/nomadproject/client/models/JobACL.java
 src/main/java/io/nomadproject/client/models/JobChildrenSummary.java
 src/main/java/io/nomadproject/client/models/JobDeregisterResponse.java
 src/main/java/io/nomadproject/client/models/JobDiff.java
@@ -460,6 +466,7 @@ src/test/java/io/nomadproject/client/api/StatusApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
 src/test/java/io/nomadproject/client/api/VolumesApiTest.java
 src/test/java/io/nomadproject/client/models/ACLPolicyListStubTest.java
+src/test/java/io/nomadproject/client/models/ACLTokenRoleLinkTest.java
 src/test/java/io/nomadproject/client/models/AffinityTest.java
 src/test/java/io/nomadproject/client/models/AllocDeploymentStatusTest.java
 src/test/java/io/nomadproject/client/models/AllocStopResponseTest.java
@@ -493,6 +500,7 @@ src/test/java/io/nomadproject/client/models/CSIVolumeListExternalResponseTest.ja
 src/test/java/io/nomadproject/client/models/CSIVolumeListStubTest.java
 src/test/java/io/nomadproject/client/models/CSIVolumeRegisterRequestTest.java
 src/test/java/io/nomadproject/client/models/CSIVolumeTest.java
+src/test/java/io/nomadproject/client/models/ChangeScriptTest.java
 src/test/java/io/nomadproject/client/models/CheckRestartTest.java
 src/test/java/io/nomadproject/client/models/ConstraintTest.java
 src/test/java/io/nomadproject/client/models/ConsulConnectTest.java
@@ -538,6 +546,7 @@ src/test/java/io/nomadproject/client/models/FuzzySearchResponseTest.java
 src/test/java/io/nomadproject/client/models/GaugeValueTest.java
 src/test/java/io/nomadproject/client/models/HostNetworkInfoTest.java
 src/test/java/io/nomadproject/client/models/HostVolumeInfoTest.java
+src/test/java/io/nomadproject/client/models/JobACLTest.java
 src/test/java/io/nomadproject/client/models/JobChildrenSummaryTest.java
 src/test/java/io/nomadproject/client/models/JobDeregisterResponseTest.java
 src/test/java/io/nomadproject/client/models/JobDiffTest.java

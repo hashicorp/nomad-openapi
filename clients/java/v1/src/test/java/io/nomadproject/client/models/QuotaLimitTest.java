@@ -65,4 +65,12 @@ public class QuotaLimitTest {
         // TODO: test regionLimit
     }
 
+    /**
+     * Test the property 'variablesLimit'
+     */
+    @Test
+    public void variablesLimitTest() {
+        // TODO: test variablesLimit
+    }
+
 }
