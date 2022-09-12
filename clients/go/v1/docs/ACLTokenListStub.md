@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Policies** | Pointer to **[]string** |  | [optional] 
+**Roles** | Pointer to [**[]ACLTokenRoleLink**](ACLTokenRoleLink.md) |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**ExpirationTime** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -207,6 +209,31 @@ SetPolicies sets Policies field to given value.
 
 HasPolicies returns a boolean if a field has been set.
 
+### GetRoles
+
+`func (o *ACLTokenListStub) GetRoles() []ACLTokenRoleLink`
+
+GetRoles returns the Roles field if non-nil, zero value otherwise.
+
+### GetRolesOk
+
+`func (o *ACLTokenListStub) GetRolesOk() (*[]ACLTokenRoleLink, bool)`
+
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoles
+
+`func (o *ACLTokenListStub) SetRoles(v []ACLTokenRoleLink)`
+
+SetRoles sets Roles field to given value.
+
+### HasRoles
+
+`func (o *ACLTokenListStub) HasRoles() bool`
+
+HasRoles returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *ACLTokenListStub) GetType() string`
@@ -231,6 +258,31 @@ SetType sets Type field to given value.
 `func (o *ACLTokenListStub) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetExpirationTime
+
+`func (o *ACLTokenListStub) GetExpirationTime() time.Time`
+
+GetExpirationTime returns the ExpirationTime field if non-nil, zero value otherwise.
+
+### GetExpirationTimeOk
+
+`func (o *ACLTokenListStub) GetExpirationTimeOk() (*time.Time, bool)`
+
+GetExpirationTimeOk returns a tuple with the ExpirationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationTime
+
+`func (o *ACLTokenListStub) SetExpirationTime(v time.Time)`
+
+SetExpirationTime sets ExpirationTime field to given value.
+
+### HasExpirationTime
+
+`func (o *ACLTokenListStub) HasExpirationTime() bool`
+
+HasExpirationTime returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

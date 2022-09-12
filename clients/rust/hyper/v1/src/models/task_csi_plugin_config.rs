@@ -19,6 +19,8 @@ pub struct TaskCsiPluginConfig {
     pub ID: Option<String>,
     #[serde(rename = "MountDir", skip_serializing_if = "Option::is_none")]
     pub mount_dir: Option<String>,
+    #[serde(rename = "StagePublishBaseDir", skip_serializing_if = "Option::is_none")]
+    pub stage_publish_base_dir: Option<String>,
     #[serde(rename = "Type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
 }
@@ -29,6 +31,7 @@ impl TaskCsiPluginConfig {
             health_timeout: None,
             ID: None,
             mount_dir: None,
+            stage_publish_base_dir: None,
             _type: None,
         }
     }

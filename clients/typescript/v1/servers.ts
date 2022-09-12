@@ -48,7 +48,7 @@ export class ServerConfiguration<T extends { [key: string]: string }> implements
     }
 }
 
-export const server1 = new ServerConfiguration<{  "address": string,  "port": string,  "scheme": "https" | "http"  }>("{scheme}://{address}:{port}/v1", {  "address": "127.0.0.1" , "port": "4646" , "scheme": "https"  })
+export const server1 = new ServerConfiguration<{  "address": string,  "port": string,  "scheme": "https" | "http"  }>("{scheme}://{address}:{port}/v1", {  "address": "127.0.0.1" , "port": "4646" , "scheme": "http"  })
 export const server2 = new ServerConfiguration<{  "address": string,  "port": string,  "scheme": "https" | "http"  }>("{scheme}://{address}:{port}/v1", {  "address": "127.0.0.1" , "port": "4646" , "scheme": "https"  })
 
 export const servers = [server1, server2];

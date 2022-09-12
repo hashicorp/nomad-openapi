@@ -13,6 +13,7 @@ from nomad_client.model.acl_policy import ACLPolicy
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
 from nomad_client.model.acl_token import ACLToken
 from nomad_client.model.acl_token_list_stub import ACLTokenListStub
+from nomad_client.model.acl_token_role_link import ACLTokenRoleLink
 from nomad_client.model.affinity import Affinity
 from nomad_client.model.alloc_deployment_status import AllocDeploymentStatus
 from nomad_client.model.alloc_stop_response import AllocStopResponse
@@ -47,6 +48,7 @@ from nomad_client.model.csi_volume_external_stub import CSIVolumeExternalStub
 from nomad_client.model.csi_volume_list_external_response import CSIVolumeListExternalResponse
 from nomad_client.model.csi_volume_list_stub import CSIVolumeListStub
 from nomad_client.model.csi_volume_register_request import CSIVolumeRegisterRequest
+from nomad_client.model.change_script import ChangeScript
 from nomad_client.model.check_restart import CheckRestart
 from nomad_client.model.constraint import Constraint
 from nomad_client.model.consul import Consul
@@ -94,6 +96,7 @@ from nomad_client.model.host_network_info import HostNetworkInfo
 from nomad_client.model.host_volume_info import HostVolumeInfo
 from nomad_client.model.int8 import Int8
 from nomad_client.model.job import Job
+from nomad_client.model.job_acl import JobACL
 from nomad_client.model.job_children_summary import JobChildrenSummary
 from nomad_client.model.job_deregister_response import JobDeregisterResponse
 from nomad_client.model.job_diff import JobDiff

@@ -27,8 +27,12 @@ pub struct AclTokenListStub {
     pub name: Option<String>,
     #[serde(rename = "Policies", skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<String>>,
+    #[serde(rename = "Roles", skip_serializing_if = "Option::is_none")]
+    pub roles: Option<Vec<crate::models::AclTokenRoleLink>>,
     #[serde(rename = "Type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
+    #[serde(rename = "expiration_time", skip_serializing_if = "Option::is_none")]
+    pub expiration_time: Option<String>,
 }
 
 impl AclTokenListStub {
@@ -41,7 +45,9 @@ impl AclTokenListStub {
             modify_index: None,
             name: None,
             policies: None,
+            roles: None,
             _type: None,
+            expiration_time: None,
         }
     }
 }

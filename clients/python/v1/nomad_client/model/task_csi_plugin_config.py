@@ -85,6 +85,7 @@ class TaskCSIPluginConfig(ModelNormal):
             'health_timeout': (int,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'mount_dir': (str,),  # noqa: E501
+            'stage_publish_base_dir': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
         }
 
@@ -97,6 +98,7 @@ class TaskCSIPluginConfig(ModelNormal):
         'health_timeout': 'HealthTimeout',  # noqa: E501
         'id': 'ID',  # noqa: E501
         'mount_dir': 'MountDir',  # noqa: E501
+        'stage_publish_base_dir': 'StagePublishBaseDir',  # noqa: E501
         'type': 'Type',  # noqa: E501
     }
 
@@ -144,6 +146,7 @@ class TaskCSIPluginConfig(ModelNormal):
             health_timeout (int): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             mount_dir (str): [optional]  # noqa: E501
+            stage_publish_base_dir (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
         """
 
@@ -229,6 +232,7 @@ class TaskCSIPluginConfig(ModelNormal):
             health_timeout (int): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             mount_dir (str): [optional]  # noqa: E501
+            stage_publish_base_dir (str): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
         """
 

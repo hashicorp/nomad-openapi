@@ -74,7 +74,7 @@ ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -180,6 +180,7 @@ Class | Method | HTTP request | Description
  - [ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [ACLToken](docs/ACLToken.md)
  - [ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [ACLTokenRoleLink](docs/ACLTokenRoleLink.md)
  - [Affinity](docs/Affinity.md)
  - [AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [AllocStopResponse](docs/AllocStopResponse.md)
@@ -213,6 +214,7 @@ Class | Method | HTTP request | Description
  - [CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
  - [CSIVolumeListStub](docs/CSIVolumeListStub.md)
  - [CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [ChangeScript](docs/ChangeScript.md)
  - [CheckRestart](docs/CheckRestart.md)
  - [Constraint](docs/Constraint.md)
  - [Consul](docs/Consul.md)
@@ -259,6 +261,7 @@ Class | Method | HTTP request | Description
  - [HostNetworkInfo](docs/HostNetworkInfo.md)
  - [HostVolumeInfo](docs/HostVolumeInfo.md)
  - [Job](docs/Job.md)
+ - [JobACL](docs/JobACL.md)
  - [JobChildrenSummary](docs/JobChildrenSummary.md)
  - [JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [JobDiff](docs/JobDiff.md)

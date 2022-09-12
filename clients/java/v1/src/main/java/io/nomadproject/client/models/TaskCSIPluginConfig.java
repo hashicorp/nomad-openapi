@@ -41,6 +41,10 @@ public class TaskCSIPluginConfig {
   @SerializedName(SERIALIZED_NAME_MOUNT_DIR)
   private String mountDir;
 
+  public static final String SERIALIZED_NAME_STAGE_PUBLISH_BASE_DIR = "StagePublishBaseDir";
+  @SerializedName(SERIALIZED_NAME_STAGE_PUBLISH_BASE_DIR)
+  private String stagePublishBaseDir;
+
   public static final String SERIALIZED_NAME_TYPE = "Type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -115,6 +119,29 @@ public class TaskCSIPluginConfig {
   }
 
 
+  public TaskCSIPluginConfig stagePublishBaseDir(String stagePublishBaseDir) {
+    
+    this.stagePublishBaseDir = stagePublishBaseDir;
+    return this;
+  }
+
+   /**
+   * Get stagePublishBaseDir
+   * @return stagePublishBaseDir
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStagePublishBaseDir() {
+    return stagePublishBaseDir;
+  }
+
+
+  public void setStagePublishBaseDir(String stagePublishBaseDir) {
+    this.stagePublishBaseDir = stagePublishBaseDir;
+  }
+
+
   public TaskCSIPluginConfig type(String type) {
     
     this.type = type;
@@ -150,12 +177,13 @@ public class TaskCSIPluginConfig {
     return Objects.equals(this.healthTimeout, taskCSIPluginConfig.healthTimeout) &&
         Objects.equals(this.ID, taskCSIPluginConfig.ID) &&
         Objects.equals(this.mountDir, taskCSIPluginConfig.mountDir) &&
+        Objects.equals(this.stagePublishBaseDir, taskCSIPluginConfig.stagePublishBaseDir) &&
         Objects.equals(this.type, taskCSIPluginConfig.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(healthTimeout, ID, mountDir, type);
+    return Objects.hash(healthTimeout, ID, mountDir, stagePublishBaseDir, type);
   }
 
   @Override
@@ -165,6 +193,7 @@ public class TaskCSIPluginConfig {
     sb.append("    healthTimeout: ").append(toIndentedString(healthTimeout)).append("\n");
     sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
     sb.append("    mountDir: ").append(toIndentedString(mountDir)).append("\n");
+    sb.append("    stagePublishBaseDir: ").append(toIndentedString(stagePublishBaseDir)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

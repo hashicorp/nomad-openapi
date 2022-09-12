@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ACLTokenRoleLink from './ACLTokenRoleLink';
 
 /**
  * The ACLTokenListStub model module.
@@ -68,8 +69,14 @@ class ACLTokenListStub {
             if (data.hasOwnProperty('Policies')) {
                 obj['Policies'] = ApiClient.convertToType(data['Policies'], ['String']);
             }
+            if (data.hasOwnProperty('Roles')) {
+                obj['Roles'] = ApiClient.convertToType(data['Roles'], [ACLTokenRoleLink]);
+            }
             if (data.hasOwnProperty('Type')) {
                 obj['Type'] = ApiClient.convertToType(data['Type'], 'String');
+            }
+            if (data.hasOwnProperty('expiration_time')) {
+                obj['expiration_time'] = ApiClient.convertToType(data['expiration_time'], 'Date');
             }
         }
         return obj;
@@ -114,9 +121,19 @@ ACLTokenListStub.prototype['Name'] = undefined;
 ACLTokenListStub.prototype['Policies'] = undefined;
 
 /**
+ * @member {Array.<module:model/ACLTokenRoleLink>} Roles
+ */
+ACLTokenListStub.prototype['Roles'] = undefined;
+
+/**
  * @member {String} Type
  */
 ACLTokenListStub.prototype['Type'] = undefined;
+
+/**
+ * @member {Date} expiration_time
+ */
+ACLTokenListStub.prototype['expiration_time'] = undefined;
 
 
 

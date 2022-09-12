@@ -17,6 +17,7 @@ import ACLPolicy from './model/ACLPolicy';
 import ACLPolicyListStub from './model/ACLPolicyListStub';
 import ACLToken from './model/ACLToken';
 import ACLTokenListStub from './model/ACLTokenListStub';
+import ACLTokenRoleLink from './model/ACLTokenRoleLink';
 import Affinity from './model/Affinity';
 import AllocDeploymentStatus from './model/AllocDeploymentStatus';
 import AllocStopResponse from './model/AllocStopResponse';
@@ -50,6 +51,7 @@ import CSIVolumeExternalStub from './model/CSIVolumeExternalStub';
 import CSIVolumeListExternalResponse from './model/CSIVolumeListExternalResponse';
 import CSIVolumeListStub from './model/CSIVolumeListStub';
 import CSIVolumeRegisterRequest from './model/CSIVolumeRegisterRequest';
+import ChangeScript from './model/ChangeScript';
 import CheckRestart from './model/CheckRestart';
 import Constraint from './model/Constraint';
 import Consul from './model/Consul';
@@ -96,6 +98,7 @@ import GaugeValue from './model/GaugeValue';
 import HostNetworkInfo from './model/HostNetworkInfo';
 import HostVolumeInfo from './model/HostVolumeInfo';
 import Job from './model/Job';
+import JobACL from './model/JobACL';
 import JobChildrenSummary from './model/JobChildrenSummary';
 import JobDeregisterResponse from './model/JobDeregisterResponse';
 import JobDiff from './model/JobDiff';
@@ -283,6 +286,12 @@ export {
      * @property {module:model/ACLTokenListStub}
      */
     ACLTokenListStub,
+
+    /**
+     * The ACLTokenRoleLink model constructor.
+     * @property {module:model/ACLTokenRoleLink}
+     */
+    ACLTokenRoleLink,
 
     /**
      * The Affinity model constructor.
@@ -481,6 +490,12 @@ export {
      * @property {module:model/CSIVolumeRegisterRequest}
      */
     CSIVolumeRegisterRequest,
+
+    /**
+     * The ChangeScript model constructor.
+     * @property {module:model/ChangeScript}
+     */
+    ChangeScript,
 
     /**
      * The CheckRestart model constructor.
@@ -757,6 +772,12 @@ export {
      * @property {module:model/Job}
      */
     Job,
+
+    /**
+     * The JobACL model constructor.
+     * @property {module:model/JobACL}
+     */
+    JobACL,
 
     /**
      * The JobChildrenSummary model constructor.

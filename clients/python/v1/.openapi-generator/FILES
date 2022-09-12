@@ -5,6 +5,7 @@ docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
 docs/ACLToken.md
 docs/ACLTokenListStub.md
+docs/ACLTokenRoleLink.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocStopResponse.md
@@ -40,6 +41,7 @@ docs/CSIVolumeExternalStub.md
 docs/CSIVolumeListExternalResponse.md
 docs/CSIVolumeListStub.md
 docs/CSIVolumeRegisterRequest.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -90,6 +92,7 @@ docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Int8.md
 docs/Job.md
+docs/JobACL.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -241,6 +244,7 @@ nomad_client/model/acl_policy.py
 nomad_client/model/acl_policy_list_stub.py
 nomad_client/model/acl_token.py
 nomad_client/model/acl_token_list_stub.py
+nomad_client/model/acl_token_role_link.py
 nomad_client/model/affinity.py
 nomad_client/model/alloc_deployment_status.py
 nomad_client/model/alloc_stop_response.py
@@ -255,6 +259,7 @@ nomad_client/model/allocation_list_stub.py
 nomad_client/model/allocation_metric.py
 nomad_client/model/attribute.py
 nomad_client/model/autopilot_configuration.py
+nomad_client/model/change_script.py
 nomad_client/model/check_restart.py
 nomad_client/model/constraint.py
 nomad_client/model/consul.py
@@ -322,6 +327,7 @@ nomad_client/model/host_network_info.py
 nomad_client/model/host_volume_info.py
 nomad_client/model/int8.py
 nomad_client/model/job.py
+nomad_client/model/job_acl.py
 nomad_client/model/job_children_summary.py
 nomad_client/model/job_deregister_response.py
 nomad_client/model/job_diff.py
@@ -441,8 +447,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_acl_token_role_link.py
 test/test_alloc_stop_response.py
 test/test_autopilot_configuration.py
+test/test_change_script.py
 test/test_csi_controller_info.py
 test/test_csi_info.py
 test/test_csi_node_info.py
@@ -458,6 +466,7 @@ test/test_deployments_api.py
 test/test_evaluation_stub.py
 test/test_evaluations_api.py
 test/test_host_network_info.py
+test/test_job_acl.py
 test/test_namespace_capabilities.py
 test/test_one_time_token.py
 test/test_one_time_token_exchange_request.py

@@ -19,6 +19,10 @@ pub struct AclToken {
     pub create_index: Option<i32>,
     #[serde(rename = "CreateTime", skip_serializing_if = "Option::is_none")]
     pub create_time: Option<String>,
+    #[serde(rename = "ExpirationTTL", skip_serializing_if = "Option::is_none")]
+    pub expiration_ttl: Option<i64>,
+    #[serde(rename = "ExpirationTime", skip_serializing_if = "Option::is_none")]
+    pub expiration_time: Option<String>,
     #[serde(rename = "Global", skip_serializing_if = "Option::is_none")]
     pub global: Option<bool>,
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
@@ -27,6 +31,8 @@ pub struct AclToken {
     pub name: Option<String>,
     #[serde(rename = "Policies", skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<String>>,
+    #[serde(rename = "Roles", skip_serializing_if = "Option::is_none")]
+    pub roles: Option<Vec<crate::models::AclTokenRoleLink>>,
     #[serde(rename = "SecretID", skip_serializing_if = "Option::is_none")]
     pub secret_id: Option<String>,
     #[serde(rename = "Type", skip_serializing_if = "Option::is_none")]
@@ -39,10 +45,13 @@ impl AclToken {
             accessor_id: None,
             create_index: None,
             create_time: None,
+            expiration_ttl: None,
+            expiration_time: None,
             global: None,
             modify_index: None,
             name: None,
             policies: None,
+            roles: None,
             secret_id: None,
             _type: None,
         }

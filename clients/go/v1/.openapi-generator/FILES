@@ -25,6 +25,7 @@ docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
 docs/ACLToken.md
 docs/ACLTokenListStub.md
+docs/ACLTokenRoleLink.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocStopResponse.md
@@ -59,6 +60,7 @@ docs/CSIVolumeExternalStub.md
 docs/CSIVolumeListExternalResponse.md
 docs/CSIVolumeListStub.md
 docs/CSIVolumeRegisterRequest.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -108,6 +110,7 @@ docs/GaugeValue.md
 docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
+docs/JobACL.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -231,6 +234,7 @@ model_acl_policy.go
 model_acl_policy_list_stub.go
 model_acl_token.go
 model_acl_token_list_stub.go
+model_acl_token_role_link.go
 model_affinity.go
 model_alloc_deployment_status.go
 model_alloc_stop_response.go
@@ -245,6 +249,7 @@ model_allocation_list_stub.go
 model_allocation_metric.go
 model_attribute.go
 model_autopilot_configuration.go
+model_change_script.go
 model_check_restart.go
 model_constraint.go
 model_consul.go
@@ -310,6 +315,7 @@ model_gauge_value.go
 model_host_network_info.go
 model_host_volume_info.go
 model_job.go
+model_job_acl.go
 model_job_children_summary.go
 model_job_deregister_response.go
 model_job_diff.go

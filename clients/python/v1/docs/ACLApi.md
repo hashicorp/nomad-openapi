@@ -1,6 +1,6 @@
 # nomad_client.ACLApi
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ import time
 import nomad_client
 from nomad_client.api import acl_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,10 +121,10 @@ import time
 import nomad_client
 from nomad_client.api import acl_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -212,10 +212,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_policy_list_stub import ACLPolicyListStub
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -306,10 +306,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_policy import ACLPolicy
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -409,10 +409,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_token import ACLToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -512,10 +512,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_token import ACLToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -606,10 +606,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_token_list_stub import ACLTokenListStub
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -700,10 +700,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_token import ACLToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -784,10 +784,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_policy import ACLPolicy
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -809,6 +809,12 @@ with nomad_client.ApiClient(configuration) as api_client:
     acl_policy = ACLPolicy(
         create_index=0,
         description="description_example",
+        job_acl=JobACL(
+            group="group_example",
+            job_id="job_id_example",
+            namespace="namespace_example",
+            task="task_example",
+        ),
         modify_index=0,
         name="name_example",
         rules="rules_example",
@@ -883,10 +889,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.acl_token import ACLToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -909,11 +915,19 @@ with nomad_client.ApiClient(configuration) as api_client:
         accessor_id="accessor_id_example",
         create_index=0,
         create_time=dateutil_parser('1970-01-01T00:00:00.00Z'),
+        expiration_ttl=1,
+        expiration_time=dateutil_parser('1970-01-01T00:00:00.00Z'),
         _global=True,
         modify_index=0,
         name="name_example",
         policies=[
             "policies_example",
+        ],
+        roles=[
+            ACLTokenRoleLink(
+                id="id_example",
+                name="name_example",
+            ),
         ],
         secret_id="secret_id_example",
         type="type_example",
@@ -990,10 +1004,10 @@ import nomad_client
 from nomad_client.api import acl_api
 from nomad_client.model.one_time_token import OneTimeToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1075,10 +1089,10 @@ from nomad_client.api import acl_api
 from nomad_client.model.one_time_token_exchange_request import OneTimeTokenExchangeRequest
 from nomad_client.model.acl_token import ACLToken
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters

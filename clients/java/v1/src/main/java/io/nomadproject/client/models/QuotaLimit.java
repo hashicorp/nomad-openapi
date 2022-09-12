@@ -42,6 +42,10 @@ public class QuotaLimit {
   @SerializedName(SERIALIZED_NAME_REGION_LIMIT)
   private Resources regionLimit;
 
+  public static final String SERIALIZED_NAME_VARIABLES_LIMIT = "VariablesLimit";
+  @SerializedName(SERIALIZED_NAME_VARIABLES_LIMIT)
+  private Integer variablesLimit;
+
 
   public QuotaLimit hash(byte[] hash) {
     
@@ -112,6 +116,29 @@ public class QuotaLimit {
   }
 
 
+  public QuotaLimit variablesLimit(Integer variablesLimit) {
+    
+    this.variablesLimit = variablesLimit;
+    return this;
+  }
+
+   /**
+   * Get variablesLimit
+   * @return variablesLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getVariablesLimit() {
+    return variablesLimit;
+  }
+
+
+  public void setVariablesLimit(Integer variablesLimit) {
+    this.variablesLimit = variablesLimit;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,12 +150,13 @@ public class QuotaLimit {
     QuotaLimit quotaLimit = (QuotaLimit) o;
     return Arrays.equals(this.hash, quotaLimit.hash) &&
         Objects.equals(this.region, quotaLimit.region) &&
-        Objects.equals(this.regionLimit, quotaLimit.regionLimit);
+        Objects.equals(this.regionLimit, quotaLimit.regionLimit) &&
+        Objects.equals(this.variablesLimit, quotaLimit.variablesLimit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Arrays.hashCode(hash), region, regionLimit);
+    return Objects.hash(Arrays.hashCode(hash), region, regionLimit, variablesLimit);
   }
 
   @Override
@@ -138,6 +166,7 @@ public class QuotaLimit {
     sb.append("    hash: ").append(toIndentedString(hash)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    regionLimit: ").append(toIndentedString(regionLimit)).append("\n");
+    sb.append("    variablesLimit: ").append(toIndentedString(variablesLimit)).append("\n");
     sb.append("}");
     return sb.toString();
   }

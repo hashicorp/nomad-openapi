@@ -91,6 +91,7 @@ class QuotaLimit(ModelNormal):
             'hash': (str,),  # noqa: E501
             'region': (str,),  # noqa: E501
             'region_limit': (Resources,),  # noqa: E501
+            'variables_limit': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -102,6 +103,7 @@ class QuotaLimit(ModelNormal):
         'hash': 'Hash',  # noqa: E501
         'region': 'Region',  # noqa: E501
         'region_limit': 'RegionLimit',  # noqa: E501
+        'variables_limit': 'VariablesLimit',  # noqa: E501
     }
 
     read_only_vars = {
@@ -148,6 +150,7 @@ class QuotaLimit(ModelNormal):
             hash (str): [optional]  # noqa: E501
             region (str): [optional]  # noqa: E501
             region_limit (Resources): [optional]  # noqa: E501
+            variables_limit (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -232,6 +235,7 @@ class QuotaLimit(ModelNormal):
             hash (str): [optional]  # noqa: E501
             region (str): [optional]  # noqa: E501
             region_limit (Resources): [optional]  # noqa: E501
+            variables_limit (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

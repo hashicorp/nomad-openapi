@@ -6,6 +6,7 @@ docs/ACLPolicy.md
 docs/ACLPolicyListStub.md
 docs/ACLToken.md
 docs/ACLTokenListStub.md
+docs/ACLTokenRoleLink.md
 docs/Affinity.md
 docs/AllocDeploymentStatus.md
 docs/AllocStopResponse.md
@@ -40,6 +41,7 @@ docs/CSIVolumeExternalStub.md
 docs/CSIVolumeListExternalResponse.md
 docs/CSIVolumeListStub.md
 docs/CSIVolumeRegisterRequest.md
+docs/ChangeScript.md
 docs/CheckRestart.md
 docs/Constraint.md
 docs/Consul.md
@@ -89,6 +91,7 @@ docs/GaugeValue.md
 docs/HostNetworkInfo.md
 docs/HostVolumeInfo.md
 docs/Job.md
+docs/JobACL.md
 docs/JobChildrenSummary.md
 docs/JobDeregisterResponse.md
 docs/JobDiff.md
@@ -233,6 +236,7 @@ src/model/ACLPolicy.js
 src/model/ACLPolicyListStub.js
 src/model/ACLToken.js
 src/model/ACLTokenListStub.js
+src/model/ACLTokenRoleLink.js
 src/model/Affinity.js
 src/model/AllocDeploymentStatus.js
 src/model/AllocStopResponse.js
@@ -266,6 +270,7 @@ src/model/CSIVolumeExternalStub.js
 src/model/CSIVolumeListExternalResponse.js
 src/model/CSIVolumeListStub.js
 src/model/CSIVolumeRegisterRequest.js
+src/model/ChangeScript.js
 src/model/CheckRestart.js
 src/model/Constraint.js
 src/model/Consul.js
@@ -312,6 +317,7 @@ src/model/GaugeValue.js
 src/model/HostNetworkInfo.js
 src/model/HostVolumeInfo.js
 src/model/Job.js
+src/model/JobACL.js
 src/model/JobChildrenSummary.js
 src/model/JobDeregisterResponse.js
 src/model/JobDiff.js
@@ -426,6 +432,7 @@ test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js
 test/api/StatusApi.spec.js
 test/api/SystemApi.spec.js
+test/model/ACLTokenRoleLink.spec.js
 test/model/AllocStopResponse.spec.js
 test/model/AutopilotConfiguration.spec.js
 test/model/CSIControllerInfo.spec.js
@@ -434,6 +441,7 @@ test/model/CSINodeInfo.spec.js
 test/model/CSIPlugin.spec.js
 test/model/CSIPluginListStub.spec.js
 test/model/CSITopologyRequest.spec.js
+test/model/ChangeScript.spec.js
 test/model/DeploymentAllocHealthRequest.spec.js
 test/model/DeploymentPauseRequest.spec.js
 test/model/DeploymentPromoteRequest.spec.js
@@ -441,6 +449,7 @@ test/model/DeploymentUnblockRequest.spec.js
 test/model/DeploymentUpdateResponse.spec.js
 test/model/EvaluationStub.spec.js
 test/model/HostNetworkInfo.spec.js
+test/model/JobACL.spec.js
 test/model/NamespaceCapabilities.spec.js
 test/model/OneTimeToken.spec.js
 test/model/OneTimeTokenExchangeRequest.spec.js

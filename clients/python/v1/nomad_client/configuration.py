@@ -113,7 +113,7 @@ conf = nomad_client.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "https://127.0.0.1:4646/v1" if host is None else host
+        self._base_path = "http://127.0.0.1:4646/v1" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -430,7 +430,7 @@ conf = nomad_client.Configuration(
                         },
                     'scheme': {
                         'description': "No description provided",
-                        'default_value': "https",
+                        'default_value': "http",
                         'enum_values': [
                             "https",
                             "http"

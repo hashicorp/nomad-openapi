@@ -19,6 +19,8 @@ module NomadClient
 
     attr_accessor :description
 
+    attr_accessor :job_acl
+
     attr_accessor :modify_index
 
     attr_accessor :name
@@ -30,6 +32,7 @@ module NomadClient
       {
         :'create_index' => :'CreateIndex',
         :'description' => :'Description',
+        :'job_acl' => :'JobACL',
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'rules' => :'Rules'
@@ -46,6 +49,7 @@ module NomadClient
       {
         :'create_index' => :'Integer',
         :'description' => :'String',
+        :'job_acl' => :'JobACL',
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'rules' => :'String'
@@ -79,6 +83,10 @@ module NomadClient
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'job_acl')
+        self.job_acl = attributes[:'job_acl']
       end
 
       if attributes.key?(:'modify_index')
@@ -162,6 +170,7 @@ module NomadClient
       self.class == o.class &&
           create_index == o.create_index &&
           description == o.description &&
+          job_acl == o.job_acl &&
           modify_index == o.modify_index &&
           name == o.name &&
           rules == o.rules
@@ -176,7 +185,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_index, description, modify_index, name, rules].hash
+      [create_index, description, job_acl, modify_index, name, rules].hash
     end
 
     # Builds the object from hash

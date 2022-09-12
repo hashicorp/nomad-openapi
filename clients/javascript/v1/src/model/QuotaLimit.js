@@ -57,6 +57,9 @@ class QuotaLimit {
             if (data.hasOwnProperty('RegionLimit')) {
                 obj['RegionLimit'] = Resources.constructFromObject(data['RegionLimit']);
             }
+            if (data.hasOwnProperty('VariablesLimit')) {
+                obj['VariablesLimit'] = ApiClient.convertToType(data['VariablesLimit'], 'Number');
+            }
         }
         return obj;
     }
@@ -78,6 +81,11 @@ QuotaLimit.prototype['Region'] = undefined;
  * @member {module:model/Resources} RegionLimit
  */
 QuotaLimit.prototype['RegionLimit'] = undefined;
+
+/**
+ * @member {Number} VariablesLimit
+ */
+QuotaLimit.prototype['VariablesLimit'] = undefined;
 
 
 

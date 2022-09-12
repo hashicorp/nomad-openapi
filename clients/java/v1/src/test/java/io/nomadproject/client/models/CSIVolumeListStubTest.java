@@ -93,6 +93,22 @@ public class CSIVolumeListStubTest {
     }
 
     /**
+     * Test the property 'currentReaders'
+     */
+    @Test
+    public void currentReadersTest() {
+        // TODO: test currentReaders
+    }
+
+    /**
+     * Test the property 'currentWriters'
+     */
+    @Test
+    public void currentWritersTest() {
+        // TODO: test currentWriters
+    }
+
+    /**
      * Test the property 'externalID'
      */
     @Test

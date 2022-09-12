@@ -29,6 +29,7 @@ models/ACLPolicy.ts
 models/ACLPolicyListStub.ts
 models/ACLToken.ts
 models/ACLTokenListStub.ts
+models/ACLTokenRoleLink.ts
 models/Affinity.ts
 models/AllocDeploymentStatus.ts
 models/AllocStopResponse.ts
@@ -62,6 +63,7 @@ models/CSIVolumeExternalStub.ts
 models/CSIVolumeListExternalResponse.ts
 models/CSIVolumeListStub.ts
 models/CSIVolumeRegisterRequest.ts
+models/ChangeScript.ts
 models/CheckRestart.ts
 models/Constraint.ts
 models/Consul.ts
@@ -108,6 +110,7 @@ models/GaugeValue.ts
 models/HostNetworkInfo.ts
 models/HostVolumeInfo.ts
 models/Job.ts
+models/JobACL.ts
 models/JobChildrenSummary.ts
 models/JobDeregisterResponse.ts
 models/JobDiff.ts

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **create_index** | **int** |  | [optional] 
 **description** | **str** |  | [optional] 
+**job_acl** | [**JobACL**](JobACL.md) |  | [optional] 
 **modify_index** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **rules** | **str** |  | [optional] 

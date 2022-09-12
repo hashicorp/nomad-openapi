@@ -56,6 +56,9 @@ class TaskCSIPluginConfig {
             if (data.hasOwnProperty('MountDir')) {
                 obj['MountDir'] = ApiClient.convertToType(data['MountDir'], 'String');
             }
+            if (data.hasOwnProperty('StagePublishBaseDir')) {
+                obj['StagePublishBaseDir'] = ApiClient.convertToType(data['StagePublishBaseDir'], 'String');
+            }
             if (data.hasOwnProperty('Type')) {
                 obj['Type'] = ApiClient.convertToType(data['Type'], 'String');
             }
@@ -80,6 +83,11 @@ TaskCSIPluginConfig.prototype['ID'] = undefined;
  * @member {String} MountDir
  */
 TaskCSIPluginConfig.prototype['MountDir'] = undefined;
+
+/**
+ * @member {String} StagePublishBaseDir
+ */
+TaskCSIPluginConfig.prototype['StagePublishBaseDir'] = undefined;
 
 /**
  * @member {String} Type

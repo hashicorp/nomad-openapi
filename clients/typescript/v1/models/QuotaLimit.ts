@@ -17,6 +17,7 @@ export class QuotaLimit {
     'hash'?: string;
     'region'?: string;
     'regionLimit'?: Resources;
+    'variablesLimit'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,6 +38,12 @@ export class QuotaLimit {
             "name": "regionLimit",
             "baseName": "RegionLimit",
             "type": "Resources",
+            "format": ""
+        },
+        {
+            "name": "variablesLimit",
+            "baseName": "VariablesLimit",
+            "type": "number",
             "format": ""
         }    ];
 

@@ -10,16 +10,20 @@
  * Do not edit the class manually.
  */
 
+import { ACLTokenRoleLink } from './ACLTokenRoleLink';
 import { HttpFile } from '../http/http';
 
 export class ACLToken {
     'accessorID'?: string;
     'createIndex'?: number;
     'createTime'?: Date;
+    'expirationTTL'?: number;
+    'expirationTime'?: Date;
     'global'?: boolean;
     'modifyIndex'?: number;
     'name'?: string;
     'policies'?: Array<string>;
+    'roles'?: Array<ACLTokenRoleLink>;
     'secretID'?: string;
     'type'?: string;
 
@@ -45,6 +49,18 @@ export class ACLToken {
             "format": "date-time"
         },
         {
+            "name": "expirationTTL",
+            "baseName": "ExpirationTTL",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "expirationTime",
+            "baseName": "ExpirationTime",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
             "name": "global",
             "baseName": "Global",
             "type": "boolean",
@@ -66,6 +82,12 @@ export class ACLToken {
             "name": "policies",
             "baseName": "Policies",
             "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "roles",
+            "baseName": "Roles",
+            "type": "Array<ACLTokenRoleLink>",
             "format": ""
         },
         {

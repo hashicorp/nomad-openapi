@@ -138,7 +138,7 @@ module NomadClient
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'https'
+      @scheme = 'http'
       @host = '127.0.0.1:4646'
       @base_path = '/v1'
       @server_index = 0
@@ -242,7 +242,7 @@ module NomadClient
               },
             scheme: {
                 description: "No description provided",
-                default_value: "https",
+                default_value: "http",
                 enum_values: [
                   "https",
                   "http"

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **controllersExpected** | **Number** |  | [optional] 
 **controllersHealthy** | **Number** |  | [optional] 
 **createIndex** | **Number** |  | [optional] 
+**currentReaders** | **Number** |  | [optional] 
+**currentWriters** | **Number** |  | [optional] 
 **externalID** | **String** |  | [optional] 
 **ID** | **String** |  | [optional] 
 **modifyIndex** | **Number** |  | [optional] 

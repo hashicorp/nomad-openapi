@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { ACLTokenRoleLink } from './ACLTokenRoleLink';
 import { HttpFile } from '../http/http';
 
 export class ACLTokenListStub {
@@ -20,7 +21,9 @@ export class ACLTokenListStub {
     'modifyIndex'?: number;
     'name'?: string;
     'policies'?: Array<string>;
+    'roles'?: Array<ACLTokenRoleLink>;
     'type'?: string;
+    'expirationTime'?: Date;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -68,10 +71,22 @@ export class ACLTokenListStub {
             "format": ""
         },
         {
+            "name": "roles",
+            "baseName": "Roles",
+            "type": "Array<ACLTokenRoleLink>",
+            "format": ""
+        },
+        {
             "name": "type",
             "baseName": "Type",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "expirationTime",
+            "baseName": "expiration_time",
+            "type": "Date",
+            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {

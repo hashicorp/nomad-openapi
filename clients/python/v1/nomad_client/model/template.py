@@ -31,7 +31,9 @@ from nomad_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from nomad_client.model.change_script import ChangeScript
     from nomad_client.model.wait_config import WaitConfig
+    globals()['ChangeScript'] = ChangeScript
     globals()['WaitConfig'] = WaitConfig
 
 
@@ -89,15 +91,18 @@ class Template(ModelNormal):
         lazy_import()
         return {
             'change_mode': (str,),  # noqa: E501
+            'change_script': (ChangeScript,),  # noqa: E501
             'change_signal': (str,),  # noqa: E501
             'dest_path': (str,),  # noqa: E501
             'embedded_tmpl': (str,),  # noqa: E501
             'envvars': (bool,),  # noqa: E501
+            'gid': (int,),  # noqa: E501
             'left_delim': (str,),  # noqa: E501
             'perms': (str,),  # noqa: E501
             'right_delim': (str,),  # noqa: E501
             'source_path': (str,),  # noqa: E501
             'splay': (int,),  # noqa: E501
+            'uid': (int,),  # noqa: E501
             'vault_grace': (int,),  # noqa: E501
             'wait': (WaitConfig,),  # noqa: E501
         }
@@ -109,15 +114,18 @@ class Template(ModelNormal):
 
     attribute_map = {
         'change_mode': 'ChangeMode',  # noqa: E501
+        'change_script': 'ChangeScript',  # noqa: E501
         'change_signal': 'ChangeSignal',  # noqa: E501
         'dest_path': 'DestPath',  # noqa: E501
         'embedded_tmpl': 'EmbeddedTmpl',  # noqa: E501
         'envvars': 'Envvars',  # noqa: E501
+        'gid': 'Gid',  # noqa: E501
         'left_delim': 'LeftDelim',  # noqa: E501
         'perms': 'Perms',  # noqa: E501
         'right_delim': 'RightDelim',  # noqa: E501
         'source_path': 'SourcePath',  # noqa: E501
         'splay': 'Splay',  # noqa: E501
+        'uid': 'Uid',  # noqa: E501
         'vault_grace': 'VaultGrace',  # noqa: E501
         'wait': 'Wait',  # noqa: E501
     }
@@ -164,15 +172,18 @@ class Template(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             change_mode (str): [optional]  # noqa: E501
+            change_script (ChangeScript): [optional]  # noqa: E501
             change_signal (str): [optional]  # noqa: E501
             dest_path (str): [optional]  # noqa: E501
             embedded_tmpl (str): [optional]  # noqa: E501
             envvars (bool): [optional]  # noqa: E501
+            gid (int): [optional]  # noqa: E501
             left_delim (str): [optional]  # noqa: E501
             perms (str): [optional]  # noqa: E501
             right_delim (str): [optional]  # noqa: E501
             source_path (str): [optional]  # noqa: E501
             splay (int): [optional]  # noqa: E501
+            uid (int): [optional]  # noqa: E501
             vault_grace (int): [optional]  # noqa: E501
             wait (WaitConfig): [optional]  # noqa: E501
         """
@@ -257,15 +268,18 @@ class Template(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             change_mode (str): [optional]  # noqa: E501
+            change_script (ChangeScript): [optional]  # noqa: E501
             change_signal (str): [optional]  # noqa: E501
             dest_path (str): [optional]  # noqa: E501
             embedded_tmpl (str): [optional]  # noqa: E501
             envvars (bool): [optional]  # noqa: E501
+            gid (int): [optional]  # noqa: E501
             left_delim (str): [optional]  # noqa: E501
             perms (str): [optional]  # noqa: E501
             right_delim (str): [optional]  # noqa: E501
             source_path (str): [optional]  # noqa: E501
             splay (int): [optional]  # noqa: E501
+            uid (int): [optional]  # noqa: E501
             vault_grace (int): [optional]  # noqa: E501
             wait (WaitConfig): [optional]  # noqa: E501
         """

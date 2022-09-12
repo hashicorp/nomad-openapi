@@ -66,6 +66,12 @@ class CSIVolumeListStub {
             if (data.hasOwnProperty('CreateIndex')) {
                 obj['CreateIndex'] = ApiClient.convertToType(data['CreateIndex'], 'Number');
             }
+            if (data.hasOwnProperty('CurrentReaders')) {
+                obj['CurrentReaders'] = ApiClient.convertToType(data['CurrentReaders'], 'Number');
+            }
+            if (data.hasOwnProperty('CurrentWriters')) {
+                obj['CurrentWriters'] = ApiClient.convertToType(data['CurrentWriters'], 'Number');
+            }
             if (data.hasOwnProperty('ExternalID')) {
                 obj['ExternalID'] = ApiClient.convertToType(data['ExternalID'], 'String');
             }
@@ -138,6 +144,16 @@ CSIVolumeListStub.prototype['ControllersHealthy'] = undefined;
  * @member {Number} CreateIndex
  */
 CSIVolumeListStub.prototype['CreateIndex'] = undefined;
+
+/**
+ * @member {Number} CurrentReaders
+ */
+CSIVolumeListStub.prototype['CurrentReaders'] = undefined;
+
+/**
+ * @member {Number} CurrentWriters
+ */
+CSIVolumeListStub.prototype['CurrentWriters'] = undefined;
 
 /**
  * @member {String} ExternalID

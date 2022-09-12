@@ -20,6 +20,7 @@ type TaskCSIPluginConfig struct {
 	HealthTimeout *int64 `json:"HealthTimeout,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	MountDir *string `json:"MountDir,omitempty"`
+	StagePublishBaseDir *string `json:"StagePublishBaseDir,omitempty"`
 	Type *string `json:"Type,omitempty"`
 }
 
@@ -136,6 +137,38 @@ func (o *TaskCSIPluginConfig) SetMountDir(v string) {
 	o.MountDir = &v
 }
 
+// GetStagePublishBaseDir returns the StagePublishBaseDir field value if set, zero value otherwise.
+func (o *TaskCSIPluginConfig) GetStagePublishBaseDir() string {
+	if o == nil || o.StagePublishBaseDir == nil {
+		var ret string
+		return ret
+	}
+	return *o.StagePublishBaseDir
+}
+
+// GetStagePublishBaseDirOk returns a tuple with the StagePublishBaseDir field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaskCSIPluginConfig) GetStagePublishBaseDirOk() (*string, bool) {
+	if o == nil || o.StagePublishBaseDir == nil {
+		return nil, false
+	}
+	return o.StagePublishBaseDir, true
+}
+
+// HasStagePublishBaseDir returns a boolean if a field has been set.
+func (o *TaskCSIPluginConfig) HasStagePublishBaseDir() bool {
+	if o != nil && o.StagePublishBaseDir != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStagePublishBaseDir gets a reference to the given string and assigns it to the StagePublishBaseDir field.
+func (o *TaskCSIPluginConfig) SetStagePublishBaseDir(v string) {
+	o.StagePublishBaseDir = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *TaskCSIPluginConfig) GetType() string {
 	if o == nil || o.Type == nil {
@@ -178,6 +211,9 @@ func (o TaskCSIPluginConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.MountDir != nil {
 		toSerialize["MountDir"] = o.MountDir
+	}
+	if o.StagePublishBaseDir != nil {
+		toSerialize["StagePublishBaseDir"] = o.StagePublishBaseDir
 	}
 	if o.Type != nil {
 		toSerialize["Type"] = o.Type

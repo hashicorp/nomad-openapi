@@ -128,7 +128,7 @@ api.deleteACLPolicy(policyName, opts, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -234,6 +234,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [nomad-client.ACLToken](docs/ACLToken.md)
  - [nomad-client.ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [nomad-client.ACLTokenRoleLink](docs/ACLTokenRoleLink.md)
  - [nomad-client.Affinity](docs/Affinity.md)
  - [nomad-client.AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [nomad-client.AllocStopResponse](docs/AllocStopResponse.md)
@@ -267,6 +268,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
  - [nomad-client.CSIVolumeListStub](docs/CSIVolumeListStub.md)
  - [nomad-client.CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [nomad-client.ChangeScript](docs/ChangeScript.md)
  - [nomad-client.CheckRestart](docs/CheckRestart.md)
  - [nomad-client.Constraint](docs/Constraint.md)
  - [nomad-client.Consul](docs/Consul.md)
@@ -313,6 +315,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.HostNetworkInfo](docs/HostNetworkInfo.md)
  - [nomad-client.HostVolumeInfo](docs/HostVolumeInfo.md)
  - [nomad-client.Job](docs/Job.md)
+ - [nomad-client.JobACL](docs/JobACL.md)
  - [nomad-client.JobChildrenSummary](docs/JobChildrenSummary.md)
  - [nomad-client.JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [nomad-client.JobDiff](docs/JobDiff.md)

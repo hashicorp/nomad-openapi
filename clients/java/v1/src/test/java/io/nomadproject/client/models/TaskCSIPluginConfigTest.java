@@ -65,6 +65,14 @@ public class TaskCSIPluginConfigTest {
     }
 
     /**
+     * Test the property 'stagePublishBaseDir'
+     */
+    @Test
+    public void stagePublishBaseDirTest() {
+        // TODO: test stagePublishBaseDir
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test

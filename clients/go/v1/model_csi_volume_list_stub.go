@@ -24,6 +24,8 @@ type CSIVolumeListStub struct {
 	ControllersExpected *int32 `json:"ControllersExpected,omitempty"`
 	ControllersHealthy *int32 `json:"ControllersHealthy,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
+	CurrentReaders *int32 `json:"CurrentReaders,omitempty"`
+	CurrentWriters *int32 `json:"CurrentWriters,omitempty"`
 	ExternalID *string `json:"ExternalID,omitempty"`
 	ID *string `json:"ID,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
@@ -245,6 +247,70 @@ func (o *CSIVolumeListStub) HasCreateIndex() bool {
 // SetCreateIndex gets a reference to the given int32 and assigns it to the CreateIndex field.
 func (o *CSIVolumeListStub) SetCreateIndex(v int32) {
 	o.CreateIndex = &v
+}
+
+// GetCurrentReaders returns the CurrentReaders field value if set, zero value otherwise.
+func (o *CSIVolumeListStub) GetCurrentReaders() int32 {
+	if o == nil || o.CurrentReaders == nil {
+		var ret int32
+		return ret
+	}
+	return *o.CurrentReaders
+}
+
+// GetCurrentReadersOk returns a tuple with the CurrentReaders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSIVolumeListStub) GetCurrentReadersOk() (*int32, bool) {
+	if o == nil || o.CurrentReaders == nil {
+		return nil, false
+	}
+	return o.CurrentReaders, true
+}
+
+// HasCurrentReaders returns a boolean if a field has been set.
+func (o *CSIVolumeListStub) HasCurrentReaders() bool {
+	if o != nil && o.CurrentReaders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentReaders gets a reference to the given int32 and assigns it to the CurrentReaders field.
+func (o *CSIVolumeListStub) SetCurrentReaders(v int32) {
+	o.CurrentReaders = &v
+}
+
+// GetCurrentWriters returns the CurrentWriters field value if set, zero value otherwise.
+func (o *CSIVolumeListStub) GetCurrentWriters() int32 {
+	if o == nil || o.CurrentWriters == nil {
+		var ret int32
+		return ret
+	}
+	return *o.CurrentWriters
+}
+
+// GetCurrentWritersOk returns a tuple with the CurrentWriters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CSIVolumeListStub) GetCurrentWritersOk() (*int32, bool) {
+	if o == nil || o.CurrentWriters == nil {
+		return nil, false
+	}
+	return o.CurrentWriters, true
+}
+
+// HasCurrentWriters returns a boolean if a field has been set.
+func (o *CSIVolumeListStub) HasCurrentWriters() bool {
+	if o != nil && o.CurrentWriters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentWriters gets a reference to the given int32 and assigns it to the CurrentWriters field.
+func (o *CSIVolumeListStub) SetCurrentWriters(v int32) {
+	o.CurrentWriters = &v
 }
 
 // GetExternalID returns the ExternalID field value if set, zero value otherwise.
@@ -650,6 +716,12 @@ func (o CSIVolumeListStub) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateIndex != nil {
 		toSerialize["CreateIndex"] = o.CreateIndex
+	}
+	if o.CurrentReaders != nil {
+		toSerialize["CurrentReaders"] = o.CurrentReaders
+	}
+	if o.CurrentWriters != nil {
+		toSerialize["CurrentWriters"] = o.CurrentWriters
 	}
 	if o.ExternalID != nil {
 		toSerialize["ExternalID"] = o.ExternalID

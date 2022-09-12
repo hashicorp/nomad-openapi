@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **ControllersExpected** | Pointer to **int32** |  | [optional] 
 **ControllersHealthy** | Pointer to **int32** |  | [optional] 
 **CreateIndex** | Pointer to **int32** |  | [optional] 
+**CurrentReaders** | Pointer to **int32** |  | [optional] 
+**CurrentWriters** | Pointer to **int32** |  | [optional] 
 **ExternalID** | Pointer to **string** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
@@ -191,6 +193,56 @@ SetCreateIndex sets CreateIndex field to given value.
 `func (o *CSIVolumeListStub) HasCreateIndex() bool`
 
 HasCreateIndex returns a boolean if a field has been set.
+
+### GetCurrentReaders
+
+`func (o *CSIVolumeListStub) GetCurrentReaders() int32`
+
+GetCurrentReaders returns the CurrentReaders field if non-nil, zero value otherwise.
+
+### GetCurrentReadersOk
+
+`func (o *CSIVolumeListStub) GetCurrentReadersOk() (*int32, bool)`
+
+GetCurrentReadersOk returns a tuple with the CurrentReaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentReaders
+
+`func (o *CSIVolumeListStub) SetCurrentReaders(v int32)`
+
+SetCurrentReaders sets CurrentReaders field to given value.
+
+### HasCurrentReaders
+
+`func (o *CSIVolumeListStub) HasCurrentReaders() bool`
+
+HasCurrentReaders returns a boolean if a field has been set.
+
+### GetCurrentWriters
+
+`func (o *CSIVolumeListStub) GetCurrentWriters() int32`
+
+GetCurrentWriters returns the CurrentWriters field if non-nil, zero value otherwise.
+
+### GetCurrentWritersOk
+
+`func (o *CSIVolumeListStub) GetCurrentWritersOk() (*int32, bool)`
+
+GetCurrentWritersOk returns a tuple with the CurrentWriters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentWriters
+
+`func (o *CSIVolumeListStub) SetCurrentWriters(v int32)`
+
+SetCurrentWriters sets CurrentWriters field to given value.
+
+### HasCurrentWriters
+
+`func (o *CSIVolumeListStub) HasCurrentWriters() bool`
+
+HasCurrentWriters returns a boolean if a field has been set.
 
 ### GetExternalID
 

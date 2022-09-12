@@ -18,15 +18,18 @@ import (
 // Template struct for Template
 type Template struct {
 	ChangeMode *string `json:"ChangeMode,omitempty"`
+	ChangeScript *ChangeScript `json:"ChangeScript,omitempty"`
 	ChangeSignal *string `json:"ChangeSignal,omitempty"`
 	DestPath *string `json:"DestPath,omitempty"`
 	EmbeddedTmpl *string `json:"EmbeddedTmpl,omitempty"`
 	Envvars *bool `json:"Envvars,omitempty"`
+	Gid *int32 `json:"Gid,omitempty"`
 	LeftDelim *string `json:"LeftDelim,omitempty"`
 	Perms *string `json:"Perms,omitempty"`
 	RightDelim *string `json:"RightDelim,omitempty"`
 	SourcePath *string `json:"SourcePath,omitempty"`
 	Splay *int64 `json:"Splay,omitempty"`
+	Uid *int32 `json:"Uid,omitempty"`
 	VaultGrace *int64 `json:"VaultGrace,omitempty"`
 	Wait *WaitConfig `json:"Wait,omitempty"`
 }
@@ -78,6 +81,38 @@ func (o *Template) HasChangeMode() bool {
 // SetChangeMode gets a reference to the given string and assigns it to the ChangeMode field.
 func (o *Template) SetChangeMode(v string) {
 	o.ChangeMode = &v
+}
+
+// GetChangeScript returns the ChangeScript field value if set, zero value otherwise.
+func (o *Template) GetChangeScript() ChangeScript {
+	if o == nil || o.ChangeScript == nil {
+		var ret ChangeScript
+		return ret
+	}
+	return *o.ChangeScript
+}
+
+// GetChangeScriptOk returns a tuple with the ChangeScript field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetChangeScriptOk() (*ChangeScript, bool) {
+	if o == nil || o.ChangeScript == nil {
+		return nil, false
+	}
+	return o.ChangeScript, true
+}
+
+// HasChangeScript returns a boolean if a field has been set.
+func (o *Template) HasChangeScript() bool {
+	if o != nil && o.ChangeScript != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeScript gets a reference to the given ChangeScript and assigns it to the ChangeScript field.
+func (o *Template) SetChangeScript(v ChangeScript) {
+	o.ChangeScript = &v
 }
 
 // GetChangeSignal returns the ChangeSignal field value if set, zero value otherwise.
@@ -206,6 +241,38 @@ func (o *Template) HasEnvvars() bool {
 // SetEnvvars gets a reference to the given bool and assigns it to the Envvars field.
 func (o *Template) SetEnvvars(v bool) {
 	o.Envvars = &v
+}
+
+// GetGid returns the Gid field value if set, zero value otherwise.
+func (o *Template) GetGid() int32 {
+	if o == nil || o.Gid == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Gid
+}
+
+// GetGidOk returns a tuple with the Gid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetGidOk() (*int32, bool) {
+	if o == nil || o.Gid == nil {
+		return nil, false
+	}
+	return o.Gid, true
+}
+
+// HasGid returns a boolean if a field has been set.
+func (o *Template) HasGid() bool {
+	if o != nil && o.Gid != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGid gets a reference to the given int32 and assigns it to the Gid field.
+func (o *Template) SetGid(v int32) {
+	o.Gid = &v
 }
 
 // GetLeftDelim returns the LeftDelim field value if set, zero value otherwise.
@@ -368,6 +435,38 @@ func (o *Template) SetSplay(v int64) {
 	o.Splay = &v
 }
 
+// GetUid returns the Uid field value if set, zero value otherwise.
+func (o *Template) GetUid() int32 {
+	if o == nil || o.Uid == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Uid
+}
+
+// GetUidOk returns a tuple with the Uid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetUidOk() (*int32, bool) {
+	if o == nil || o.Uid == nil {
+		return nil, false
+	}
+	return o.Uid, true
+}
+
+// HasUid returns a boolean if a field has been set.
+func (o *Template) HasUid() bool {
+	if o != nil && o.Uid != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUid gets a reference to the given int32 and assigns it to the Uid field.
+func (o *Template) SetUid(v int32) {
+	o.Uid = &v
+}
+
 // GetVaultGrace returns the VaultGrace field value if set, zero value otherwise.
 func (o *Template) GetVaultGrace() int64 {
 	if o == nil || o.VaultGrace == nil {
@@ -437,6 +536,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 	if o.ChangeMode != nil {
 		toSerialize["ChangeMode"] = o.ChangeMode
 	}
+	if o.ChangeScript != nil {
+		toSerialize["ChangeScript"] = o.ChangeScript
+	}
 	if o.ChangeSignal != nil {
 		toSerialize["ChangeSignal"] = o.ChangeSignal
 	}
@@ -448,6 +550,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 	}
 	if o.Envvars != nil {
 		toSerialize["Envvars"] = o.Envvars
+	}
+	if o.Gid != nil {
+		toSerialize["Gid"] = o.Gid
 	}
 	if o.LeftDelim != nil {
 		toSerialize["LeftDelim"] = o.LeftDelim
@@ -463,6 +568,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 	}
 	if o.Splay != nil {
 		toSerialize["Splay"] = o.Splay
+	}
+	if o.Uid != nil {
+		toSerialize["Uid"] = o.Uid
 	}
 	if o.VaultGrace != nil {
 		toSerialize["VaultGrace"] = o.VaultGrace

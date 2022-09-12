@@ -1,6 +1,6 @@
 # nomad_client.OperatorApi
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import time
 import nomad_client
 from nomad_client.api import operator_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -109,10 +109,10 @@ import nomad_client
 from nomad_client.api import operator_api
 from nomad_client.model.autopilot_configuration import AutopilotConfiguration
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -203,10 +203,10 @@ import nomad_client
 from nomad_client.api import operator_api
 from nomad_client.model.operator_health_reply import OperatorHealthReply
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -297,10 +297,10 @@ import nomad_client
 from nomad_client.api import operator_api
 from nomad_client.model.raft_configuration import RaftConfiguration
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -391,10 +391,10 @@ import nomad_client
 from nomad_client.api import operator_api
 from nomad_client.model.scheduler_configuration_response import SchedulerConfigurationResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -486,10 +486,10 @@ from nomad_client.api import operator_api
 from nomad_client.model.scheduler_set_configuration_response import SchedulerSetConfigurationResponse
 from nomad_client.model.scheduler_configuration import SchedulerConfiguration
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -592,10 +592,10 @@ import nomad_client
 from nomad_client.api import operator_api
 from nomad_client.model.autopilot_configuration import AutopilotConfiguration
 from pprint import pprint
-# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "https://127.0.0.1:4646/v1"
+    host = "http://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -83,7 +83,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -189,6 +189,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::ACLPolicyListStub](docs/ACLPolicyListStub.md)
  - [NomadClient::ACLToken](docs/ACLToken.md)
  - [NomadClient::ACLTokenListStub](docs/ACLTokenListStub.md)
+ - [NomadClient::ACLTokenRoleLink](docs/ACLTokenRoleLink.md)
  - [NomadClient::Affinity](docs/Affinity.md)
  - [NomadClient::AllocDeploymentStatus](docs/AllocDeploymentStatus.md)
  - [NomadClient::AllocStopResponse](docs/AllocStopResponse.md)
@@ -222,6 +223,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::CSIVolumeListExternalResponse](docs/CSIVolumeListExternalResponse.md)
  - [NomadClient::CSIVolumeListStub](docs/CSIVolumeListStub.md)
  - [NomadClient::CSIVolumeRegisterRequest](docs/CSIVolumeRegisterRequest.md)
+ - [NomadClient::ChangeScript](docs/ChangeScript.md)
  - [NomadClient::CheckRestart](docs/CheckRestart.md)
  - [NomadClient::Constraint](docs/Constraint.md)
  - [NomadClient::Consul](docs/Consul.md)
@@ -268,6 +270,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::HostNetworkInfo](docs/HostNetworkInfo.md)
  - [NomadClient::HostVolumeInfo](docs/HostVolumeInfo.md)
  - [NomadClient::Job](docs/Job.md)
+ - [NomadClient::JobACL](docs/JobACL.md)
  - [NomadClient::JobChildrenSummary](docs/JobChildrenSummary.md)
  - [NomadClient::JobDeregisterResponse](docs/JobDeregisterResponse.md)
  - [NomadClient::JobDiff](docs/JobDiff.md)

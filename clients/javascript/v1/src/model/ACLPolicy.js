@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import JobACL from './JobACL';
 
 /**
  * The ACLPolicy model module.
@@ -53,6 +54,9 @@ class ACLPolicy {
             if (data.hasOwnProperty('Description')) {
                 obj['Description'] = ApiClient.convertToType(data['Description'], 'String');
             }
+            if (data.hasOwnProperty('JobACL')) {
+                obj['JobACL'] = JobACL.constructFromObject(data['JobACL']);
+            }
             if (data.hasOwnProperty('ModifyIndex')) {
                 obj['ModifyIndex'] = ApiClient.convertToType(data['ModifyIndex'], 'Number');
             }
@@ -78,6 +82,11 @@ ACLPolicy.prototype['CreateIndex'] = undefined;
  * @member {String} Description
  */
 ACLPolicy.prototype['Description'] = undefined;
+
+/**
+ * @member {module:model/JobACL} JobACL
+ */
+ACLPolicy.prototype['JobACL'] = undefined;
 
 /**
  * @member {Number} ModifyIndex

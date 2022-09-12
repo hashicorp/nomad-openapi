@@ -102,6 +102,8 @@ class CSIVolumeListStub(ModelNormal):
             'controllers_expected': (int,),  # noqa: E501
             'controllers_healthy': (int,),  # noqa: E501
             'create_index': (int,),  # noqa: E501
+            'current_readers': (int,),  # noqa: E501
+            'current_writers': (int,),  # noqa: E501
             'external_id': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
@@ -128,6 +130,8 @@ class CSIVolumeListStub(ModelNormal):
         'controllers_expected': 'ControllersExpected',  # noqa: E501
         'controllers_healthy': 'ControllersHealthy',  # noqa: E501
         'create_index': 'CreateIndex',  # noqa: E501
+        'current_readers': 'CurrentReaders',  # noqa: E501
+        'current_writers': 'CurrentWriters',  # noqa: E501
         'external_id': 'ExternalID',  # noqa: E501
         'id': 'ID',  # noqa: E501
         'modify_index': 'ModifyIndex',  # noqa: E501
@@ -189,6 +193,8 @@ class CSIVolumeListStub(ModelNormal):
             controllers_expected (int): [optional]  # noqa: E501
             controllers_healthy (int): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
+            current_readers (int): [optional]  # noqa: E501
+            current_writers (int): [optional]  # noqa: E501
             external_id (str): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
@@ -288,6 +294,8 @@ class CSIVolumeListStub(ModelNormal):
             controllers_expected (int): [optional]  # noqa: E501
             controllers_healthy (int): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
+            current_readers (int): [optional]  # noqa: E501
+            current_writers (int): [optional]  # noqa: E501
             external_id (str): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501

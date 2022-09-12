@@ -25,6 +25,10 @@ pub struct CsiVolumeListStub {
     pub controllers_healthy: Option<i32>,
     #[serde(rename = "CreateIndex", skip_serializing_if = "Option::is_none")]
     pub create_index: Option<i32>,
+    #[serde(rename = "CurrentReaders", skip_serializing_if = "Option::is_none")]
+    pub current_readers: Option<i32>,
+    #[serde(rename = "CurrentWriters", skip_serializing_if = "Option::is_none")]
+    pub current_writers: Option<i32>,
     #[serde(rename = "ExternalID", skip_serializing_if = "Option::is_none")]
     pub external_id: Option<String>,
     #[serde(rename = "ID", skip_serializing_if = "Option::is_none")]
@@ -60,6 +64,8 @@ impl CsiVolumeListStub {
             controllers_expected: None,
             controllers_healthy: None,
             create_index: None,
+            current_readers: None,
+            current_writers: None,
             external_id: None,
             ID: None,
             modify_index: None,

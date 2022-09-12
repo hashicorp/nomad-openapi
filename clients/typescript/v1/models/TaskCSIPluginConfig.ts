@@ -16,6 +16,7 @@ export class TaskCSIPluginConfig {
     'healthTimeout'?: number;
     'ID'?: string;
     'mountDir'?: string;
+    'stagePublishBaseDir'?: string;
     'type'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -36,6 +37,12 @@ export class TaskCSIPluginConfig {
         {
             "name": "mountDir",
             "baseName": "MountDir",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "stagePublishBaseDir",
+            "baseName": "StagePublishBaseDir",
             "type": "string",
             "format": ""
         },

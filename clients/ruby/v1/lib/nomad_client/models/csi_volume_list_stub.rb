@@ -27,6 +27,10 @@ module NomadClient
 
     attr_accessor :create_index
 
+    attr_accessor :current_readers
+
+    attr_accessor :current_writers
+
     attr_accessor :external_id
 
     attr_accessor :id
@@ -60,6 +64,8 @@ module NomadClient
         :'controllers_expected' => :'ControllersExpected',
         :'controllers_healthy' => :'ControllersHealthy',
         :'create_index' => :'CreateIndex',
+        :'current_readers' => :'CurrentReaders',
+        :'current_writers' => :'CurrentWriters',
         :'external_id' => :'ExternalID',
         :'id' => :'ID',
         :'modify_index' => :'ModifyIndex',
@@ -89,6 +95,8 @@ module NomadClient
         :'controllers_expected' => :'Integer',
         :'controllers_healthy' => :'Integer',
         :'create_index' => :'Integer',
+        :'current_readers' => :'Integer',
+        :'current_writers' => :'Integer',
         :'external_id' => :'String',
         :'id' => :'String',
         :'modify_index' => :'Integer',
@@ -147,6 +155,14 @@ module NomadClient
 
       if attributes.key?(:'create_index')
         self.create_index = attributes[:'create_index']
+      end
+
+      if attributes.key?(:'current_readers')
+        self.current_readers = attributes[:'current_readers']
+      end
+
+      if attributes.key?(:'current_writers')
+        self.current_writers = attributes[:'current_writers']
       end
 
       if attributes.key?(:'external_id')
@@ -272,6 +288,8 @@ module NomadClient
           controllers_expected == o.controllers_expected &&
           controllers_healthy == o.controllers_healthy &&
           create_index == o.create_index &&
+          current_readers == o.current_readers &&
+          current_writers == o.current_writers &&
           external_id == o.external_id &&
           id == o.id &&
           modify_index == o.modify_index &&
@@ -295,7 +313,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_mode, attachment_mode, controller_required, controllers_expected, controllers_healthy, create_index, external_id, id, modify_index, name, namespace, nodes_expected, nodes_healthy, plugin_id, provider, resource_exhausted, schedulable, topologies].hash
+      [access_mode, attachment_mode, controller_required, controllers_expected, controllers_healthy, create_index, current_readers, current_writers, external_id, id, modify_index, name, namespace, nodes_expected, nodes_healthy, plugin_id, provider, resource_exhausted, schedulable, topologies].hash
     end
 
     # Builds the object from hash

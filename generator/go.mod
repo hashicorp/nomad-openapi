@@ -1,6 +1,6 @@
 module github.com/hashicorp/nomad-openapi/generator
 
-go 1.17
+go 1.18
 
 require (
 	github.com/getkin/kin-openapi v0.74.0

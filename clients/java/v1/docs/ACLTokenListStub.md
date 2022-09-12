@@ -14,7 +14,9 @@ Name | Type | Description | Notes
 **modifyIndex** | **Integer** |  |  [optional]
 **name** | **String** |  |  [optional]
 **policies** | **List&lt;String&gt;** |  |  [optional]
+**roles** | [**List&lt;ACLTokenRoleLink&gt;**](ACLTokenRoleLink.md) |  |  [optional]
 **type** | **String** |  |  [optional]
+**expirationTime** | **OffsetDateTime** |  |  [optional]
 
 
 

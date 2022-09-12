@@ -1,6 +1,6 @@
 # DeploymentsApi
 
-All URIs are relative to *https://127.0.0.1:4646/v1*
+All URIs are relative to *http://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -33,7 +33,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -122,7 +122,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -211,7 +211,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -298,7 +298,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -379,7 +379,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -458,7 +458,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -539,7 +539,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");
@@ -620,7 +620,7 @@ import io.nomadproject.client.api.DeploymentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://127.0.0.1:4646/v1");
+    defaultClient.setBasePath("http://127.0.0.1:4646/v1");
     
     // Configure API key authorization: X-Nomad-Token
     ApiKeyAuth X-Nomad-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Nomad-Token");

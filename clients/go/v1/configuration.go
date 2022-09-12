@@ -119,7 +119,7 @@ func NewConfiguration() *Configuration {
 					},
 					"scheme": ServerVariable{
 						Description: "No description provided",
-						DefaultValue: "https",
+						DefaultValue: "http",
 						EnumValues: []string{
 							"https",
 							"http",

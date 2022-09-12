@@ -19,6 +19,7 @@ import (
 type ACLPolicy struct {
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	Description *string `json:"Description,omitempty"`
+	JobACL *JobACL `json:"JobACL,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Rules *string `json:"Rules,omitempty"`
@@ -103,6 +104,38 @@ func (o *ACLPolicy) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ACLPolicy) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetJobACL returns the JobACL field value if set, zero value otherwise.
+func (o *ACLPolicy) GetJobACL() JobACL {
+	if o == nil || o.JobACL == nil {
+		var ret JobACL
+		return ret
+	}
+	return *o.JobACL
+}
+
+// GetJobACLOk returns a tuple with the JobACL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ACLPolicy) GetJobACLOk() (*JobACL, bool) {
+	if o == nil || o.JobACL == nil {
+		return nil, false
+	}
+	return o.JobACL, true
+}
+
+// HasJobACL returns a boolean if a field has been set.
+func (o *ACLPolicy) HasJobACL() bool {
+	if o != nil && o.JobACL != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJobACL gets a reference to the given JobACL and assigns it to the JobACL field.
+func (o *ACLPolicy) SetJobACL(v JobACL) {
+	o.JobACL = &v
 }
 
 // GetModifyIndex returns the ModifyIndex field value if set, zero value otherwise.
@@ -208,6 +241,9 @@ func (o ACLPolicy) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["Description"] = o.Description
+	}
+	if o.JobACL != nil {
+		toSerialize["JobACL"] = o.JobACL
 	}
 	if o.ModifyIndex != nil {
 		toSerialize["ModifyIndex"] = o.ModifyIndex

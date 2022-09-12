@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **modifyIndex** | **Number** |  | [optional] 
 **name** | **String** |  | [optional] 
 **policies** | **[String]** |  | [optional] 
+**roles** | [**[ACLTokenRoleLink]**](ACLTokenRoleLink.md) |  | [optional] 
 **type** | **String** |  | [optional] 
+**expirationTime** | **Date** |  | [optional] 
 
 

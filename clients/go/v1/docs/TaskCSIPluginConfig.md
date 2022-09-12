@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **HealthTimeout** | Pointer to **int64** |  | [optional] 
 **ID** | Pointer to **string** |  | [optional] 
 **MountDir** | Pointer to **string** |  | [optional] 
+**StagePublishBaseDir** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetMountDir sets MountDir field to given value.
 `func (o *TaskCSIPluginConfig) HasMountDir() bool`
 
 HasMountDir returns a boolean if a field has been set.
+
+### GetStagePublishBaseDir
+
+`func (o *TaskCSIPluginConfig) GetStagePublishBaseDir() string`
+
+GetStagePublishBaseDir returns the StagePublishBaseDir field if non-nil, zero value otherwise.
+
+### GetStagePublishBaseDirOk
+
+`func (o *TaskCSIPluginConfig) GetStagePublishBaseDirOk() (*string, bool)`
+
+GetStagePublishBaseDirOk returns a tuple with the StagePublishBaseDir field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStagePublishBaseDir
+
+`func (o *TaskCSIPluginConfig) SetStagePublishBaseDir(v string)`
+
+SetStagePublishBaseDir sets StagePublishBaseDir field to given value.
+
+### HasStagePublishBaseDir
+
+`func (o *TaskCSIPluginConfig) HasStagePublishBaseDir() bool`
+
+HasStagePublishBaseDir returns a boolean if a field has been set.
 
 ### GetType
 
