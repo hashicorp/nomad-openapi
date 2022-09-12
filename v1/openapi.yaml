@@ -1809,6 +1809,8 @@ components:
           type: integer
         Description:
           type: string
+        JobACL:
+          $ref: '#/components/schemas/JobACL'
         ModifyIndex:
           maximum: 1.8446744073709552e+19
           minimum: 0
@@ -1844,6 +1846,12 @@ components:
         CreateTime:
           format: date-time
           type: string
+        ExpirationTTL:
+          format: int64
+          type: integer
+        ExpirationTime:
+          format: date-time
+          type: string
         Global:
           type: boolean
         ModifyIndex:
@@ -1855,6 +1863,10 @@ components:
         Policies:
           items:
             type: string
+          type: array
+        Roles:
+          items:
+            $ref: '#/components/schemas/ACLTokenRoleLink'
           type: array
         SecretID:
           type: string
@@ -1884,7 +1896,21 @@ components:
           items:
             type: string
           type: array
+        Roles:
+          items:
+            $ref: '#/components/schemas/ACLTokenRoleLink'
+          type: array
         Type:
+          type: string
+        expiration_time:
+          format: date-time
+          type: string
+      type: object
+    ACLTokenRoleLink:
+      properties:
+        ID:
+          type: string
+        Name:
           type: string
       type: object
     Affinity:
@@ -2645,6 +2671,10 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+        CurrentReaders:
+          type: integer
+        CurrentWriters:
+          type: integer
         ExternalID:
           type: string
         ID:
@@ -2687,6 +2717,20 @@ components:
           items:
             $ref: '#/components/schemas/CSIVolume'
           type: array
+      type: object
+    ChangeScript:
+      properties:
+        Args:
+          items:
+            type: string
+          type: array
+        Command:
+          type: string
+        FailOnError:
+          type: boolean
+        Timeout:
+          format: int64
+          type: integer
       type: object
     CheckRestart:
       properties:
@@ -3532,6 +3576,17 @@ components:
           maximum: 1.8446744073709552e+19
           minimum: 0
           type: integer
+      type: object
+    JobACL:
+      properties:
+        Group:
+          type: string
+        JobID:
+          type: string
+        Namespace:
+          type: string
+        Task:
+          type: string
       type: object
     JobChildrenSummary:
       properties:
@@ -4562,6 +4617,8 @@ components:
           type: string
         RegionLimit:
           $ref: '#/components/schemas/Resources'
+        VariablesLimit:
+          type: integer
       type: object
     QuotaSpec:
       properties:
@@ -5276,6 +5333,8 @@ components:
           type: string
         MountDir:
           type: string
+        StagePublishBaseDir:
+          type: string
         Type:
           type: string
       type: object
@@ -5524,6 +5583,8 @@ components:
       properties:
         ChangeMode:
           type: string
+        ChangeScript:
+          $ref: '#/components/schemas/ChangeScript'
         ChangeSignal:
           type: string
         DestPath:
@@ -5532,6 +5593,8 @@ components:
           type: string
         Envvars:
           type: boolean
+        Gid:
+          type: integer
         LeftDelim:
           type: string
         Perms:
@@ -5542,6 +5605,8 @@ components:
           type: string
         Splay:
           format: int64
+          type: integer
+        Uid:
           type: integer
         VaultGrace:
           format: int64
@@ -8316,7 +8381,7 @@ servers:
     port:
       default: "4646"
     scheme:
-      default: https
+      default: http
       enum:
       - https
       - http
