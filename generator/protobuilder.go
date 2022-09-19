@@ -71,6 +71,11 @@ func (b *protoBuilder) buildOperation(op *operation) error {
 func newMessage(typ reflect.Type) (message *Message) {
 	message = &Message{}
 	message.Name = typ.Name()
+
+	if typ.Kind() != reflect.Struct {
+		return message
+	}
+
 	for i := 0; i < typ.NumField(); i++ {
 		field := typ.Field(i)
 		message.fields = append(message.fields, newField(field, i))
