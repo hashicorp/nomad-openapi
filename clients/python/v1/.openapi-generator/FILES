@@ -211,6 +211,10 @@ docs/Uint16.md
 docs/Uint64.md
 docs/Uint8.md
 docs/UpdateStrategy.md
+docs/Variable.md
+docs/VariableItems.md
+docs/VariableMetadata.md
+docs/VariablesApi.md
 docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
@@ -234,6 +238,7 @@ nomad_client/api/scaling_api.py
 nomad_client/api/search_api.py
 nomad_client/api/status_api.py
 nomad_client/api/system_api.py
+nomad_client/api/variables_api.py
 nomad_client/api/volumes_api.py
 nomad_client/api_client.py
 nomad_client/apis/__init__.py
@@ -435,6 +440,9 @@ nomad_client/model/uint16.py
 nomad_client/model/uint64.py
 nomad_client/model/uint8.py
 nomad_client/model/update_strategy.py
+nomad_client/model/variable.py
+nomad_client/model/variable_items.py
+nomad_client/model/variable_metadata.py
 nomad_client/model/vault.py
 nomad_client/model/volume_mount.py
 nomad_client/model/volume_request.py
@@ -486,5 +494,9 @@ test/test_service_registration.py
 test/test_status_api.py
 test/test_system_api.py
 test/test_uint.py
+test/test_variable.py
+test/test_variable_items.py
+test/test_variable_metadata.py
+test/test_variables_api.py
 test/test_wait_config.py
 tox.ini
