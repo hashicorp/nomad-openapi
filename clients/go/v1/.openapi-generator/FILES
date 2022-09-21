@@ -17,6 +17,7 @@ api_scaling.go
 api_search.go
 api_status.go
 api_system.go
+api_variables.go
 api_volumes.go
 client.go
 configuration.go
@@ -225,6 +226,9 @@ docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
 docs/UpdateStrategy.md
+docs/Variable.md
+docs/VariableMetadata.md
+docs/VariablesApi.md
 docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
@@ -419,6 +423,8 @@ model_task_lifecycle.go
 model_task_state.go
 model_template.go
 model_update_strategy.go
+model_variable.go
+model_variable_metadata.go
 model_vault.go
 model_volume_mount.go
 model_volume_request.go
