@@ -1271,7 +1271,8 @@ components:
       content:
         application/json:
           schema:
-            items: {}
+            items:
+              $ref: '#/components/schemas/Quotas'
             type: array
       description: ""
       headers:
@@ -2212,8 +2213,7 @@ components:
           type: array
         Scores:
           additionalProperties:
-            format: double
-            type: number
+            $ref: '#/components/schemas/#/components/schemas/float64'
           type: object
       type: object
     Attribute:
@@ -2789,7 +2789,8 @@ components:
       properties:
         Ingress:
           $ref: '#/components/schemas/ConsulIngressConfigEntry'
-        Mesh: {}
+        Mesh:
+          $ref: '#/components/schemas/ConsulMeshConfigEntry'
         Proxy:
           $ref: '#/components/schemas/ConsulGatewayProxy'
         Terminating:
@@ -4438,12 +4439,10 @@ components:
         NodeID:
           type: string
         NormScore:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Scores:
           additionalProperties:
-            format: double
-            type: number
+            $ref: '#/components/schemas/#/components/schemas/float64'
           type: object
       type: object
     NodeUpdateDrainRequest:
@@ -4763,25 +4762,19 @@ components:
             type: string
           type: object
         Max:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Mean:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Min:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Name:
           type: string
         Rate:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Stddev:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
         Sum:
-          format: double
-          type: number
+          $ref: '#/components/schemas/#/components/schemas/float64'
       type: object
     ScalingEvent:
       properties:
