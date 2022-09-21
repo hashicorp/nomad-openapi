@@ -1,13 +1,13 @@
 module github.com/hashicorp/nomad-openapi/generator
 
-go 1.18
+go 1.19
 
 require (
 	github.com/getkin/kin-openapi v0.74.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-hclog v1.2.2
-	github.com/hashicorp/nomad v1.3.5
-	github.com/hashicorp/nomad/api v0.0.0-20220909215520-39a3fd652c01
+	github.com/hashicorp/nomad v1.4.0-beta.1
+	github.com/hashicorp/nomad/api v0.0.0-20220921195325-ff1a30fe8dd4
 	github.com/stretchr/testify v1.8.0
 )
 
