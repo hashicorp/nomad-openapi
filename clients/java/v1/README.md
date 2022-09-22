@@ -199,6 +199,11 @@ Class | Method | HTTP request | Description
 *StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
 *SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
 *SystemApi* | [**putSystemReconcileSummaries**](docs/SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
+*VariablesApi* | [**deleteVariable**](docs/VariablesApi.md#deleteVariable) | **DELETE** /var/{path} | 
+*VariablesApi* | [**getVariableQuery**](docs/VariablesApi.md#getVariableQuery) | **GET** /var/{path} | 
+*VariablesApi* | [**getVariablesListRequest**](docs/VariablesApi.md#getVariablesListRequest) | **GET** /vars | 
+*VariablesApi* | [**postVariable**](docs/VariablesApi.md#postVariable) | **POST** /var/{path} | 
+*VariablesApi* | [**putVariable**](docs/VariablesApi.md#putVariable) | **PUT** /var/{path} | 
 *VolumesApi* | [**createVolume**](docs/VolumesApi.md#createVolume) | **POST** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**deleteSnapshot**](docs/VolumesApi.md#deleteSnapshot) | **DELETE** /volumes/snapshot | 
 *VolumesApi* | [**deleteVolumeRegistration**](docs/VolumesApi.md#deleteVolumeRegistration) | **DELETE** /volume/csi/{volumeId} | 
@@ -403,6 +408,8 @@ Class | Method | HTTP request | Description
  - [TaskState](docs/TaskState.md)
  - [Template](docs/Template.md)
  - [UpdateStrategy](docs/UpdateStrategy.md)
+ - [Variable](docs/Variable.md)
+ - [VariableMetadata](docs/VariableMetadata.md)
  - [Vault](docs/Vault.md)
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)

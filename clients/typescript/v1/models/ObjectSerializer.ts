@@ -187,6 +187,8 @@ export * from './TaskLifecycle';
 export * from './TaskState';
 export * from './Template';
 export * from './UpdateStrategy';
+export * from './Variable';
+export * from './VariableMetadata';
 export * from './Vault';
 export * from './VolumeMount';
 export * from './VolumeRequest';
@@ -381,6 +383,8 @@ import { TaskLifecycle } from './TaskLifecycle';
 import { TaskState } from './TaskState';
 import { Template } from './Template';
 import { UpdateStrategy } from './UpdateStrategy';
+import { Variable } from './Variable';
+import { VariableMetadata } from './VariableMetadata';
 import { Vault } from './Vault';
 import { VolumeMount } from './VolumeMount';
 import { VolumeRequest } from './VolumeRequest';
@@ -597,6 +601,8 @@ let typeMap: {[index: string]: any} = {
     "TaskState": TaskState,
     "Template": Template,
     "UpdateStrategy": UpdateStrategy,
+    "Variable": Variable,
+    "VariableMetadata": VariableMetadata,
     "Vault": Vault,
     "VolumeMount": VolumeMount,
     "VolumeRequest": VolumeRequest,

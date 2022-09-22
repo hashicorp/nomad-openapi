@@ -208,6 +208,9 @@ docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
 docs/UpdateStrategy.md
+docs/Variable.md
+docs/VariableMetadata.md
+docs/VariablesApi.md
 docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
@@ -250,6 +253,7 @@ src/main/java/io/nomadproject/client/api/ScalingApi.java
 src/main/java/io/nomadproject/client/api/SearchApi.java
 src/main/java/io/nomadproject/client/api/StatusApi.java
 src/main/java/io/nomadproject/client/api/SystemApi.java
+src/main/java/io/nomadproject/client/api/VariablesApi.java
 src/main/java/io/nomadproject/client/api/VolumesApi.java
 src/main/java/io/nomadproject/client/auth/ApiKeyAuth.java
 src/main/java/io/nomadproject/client/auth/Authentication.java
@@ -444,6 +448,8 @@ src/main/java/io/nomadproject/client/models/TaskLifecycle.java
 src/main/java/io/nomadproject/client/models/TaskState.java
 src/main/java/io/nomadproject/client/models/Template.java
 src/main/java/io/nomadproject/client/models/UpdateStrategy.java
+src/main/java/io/nomadproject/client/models/Variable.java
+src/main/java/io/nomadproject/client/models/VariableMetadata.java
 src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
@@ -464,6 +470,7 @@ src/test/java/io/nomadproject/client/api/ScalingApiTest.java
 src/test/java/io/nomadproject/client/api/SearchApiTest.java
 src/test/java/io/nomadproject/client/api/StatusApiTest.java
 src/test/java/io/nomadproject/client/api/SystemApiTest.java
+src/test/java/io/nomadproject/client/api/VariablesApiTest.java
 src/test/java/io/nomadproject/client/api/VolumesApiTest.java
 src/test/java/io/nomadproject/client/models/ACLPolicyListStubTest.java
 src/test/java/io/nomadproject/client/models/ACLTokenRoleLinkTest.java
@@ -651,6 +658,8 @@ src/test/java/io/nomadproject/client/models/TaskStateTest.java
 src/test/java/io/nomadproject/client/models/TaskTest.java
 src/test/java/io/nomadproject/client/models/TemplateTest.java
 src/test/java/io/nomadproject/client/models/UpdateStrategyTest.java
+src/test/java/io/nomadproject/client/models/VariableMetadataTest.java
+src/test/java/io/nomadproject/client/models/VariableTest.java
 src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java

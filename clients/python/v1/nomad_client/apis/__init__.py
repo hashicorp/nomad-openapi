@@ -30,4 +30,5 @@ from nomad_client.api.scaling_api import ScalingApi
 from nomad_client.api.search_api import SearchApi
 from nomad_client.api.status_api import StatusApi
 from nomad_client.api.system_api import SystemApi
+from nomad_client.api.variables_api import VariablesApi
 from nomad_client.api.volumes_api import VolumesApi

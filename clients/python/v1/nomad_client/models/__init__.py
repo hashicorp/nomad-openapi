@@ -204,6 +204,9 @@ from nomad_client.model.uint16 import Uint16
 from nomad_client.model.uint64 import Uint64
 from nomad_client.model.uint8 import Uint8
 from nomad_client.model.update_strategy import UpdateStrategy
+from nomad_client.model.variable import Variable
+from nomad_client.model.variable_items import VariableItems
+from nomad_client.model.variable_metadata import VariableMetadata
 from nomad_client.model.vault import Vault
 from nomad_client.model.volume_mount import VolumeMount
 from nomad_client.model.volume_request import VolumeRequest

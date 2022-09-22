@@ -170,6 +170,11 @@ Class | Method | HTTP request | Description
 *NomadClient::StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
 *NomadClient::SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
 *NomadClient::SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
+*NomadClient::VariablesApi* | [**delete_variable**](docs/VariablesApi.md#delete_variable) | **DELETE** /var/{path} | 
+*NomadClient::VariablesApi* | [**get_variable_query**](docs/VariablesApi.md#get_variable_query) | **GET** /var/{path} | 
+*NomadClient::VariablesApi* | [**get_variables_list_request**](docs/VariablesApi.md#get_variables_list_request) | **GET** /vars | 
+*NomadClient::VariablesApi* | [**post_variable**](docs/VariablesApi.md#post_variable) | **POST** /var/{path} | 
+*NomadClient::VariablesApi* | [**put_variable**](docs/VariablesApi.md#put_variable) | **PUT** /var/{path} | 
 *NomadClient::VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 
 *NomadClient::VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **DELETE** /volumes/snapshot | 
 *NomadClient::VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **DELETE** /volume/csi/{volumeId} | 
@@ -374,6 +379,8 @@ Class | Method | HTTP request | Description
  - [NomadClient::TaskState](docs/TaskState.md)
  - [NomadClient::Template](docs/Template.md)
  - [NomadClient::UpdateStrategy](docs/UpdateStrategy.md)
+ - [NomadClient::Variable](docs/Variable.md)
+ - [NomadClient::VariableMetadata](docs/VariableMetadata.md)
  - [NomadClient::Vault](docs/Vault.md)
  - [NomadClient::VolumeMount](docs/VolumeMount.md)
  - [NomadClient::VolumeRequest](docs/VolumeRequest.md)
