@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 pub mod acl_policy;
 pub use self::acl_policy::AclPolicy;
 pub mod acl_policy_list_stub;

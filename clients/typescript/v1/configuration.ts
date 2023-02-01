@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { HttpLibrary } from "./http/http";
 import { Middleware, PromiseMiddleware, PromiseMiddlewareWrapper } from "./middleware";
 import { IsomorphicFetchHttpLibrary as DefaultHttpLibrary } from "./http/isomorphic-fetch";

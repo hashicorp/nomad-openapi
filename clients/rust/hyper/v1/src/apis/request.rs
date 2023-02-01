@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 use std::borrow::Cow;
 use std::collections::HashMap;
 
