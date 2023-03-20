@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"testing"
 
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/helper/uuid"
 	"github.com/hashicorp/nomad/nomad/mock"

@@ -23,14 +23,14 @@ may change as we iterate.
 Import this package to your project.
 
 ```shell
-go get https://github.com/hashicorp/nomad-openapi
+go get https://github.com/flytocolors/nomad-openapi
 ```
 
 Add an import for the package to your code.
 
 ```go
 import (
-	"github.com/hashicorp/nomad-openapi/v1"
+	"github.com/flytocolors/nomad-openapi/v1"
 )
 ```
 

@@ -1,4 +1,4 @@
-module github.com/hashicorp/nomad-openapi/generator
+module github.com/flytocolors/nomad-openapi/generator
 
 go 1.19
 
@@ -7,7 +7,7 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-hclog v1.4.0
 	github.com/hashicorp/nomad v1.5.1
-	github.com/hashicorp/nomad/api v0.0.0-20230320143502-96740b5392ac
+	github.com/hashicorp/nomad/api v0.0.0-20230320160615-aacc7c6d2107
 	github.com/stretchr/testify v1.8.1
 )
 

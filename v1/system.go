@@ -6,7 +6,7 @@ package v1
 import (
 	"context"
 
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 )
 
 type System struct {

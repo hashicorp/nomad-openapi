@@ -36,9 +36,9 @@ Finally add this to the Gemfile:
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/hashicorp/nomad-openapi/clients/ruby/v1, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/flytocolors/nomad-openapi/clients/ruby/v1, then add the following in the Gemfile:
 
-    gem 'nomad_client', :git => 'https://github.com/hashicorp/nomad-openapi/clients/ruby/v1.git'
+    gem 'nomad_client', :git => 'https://github.com/flytocolors/nomad-openapi/clients/ruby/v1.git'
 
 ### Include the Ruby code directly
 

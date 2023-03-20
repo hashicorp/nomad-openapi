@@ -1,4 +1,4 @@
-module github.com/hashicorp/nomad-openapi
+module github.com/flytocolors/nomad-openapi
 
 go 1.19
 

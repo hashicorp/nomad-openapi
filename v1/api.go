@@ -16,8 +16,8 @@ import (
 	"strconv"
 	"time"
 
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/cronexpr"
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
 
 type Client struct {

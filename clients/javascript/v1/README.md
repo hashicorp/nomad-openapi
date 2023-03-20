@@ -56,7 +56,7 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/hashicorp/nomad-openapi/clients/javascript/v1
+If the library is hosted at a git repository, e.g.https://github.com/flytocolors/nomad-openapi/clients/javascript/v1
 then install it via:
 
 ```shell

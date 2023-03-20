@@ -6,7 +6,7 @@ package v1
 import (
 	"testing"
 
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
 	"github.com/hashicorp/nomad/helper/pointer"
 	"github.com/stretchr/testify/require"

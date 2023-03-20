@@ -6,7 +6,7 @@ package v1
 import (
 	"context"
 
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 )
 
 // Jobs encapsulates and extends the generated JobsApiService with convenience methods.
@@ -58,7 +58,6 @@ func (a *Allocations) StopAllocation(ctx context.Context, allocID string, noShut
 	final := result.(client.AllocStopResponse)
 	return &final, meta, nil
 }
-
 
 func (a *Allocations) GetAllocationServices(ctx context.Context, allocID string) (*[]client.ServiceRegistration, *QueryMeta, OpenAPIError) {
 	request := a.AllocationsApi().GetAllocationServices(a.client.Ctx, allocID)

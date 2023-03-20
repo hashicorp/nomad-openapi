@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"time"
 
+	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/cronexpr"
-	client "github.com/hashicorp/nomad-openapi/clients/go/v1"
 )
 
 // Jobs encapsulates and extends the generated JobsApiService with convenience methods.

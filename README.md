@@ -15,7 +15,7 @@ _generated_ in a number of programming languages.
 ## Quick start
 
 The latest version of the OpenAPI specification for the Version 1 Nomad HTTP API
-can be found in this repository at [v1/openapi.yaml](https://github.com/hashicorp/nomad-openapi/blob/main/v1/openapi.yaml).
+can be found in this repository at [v1/openapi.yaml](https://github.com/flytocolors/nomad-openapi/blob/main/v1/openapi.yaml).
 This file _is itself a generated file_ and _should not be edited directly_. You can
 use this file to generate a client for the Nomad HTTP API in the language of your
 choice.
@@ -25,7 +25,7 @@ choice.
 To use the Go client add a reference to it in your `go.mod` with `go get`.
 
 ```shell
-$ go get github.com/hashicorp/nomad-openapi
+$ go get github.com/flytocolors/nomad-openapi
 ```
 
 You can use it from your client applications like this.
@@ -37,7 +37,7 @@ import (
 	"fmt"
 	"os"
 
-	v1 "github.com/hashicorp/nomad-openapi/v1"
+	v1 "github.com/flytocolors/nomad-openapi/v1"
 )
 
 func main() {
@@ -138,7 +138,7 @@ This [video](https://youtu.be/x1AZbXiUENU) contains an overview of how to
 contribute endpoint configurations. The slide deck for this video can be found
 [here](https://docs.google.com/presentation/d/1h4OOjPFOHbDJsbtuQZRYDjotyBH1YZs7V8L7qmEjRXc/edit#slide=id.gf24f7d4584_1_20).
 
-The [README](https://github.com/hashicorp/nomad-openapi/blob/main/generator/README.md)
+The [README](https://github.com/flytocolors/nomad-openapi/blob/main/generator/README.md)
 file in the `generator` directory contains a detailed technical overview of the
 generator package as well as instructions on _how to contribute_ to that package.
 
@@ -160,7 +160,7 @@ Updating to a new version of Nomad involves updating the spec generation code, a
 - [ ] Find the `generator/*.go` files that correspond to each API endpoint change you found above. For example, if the git diff found changes to `api/acl.go` you'll need to edit `generator/acl.go`.
 - [ ] Make the appropriate changes.
   - [ ] If you are adding new fields, edit the endpoints in place.
-  - [ ] If you are adding new endpoints, start by copying this snippet: [./snippets/generator-endpoint.txt](https://github.com/hashicorp/nomad-openapi/blob/main/snippets/generator-endpoint.txt). Write the new endpoint by hand in the generator snippet. Refer to the slideshow above.
+  - [ ] If you are adding new endpoints, start by copying this snippet: [./snippets/generator-endpoint.txt](https://github.com/flytocolors/nomad-openapi/blob/main/snippets/generator-endpoint.txt). Write the new endpoint by hand in the generator snippet. Refer to the slideshow above.
 - [ ] Make a commit with the spec generator update: `git commit -am "update spec generator"`
 - [ ] Run `make v1` to update all the clients with that spec. **Note:** You will need Docker installed and running to update the clients.
 - [ ] Make a commit with all the client updates: `git commit -am "update all clients"`
