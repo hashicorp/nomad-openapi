@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
 **datacenter** | **str** |  | [optional] 
 **destination_name** | **str** |  | [optional] 
 **destination_namespace** | **str** |  | [optional] 

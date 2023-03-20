@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -22,6 +19,8 @@ pub struct AclTokenListStub {
     pub create_index: Option<i32>,
     #[serde(rename = "CreateTime", skip_serializing_if = "Option::is_none")]
     pub create_time: Option<String>,
+    #[serde(rename = "ExpirationTime", skip_serializing_if = "Option::is_none")]
+    pub expiration_time: Option<String>,
     #[serde(rename = "Global", skip_serializing_if = "Option::is_none")]
     pub global: Option<bool>,
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
@@ -34,8 +33,6 @@ pub struct AclTokenListStub {
     pub roles: Option<Vec<crate::models::AclTokenRoleLink>>,
     #[serde(rename = "Type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<String>,
-    #[serde(rename = "expiration_time", skip_serializing_if = "Option::is_none")]
-    pub expiration_time: Option<String>,
 }
 
 impl AclTokenListStub {
@@ -44,13 +41,13 @@ impl AclTokenListStub {
             accessor_id: None,
             create_index: None,
             create_time: None,
+            expiration_time: None,
             global: None,
             modify_index: None,
             name: None,
             policies: None,
             roles: None,
             _type: None,
-            expiration_time: None,
         }
     }
 }

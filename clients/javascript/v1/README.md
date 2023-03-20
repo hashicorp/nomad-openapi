@@ -430,6 +430,7 @@ Class | Method | HTTP request | Description
  - [nomad-client.VolumeMount](docs/VolumeMount.md)
  - [nomad-client.VolumeRequest](docs/VolumeRequest.md)
  - [nomad-client.WaitConfig](docs/WaitConfig.md)
+ - [nomad-client.WorkloadIdentity](docs/WorkloadIdentity.md)
 
 
 ## Documentation for Authorization

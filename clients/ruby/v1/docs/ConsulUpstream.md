@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **config** | [**Hash&lt;String, AnyType&gt;**](AnyType.md) |  | [optional] |
 | **datacenter** | **String** |  | [optional] |
 | **destination_name** | **String** |  | [optional] |
 | **destination_namespace** | **String** |  | [optional] |
@@ -17,6 +18,7 @@
 require 'nomad_client'
 
 instance = NomadClient::ConsulUpstream.new(
+  config: null,
   datacenter: null,
   destination_name: null,
   destination_namespace: null,

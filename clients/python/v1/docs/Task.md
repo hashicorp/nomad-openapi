@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dispatch_payload** | [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] 
 **driver** | **str** |  | [optional] 
 **env** | **{str: (str,)}** |  | [optional] 
+**identity** | [**WorkloadIdentity**](WorkloadIdentity.md) |  | [optional] 
 **kill_signal** | **str** |  | [optional] 
 **kill_timeout** | **int** |  | [optional] 
 **kind** | **str** |  | [optional] 

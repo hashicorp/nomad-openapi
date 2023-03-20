@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -99,6 +96,7 @@ class Template(ModelNormal):
             'dest_path': (str,),  # noqa: E501
             'embedded_tmpl': (str,),  # noqa: E501
             'envvars': (bool,),  # noqa: E501
+            'err_missing_key': (bool,),  # noqa: E501
             'gid': (int,),  # noqa: E501
             'left_delim': (str,),  # noqa: E501
             'perms': (str,),  # noqa: E501
@@ -122,6 +120,7 @@ class Template(ModelNormal):
         'dest_path': 'DestPath',  # noqa: E501
         'embedded_tmpl': 'EmbeddedTmpl',  # noqa: E501
         'envvars': 'Envvars',  # noqa: E501
+        'err_missing_key': 'ErrMissingKey',  # noqa: E501
         'gid': 'Gid',  # noqa: E501
         'left_delim': 'LeftDelim',  # noqa: E501
         'perms': 'Perms',  # noqa: E501
@@ -180,6 +179,7 @@ class Template(ModelNormal):
             dest_path (str): [optional]  # noqa: E501
             embedded_tmpl (str): [optional]  # noqa: E501
             envvars (bool): [optional]  # noqa: E501
+            err_missing_key (bool): [optional]  # noqa: E501
             gid (int): [optional]  # noqa: E501
             left_delim (str): [optional]  # noqa: E501
             perms (str): [optional]  # noqa: E501
@@ -276,6 +276,7 @@ class Template(ModelNormal):
             dest_path (str): [optional]  # noqa: E501
             embedded_tmpl (str): [optional]  # noqa: E501
             envvars (bool): [optional]  # noqa: E501
+            err_missing_key (bool): [optional]  # noqa: E501
             gid (int): [optional]  # noqa: E501
             left_delim (str): [optional]  # noqa: E501
             perms (str): [optional]  # noqa: E501

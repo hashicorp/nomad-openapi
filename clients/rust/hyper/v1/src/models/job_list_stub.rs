@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -26,6 +23,8 @@ pub struct JobListStub {
     pub job_modify_index: Option<i32>,
     #[serde(rename = "JobSummary", skip_serializing_if = "Option::is_none")]
     pub job_summary: Option<Box<crate::models::JobSummary>>,
+    #[serde(rename = "Meta", skip_serializing_if = "Option::is_none")]
+    pub meta: Option<::std::collections::HashMap<String, String>>,
     #[serde(rename = "ModifyIndex", skip_serializing_if = "Option::is_none")]
     pub modify_index: Option<i32>,
     #[serde(rename = "Name", skip_serializing_if = "Option::is_none")]
@@ -60,6 +59,7 @@ impl JobListStub {
             ID: None,
             job_modify_index: None,
             job_summary: None,
+            meta: None,
             modify_index: None,
             name: None,
             namespace: None,

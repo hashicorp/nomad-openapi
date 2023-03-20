@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -28,6 +25,8 @@ pub struct Template {
     pub embedded_tmpl: Option<String>,
     #[serde(rename = "Envvars", skip_serializing_if = "Option::is_none")]
     pub envvars: Option<bool>,
+    #[serde(rename = "ErrMissingKey", skip_serializing_if = "Option::is_none")]
+    pub err_missing_key: Option<bool>,
     #[serde(rename = "Gid", skip_serializing_if = "Option::is_none")]
     pub gid: Option<i32>,
     #[serde(rename = "LeftDelim", skip_serializing_if = "Option::is_none")]
@@ -57,6 +56,7 @@ impl Template {
             dest_path: None,
             embedded_tmpl: None,
             envvars: None,
+            err_missing_key: None,
             gid: None,
             left_delim: None,
             perms: None,

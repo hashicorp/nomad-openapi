@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 import {RequestContext, ResponseContext} from './http/http';
 import { Observable, from } from './rxjsStub';
 

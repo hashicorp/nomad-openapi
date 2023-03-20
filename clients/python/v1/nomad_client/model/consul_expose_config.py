@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -92,6 +89,7 @@ class ConsulExposeConfig(ModelNormal):
         lazy_import()
         return {
             'path': ([ConsulExposePath],),  # noqa: E501
+            'paths': ([ConsulExposePath],),  # noqa: E501
         }
 
     @cached_property
@@ -101,6 +99,7 @@ class ConsulExposeConfig(ModelNormal):
 
     attribute_map = {
         'path': 'Path',  # noqa: E501
+        'paths': 'Paths',  # noqa: E501
     }
 
     read_only_vars = {
@@ -145,6 +144,7 @@ class ConsulExposeConfig(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             path ([ConsulExposePath]): [optional]  # noqa: E501
+            paths ([ConsulExposePath]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,6 +227,7 @@ class ConsulExposeConfig(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             path ([ConsulExposePath]): [optional]  # noqa: E501
+            paths ([ConsulExposePath]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

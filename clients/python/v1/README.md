@@ -401,6 +401,7 @@ Class | Method | HTTP request | Description
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)
  - [WaitConfig](docs/WaitConfig.md)
+ - [WorkloadIdentity](docs/WorkloadIdentity.md)
 
 
 ## Documentation For Authorization

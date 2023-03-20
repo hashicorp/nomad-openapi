@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -18,12 +15,15 @@
 pub struct ConsulExposeConfig {
     #[serde(rename = "Path", skip_serializing_if = "Option::is_none")]
     pub path: Option<Vec<crate::models::ConsulExposePath>>,
+    #[serde(rename = "Paths", skip_serializing_if = "Option::is_none")]
+    pub paths: Option<Vec<crate::models::ConsulExposePath>>,
 }
 
 impl ConsulExposeConfig {
     pub fn new() -> ConsulExposeConfig {
         ConsulExposeConfig {
             path: None,
+            paths: None,
         }
     }
 }

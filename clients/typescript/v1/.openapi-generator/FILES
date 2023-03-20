@@ -222,6 +222,7 @@ models/Vault.ts
 models/VolumeMount.ts
 models/VolumeRequest.ts
 models/WaitConfig.ts
+models/WorkloadIdentity.ts
 models/all.ts
 package.json
 rxjsStub.ts

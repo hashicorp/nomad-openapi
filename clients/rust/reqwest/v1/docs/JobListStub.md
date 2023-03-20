@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ID** | Option<**String**> |  | [optional]
 **job_modify_index** | Option<**i32**> |  | [optional]
 **job_summary** | Option<[**crate::models::JobSummary**](JobSummary.md)> |  | [optional]
+**meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **modify_index** | Option<**i32**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **namespace** | Option<**String**> |  | [optional]

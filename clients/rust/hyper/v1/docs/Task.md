@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dispatch_payload** | Option<[**crate::models::DispatchPayloadConfig**](DispatchPayloadConfig.md)> |  | [optional]
 **driver** | Option<**String**> |  | [optional]
 **env** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
+**identity** | Option<[**crate::models::WorkloadIdentity**](WorkloadIdentity.md)> |  | [optional]
 **kill_signal** | Option<**String**> |  | [optional]
 **kill_timeout** | Option<**i64**> |  | [optional]
 **kind** | Option<**String**> |  | [optional]

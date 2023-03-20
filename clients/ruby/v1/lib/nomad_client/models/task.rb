@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -33,6 +30,8 @@ module NomadClient
     attr_accessor :driver
 
     attr_accessor :env
+
+    attr_accessor :identity
 
     attr_accessor :kill_signal
 
@@ -79,6 +78,7 @@ module NomadClient
         :'dispatch_payload' => :'DispatchPayload',
         :'driver' => :'Driver',
         :'env' => :'Env',
+        :'identity' => :'Identity',
         :'kill_signal' => :'KillSignal',
         :'kill_timeout' => :'KillTimeout',
         :'kind' => :'Kind',
@@ -115,6 +115,7 @@ module NomadClient
         :'dispatch_payload' => :'DispatchPayloadConfig',
         :'driver' => :'String',
         :'env' => :'Hash<String, String>',
+        :'identity' => :'WorkloadIdentity',
         :'kill_signal' => :'String',
         :'kill_timeout' => :'Integer',
         :'kind' => :'String',
@@ -196,6 +197,10 @@ module NomadClient
         if (value = attributes[:'env']).is_a?(Hash)
           self.env = value
         end
+      end
+
+      if attributes.key?(:'identity')
+        self.identity = attributes[:'identity']
       end
 
       if attributes.key?(:'kill_signal')
@@ -303,6 +308,7 @@ module NomadClient
           dispatch_payload == o.dispatch_payload &&
           driver == o.driver &&
           env == o.env &&
+          identity == o.identity &&
           kill_signal == o.kill_signal &&
           kill_timeout == o.kill_timeout &&
           kind == o.kind &&
@@ -331,7 +337,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affinities, artifacts, csi_plugin_config, config, constraints, dispatch_payload, driver, env, kill_signal, kill_timeout, kind, leader, lifecycle, log_config, meta, name, resources, restart_policy, scaling_policies, services, shutdown_delay, templates, user, vault, volume_mounts].hash
+      [affinities, artifacts, csi_plugin_config, config, constraints, dispatch_payload, driver, env, identity, kill_signal, kill_timeout, kind, leader, lifecycle, log_config, meta, name, resources, restart_policy, scaling_policies, services, shutdown_delay, templates, user, vault, volume_mounts].hash
     end
 
     # Builds the object from hash

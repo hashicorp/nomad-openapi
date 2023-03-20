@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DispatchPayload** | Pointer to [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] 
 **Driver** | Pointer to **string** |  | [optional] 
 **Env** | Pointer to **map[string]string** |  | [optional] 
+**Identity** | Pointer to [**WorkloadIdentity**](WorkloadIdentity.md) |  | [optional] 
 **KillSignal** | Pointer to **string** |  | [optional] 
 **KillTimeout** | Pointer to **int64** |  | [optional] 
 **Kind** | Pointer to **string** |  | [optional] 
@@ -248,6 +249,31 @@ SetEnv sets Env field to given value.
 `func (o *Task) HasEnv() bool`
 
 HasEnv returns a boolean if a field has been set.
+
+### GetIdentity
+
+`func (o *Task) GetIdentity() WorkloadIdentity`
+
+GetIdentity returns the Identity field if non-nil, zero value otherwise.
+
+### GetIdentityOk
+
+`func (o *Task) GetIdentityOk() (*WorkloadIdentity, bool)`
+
+GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentity
+
+`func (o *Task) SetIdentity(v WorkloadIdentity)`
+
+SetIdentity sets Identity field to given value.
+
+### HasIdentity
+
+`func (o *Task) HasIdentity() bool`
+
+HasIdentity returns a boolean if a field has been set.
 
 ### GetKillSignal
 

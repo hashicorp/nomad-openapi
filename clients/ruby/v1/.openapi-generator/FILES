@@ -217,6 +217,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 lib/nomad_client.rb
 lib/nomad_client/api/acl_api.rb
 lib/nomad_client/api/allocations_api.rb
@@ -434,6 +435,7 @@ lib/nomad_client/models/vault.rb
 lib/nomad_client/models/volume_mount.rb
 lib/nomad_client/models/volume_request.rb
 lib/nomad_client/models/wait_config.rb
+lib/nomad_client/models/workload_identity.rb
 lib/nomad_client/version.rb
 nomad_client.gemspec
 spec/api/acl_api_spec.rb
@@ -651,4 +653,5 @@ spec/models/vault_spec.rb
 spec/models/volume_mount_spec.rb
 spec/models/volume_request_spec.rb
 spec/models/wait_config_spec.rb
+spec/models/workload_identity_spec.rb
 spec/spec_helper.rb

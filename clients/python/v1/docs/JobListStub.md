@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **job_modify_index** | **int** |  | [optional] 
 **job_summary** | [**JobSummary**](JobSummary.md) |  | [optional] 
+**meta** | **{str: (str,)}** |  | [optional] 
 **modify_index** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **namespace** | **str** |  | [optional] 

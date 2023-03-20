@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ID** | **String** |  |  [optional]
 **jobModifyIndex** | **Integer** |  |  [optional]
 **jobSummary** | [**JobSummary**](JobSummary.md) |  |  [optional]
+**meta** | **Map&lt;String, String&gt;** |  |  [optional]
 **modifyIndex** | **Integer** |  |  [optional]
 **name** | **String** |  |  [optional]
 **namespace** | **String** |  |  [optional]

@@ -18,6 +18,7 @@ import (
 // ConsulExposeConfig struct for ConsulExposeConfig
 type ConsulExposeConfig struct {
 	Path *[]ConsulExposePath `json:"Path,omitempty"`
+	Paths *[]ConsulExposePath `json:"Paths,omitempty"`
 }
 
 // NewConsulExposeConfig instantiates a new ConsulExposeConfig object
@@ -69,10 +70,45 @@ func (o *ConsulExposeConfig) SetPath(v []ConsulExposePath) {
 	o.Path = &v
 }
 
+// GetPaths returns the Paths field value if set, zero value otherwise.
+func (o *ConsulExposeConfig) GetPaths() []ConsulExposePath {
+	if o == nil || o.Paths == nil {
+		var ret []ConsulExposePath
+		return ret
+	}
+	return *o.Paths
+}
+
+// GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulExposeConfig) GetPathsOk() (*[]ConsulExposePath, bool) {
+	if o == nil || o.Paths == nil {
+		return nil, false
+	}
+	return o.Paths, true
+}
+
+// HasPaths returns a boolean if a field has been set.
+func (o *ConsulExposeConfig) HasPaths() bool {
+	if o != nil && o.Paths != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPaths gets a reference to the given []ConsulExposePath and assigns it to the Paths field.
+func (o *ConsulExposeConfig) SetPaths(v []ConsulExposePath) {
+	o.Paths = &v
+}
+
 func (o ConsulExposeConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Path != nil {
 		toSerialize["Path"] = o.Path
+	}
+	if o.Paths != nil {
+		toSerialize["Paths"] = o.Paths
 	}
 	return json.Marshal(toSerialize)
 }

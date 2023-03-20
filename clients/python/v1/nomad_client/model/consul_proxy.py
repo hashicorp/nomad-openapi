@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -94,6 +91,7 @@ class ConsulProxy(ModelNormal):
         lazy_import()
         return {
             'config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'expose': (ConsulExposeConfig,),  # noqa: E501
             'expose_config': (ConsulExposeConfig,),  # noqa: E501
             'local_service_address': (str,),  # noqa: E501
             'local_service_port': (int,),  # noqa: E501
@@ -107,6 +105,7 @@ class ConsulProxy(ModelNormal):
 
     attribute_map = {
         'config': 'Config',  # noqa: E501
+        'expose': 'Expose',  # noqa: E501
         'expose_config': 'ExposeConfig',  # noqa: E501
         'local_service_address': 'LocalServiceAddress',  # noqa: E501
         'local_service_port': 'LocalServicePort',  # noqa: E501
@@ -155,6 +154,7 @@ class ConsulProxy(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            expose (ConsulExposeConfig): [optional]  # noqa: E501
             expose_config (ConsulExposeConfig): [optional]  # noqa: E501
             local_service_address (str): [optional]  # noqa: E501
             local_service_port (int): [optional]  # noqa: E501
@@ -241,6 +241,7 @@ class ConsulProxy(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            expose (ConsulExposeConfig): [optional]  # noqa: E501
             expose_config (ConsulExposeConfig): [optional]  # noqa: E501
             local_service_address (str): [optional]  # noqa: E501
             local_service_port (int): [optional]  # noqa: E501

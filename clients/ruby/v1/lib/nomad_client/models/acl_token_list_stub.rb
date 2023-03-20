@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -24,6 +21,8 @@ module NomadClient
 
     attr_accessor :create_time
 
+    attr_accessor :expiration_time
+
     attr_accessor :global
 
     attr_accessor :modify_index
@@ -36,21 +35,19 @@ module NomadClient
 
     attr_accessor :type
 
-    attr_accessor :expiration_time
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'accessor_id' => :'AccessorID',
         :'create_index' => :'CreateIndex',
         :'create_time' => :'CreateTime',
+        :'expiration_time' => :'ExpirationTime',
         :'global' => :'Global',
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'policies' => :'Policies',
         :'roles' => :'Roles',
-        :'type' => :'Type',
-        :'expiration_time' => :'expiration_time'
+        :'type' => :'Type'
       }
     end
 
@@ -65,13 +62,13 @@ module NomadClient
         :'accessor_id' => :'String',
         :'create_index' => :'Integer',
         :'create_time' => :'Time',
+        :'expiration_time' => :'Time',
         :'global' => :'Boolean',
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'policies' => :'Array<String>',
         :'roles' => :'Array<ACLTokenRoleLink>',
-        :'type' => :'String',
-        :'expiration_time' => :'Time'
+        :'type' => :'String'
       }
     end
 
@@ -108,6 +105,10 @@ module NomadClient
         self.create_time = attributes[:'create_time']
       end
 
+      if attributes.key?(:'expiration_time')
+        self.expiration_time = attributes[:'expiration_time']
+      end
+
       if attributes.key?(:'global')
         self.global = attributes[:'global']
       end
@@ -134,10 +135,6 @@ module NomadClient
 
       if attributes.key?(:'type')
         self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'expiration_time')
-        self.expiration_time = attributes[:'expiration_time']
       end
     end
 
@@ -210,13 +207,13 @@ module NomadClient
           accessor_id == o.accessor_id &&
           create_index == o.create_index &&
           create_time == o.create_time &&
+          expiration_time == o.expiration_time &&
           global == o.global &&
           modify_index == o.modify_index &&
           name == o.name &&
           policies == o.policies &&
           roles == o.roles &&
-          type == o.type &&
-          expiration_time == o.expiration_time
+          type == o.type
     end
 
     # @see the `==` method
@@ -228,7 +225,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessor_id, create_index, create_time, global, modify_index, name, policies, roles, type, expiration_time].hash
+      [accessor_id, create_index, create_time, expiration_time, global, modify_index, name, policies, roles, type].hash
     end
 
     # Builds the object from hash

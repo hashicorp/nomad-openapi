@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -108,6 +105,7 @@ class JobListStub(ModelNormal):
             'id': (str,),  # noqa: E501
             'job_modify_index': (int,),  # noqa: E501
             'job_summary': (JobSummary,),  # noqa: E501
+            'meta': ({str: (str,)},),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
@@ -133,6 +131,7 @@ class JobListStub(ModelNormal):
         'id': 'ID',  # noqa: E501
         'job_modify_index': 'JobModifyIndex',  # noqa: E501
         'job_summary': 'JobSummary',  # noqa: E501
+        'meta': 'Meta',  # noqa: E501
         'modify_index': 'ModifyIndex',  # noqa: E501
         'name': 'Name',  # noqa: E501
         'namespace': 'Namespace',  # noqa: E501
@@ -193,6 +192,7 @@ class JobListStub(ModelNormal):
             id (str): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
             job_summary (JobSummary): [optional]  # noqa: E501
+            meta ({str: (str,)}): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501
@@ -291,6 +291,7 @@ class JobListStub(ModelNormal):
             id (str): [optional]  # noqa: E501
             job_modify_index (int): [optional]  # noqa: E501
             job_summary (JobSummary): [optional]  # noqa: E501
+            meta ({str: (str,)}): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             namespace (str): [optional]  # noqa: E501

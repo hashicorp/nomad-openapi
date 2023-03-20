@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | Pointer to **map[string]interface{}** |  | [optional] 
+**Expose** | Pointer to [**ConsulExposeConfig**](ConsulExposeConfig.md) |  | [optional] 
 **ExposeConfig** | Pointer to [**ConsulExposeConfig**](ConsulExposeConfig.md) |  | [optional] 
 **LocalServiceAddress** | Pointer to **string** |  | [optional] 
 **LocalServicePort** | Pointer to **int32** |  | [optional] 
@@ -53,6 +54,31 @@ SetConfig sets Config field to given value.
 `func (o *ConsulProxy) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
+
+### GetExpose
+
+`func (o *ConsulProxy) GetExpose() ConsulExposeConfig`
+
+GetExpose returns the Expose field if non-nil, zero value otherwise.
+
+### GetExposeOk
+
+`func (o *ConsulProxy) GetExposeOk() (*ConsulExposeConfig, bool)`
+
+GetExposeOk returns a tuple with the Expose field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpose
+
+`func (o *ConsulProxy) SetExpose(v ConsulExposeConfig)`
+
+SetExpose sets Expose field to given value.
+
+### HasExpose
+
+`func (o *ConsulProxy) HasExpose() bool`
+
+HasExpose returns a boolean if a field has been set.
 
 ### GetExposeConfig
 

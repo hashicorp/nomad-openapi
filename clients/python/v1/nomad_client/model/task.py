@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -48,6 +45,7 @@ def lazy_import():
     from nomad_client.model.template import Template
     from nomad_client.model.vault import Vault
     from nomad_client.model.volume_mount import VolumeMount
+    from nomad_client.model.workload_identity import WorkloadIdentity
     globals()['Affinity'] = Affinity
     globals()['Constraint'] = Constraint
     globals()['DispatchPayloadConfig'] = DispatchPayloadConfig
@@ -62,6 +60,7 @@ def lazy_import():
     globals()['Template'] = Template
     globals()['Vault'] = Vault
     globals()['VolumeMount'] = VolumeMount
+    globals()['WorkloadIdentity'] = WorkloadIdentity
 
 
 class Task(ModelNormal):
@@ -125,6 +124,7 @@ class Task(ModelNormal):
             'dispatch_payload': (DispatchPayloadConfig,),  # noqa: E501
             'driver': (str,),  # noqa: E501
             'env': ({str: (str,)},),  # noqa: E501
+            'identity': (WorkloadIdentity,),  # noqa: E501
             'kill_signal': (str,),  # noqa: E501
             'kill_timeout': (int,),  # noqa: E501
             'kind': (str,),  # noqa: E501
@@ -158,6 +158,7 @@ class Task(ModelNormal):
         'dispatch_payload': 'DispatchPayload',  # noqa: E501
         'driver': 'Driver',  # noqa: E501
         'env': 'Env',  # noqa: E501
+        'identity': 'Identity',  # noqa: E501
         'kill_signal': 'KillSignal',  # noqa: E501
         'kill_timeout': 'KillTimeout',  # noqa: E501
         'kind': 'Kind',  # noqa: E501
@@ -226,6 +227,7 @@ class Task(ModelNormal):
             dispatch_payload (DispatchPayloadConfig): [optional]  # noqa: E501
             driver (str): [optional]  # noqa: E501
             env ({str: (str,)}): [optional]  # noqa: E501
+            identity (WorkloadIdentity): [optional]  # noqa: E501
             kill_signal (str): [optional]  # noqa: E501
             kill_timeout (int): [optional]  # noqa: E501
             kind (str): [optional]  # noqa: E501
@@ -332,6 +334,7 @@ class Task(ModelNormal):
             dispatch_payload (DispatchPayloadConfig): [optional]  # noqa: E501
             driver (str): [optional]  # noqa: E501
             env ({str: (str,)}): [optional]  # noqa: E501
+            identity (WorkloadIdentity): [optional]  # noqa: E501
             kill_signal (str): [optional]  # noqa: E501
             kill_timeout (int): [optional]  # noqa: E501
             kind (str): [optional]  # noqa: E501

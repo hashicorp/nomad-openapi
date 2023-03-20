@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -18,6 +15,8 @@
 pub struct ConsulProxy {
     #[serde(rename = "Config", skip_serializing_if = "Option::is_none")]
     pub config: Option<::std::collections::HashMap<String, serde_json::Value>>,
+    #[serde(rename = "Expose", skip_serializing_if = "Option::is_none")]
+    pub expose: Option<Box<crate::models::ConsulExposeConfig>>,
     #[serde(rename = "ExposeConfig", skip_serializing_if = "Option::is_none")]
     pub expose_config: Option<Box<crate::models::ConsulExposeConfig>>,
     #[serde(rename = "LocalServiceAddress", skip_serializing_if = "Option::is_none")]
@@ -32,6 +31,7 @@ impl ConsulProxy {
     pub fn new() -> ConsulProxy {
         ConsulProxy {
             config: None,
+            expose: None,
             expose_config: None,
             local_service_address: None,
             local_service_port: None,

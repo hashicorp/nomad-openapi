@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 export * from "./http/http";
 export * from "./auth/auth";
 export * from "./models/all";

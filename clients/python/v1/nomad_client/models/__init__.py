@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 # flake8: noqa
 
 # import all models into this package
@@ -214,3 +211,4 @@ from nomad_client.model.vault import Vault
 from nomad_client.model.volume_mount import VolumeMount
 from nomad_client.model.volume_request import VolumeRequest
 from nomad_client.model.wait_config import WaitConfig
+from nomad_client.model.workload_identity import WorkloadIdentity

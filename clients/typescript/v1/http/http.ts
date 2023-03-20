@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 // typings of url-parse are incorrect...
 // @ts-ignore 
 import * as URLParse from "url-parse";

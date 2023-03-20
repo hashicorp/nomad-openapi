@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config** | **{String: Object}** |  | [optional] 
 **datacenter** | **String** |  | [optional] 
 **destinationName** | **String** |  | [optional] 
 **destinationNamespace** | **String** |  | [optional] 

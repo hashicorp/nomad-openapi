@@ -1,9 +1,4 @@
 /**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
-/**
  * Returns if a specific http code is in a given code range
  * where the code range is defined as a combination of digits 
  * and "X" (the letter X) with a length of 3

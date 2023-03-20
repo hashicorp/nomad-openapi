@@ -25,6 +25,7 @@ type Task struct {
 	DispatchPayload *DispatchPayloadConfig `json:"DispatchPayload,omitempty"`
 	Driver *string `json:"Driver,omitempty"`
 	Env *map[string]string `json:"Env,omitempty"`
+	Identity *WorkloadIdentity `json:"Identity,omitempty"`
 	KillSignal *string `json:"KillSignal,omitempty"`
 	KillTimeout *int64 `json:"KillTimeout,omitempty"`
 	Kind *string `json:"Kind,omitempty"`
@@ -315,6 +316,38 @@ func (o *Task) HasEnv() bool {
 // SetEnv gets a reference to the given map[string]string and assigns it to the Env field.
 func (o *Task) SetEnv(v map[string]string) {
 	o.Env = &v
+}
+
+// GetIdentity returns the Identity field value if set, zero value otherwise.
+func (o *Task) GetIdentity() WorkloadIdentity {
+	if o == nil || o.Identity == nil {
+		var ret WorkloadIdentity
+		return ret
+	}
+	return *o.Identity
+}
+
+// GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetIdentityOk() (*WorkloadIdentity, bool) {
+	if o == nil || o.Identity == nil {
+		return nil, false
+	}
+	return o.Identity, true
+}
+
+// HasIdentity returns a boolean if a field has been set.
+func (o *Task) HasIdentity() bool {
+	if o != nil && o.Identity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentity gets a reference to the given WorkloadIdentity and assigns it to the Identity field.
+func (o *Task) SetIdentity(v WorkloadIdentity) {
+	o.Identity = &v
 }
 
 // GetKillSignal returns the KillSignal field value if set, zero value otherwise.
@@ -886,6 +919,9 @@ func (o Task) MarshalJSON() ([]byte, error) {
 	}
 	if o.Env != nil {
 		toSerialize["Env"] = o.Env
+	}
+	if o.Identity != nil {
+		toSerialize["Identity"] = o.Identity
 	}
 	if o.KillSignal != nil {
 		toSerialize["KillSignal"] = o.KillSignal

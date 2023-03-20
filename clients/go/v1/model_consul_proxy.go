@@ -18,6 +18,7 @@ import (
 // ConsulProxy struct for ConsulProxy
 type ConsulProxy struct {
 	Config *map[string]interface{} `json:"Config,omitempty"`
+	Expose *ConsulExposeConfig `json:"Expose,omitempty"`
 	ExposeConfig *ConsulExposeConfig `json:"ExposeConfig,omitempty"`
 	LocalServiceAddress *string `json:"LocalServiceAddress,omitempty"`
 	LocalServicePort *int32 `json:"LocalServicePort,omitempty"`
@@ -71,6 +72,38 @@ func (o *ConsulProxy) HasConfig() bool {
 // SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
 func (o *ConsulProxy) SetConfig(v map[string]interface{}) {
 	o.Config = &v
+}
+
+// GetExpose returns the Expose field value if set, zero value otherwise.
+func (o *ConsulProxy) GetExpose() ConsulExposeConfig {
+	if o == nil || o.Expose == nil {
+		var ret ConsulExposeConfig
+		return ret
+	}
+	return *o.Expose
+}
+
+// GetExposeOk returns a tuple with the Expose field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulProxy) GetExposeOk() (*ConsulExposeConfig, bool) {
+	if o == nil || o.Expose == nil {
+		return nil, false
+	}
+	return o.Expose, true
+}
+
+// HasExpose returns a boolean if a field has been set.
+func (o *ConsulProxy) HasExpose() bool {
+	if o != nil && o.Expose != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpose gets a reference to the given ConsulExposeConfig and assigns it to the Expose field.
+func (o *ConsulProxy) SetExpose(v ConsulExposeConfig) {
+	o.Expose = &v
 }
 
 // GetExposeConfig returns the ExposeConfig field value if set, zero value otherwise.
@@ -205,6 +238,9 @@ func (o ConsulProxy) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Config != nil {
 		toSerialize["Config"] = o.Config
+	}
+	if o.Expose != nil {
+		toSerialize["Expose"] = o.Expose
 	}
 	if o.ExposeConfig != nil {
 		toSerialize["ExposeConfig"] = o.ExposeConfig

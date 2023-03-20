@@ -22,6 +22,7 @@ type JobListStub struct {
 	ID *string `json:"ID,omitempty"`
 	JobModifyIndex *int32 `json:"JobModifyIndex,omitempty"`
 	JobSummary *JobSummary `json:"JobSummary,omitempty"`
+	Meta *map[string]string `json:"Meta,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Namespace *string `json:"Namespace,omitempty"`
@@ -211,6 +212,38 @@ func (o *JobListStub) HasJobSummary() bool {
 // SetJobSummary gets a reference to the given JobSummary and assigns it to the JobSummary field.
 func (o *JobListStub) SetJobSummary(v JobSummary) {
 	o.JobSummary = &v
+}
+
+// GetMeta returns the Meta field value if set, zero value otherwise.
+func (o *JobListStub) GetMeta() map[string]string {
+	if o == nil || o.Meta == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Meta
+}
+
+// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobListStub) GetMetaOk() (*map[string]string, bool) {
+	if o == nil || o.Meta == nil {
+		return nil, false
+	}
+	return o.Meta, true
+}
+
+// HasMeta returns a boolean if a field has been set.
+func (o *JobListStub) HasMeta() bool {
+	if o != nil && o.Meta != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMeta gets a reference to the given map[string]string and assigns it to the Meta field.
+func (o *JobListStub) SetMeta(v map[string]string) {
+	o.Meta = &v
 }
 
 // GetModifyIndex returns the ModifyIndex field value if set, zero value otherwise.
@@ -613,6 +646,9 @@ func (o JobListStub) MarshalJSON() ([]byte, error) {
 	}
 	if o.JobSummary != nil {
 		toSerialize["JobSummary"] = o.JobSummary
+	}
+	if o.Meta != nil {
+		toSerialize["Meta"] = o.Meta
 	}
 	if o.ModifyIndex != nil {
 		toSerialize["ModifyIndex"] = o.ModifyIndex

@@ -220,6 +220,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 nomad_client/__init__.py
 nomad_client/api/__init__.py
 nomad_client/api/acl_api.py
@@ -447,6 +448,7 @@ nomad_client/model/vault.py
 nomad_client/model/volume_mount.py
 nomad_client/model/volume_request.py
 nomad_client/model/wait_config.py
+nomad_client/model/workload_identity.py
 nomad_client/model_utils.py
 nomad_client/models/__init__.py
 nomad_client/rest.py
@@ -499,4 +501,5 @@ test/test_variable_items.py
 test/test_variable_metadata.py
 test/test_variables_api.py
 test/test_wait_config.py
+test/test_workload_identity.py
 tox.ini

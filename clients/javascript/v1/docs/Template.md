@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **destPath** | **String** |  | [optional] 
 **embeddedTmpl** | **String** |  | [optional] 
 **envvars** | **Boolean** |  | [optional] 
+**errMissingKey** | **Boolean** |  | [optional] 
 **gid** | **Number** |  | [optional] 
 **leftDelim** | **String** |  | [optional] 
 **perms** | **String** |  | [optional] 

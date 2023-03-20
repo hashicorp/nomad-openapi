@@ -10,6 +10,7 @@
 | **dest_path** | **String** |  | [optional] |
 | **embedded_tmpl** | **String** |  | [optional] |
 | **envvars** | **Boolean** |  | [optional] |
+| **err_missing_key** | **Boolean** |  | [optional] |
 | **gid** | **Integer** |  | [optional] |
 | **left_delim** | **String** |  | [optional] |
 | **perms** | **String** |  | [optional] |
@@ -32,6 +33,7 @@ instance = NomadClient::Template.new(
   dest_path: null,
   embedded_tmpl: null,
   envvars: null,
+  err_missing_key: null,
   gid: null,
   left_delim: null,
   perms: null,

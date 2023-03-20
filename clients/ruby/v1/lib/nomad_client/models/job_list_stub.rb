@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -27,6 +24,8 @@ module NomadClient
     attr_accessor :job_modify_index
 
     attr_accessor :job_summary
+
+    attr_accessor :meta
 
     attr_accessor :modify_index
 
@@ -60,6 +59,7 @@ module NomadClient
         :'id' => :'ID',
         :'job_modify_index' => :'JobModifyIndex',
         :'job_summary' => :'JobSummary',
+        :'meta' => :'Meta',
         :'modify_index' => :'ModifyIndex',
         :'name' => :'Name',
         :'namespace' => :'Namespace',
@@ -88,6 +88,7 @@ module NomadClient
         :'id' => :'String',
         :'job_modify_index' => :'Integer',
         :'job_summary' => :'JobSummary',
+        :'meta' => :'Hash<String, String>',
         :'modify_index' => :'Integer',
         :'name' => :'String',
         :'namespace' => :'String',
@@ -144,6 +145,12 @@ module NomadClient
 
       if attributes.key?(:'job_summary')
         self.job_summary = attributes[:'job_summary']
+      end
+
+      if attributes.key?(:'meta')
+        if (value = attributes[:'meta']).is_a?(Hash)
+          self.meta = value
+        end
       end
 
       if attributes.key?(:'modify_index')
@@ -290,6 +297,7 @@ module NomadClient
           id == o.id &&
           job_modify_index == o.job_modify_index &&
           job_summary == o.job_summary &&
+          meta == o.meta &&
           modify_index == o.modify_index &&
           name == o.name &&
           namespace == o.namespace &&
@@ -313,7 +321,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_index, datacenters, id, job_modify_index, job_summary, modify_index, name, namespace, parameterized_job, parent_id, periodic, priority, status, status_description, stop, submit_time, type].hash
+      [create_index, datacenters, id, job_modify_index, job_summary, meta, modify_index, name, namespace, parameterized_job, parent_id, periodic, priority, status, status_description, stop, submit_time, type].hash
     end
 
     # Builds the object from hash

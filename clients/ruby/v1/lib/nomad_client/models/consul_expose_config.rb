@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -20,10 +17,13 @@ module NomadClient
   class ConsulExposeConfig
     attr_accessor :path
 
+    attr_accessor :paths
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'path' => :'Path'
+        :'path' => :'Path',
+        :'paths' => :'Paths'
       }
     end
 
@@ -35,7 +35,8 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'path' => :'Array<ConsulExposePath>'
+        :'path' => :'Array<ConsulExposePath>',
+        :'paths' => :'Array<ConsulExposePath>'
       }
     end
 
@@ -65,6 +66,12 @@ module NomadClient
           self.path = value
         end
       end
+
+      if attributes.key?(:'paths')
+        if (value = attributes[:'paths']).is_a?(Array)
+          self.paths = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -85,7 +92,8 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          path == o.path
+          path == o.path &&
+          paths == o.paths
     end
 
     # @see the `==` method
@@ -97,7 +105,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [path].hash
+      [path, paths].hash
     end
 
     # Builds the object from hash

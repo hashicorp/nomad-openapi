@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -32,6 +29,8 @@ pub struct Task {
     pub driver: Option<String>,
     #[serde(rename = "Env", skip_serializing_if = "Option::is_none")]
     pub env: Option<::std::collections::HashMap<String, String>>,
+    #[serde(rename = "Identity", skip_serializing_if = "Option::is_none")]
+    pub identity: Option<Box<crate::models::WorkloadIdentity>>,
     #[serde(rename = "KillSignal", skip_serializing_if = "Option::is_none")]
     pub kill_signal: Option<String>,
     #[serde(rename = "KillTimeout", skip_serializing_if = "Option::is_none")]
@@ -79,6 +78,7 @@ impl Task {
             dispatch_payload: None,
             driver: None,
             env: None,
+            identity: None,
             kill_signal: None,
             kill_timeout: None,
             kind: None,

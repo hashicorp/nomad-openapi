@@ -21,13 +21,13 @@ type ACLTokenListStub struct {
 	AccessorID *string `json:"AccessorID,omitempty"`
 	CreateIndex *int32 `json:"CreateIndex,omitempty"`
 	CreateTime *time.Time `json:"CreateTime,omitempty"`
+	ExpirationTime *time.Time `json:"ExpirationTime,omitempty"`
 	Global *bool `json:"Global,omitempty"`
 	ModifyIndex *int32 `json:"ModifyIndex,omitempty"`
 	Name *string `json:"Name,omitempty"`
 	Policies *[]string `json:"Policies,omitempty"`
 	Roles *[]ACLTokenRoleLink `json:"Roles,omitempty"`
 	Type *string `json:"Type,omitempty"`
-	ExpirationTime *time.Time `json:"expiration_time,omitempty"`
 }
 
 // NewACLTokenListStub instantiates a new ACLTokenListStub object
@@ -141,6 +141,38 @@ func (o *ACLTokenListStub) HasCreateTime() bool {
 // SetCreateTime gets a reference to the given time.Time and assigns it to the CreateTime field.
 func (o *ACLTokenListStub) SetCreateTime(v time.Time) {
 	o.CreateTime = &v
+}
+
+// GetExpirationTime returns the ExpirationTime field value if set, zero value otherwise.
+func (o *ACLTokenListStub) GetExpirationTime() time.Time {
+	if o == nil || o.ExpirationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpirationTime
+}
+
+// GetExpirationTimeOk returns a tuple with the ExpirationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ACLTokenListStub) GetExpirationTimeOk() (*time.Time, bool) {
+	if o == nil || o.ExpirationTime == nil {
+		return nil, false
+	}
+	return o.ExpirationTime, true
+}
+
+// HasExpirationTime returns a boolean if a field has been set.
+func (o *ACLTokenListStub) HasExpirationTime() bool {
+	if o != nil && o.ExpirationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationTime gets a reference to the given time.Time and assigns it to the ExpirationTime field.
+func (o *ACLTokenListStub) SetExpirationTime(v time.Time) {
+	o.ExpirationTime = &v
 }
 
 // GetGlobal returns the Global field value if set, zero value otherwise.
@@ -335,38 +367,6 @@ func (o *ACLTokenListStub) SetType(v string) {
 	o.Type = &v
 }
 
-// GetExpirationTime returns the ExpirationTime field value if set, zero value otherwise.
-func (o *ACLTokenListStub) GetExpirationTime() time.Time {
-	if o == nil || o.ExpirationTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.ExpirationTime
-}
-
-// GetExpirationTimeOk returns a tuple with the ExpirationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ACLTokenListStub) GetExpirationTimeOk() (*time.Time, bool) {
-	if o == nil || o.ExpirationTime == nil {
-		return nil, false
-	}
-	return o.ExpirationTime, true
-}
-
-// HasExpirationTime returns a boolean if a field has been set.
-func (o *ACLTokenListStub) HasExpirationTime() bool {
-	if o != nil && o.ExpirationTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExpirationTime gets a reference to the given time.Time and assigns it to the ExpirationTime field.
-func (o *ACLTokenListStub) SetExpirationTime(v time.Time) {
-	o.ExpirationTime = &v
-}
-
 func (o ACLTokenListStub) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccessorID != nil {
@@ -377,6 +377,9 @@ func (o ACLTokenListStub) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateTime != nil {
 		toSerialize["CreateTime"] = o.CreateTime
+	}
+	if o.ExpirationTime != nil {
+		toSerialize["ExpirationTime"] = o.ExpirationTime
 	}
 	if o.Global != nil {
 		toSerialize["Global"] = o.Global
@@ -395,9 +398,6 @@ func (o ACLTokenListStub) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["Type"] = o.Type
-	}
-	if o.ExpirationTime != nil {
-		toSerialize["expiration_time"] = o.ExpirationTime
 	}
 	return json.Marshal(toSerialize)
 }

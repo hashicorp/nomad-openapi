@@ -323,6 +323,7 @@ Class | Method | HTTP request | Description
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)
  - [WaitConfig](docs/WaitConfig.md)
+ - [WorkloadIdentity](docs/WorkloadIdentity.md)
 
 
 To get access to the crate's generated documentation, use:

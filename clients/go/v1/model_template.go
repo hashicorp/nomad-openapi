@@ -23,6 +23,7 @@ type Template struct {
 	DestPath *string `json:"DestPath,omitempty"`
 	EmbeddedTmpl *string `json:"EmbeddedTmpl,omitempty"`
 	Envvars *bool `json:"Envvars,omitempty"`
+	ErrMissingKey *bool `json:"ErrMissingKey,omitempty"`
 	Gid *int32 `json:"Gid,omitempty"`
 	LeftDelim *string `json:"LeftDelim,omitempty"`
 	Perms *string `json:"Perms,omitempty"`
@@ -241,6 +242,38 @@ func (o *Template) HasEnvvars() bool {
 // SetEnvvars gets a reference to the given bool and assigns it to the Envvars field.
 func (o *Template) SetEnvvars(v bool) {
 	o.Envvars = &v
+}
+
+// GetErrMissingKey returns the ErrMissingKey field value if set, zero value otherwise.
+func (o *Template) GetErrMissingKey() bool {
+	if o == nil || o.ErrMissingKey == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ErrMissingKey
+}
+
+// GetErrMissingKeyOk returns a tuple with the ErrMissingKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetErrMissingKeyOk() (*bool, bool) {
+	if o == nil || o.ErrMissingKey == nil {
+		return nil, false
+	}
+	return o.ErrMissingKey, true
+}
+
+// HasErrMissingKey returns a boolean if a field has been set.
+func (o *Template) HasErrMissingKey() bool {
+	if o != nil && o.ErrMissingKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetErrMissingKey gets a reference to the given bool and assigns it to the ErrMissingKey field.
+func (o *Template) SetErrMissingKey(v bool) {
+	o.ErrMissingKey = &v
 }
 
 // GetGid returns the Gid field value if set, zero value otherwise.
@@ -550,6 +583,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 	}
 	if o.Envvars != nil {
 		toSerialize["Envvars"] = o.Envvars
+	}
+	if o.ErrMissingKey != nil {
+		toSerialize["ErrMissingKey"] = o.ErrMissingKey
 	}
 	if o.Gid != nil {
 		toSerialize["Gid"] = o.Gid

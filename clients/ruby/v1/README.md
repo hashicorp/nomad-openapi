@@ -385,6 +385,7 @@ Class | Method | HTTP request | Description
  - [NomadClient::VolumeMount](docs/VolumeMount.md)
  - [NomadClient::VolumeRequest](docs/VolumeRequest.md)
  - [NomadClient::WaitConfig](docs/WaitConfig.md)
+ - [NomadClient::WorkloadIdentity](docs/WorkloadIdentity.md)
 
 
 ## Documentation for Authorization

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IdPrefixTemplate** | Pointer to **string** |  | [optional] 
 **JobID** | Pointer to **string** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewJobDispatchRequestWithDefaults instantiates a new JobDispatchRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetIdPrefixTemplate
+
+`func (o *JobDispatchRequest) GetIdPrefixTemplate() string`
+
+GetIdPrefixTemplate returns the IdPrefixTemplate field if non-nil, zero value otherwise.
+
+### GetIdPrefixTemplateOk
+
+`func (o *JobDispatchRequest) GetIdPrefixTemplateOk() (*string, bool)`
+
+GetIdPrefixTemplateOk returns a tuple with the IdPrefixTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdPrefixTemplate
+
+`func (o *JobDispatchRequest) SetIdPrefixTemplate(v string)`
+
+SetIdPrefixTemplate sets IdPrefixTemplate field to given value.
+
+### HasIdPrefixTemplate
+
+`func (o *JobDispatchRequest) HasIdPrefixTemplate() bool`
+
+HasIdPrefixTemplate returns a boolean if a field has been set.
 
 ### GetJobID
 

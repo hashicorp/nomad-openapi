@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **dest_path** | **str** |  | [optional] 
 **embedded_tmpl** | **str** |  | [optional] 
 **envvars** | **bool** |  | [optional] 
+**err_missing_key** | **bool** |  | [optional] 
 **gid** | **int** |  | [optional] 
 **left_delim** | **str** |  | [optional] 
 **perms** | **str** |  | [optional] 

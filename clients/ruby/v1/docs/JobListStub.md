@@ -9,6 +9,7 @@
 | **id** | **String** |  | [optional] |
 | **job_modify_index** | **Integer** |  | [optional] |
 | **job_summary** | [**JobSummary**](JobSummary.md) |  | [optional] |
+| **meta** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **modify_index** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **namespace** | **String** |  | [optional] |
@@ -33,6 +34,7 @@ instance = NomadClient::JobListStub.new(
   id: null,
   job_modify_index: null,
   job_summary: null,
+  meta: null,
   modify_index: null,
   name: null,
   namespace: null,

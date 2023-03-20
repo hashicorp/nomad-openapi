@@ -216,6 +216,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -454,6 +455,7 @@ src/main/java/io/nomadproject/client/models/Vault.java
 src/main/java/io/nomadproject/client/models/VolumeMount.java
 src/main/java/io/nomadproject/client/models/VolumeRequest.java
 src/main/java/io/nomadproject/client/models/WaitConfig.java
+src/main/java/io/nomadproject/client/models/WorkloadIdentity.java
 src/test/java/io/nomadproject/client/api/AclApiTest.java
 src/test/java/io/nomadproject/client/api/AllocationsApiTest.java
 src/test/java/io/nomadproject/client/api/DeploymentsApiTest.java
@@ -664,3 +666,4 @@ src/test/java/io/nomadproject/client/models/VaultTest.java
 src/test/java/io/nomadproject/client/models/VolumeMountTest.java
 src/test/java/io/nomadproject/client/models/VolumeRequestTest.java
 src/test/java/io/nomadproject/client/models/WaitConfigTest.java
+src/test/java/io/nomadproject/client/models/WorkloadIdentityTest.java

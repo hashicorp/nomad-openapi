@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -18,6 +15,8 @@ require 'time'
 
 module NomadClient
   class ConsulUpstream
+    attr_accessor :config
+
     attr_accessor :datacenter
 
     attr_accessor :destination_name
@@ -33,6 +32,7 @@ module NomadClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'config' => :'Config',
         :'datacenter' => :'Datacenter',
         :'destination_name' => :'DestinationName',
         :'destination_namespace' => :'DestinationNamespace',
@@ -50,6 +50,7 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'config' => :'Hash<String, AnyType>',
         :'datacenter' => :'String',
         :'destination_name' => :'String',
         :'destination_namespace' => :'String',
@@ -79,6 +80,12 @@ module NomadClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'config')
+        if (value = attributes[:'config']).is_a?(Hash)
+          self.config = value
+        end
+      end
 
       if attributes.key?(:'datacenter')
         self.datacenter = attributes[:'datacenter']
@@ -123,6 +130,7 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          config == o.config &&
           datacenter == o.datacenter &&
           destination_name == o.destination_name &&
           destination_namespace == o.destination_namespace &&
@@ -140,7 +148,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [datacenter, destination_name, destination_namespace, local_bind_address, local_bind_port, mesh_gateway].hash
+      [config, datacenter, destination_name, destination_namespace, local_bind_address, local_bind_port, mesh_gateway].hash
     end
 
     # Builds the object from hash

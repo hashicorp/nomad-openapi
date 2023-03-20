@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 export * from './ACLPolicy'
 export * from './ACLPolicyListStub'
 export * from './ACLToken'
@@ -198,3 +193,4 @@ export * from './Vault'
 export * from './VolumeMount'
 export * from './VolumeRequest'
 export * from './WaitConfig'
+export * from './WorkloadIdentity'

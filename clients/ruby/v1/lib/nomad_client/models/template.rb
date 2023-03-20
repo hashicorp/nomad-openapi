@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -30,6 +27,8 @@ module NomadClient
 
     attr_accessor :envvars
 
+    attr_accessor :err_missing_key
+
     attr_accessor :gid
 
     attr_accessor :left_delim
@@ -57,6 +56,7 @@ module NomadClient
         :'dest_path' => :'DestPath',
         :'embedded_tmpl' => :'EmbeddedTmpl',
         :'envvars' => :'Envvars',
+        :'err_missing_key' => :'ErrMissingKey',
         :'gid' => :'Gid',
         :'left_delim' => :'LeftDelim',
         :'perms' => :'Perms',
@@ -83,6 +83,7 @@ module NomadClient
         :'dest_path' => :'String',
         :'embedded_tmpl' => :'String',
         :'envvars' => :'Boolean',
+        :'err_missing_key' => :'Boolean',
         :'gid' => :'Integer',
         :'left_delim' => :'String',
         :'perms' => :'String',
@@ -138,6 +139,10 @@ module NomadClient
 
       if attributes.key?(:'envvars')
         self.envvars = attributes[:'envvars']
+      end
+
+      if attributes.key?(:'err_missing_key')
+        self.err_missing_key = attributes[:'err_missing_key']
       end
 
       if attributes.key?(:'gid')
@@ -201,6 +206,7 @@ module NomadClient
           dest_path == o.dest_path &&
           embedded_tmpl == o.embedded_tmpl &&
           envvars == o.envvars &&
+          err_missing_key == o.err_missing_key &&
           gid == o.gid &&
           left_delim == o.left_delim &&
           perms == o.perms &&
@@ -221,7 +227,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [change_mode, change_script, change_signal, dest_path, embedded_tmpl, envvars, gid, left_delim, perms, right_delim, source_path, splay, uid, vault_grace, wait].hash
+      [change_mode, change_script, change_signal, dest_path, embedded_tmpl, envvars, err_missing_key, gid, left_delim, perms, right_delim, source_path, splay, uid, vault_grace, wait].hash
     end
 
     # Builds the object from hash

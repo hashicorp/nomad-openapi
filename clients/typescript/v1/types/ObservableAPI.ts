@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 import { ResponseContext, RequestContext, HttpFile } from '../http/http';
 import * as models from '../models/all';
 import { Configuration} from '../configuration'
@@ -203,6 +198,7 @@ import { Vault } from '../models/Vault';
 import { VolumeMount } from '../models/VolumeMount';
 import { VolumeRequest } from '../models/VolumeRequest';
 import { WaitConfig } from '../models/WaitConfig';
+import { WorkloadIdentity } from '../models/WorkloadIdentity';
 
 import { ACLApiRequestFactory, ACLApiResponseProcessor} from "../apis/ACLApi";
 export class ObservableACLApi {

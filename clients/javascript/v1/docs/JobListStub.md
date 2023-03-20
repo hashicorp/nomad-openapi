@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ID** | **String** |  | [optional] 
 **jobModifyIndex** | **Number** |  | [optional] 
 **jobSummary** | [**JobSummary**](JobSummary.md) |  | [optional] 
+**meta** | **{String: String}** |  | [optional] 
 **modifyIndex** | **Number** |  | [optional] 
 **name** | **String** |  | [optional] 
 **namespace** | **String** |  | [optional] 

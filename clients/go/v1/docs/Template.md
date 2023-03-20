@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DestPath** | Pointer to **string** |  | [optional] 
 **EmbeddedTmpl** | Pointer to **string** |  | [optional] 
 **Envvars** | Pointer to **bool** |  | [optional] 
+**ErrMissingKey** | Pointer to **bool** |  | [optional] 
 **Gid** | Pointer to **int32** |  | [optional] 
 **LeftDelim** | Pointer to **string** |  | [optional] 
 **Perms** | Pointer to **string** |  | [optional] 
@@ -188,6 +189,31 @@ SetEnvvars sets Envvars field to given value.
 `func (o *Template) HasEnvvars() bool`
 
 HasEnvvars returns a boolean if a field has been set.
+
+### GetErrMissingKey
+
+`func (o *Template) GetErrMissingKey() bool`
+
+GetErrMissingKey returns the ErrMissingKey field if non-nil, zero value otherwise.
+
+### GetErrMissingKeyOk
+
+`func (o *Template) GetErrMissingKeyOk() (*bool, bool)`
+
+GetErrMissingKeyOk returns a tuple with the ErrMissingKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrMissingKey
+
+`func (o *Template) SetErrMissingKey(v bool)`
+
+SetErrMissingKey sets ErrMissingKey field to given value.
+
+### HasErrMissingKey
+
+`func (o *Template) HasErrMissingKey() bool`
+
+HasErrMissingKey returns a boolean if a field has been set.
 
 ### GetGid
 

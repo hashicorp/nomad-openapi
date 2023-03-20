@@ -12,6 +12,7 @@
 | **dispatch_payload** | [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  | [optional] |
 | **driver** | **String** |  | [optional] |
 | **env** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **identity** | [**WorkloadIdentity**](WorkloadIdentity.md) |  | [optional] |
 | **kill_signal** | **String** |  | [optional] |
 | **kill_timeout** | **Integer** |  | [optional] |
 | **kind** | **String** |  | [optional] |
@@ -44,6 +45,7 @@ instance = NomadClient::Task.new(
   dispatch_payload: null,
   driver: null,
   env: null,
+  identity: null,
   kill_signal: null,
   kill_timeout: null,
   kind: null,

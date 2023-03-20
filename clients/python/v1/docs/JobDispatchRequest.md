@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id_prefix_template** | **str** |  | [optional] 
 **job_id** | **str** |  | [optional] 
 **meta** | **{str: (str,)}** |  | [optional] 
 **payload** | **str** |  | [optional] 

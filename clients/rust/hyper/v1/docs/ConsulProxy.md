@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config** | Option<[**::std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> |  | [optional]
+**expose** | Option<[**crate::models::ConsulExposeConfig**](ConsulExposeConfig.md)> |  | [optional]
 **expose_config** | Option<[**crate::models::ConsulExposeConfig**](ConsulExposeConfig.md)> |  | [optional]
 **local_service_address** | Option<**String**> |  | [optional]
 **local_service_port** | Option<**i32**> |  | [optional]

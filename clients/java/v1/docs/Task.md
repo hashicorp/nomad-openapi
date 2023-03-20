@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **dispatchPayload** | [**DispatchPayloadConfig**](DispatchPayloadConfig.md) |  |  [optional]
 **driver** | **String** |  |  [optional]
 **env** | **Map&lt;String, String&gt;** |  |  [optional]
+**identity** | [**WorkloadIdentity**](WorkloadIdentity.md) |  |  [optional]
 **killSignal** | **String** |  |  [optional]
 **killTimeout** | **Long** |  |  [optional]
 **kind** | **String** |  |  [optional]

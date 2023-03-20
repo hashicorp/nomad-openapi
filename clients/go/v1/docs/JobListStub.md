@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ID** | Pointer to **string** |  | [optional] 
 **JobModifyIndex** | Pointer to **int32** |  | [optional] 
 **JobSummary** | Pointer to [**JobSummary**](JobSummary.md) |  | [optional] 
+**Meta** | Pointer to **map[string]string** |  | [optional] 
 **ModifyIndex** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
@@ -165,6 +166,31 @@ SetJobSummary sets JobSummary field to given value.
 `func (o *JobListStub) HasJobSummary() bool`
 
 HasJobSummary returns a boolean if a field has been set.
+
+### GetMeta
+
+`func (o *JobListStub) GetMeta() map[string]string`
+
+GetMeta returns the Meta field if non-nil, zero value otherwise.
+
+### GetMetaOk
+
+`func (o *JobListStub) GetMetaOk() (*map[string]string, bool)`
+
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeta
+
+`func (o *JobListStub) SetMeta(v map[string]string)`
+
+SetMeta sets Meta field to given value.
+
+### HasMeta
+
+`func (o *JobListStub) HasMeta() bool`
+
+HasMeta returns a boolean if a field has been set.
 
 ### GetModifyIndex
 

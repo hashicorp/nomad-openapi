@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -102,13 +99,13 @@ class ACLTokenListStub(ModelNormal):
             'accessor_id': (str,),  # noqa: E501
             'create_index': (int,),  # noqa: E501
             'create_time': (datetime,),  # noqa: E501
+            'expiration_time': (datetime,),  # noqa: E501
             '_global': (bool,),  # noqa: E501
             'modify_index': (int,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'policies': ([str],),  # noqa: E501
             'roles': ([ACLTokenRoleLink],),  # noqa: E501
             'type': (str,),  # noqa: E501
-            'expiration_time': (datetime,),  # noqa: E501
         }
 
     @cached_property
@@ -120,13 +117,13 @@ class ACLTokenListStub(ModelNormal):
         'accessor_id': 'AccessorID',  # noqa: E501
         'create_index': 'CreateIndex',  # noqa: E501
         'create_time': 'CreateTime',  # noqa: E501
+        'expiration_time': 'ExpirationTime',  # noqa: E501
         '_global': 'Global',  # noqa: E501
         'modify_index': 'ModifyIndex',  # noqa: E501
         'name': 'Name',  # noqa: E501
         'policies': 'Policies',  # noqa: E501
         'roles': 'Roles',  # noqa: E501
         'type': 'Type',  # noqa: E501
-        'expiration_time': 'expiration_time',  # noqa: E501
     }
 
     read_only_vars = {
@@ -173,13 +170,13 @@ class ACLTokenListStub(ModelNormal):
             accessor_id (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             create_time (datetime): [optional]  # noqa: E501
+            expiration_time (datetime): [optional]  # noqa: E501
             _global (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             policies ([str]): [optional]  # noqa: E501
             roles ([ACLTokenRoleLink]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            expiration_time (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -264,13 +261,13 @@ class ACLTokenListStub(ModelNormal):
             accessor_id (str): [optional]  # noqa: E501
             create_index (int): [optional]  # noqa: E501
             create_time (datetime): [optional]  # noqa: E501
+            expiration_time (datetime): [optional]  # noqa: E501
             _global (bool): [optional]  # noqa: E501
             modify_index (int): [optional]  # noqa: E501
             name (str): [optional]  # noqa: E501
             policies ([str]): [optional]  # noqa: E501
             roles ([ACLTokenRoleLink]): [optional]  # noqa: E501
             type (str): [optional]  # noqa: E501
-            expiration_time (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

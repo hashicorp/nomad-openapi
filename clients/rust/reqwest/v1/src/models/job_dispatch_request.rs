@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -16,6 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobDispatchRequest {
+    #[serde(rename = "IdPrefixTemplate", skip_serializing_if = "Option::is_none")]
+    pub id_prefix_template: Option<String>,
     #[serde(rename = "JobID", skip_serializing_if = "Option::is_none")]
     pub job_id: Option<String>,
     #[serde(rename = "Meta", skip_serializing_if = "Option::is_none")]
@@ -27,6 +26,7 @@ pub struct JobDispatchRequest {
 impl JobDispatchRequest {
     pub fn new() -> JobDispatchRequest {
         JobDispatchRequest {
+            id_prefix_template: None,
             job_id: None,
             meta: None,
             payload: None,

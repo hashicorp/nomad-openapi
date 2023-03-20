@@ -7,6 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config** | **Map&lt;String, Object&gt;** |  |  [optional]
 **datacenter** | **String** |  |  [optional]
 **destinationName** | **String** |  |  [optional]
 **destinationNamespace** | **String** |  |  [optional]

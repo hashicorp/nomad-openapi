@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 export * from './ACLPolicy';
 export * from './ACLPolicyListStub';
 export * from './ACLToken';
@@ -198,6 +193,7 @@ export * from './Vault';
 export * from './VolumeMount';
 export * from './VolumeRequest';
 export * from './WaitConfig';
+export * from './WorkloadIdentity';
 
 import { ACLPolicy } from './ACLPolicy';
 import { ACLPolicyListStub } from './ACLPolicyListStub';
@@ -394,6 +390,7 @@ import { Vault } from './Vault';
 import { VolumeMount } from './VolumeMount';
 import { VolumeRequest } from './VolumeRequest';
 import { WaitConfig } from './WaitConfig';
+import { WorkloadIdentity } from './WorkloadIdentity';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -612,6 +609,7 @@ let typeMap: {[index: string]: any} = {
     "VolumeMount": VolumeMount,
     "VolumeRequest": VolumeRequest,
     "WaitConfig": WaitConfig,
+    "WorkloadIdentity": WorkloadIdentity,
 }
 
 export class ObjectSerializer {

@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -18,6 +15,8 @@ require 'time'
 
 module NomadClient
   class JobDispatchRequest
+    attr_accessor :id_prefix_template
+
     attr_accessor :job_id
 
     attr_accessor :meta
@@ -27,6 +26,7 @@ module NomadClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id_prefix_template' => :'IdPrefixTemplate',
         :'job_id' => :'JobID',
         :'meta' => :'Meta',
         :'payload' => :'Payload'
@@ -41,6 +41,7 @@ module NomadClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id_prefix_template' => :'String',
         :'job_id' => :'String',
         :'meta' => :'Hash<String, String>',
         :'payload' => :'String'
@@ -67,6 +68,10 @@ module NomadClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'id_prefix_template')
+        self.id_prefix_template = attributes[:'id_prefix_template']
+      end
 
       if attributes.key?(:'job_id')
         self.job_id = attributes[:'job_id']
@@ -101,6 +106,7 @@ module NomadClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id_prefix_template == o.id_prefix_template &&
           job_id == o.job_id &&
           meta == o.meta &&
           payload == o.payload
@@ -115,7 +121,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [job_id, meta, payload].hash
+      [id_prefix_template, job_id, meta, payload].hash
     end
 
     # Builds the object from hash

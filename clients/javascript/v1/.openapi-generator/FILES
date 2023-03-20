@@ -214,6 +214,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 mocha.opts
 package.json
 src/ApiClient.js
@@ -431,6 +432,7 @@ src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
 src/model/WaitConfig.js
+src/model/WorkloadIdentity.js
 test/api/DeploymentsApi.spec.js
 test/api/EvaluationsApi.spec.js
 test/api/OperatorApi.spec.js
@@ -473,3 +475,4 @@ test/model/ServiceRegistration.spec.js
 test/model/Variable.spec.js
 test/model/VariableMetadata.spec.js
 test/model/WaitConfig.spec.js
+test/model/WorkloadIdentity.spec.js

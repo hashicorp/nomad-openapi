@@ -214,6 +214,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 src/apis/acl_api.rs
 src/apis/allocations_api.rs
 src/apis/client.rs
@@ -433,3 +434,4 @@ src/models/vault.rs
 src/models/volume_mount.rs
 src/models/volume_request.rs
 src/models/wait_config.rs
+src/models/workload_identity.rs

@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 /*
  * Nomad
  *
@@ -16,6 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ConsulUpstream {
+    #[serde(rename = "Config", skip_serializing_if = "Option::is_none")]
+    pub config: Option<::std::collections::HashMap<String, serde_json::Value>>,
     #[serde(rename = "Datacenter", skip_serializing_if = "Option::is_none")]
     pub datacenter: Option<String>,
     #[serde(rename = "DestinationName", skip_serializing_if = "Option::is_none")]
@@ -33,6 +32,7 @@ pub struct ConsulUpstream {
 impl ConsulUpstream {
     pub fn new() -> ConsulUpstream {
         ConsulUpstream {
+            config: None,
             datacenter: None,
             destination_name: None,
             destination_namespace: None,

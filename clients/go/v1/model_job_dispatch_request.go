@@ -17,6 +17,7 @@ import (
 
 // JobDispatchRequest struct for JobDispatchRequest
 type JobDispatchRequest struct {
+	IdPrefixTemplate *string `json:"IdPrefixTemplate,omitempty"`
 	JobID *string `json:"JobID,omitempty"`
 	Meta *map[string]string `json:"Meta,omitempty"`
 	Payload *string `json:"Payload,omitempty"`
@@ -37,6 +38,38 @@ func NewJobDispatchRequest() *JobDispatchRequest {
 func NewJobDispatchRequestWithDefaults() *JobDispatchRequest {
 	this := JobDispatchRequest{}
 	return &this
+}
+
+// GetIdPrefixTemplate returns the IdPrefixTemplate field value if set, zero value otherwise.
+func (o *JobDispatchRequest) GetIdPrefixTemplate() string {
+	if o == nil || o.IdPrefixTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.IdPrefixTemplate
+}
+
+// GetIdPrefixTemplateOk returns a tuple with the IdPrefixTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobDispatchRequest) GetIdPrefixTemplateOk() (*string, bool) {
+	if o == nil || o.IdPrefixTemplate == nil {
+		return nil, false
+	}
+	return o.IdPrefixTemplate, true
+}
+
+// HasIdPrefixTemplate returns a boolean if a field has been set.
+func (o *JobDispatchRequest) HasIdPrefixTemplate() bool {
+	if o != nil && o.IdPrefixTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdPrefixTemplate gets a reference to the given string and assigns it to the IdPrefixTemplate field.
+func (o *JobDispatchRequest) SetIdPrefixTemplate(v string) {
+	o.IdPrefixTemplate = &v
 }
 
 // GetJobID returns the JobID field value if set, zero value otherwise.
@@ -137,6 +170,9 @@ func (o *JobDispatchRequest) SetPayload(v string) {
 
 func (o JobDispatchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.IdPrefixTemplate != nil {
+		toSerialize["IdPrefixTemplate"] = o.IdPrefixTemplate
+	}
 	if o.JobID != nil {
 		toSerialize["JobID"] = o.JobID
 	}

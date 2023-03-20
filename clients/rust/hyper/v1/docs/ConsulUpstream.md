@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config** | Option<[**::std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> |  | [optional]
 **datacenter** | Option<**String**> |  | [optional]
 **destination_name** | Option<**String**> |  | [optional]
 **destination_namespace** | Option<**String**> |  | [optional]

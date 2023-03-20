@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id_prefix_template** | Option<**String**> |  | [optional]
 **job_id** | Option<**String**> |  | [optional]
 **meta** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
 **payload** | Option<**String**> |  | [optional]

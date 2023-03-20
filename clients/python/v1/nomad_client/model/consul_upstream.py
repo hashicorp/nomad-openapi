@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -91,6 +88,7 @@ class ConsulUpstream(ModelNormal):
         """
         lazy_import()
         return {
+            'config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'datacenter': (str,),  # noqa: E501
             'destination_name': (str,),  # noqa: E501
             'destination_namespace': (str,),  # noqa: E501
@@ -105,6 +103,7 @@ class ConsulUpstream(ModelNormal):
 
 
     attribute_map = {
+        'config': 'Config',  # noqa: E501
         'datacenter': 'Datacenter',  # noqa: E501
         'destination_name': 'DestinationName',  # noqa: E501
         'destination_namespace': 'DestinationNamespace',  # noqa: E501
@@ -154,6 +153,7 @@ class ConsulUpstream(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             destination_name (str): [optional]  # noqa: E501
             destination_namespace (str): [optional]  # noqa: E501
@@ -241,6 +241,7 @@ class ConsulUpstream(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             datacenter (str): [optional]  # noqa: E501
             destination_name (str): [optional]  # noqa: E501
             destination_namespace (str): [optional]  # noqa: E501

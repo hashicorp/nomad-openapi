@@ -234,6 +234,7 @@ docs/VolumeMount.md
 docs/VolumeRequest.md
 docs/VolumesApi.md
 docs/WaitConfig.md
+docs/WorkloadIdentity.md
 model_acl_policy.go
 model_acl_policy_list_stub.go
 model_acl_token.go
@@ -429,5 +430,6 @@ model_vault.go
 model_volume_mount.go
 model_volume_request.go
 model_wait_config.go
+model_workload_identity.go
 response.go
 utils.go

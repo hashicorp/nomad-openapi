@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Config** | Pointer to **map[string]interface{}** |  | [optional] 
 **Datacenter** | Pointer to **string** |  | [optional] 
 **DestinationName** | Pointer to **string** |  | [optional] 
 **DestinationNamespace** | Pointer to **string** |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewConsulUpstreamWithDefaults instantiates a new ConsulUpstream object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetConfig
+
+`func (o *ConsulUpstream) GetConfig() map[string]interface{}`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *ConsulUpstream) GetConfigOk() (*map[string]interface{}, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *ConsulUpstream) SetConfig(v map[string]interface{})`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *ConsulUpstream) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 ### GetDatacenter
 

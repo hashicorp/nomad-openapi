@@ -17,6 +17,7 @@ import (
 
 // ConsulUpstream struct for ConsulUpstream
 type ConsulUpstream struct {
+	Config *map[string]interface{} `json:"Config,omitempty"`
 	Datacenter *string `json:"Datacenter,omitempty"`
 	DestinationName *string `json:"DestinationName,omitempty"`
 	DestinationNamespace *string `json:"DestinationNamespace,omitempty"`
@@ -40,6 +41,38 @@ func NewConsulUpstream() *ConsulUpstream {
 func NewConsulUpstreamWithDefaults() *ConsulUpstream {
 	this := ConsulUpstream{}
 	return &this
+}
+
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *ConsulUpstream) GetConfig() map[string]interface{} {
+	if o == nil || o.Config == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConsulUpstream) GetConfigOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *ConsulUpstream) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *ConsulUpstream) SetConfig(v map[string]interface{}) {
+	o.Config = &v
 }
 
 // GetDatacenter returns the Datacenter field value if set, zero value otherwise.
@@ -236,6 +269,9 @@ func (o *ConsulUpstream) SetMeshGateway(v ConsulMeshGateway) {
 
 func (o ConsulUpstream) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Config != nil {
+		toSerialize["Config"] = o.Config
+	}
 	if o.Datacenter != nil {
 		toSerialize["Datacenter"] = o.Datacenter
 	}

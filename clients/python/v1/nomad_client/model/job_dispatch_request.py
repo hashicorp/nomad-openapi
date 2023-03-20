@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 """
     Nomad
 
@@ -85,6 +82,7 @@ class JobDispatchRequest(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'id_prefix_template': (str,),  # noqa: E501
             'job_id': (str,),  # noqa: E501
             'meta': ({str: (str,)},),  # noqa: E501
             'payload': (str,),  # noqa: E501
@@ -96,6 +94,7 @@ class JobDispatchRequest(ModelNormal):
 
 
     attribute_map = {
+        'id_prefix_template': 'IdPrefixTemplate',  # noqa: E501
         'job_id': 'JobID',  # noqa: E501
         'meta': 'Meta',  # noqa: E501
         'payload': 'Payload',  # noqa: E501
@@ -142,6 +141,7 @@ class JobDispatchRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            id_prefix_template (str): [optional]  # noqa: E501
             job_id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             payload (str): [optional]  # noqa: E501
@@ -226,6 +226,7 @@ class JobDispatchRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            id_prefix_template (str): [optional]  # noqa: E501
             job_id (str): [optional]  # noqa: E501
             meta ({str: (str,)}): [optional]  # noqa: E501
             payload (str): [optional]  # noqa: E501

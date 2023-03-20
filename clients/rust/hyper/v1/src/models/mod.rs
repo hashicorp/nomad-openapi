@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 pub mod acl_policy;
 pub use self::acl_policy::AclPolicy;
 pub mod acl_policy_list_stub;
@@ -391,3 +388,5 @@ pub mod volume_request;
 pub use self::volume_request::VolumeRequest;
 pub mod wait_config;
 pub use self::wait_config::WaitConfig;
+pub mod workload_identity;
+pub use self::workload_identity::WorkloadIdentity;

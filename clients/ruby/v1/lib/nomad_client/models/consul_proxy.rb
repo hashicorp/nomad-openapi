@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 =begin
 #Nomad
 
@@ -20,6 +17,8 @@ module NomadClient
   class ConsulProxy
     attr_accessor :config
 
+    attr_accessor :expose
+
     attr_accessor :expose_config
 
     attr_accessor :local_service_address
@@ -32,6 +31,7 @@ module NomadClient
     def self.attribute_map
       {
         :'config' => :'Config',
+        :'expose' => :'Expose',
         :'expose_config' => :'ExposeConfig',
         :'local_service_address' => :'LocalServiceAddress',
         :'local_service_port' => :'LocalServicePort',
@@ -48,6 +48,7 @@ module NomadClient
     def self.openapi_types
       {
         :'config' => :'Hash<String, AnyType>',
+        :'expose' => :'ConsulExposeConfig',
         :'expose_config' => :'ConsulExposeConfig',
         :'local_service_address' => :'String',
         :'local_service_port' => :'Integer',
@@ -80,6 +81,10 @@ module NomadClient
         if (value = attributes[:'config']).is_a?(Hash)
           self.config = value
         end
+      end
+
+      if attributes.key?(:'expose')
+        self.expose = attributes[:'expose']
       end
 
       if attributes.key?(:'expose_config')
@@ -120,6 +125,7 @@ module NomadClient
       return true if self.equal?(o)
       self.class == o.class &&
           config == o.config &&
+          expose == o.expose &&
           expose_config == o.expose_config &&
           local_service_address == o.local_service_address &&
           local_service_port == o.local_service_port &&
@@ -135,7 +141,7 @@ module NomadClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [config, expose_config, local_service_address, local_service_port, upstreams].hash
+      [config, expose, expose_config, local_service_address, local_service_port, upstreams].hash
     end
 
     # Builds the object from hash
