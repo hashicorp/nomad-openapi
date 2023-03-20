@@ -45,5 +45,5 @@ update-nomad:
 	(cd generator && go get github.com/hashicorp/nomad)
 	(cd generator && go get github.com/hashicorp/nomad/api)
 	(cd generator && go mod tidy)
-	@go get github.com/hashicorp/nomad
+	@go get github.com/hashicorp/nomad@v1.5.0
 	@go mod tidy
