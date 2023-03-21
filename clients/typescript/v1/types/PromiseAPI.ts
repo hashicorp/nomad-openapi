@@ -191,8 +191,6 @@ import { TaskLifecycle } from '../models/TaskLifecycle';
 import { TaskState } from '../models/TaskState';
 import { Template } from '../models/Template';
 import { UpdateStrategy } from '../models/UpdateStrategy';
-import { Variable } from '../models/Variable';
-import { VariableMetadata } from '../models/VariableMetadata';
 import { Vault } from '../models/Vault';
 import { VolumeMount } from '../models/VolumeMount';
 import { VolumeRequest } from '../models/VolumeRequest';
@@ -1709,100 +1707,6 @@ export class PromiseSystemApi {
      */
     public putSystemReconcileSummaries(region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, _options?: Configuration): Promise<void> {
         const result = this.api.putSystemReconcileSummaries(region, namespace, xNomadToken, idempotencyToken, _options);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableVariablesApi } from './ObservableAPI';
-
-import { VariablesApiRequestFactory, VariablesApiResponseProcessor} from "../apis/VariablesApi";
-export class PromiseVariablesApi {
-    private api: ObservableVariablesApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: VariablesApiRequestFactory,
-        responseProcessor?: VariablesApiResponseProcessor
-    ) {
-        this.api = new ObservableVariablesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * @param path A path to a Nomad Variable
-     * @param variable 
-     * @param region Filters results based on the specified region.
-     * @param namespace Filters results based on the specified namespace.
-     * @param xNomadToken A Nomad ACL token.
-     * @param idempotencyToken Can be used to ensure operations are only run once.
-     * @param cas A compare-and-set parameter for Nomad Variables
-     */
-    public deleteVariable(path: string, variable: Variable, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, cas?: number, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteVariable(path, variable, region, namespace, xNomadToken, idempotencyToken, cas, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * @param path A path to a Nomad Variable
-     * @param region Filters results based on the specified region.
-     * @param namespace Filters results based on the specified namespace.
-     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
-     * @param wait Provided with IndexParam to wait for change.
-     * @param stale If present, results will include stale reads.
-     * @param prefix Constrains results to jobs that start with the defined prefix
-     * @param xNomadToken A Nomad ACL token.
-     * @param perPage Maximum number of results to return.
-     * @param nextToken Indicates where to start paging for queries that support pagination.
-     */
-    public getVariableQuery(path: string, region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Variable> {
-        const result = this.api.getVariableQuery(path, region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * @param region Filters results based on the specified region.
-     * @param namespace Filters results based on the specified namespace.
-     * @param index If set, wait until query exceeds given index. Must be provided with WaitParam.
-     * @param wait Provided with IndexParam to wait for change.
-     * @param stale If present, results will include stale reads.
-     * @param prefix Constrains results to jobs that start with the defined prefix
-     * @param xNomadToken A Nomad ACL token.
-     * @param perPage Maximum number of results to return.
-     * @param nextToken Indicates where to start paging for queries that support pagination.
-     */
-    public getVariablesListRequest(region?: string, namespace?: string, index?: number, wait?: string, stale?: string, prefix?: string, xNomadToken?: string, perPage?: number, nextToken?: string, _options?: Configuration): Promise<Array<VariableMetadata>> {
-        const result = this.api.getVariablesListRequest(region, namespace, index, wait, stale, prefix, xNomadToken, perPage, nextToken, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * @param path A path to a Nomad Variable
-     * @param variable 
-     * @param region Filters results based on the specified region.
-     * @param namespace Filters results based on the specified namespace.
-     * @param xNomadToken A Nomad ACL token.
-     * @param idempotencyToken Can be used to ensure operations are only run once.
-     * @param cas A compare-and-set parameter for Nomad Variables
-     */
-    public postVariable(path: string, variable: Variable, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, cas?: number, _options?: Configuration): Promise<Variable> {
-        const result = this.api.postVariable(path, variable, region, namespace, xNomadToken, idempotencyToken, cas, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * @param path A path to a Nomad Variable
-     * @param variable 
-     * @param region Filters results based on the specified region.
-     * @param namespace Filters results based on the specified namespace.
-     * @param xNomadToken A Nomad ACL token.
-     * @param idempotencyToken Can be used to ensure operations are only run once.
-     * @param cas A compare-and-set parameter for Nomad Variables
-     */
-    public putVariable(path: string, variable: Variable, region?: string, namespace?: string, xNomadToken?: string, idempotencyToken?: string, cas?: number, _options?: Configuration): Promise<Variable> {
-        const result = this.api.putVariable(path, variable, region, namespace, xNomadToken, idempotencyToken, cas, _options);
         return result.toPromise();
     }
 

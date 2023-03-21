@@ -1,6 +1,6 @@
 # nomad_client.JobsApi
 
-All URIs are relative to *http://127.0.0.1:4646/v1*
+All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -41,10 +41,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job_deregister_response import JobDeregisterResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -138,10 +138,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job import Job
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -241,10 +241,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.allocation_list_stub import AllocationListStub
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -346,10 +346,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.deployment import Deployment
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -449,10 +449,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.deployment import Deployment
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -554,10 +554,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.evaluation import Evaluation
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -657,10 +657,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job_scale_status_response import JobScaleStatusResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -760,10 +760,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job_summary import JobSummary
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -863,10 +863,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job_versions_response import JobVersionsResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -968,10 +968,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.job_list_stub import JobListStub
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1063,10 +1063,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_register_request import JobRegisterRequest
 from nomad_client.model.job_register_response import JobRegisterResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2201,10 +2201,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_dispatch_request import JobDispatchRequest
 from nomad_client.model.job_dispatch_response import JobDispatchResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2304,10 +2304,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_evaluate_request import JobEvaluateRequest
 from nomad_client.model.job_register_response import JobRegisterResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2408,10 +2408,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.jobs_parse_request import JobsParseRequest
 from nomad_client.model.job import Job
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2489,10 +2489,10 @@ import nomad_client
 from nomad_client.api import jobs_api
 from nomad_client.model.periodic_force_response import PeriodicForceResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2583,10 +2583,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_plan_request import JobPlanRequest
 from nomad_client.model.job_plan_response import JobPlanResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3718,10 +3718,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_register_response import JobRegisterResponse
 from nomad_client.model.job_revert_request import JobRevertRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3823,10 +3823,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_register_response import JobRegisterResponse
 from nomad_client.model.scaling_request import ScalingRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3933,10 +3933,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_stability_response import JobStabilityResponse
 from nomad_client.model.job_stability_request import JobStabilityRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4036,10 +4036,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_validate_request import JobValidateRequest
 from nomad_client.model.job_validate_response import JobValidateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5167,10 +5167,10 @@ from nomad_client.api import jobs_api
 from nomad_client.model.job_register_request import JobRegisterRequest
 from nomad_client.model.job_register_response import JobRegisterResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters

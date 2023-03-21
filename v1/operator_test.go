@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 package v1
 
 import (
@@ -8,7 +5,7 @@ import (
 
 	client "github.com/flytocolors/nomad-openapi/clients/go/v1"
 	"github.com/hashicorp/nomad/command/agent"
-	"github.com/hashicorp/nomad/helper/pointer"
+	"github.com/hashicorp/nomad/helper"
 	"github.com/stretchr/testify/require"
 )
 
@@ -60,13 +57,13 @@ func testPutAutopilotConfiguration(t *testing.T, s *agent.TestAgent) {
 	require.NoError(t, err)
 
 	autopilotOpts := &client.AutopilotConfiguration{
-		CleanupDeadServers:      pointer.Of(true),
-		LastContactThreshold:    pointer.Of("200ms"),
+		CleanupDeadServers:      helper.BoolToPtr(true),
+		LastContactThreshold:    helper.StringToPtr("200ms"),
 		MaxTrailingLogs:         Int32ToPtr(250),
-		ServerStabilizationTime: pointer.Of("10s"),
-		EnableRedundancyZones:   pointer.Of(false),
-		DisableUpgradeMigration: pointer.Of(false),
-		EnableCustomUpgrades:    pointer.Of(false),
+		ServerStabilizationTime: helper.StringToPtr("10s"),
+		EnableRedundancyZones:   helper.BoolToPtr(false),
+		DisableUpgradeMigration: helper.BoolToPtr(false),
+		EnableCustomUpgrades:    helper.BoolToPtr(false),
 	}
 
 	result, err := testClient.Operator().UpdateAutopilot(writeOpts.Ctx(), autopilotOpts)
@@ -98,13 +95,13 @@ func testPostSchedulerConfiguration(t *testing.T, s *agent.TestAgent) {
 	require.NoError(t, err)
 
 	schedulerOpts := &client.SchedulerConfiguration{
-		SchedulerAlgorithm:            pointer.Of("spread"),
-		MemoryOversubscriptionEnabled: pointer.Of(false),
+		SchedulerAlgorithm:            helper.StringToPtr("spread"),
+		MemoryOversubscriptionEnabled: helper.BoolToPtr(false),
 		PreemptionConfig: &client.PreemptionConfig{
-			BatchSchedulerEnabled:    pointer.Of(true),
-			ServiceSchedulerEnabled:  pointer.Of(true),
-			SysBatchSchedulerEnabled: pointer.Of(true),
-			SystemSchedulerEnabled:   pointer.Of(true),
+			BatchSchedulerEnabled:    helper.BoolToPtr(true),
+			ServiceSchedulerEnabled:  helper.BoolToPtr(true),
+			SysBatchSchedulerEnabled: helper.BoolToPtr(true),
+			SystemSchedulerEnabled:   helper.BoolToPtr(true),
 		},
 	}
 

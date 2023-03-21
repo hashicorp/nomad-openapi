@@ -56,7 +56,7 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/flytocolors/nomad-openapi/clients/javascript/v1
+If the library is hosted at a git repository, e.g.https://github.com/hashicorp/nomad-openapi/clients/javascript/v1
 then install it via:
 
 ```shell
@@ -128,7 +128,7 @@ api.deleteACLPolicy(policyName, opts, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://127.0.0.1:4646/v1*
+All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -215,11 +215,6 @@ Class | Method | HTTP request | Description
 *nomad-client.StatusApi* | [**getStatusPeers**](docs/StatusApi.md#getStatusPeers) | **GET** /status/peers | 
 *nomad-client.SystemApi* | [**putSystemGC**](docs/SystemApi.md#putSystemGC) | **PUT** /system/gc | 
 *nomad-client.SystemApi* | [**putSystemReconcileSummaries**](docs/SystemApi.md#putSystemReconcileSummaries) | **PUT** /system/reconcile/summaries | 
-*nomad-client.VariablesApi* | [**deleteVariable**](docs/VariablesApi.md#deleteVariable) | **DELETE** /var/{path} | 
-*nomad-client.VariablesApi* | [**getVariableQuery**](docs/VariablesApi.md#getVariableQuery) | **GET** /var/{path} | 
-*nomad-client.VariablesApi* | [**getVariablesListRequest**](docs/VariablesApi.md#getVariablesListRequest) | **GET** /vars | 
-*nomad-client.VariablesApi* | [**postVariable**](docs/VariablesApi.md#postVariable) | **POST** /var/{path} | 
-*nomad-client.VariablesApi* | [**putVariable**](docs/VariablesApi.md#putVariable) | **PUT** /var/{path} | 
 *nomad-client.VolumesApi* | [**createVolume**](docs/VolumesApi.md#createVolume) | **POST** /volume/csi/{volumeId}/{action} | 
 *nomad-client.VolumesApi* | [**deleteSnapshot**](docs/VolumesApi.md#deleteSnapshot) | **DELETE** /volumes/snapshot | 
 *nomad-client.VolumesApi* | [**deleteVolumeRegistration**](docs/VolumesApi.md#deleteVolumeRegistration) | **DELETE** /volume/csi/{volumeId} | 
@@ -424,8 +419,6 @@ Class | Method | HTTP request | Description
  - [nomad-client.TaskState](docs/TaskState.md)
  - [nomad-client.Template](docs/Template.md)
  - [nomad-client.UpdateStrategy](docs/UpdateStrategy.md)
- - [nomad-client.Variable](docs/Variable.md)
- - [nomad-client.VariableMetadata](docs/VariableMetadata.md)
  - [nomad-client.Vault](docs/Vault.md)
  - [nomad-client.VolumeMount](docs/VolumeMount.md)
  - [nomad-client.VolumeRequest](docs/VolumeRequest.md)

@@ -202,8 +202,6 @@ import TaskLifecycle from './model/TaskLifecycle';
 import TaskState from './model/TaskState';
 import Template from './model/Template';
 import UpdateStrategy from './model/UpdateStrategy';
-import Variable from './model/Variable';
-import VariableMetadata from './model/VariableMetadata';
 import Vault from './model/Vault';
 import VolumeMount from './model/VolumeMount';
 import VolumeRequest from './model/VolumeRequest';
@@ -225,7 +223,6 @@ import ScalingApi from './api/ScalingApi';
 import SearchApi from './api/SearchApi';
 import StatusApi from './api/StatusApi';
 import SystemApi from './api/SystemApi';
-import VariablesApi from './api/VariablesApi';
 import VolumesApi from './api/VolumesApi';
 
 
@@ -1402,18 +1399,6 @@ export {
     UpdateStrategy,
 
     /**
-     * The Variable model constructor.
-     * @property {module:model/Variable}
-     */
-    Variable,
-
-    /**
-     * The VariableMetadata model constructor.
-     * @property {module:model/VariableMetadata}
-     */
-    VariableMetadata,
-
-    /**
      * The Vault model constructor.
      * @property {module:model/Vault}
      */
@@ -1538,12 +1523,6 @@ export {
     * @property {module:api/SystemApi}
     */
     SystemApi,
-
-    /**
-    * The VariablesApi service constructor.
-    * @property {module:api/VariablesApi}
-    */
-    VariablesApi,
 
     /**
     * The VolumesApi service constructor.

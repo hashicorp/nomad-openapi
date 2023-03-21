@@ -206,9 +206,6 @@ docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
 docs/UpdateStrategy.md
-docs/Variable.md
-docs/VariableMetadata.md
-docs/VariablesApi.md
 docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
@@ -233,7 +230,6 @@ src/apis/scaling_api.rs
 src/apis/search_api.rs
 src/apis/status_api.rs
 src/apis/system_api.rs
-src/apis/variables_api.rs
 src/apis/volumes_api.rs
 src/lib.rs
 src/models/acl_policy.rs
@@ -426,8 +422,6 @@ src/models/task_lifecycle.rs
 src/models/task_state.rs
 src/models/template.rs
 src/models/update_strategy.rs
-src/models/variable.rs
-src/models/variable_metadata.rs
 src/models/vault.rs
 src/models/volume_mount.rs
 src/models/volume_request.rs

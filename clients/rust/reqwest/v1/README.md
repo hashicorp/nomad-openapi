@@ -21,7 +21,7 @@ nomad_client = { path = "./nomad_client" }
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://127.0.0.1:4646/v1*
+All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -108,11 +108,6 @@ Class | Method | HTTP request | Description
 *StatusApi* | [**get_status_peers**](docs/StatusApi.md#get_status_peers) | **GET** /status/peers | 
 *SystemApi* | [**put_system_gc**](docs/SystemApi.md#put_system_gc) | **PUT** /system/gc | 
 *SystemApi* | [**put_system_reconcile_summaries**](docs/SystemApi.md#put_system_reconcile_summaries) | **PUT** /system/reconcile/summaries | 
-*VariablesApi* | [**delete_variable**](docs/VariablesApi.md#delete_variable) | **DELETE** /var/{path} | 
-*VariablesApi* | [**get_variable_query**](docs/VariablesApi.md#get_variable_query) | **GET** /var/{path} | 
-*VariablesApi* | [**get_variables_list_request**](docs/VariablesApi.md#get_variables_list_request) | **GET** /vars | 
-*VariablesApi* | [**post_variable**](docs/VariablesApi.md#post_variable) | **POST** /var/{path} | 
-*VariablesApi* | [**put_variable**](docs/VariablesApi.md#put_variable) | **PUT** /var/{path} | 
 *VolumesApi* | [**create_volume**](docs/VolumesApi.md#create_volume) | **POST** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**delete_snapshot**](docs/VolumesApi.md#delete_snapshot) | **DELETE** /volumes/snapshot | 
 *VolumesApi* | [**delete_volume_registration**](docs/VolumesApi.md#delete_volume_registration) | **DELETE** /volume/csi/{volumeId} | 
@@ -317,8 +312,6 @@ Class | Method | HTTP request | Description
  - [TaskState](docs/TaskState.md)
  - [Template](docs/Template.md)
  - [UpdateStrategy](docs/UpdateStrategy.md)
- - [Variable](docs/Variable.md)
- - [VariableMetadata](docs/VariableMetadata.md)
  - [Vault](docs/Vault.md)
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)

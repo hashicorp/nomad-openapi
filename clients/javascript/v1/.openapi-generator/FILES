@@ -206,9 +206,6 @@ docs/TaskLifecycle.md
 docs/TaskState.md
 docs/Template.md
 docs/UpdateStrategy.md
-docs/Variable.md
-docs/VariableMetadata.md
-docs/VariablesApi.md
 docs/Vault.md
 docs/VolumeMount.md
 docs/VolumeRequest.md
@@ -234,7 +231,6 @@ src/api/ScalingApi.js
 src/api/SearchApi.js
 src/api/StatusApi.js
 src/api/SystemApi.js
-src/api/VariablesApi.js
 src/api/VolumesApi.js
 src/index.js
 src/model/ACLPolicy.js
@@ -426,8 +422,6 @@ src/model/TaskLifecycle.js
 src/model/TaskState.js
 src/model/Template.js
 src/model/UpdateStrategy.js
-src/model/Variable.js
-src/model/VariableMetadata.js
 src/model/Vault.js
 src/model/VolumeMount.js
 src/model/VolumeRequest.js
@@ -440,7 +434,6 @@ test/api/PluginsApi.spec.js
 test/api/ScalingApi.spec.js
 test/api/StatusApi.spec.js
 test/api/SystemApi.spec.js
-test/api/VariablesApi.spec.js
 test/model/ACLTokenRoleLink.spec.js
 test/model/AllocStopResponse.spec.js
 test/model/AutopilotConfiguration.spec.js
@@ -472,7 +465,5 @@ test/model/SchedulerConfigurationResponse.spec.js
 test/model/SchedulerSetConfigurationResponse.spec.js
 test/model/ServerHealth.spec.js
 test/model/ServiceRegistration.spec.js
-test/model/Variable.spec.js
-test/model/VariableMetadata.spec.js
 test/model/WaitConfig.spec.js
 test/model/WorkloadIdentity.spec.js

@@ -83,8 +83,6 @@ mod status_api;
 pub use self::status_api::{ StatusApi, StatusApiClient };
 mod system_api;
 pub use self::system_api::{ SystemApi, SystemApiClient };
-mod variables_api;
-pub use self::variables_api::{ VariablesApi, VariablesApiClient };
 mod volumes_api;
 pub use self::volumes_api::{ VolumesApi, VolumesApiClient };
 

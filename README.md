@@ -36,7 +36,7 @@ package main
 import (
 	"fmt"
 	"os"
-
+	
 	v1 "github.com/flytocolors/nomad-openapi/v1"
 )
 
@@ -48,18 +48,18 @@ func main() {
 
 	jobName := "example"
 	opts := v1.DefaultQueryOpts()
-
+	
 	job, meta, err := client.Jobs().GetJob(opts.Ctx(), jobName)
 	if err != nil {
 		os.Exit(1)
 	}
-
+	
 	fmt.Println(*job.ID)
 	fmt.Printf("%v", &meta)
 }
 ```
 
-## Environmental Configuration
+## Environmental Configuration 
 
 This client supports the following Nomad environment variables.
 
@@ -146,22 +146,10 @@ generator package as well as instructions on _how to contribute_ to that package
 
 The `clients` and `v1` packages found in this repository are _not officially supported packages_.
 
-## Checklist for Updating For New Versions of Nomad
 
-Updating to a new version of Nomad involves updating the spec generation code, and then running make to both create an updated `v1/openapi.yml` spec and generating the update clients.
 
-- [ ] Determine what changes will need to be made.
-  - [ ] Find the `go.mod` file at the top of this repo to find the version of Nomad this repo is currently pinned to.
-  - [ ] Go to your local checkout of Nomad OSS and find the differences in the `api` package between the version you intend to release and the version pinned in this repo. For example, to find the differences changes made between 1.3.5 and the 1.4.0-beta.1, run `git diff v1.3.5..v1.4.0-beta.1 ./api`.
-- [ ] In this repo, create a new branch `update-nomad-vX.Y.Z`
-- [ ] Update `go.mod` to the released version of Nomad.
-- [ ] Run `go mod tidy`.
-- [ ] Make a commit for updating the version of Nomad: `git commit -am "update Nomad to vX.Y.Z"`
-- [ ] Find the `generator/*.go` files that correspond to each API endpoint change you found above. For example, if the git diff found changes to `api/acl.go` you'll need to edit `generator/acl.go`.
-- [ ] Make the appropriate changes.
-  - [ ] If you are adding new fields, edit the endpoints in place.
-  - [ ] If you are adding new endpoints, start by copying this snippet: [./snippets/generator-endpoint.txt](https://github.com/flytocolors/nomad-openapi/blob/main/snippets/generator-endpoint.txt). Write the new endpoint by hand in the generator snippet. Refer to the slideshow above.
-- [ ] Make a commit with the spec generator update: `git commit -am "update spec generator"`
-- [ ] Run `make v1` to update all the clients with that spec. **Note:** You will need Docker installed and running to update the clients.
-- [ ] Make a commit with all the client updates: `git commit -am "update all clients"`
-- [ ] Open a PR in this repo, targeting the `main` branch.
+
+
+
+
+

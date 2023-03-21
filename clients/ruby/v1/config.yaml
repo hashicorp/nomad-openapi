@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 # File is used by the openapi-generator cli to generate a javascript client.
 generatorName: ruby
 gitUserId: hashicorp

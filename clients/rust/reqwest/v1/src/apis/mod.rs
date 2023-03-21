@@ -77,7 +77,6 @@ pub mod scaling_api;
 pub mod search_api;
 pub mod status_api;
 pub mod system_api;
-pub mod variables_api;
 pub mod volumes_api;
 
 pub mod configuration;

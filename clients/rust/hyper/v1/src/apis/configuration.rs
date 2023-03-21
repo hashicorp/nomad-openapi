@@ -30,7 +30,7 @@ pub struct ApiKey {
 impl<C: hyper::client::Connect> Configuration<C> {
     pub fn new(client: hyper::client::Client<C>) -> Configuration<C> {
         Configuration {
-            base_path: "http://127.0.0.1:4646/v1".to_owned(),
+            base_path: "https://127.0.0.1:4646/v1".to_owned(),
             user_agent: Some("OpenAPI-Generator/1.1.4/rust".to_owned()),
             client: client,
             basic_auth: None,

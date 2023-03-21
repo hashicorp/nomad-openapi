@@ -1,6 +1,6 @@
 # nomad_client.VolumesApi
 
-All URIs are relative to *http://127.0.0.1:4646/v1*
+All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_create_request import CSIVolumeCreateRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3347,10 +3347,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3433,10 +3433,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3525,10 +3525,10 @@ import time
 import nomad_client
 from nomad_client.api import volumes_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3620,10 +3620,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_list_external_response import CSIVolumeListExternalResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3716,10 +3716,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_snapshot_list_response import CSISnapshotListResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3812,10 +3812,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume import CSIVolume
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3915,10 +3915,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_list_stub import CSIVolumeListStub
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4016,10 +4016,10 @@ from nomad_client.api import volumes_api
 from nomad_client.model.csi_snapshot_create_request import CSISnapshotCreateRequest
 from nomad_client.model.csi_snapshot_create_response import CSISnapshotCreateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4131,10 +4131,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_register_request import CSIVolumeRegisterRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7444,10 +7444,10 @@ import nomad_client
 from nomad_client.api import volumes_api
 from nomad_client.model.csi_volume_register_request import CSIVolumeRegisterRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://127.0.0.1:4646/v1
+# Defining the host is optional and defaults to https://127.0.0.1:4646/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nomad_client.Configuration(
-    host = "http://127.0.0.1:4646/v1"
+    host = "https://127.0.0.1:4646/v1"
 )
 
 # The client must configure the authentication and authorization parameters

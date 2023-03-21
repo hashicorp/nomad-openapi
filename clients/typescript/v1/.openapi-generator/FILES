@@ -16,7 +16,6 @@ apis/ScalingApi.ts
 apis/SearchApi.ts
 apis/StatusApi.ts
 apis/SystemApi.ts
-apis/VariablesApi.ts
 apis/VolumesApi.ts
 apis/baseapi.ts
 apis/exception.ts
@@ -216,8 +215,6 @@ models/TaskLifecycle.ts
 models/TaskState.ts
 models/Template.ts
 models/UpdateStrategy.ts
-models/Variable.ts
-models/VariableMetadata.ts
 models/Vault.ts
 models/VolumeMount.ts
 models/VolumeRequest.ts

@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 package main
 
 import "reflect"
@@ -29,7 +26,6 @@ func (v *v1api) GetPaths() []*apiPath {
 	paths = append(paths, v.getSearchPaths()...)
 	paths = append(paths, v.getStatusPaths()...)
 	paths = append(paths, v.getSystemPaths()...)
-	paths = append(paths, v.getVariablesPaths()...)
 	paths = append(paths, v.getVolumesPaths()...)
 
 	return paths
@@ -327,21 +323,6 @@ var (
 		Description: "A Nomad ACL token.",
 		Name:        "X-Nomad-Token",
 		In:          inHeader,
-	}
-	variablePath = parameter{
-		Id:          "VariablePath",
-		SchemaType:  stringSchema,
-		Description: "A path to a Nomad Variable",
-		Name:        "path",
-		In:          inPath,
-		Required:    true,
-	}
-	variableCAS = parameter{
-		Id:          "VariableCAS",
-		SchemaType:  intSchema,
-		Description: "A compare-and-set parameter for Nomad Variables",
-		Name:        "cas",
-		In:          inQuery,
 	}
 )
 

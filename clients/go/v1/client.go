@@ -82,8 +82,6 @@ type APIClient struct {
 
 	SystemApi *SystemApiService
 
-	VariablesApi *VariablesApiService
-
 	VolumesApi *VolumesApiService
 }
 
@@ -119,7 +117,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SearchApi = (*SearchApiService)(&c.common)
 	c.StatusApi = (*StatusApiService)(&c.common)
 	c.SystemApi = (*SystemApiService)(&c.common)
-	c.VariablesApi = (*VariablesApiService)(&c.common)
 	c.VolumesApi = (*VolumesApiService)(&c.common)
 
 	return c

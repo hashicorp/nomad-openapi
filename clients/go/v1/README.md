@@ -74,7 +74,7 @@ ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://127.0.0.1:4646/v1*
+All URIs are relative to *https://127.0.0.1:4646/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -161,11 +161,6 @@ Class | Method | HTTP request | Description
 *StatusApi* | [**GetStatusPeers**](docs/StatusApi.md#getstatuspeers) | **Get** /status/peers | 
 *SystemApi* | [**PutSystemGC**](docs/SystemApi.md#putsystemgc) | **Put** /system/gc | 
 *SystemApi* | [**PutSystemReconcileSummaries**](docs/SystemApi.md#putsystemreconcilesummaries) | **Put** /system/reconcile/summaries | 
-*VariablesApi* | [**DeleteVariable**](docs/VariablesApi.md#deletevariable) | **Delete** /var/{path} | 
-*VariablesApi* | [**GetVariableQuery**](docs/VariablesApi.md#getvariablequery) | **Get** /var/{path} | 
-*VariablesApi* | [**GetVariablesListRequest**](docs/VariablesApi.md#getvariableslistrequest) | **Get** /vars | 
-*VariablesApi* | [**PostVariable**](docs/VariablesApi.md#postvariable) | **Post** /var/{path} | 
-*VariablesApi* | [**PutVariable**](docs/VariablesApi.md#putvariable) | **Put** /var/{path} | 
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /volume/csi/{volumeId}/{action} | 
 *VolumesApi* | [**DeleteSnapshot**](docs/VolumesApi.md#deletesnapshot) | **Delete** /volumes/snapshot | 
 *VolumesApi* | [**DeleteVolumeRegistration**](docs/VolumesApi.md#deletevolumeregistration) | **Delete** /volume/csi/{volumeId} | 
@@ -370,8 +365,6 @@ Class | Method | HTTP request | Description
  - [TaskState](docs/TaskState.md)
  - [Template](docs/Template.md)
  - [UpdateStrategy](docs/UpdateStrategy.md)
- - [Variable](docs/Variable.md)
- - [VariableMetadata](docs/VariableMetadata.md)
  - [Vault](docs/Vault.md)
  - [VolumeMount](docs/VolumeMount.md)
  - [VolumeRequest](docs/VolumeRequest.md)

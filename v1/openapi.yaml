@@ -205,19 +205,6 @@ components:
       name: stale
       schema:
         type: string
-    VariableCAS:
-      description: A compare-and-set parameter for Nomad Variables
-      in: query
-      name: cas
-      schema:
-        type: integer
-    VariablePath:
-      description: A path to a Nomad Variable
-      in: path
-      name: path
-      required: true
-      schema:
-        type: string
     VolumeActionParam:
       description: The action to perform on the Volume (create, detach, delete).
       in: path
@@ -431,12 +418,6 @@ components:
           schema:
             $ref: '#/components/schemas/SearchRequest'
       required: true
-    Variable:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Variable'
-      required: true
   responses:
     BadRequestResponse:
       description: Bad request
@@ -495,14 +476,6 @@ components:
     DeleteOperatorRaftPeerResponse:
       description: ""
     DeleteSnapshotResponse:
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-    DeleteVariableResponse:
       description: ""
       headers:
         X-Nomad-Index:
@@ -1424,50 +1397,6 @@ components:
               type: string
             type: array
       description: ""
-    GetVariableResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Variable'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by
-            the leader node.
-          schema:
-            type: integer
-    GetVariablesListResponse:
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/VariableMetadata'
-            type: array
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
-        X-Nomad-KnownLeader:
-          description: Boolean indicating if there is a known cluster leader.
-          schema:
-            type: boolean
-        X-Nomad-LastContact:
-          description: The time in milliseconds that a server was last contacted by
-            the leader node.
-          schema:
-            type: integer
     GetVolumeResponse:
       content:
         application/json:
@@ -1813,18 +1742,6 @@ components:
             resource. On a new Nomad cluster the value of this index starts at 1.
           schema:
             type: integer
-    PostVariableResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Variable'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
     PostVolumeRegistrationResponse:
       description: ""
       headers:
@@ -1860,18 +1777,6 @@ components:
       description: ""
     PutSystemReconcileSummariesResponse:
       description: ""
-    PutVariableResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Variable'
-      description: ""
-      headers:
-        X-Nomad-Index:
-          description: A unique identifier representing the current state of the requested
-            resource. On a new Nomad cluster the value of this index starts at 1.
-          schema:
-            type: integer
     RegisterJobResponse:
       content:
         application/json:
@@ -5756,54 +5661,6 @@ components:
           format: int64
           type: integer
       type: object
-    Variable:
-      properties:
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        CreateTime:
-          format: int64
-          type: integer
-        Items:
-          $ref: '#/components/schemas/VariableItems'
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        ModifyTime:
-          format: int64
-          type: integer
-        Namespace:
-          type: string
-        Path:
-          type: string
-      type: object
-    VariableItems:
-      additionalProperties:
-        type: string
-      type: object
-    VariableMetadata:
-      properties:
-        CreateIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        CreateTime:
-          format: int64
-          type: integer
-        ModifyIndex:
-          maximum: 1.8446744073709552e+19
-          minimum: 0
-          type: integer
-        ModifyTime:
-          format: int64
-          type: integer
-        Namespace:
-          type: string
-        Path:
-          type: string
-      type: object
     Vault:
       properties:
         ChangeMode:
@@ -8232,153 +8089,6 @@ paths:
       - X-Nomad-Token: []
       tags:
       - Jobs
-  /var/{path}:
-    delete:
-      operationId: DeleteVariable
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/VariablePath'
-      - $ref: '#/components/parameters/VariableCAS'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Variable'
-        required: true
-      responses:
-        "200":
-          $ref: '#/components/responses/DeleteVariableResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Variables
-    get:
-      operationId: GetVariableQuery
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/IndexHeader'
-      - $ref: '#/components/parameters/WaitParam'
-      - $ref: '#/components/parameters/StaleParam'
-      - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      - $ref: '#/components/parameters/VariablePath'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetVariableResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Variables
-    post:
-      operationId: PostVariable
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/VariablePath'
-      - $ref: '#/components/parameters/VariableCAS'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Variable'
-        required: true
-      responses:
-        "200":
-          $ref: '#/components/responses/PostVariableResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Variables
-    put:
-      operationId: PutVariable
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/IdempotencyTokenParam'
-      - $ref: '#/components/parameters/VariablePath'
-      - $ref: '#/components/parameters/VariableCAS'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Variable'
-        required: true
-      responses:
-        "200":
-          $ref: '#/components/responses/PutVariableResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Variables
-  /vars:
-    get:
-      operationId: GetVariablesListRequest
-      parameters:
-      - $ref: '#/components/parameters/RegionParam'
-      - $ref: '#/components/parameters/NamespaceParam'
-      - $ref: '#/components/parameters/IndexHeader'
-      - $ref: '#/components/parameters/WaitParam'
-      - $ref: '#/components/parameters/StaleParam'
-      - $ref: '#/components/parameters/PrefixParam'
-      - $ref: '#/components/parameters/NomadTokenHeader'
-      - $ref: '#/components/parameters/PerPageParam'
-      - $ref: '#/components/parameters/NextTokenParam'
-      responses:
-        "200":
-          $ref: '#/components/responses/GetVariablesListResponse'
-        "400":
-          $ref: '#/components/responses/BadRequestResponse'
-        "403":
-          $ref: '#/components/responses/ForbiddenResponse'
-        "405":
-          $ref: '#/components/responses/MethodNotAllowedResponse'
-        "500":
-          $ref: '#/components/responses/InternalServerErrorResponse'
-      security:
-      - X-Nomad-Token: []
-      tags:
-      - Variables
   /volume/csi/{volumeId}:
     delete:
       operationId: DeleteVolumeRegistration
@@ -8697,7 +8407,7 @@ servers:
     port:
       default: "4646"
     scheme:
-      default: http
+      default: https
       enum:
       - https
       - http
