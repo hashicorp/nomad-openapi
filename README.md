@@ -8,7 +8,7 @@
 
 After supporting this library for several releases and using it on internal tools, the Nomad Team has decided to end official support for this OpenAPI library in Nomad. Unfortunately, there has been a higher than anticipated cost to keeping it up to date.
 
-If you are using or want to use an OpenAPI client in Nomad, we encourage you to fork this repository. You can refer to this section on how to contribute, or ask us for guidance in the Nomad Forums. We will be supporting this library until Nomad 1.7, and SDKs should continue to work on later versions of Nomad, though certain endpoints may not be fully supported. Golang users can also use the built-in Go client.
+If you are using or want to use an OpenAPI client in Nomad, we encourage you to fork this repository. You can refer to [this section]([url](https://github.com/hashicorp/nomad-openapi#contributing)) on how to contribute, or ask us for guidance in [the Nomad Forums]([url](https://discuss.hashicorp.com/c/nomad/28)). We will be supporting this library until Nomad 1.7, and SDKs should continue to work on later versions of Nomad, though certain endpoints may not be fully supported. Golang users can also use the [built-in Go client]([url](https://pkg.go.dev/github.com/hashicorp/nomad/api)).
 
 One day, we may resume support for OpenAPI (or something similar), but if we do we’ll be using it in the Nomad repo itself and making sure we auto-generate more of the code necessary to keep this up to date.
 
