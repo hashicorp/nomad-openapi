@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_quotas**
-> [bool, date, datetime, dict, float, int, list, str, none_type] get_quotas()
+> [object] get_quotas()
 
 
 
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[bool, date, datetime, dict, float, int, list, str, none_type]**
+**[object]**
 
 ### Authorization
 

@@ -537,7 +537,7 @@ class EnterpriseApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                [bool, date, datetime, dict, float, int, list, str, none_type]
+                [object]
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -564,7 +564,7 @@ class EnterpriseApi(object):
 
         self.get_quotas = _Endpoint(
             settings={
-                'response_type': ([bool, date, datetime, dict, float, int, list, str, none_type],),
+                'response_type': ([object],),
                 'auth': [
                     'X-Nomad-Token'
                 ],

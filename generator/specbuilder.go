@@ -417,12 +417,14 @@ func (b *specBuilder) getOrCreateSchemaRef(model reflect.Type) (*openapi3.Schema
 }
 
 func (b *specBuilder) resolveRefPaths() {
-	for _, schemaRef := range b.spec.Model.Components.Schemas {
+	for schemaName, schemaRef := range b.spec.Model.Components.Schemas {
 		// Next make sure the refs point to other schemas, if not already done.
-		for _, propertyRef := range schemaRef.Value.Properties {
+		for propertyName, propertyRef := range schemaRef.Value.Properties {
 			if strings.Contains(propertyRef.Ref, schemaPath) {
 				continue
 			}
+
+			b.logger.Trace("schemaName", schemaName, "propertyName", propertyName)
 
 			if isBasic(propertyRef.Value.Type) {
 				propertyRef.Ref = ""
@@ -430,12 +432,31 @@ func (b *specBuilder) resolveRefPaths() {
 				propertyRef.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.Items, propertyRef.Value.Items.Ref)
 			} else if propertyRef.Value.AdditionalProperties != nil {
 				// This handles maps
-				if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
-					propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
-				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
-					propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
-				} else if len(propertyRef.Ref) != 0 {
+				// If the property has a ref, then format it.
+				if len(propertyRef.Ref) != 0 {
 					propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
+				}
+
+				// if the map element is for a basic type, clear it so that built in types are handled.
+				if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
+					propertyRef.Value.AdditionalProperties.Ref = ""
+				} else if propertyRef.Value.AdditionalProperties.Value.Type == "object" {
+					// Handle mapping of map of maps.
+					if isBasic(propertyRef.Value.AdditionalProperties.Ref) {
+						propertyRef.Value.AdditionalProperties.Value.Type = propertyRef.Value.AdditionalProperties.Ref
+						propertyRef.Value.AdditionalProperties.Ref = ""
+					} else {
+						propertyRef.Value.AdditionalProperties.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Ref)
+					}
+				} else if propertyRef.Value.AdditionalProperties.Value.Type == "array" {
+					if isBasic(propertyRef.Value.AdditionalProperties.Value.Items.Ref) {
+						propertyRef.Value.AdditionalProperties.Value.Items.Value.Type = propertyRef.Value.AdditionalProperties.Value.Items.Ref
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = ""
+					} else {
+						propertyRef.Value.AdditionalProperties.Value.Items.Ref = formatSchemaRefPath(propertyRef.Value.AdditionalProperties, propertyRef.Value.AdditionalProperties.Value.Items.Ref)
+					}
+				} else if len(propertyRef.Value.AdditionalProperties.Ref) != 0 {
+					propertyRef.Value.AdditionalProperties.Ref = fmt.Sprintf("#/components/schemas/%s", propertyRef.Value.AdditionalProperties.Ref)
 				}
 			} else {
 				propertyRef.Ref = formatSchemaRefPath(propertyRef, propertyRef.Ref)
@@ -445,7 +466,7 @@ func (b *specBuilder) resolveRefPaths() {
 }
 
 func isBasic(typ string) bool {
-	return typ == "" || typ == "integer" || typ == "number" || typ == "string" || typ == "boolean" || typ == "bool"
+	return typ == "integer" || typ == "number" || typ == "string" || typ == "boolean" || typ == "bool"
 }
 
 func formatSchemaRefPath(ref *openapi3.SchemaRef, modelName string) string {
