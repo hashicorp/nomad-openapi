@@ -1,5 +1,5 @@
 [package]
-name = "nomad_client"
+name = "nomad_client_reqwest"
 version = "1.1.4"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"
